@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 2: Python Dasar — Variabel, Tipe Data, dan Cara Menyimpan Nilai</title>
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --text: #1c1917;
+    --muted: #57534e;
+    --accent: #0f766e;
+    --border: #e7e5e4;
+    --code-bg: #1c1917;
+    --code-text: #e7e5e4;
+    --warn-bg: #fef3c7;
+    --warn-border: #f59e0b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c0a09;
+      --surface: #1c1917;
+      --text: #e7e5e4;
+      --muted: #a8a29e;
+      --accent: #2dd4bf;
+      --border: #292524;
+      --code-bg: #171412;
+      --code-text: #e7e5e4;
+      --warn-bg: #292524;
+      --warn-border: #f59e0b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow { font-family: ui-monospace, monospace; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin: 0; }
+  h1 { font-size: 2.25rem; line-height: 1.2; margin: .5rem 0 .75rem; letter-spacing: -.02em; }
+  h2 { font-size: 1.4rem; margin-top: 3rem; letter-spacing: -.01em; scroll-margin-top: 1.5rem; }
+  h3 { font-size: 1.05rem; margin-top: 2rem; }
+  p { color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .95rem; }
+  th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--border); }
+  th { color: var(--text); }
+  code { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .85em; background: var(--surface); border: 1px solid var(--border); padding: .15em .4em; border-radius: 6px; }
+  pre { background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.4rem; border-radius: 10px; overflow-x: auto; font-size: .88rem; line-height: 1.6; }
+  pre code { background: none; border: none; padding: 0; color: inherit; }
+  a { color: var(--accent); }
+  blockquote { border-left: 3px solid var(--accent); margin: 1.5rem 0; padding: .5rem 1rem; background: var(--surface); border-radius: 0 8px 8px 0; }
+  blockquote p { margin: 0; color: var(--text); }
+  ul, ol { color: var(--muted); }
+  li { margin-bottom: .35rem; }
+  .box { border: 1px solid var(--border); border-left: 3px solid var(--warn-border); background: var(--warn-bg); padding: .9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
+  .box p { margin: 0 0 .5rem; color: var(--text); }
+  .box p:last-child { margin-bottom: 0; }
+  .box strong { color: var(--text); }
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+  }
+  .toc::-webkit-scrollbar { width: 6px; }
+  .toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  @media (min-width: 1280px) { .toc { display: block; } }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .15rem 0; }
+  .toc a:hover { color: var(--accent); }
+  footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); font-size: .9rem; }
+  footer a { display: block; padding: .2rem 0; }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Apa itu variabel?</a>
+  <a href="#s2">2. Mengapa perlu variabel</a>
+  <a href="#s4">4. Tanda = dalam Python</a>
+  <a href="#s6">6. String</a>
+  <a href="#s8">8. Integer</a>
+  <a href="#s9">9. "18" vs 18</a>
+  <a href="#s10">10. Float</a>
+  <a href="#s12">12. Boolean</a>
+  <a href="#s14">14. type()</a>
+  <a href="#s17">17. Dynamic typing</a>
+  <a href="#s18">18. Aturan penamaan</a>
+  <a href="#s21">21. Perhitungan</a>
+  <a href="#s22">22. Operator</a>
+  <a href="#s26">26. Gabung string</a>
+  <a href="#s28">28. Konversi tipe</a>
+  <a href="#s32">32. f-string</a>
+  <a href="#s37">37. Kesalahan umum</a>
+  <a href="#s39">39. Latihan</a>
+  <a href="#s44">44. Mini project</a>
+  <a href="#s46">46. Materi selanjutnya</a>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Catatan Belajar</p>
+    <h1>Bab 2: Variabel, Tipe Data, dan Cara Menyimpan Nilai</h1>
+    <p>Variabel dan tipe data adalah dua konsep yang dipakai hampir di semua program Python. Memahaminya sebelum masuk ke <code>if</code>, <code>loop</code>, dan function akan membuat materi berikutnya jauh lebih ringan.</p>
+  </header>
+
+  <h2 id="s1">1. Apa itu variabel?</h2>
+  <p>Variabel adalah nama yang digunakan untuk menyimpan sebuah nilai.</p>
+  <pre><code>nama = "Rian"</code></pre>
+  <p>Kita bisa membayangkannya sebagai kotak yang diberi nama:</p>
+  <pre><code>┌─────────────┐
+│ nama        │
+│             │
+│ "Rian"      │
+└─────────────┘</code></pre>
+  <p>Isinya diambil dengan menyebut namanya:</p>
+  <pre><code>print(nama)   # Rian</code></pre>
+  <p>Jadi <code>nama = "Rian"</code> berarti: buat variabel bernama <code>nama</code>, lalu simpan nilai <code>"Rian"</code> di dalamnya.</p>
+
+  <h2 id="s2">2. Kenapa kita membutuhkan variabel?</h2>
+  <p>Tanpa variabel, program seperti ini harus diubah di banyak tempat:</p>
+  <pre><code>print("Rian")
+print("Rian")
+print("Rian")</code></pre>
+  <p>Dengan variabel, cukup ubah satu baris:</p>
+  <pre><code>nama = "Rian"
+
+print(nama)
+print(nama)
+print(nama)</code></pre>
+  <p>Kalau namanya menjadi <code>Andi</code>, cukup <code>nama = "Andi"</code> dan semua <code>print(nama)</code> ikut berubah.</p>
+
+  <h2 id="s3">3. Bentuk dasar variabel Python</h2>
+  <pre><code>nama_variabel = nilai</code></pre>
+  <pre><code>nama = "Rian"
+umur = 18
+tinggi = 170.5</code></pre>
+
+  <h2 id="s4">4. Tanda <code>=</code> dalam Python</h2>
+  <p>Saat kamu menulis <code>umur = 18</code>, tanda <code>=</code> berarti <strong>simpan nilai 18 ke variabel <code>umur</code></strong>, bukan "sama dengan" seperti dalam matematika.</p>
+  <pre><code>umur = 18   # dibaca: umur ← 18</code></pre>
+
+  <h2 id="s5">5. Contoh sederhana</h2>
+  <pre><code>nama = "Rian"
+umur = 18
+
+print(nama)
+print(umur)</code></pre>
+  <p>Perhatikan bedanya dua penulisan ini:</p>
+  <pre><code>print(nama)    # Rian   → Python mencari isi variabel nama
+print("nama")  # nama   → Python memperlakukan ini teks biasa</code></pre>
+
+  <h2 id="s6">6. Apa itu string?</h2>
+  <p>Nilai <code>"Rian"</code> merupakan <strong>string</strong>, yaitu data berupa teks.</p>
+  <pre><code>nama = "Rian"
+kota = "Banda Aceh"
+hobi = "Coding"</code></pre>
+  <p>String bisa memakai kutip tunggal maupun ganda, keduanya sama-sama valid:</p>
+  <pre><code>nama = "Rian"
+nama = 'Rian'</code></pre>
+
+  <h2 id="s7">7. Kenapa string menggunakan tanda kutip?</h2>
+  <p>Karena Python perlu membedakan teks dan nama variabel.</p>
+  <pre><code>nama = Rian     # Python mencari variabel bernama Rian → error
+nama = "Rian"   # teks "Rian"</code></pre>
+  <p><code>Rian</code> dan <code>"Rian"</code> adalah dua hal yang berbeda bagi Python.</p>
+
+  <h2 id="s8">8. Tipe data <code>int</code></h2>
+  <p><code>int</code> adalah singkatan dari <strong>integer</strong>, yaitu bilangan bulat. Nilainya ditulis tanpa tanda kutip:</p>
+  <pre><code>umur = 18
+jumlah = 10
+saldo = 50000
+tahun = 2026</code></pre>
+  <p>Jika ditulis <code>umur = "18"</code>, nilainya bukan integer melainkan string.</p>
+
+  <h2 id="s9">9. Perbedaan <code>"18"</code> dan <code>18</code></h2>
+  <p>Ini salah satu konsep paling penting dalam pemrograman.</p>
+  <pre><code>a = 18
+b = "18"
+
+print(type(a))   # &lt;class 'int'&gt;
+print(type(b))   # &lt;class 'str'&gt;</code></pre>
+  <p>Keduanya tampil sama, tetapi Python memperlakukannya berbeda:</p>
+  <pre><code>a = 18
+b = 2
+print(a + b)     # 20  → penjumlahan angka
+
+a = "18"
+b = "2"
+print(a + b)     # 182 → penggabungan teks</code></pre>
+  <p>Operasi <code>+</code> pada dua string berarti menyambung, bukan menambah.</p>
+
+  <h2 id="s10">10. Tipe data <code>float</code></h2>
+  <p>Untuk bilangan desimal, tipe datanya <code>float</code>:</p>
+  <pre><code>tinggi = 170.5
+berat = 55.7
+harga = 12500.50
+phi = 3.14</code></pre>
+
+  <h2 id="s11">11. Tiga tipe data utama sejauh ini</h2>
+  <pre><code>str   → teks
+int   → bilangan bulat
+float → bilangan desimal</code></pre>
+  <pre><code>nama = "Rian"     # str
+umur = 18            # int
+tinggi = 170.5       # float</code></pre>
+
+  <h2 id="s12">12. Tipe data boolean</h2>
+  <p>Tipe <code>bool</code> hanya punya dua nilai: <code>True</code> dan <code>False</code>.</p>
+  <pre><code>is_student = True
+is_married = False</code></pre>
+  <p>Huruf besar di awal wajib dipakai. <code>true</code> dan <code>false</code> tidak valid.</p>
+
+  <h2 id="s13">13. Kenapa boolean penting?</h2>
+  <p>Boolean dipakai terus-menerus saat belajar kondisi nanti:</p>
+  <pre><code>is_logged_in = True
+
+if is_logged_in:
+    print("Selamat datang")</code></pre>
+
+  <h2 id="s14">14. Cara mengetahui tipe data</h2>
+  <p>Fungsi <code>type()</code> memeriksa tipe sebuah nilai:</p>
+  <pre><code>nama = "Rian"
+print(type(nama))     # &lt;class 'str'&gt;
+
+umur = 18
+print(type(umur))     # &lt;class 'int'&gt;
+
+tinggi = 170.5
+print(type(tinggi))   # &lt;class 'float'&gt;
+
+aktif = True
+print(type(aktif))    # &lt;class 'bool'&gt;</code></pre>
+
+  <h2 id="s15">15. <code>type()</code> sebenarnya melakukan apa?</h2>
+  <p><code>type(nama)</code> berarti: "Data di dalam <code>nama</code> ini tipe apa?" Lalu <code>print(type(nama))</code> menampilkan hasil pemeriksaan itu.</p>
+
+  <h2 id="s16">16. Variabel bisa diubah</h2>
+  <pre><code>umur = 18
+print(umur)      # 18
+
+umur = 19
+print(umur)      # 19</code></pre>
+  <p>Assignment terakhir menggantikan nilai sebelumnya:</p>
+  <pre><code>nama = "Rian"
+nama = "Andi"
+nama = "Budi"
+
+print(nama)      # Budi</code></pre>
+
+  <h2 id="s17">17. Variabel bahkan bisa berubah tipe</h2>
+  <p>Python memakai <strong>dynamic typing</strong>, yaitu tipe variabel mengikuti nilai yang diberikan terakhir.</p>
+  <pre><code>data = 10
+print(type(data))      # &lt;class 'int'&gt;
+
+data = "Halo"
+print(type(data))      # &lt;class 'str'&gt;
+
+data = 3.14
+print(type(data))      # &lt;class 'float'&gt;</code></pre>
+  <p>Artinya, kita tidak perlu menulis tipe variabel secara eksplisit saat membuatnya.</p>
+
+  <h2 id="s18">18. Aturan penamaan variabel</h2>
+  <p>Nama yang Valid:</p>
+  <pre><code>nama = "Rian"
+nama_depan = "Rian"
+nilai1 = 90
+nilai_akhir = 95</code></pre>
+  <h3>Tidak boleh diawali angka</h3>
+  <pre><code>1nama = "Rian"    # salah
+nama1 = "Rian"    # benar</code></pre>
+  <h3>Tidak boleh memakai spasi</h3>
+  <pre><code>nama lengkap = "Rian Indra"     # salah
+nama_lengkap = "Rian Indra"    # benar</code></pre>
+  <h3>Tidak boleh memakai keyword Python</h3>
+  <pre><code>if = 10    # salah, if adalah keyword</code></pre>
+  <p>Daftar keyword yang tidak boleh dipakai antara lain: <code>if</code>, <code>for</code>, <code>while</code>, <code>class</code>, <code>def</code>, <code>return</code>.</p>
+
+  <h2 id="s19">19. Python membedakan huruf besar dan kecil</h2>
+  <p>Python bersifat <strong>case-sensitive</strong>, jadi tiga nama berikut dianggap berbeda:</p>
+  <pre><code>nama = "Rian"
+Nama = "Andi"
+NAMA = "Budi"</code></pre>
+  <pre><code>nama = "Rian"
+print(Nama)     # NameError: Nama ≠ nama</code></pre>
+
+  <h2 id="s20">20. Gaya penamaan yang umum</h2>
+  <p>Python umumnya memakai gaya <code>snake_case</code>:</p>
+  <pre><code>nama_lengkap = "Rian Indra"
+tanggal_lahir = "2008-01-01"
+jumlah_barang = 10
+harga_barang = 5000</code></pre>
+  <p>Lebih mudah dibaca dibanding <code>namalengkap</code>.</p>
+
+  <h2 id="s21">21. Variabel dalam perhitungan</h2>
+  <pre><code>a = 10
+b = 20
+
+hasil = a + b
+
+print(hasil)    # 30</code></pre>
+
+  <h2 id="s22">22. Operator matematika dasar</h2>
+  <pre><code>print(10 + 5)      # 15
+print(10 - 5)      # 5
+print(10 * 5)      # 50
+print(10 / 5)      # 2.0   → / selalu menghasilkan float</code></pre>
+
+  <h2 id="s23">23. Pembagian khusus</h2>
+  <p><code>//</code> disebut <strong>floor division</strong>, hasilnya dibulatkan ke bawah:</p>
+  <pre><code>print(10 // 3)    # 3
+print(10 / 3)     # 3.3333333333333335</code></pre>
+  <p>Operator <code>%</code> mencari sisa pembagian:</p>
+  <pre><code>print(10 % 3)     # 1
+
+10 ÷ 3 → 3 × 3 = 9, sisa = 1</code></pre>
+
+  <h2 id="s24">24. Pangkat</h2>
+  <pre><code>print(2 ** 3)    # 8</code></pre>
+
+  <h2 id="s25">25. Daftar operator</h2>
+  <table>
+    <tr><th>Operator</th><th>Arti</th></tr>
+    <tr><td><code>+</code></td><td>tambah</td></tr>
+    <tr><td><code>-</code></td><td>kurang</td></tr>
+    <tr><td><code>*</code></td><td>kali</td></tr>
+    <tr><td><code>/</code></td><td>bagi</td></tr>
+    <tr><td><code>//</code></td><td>pembagian bulat</td></tr>
+    <tr><td><code>%</code></td><td>sisa pembagian</td></tr>
+    <tr><td><code>**</code></td><td>pangkat</td></tr>
+  </table>
+  <pre><code>a = 10
+b = 3
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a // b)
+print(a % b)
+print(a ** b)</code></pre>
+
+  <h2 id="s26">26. Menggabungkan string</h2>
+  <p>Operator <code>+</code> juga berlaku pada string:</p>
+  <pre><code>nama_depan = "Rian"
+nama_belakang = "Indra"
+
+nama_lengkap = nama_depan + " " + nama_belakang
+
+print(nama_lengkap)     # Rian Indra</code></pre>
+  <p><code>" "</code> adalah string berisi satu spasi. Tanpa itu hasilnya <code>RianIndra</code>.</p>
+
+  <h2 id="s27">27. String dan angka tidak bisa langsung digabungkan</h2>
+  <pre><code>umur = 18
+print("Umur saya " + umur)   # TypeError: str + int</code></pre>
+  <p>Python tidak bisa melakukan <code>str + int</code> secara langsung.</p>
+
+  <h2 id="s28">28. Solusi: <code>str()</code></h2>
+  <pre><code>umur = 18
+print("Umur saya " + str(umur))     # Umur saya 18</code></pre>
+  <pre><code>angka = 100
+teks = str(angka)
+print(type(teks))     # &lt;class 'str'&gt;</code></pre>
+
+  <h2 id="s29">29. Fungsi konversi tipe lain</h2>
+  <pre><code>str(100)         # "100"
+int("100")       # 100
+float("3.14")    # 3.14</code></pre>
+  <pre><code>angka = "100"
+angka = int(angka)
+print(angka + 20)     # 120</code></pre>
+
+  <h2 id="s30">30. Hati-hati saat konversi</h2>
+  <p>Tidak semua string bisa diubah menjadi angka:</p>
+  <pre><code>int("Rian")     # tidak bisa, bukan representasi bilangan
+int("3.14")    # bermasalah, "3.14" adalah bentuk desimal
+float("3.14")  # lebih sesuai untuk nilai ini</code></pre>
+
+  <h2 id="s31">31. <code>print()</code> bisa menerima beberapa nilai</h2>
+  <pre><code>nama = "Rian"
+umur = 18
+
+print(nama, umur)          # Rian 18
+print("Nama:", nama)       # Nama: Rian
+print("Umur:", umur)       # Umur: 18</code></pre>
+
+  <h2 id="s32">32. f-string</h2>
+  <p>f-string adalah cara memasukkan nilai variabel ke dalam teks. Awalan huruf <code>f</code> di depan kutip menandakaninya, dan <code>{nama}</code> digantikan oleh nilai variabel <code>nama</code>.</p>
+  <pre><code>nama = "Rian"
+umur = 18
+
+print(f"Nama saya {nama}")     # Nama saya Rian
+print(f"Umur saya {umur}")     # Umur saya 18</code></pre>
+  <pre><code>nama = "Rian"
+umur = 18
+tinggi = 170.5
+
+print(f"Halo, nama saya {nama}")
+print(f"Saya berumur {umur} tahun")
+print(f"Tinggi saya {tinggi} cm")</code></pre>
+
+  <h2 id="s33">33. Variabel berdasarkan variabel lain</h2>
+  <pre><code>harga = 5000
+jumlah = 3
+
+total = harga * jumlah
+
+print(total)     # 15000</code></pre>
+
+  <h2 id="s34">34. Contoh sederhana sistem pembayaran</h2>
+  <pre><code>harga = 10000
+jumlah = 2
+uang = 30000
+
+total = harga * jumlah
+kembalian = uang - total
+
+print(f"Total: {total}")
+print(f"Kembalian: {kembalian}")</code></pre>
+  <p>Program kecil ini sudah memakai variabel, <code>int</code>, operator matematika, dan f-string sekaligus.</p>
+
+  <h2 id="s35">35. Banyak variabel dalam satu program</h2>
+  <pre><code>nama = "Rian"
+umur = 18
+kota = "Banda Aceh"
+tinggi = 170.5
+siswa = True
+
+print(nama)
+print(umur)
+print(kota)
+print(tinggi)
+print(siswa)</code></pre>
+  <p>Gambaran sederhana di memorinya: setiap variabel menunjuk ke satu nilai. Secara teknis Python memakai mekanisme objek dan referensi yang lebih kompleks daripada sekadar "kotak", tetapi untuk tahap awal gambar ini sudah cukup membantu memahami assignment.</p>
+
+  <h2 id="s36">36. Ringkasan tipe data</h2>
+  <table>
+    <tr><th>Tipe</th><th>Contoh</th><th>Keterangan</th></tr>
+    <tr><td><code>str</code></td><td><code>"Rian"</code></td><td>teks, selalu di dalam tanda kutip</td></tr>
+    <tr><td><code>int</code></td><td><code>18</code></td><td>bilangan bulat</td></tr>
+    <tr><td><code>float</code></td><td><code>170.5</code></td><td>bilangan desimal</td></tr>
+    <tr><td><code>bool</code></td><td><code>True</code></td><td>benar atau salah</td></tr>
+  </table>
+
+  <h2 id="s37">37. Kesalahan yang umum terjadi</h2>
+  <div class="box">
+    <p><strong>Kesalahan 1 — tanda kutip hilang</strong></p>
+    <pre><code>nama = Rian        # Python mencari variabel Rian
+nama = "Rian"      # yang benar</code></pre>
+  </div>
+  <div class="box">
+    <p><strong>Kesalahan 2 — tipe tidak cocok saat menghitung</strong></p>
+    <pre><code>umur = "18"
+hasil = umur + 2       # str + int, tidak bisa
+
+umur = 18
+hasil = umur + 2       # 20</code></pre>
+  </div>
+  <div class="box">
+    <p><strong>Kesalahan 3 — huruf besar tidak konsisten</strong></p>
+    <pre><code>Nama = "Rian"
+print(nama)            # NameError, Python case-sensitive</code></pre>
+  </div>
+  <div class="box">
+    <p><strong>Kesalahan 4 — spasi pada nama variabel</strong></p>
+    <pre><code>nama lengkap = "Rian Indra"       # salah
+nama_lengkap = "Rian Indra"      # benar</code></pre>
+  </div>
+
+  <h2 id="s38">38. Cara berpikir tentang variabel</h2>
+  <p>Alih-alih menghafal <code>nama = "Rian"</code>, jawab pertanyaannya: apa yang dilakukan kode ini?</p>
+  <pre><code>nama = "Rian"      # Python membuat nama `nama` merujuk pada nilai "Rian"
+print(nama)        # Ambil nilai yang dirujuk `nama`, lalu tampilkan
+nama = "Andi"      # Assignment baru, `nama` kini merujuk pada "Andi"</code></pre>
+
+  <h2 id="s39">39. Latihan kecil</h2>
+  <h3>Latihan 1</h3>
+  <pre><code>nama = "Rian"
+umur = 18
+kota = "Banda Aceh"
+
+print(nama)
+print(umur)
+print(kota)</code></pre>
+  <p>Hasil: <code>Rian</code>, <code>18</code>, <code>Banda Aceh</code>.</p>
+  <h3>Latihan 2</h3>
+  <pre><code>a = 10
+b = 5
+
+hasil = a + b    # 15
+hasil = a * b    # 50
+hasil = a % b    # 0, karena 10 ÷ 5 = 2 tanpa sisa</code></pre>
+  <h3>Latihan 3</h3>
+  <pre><code>a = "10"
+b = "5"
+
+print(a + b)     # 105, bukan 15</code></pre>
+  <p>Perbedaannya hanya tanda kutip, tetapi dampaknya besar: <code>10 + 5</code> menambah, <code>"10" + "5"</code> menyambung.</p>
+
+  <h2 id="s40">40. Materi inti yang perlu dikuasai</h2>
+  <pre><code># Variabel
+nama = "Rian"
+
+# Tipe data
+"Rian"     # str
+10         # int
+3.14       # float
+True       # bool
+
+# Mengecek tipe
+type(nama)
+
+# Konversi
+str(100)
+int("100")
+float("3.14")
+
+# Operator
++  -  *  /  //  %  **
+
+# Menampilkan nilai
+print(nama)
+
+# f-string
+print(f"Nama saya {nama}")</code></pre>
+
+  <h2 id="s41">41. Mini project: Data diri</h2>
+  <p>Buat file <code>data_diri.py</code>:</p>
+  <pre><code>nama = "Rian Indra Pratama"
+umur = 18
+tinggi = 170.5
+kota = "Banda Aceh"
+siswa = True
+
+print("=== DATA DIRI ===")
+print(f"Nama   : {nama}")
+print(f"Umur   : {umur} tahun")
+print(f"Tinggi : {tinggi} cm")
+print(f"Kota   : {kota}")
+print(f"Siswa  : {siswa}")</code></pre>
+  <p>Hasil:</p>
+  <pre><code>=== DATA DIRI ===
+Nama   : Rian Indra Pratama
+Umur   : 18 tahun
+Tinggi : 170.5 cm
+Kota   : Banda Aceh
+Siswa  : True</code></pre>
+
+  <h2 id="s42">42. Cara menjalankannya</h2>
+  <pre><code>cd D:\BelajarPython
+python data_diri.py</code></pre>
+
+  <h2 id="s43">43. Urutan materi selanjutnya</h2>
+  <pre><code>Python
+├── Menjalankan Python
+├── Variabel           ← bab ini
+├── Tipe data          ← bab ini
+├── Operator           ← bab ini
+├── Input              ← berikutnya
+├── If / Else
+├── Loop
+├── Function
+├── List
+├── Tuple
+├── Dictionary
+├── Set
+├── File
+├── Exception
+├── Module
+├── Package / pip
+├── Virtual Environment
+└── OOP</code></pre>
+
+  <h2 id="s44">44. Materi berikutnya: <code>input()</code></h2>
+  <p>Semua program di bab ini masih memakai nilai yang kita tulis sendiri. Langkah berikutnya adalah <code>input()</code>, supaya program bisa menerima data dari pengguna:</p>
+  <pre><code>Siapa nama kamu? Rian
+Berapa umur kamu? 18
+
+Halo Rian!
+Kamu berumur 18 tahun.</code></pre>
+
+  <footer>
+    <p class="eyebrow">Sumber</p>
+    <a href="https://docs.python.org/3/tutorial/introduction.html">Python Documentation — An Informal Introduction to Python</a>
+    <a href="https://docs.python.org/3/library/stdtypes.html">Python Documentation — Built-in Types</a>
+    <a href="https://docs.python.org/3/reference/executionmodel.html">Python Documentation — Execution model</a>
+    <a href="https://www.py4e.com/html3/02-variables">Python for Everybody — Variables, expressions, and statements</a>
+    <a href="https://runestone.academy/ns/books/published/py4e-int/variables/values-and-types.html">Runestone — Values and types</a>
+    <a href="https://www.teach.cs.toronto.edu/~csc110y/fall/notes/A-python-builtins/02-types.html">University of Toronto — Python Built-In Data Types Reference</a>
+    <a href="https://textbooks.cs.ksu.edu/intro-python/02-numbers/03-types/index.html">Kansas State University — Introduction to Python: Types</a>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 1: Get started</title>
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --text: #1c1917;
+    --muted: #57534e;
+    --accent: #0f766e;
+    --border: #e7e5e4;
+    --code-bg: #1c1917;
+    --code-text: #e7e5e4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c0a09;
+      --surface: #1c1917;
+      --text: #e7e5e4;
+      --muted: #a8a29e;
+      --accent: #2dd4bf;
+      --border: #292524;
+      --code-bg: #171412;
+      --code-text: #e7e5e4;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow { font-family: ui-monospace, monospace; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin: 0; }
+  h1 { font-size: 2.5rem; line-height: 1.15; margin: .5rem 0 .75rem; letter-spacing: -.02em; }
+  h2 { font-size: 1.5rem; margin-top: 3rem; letter-spacing: -.01em; }
+  h3 { font-size: 1.15rem; margin-top: 2rem; }
+  p { color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .95rem; }
+  th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--border); }
+  th { color: var(--text); }
+  code { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .85em; background: var(--surface); border: 1px solid var(--border); padding: .15em .4em; border-radius: 6px; }
+  pre { background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.4rem; border-radius: 10px; overflow-x: auto; font-size: .88rem; line-height: 1.6; }
+  pre code { background: none; border: none; padding: 0; color: inherit; }
+  a { color: var(--accent); }
+  blockquote { border-left: 3px solid var(--accent); margin: 1.5rem 0; padding: .5rem 1rem; background: var(--surface); border-radius: 0 8px 8px 0; }
+  blockquote p { margin: 0; color: var(--text); }
+  ul, ol { color: var(--muted); }
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 220px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+  }
+  .toc::-webkit-scrollbar { width: 6px; }
+  .toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  @media (min-width: 1280px) { .toc { display: block; } }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .15rem 0; }
+  .toc a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Apa itu Python?</a>
+  <a href="#s2">2. Python di komputer</a>
+  <a href="#s3">3. Python Interpreter</a>
+  <a href="#s4">4. Tempat khusus?</a>
+  <a href="#s5">5. VS Code</a>
+  <a href="#s7">7. Antigravity</a>
+  <a href="#s9">9. Install Python</a>
+  <a href="#s11">11. Menjalankan Python</a>
+  <a href="#s18">18. Google Colab</a>
+  <a href="#s20">20. pip</a>
+  <a href="#s21">21. venv</a>
+  <a href="#s27">27. Analogi</a>
+</nav>
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Catatan Belajar</p>
+    <h1>Bab 1: Get Started</h1>
+    <p>Python, tempat menulis Python, dan program yang menjalankan Python itu bukan hal yang sama.</p>
+  </header>
+
+  <p>Hal yang paling penting dipahami dari awal: <strong>Python, tempat menulis Python, dan program yang menjalankan Python bukan hal yang sama</strong>. Banyak pemula bingung karena mengira harus punya aplikasi khusus bernama "Python Editor". Untuk kondisi saat ini, <strong>Python 3.14.8 adalah rilis Python 3 stabil terbaru</strong> di Windows.</p>
+
+  <h2 id="s1">1. Apa itu Python?</h2>
+  <p><strong>Python adalah bahasa pemrograman.</strong> Bahasa pemrograman adalah bahasa yang kita gunakan untuk memberikan instruksi kepada komputer.</p>
+  <pre><code>nama = "Rian"
+print(nama)</code></pre>
+  <p>Secara sederhana kita mengatakan:</p>
+  <blockquote><p>Simpan <code>"Rian"</code> ke dalam variabel <code>nama</code>, kemudian tampilkan isinya.</p></blockquote>
+  <p>Python dirancang dengan sintaks yang relatif mudah dibaca dan mendukung berbagai gaya pemrograman, termasuk procedural, object-oriented, dan functional programming. Dokumentasi resmi menjelaskan Python sebagai bahasa tingkat tinggi, memiliki dynamic typing, bersifat interpreted, dan digunakan untuk scripting sampai pengembangan aplikasi.</p>
+  <table>
+    <tr><th>Bidang</th><th>Contoh</th></tr>
+    <tr><td>Pemrograman dasar</td><td>kalkulator, program latihan</td></tr>
+    <tr><td>Web</td><td>Django, Flask, FastAPI</td></tr>
+    <tr><td>Data</td><td>pandas, NumPy</td></tr>
+    <tr><td>AI / Machine Learning</td><td>PyTorch, TensorFlow</td></tr>
+    <tr><td>Automation</td><td>otomatisasi file, Excel, browser</td></tr>
+    <tr><td>Backend</td><td>API dan server</td></tr>
+    <tr><td>Desktop</td><td>aplikasi GUI</td></tr>
+    <tr><td>Network</td><td>networking dan tools</td></tr>
+    <tr><td>Scripting</td><td>menjalankan pekerjaan otomatis</td></tr>
+  </table>
+  <p>Python sendiri mempunyai <strong>standard library</strong> yang luas, dan ekosistemnya juga menyediakan banyak library pihak ketiga melalui Python Package Index (PyPI).</p>
+
+  <h2 id="s2">2. Tetapi Python itu sebenarnya apa di komputer?</h2>
+  <pre><code>KAMU
+ │ menulis
+ ▼
+program.py
+ │ dibaca oleh
+ ▼
+Python Interpreter
+ │ menjalankan
+ ▼
+Sistem Operasi
+ │
+ ▼
+HASIL</code></pre>
+  <p>File <code>hello.py</code> <strong>hanya berisi kode Python</strong>. File tersebut belum melakukan apa-apa hanya karena kamu membuatnya. Yang menjalankannya adalah <strong>Python interpreter</strong>.</p>
+
+  <h2 id="s3">3. Jadi apa itu Python Interpreter?</h2>
+  <p>Interpreter adalah program yang memahami dan menjalankan kode Python. Di Windows, setelah Python terpasang, biasanya bisa dijalankan melalui <code>python</code> atau <code>py</code>.</p>
+  <pre><code>C:\Users\Rian&gt; python
+Python 3.14.8 ...
+&gt;&gt;&gt; 2 + 3
+5
+&gt;&gt;&gt; nama = "Rian"
+&gt;&gt;&gt; print(nama)
+Rian</code></pre>
+  <p>Tanda <code>&gt;&gt;&gt;</code> berarti kamu sedang berada di <strong>Python REPL</strong>: Read, Evaluate, Print, Loop.</p>
+
+  <h2 id="s4">4. Apakah Python harus punya "tempat khusus"?</h2>
+  <p><strong>Tidak.</strong> Ini salah satu hal terpenting. File Python bisa berada di folder biasa, misalnya <code>D:\Belajar\Python\</code>. Python tidak peduli project kamu berada di folder mana. Yang penting komputer mengetahui di mana Python interpreter berada.</p>
+
+  <h2 id="s5">5. Lalu kenapa orang menggunakan VS Code?</h2>
+  <p>Karena <strong>VS Code bukan Python</strong>. VS Code adalah <strong>code editor</strong>.</p>
+  <pre><code>Python       = bahasa
+python.exe   = program yang menjalankan bahasa Python
+VS Code      = tempat nyaman untuk menulis kode
+Terminal     = tempat memberi perintah ke komputer</code></pre>
+  <p>Microsoft menjelaskan ada tiga bagian terpisah:</p>
+  <pre><code>VS Code + Python Extension + Python Interpreter</code></pre>
+
+  <h2 id="s6">6. Apakah Python bisa dijalankan di VS Code?</h2>
+  <p>Ya, sangat bisa. Pilih interpreter melalui <code>Ctrl + Shift + P</code> lalu <code>Python: Select Interpreter</code>. Setelah itu jalankan file dengan tombol <strong>Run Python File in Terminal</strong>, yang secara konsep menjalankan <code>python hello.py</code>.</p>
+  <pre><code>Kamu menulis → hello.py → VS Code → Python Extension → Python Interpreter → Program berjalan</code></pre>
+
+  <h2 id="s7">7. Bagaimana dengan Antigravity?</h2>
+  <p>Bisa juga, dan ini relevan dengan setup yang kamu gunakan. Kamu dapat membuat file <code>hello.py</code> di editor Antigravity, dan Antigravity IDE menyediakan terminal sehingga kamu bisa menjalankan perintah secara lokal dengan <code>python app.py</code>.</p>
+  <pre><code>Antigravity
+├── Editor → hello.py
+├── Agent
+└── Terminal → python hello.py → Python Interpreter</code></pre>
+  <p>Artinya: <strong>Antigravity tidak menjadi "Python".</strong> Python interpreter tetap menjadi bagian yang menjalankan kode.</p>
+
+  <h2 id="s8">8. Apakah berarti harus install Python walaupun sudah punya VS Code?</h2>
+  <p><strong>Ya, untuk menjalankan Python secara lokal pada dasarnya kamu perlu Python interpreter.</strong></p>
+  <pre><code>Install VS Code
+↓ Install Python Extension
+↓ Menulis print("Hello")
+↓ Klik Run → Error
+
+VS Code ≠ Python
+Python Extension ≠ Python Interpreter</code></pre>
+
+  <h2 id="s9">9. Bagaimana cara memasang Python di Windows?</h2>
+  <p>Halaman resmi Python mencantumkan <code>Latest Python 3 Release: Python 3.14.8</code> dan Python Install Manager 26.3 sebagai install manager Windows terbaru. Untuk belajar, gunakan <strong>Python 3.14.x stable</strong>, bukan release percobaan.</p>
+  <p><a href="https://www.python.org/getit/windows/">Python untuk Windows — halaman resmi</a></p>
+
+  <h2 id="s10">10. Setelah install, bagaimana mengecek Python?</h2>
+  <pre><code>python --version
+py --version
+py --list</code></pre>
+  <p><code>python</code> adalah perintah yang direkomendasikan untuk menjalankan Python, sedangkan <code>py</code> berguna terutama ketika terdapat beberapa versi Python pada komputer.</p>
+
+  <h2 id="s11">11. Sekarang kita benar-benar menjalankan Python</h2>
+  <pre><code>D:\BelajarPython\hello.py → print("Halo dunia!")
+
+cd D:\BelajarPython
+python hello.py
+→ Halo dunia!</code></pre>
+  <p>Tidak ada server. Tidak ada database. Tidak ada aplikasi khusus.</p>
+
+  <h2 id="s12">12. Apa bedanya <code>python</code> dan <code>python hello.py</code>?</h2>
+  <pre><code>python           = buka REPL
+python hello.py  = jalankan file</code></pre>
+
+  <h2 id="s13">13. Dua cara utama belajar menjalankan Python</h2>
+  <h3>Cara A — REPL</h3>
+  <pre><code>&gt;&gt;&gt; 10 + 20
+30
+&gt;&gt;&gt; print("Halo")
+Halo
+&gt;&gt;&gt; nama = "Rian"
+&gt;&gt;&gt; nama
+'Rian'</code></pre>
+  <p>Bagus untuk mencoba hal kecil, tidak perlu membuat file.</p>
+  <h3>Cara B — File <code>.py</code></h3>
+  <pre><code>nama = "Rian"
+umur = 18
+
+print("Nama:", nama)
+print("Umur:", umur)</code></pre>
+  <p>Lebih cocok ketika program mulai panjang. Jalankan dengan <code>python program.py</code>.</p>
+
+  <h2 id="s14">14. Sebenarnya apa yang terjadi ketika <code>python hello.py</code>?</h2>
+  <pre><code>hello.py → Python Interpreter → Python Runtime → Instruksi dijalankan → Windows → Output</code></pre>
+  <p>K<code>.py</code> adalah kode yang kamu tulis, sedangkan Python interpreter adalah mesin yang menjalankan kode tersebut.</p>
+
+  <h2 id="s15">15. Apakah file <code>.py</code> sama seperti <code>.exe</code>?</h2>
+  <p>Tidak. <code>hello.py</code> adalah source code, sedangkan <code>hello.exe</code> adalah executable Windows.</p>
+  <pre><code>.py → Python Interpreter → program berjalan</code></pre>
+
+  <h2 id="s16">16. Apakah Python seperti PHP?</h2>
+  <p>Karena kamu sudah belajar Laravel/PHP, perbandingan ini sangat membantu. Konsep dasarnya mirip: keduanya membutuhkan runtime yang memahami bahasa tersebut.</p>
+  <pre><code>PHP:    index.php → PHP runtime       → program berjalan
+Python: main.py   → Python interpreter → program berjalan</code></pre>
+
+  <h2 id="s17">17. Apakah Python harus menggunakan VS Code?</h2>
+  <p><strong>Tidak.</strong> Python dapat dijalankan dari Command Prompt, PowerShell, Windows Terminal, VS Code, Antigravity, PyCharm, IDLE, Jupyter, dan Google Colab. Yang penting untuk eksekusi lokal adalah interpreter Python.</p>
+
+  <h2 id="s18">18. Bagaimana dengan Google Colab?</h2>
+  <p>Di Google Colab, kamu dapat menulis dan menjalankan Python <strong>langsung dari browser</strong>. Alurnya bukan laptop ke Python lokal, melainkan:</p>
+  <pre><code>Browser → Google Colab → Runtime Python di server Google → Output</code></pre>
+  <p>Jadi untuk Colab, kamu <strong>tidak harus menginstal Python</strong> di komputer hanya untuk menjalankan kode di Colab. Untuk development lokal dengan VS Code/Antigravity, kamu tetap memerlukan interpreter lokal.</p>
+
+  <h2 id="s19">19. Jadi ada beberapa model menjalankan Python</h2>
+  <pre><code>Python lokal + terminal      → python program.py
+Python lokal + VS Code       → VS Code memakai Python yang terpasang
+Python lokal + Antigravity   → terminal menjalankan Python
+Python cloud + Colab         → tanpa Python lokal</code></pre>
+
+  <h2 id="s20">20. Lalu apa itu <code>pip</code>?</h2>
+  <p><code>pip</code> digunakan untuk memasang <strong>package Python</strong>.</p>
+  <pre><code>python -m pip install requests
+py -m pip install SomeProject</code></pre>
+  <pre><code>Python
+├── Interpreter
+├── Standard Library
+└── Packages
+      ├── requests
+      ├── pandas
+      ├── numpy
+      └── ...</code></pre>
+
+  <h2 id="s21">21. Lalu apa itu virtual environment?</h2>
+  <p><code>.venv</code> adalah <strong>lingkungan Python terisolasi untuk sebuah project</strong>. Kalau ProjectA membutuhkan <code>requests</code> dan <code>pandas</code> sementara ProjectB membutuhkan versi berbeda, kamu bisa memisahkannya.</p>
+  <pre><code>python -m venv .venv
+.venv\Scripts\activate</code></pre>
+  <p>Untuk belajar Python dasar, belum wajib memikirkan <code>.venv</code>. Ketika mulai membuat project sungguhan, ini akan penting.</p>
+
+  <h2 id="s22">22. Jadi sebenarnya apa saja yang harus saya install?</h2>
+  <pre><code>1. Python
+2. VS Code atau Antigravity
+3. Extension Python (untuk VS Code/IDE yang memerlukannya)</code></pre>
+  <p>Yang paling fundamental adalah <strong>Python Interpreter</strong>. Tanpa itu, editor lokal tidak punya mesin yang menjalankan Python.</p>
+
+  <h2 id="s23">23. Kalau sudah punya Antigravity, apakah masih perlu install Python?</h2>
+  <p><strong>Ya.</strong> Saat terminal menjalankan <code>python hello.py</code>, Windows tetap harus menemukan program Python. Antigravity membantu membuat dan mengelola kode; Python melakukan eksekusinya.</p>
+
+  <h2 id="s24">24. Mana yang saya sarankan?</h2>
+  <pre><code>Windows
+├── Python 3.14.x
+├── VS Code / Antigravity
+└── folder project
+     ├── .py files
+     └── .venv       ← nanti</code></pre>
+  <p>Workflow: buat folder, buat <code>main.py</code>, tulis Python, buka terminal, <code>python main.py</code>, lihat hasil. Urutan belajar: variabel, tipe data, if/else, loop, function, list/dict, file, module, pip, venv, OOP.</p>
+
+  <h2 id="s25">25. Contoh lengkap dari nol</h2>
+  <ol>
+    <li>Install Python 3.14.x stable dari halaman resmi.</li>
+    <li>Cek <code>python --version</code> di terminal.</li>
+    <li>Buat folder <code>D:\BelajarPython</code>.</li>
+    <li>Buat file <code>hello.py</code> berisi <code>print("Halo, saya sedang belajar Python")</code>.</li>
+    <li><code>cd D:\BelajarPython</code></li>
+    <li><code>python hello.py</code> → <code>Halo, saya sedang belajar Python</code></li>
+  </ol>
+
+  <h2 id="s26">26. Sekarang perhatikan perbedaan ini</h2>
+  <pre><code>Python              = bahasa pemrograman
+Python Interpreter  = program yang menjalankan bahasa Python
+.py                 = file source code Python
+Terminal            = tempat memberikan perintah ke komputer
+VS Code             = code editor/development environment
+Python Extension    = dukungan Python untuk VS Code
+Antigravity         = IDE dengan editor, terminal, dan kemampuan agentic
+pip                 = tool untuk memasang package Python
+venv                = tool untuk membuat virtual environment</code></pre>
+
+  <h2 id="s27">27. Analogi paling gampang</h2>
+  <p>Bayangkan kamu ingin memasak.</p>
+  <pre><code>Python         = bahasa/resep
+.py            = resep yang kamu tulis
+Interpreter    = kokinya
+Terminal       = tempat memberi perintah
+VS Code        = meja dapur yang nyaman
+Antigravity    = meja dapur + alat bantu AI
+Package        = bahan/alat tambahan
+venv           = kotak dapur khusus untuk satu masakan</code></pre>
+  <p>Kamu tidak perlu dapur khusus bernama "Python". Yang penting ada "koki" yang memahami resep tersebut.</p>
+
+  <h2 id="s28">28. Satu hal yang juga penting</h2>
+  <p>Kalau kamu sedang mengerjakan tutorial Python di website dan muncul error seperti <code>Unable to initialize Python code execution</code>, itu belum tentu berarti kode Python kamu salah. Ada dua hal yang perlu dibedakan:</p>
+  <pre><code>Kode Python salah
+vs.
+Tempat yang menjalankan Python bermasalah</code></pre>
+
+  <h2>Sumber Utama</h2>
+  <ul>
+    <li><a href="https://docs.python.org/3/">Python Documentation 3.14</a></li>
+    <li><a href="https://www.python.org/getit/windows/">Python Downloads for Windows</a></li>
+    <li><a href="https://code.visualstudio.com/docs/python/python-quick-start">VS Code — Quick Start Guide for Python</a></li>
+    <li><a href="https://code.visualstudio.com/docs/python/run">VS Code — Running Python Code</a></li>
+    <li><a href="https://code.visualstudio.com/docs/python/python-tutorial">VS Code — Getting Started with Python</a></li>
+    <li><a href="https://docs.python.org/3/using/windows.html">Python — Using Python on Windows</a></li>
+    <li><a href="https://docs.python.org/3/library/venv.html">Python — venv module</a></li>
+    <li><a href="https://packaging.python.org/en/latest/tutorials/installing-packages/">Python Packaging — Installing Packages</a></li>
+    <li><a href="https://codelabs.developers.google.com/getting-started-agy-ide?hl=id">Google — Mulai Menggunakan Antigravity IDE</a></li>
+    <li><a href="https://colab.research.google.com/">Google Colab</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/shows/visual-studio-code/getting-started-with-python-in-vs-code-official-video">Microsoft Learn — Video Get Started with Python in VS Code</a></li>
+  </ul>
+
+  <h2 id="s29">29. Kesimpulan paling penting</h2>
+  <pre><code>                     KAMU
+                       │
+                       ▼
+                Menulis Python
+                       │
+                       ▼
+                  hello.py
+                       │
+              ┌────────┴────────┐
+              │                 │
+           VS Code          Antigravity
+              │                 │
+              └────────┬────────┘
+                       │
+                    Terminal
+                       │
+                       ▼
+                Python Interpreter
+                       │
+                       ▼
+                 Program berjalan
+                       │
+                       ▼
+                    OUTPUT</code></pre>
+  <ul>
+    <li><strong>Tempat khusus untuk Python?</strong> Tidak. File Python bisa berada di folder biasa.</li>
+    <li><strong>Aplikasi khusus?</strong> Tidak. Bisa dari terminal, VS Code, Antigravity, IDE lain, atau layanan cloud seperti Colab.</li>
+    <li><strong>Harus install Python?</strong> Untuk lokal di Windows, ya, kamu membutuhkan Python interpreter.</li>
+    <li><strong>Bisa di VS Code?</strong> Ya.</li>
+    <li><strong>Bisa di Antigravity?</strong> Ya, tersedia editor dan terminal.</li>
+    <li><strong>Bisa tanpa install Python?</strong> Bisa di cloud seperti Google Colab.</li>
+  </ul>
+</div>
+</body>
+</html>
