@@ -64,9 +64,12 @@
     font-size: .8rem;
     display: none;
     scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
   }
-  .toc::-webkit-scrollbar { width: 6px; }
-  .toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc::-webkit-scrollbar-thumb:hover { opacity: .6; }
   @media (min-width: 1280px) { .toc { display: block; } }
   .toc a { color: var(--muted); text-decoration: none; display: block; padding: .15rem 0; }
   .toc a:hover { color: var(--accent); }
@@ -89,6 +92,7 @@
   <a href="#s27">27. Analogi</a>
 </nav>
 <div class="wrap">
+  <p style="margin:0 0 2rem;"><a href="../index.html" style="font-family: ui-monospace, monospace; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none;">&#8592; Daftar bab</a></p>
   <header class="hero">
     <p class="eyebrow">Catatan Belajar</p>
     <h1>Bab 1: Get Started</h1>

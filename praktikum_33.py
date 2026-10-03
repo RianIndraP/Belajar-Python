@@ -1,9 +1,4 @@
-print("  Menu")
-print("1. Item 1")
-print("2. Item 2")
-print("3. Item 3")
-print("4. Item 4")
-
+print("   Menu\n1. Item 1\n2. Item 2\n3. Item 3\n4. Item 4\nAnda memilih: 1\n")
 print("  Pilihan: ",end="")
 pilihan = input()
 
