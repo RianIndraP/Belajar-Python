@@ -413,7 +413,7 @@
       <tr><td class="mono">3</td><td>Rangkaian listrik</td><td>Seri, paralel, pembagi tegangan dan arus, Hukum Kirchhoff</td></tr>
       <tr><td class="mono">4</td><td>Logika digital</td><td>Biner, Boolean, gerbang, adder, K-map, logika sequential, flip-flop</td></tr>
       <tr><td class="mono">5</td><td>Arsitektur processor</td><td>Von Neumann dan Harvard, CISC dan RISC, pipeline, cache, ISA</td></tr>
-      <tr><td class="mono">6</td><td>Microcontroller</td><td>Blok terintegrasi,família MCU, MCU dan MPU</td></tr>
+      <tr><td class="mono">6</td><td>Microcontroller</td><td>Blok terintegrasi, keluarga MCU, MCU dan MPU</td></tr>
       <tr><td class="mono">7</td><td>Memori dan GPIO</td><td>SRAM, DRAM, Flash, NOR dan NAND, memory-mapped I/O, mode GPIO</td></tr>
       <tr><td class="mono">8</td><td>Antarmuka hardware dan software</td><td>Instruksi, register, peripheral, interrupt, DMA, driver, HAL, RTOS</td></tr>
       <tr><td class="mono">9</td><td>Sensor dan conditioning</td><td>Klasifikasi sensor, spesifikasi, op-amp, filter, jembatan Wheatstone</td></tr>
@@ -446,7 +446,7 @@
       <tr><td>Tegangan</td><td class="mono">V</td><td>volt (V)</td><td class="mono">V = W/A = J/C</td><td>Perbedaan potensial listrik antara dua titik; dorongan yang menyebabkan muatan bergerak</td></tr>
       <tr><td>Arus</td><td class="mono">I</td><td>ampere (A)</td><td class="mono">I = Q/t = V/R</td><td>Laju aliran muatan listrik</td></tr>
       <tr><td>Resistansi</td><td class="mono">R</td><td>ohm (&#8486;)</td><td class="mono">R = V/I</td><td>Kemampuan komponen menghambat aliran arus</td></tr>
-      <tr><td>Konduktansi</td><td class="mono">G</td><td>siemens (S)</td><td class="mono">G = 1/R</td><td>Kebalikan resistansi; Curriculum persamaan I&#8722;V pada resistor ohmik</td></tr>
+      <tr><td>Konduktansi</td><td class="mono">G</td><td>siemens (S)</td><td class="mono">G = 1/R</td><td>Kebalikan resistansi. Persamaan I&#8722;V pada resistor ohmik</td></tr>
       <tr><td>Resistivitas</td><td class="mono">&#961;</td><td>ohm&middot;meter</td><td class="mono">R = &#961;L/A</td><td>Sifat material, tidak bergantung panjang atau luas penampang</td></tr>
       <tr><td>Muatan</td><td class="mono">Q</td><td>coulomb (C)</td><td class="mono">Q = I&middot;t</td><td>Jumlah muatan listrik yang lewat satu titik</td></tr>
       <tr><td>Daya</td><td class="mono">P</td><td>watt (W)</td><td class="mono">P = V&middot;I = I&sup2;R = V&sup2;/R</td><td>Laju penggunaan atau transfer energi listrik</td></tr>
@@ -533,7 +533,7 @@ R_100 = 100 * [1 + 0,0039 * (100 - 20)] = 100 * 1,312 = 131,2 ohm</code></pre>
 
   <h3 id="s3-4">3.4 Resistor: kode warna, toleransi, dan rating daya</h3>
 
-  <p>Nilai resistor القراءة dari pita warna mengikuti <code>R = (A &times; 10 + B) &times; 10<sup>C</sup></code> dengan toleransi pita keempat. Pita keempat pada resistor lima pita adalah pengali, bukan toleransi.</p>
+  <p>Nilai resistor yang dibaca dari pita warna mengikuti <code>R = (A &times; 10 + B) &times; 10<sup>C</sup></code> dengan toleransi pita keempat. Pita keempat pada resistor lima pita adalah pengali, bukan toleransi.</p>
 
   <div class="scroll">
   <table class="tight">
@@ -592,7 +592,7 @@ Pilih rating 1/4 W, faktor keamanan 0,25 / 0,0393 = 6,35 kali</code></pre>
 
   <h3 id="s4-1">4.1 Kapasitor dan induktor: respons transien</h3>
 
-  <p>Respons pengisian kapasitor governed konstanta waktu:</p>
+  <p>Respons pengisian kapasitor ditentukan oleh konstanta waktu:</p>
 
   <div class="eq"><var>V<sub>C</sub></var>(<var>t</var>) = <var>V<sub>s</sub></var> [1 &minus; e<sup>&minus;t/&#964;</sup>] &nbsp;&nbsp; dengan &nbsp;&nbsp; &#964; = <var>R</var>&middot;<var>C</var><span class="eq-note">Pelepasan: V_C(t) = V_0 * e^(-t/tau). Frekuensi corner: f_c = 1/(2*pi*R*C).</span></div>
 
@@ -642,7 +642,7 @@ I_L = 14,92 / 1000 = 14,9 mA</code></pre>
 
   <pre class="diagram"><code>Transistor -&gt; Sakelar elektronik -&gt; 0 / 1 -&gt; Logic gate -&gt; Rangkaian digital -&gt; CPU</code></pre>
 
-  <p>BJT memiliki tiga daerah operasi: <strong>cutoff</strong> saat I<sub>B</sub> = 0 sehingga transistor terbuka, <strong>forward-active</strong> saat junction base-emitter forward bias dan base-collector reverse bias sehingga transistor behaving as penguat, serta <strong>saturasi</strong> saat kedua junction forward bias sehingga transistor behaving as sakelar tertutup. Agar saturasi pasti, rasio &beta; paksa = I<sub>C</sub>/I<sub>B</sub> sekurang-kurangnya 10.</p>
+  <p>BJT memiliki tiga daerah operasi: <strong>cutoff</strong> saat I<sub>B</sub> = 0 sehingga transistor terbuka, <strong>forward-active</strong> saat junction base-emitter forward bias dan base-collector reverse bias sehingga transistor berperilaku sebagai penguat, serta <strong>saturasi</strong> saat kedua junction forward bias sehingga transistor berperilaku sebagai sakelar tertutup. Agar saturasi pasti, rasio &beta; paksa = I<sub>C</sub>/I<sub>B</sub> sekurang-kurangnya 10.</p>
 
   <p>MOSFET memiliki tiga daerah: <strong>cutoff</strong> saat V<sub>GS</sub> &lt; V<sub>T</sub>, <strong>triode</strong> saat V<sub>DS</sub> &lt; V<sub>GS</sub> &minus; V<sub>T</sub>, dan <strong>saturasi</strong> saat V<sub>DS</sub> &ge; V<sub>GS</sub> &minus; V<sub>T</sub>. Karena gate terisolasi oksida, arus gate mendekati nol sehingga impedansi input sangat tinggi.</p>
 
@@ -867,7 +867,7 @@ Penambahan: 7 + 3 = 10 desimal
 
   <h3 id="s6-5">6.5 Flip-flop, register, counter, dan ALU</h3>
 
-  <p>Flip-flop adalah elemen penyimpan satu bit keadaan. SR latch dibangun dari dua gerbang NOR atau NAND yang saling berumpan balik, D flip-flop menyalin input ke output pada tepi clock, dan JK flip-flop menghilangkan_condition ambigu latch SR. Dari flip-flop dapat dibangun register, dari register dapat dibangun counter dan shift register.</p>
+  <p>Flip-flop adalah elemen penyimpan satu bit keadaan. SR latch dibangun dari dua gerbang NOR atau NAND yang saling berumpan balik, D flip-flop menyalin input ke output pada tepi clock, dan JK flip-flop menghilangan kondisi ambigu latch SR. Dari flip-flop dapat dibangun register, dari register dapat dibangun counter dan shift register.</p>
 
   <div class="scroll">
   <table class="tight">
@@ -962,7 +962,7 @@ T_CPU   = 155 000 / (400 * 10^6) = 387,5 us</code></pre>
 
   <h3 id="s7-4">7.4 Cache dan hierarki memori</h3>
 
-  <p>Cache explotación dua sifat akses memori, yaitu localitas spasial untuk alamat yang berdekatan dan localitas temporal untuk alamat yang sama diulang. Tiga jenis cache miss adalah <strong>compulsory</strong> saat blok pertama diakses, <strong>capacity</strong> saat cache terlalu kecil, dan <strong>conflict</strong> saat dua blok menempati set yang sama.</p>
+  <p>Cache memanfaatkan dua sifat akses memori, yaitu localitas spasial untuk alamat yang berdekatan dan localitas temporal untuk alamat yang sama diulang. Tiga jenis cache miss adalah <strong>compulsory</strong> saat blok pertama diakses, <strong>capacity</strong> saat cache terlalu kecil, dan <strong>conflict</strong> saat dua blok menempati set yang sama.</p>
 
   <div class="eq">AMAT = <var>t</var><sub>hit</sub> + (miss rate &times; <var>t</var><sub>penalty</sub>)<span class="eq-note">AMAT = average memory access time.</span></div>
 
@@ -1026,7 +1026,7 @@ Nilai 0x11223344 pada little-endian dibaca dari RAM: 44 33 22 11</code></pre>
       <tr><td>ADC</td><td>10-bit, 15 kSPS</td><td>10-bit, 8 kanal</td><td>12-bit, 1 &#956;s</td><td>10-bit, 200 kSPS</td><td>12-bit, INL &plusmn;12 LSB</td><td>12-bit, 500 kSPS</td></tr>
       <tr><td>Timer PWM</td><td>6 kanal</td><td>2 timer</td><td>4 timer 16-bit</td><td>2 timer 16-bit</td><td>16 kanal, 16-bit</td><td>16 kanal</td></tr>
       <tr><td>Komunikasi</td><td>UART, SPI, I2C</td><td>UART, SPI, I2C</td><td>3 UART, 2 SPI, 2 I2C, USB, CAN</td><td>UART, SPI, I2C</td><td>4 SPI, 3 UART, 2 I2C, Wi-Fi, BLE, CAN</td><td>2 UART, 2 SPI, 2 I2C, USB</td></tr>
-      <tr><td>Khusus</td><td>I/O 5 V</td><td>Flash 100 k siklus</td><td>5-V tolerant, 7 kanal DMA</td><td>wake-up di bawah 1 &#956;s</td><td>ADC moins akurat</td><td>8 state machine PIO</td></tr>
+      <tr><td>Khusus</td><td>I/O 5 V</td><td>Flash 100 k siklus</td><td>5-V tolerant, 7 kanal DMA</td><td>wake-up di bawah 1 &#956;s</td><td>ADC kurang akurat</td><td>8 state machine PIO</td></tr>
     </tbody>
   </table>
   </div>
@@ -1054,7 +1054,7 @@ Nilai 0x11223344 pada little-endian dibaca dari RAM: 44 33 22 11</code></pre>
   </table>
   </div>
 
-  <p>Batas keduanya terus menyempit. ESP32 misalnya memiliki processor dual core 240 MHz ditambah Wi-Fi, sehingga secara funsi mendekati MPU, sementara tetap memakai integrasi peripheral seperti MCU. Microcontroller dapat menjalankan RTOS, dan microprocessor dapat menjalankan RTOS, sehingga pembagian ini adalah soal kebutuhan sistem, bukan Playstation kategori.</p>
+  <p>Batas keduanya terus menyempit. ESP32 misalnya memiliki processor dual core 240 MHz ditambah Wi-Fi, sehingga secara funsi mendekati MPU, sementara tetap memakai integrasi peripheral seperti MCU. Microcontroller dapat menjalankan RTOS, dan microprocessor dapat menjalankan RTOS, sehingga pembagian ini adalah soal kebutuhan sistem, bukan kategori yang mutually exclusive.</p>
 
   <h2 id="s9">9. Memori dan GPIO</h2>
 
@@ -1076,9 +1076,9 @@ Nilai 0x11223344 pada little-endian dibaca dari RAM: 44 33 22 11</code></pre>
   </table>
   </div>
 
-  <p>Flash NOR dapat dijalankan langsung dari alamatnya karena mendukung random access sekitar 84 ns, sedangkan Flash NAND memerlukan sekitar 10 sampai 25 &#956;s dan tidak dapat dijalankan langsung tanpa terlebih dahulu disalin ke RAM. Erase blokNOR memerlukan sekitar 200 ms, sedangkan NAND hanya sekitar 2 ms. Karena itu firmware dan bootloader memakai NOR, sedangkan penyimpanan data memakai NAND dengan controller yang menangani ECC dan wear leveling (NXP AN2711, Micron Flash Guide).</p>
+  <p>Flash NOR dapat dijalankan langsung dari alamatnya karena mendukung random access sekitar 84 ns, sedangkan Flash NAND memerlukan sekitar 10 sampai 25 &#956;s dan tidak dapat dijalankan langsung tanpa terlebih dahulu disalin ke RAM. Erase blok NOR memerlukan sekitar 200 ms, sedangkan NAND hanya sekitar 2 ms. Karena itu firmware dan bootloader memakai NOR, sedangkan penyimpanan data memakai NAND dengan controller yang menangani ECC dan wear leveling (NXP AN2711, Micron Flash Guide).</p>
 
-  <p>Pada ARMv7-M seperti Cortex-M3, ruang alamat 32-bit dipetakan sebagai berikut: 0x0000_0000 untuk kode, 0x2000_0000 untuk SRAM, 0x4000_0000 untuk peripheral, dan 0xE000_0000 untuk ruang kendali sistem. Peripheral dipetakan ke ruang alamat yang sama dengan memori sehingga operasi LOAD dan STORE biasa dapat digunakan untuk. Utilizzo I/O ports bukan memory: sebagian bit hanya dibaca, sebagian hanya ditulis, dan sebagian hanya dapat di-reset atau di-set.</p>
+  <p>Pada ARMv7-M seperti Cortex-M3, ruang alamat 32-bit dipetakan sebagai berikut: 0x0000_0000 untuk kode, 0x2000_0000 untuk SRAM, 0x4000_0000 untuk peripheral, dan 0xE000_0000 untuk ruang kendali sistem. Peripheral dipetakan ke ruang alamat yang sama dengan memori sehingga operasi LOAD dan STORE biasa dapat digunakan. Register I/O ports bukan memori: sebagian bit hanya dibaca, sebagian hanya ditulis, dan sebagian hanya dapat di-reset atau di-set.</p>
 
   <h3 id="s9-2">9.2 Mode GPIO</h3>
 
@@ -1103,7 +1103,7 @@ Nilai 0x11223344 pada little-endian dibaca dari RAM: 44 33 22 11</code></pre>
 
   <div class="note">
     <p class="label">Batas penting</p>
-    <p>Pin STM32F103 direkomendasikan 8 mA per pin dengan total 150 mA. Motor, solenoid, dan relay tidak boleh disambungkan langsung ke pin GPIO karena membutuhkan arus far lebih besar; diperlukan driver MOSFET atau driver relay.</p>
+    <p>Pin STM32F103 dibatasi sekitar 8 mA per pin dengan total 150 mA. Motor, solenoid, dan relay tidak boleh disambungkan langsung ke pin GPIO karena membutuhkan arus far lebih besar; diperlukan driver MOSFET atau driver relay.</p>
   </div>
 
   <h2 id="s10">10. Antarmuka hardware dan software</h2>
@@ -1152,11 +1152,10 @@ Tombol ditekan -&gt; pin berubah -&gt; interrupt -&gt; ISR dijalankan -&gt; kemb
     <pre><code>Timer 16-bit dengan clock 1 MHz, tanpa prescaler
   Periode counter = 1 / 1 000 000 = 1 us
   Sepanjang satu siklus 20 ms diperlukan 20 000 tick
-  Tick per counter 16-bit = 65 536, jadi_perioda dibatasi prescaler
+  Tick per counter 16-bit = 65 536, jadi periode dibatasi prescaler
   Dengan prescaler 4: tick = 4 us, jumlah tick = 20 000 / 4 = 5 000 tick
-  Duty 40 % = 2 000 tick pada 2 000/65 536 * 100 % = 3,05 % dari rentang
   Duty 40 % dari rentang 5 000 tick = 2 000 tick
-  Resolusi duty cycle yang dapat Duty = 1 / 5 000 = 0,02 %</code></pre>
+  Resolusi duty cycle yang dapat dicapai = 1 / 5 000 = 0,02 %</code></pre>
     <p>Kesimpulan praktis: duty cycle PWM tidak mungkin lebih kecil dari satu tick timer, sehingga frekuensi PWM dan resolusi bertrade-off secara langsung.</p>
   </div>
 
@@ -1203,7 +1202,7 @@ Jika periode interrupt 100 us, jitter = 0,42 %</code></pre>
     <tbody>
       <tr><td>Sensitivity</td><td>Perubahan output per perubahan input</td><td>mV/&#176;C, mV/(V&middot;mm)</td></tr>
       <tr><td>Span dan range</td><td>Selisih nilai atas dan bawah, serta rentang kerja</td><td>satuan input</td></tr>
-      <tr><td>Accuracy</td><td> closeness nilai terhadap nilai benar</td><td>&plusmn; %FS</td></tr>
+      <tr><td>Accuracy</td><td>Closeness nilai terhadap nilai benar</td><td>&plusmn; %FS</td></tr>
       <tr><td>Precision</td><td>Konsistensi antar pengukuran berulang</td><td>deviasi standar</td></tr>
       <tr><td>Resolution</td><td>Perubahan input terkecil yang mengubah output satu kode</td><td>satuan input</td></tr>
       <tr><td>Hysteresis</td><td>Perbedaan output saat input naik dan turun</td><td>%FS</td></tr>
@@ -1325,7 +1324,7 @@ Input 2,3718 V:
   error = 2,3718 - 2,3711 = 0,7 mV = 0,87 LSB</code></pre>
   </div>
 
-  <p>Sinyal penuh yang ideal memiliki SNR sebesar 6,02N + 1,76 dB. Effective Number of Bits adalah jumlah bit setara dengan ADC ideal yang menghasilkan SNR sama, dirumuskan ENOB = (SNR &minus; 1,76) / 6,02. Ketidaklinieran ditunjukkan oleh INL, yaitu penyimpangan kurva transfer dari garis lurus terbaik, sedangkan DNL adalah penyimpangan lebar setiap langkah dari satu LSB. DNL yang lebih negatif dari satu LSB menyebabkan kode hilang, dan DNL negatif juga menyebabkan sifat non-monotonic.</p>
+  <p>Sinyal penuh yang ideal memiliki SNR sebesar 6,02N + 1,76 dB. Effective Number of Bits adalah jumlah bit setara dengan ADC ideal yang menghasilkan SNR sama, dirumuskan ENOB = (SNR &minus; 1,76) / 6,02. Ketidaklinearan ditunjukkan oleh INL, yaitu penyimpangan kurva transfer dari garis lurus terbaik, sedangkan DNL adalah penyimpangan lebar setiap langkah dari satu LSB. DNL yang lebih negatif dari satu LSB menyebabkan kode hilang, dan DNL negatif juga menyebabkan sifat non-monotonic.</p>
 
   <h3 id="s12-2">12.2 Sampling dan aliasing</h3>
 
@@ -1346,7 +1345,7 @@ Input 2,3718 V:
     pada 12 bit diperlukan redaman sekitar 72 dB -&gt; orde 6 dengan f_c 500 Hz
     A = -20 * 6 * log10(1000/500) = -18 dB pada 1 kHz, belum cukup
    ggi f_c = 200 Hz, orde 6 pada 1 kHz: A = -120 * log10(5) = -83,9 dB</code></pre>
-    <p>Alternatif yang lebih hemat: sampling pada kelipatan frekuensi jaringan, misalnya 100 Hz untuk sinyal Slow dengan filter digital notch 50 Hz.</p>
+    <p>Alternatif yang lebih hemat: sampling pada kelipatan frekuensi jaringan, misalnya 100 Hz untuk sinyal lambat dengan filter digital notch 50 Hz.</p>
   </div>
 
   <h3 id="s12-3">12.3 DAC</h3>
@@ -1612,13 +1611,13 @@ Batas kestabilan: a2 = 5,0 dengan a0 = 10 dan a1 = 2 -&gt; marginal</code></pre>
     </thead>
     <tbody>
       <tr><td>UART</td><td>TX dan RX</td><td>9600 baud sampai 4,5 Mbit/s</td><td>1 sampai 2 m logis</td><td>Asinkron, tanpa jam bersama</td></tr>
-      <tr><td>SPI</td><td>4,PlusGround</td><td>hingga 50 Mbit/s</td><td>k Incentif beberapa cm sampai 1 m</td><td>Full duplex, master harus memilih slave</td></tr>
+      <tr><td>SPI</td><td>4 jalur dan ground</td><td>hingga 50 Mbit/s</td><td>beberapa cm sampai 1 m</td><td>Full duplex, master harus memilih slave</td></tr>
       <tr><td>I2C</td><td>SDA dan SCL</td><td>100 kHz, 400 kHz, 1 MHz, 3,5 MHz</td><td>beberapa meter</td><td>Banyak peripheral berbagi bus dengan addressing</td></tr>
       <tr><td>CAN</td><td>CAN-H dan CAN-L</td><td>125k, 250k, 500k, 1 Mbit/s</td><td>1 km pada 1 Mbit/s, 5 km pada 125 kbit/s</td><td>Arbitrasi berbasis ID, tahan gangguan</td></tr>
       <tr><td>Modbus RTU</td><td>RS-485</td><td>9600 sampai 115200 baud</td><td>1200 m</td><td>Protokol sederhana, banyak dipakai industri</td></tr>
       <tr><td>Modbus TCP</td><td>Ethernet</td><td>100 Mbit/s ke atas</td><td>jaringan lokal</td><td>Modbus di dalam TCP/IP</td></tr>
-      <tr><td>Ethernet</td><td>Cat5e atau fiber</td><td>100 Mbit/s sampai 10 Gbit/s</td><td>100 m per segmen</td><td>Peralatan industri dan_edge</td></tr>
-      <tr><td>Wi-Fi</td><td>nirkabel</td><td>hingga beberapa hundred Mbit/s</td><td>10 sampai 50 m</td><td>Mudah dipasang, tidak moonlight</td></tr>
+      <tr><td>Ethernet</td><td>Cat5e atau fiber</td><td>100 Mbit/s sampai 10 Gbit/s</td><td>100 m per segmen</td><td>Peralatan industri dan edge device</td></tr>
+      <tr><td>Wi-Fi</td><td>nirkabel</td><td>hingga beberapa ratus Mbit/s</td><td>10 sampai 50 m</td><td>Mudah dipasang, tidak memerlukan kabel</td></tr>
       <tr><td>Bluetooth LE</td><td>nirkabel</td><td>hingga 2 Mbit/s</td><td>10 sampai 100 m</td><td>Konsumsi daya rendah</td></tr>
       <tr><td>LoRaWAN</td><td>nirkabel</td><td>0,3 sampai 50 kbit/s</td><td>2 sampai 15 km</td><td>Jangkauan jauh, baterai hemat</td></tr>
     </tbody>
@@ -1709,7 +1708,7 @@ INPUT -&gt; |                | -&gt; OUTPUT
 +--------------+   +--------------+   +--------------+   +--------------+
                  satu siklus scan lengkap</code></pre>
 
-  <p>Scan time meliputi seluruh empat tahap tersebut, umumnya 1 sampai 20 ms untuk logika mesin. Dua konsekuensi penting: denyut yang lebih pendek daripada scan time akan terlewat, dan output baru berubah pada tahap output scan sehingga selalu ada penundaan satu siklus. Coordinate yang sama dalam program selalu menambah satu siklus penundaan.</p>
+  <p>Scan time meliputi seluruh empat tahap tersebut, umumnya 1 sampai 20 ms untuk logika mesin. Dua konsekuensi penting: denyut yang lebih pendek daripada scan time akan terlewat, dan output baru berubah pada tahap output scan sehingga selalu ada penundaan satu siklus. Koordinat yang sama dalam program selalu menambah satu siklus penundaan.</p>
 
   <div class="ex">
     <p class="label">Contoh hitung 30 &middot; Scan time dan latensi</p>
@@ -1849,13 +1848,13 @@ Data: PLC -&gt; network -&gt; SCADA -&gt; operator melihat level dan trend</code
 
   <div class="scroll">
   <table class="tight">
-    <caption>Tabel 19.1 &middot; Inciden keamanan OT yang noteworthy</caption>
+    <caption>Tabel 19.1 &middot; Inciden keamanan OT yang perlu diperhatikan</caption>
     <thead>
       <tr><th class="mono">Tahun</th><th>Insiden</th><th>Dampak</th></tr>
     </thead>
     <tbody>
       <tr><td class="mono">2010</td><td>Stuxnet</td><td>Serangan pada program centrifuge Enrichment, merusak PLC centrifuge</td></tr>
-      <tr><td class="mono">2021</td><td>Colonial Pipeline</td><td>Peng-taking-an sistem_SCADA industri dan penghentian jalur bahan bakar</td></tr>
+      <tr><td class="mono">2021</td><td>Colonial Pipeline</td><td>Pengambilalihan sistem SCADA industri dan penghentian jalur bahan bakar</td></tr>
       <tr><td class="mono">2017</td><td>Triton</td><td>Serangan pada Safety Instrumented System plant petrokimia</td></tr>
     </tbody>
   </table>

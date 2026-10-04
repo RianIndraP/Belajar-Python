@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hubungan Teknik Komputer dengan Teknik Elektro — Pengantar Rekayasa dan Desain</title>
+<meta name="description" content="Modul Pengantar Rekayasa dan Desain: hubungan Teknik Komputer dan Teknik Elektro, dari elektronika dasar, logika digital, embedded system, sistem kendali, hingga PLC dan SCADA.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Pendahuluan</a>
+  <a href="#s2">2. Siklus pertambangan</a>
+  <a href="#s3">3. Kerangka hukum Indonesia</a>
+  <a href="#s4">4. Konteks ekonomi</a>
+  <a href="#s5">5. Peran komputer per tahap</a>
+  <a href="#s6">6. Eksplorasi</a>
+  <a href="#s7">7. Remote sensing</a>
+  <a href="#s8">8. Hyperspectral</a>
+  <a href="#s9">9. LiDAR dan UAV</a>
+  <a href="#s10">10. Machine learning geologi</a>
+  <a href="#s11">11. Otomasi alat berat</a>
+  <a href="#s12">12. Autonomous dan remote control</a>
+  <a href="#s13">13. Perception dan sensor fusion</a>
+  <a href="#s14">14. Keselamatan</a>
+  <a href="#s15">15. Fleet management</a>
+  <a href="#s16">16. IoT dan sensor</a>
+  <a href="#s17">17. RFID</a>
+  <a href="#s18">18. Maintenance</a>
+  <a href="#s19">19. AI untuk keselamatan</a>
+  <a href="#s20">20. Jaringan private 5G</a>
+  <a href="#s21">21. Edge computing dan slicing</a>
+  <a href="#s22">22. Studi kasus Indonesia</a>
+  <a href="#s23">23. Lingkungan dan regulasi</a>
+  <a href="#s24">24. Cybersecurity OT</a>
+  <a href="#s25">25. Ringkasan dan soal</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Modul 02 &middot; Pengantar Rekayasa dan Desain</p>
+    <div class="rule"></div>
+    <h1>Teknik Komputer dan Pertambangan</h1>
+    <p>Materi ini membahas penerapan Teknik Komputer pada seluruh siklus pertambangan: eksplorasi dengan data geologi dan citra, LiDAR, dan UAV; otomasi alat berat dan sensor fusion; IoT, RFID, dan pemeliharaan prediktif; jaringan private 5G, edge computing, AI keselamatan, serta keamanan sistem industri.</p>
+  </header>
+
+  <h2 id="s1">1. Pendahuluan</h2>
+
+  <p>Teknik pertambangan adalah bidang rekayasa yang berhubungan dengan bagaimana sumber daya mineral ditemukan, direncanakan, ditambang, diangkut, diolah, sampai tambang ditutup dan lahannya direhabilitasi. Teknik Komputer menyediakan perangkat keras, perangkat lunak, jaringan, pengumpulan data, kecerdasan buatan, dan otomasi yang dipakai di setiap tahap tersebut.</p>
+
+  <p>Hubungan keduanya bersifat timbal balik. Tambang menentukan data apa yang perlu diukur, pada frekuensi berapa, dan pada ketelitian berapa. Komputer menentukan bagaimana data itu diperoleh, disimpan, dianalisis, dan diubah menjadi tindakan.</p>
+
+  <pre class="diagram"><code>Dunia fisik / lapangan
+   |
+Sensor, kamera, drone, bor
+   |
+Pengumpulan data
+   |
+Jaringan
+   |
+Server, database, edge
+   |
+Pengolahan data
+   |
+AI dan analitik
+   |
+Keputusan
+   |
+Tindakan pada mesin atau proses
+   |
+Umpan balik ke sensor</code></pre>
+
+  <p>Rantai ini berlaku juga pada sistem kendali, PLC, dan SCADA yang dibahas pada modul sebelumnya. Perbedaannya adalah objek plant-nya: bukan tangki atau motor, melainkan excavator, haul truck, crusher, serta kondisi geologi dan lingkungan tambang.</p>
+
+  <h2 id="s2">2. Siklus pertambangan</h2>
+
+  <p>Kegiatan pertambangan berjalan dalam tahap yang berurutan, dan pada setiap tahap ada keluaran yang dipakai sebagai masukan tahap berikutnya.</p>
+
+  <pre class="diagram"><code>Geoscience awal
+   |
+Eksplorasi
+   |
+Penemuan (discovery)
+   |
+Studi kelayakan (feasibility)
+   |
+Perencanaan dan pembangunan
+   |
+Operasi dan produksi
+   |
+Pengolahan
+   |
+Penutupan (decommissioning)
+   |
+Rehabilitasi dan penutupan
+   |
+Pengelolaan pasca-tutup</code></pre>
+
+  <p>Resources Victoria memakai urutan tahap berikut dalam strategi sumber daya mineralnya: pre-competitive geoscience, exploration, discovery, feasibility, development, operation and production, decommissioning, rehabilitation and closure, lalu post-closure management. Seluruh tahap disertai pemantauan dan evaluasi berkelanjutan.</p>
+
+  <p>Undang-Undang Nomor 3 Tahun 2020 Pasal 1 angka 6 mendefinisikan usaha pertambangan sebagai rangkaian penelitian umum, eksplorasi, studi kelayakan, konstruksi, penambangan, pengolahan dan/atau pemurnian, pengembangan dan/atau pemanfaatan, pengangkutan dan penjualan, sampai pascatambang.</p>
+
+  <p>Istilah lain yang dipakai dalam industri, seperti stripping ratio, dilution, dan recovery, adalah parameter teknis pertambangan yang dipakai pada tahap perencanaan dan operasi, bukan tahap perizinan.</p>
+
+  <h2 id="s3">3. Kerangka hukum Indonesia</h2>
+
+  <p>Undang-Undang Nomor 3 Tahun 2020, diundangkan pada 10 Juni 2020, mengubah Undang-Undang Nomor 4 Tahun 2009 tentang Pertambangan Mineral dan Batubara. Perubahan utamanya mencakup pengelolaan wilayah pertambangan, pengalihan kewenangan, rencana tata cara pertambangan nasional, kewajiban divestmen, nilai tambah dan pengolahan domestik, reklamasi, serta pascatambang.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.1 &middot; Istilah perizinan menurut UU 3/2020</caption>
+    <thead>
+      <tr><th>Istilah</th><th>Pasal</th><th>Arti</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>IUP</td><td class="mono">1 (7)</td><td>Izin Usaha Pertambangan</td></tr>
+      <tr><td>IUPK</td><td class="mono">1 (11)</td><td>Izin Usaha Pertambangan Khusus, berlaku di wilayah izin usaha pertambangan khusus</td></tr>
+      <tr><td>IPR</td><td class="mono">1 (10)</td><td>Izin Pertambangan Rakyat, terbatas pada wilayah dan nilai investasi tertentu</td></tr>
+      <tr><td>SIPB</td><td class="mono">1 (13a)</td><td>Surat Izin Penambangan Batuan</td></tr>
+      <tr><td>IUPK KO</td><td class="mono">1 (13b)</td><td>IUPK sebagai kelanjutan operasi kontrak atau perjanjian</td></tr>
+      <tr><td>IUJP</td><td class="mono">1 (13d)</td><td>Izin Usaha Jasa Pertambangan</td></tr>
+      <tr><td>RKAB</td><td>&mdash;</td><td>Rencana Kerja dan Anggaran Biaya, yaitu rencana produksi dan penjualan tahunan yang disetujui ESDM</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Istilah RKAB tidak didefinisikan langsung dalam naskah undang-undang yang diperoleh, melainkan melalui praktik ESDM dan temuan Dispute Settlement WTO.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.2 &middot; Jangka waktu izin menurut UU 3/2020</caption>
+    <thead>
+      <tr><th>Jenis mineral</th><th>Masa eksplorasi (Pasal 42)</th><th>Masa operasi produksi (Pasal 47)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Logam</td><td>8 tahun</td><td>20 tahun, ditambah 2 kali perpanjangan 10 tahun</td></tr>
+      <tr><td>Batuan</td><td>3 tahun</td><td>5 tahun, ditambah 2 kali perpanjangan 5 tahun</td></tr>
+      <tr><td>Batubara</td><td>7 tahun</td><td>20 tahun, dapat diperpanjang</td></tr>
+      <tr><td>Non-logam tertentu</td><td>7 tahun</td><td>20 tahun, ditambah 2 kali perpanjangan 10 tahun</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perpanjangan masa eksplorasi dapat diberikan satu tahun setiap kali berdasarkan Pasal 42A. Pasal 83 mengatur bahwa wilayah izin usaha pertambangan khusus untuk eksplorasi logam dibatasi 100.000 hectare, untuk batubara 50.000 hectare, dan masa operasi dapat mencapai 30 tahun bila Purchaser aprobada di dalamnya terintegrasi dengan pengolahan atau pemurnian. Pasal 36 ayat 3 mewajibkan pemegang izin pada tahap operasi produksi conducts dan membiayai eksplorasi lanjutan setiap tahun.</p>
+
+  <h2 id="s4">4. Konteks ekonomi pertambangan Indonesia</h2>
+
+  <p>Badan Pusat Statistik mencatat kategori usaha pertambangan dan penggalian menurun dari 10,5 persen produk domestic bruto pada 2023 menjadi 9,15 persen pada 2024 dan 8,75 persen pada 2025. Pada 2025 kategori tersebut tumbuh negatif 0,66 persen dan menjadi satu-satunya lapangan usaha yang kontraksi, sementara pertumbuhan ekonomi nasional 5,11 persen.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Kontribusi pertambangan pada PDB Indonesia</caption>
+    <thead>
+      <tr><th>Tahun</th><th>Porsi PDB</th><th>Nilai</th><th>Pertumbuhan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">2023</td><td class="mono">10,5 %</td><td class="mono">Rp2.190 triliun</td><td class="mono">+6,12 %</td></tr>
+      <tr><td class="mono">2024</td><td class="mono">9,15 %</td><td class="mono">Rp2.026,6 triliun</td><td>&mdash;</td></tr>
+      <tr><td class="mono">2025</td><td class="mono">8,75 %</td><td class="mono">Rp2.084,6 triliun</td><td class="mono">&minus;0,66 %</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Kategori statistik ini mencakup minyak dan gas, panas bumi, batubara, bijih logam, dan pertambangan lainnya, sehingga tidak sama dengan industri tambang batuan saja. Pada tahun 2025 produk domestic bruto nasional mencapai Rp23.821,1 triliun dengan pertumbuhan 5,11 persen.</p>
+
+  <p>USGS Mineral Commodity Summaries 2026 mencatat produksi nikel Indonesia 2.600.000 ton dari total dunia 3.900.000 ton, sehingga sekitar 67 persen dan peringkat pertama dunia. Produksi bijih tembaga 710.000 ton dari 23.000.000 ton dunia. Batubara Indonesia tercatat sebagai produsen terbesar ketiga dan eksportir batubara termal terbesar, dengan kontribusi sekitar 40 persen perdagangan batubara laut dunia. Bijih nikel dilarang ekspor sejak 1 Januari 2020 dan bijih bauksit sejak Juni 2023.</p>
+
+  <div class="note">
+    <p class="label">Catatan sumber angka</p>
+    <p>Angka produksi batubara tahun 2025 berasal dari ESDM dan lembaga energi, bukan dari tabel USGS karena dokumen USGS untuk batubara tidak dapat diambil saat riset. Angka nikel dan tembaga berasal langsung dari USGS MCS 2026.</p>
+  </div>
+
+  <h2 id="s5">5. Peran Teknik Komputer pada setiap tahap</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 5.1 &middot; Pemetaan tahap tambang dan penerapan komputasi</caption>
+    <thead>
+      <tr><th>Tahap</th><th>Penerapan Teknik Komputer</th><th>Data yang dihasilkan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Eksplorasi</td><td>Citra satelit, drone, LiDAR, GIS, machine learning</td><td>Peta alterasi, peta prospek mineral, model terrain</td></tr>
+      <tr><td>Kelayakan</td><td>Pemodelan geologi, simulasi, block model</td><td>Pendekatan cadangan dan economically</td></tr>
+      <tr><td>Perencanaan</td><td>Perancangan haul road, disain pit, simulasi blast</td><td>Rancangan operasi dan target produksi</td></tr>
+      <tr><td>Produksi</td><td>Sensor, PLC, dispatch, fleet management</td><td>Output, waktu siklus, utilisasi</td></tr>
+      <tr><td>Pengangkutan</td><td>GNSS, autonomy, teleremote</td><td>Posisi kendaraan, cat, produk</td></tr>
+      <tr><td>Pemeliharaan</td><td>IoT, condition monitoring, prediksi</td><td>Sisa umur komponen, jadwal perawatan</td></tr>
+      <tr><td>Keselamatan</td><td>Kamera, proximity detection, AI, wearable</td><td>Peringatan tabrakan, status kelelahan</td></tr>
+      <tr><td>Lingkungan</td><td>Sensor kualitas air, emisi, remote sensing</td><td>Tren kualitas, laporan kepatuhan</td></tr>
+      <tr><td>Komunikasi</td><td>Private LTE dan 5G, edge computing</td><td>Konektivitas terkendali</td></tr>
+      <tr><td>Analisis</td><td>Database, data lake, machine learning</td><td>Dashboard, laporan, keputusan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s6">6. Eksplorasi</h2>
+
+  <p>Eksplorasi adalah usaha mencari dan menilai keberadaan sumber daya mineral. Secara konsep, data yang digunakan terbagi menjadi beberapa keluarga data.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.1 &middot; Keluarga data eksplorasi</caption>
+    <thead>
+      <tr><th>Data</th><th>Isi</th><th>Metode</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Geologi</td><td>Litologi, stratifikasi, struktur, alterasi</td><td>Pemetaan, pengamatan singkap</td></tr>
+      <tr><td>Geofisika</td><td>Anomali medan magnetik, gravitasi, listrik</td><td>Magnetik, gravitasi, resistivitas, elektromagnetik</td></tr>
+      <tr><td>Geokimia</td><td>Kandungan unsur pada batuan, tanah, sedimen</td><td>Sampling, ICP-MS, ICP-OES, XRD</td></tr>
+      <tr><td>Pengeboran</td><td>Datalubang dan logging</td><td>RQD, gamma, resistivitas, televiewer</td></tr>
+      <tr><td>Remote sensing</td><td>Citra optik, termal, hyperspectral</td><td>Satelit, pesawat, drone</td></tr>
+      <tr><td>Topografi</td><td>Model permukaan digital</td><td>LiDAR, fotogrammetri</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <figure>
+    <img src="gambar/tambang-terbuka.jpg" alt="Citra satelit Tambang Terbuka di Arizona bagian selatan yang memperlihatkan jenjang bench, jalur angkut, dan tumpukan waste" width="760" height="506" loading="lazy" decoding="async">
+    <figcaption><b>Gambar 1.</b> Tambang terbuka dilihat dari satelit. Jenjang atau bench terlihat sebagai terraces kontur yang mengelilingi pit, jalur haul truck menghubungkan bench dengan level berikutnya, dan area berwarna terang di luar pit merupakan stockpiles dan waste dump. Data citra seperti ini dapat diolah menjadi model elevasi dan digunakan untuk menghitung volume material. Sumber: <a href="https://commons.wikimedia.org/wiki/File:Open_Pit_Mines,_Southern_Arizona_2010-01-14_IISS022-E-26137.jpg">Wikimedia Commons, <i>Open Pit Mines, Southern Arizona</i></a> (Public domain, NASA).</figcaption>
+  </figure>
+
+  <p>Geographic Information System adalah kesatuan perangkat keras, perangkat lunak, data, orang, dan metode untuk memperoleh, menyimpan, menganalisis, serta menyajikan data yang memiliki acuan lokasi. Dalam pertambangan, GIS dipakai untuk estimasi cadangan berbasis block model dan geostatistika, pemodelan geologi dan struktur, pengelolaan basis data lubang bor, pemetaan prospek mineral, perancangan haul road, rekonsiliasi volume berbasis LiDAR, serta pengelolaan wilayah izin. Aplikasi umum memakai QGIS, GRASS, dan SAGA, sedangkan paket komersial yang umum adalah Vulcan, Leapfrog Geo, Datamine, Surpac, dan GeoStudio.</p><h2 id="s7">7. Remote sensing</h2>
+
+  <p>Remote sensing adalah pengumpulan informasi tentang permukaan tanpa sensor harus menyentuh objek secara langsung. Sensor dapat berada di darat, pesawat, UAV, atau satelit.</p>
+
+  <pre class="diagram"><code>Satelit atau pesawat
+   |
+Sensor optik, termal, atau hyperspectral
+   |
+Citra untuk setiap band
+   |
+Koreksi radiometrik dan geometrik
+   |
+Ekstraksi cirian spektral
+   |
+Klasifikasi dan pemetaan
+   |
+Analisis geologi</code></pre>
+
+  <p>USGS menjelaskan bahwa data remote sensing dapat dipakai untuk melihat topografi, vegetasi, tanah, mineral, serta dampak kegiatan tambang. Pemetaan mineral permukaan yang dihasilkan USGS pada resolusi 15 meter untuk area lebih dari 380.000 kilometer persegi di California dan Nevada.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 7.1 &middot; Jumlah band sensor remote sensing yang relevan</caption>
+    <thead>
+      <tr><th>Sensor</th><th>Jumlah band</th><th>Resolusi spasial</th><th>Rentang spektral</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>ASTER</td><td>14 total: 4 VNIR, 6 SWIR, 5 TIR</td><td>15, 30, 90 m</td><td>0,52 sampai 11,65 mikrometer</td></tr>
+      <tr><td>Landsat 8 dan 9 OLI</td><td>9 band</td><td>30 m, pankromatik 15 m</td><td>0,43 sampai 2,29 mikrometer</td></tr>
+      <tr><td>Landsat 8 dan 9 TIRS</td><td>2 band</td><td>100 m, dapat dikoreksi 30 m</td><td>10,6 sampai 12,51 mikrometer</td></tr>
+      <tr><td>Landsat 8 dan 9 total</td><td>11 band</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>AVIRIS pesawat</td><td>224 band</td><td>20 m atau 4 m</td><td>400 sampai 2500 nm</td></tr>
+      <tr><td>EO-1 Hyperion</td><td>242 kanal nominal, 220 valid</td><td>30 m</td><td>0,357 sampai 2,576 mikrometer</td></tr>
+      <tr><td>EnMAP</td><td>224 band</td><td>30 m</td><td>418,2 sampai 2445,5 nm</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p class="label">Koreksi yang sering keliru</p>
+    <p>ASTER memiliki 14 band, bukan 9 band VNIR dan 23 band SWIR. Angka sembilan band muncul pada sebagian publikasi USGS untuk Combination 3 band VNIR dan 6 band SWIR yang dipakai bersama. Selain itu, detektor SWIR ASTER dinonaktifkan sejak April 2008, sehingga data SWIR praktis bersifat arsip. Setelah kegagalan daya pada 28 November 2024, ASTER kembali menyalakan VNIR pada 18 Januari 2025 dan TIR pada 15 April 2025. Landsat 8 dan 9 terdiri dari OLI 9 band ditambah TIRS 2 band.</p>
+  </div>
+
+  <h2 id="s8">8. Hyperspectral imaging</h2>
+
+  <p>Kamera biasa merekam tiga kanal merah, hijau, dan biru. Sensor hyperspectral merekam puluhan sampai ratusan kanal panjang gelombang yang berdekatan. Setiap mineral memiliki karakteristik penyerapan atau sidik jari spektral berupa panjang gelombang yang diserap dan yang dipantulkan.</p>
+
+  <pre class="diagram"><code>Material di permukaan
+   |
+Menyerap dan memantulkan cahaya
+   |
+Spektrum 200 sampai 2500 nm
+   |
+Sensor hyperspectral
+   |
+Sidik jari spektral tiap material
+   |
+Ekstraksi endmember dengan PCA
+   |
+Matched filter untuk pencarian mineral
+   |
+Peta mineral</code></pre>
+
+  <p>USGS memakai principal component analysis untuk mengambil endmember, lalu spectral matched filter untuk memetakan mineral dan jenis alterasi. Mineral alterasi yang dipetakan meliputi kaolinite, smectite, illite muscovite, chlorite epidote, jarosite, oksida besi, serta silika opalin. Penyerapannya muncul pada SWIR untuk gugus Fe dan Mg OH, Al OH, dan Si OH. Band 7 Landsat pada 2,09 sampai 2,35 mikrometer dapat memisahkan lempung alterasi hydrothermal, sedangkan TIR memberi informasi inersia termal. USGS juga menyimpan pustaka spektral dengan ribuan spektrum material terukur.</p>
+
+  <h3 id="s8-1">8.1 Machine learning untuk pemetaan mineral</h3>
+
+  <p>Mineral prospectivity mapping memprediksi wilayah yang berpotensi mengandung mineral. Tinjauan terhadap 255 studi periode 2016 sampai 2025 mencatat decision tree muncul pada 114 studi atau 44,71 persen, random forest pada 107 studi, dan support vector machine pada 60 studi. Seluruh studi convolutional neural network berada pada rentang 2021 sampai 2025.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 1 &middot; Membaca angka dari tinjauan</p>
+    <pre><code>Jumlah studi tinjauan   = 255
+Decision tree         = 114 studi  -> 114/255 = 44,71 %
+Random forest         = 107 studi  -> 41,96 %
+Support vector machine=  60 studi  -> 23,53 %
+Convolutional NN      = hanya pada 2021-2025 (0 studi sebelum 2021)</code></pre>
+    <p>Contoh performa yang dilaporkan: random forest pada deposit tembaga emas Olympic Dam memberi area di bawah kurva 0,93; convolutional neural network pada deposit porphyri tembaga Duolong memberi 0,982; pada deposit Qulong dan Jiama, model yang dapat ditafsirkan memberi 0,970.</p>
+  </div>
+
+  <p>Perlu diperhatikan bahwa ketepatan yang dilaporkan pada data eksplorasi kecil sering terlalu optimistis. Pada data 20 deposit epitermal dengan 14 peta prediktor, support vector machine mencapai akurasi pelatihan 89 sampai 97 persen, tetapi kurva success rate menunjukkan random forest lebih unggul, karena SVM terlalu sesuai terhadap data sedikit.</p>
+
+  <h2 id="s9">9. LiDAR dan UAV</h2>
+
+  <p>LiDAR memancarkan pulsa laser dan mengukur waktu balik pantulan untuk menghasilkan titik tiga dimensi. Fotogrammetri UAV menghitung koordinat titik dari foto yang saling bertumpuk. Keduanya dipakai untuk memodelkan permukaan digital, menghitung volume material, dan memantau perubahan Rupert.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 9.1 &middot; Tingkat kualitas data elevasi USGS 3DEP</caption>
+    <thead>
+      <tr><th class="mono">Level</th><th>Sumber</th><th>RMSE vertikal</th><th>Kerapatan titik</th><th>Ukuran sel DEM</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">QL0</td><td>LiDAR</td><td>5 cm</td><td>minimal 8 titik per m&sup2;</td><td>0,5 m</td></tr>
+      <tr><td class="mono">QL1</td><td>LiDAR</td><td>10 cm</td><td>minimal 8 titik per m&sup2;</td><td>0,5 m</td></tr>
+      <tr><td class="mono">QL2</td><td>LiDAR</td><td>10 cm</td><td>minimal 2 titik per m&sup2;</td><td>1 m</td></tr>
+      <tr><td class="mono">QL3</td><td>LiDAR</td><td>20 cm</td><td>minimal 0,5 titik per m&sup2;</td><td>2 m</td></tr>
+      <tr><td class="mono">QL4</td><td>Imageri</td><td>139 cm</td><td>&mdash;</td><td>5 m</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>USGS menetapkan QL2 sebagai level minimum untuk koleksi baru. Aturan tambahan yang berlaku: minimal tiga pantulan per pulsa, intensitas dinormalisasi ke 16 bit pada LAS 1.4, minimal 90 persen sel jaringan harus memiliki minimal satu titik, dan survey titik kontrol harus tiga kali lebih akurat daripada akurasi vertikal yang diharapkan.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 2 &middot; Menghitung volume dengan metode prisma</p>
+    <pre><code>Dua penampang berjarak 20 m, luas penampang tiap 20 m:
+  A_1 = 1 200 m^2 ; A_2 = 1 500 m^2
+  V = d * (A_1 + A_2) / 2 = 20 * (1200 + 1500) / 2
+    = 20 * 1350 = 27 000 m^3
+
+Metode grid pada model permukaan digital:
+  V = jumlah (DTM - permukaan desain) * luas sel
+  Contoh: 500 sel, sel 2 m x 2 m, beda tinggi rata-rata 0,30 m
+  V = 500 * 0,30 * 4 = 600 m^3 per sel</code></pre>
+    <p>Ketelitian volume mengikuti kelas akurasi vertikal. Pada QL2 dengan akurasi vertikal 95 persen sebesar 0,196 meter, perhitungan volume tidak lebih teliti dari kelas tersebut.</p>
+  </div>
+
+  <p>Contoh prosedur yang dipakai pada pengukuran LiDAR di lingkungan lain: minimal lima titik tanah kendali yang tersebar merata, tumpang tindih foto 80 persen maju dan 70 persen samping, tumpang tindih LiDAR 40 persen samping, serta area buffer 100 meter di sekitar batas konsesi. Angka ini berasal dari panduan daerah lain, bukan dari regulasi Indonesia.</p>
+
+  <h2 id="s10">10. Machine learning untuk data eksplorasi</h2>
+
+  <p>USGS menjalankan program riset yang mengintegrasikan data geologi, geokimia, geofisika, remote sensing, dan pengeboran untuk assessment sumber daya dengan random forest, deep forest, gradient boosting, dan self organising map, dengan lokasi deposit dikenal sebagai data pelatihan.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 3 &middot; Menyusun pipeline prediksi</p>
+    <pre><code>Data masukan : 12 peta prediktor (geologi, geokimia, magnetik, ...)
+Data target  : 40 deposit bijih ternary
+Pembagian    : 70 %(train) + 30 % (uji)
+Model        : Random forest 200 pohon, kedalaman 5
+Evaluasi     : AUC, kurva success rate, importance fitur
+Interpretasi: permutation importance dan SHAP</code></pre>
+    <p>Menggunakan model yang dapat ditafsirkan penting karena regulator dan geologist perlu mengetahui alasan sebuah wilayah diberi peringatan.</p>
+  </div>
+
+  <h2 id="s11">11. Otomasi alat berat</h2>
+
+  <p>Otomasi alat berat bertujuan mengurangi paparan manusia terhadap bahaya, mengurangi kelelahan operator, menghindari kesalahan manusia, dan meningkatkan konsistensi operasi.</p>
+
+  <h3 id="s11-1">11.1 Riwayat deployments</h3>
+
+  <p>Sistem haulage otonom komersial pertama dipasang pada Januari 2008 di tambang tembaga Gabriela Mistral milik CODELCO di Chile. Sistem ini menggabungkan truk dump penggerak listrik kelas ultra dari Komatsu dengan sistem fleet management DISPATCH dari Modular Mining.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 11.1 &middot; Penerapan AHS yang terverifikasi</caption>
+    <thead>
+      <tr><th>Perusahaan</th><th>Tahun</th><th>Fakta</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rio Tinto, Pilbara</td><td>2011</td><td>Lebih dari 130 truk otonom, sekitar 90 persen armada ang hauling; pusat operasi berada sekitar 1.500 km dari pit; tiap truk memperoleh sekitar 700 jam tambahan per tahun dan biaya angle hauling turun 15 persen</td></tr>
+      <tr><td>Fortescue, Pilbara</td><td>2012</td><td>Deployment AHS skala komersial pertama di dunia; 2 miliar ton dan 193 truk pada 2021; peningkatan produktivitas 30 persen</td></tr>
+      <tr><td>Vale, Brucutu dan Carajas</td><td>2018</td><td>Mulai 2018 di Brucutu dengan 13 truk otonom; rencana 2028 menambah armada Northern System dari 14 menjadi sekitar 90 truk</td></tr>
+      <tr><td>Barrick dan Nevada Gold Mines</td><td>2025</td><td>FrontRunner pertama di Amerika Serikat pada 4 Agustus 2025 di Cortez, dengan komunikasi 5G</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Ketidakkonsistenan data perlu diperhatikan: situs resmi Rio Tinto menyebut lebih dari 130 truk otonom, sementara media industri menyebut angka 300 truk. Untuk Indonesia, belum ditemukan bukti primer penerapan AHS berskala besar. Grasberg milik Freeport Indonesia merupakan block cave bawah tanah yang masih dalam pemulihan, sementara proyek yang dipublikasikan PT Vale adalah refurbishment yang bersifat non-AHS.</p>
+
+  <h2 id="s12">12. Autonomous dan remote control</h2>
+
+  <p>Keduanya sama-sama mengurangi jumlah orang di dalam machines, tetapi berbeda pada siapa yang mengambil keputusan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 12.1 &middot; Perbedaan remote control dan autonomous</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Remote control atau teleoperation</th><th>Autonomous</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pengambil keputusan</td><td>Manusia di remote control center</td><td>Perangkat onboard</td></tr>
+      <tr><td>Konsep contoh</td><td>Cat Command untuk bulldozer</td><td>Komatsu FrontRunner</td></tr>
+      <tr><td>Syarat jaringan</td><td>Wajib dan stabil</td><td>Wajib untuk monitoring dan koordinasi</td></tr>
+      <tr><td>Alokasi operator</td><td>Satu operator untuk satu atau beberapa alat sesuai konfigurasi</td><td>Satu controller memantau banyak kendaraan</td></tr>
+      <tr><td>Mode failed</td><td>Kendali manual di lokasi</td><td>Kendali berhenti ke safe state atau mode degraded</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>ISO 17757:2019 mengatur persyaratan keselamatan untuk autonomous dan semi-autonomous machine systems pada earth-moving machinery dan mesin pertambangan, mencakup perangkat keras, perangkat lunak, sistem pendukung, dan infrastrukturnya. Standar ini terbit pada Juli 2019 dan dikonfirmasi masih berlaku pada 6 Desember 2024; tidak ada versi 2024 maupun amendment. Di luar lingkupnya adalah kemampuan remote control yang diatur ISO 15817, serta fitur otomatis spesifik fungsi kecuali fitur tersebut dipakai sebagai bagian dari autonomous system. Keselamatan umum mesin diatur ISO 20474 dan ISO 19296.</p>
+
+  <div class="note">
+    <p class="label">Kegagalan jaringan</p>
+    <p>Standar ini tetap berlaku pada tahun 2024, sehingga pertanyaan tentang apa yang terjadi ketika jaringan putus saat kendaraan beroperasi harus dijawab dari perilaku sistem yang dirancang: umumnya kendaraan berhenti pada safe state atau dikendalikan dari mode degraded yang telah disimulasikan pada tahap pengujian.</p>
+  </div><h2 id="s13">13. Perception dan sensor fusion</h2>
+
+  <p>Kendaraan otonom menjalankan rangkaian tahap berikut: sensor, perception, sensor fusion, localization, prediction, path planning, decision making, lalu vehicle control. Setiap tahap punya tanggung jawab yang berbeda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 13.1 &middot; Perbandingan sensor pada kendaraan tambang</caption>
+    <thead>
+      <tr><th>Sensor</th><th>Informasi</th><th>Kekuatan</th><th>Keterbatasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kamera RGB</td><td>Bentuk dan warna objek</td><td>Murah, informatif tinggi</td><td>Gagal oleh debu, kabut, gelap, tertutup objek</td></tr>
+      <tr><td>LiDAR</td><td>Jarak dan struktur 3D</td><td>Akurasi geometri, tidak terpengaruh pencahayaan</td><td>Jarak bisa berkurang lebih dari separuh oleh debu</td></tr>
+      <tr><td>Radar 77 GHz</td><td>Jarak dan kecepatan relatif</td><td>Tahan debu dan hujan, stabil pada shiftberdebu</td><td>Resolusi sudut lebih rendah daripada LiDAR</td></tr>
+      <tr><td>GNSS dan DGNSS</td><td>Posisi global</td><td>Referensi mutlak</td><td>Terhalang dinding pit, multipath di dekat highwall</td></tr>
+      <tr><td>IMU</td><td>Percepatan dan rotasi</td><td>Tidak bergantung sinyal luar</td><td>Drift perlahan, menurun akibat getaran jalan</td></tr>
+      <tr><td>Ultrasonik</td><td>Jarak dekat</td><td>Murah, cepat, jarak dekat</td><td>Jarak sangat pendek</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Tinjauan terhadap 100 studi tahun 2026 menemukan bahwa debu dapat mengurangi jangkauan LiDAR sampai lebih dari separuh, dan pengukuran jarak gagal ketika transmitansi atmosfer turun di bawah sekitar 71 sampai 74 persen. Pada perbandingan lapangan, radar 77 GHz tetap stabil pada shift berdebu sementara LiDAR menurun. Tinjauan yang sama menemukan bahwa keterbatasan visibilitas satelit dan propagasi multipath menurunkan akurasi GNSS, sementara getaran haul road menurunkan performansi MEMS IMU. Karena itu tidak ada satu modalitas yang memadai.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 4 &middot; Memahami Ordering dan transmisi LiDAR</p>
+    <p>Jangkauan LiDAR menurun menjadi separuh pada kondisi berdebu. Bila jangkauan bersih 200 m:</p>
+    <pre><code>Jangkauan bersih      : 200 m
+Jangkauan berdebu     : 200 * 0,5 = 100 m
+Transmitansi yang membuat ranging gagal: sekitar 71-74 %
+Radiasi 77 GHz panjang gelombang 3,8-4 mm
+Ukuran partikel PM2,5 sekitar 1-3 mikrometer
+Rasio panjang gelombang terhadap partikel = 3,8 mm / 0,001 mm = 3800 kali
+-&gt;Hamburan pada partikel jauh lebih kecil, sinyal tetap lolos</code></pre>
+  </div>
+
+  <p>RTK bekerja dengan menempatkan stasiun acuan pada koordinat yang diketahui, mengukur error-nya sendiri, lalu mengirim koreksi RTCM ke rover. Rover kemudian menyelesaikan ambiguitas fase pembawa sehingga akurasi dapat mencapai sentimeter dengan status fixed. PPK melakukan penyelesaian yang sama secara offline dari data yang direkam. PPP-RTK mencapai akurasi sentimeter tanpa stasiun lokal, sedangkan PPP biasa memerlukan 5 sampai 30 menit untuk konvergensi dan hanya kelas desimeter sehingga tidak cocok untuk kendali langsung. Diferensiasi tidak menghapus multipath: error multipath fase RTK berukuran 1 sampai 5 cm, sehingga mitigasi memerlukan penyaringan kualitas sinyal dan penempatan antena dengan langit terbuka.</p>
+
+  <h2 id="s14">14. Keselamatan</h2>
+
+  <p>NIOSH mencatat lebih dari 40 persen cedera paling serius di pertambangan Amerika Serikat yang berakibat fatal atau permanen adalah kecelakaan tertabrak atau terjepit mesin dan alat angkut. Pada data NIOSH tahun 2023 untuk lokasi permukaan operator logam dengan 32 kasus fatalitas, mesin menyumbang 14 kasus dan alat angkut 7 kasus, sehingga total 21 dari 32 atau sekitar 66 persen. Rata-rata 13 pekerja pertambangan setiap tahun tertabrak atau terjerit alat bergerak, dan tabrakan di permukaan serta melaju melewati tepi yang tidak terlihat menyebabkan 3 sampai 4 kematian per tahun.</p>
+
+  <div class="note">
+    <p class="label">Titik buta</p>
+    <p>Alat berat berukuran besar memiliki keterbatasan visibilitas sehingga kendaraan kecil dan pejalan kaki sulit terlihat. NIOSH memetakan area butat dengan metode ISO 5006, pengukuran fisik, dan simulasi komputer. Riset utama NIOSH adalah proximity detection, termasuk sistem Intelligent Proximity Detection yang melacak posisi pekerja terhadap zona aman mesin dan menonaktifkan fungsi mesin yang berbahaya.</p>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 5 &middot; Membaca hasil pengujian proximity warning system</p>
+    <p>NIOSH menguji sistem radar pada dump truck dan menemukan kendaraan kecil serta orang berjalan terdeteksi dengan andal, tetapi alarm palsu sering muncul dari batu, alur, dan dinding spoil sehingga operator kehilangan kepercayaan.</p>
+    <pre><code>Solusi yang diuji NIOSH:
+  Nada alarm       : 3 bunyi cepat, nada kontinu hanya pada zona dekat
+  Zona radar       : panjang sekitar 12,2 m
+  Zona nada kontinu: 0 sampai 4,6 m dari poros belakang
+  Tinggi radar     : 1,35 m di atas poros belakang
+  Tinggi kamera    : 1,65 m di atas poros belakang
+  Kesimpulan       : radar harus digabung dengan kamera</code></pre>
+    <p>Kamera saja tidak cukup karena kamera tidak memberi alarm. Penelitian rekonstruksi satu kematian alat bawah tanah menunjukkan bahkan empat kamera tidak memberi garis pandang memadai.</p>
+  </div>
+
+  <p>Untuk deteksi pekerja, riset yang didanai NIOSH memakai model YOLO pada citra termal. Nilai mAP YOLOv8n naik dari 13,90 persen menjadi 74,70 persen setelah transfer learning, sedangkan YOLOv5n naik dari 42,10 persen menjadi 68,30 persen.</p>
+
+  <h2 id="s15">15. Fleet management</h2>
+
+  <p>Armada adalah kumpulan kendaraan dan peralatan yang bekerja sebagai satu sistem operasi. Tanpa dispatch yang baik, excavator menunggu, dump truck menganggur, dan material menumpuk.</p>
+
+  <pre class="diagram"><code>Excavator
+   |
+Laporan material tersedia
+   |
+DISPATCH atau FMS
+   |
+MenentukanTruk terdekat dan sesuai
+   |
+Perintah rute dan tujuan
+   |
+Truk mengangkut ore atau waste</code></pre>
+
+  <p>Komatsu menjelaskan DISPATCH sebagai fleet management system yang memberikan data real time untuk meningkatkan performa operasi tambang. Hexagon menjelaskan bahwa mine fleet management menggabungkan data armada dan solusi keselamatan untuk meningkatkan efektivitas, mengurangi downtime, serta meningkatkan produksi.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 6 &middot; Logika pemilihan truk</p>
+    <pre><code>Excavator butuh material dalam 60 detik
+Truk A: jarak 900 m, muatan kosong, siap   -&gt; estimasi tiba 55 detik
+Truk B: jarak 2.100 m, muatan kosong, siap -&gt; estimasi tiba 130 detik
+Truk C: sedang dalam siklus            -&gt; belum tersedia
+
+FMS memilih Truk A karena waktu tiba paling kecil.
+Truk B tetap diberi rute berikutnya agar tidak menganggur.</code></pre>
+    <p>Tanpa dispatch, operator cenderung memanggil truk yang paling dekat secara fisik, bukan yang paling optimal terhadap waktu siklus dan beban target crusher.</p>
+  </div>
+
+  <h2 id="s16">16. IoT dan sensor pada alat</h2>
+
+  <p>IoT memberi perangkat fisik kemampuan sensing, processing, dan communication sehingga dapat mengirim dan menerima data melalui jaringan. Pada alat tambang, rantainya umumnya sensor, mikrokontroler, jaringan area personal, gateway, jaringan utama, basis data deret waktu, lalu dashboard.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Kanal telemetri yang umum pada alat berat</caption>
+    <thead>
+      <tr><th>Kelompok</th><th>Kanal</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mesin</td><td>Putaran mesin, posisi throttle, temperatur coolant dan oli, tekanan oli dan hidrolik, tekanan turbo, voltase baterai, kode error</td></tr>
+      <tr><td>KelISTRIK</td><td>Arus, voltase, status alternator</td></tr>
+      <tr><td>Beban</td><td>Berat muatan, target, overload</td></tr>
+      <tr><td>Posisi</td><td>GNSS, kecepatan, idle time</td></tr>
+      <tr><td>Getaran</td><td>Accelerometer pada chassis, RPM</td></tr>
+      <tr><td>Ban</td><td>Tekanan ban, kondisi ban</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>ESP32 dari Espressif memiliki dua inti Xtensa, Wi-Fi dan Bluetooth terintegrasi, serta rentang suhu kerja minus 40 sampai 125 derajat Celsius, sehingga layak untuk lingkungan industri. Pada studi kualitas udara tambang pasir di Palu, jalur LoRa dengan ESP32 mencapai nol packet loss pada 1,2 kilometer kondisi line of sight dan 20 meter kondisi non line of sight, dengan galat sensor PM1 6,61 persen, PM2.5 10,58 persen, PM10 8,67 persen, dan CO 18,48 persen.</p>
+
+  <p>Pada implementasi edge di bawah tanah, gateway melakukan polling setiap 100 milidetik sampai 64 kanal secara bersamaan dan menyimpan data secara lokal selama 30 menit, sehingga operasi tetap berjalan ketika koneksi internet terputus.</p>
+
+  <div class="note">
+    <p class="label">Data yang tidak terverifikasi</p>
+    <p>Klaim bahwa satu haul truck modern memiliki lebih dari 200 sensor, atau menghasilkan sekitar 2 GB data mentah per hari, hanya ditemukan pada materi pemasaran vendor tanpa dukungan datasheet pabrikan. Yang dapat dipakai adalah daftar kanal telemetri seperti pada Tabel 16.1.</p>
+  </div>
+
+  <h2 id="s17">17. RFID untuk identifikasi</h2>
+
+  <p>RFID menggunakan gelombang radio untuk identifikasi objek. Pilihan frekuensi menentukan jangkauan, ketahanan terhadap logam, dan kejelasan zona baca.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 17.1 &middot; Perbandingan pita RFID</caption>
+    <thead>
+      <tr><th>Pita</th><th>Frekuensi</th><th>Jangkauan baca pasif</th><th>Keterbatasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LF</td><td>125 sampai 134 kHz</td><td>kurang lebih 10 cm</td><td>Zona baca jelas, tahan logam dan air, jarak pendek</td></tr>
+      <tr><td>HF</td><td>13,56 MHz</td><td>sampai 30 cm</td><td>Zona baca terkontrol, jarak pendek</td></tr>
+      <tr><td>UHF pasif</td><td>860 sampai 960 MHz</td><td>3 sampai 8 meter</td><td>Sangat dipengaruhi logam dan air, zona baca tidak tegas</td></tr>
+      <tr><td>UHF aktif</td><td>433 MHz atau 2,45 GHz</td><td>30 sampai 100 meter atau lebih</td><td>Memerlukan baterai 3 sampai 5 tahun, biaya jauh lebih tinggi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pada UHF, panjang gelombang sekitar 32,8 cm sehingga logam dan air menyerap atau menghambur sinyal. TI mencatat contoh bahwa UHF mengalami kegagalan tag sekitar 17 persen pada satu aplikasi, lalu digantikan LF yang mencapai 100 persen pembacaan. UHF tetap berguna untuk penghitungan armada di outdoor pada titik kendali, sedangkan LF lebih baik untuk identifikasi alat dan komponen di dekat operator. Untuk lingkungan berpotensi ledakan, perangkat harus bersertifikat MSHA 30 CFR Part 18, ATEX, atau IECEx IEC 60079.</p>
+
+  <p>RFID untuk peringatan tabrakan sudah diperiksa NIOSH pada laporan RI 9654. Kesimpulannya sistem memberi sedikit alarm palsu, tetapi setiap objek atau orang yang dilindungi harus bertag, sehingga kamera perlu ditambahkan untuk objek tanpa tag.</p>
+
+  <h2 id="s18">18. Pemeliharaan alat</h2>
+
+  <h3 id="s18-1">18.1 Empat strategi pemeliharaan</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.1 &middot; Strategi pemeliharaan</caption>
+    <thead>
+      <tr><th>Strategi</th><th>Dasar keputusan</th><th>Kelebihan</th><th>Kekurangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Korektif</td><td>Setelah kerusakan terjadi</td><td>Biaya awal rendah</td><td>Downtime tidak terencana dan mahal</td></tr>
+      <tr><td>Preventif</td><td>Jadwal waktu atau jam operasi</td><td>Terencana</td><td>Dapat terlalu cepat atau terlalu lambat mengganti</td></tr>
+      <tr><td>Predictive</td><td>Data kondisi terukur</td><td>Bekerja berdasarkan bukti</td><td>Memerlukan sensor, data, dan analisis</td></tr>
+      <tr><td>Condition based</td><td>Ambang batas kondisi terukur</td><td>Hanya bertindak saat perlu</td><td>Ambang harus tepat</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s18-2">18.2 Metode condition monitoring</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.2 &middot; Metode condition monitoring</caption>
+    <thead>
+      <tr><th>Metode</th><th>Yang diukur</th><th>Catatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Getaran</td><td>Akselerasi pada casing</td><td>Analisis waktu dan FFT untuk mencari frekuensi cacat</td></tr>
+      <tr><td>Analisis oli</td><td>Logam aus Fe, Cu, Al, Cr, Pb, Mo, viskositas, TBN</td><td>Metode ICP-OES</td></tr>
+      <tr><td>Termografi</td><td>Distribusi suhu</td><td>Menemukan hot spot tanpa kontak</td></tr>
+      <tr><td>Emisi akustik</td><td> Gelombang sonic dari retak</td><td>Sangat sensitif terhadap retak awal</td></tr>
+      <tr><td>Motor current signature</td><td>Arus motor</td><td>Komponen pada dua kali frekuensi listrik, hilang saat daya dimatikan</td></tr>
+      <tr><td>Ultrasonik</td><td>Udaraultra udara untuk mendeteksi kebocoran</td><td>Cocok untuk plant dan kompresor</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s18-3">18.3 Deteksi cacat bearing</h3>
+
+  <p>Frekuensi cacat bearing dinyatakan dalam kelipatan frekuensi putaran poros.</p>
+
+  <div class="eq">
+    BPFO = <span class="frac"><span>N</span><span>2</span></span> &middot; n &middot; [1 &minus; (d/D) cos &theta;]<br>
+    BPFI = <span class="frac"><span>N</span><span>2</span></span> &middot; n &middot; [1 + (d/D) cos &theta;]<br>
+    <span class="eq-note">N = jumlah bola, n = putaran poros per detik, d = diameter bola, D = diameter pitch, dan BPFO + BPFI = N &times; n</span>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 7 &middot; Menghitung frekuensi cacat bearing</p>
+    <p>Bearing SKF 6310 berputar 1800 rpm, sehingga frekuensi poros f = 30 Hz. N = 10 bola, d = 0,625 inci, D = 2,854 inci, sehingga d/D = 0,219.</p>
+    <pre><code>f = 1800 / 60 = 30 Hz
+BPFO = (10/2) * 30 * (1 - 0,219) = 5 * 30 * 0,781 = 117,1 Hz
+BPFI = (10/2) * 30 * (1 + 0,219) = 5 * 30 * 1,219 = 182,9 Hz
+Cek identitas: BPFO + BPFI = 117,1 + 182,9 = 300 Hz = 10 * 30 ✓
+
+Pendekatan kasar:
+BPFO kira-kira 0,4 * N * n = 0,4 * 10 * 30 = 120 Hz
+BPFI kira-kira 0,6 * N * n = 0,6 * 10 * 30 = 180 Hz</code></pre>
+  </div>
+
+  <p>Tahap kegagalan bearing dapat diamati dari tahap incipient dengan energi frekuensi tinggi 20 sampai 40 kHz, tahap benturan yang membangkitkan frekuensi natural di atas 5 kHz sehingga envelope analysis mendeteksinya, tahap pola klasik pada spektrum kecepatan dengan harmonik BPFO dan BPFI serta sideband satu kali putaran, lalu tahap terminal di mana amplitudo menurun. Naiknya suhu adalah indikator tertinggal, bukan indikator pendahulu.</p>
+
+  <div class="note">
+    <p class="label">Standar yang berlaku</p>
+    <p>ISO 17359:2018 adalah panduan umum condition monitoring. ISO 13373-1:2002 untuk prosedur getaran dikonfirmasi ulang pada 2024, dengan bagian 2 untuk pemrosesan data, bagian 3 untuk diagnosis, dan bagian 9 untuk pemasangan transduser. ISO 18436 mengatur kualifikasi tenaga analyser. ISO 15243:2017 mengklasifikasikan kerusakan bearing. ISO 10816 sudah ditarik dan digantikan ISO 20816, dengan ISO 20816-3:2022 untuk mesin industri di atas 15 kW dan 120 sampai 30.000 rpm.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.3 &middot; Zona getaran ISO 20816-3 dalam mm/s RMS</caption>
+    <thead>
+      <tr><th>Zona</th><th>Grup 1 di atas 300 kW rigid</th><th>Grup 2 15 sampai 300 kW rigid</th><th>Grup 2 fleksibel</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Batas A dan B</td><td>2,3</td><td>1,4</td><td>2,3</td></tr>
+      <tr><td>Batas B dan C</td><td>4,5</td><td>2,8</td><td>4,5</td></tr>
+      <tr><td>Batas C dan D</td><td>7,1</td><td>4,5</td><td>7,1</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 8 &middot; Menentukan zona dan ambang alarm</p>
+    <p>Pompa 75 kW pada dudukan rigid menghasilkan 2,9 mm/s RMS di casing bearing.</p>
+    <pre><code>Grup 2 (15-300 kW) rigid: batas B/C = 2,8 mm/s
+Nilai ukur 2,9 &gt; 2,8 -&gt; Zona C, perlu tindakan korektif
+
+Ambang alarm ISO 20816-3:
+  alarm  = baseline + 25 % batas atas zona B
+         = baseline + 0,25 * 2,8 = baseline + 0,7 mm/s
+  batas  = tidak boleh lebih dari 1,25 * 2,8 = 3,5 mm/s
+Trip pada batas C/D = 4,5 mm/s, batas trip = 1,25 * 4,5 = 5,6 mm/s
+Pengukuran memakai laju getaran RMS broadband 10 sampai 1000 Hz
+pada titik non-rotating yang ditandai</code></pre>
+  </div>
+
+  <h3 id="s18-4">18.4 Machine learning untuk pemeliharaan</h3>
+
+  <p>Prediksi sisa umur komponen memakai random forest, gradient boosting, dan neural network. Contoh yang terverifikasi: penelitian dengan 1.760 sampel oli dari 26 aset mencapai rata-rata R&sup2; 0,979 dan RMSE 10,185, dengan penurunan error 69 persen dan RMSE tiga kali lebih rendah dibanding model per aset. Penelitian lain pada truk dan excavator menghasilkan akurasi 92,47 persen dan RMSE sisa umur 98,45 jam. Pada studi telemetri, sistem memberi peringatan sekitar 1.000 jam sebelum kegagalan.</p>
+
+  <p>Masalah utamanya adalahydata kegagalan jarang ada. Aset sering dilepas sebelum rusak sehingga terjadi perpotongan kanan, catatan perawatan tidak konsisten, dan kelas tidak seimbang. Penanganannya meliputi anomaly detection tanpa label, interpolasi health index, pendekatan berbantuan fisika, serta transfer learning bertingkat dari level armada ke level aset.</p><h2 id="s19">19. AI untuk keselamatan dan kelelahan</h2>
+
+  <p>Kelelahan menurunkan konsentrasi, memperlambat waktu reaksi, dan mengganggu penilaian. Dampaknya pada pekerja pertambangan bertambah besar karena jam kerja panjang dan pola shift bergantian.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 9 &middot; Membaca angka kelelahan</p>
+    <pre><code>Penelitian pada penambang dengan shift 12 jam berturut-turut:
+  8 shift siang berturut-turut  -&gt; waktu reaksi setara BAC 0,05 %
+  hanya 4 shift malam berturut-turut -&gt; efek yang sama
+
+Studi 19 penambang nikel bawah tanah:
+  61 % melaporkan kualitas tidur buruk
+  efisiensi tidur rata-rata 84,6 %
+  40 sampai 60 menit lebih pendek waktu tidur sebelum shift siang
+
+Data lapangan PERCLOS dengan kamera pada truk ang:
+  rata-rata sekitar 17 kejadian kelelahan per shift
+  micro-sleep dengan kepala stabil 13 kali per hari pada 98 % hari
+  model shift berbasis data mencapai R^2 = 0,36 pada validasi</code></pre>
+    <p>Artinya data_shift dan data_operasional masih dibutuhkan sebagai variabel pendahulu, karena indikator seperti PERCLOS dan EEG relatif tertinggal.</p>
+  </div>
+
+  <p>Indikator yang lazim dipakai adalah elektroensefalogram, anggukan kepala, kedip dan durasi kedip, galvanic skin response, serta variabilitas denyut jantung. NIOSH menyarankan lima pendekatan untuk menjaga tempat kerja yang memakai AI tetap aman: evaluasi bersama dengan operator, audit independen, sertifikasi, pendekatan safety system, dan pendekatan safety case, dengan mengacu pada komponen trustworthiness pada NIST AI Risk Management Framework. NIOSH memusnahkan AI sebagai algoritma terlatih yang mengubah bahaya yang sudah ada, bukan kelas bahaya baru, yang menuntut disiplin algoritma hygiene.</p>
+
+  <h2 id="s20">20. Jaringan private LTE dan 5G</h2>
+
+  <p>Jaringan private adalah deployment jaringan terisolasi yang tidak berinteraksi dengan jaringan publik. Keunggulan yang relevan bagi tambang adalah spektrum berlisensi tanpa gangguan, kapasitas dan cakupan yang terkendali, kualitas layanan dan prioritas, handover saat kendaraan bergerak cepat, autentikasi bawaan, serta penempatan edge di dekat lokasi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 20.1 &middot; Sasaran IMT-2020 dari ITU-R</caption>
+    <thead>
+      <tr><th>Metrik</th><th>Nilai sasaran minimum</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Laju data puncak</td><td>20 Gbit/s downlink, 10 Gbit/s uplink</td></tr>
+      <tr><td>Laju yang dirasakan pengguna</td><td>100 Mbit/s downlink, 50 Mbit/s uplink</td></tr>
+      <tr><td>Latensi bidang pengguna</td><td>4 ms untuk eMBB, 1 ms untuk URLLC</td></tr>
+      <tr><td>Keandalan URLLC</td><td>1 &minus; 10<sup>&minus;5</sup>, yaitu 99,999 persen</td></tr>
+      <tr><td>Kerapatan koneksi</td><td>1.000.000 perangkat per km&sup2;</td></tr>
+      <tr><td>Gangguan mobilitas</td><td>0 ms</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Angka pada Tabel 20.1 adalah sasaran desain dan evaluasi, bukan hasil lapangan. Tambang tidak menyerupai sel urban macro: batu menyerap sinyal, lorong bawah tanah menyebabkan kondisi tanpa garis pandang langsung, dan bandwidth terbatas. Angka lapangan yang masuk akal berada pada orde puluhan milidetik dengan keandalan sekitar 99,9 persen.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 20.2 &middot; Wi-Fi dan private cellular untuk tambang</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Wi-Fi</th><th>Private LTE dan 5G</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Spektrum</td><td>Tidak berlisensi</td><td>Berlisensi, tanpa gangguan</td></tr>
+      <tr><td>Batas jumlah mesin</td><td>Pada satu studi Newmont maksimum 2 mesin dalam 100 m</td><td>Satu radio 5G mencakup 2,5 km untuk sampai 12 bulldozer</td></tr>
+      <tr><td>Kapasitas uplink</td><td>Terbatas, menjadi bottleneck video</td><td>Sampai 175 Mbit/s uplink dari satu radio</td></tr>
+      <tr><td>Kegagalan jaringan</td><td>Menghentikan safety stop karena packet loss</td><td>Tidak ada penghentian akibat komunikasi</td></tr>
+      <tr><td>Zona dead</td><td>Memaksa perpindahan trailer Wi-Fi</td><td>Pengurangan no-talks sebesar 82 persen pada studi Newmont</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Traffic tambang didominasi uplink, bukan downlink, karena video teleoperation, sensor fusion untuk autonomy, dan telemetri mesin mengalir dari kendaraan menuju operator atau edge. Karena itu parameter yang paling penting adalah kapasitas uplink.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 10 &middot; Menghitung throughput kamera teleoperation</p>
+    <pre><code>Empat kamera 1080p pada 30 fps, kompresi H.265 4 Mbit/s per kamera
+  Video uplink  = 4 * 4 = 16 Mbit/s
+Telemetri 200 kanal * 2 byte * 1 Hz = 400 kB/s = 3,2 Mbit/s
+Perintah kendali teleoperation  = 0,5 Mbit/s
+Total uplink per kendaraan        = 19,7 Mbit/s
+
+10 kendaraan aktif:
+  10 * 19,7 = 197 Mbit/s uplink dibutuhkan</code></pre>
+    <p>Pada skenario seperti ini, kapasitas uplink menjadi pembatas utama, bukan downlink.</p>
+  </div>
+
+  <p>Tantangan jaringan pada tambang bawah tanah berbeda dari open pit. Penetrasi batu terbatas pada orde puluhan meter, sedangkan lintasan tanpa garis pandang dapat mencapai ratusan hingga ribuan meter. Jaringan mesh frekuensi tinggi dapat menjangkau satu hop sekitar 3,2 km tetapi bandwidth terbatas, sementara mesh UHF memberi bandwidth lebih tinggi dengan jangkauan satu hop biasanya di bawah 600 meter. Keterlambatan untuk teleoperation dalam literatur adalah kurang dari 1 detik untuk pengawasan, dan waktu tempuh bolak-balik di bawah 40 ms untuk kendali kendaraan; pengujian private 5G bawah tanah memakai watchdog PROFIsafe 64 ms.</p>
+
+  <h2 id="s21">21. Edge computing dan network slicing</h2>
+
+  <p>Edge computing menjalankan sebagian pemrosesan di dekat sumber data. Alasannya adalah latensi, bandwidth, privasi, dan ketahanan ketika Wide Area Network terputus.</p>
+
+  <pre class="diagram"><code>Tanpa edge:
+  Kamera -&gt; jaringan -&gt; cloud -&gt; inferensi AI -&gt; jaringan -&gt; operator
+
+Dengan edge:
+  Kamera -&gt; edge computer -&gt; inferensi AI -&gt; alarm
+                    |
+                    +-&gt; metadata dan agregat ke server</code></pre>
+
+  <p>Pada studi Newcrest bersama Microsoft di blok caves Cadia Valley, soft sensor untuk mengukur level bin bijih dih hasilkan dengan akurasi 85 persen dan balik modal dalam 3 bulan. Pada konteks yang sama, sensor fisik crusher sebelumnya gagal 2 sampai 3 kali sebulan sehingga menyebabkan 4.780 menit downtime dalam 6 bulan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 21.1 &middot; Pemakaian network slicing di tambang</caption>
+    <thead>
+      <tr><th>Slice</th><th>Profil</th><th>Traffic</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Keselamatan</td><td>URLLC, prioritas tertinggi</td><td>Emergency stop, PROFIsafe, alarm geofence</td></tr>
+      <tr><td>Kendali</td><td>Latensi rendah dan andal</td><td>Perintah teleoperation dan V2X</td></tr>
+      <tr><td>Video</td><td>eMBB dengan uplink tinggi</td><td>Kamera teleoperation dan analitik AI</td></tr>
+      <tr><td>IoT</td><td>mMTC, daya rendah</td><td>Tag, beacon, sensor gas, monitor lingkungan</td></tr>
+      <tr><td>Suara dan TI</td><td>Best effort</td><td>Komunikasi pekerja dan Wi-Fi tamu</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Network slicing memungkinkan satu perangkat menerima lebih dari satu slice secara bersamaan, sehingga video operator dan perintah emergency stop dapat berjalan pada channel yang berbeda although)(\0 memakai jaringan fisik yang sama.</p>
+
+  <h2 id="s22">22. Studi kasus Indonesia</h2>
+
+  <h3 id="s22-1">22.1 Freeport Indonesia dan Telkomsel</h3>
+
+  <p>Penerapan 5G Underground Smart Mining PT Freeport Indonesia bersama Telkomsel dilaksanakan pada 1 September 2022 di Tambagapura, Mimika, Papua, dan diklaim sebagai yang pertama di Asia Tenggara. Menurut Telkomsel, implementasi ini menggunakan enam unit 5G base transceiver station yang mencakup area bawah tanah, jaringan private Telkomsel, edge computing dengan platform Hyperconnected Network, kamera yang terhubung AI, remote operation, serta perangkat Minegem untuk kendali jarak jauh pada tambang lebih dari 1.500 meter di bawah permukaan. Peta jalan yang disebutkan meliputi pemantauan performa produksi, remote blasting, pelacakan aset dan personel, pengawasan drone, serta analitik video.</p>
+
+  <div class="note">
+    <p class="label">Angka yang tidak boleh disalahartikan</p>
+    <p>Telkomsel dan PT Freeport Indonesia tidak menerbitkan angka latensi, jumlah perangkat, atau peningkatan produksi. Angka peningkatan produktivitas 25 persen, penurunan biaya pengeboran 40 persen, dan penurunan energi 20 persen berasal dari Deloitte International tahun 2021 untuk uji coba di Amerika Serikat, Swedia, Tiongkok, dan Rusia, dan dikutip oleh Kementerian ESDM. Angka tersebut bukan hasil pengukuran PTFI.</p>
+  </div>
+
+  <h3 id="s22-2">22.2 Vale</h3>
+
+  <p>Untuk PT Vale, data publik yang dapat diverifikasi adalah data korporat: izin usaha pertambangan khusus sampai 28 Desember 2035, konsesi 118.017 hectare, target 70.800 ton nikel matte pada 2024, serta intermitten RKEF dan tenaga hidrolik.</p>
+
+  <div class="note">
+    <p class="label">Klaim yang tidak terverifikasi</p>
+    <p>Klaim bahwa PT Vale memakai private LTE di Sorowako melalui XL Axiata Business Solutions tidak ditemukan sumbernya dan kemungkinan bercampur dengan proyek Vale di Brasil. Yang terverifikasi adalah kerja sama Vale dengan Vivo pada November 2019 untuk private LTE pertama di sektor pertambangan Brasil dengan nilai R$21 juta, dilanjutkan Nokia dan Vivo pada tahun 2020 untuk Carajas. Vale juga mengoperasikan private LTE di Sudbury, Kanada, dan di Malaysia. Pada Oktober 2024 Nokia Bell Labs bersama Vale mengembangkan Cognitive Digital Mine.</p>
+  </div>
+
+  <h2 id="s23">23. Lingkungan dan regulasi Indonesia</h2>
+
+  <p>Pertambangan memengaruhi kualitas air, tanah, vegetasi, udara, sedimentasi, dan area bekas tambang. Pemantauan deshalb merupakan bagian dari kewajiban, bukan pilihan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 23.1 &middot; Parameter lingkungan yang dipantau</caption>
+    <thead>
+      <tr><th>Kelompok</th><th>Parameter</th><th>Instrumen</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Air</td><td>pH, TSS, keceahan, suhu, konduktivitas, oksigen terlarut, debit</td><td>Sensor online atau sampling</td></tr>
+      <tr><td>Udara</td><td>PM10, PM2.5, SO2, NO2, CO, O3</td><td>Station AQMS</td></tr>
+      <tr><td>Kebisingan</td><td>Level suara</td><td>Sound level meter</td></tr>
+      <tr><td>Lahan</td><td>Tutupan lahan, revegetation, perubahan tinggi permukaan</td><td>Satelit, UAV, InSAR</td></tr>
+      <tr><td>Air balance</td><td>Hujan, evaporasi, debit, rembesan</td><td>Stasiun curah hujan dan flow meter</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 23.2 &middot; Regulasi lingkungan yang relevan</caption>
+    <thead>
+      <tr><th>Regulasi</th><th>Isi pokok</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UU No. 11 Tahun 2020 Cipta Kerja</td><td>Mengubah UU 32/2009 tentang perlindungan dan pengelolaan lingkungan hidup</td></tr>
+      <tr><td>PP No. 22 Tahun 2021</td><td>Persetujuan lingkungan berupa Amdal, UKL-UPL, atau SPPL; baku mutu air, udara, dan laut; dana penjamin pemulihan; pengawasan dan sanksi administratif</td></tr>
+      <tr><td>PP 22/2021 Lampiran VII</td><td>Baku mutu udara ambien nasional: PM10 75 mikrogram per m&sup3; dalam 24 jam dan 40 tahunan; PM2.5 55 dan 15</td></tr>
+      <tr><td>Permen LHK No. P.14/2020</td><td>Indeks Standar Pencemaran Udara dengan 7 parameter dan lima kategori: baik 1 sampai 50, sedang 51 sampai 100, tidak sehat 101 sampai 200, sangat tidak sehat 201 sampai 300, berbahaya 301 ke atas</td></tr>
+      <tr><td>Permen LHK No. 5 Tahun 2022</td><td>Pengolahan air limbah pertambangan dengan constructed wetland; pH 6 sampai 9; TSS batubara 400 mg/L untuk penambangan dan 200 untuk pengolahan; bijih besi 200 dan 50</td></tr>
+      <tr><td>Permen LHK No. 5 Tahun 2014</td><td>Baku mutu air limbah nasional umum yang masih berlaku bersama PP 22/2021</td></tr>
+      <tr><td>Permen ESDM No. 26 Tahun 2018</td><td>Kaidah Pertambangan yang Baik terdiri atas KTT, PTL, KTBT, dan KaIT. Ambang KTT kelas I untuk batubara terbuka di atas 500 ton per hari dan bijih logam terbuka di atas 1.500 ton per hari</td></tr>
+      <tr><td>Kepmen ESDM No. 1827 K/30/MEM/2018</td><td>Pedoman pengelolaan lingkungan, reklamasi, dan pascatambang. Pascaoperasi paling lama 2 tahun</td></tr>
+      <tr><td>PP No. 39 Tahun 2025 dan Permen ESDM No. 17 Tahun 2025</td><td>Regimen RKAB terkini dengan evaluasi penuh secara daring melalui MinerbaOne</td></tr>
+      <tr><td>SNI 4726:2019</td><td>Pedoman pelaporan hasil eksplorasi, sumber daya, dan cadangan mineral</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <figure>
+    <img src="gambar/jalan-hauling.jpg" alt="Jalan haul truck yang tertutup kabut debu tebal sehingga jarak hampir tidak terlihat dari dalam kabin" width="720" height="492" loading="lazy" decoding="async">
+    <figcaption><b>Gambar 2.</b> Jalan haul truck yang tertutup kabut debu. Kondisi seperti ini menurunkan jangkauan LiDAR, menurunkan kualitas citra kamera, dan mendorong penggunaan sensor fusion serta proximity detection, bukan satu sensor saja. Sumber: <a href="https://commons.wikimedia.org/wiki/File:Kabut_di_Jalan_Hauling.jpg">Wikimedia Commons, <i>Kabut di Jalan Hauling</i></a> (CC BY-SA 4.0, Ekyul).</figcaption>
+  </figure>
+
+  <p>Permen LHK No. 5 Tahun 2022 juga mengatur bahwa pemantauan dapat dilakukan otomatis dan berkelanjutan atau manual. Pemantauan manual mewajibkan pH dan debit setiap hari serta parameter lain minimal satu kali sebulan. PP 22/2021 dan Permen LHK No. 5 Tahun 2022 secara eksplisit mengizinkan atau mewajibkan pemantauan otomatis berkelanjutan, dan itulah yang dibawa oleh IoT.</p>
+
+  <h2 id="s24">24. Cybersecurity sistem OT tambang</h2>
+
+  <p>Sistem di tambangnya kini terhubung ke jaringan, sehingga risiko siber masuk ke wilayah proses fisik. NIST SP 800-82 Revisi 3 yang terbit 28 September 2023 menyatakan bahwa tujuan keamanan OT biasanya mengutamakan integritas dan availability, lalu confidentiality, dengan safety sebagai prioritas yang menaungi keduanya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 24.1 &middot; Rekomendasi utama NIST SP 800-82 Revisi 3</caption>
+    <thead>
+      <tr><th>Rekomendasi</th><th>Isi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Batasi akses logis</td><td>Hanya orang dan sistem yang berwenang</td></tr>
+      <tr><td>Batasi modifikasi data</td><td>Pada saat disimpan, transit, penggunaan, dan lintas batas</td></tr>
+      <tr><td>Topologi berlapis</td><td>Komunikasi kritis berada di lapisan paling aman</td></tr>
+      <tr><td>Pisahkan korporat dan OT</td><td>DMZ dan gateway satu arah antara lapisan 2 dan 3</td></tr>
+      <tr><td>Jaga sistem keselamatan</td><td>Tetap pada posisi jalankan kecuali sedang diprogram</td></tr>
+      <tr><td>Segmentasi</td><td>Meng Purdue, level ISA-95 atau IEC 62264, atau model IIRA</td></tr>
+      <tr><td>Akses jarak jauh</td><td>Multi-factor authentication sebagai praktik terbaik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>IEC 62443 memakai konsep zone dan conduit. Zone adalah kelompok aset dengan persyaratan keamanan yang sama, sedangkan conduit adalah kelompok kanal logis dengan persyaratan keamanan yang sama antara dua zone atau lebih. Standar ini punya security level 1 sampai 4 yang diturunkan dari risiko target, kapabilitas, dan level yang dicapai. Pada cybersecurity, aset keselamatan harus mendapat zone tersendiri, terpisah dari sistem operasi biasa.</p>
+
+  <p>MITRE ATT&CK untuk ICS pernah dirilis pada Januari 2020 dengan sekitar 79 teknik dan 12 taktik. Taktiks yang relevan antara lain impair process control dengan modifikasi parameter, brute force I/O, dan unauthorized command message, serta inhibit response function dengan mematikan alarm dan mengaktifkan mode pembaruan firmware. Dampak yang diklasifikasikan meliputi kehilangan keselamatan, kehilangan kendali, kehilangan pandangan, serta kehilangan produktivitas dan pendapatan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 24.2 &middot; Insiden keamanan yang relevan</caption>
+    <thead>
+      <tr><th class="mono">Tahun</th><th>Insiden</th><th>Fakta terverifikasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">2010</td><td>Stuxnet</td><td>Ditemukan Juni 2010; menyerang PLC Siemens S7-300 dengan WinCC dan PCS 7; menargetkan centrifuge Natanz; sekitar 900 sampai 1.000 centrifuge diganti antara November 2009 dan Februari 2010</td></tr>
+      <tr><td class="mono">2017</td><td>Triton atau TRISIS</td><td>Agustus 2017, diumumkan 14 Desember 2017; menyerang safety PLC Triconex di kilang petrokimia; sistem gagal aman dan berhenti operasi sekitar seminggu</td></tr>
+      <tr><td class="mono">2019</td><td>Norsk Hydro</td><td>Ransomware bulan Maret 2019; 160 lokasi dan lebih dari 20.000 sistem terdampak; kerugian dilaporkan 67 sampai 84 juta dolar AS</td></tr>
+      <tr><td class="mono">2021</td><td>Colonial Pipeline</td><td>Berhenti 7 Mei 2021, beroperasi kembali 13 Mei 2021; ransomware DarkSide; tebusan diakui 4,4 juta dolar AS</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p class="label">Celah regulasi di Indonesia</p>
+    <p>Tidak ditemukan standar SNI atau peraturan yang secara khusus memaksa keamanan siber pada sistem OT atau ICS di pertambangan Indonesia. Yang ada adalah standar kaidah pertambangan yang baik, standar keselamatan, dan standar pelaporan. Praktik keamanan OT pada tambang Indonesia saat ini mengacu pada NIST SP 800-82 dan IEC 62443 sebagai rujukan, bukan sebagai kewajiban.</p>
+  </div>
+
+  <h2 id="s25">25. Ringkasan dan contoh soal</h2>
+
+  <h3 id="s25-1">25.1 Konsep kunci</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 25.1 &middot; Konsep kunci per materi</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Konsep</th><th>Ringkasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Siklus pertambangan</td><td>Eksplorasi, discovery, feasibility, development, operasi, pengolahan, decommissioning, rehabilitasi, pasca-tutup</td></tr>
+      <tr><td class="mono">2</td><td>Izin dan jangka waktu</td><td>IUP, IUPK, IPR, SIPB; eksplorasi logam 8 tahun, operasi 20 tahun plus 2 kali 10 tahun</td></tr>
+      <tr><td class="mono">3</td><td>Kontribusi ekonomi</td><td>Porsi PDB 10,5 persen 2023, 9,15 persen 2024, 8,75 persen 2025; nikel peringkat pertama dunia</td></tr>
+      <tr><td class="mono">4</td><td>Remote sensing</td><td>ASTER 14 band dengan SWIR nonaktif sejak 2008; Landsat 8 dan 9 sebanyak 11 band</td></tr>
+      <tr><td class="mono">5</td><td>Hyperspectral</td><td>Ratusan kanal untuk sidik jari spektral mineral; peta mineral USGS resolusi 15 meter</td></tr>
+      <tr><td class="mono">6</td><td>LiDAR</td><td>QL0 sampai QL2 dengan RMSE vertikal 5 sampai 10 cm dan kerapatan 2 sampai 8 titik per m&sup2;</td></tr>
+      <tr><td class="mono">7</td><td>Machine learning geologi</td><td>Decision tree 44,71 persen dari 255 studi; random forest dan SVM paling umum</td></tr>
+      <tr><td class="mono">8</td><td>AHS</td><td>Komersial pertama Januari 2008 di Chile; Rio Tinto, Fortescue, Vale, Barrick</td></tr>
+      <tr><td class="mono">9</td><td>Autonomous versus remote</td><td>Keputusan oleh perangkat onboard atau oleh manusia jarak jauh; ISO 17757:2019</td></tr>
+      <tr><td class="mono">10</td><td>Sensor fusion</td><td>Debu menurunkan jangkauan LiDAR lebih dari separuh; radar 77 GHz tetap stabil</td></tr>
+      <tr><td class="mono">11</td><td>Keselamatan</td><td>Lebih dari 40 persen cedera serius; 21 dari 32 fatalitas 2023; proximity detection dengan kamera</td></tr>
+      <tr><td class="mono">12</td><td>Fleet management</td><td>Penentuan truk dan rute berdasarkan data real time</td></tr>
+      <tr><td class="mono">13</td><td>IoT</td><td>Sensor, mikrokontroler, LoRa, gateway, edge, server, dashboard</td></tr>
+      <tr><td class="mono">14</td><td>RFID</td><td>LF sampai 10 cm, UHF pasif 3 sampai 8 meter, UHF aktif 30 meter ke atas</td></tr>
+      <tr><td class="mono">15</td><td>Pemeliharaan</td><td>Korektif, preventif, prediktif, condition based; ISO 20816 menggantikan ISO 10816</td></tr>
+      <tr><td class="mono">16</td><td>Bearing</td><td>BPFO dan BPFI dari N, n, d, D; BPFO plus BPFI sama dengan N kali n</td></tr>
+      <tr><td class="mono">17</td><td>Kelelahan</td><td>8 shift siang setara BAC 0,05 persen; sekitar 17 kejadian per shift</td></tr>
+      <tr><td class="mono">18</td><td>Jaringan</td><td>IMT-2020 latensi 1 ms untuk URLLC; uplink didominasi; Newmont 175 Mbit/s dan 2,5 km</td></tr>
+      <tr><td class="mono">19</td><td>Edge computing</td><td>Inferensi AI dekat sumber data; akurasi 85 persen pada studi Cadia</td></tr>
+      <tr><td class="mono">20</td><td>Freeport Indonesia</td><td>5G bawah tanah pertama di Asia Tenggara sejak 1 September 2022, 6 unit BTS</td></tr>
+      <tr><td class="mono">21</td><td>Lingkungan</td><td>PP 22/2021, Permen LHK P.14/2020, Permen LHK 5/2022, Kepmen ESDM 1827/2018</td></tr>
+      <tr><td class="mono">22</td><td>Cybersecurity OT</td><td>NIST SP 800-82 Rev 3: integritas dan availability di atas confidentiality; IEC 62443 zone dan conduit</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s25-2">25.2 Contoh soal dan jawaban</h3>
+
+  <dl class="qa">
+    <dt>1. Jelaskan hubungan Teknik Komputer dengan Teknik Pertambangan.</dt>
+    <dd>Teknik Komputer menyediakan perangkat keras, perangkat lunak, jaringan, pengumpulan data, kecerdasan buatan, dan otomasi yang dipakai pada setiap tahap pertambangan. Teknologi tersebut mengubah data lapangan menjadi informasi dan keputusan untuk meningkatkan produktivitas, keselamatan, efisiensi, dan pengawasan lingkungan.</dd>
+
+    <dt>2. Mengapa autonomous truck membutuhkan Teknik Komputer?</dt>
+    <dd>Karena kendaraan memerlukan sensor, embedded computer, algoritma perception, localization, path planning, decision making, control, dan komunikasi jaringan. Semua tahap tersebut merupakan fungsi komputasi.</dd>
+
+    <dt>3. Apa perbedaan remote control dan autonomous?</dt>
+    <dd>Remote control masih bergantung pada manusia sebagai pengendali jarak jauh, sedangkan autonomous system menjalankan sensing, algoritma, dan kontrolnya sendiri dalam kondisi operasi yang telah ditentukan. Contohnya Cat Command untuk remote dan Komatsu FrontRunner untuk autonomous.</dd>
+
+    <dt>4. Mengapa autonomous truck menggunakan lebih dari satu sensor?</dt>
+    <dd>Karena setiap sensor punya kelebihan dan keterbatasan. Kamera, LiDAR, radar, GNSS, dan IMU memberikan informasi berbeda, dan sensor fusion meningkatkan ketahanan terhadap debu, cuaca, gangguan GNSS, serta medan kompleks. Debu dapat menurunkan jangkauan LiDAR lebih dari separuh, sementara radar 77 GHz tetap stabil.</dd>
+
+    <dt>5. Apa fungsi IoT dalam pertambangan?</dt>
+    <dd>IoT menghubungkan sensor, alat, mikrokontroler, dan jaringan sehingga data kondisi mesin, posisi, lingkungan, atau proses dapat dikumpulkan dan dipantau secara digital.</dd>
+
+    <dt>6. Apa itu predictive maintenance dan bagaimana cara kerjanya?</dt>
+    <dd>Predictive maintenance menggunakan data kondisi peralatan dan analisis untuk memprediksi kemungkinan kerusakan sehingga perawatan dapat direncanakan sebelum kegagalan terjadi. Metodenya meliputi getaran, analisis oli, termografi, emisi akustik, dan analisis sidik jari arus motor.</dd>
+
+    <dt>7. Mengapa private network dibutuhkan pada smart mining?</dt>
+    <dd>Karena operasi tambang memerlukan coverage luas, kapasitas tinggi, latensi rendah, availability tinggi, dan konektivitas yang dapat diprediksi untuk mendukung autonomous vehicle, remote operation, fleet management, serta aplikasi mission critical. Pada studi Newmont, satu radio 5G mencakup 2,5 km dengan uplink 175 Mbit/s untuk sampai 12 bulldozer.</dd>
+
+    <dt>8. Mengapa AI dapat meningkatkan keselamatan tetapi juga memiliki risiko?</dt>
+    <dd>AI dapat mendeteksi pekerja, kendaraan, blind spot, atau kondisi berbahaya dengan cepat, tetapi model dapat salah mendeteksi karena keterbatasan data, sensor, dan kondisi lingkungan. Karena itu AI untuk keselamatan memerlukan validasi, pengujian, pemantauan, dan pengendalian risiko. NIOSH juga menganggap AI sebagai algoritma terlatih yang mengubah bahaya yang sudah ada.</dd>
+
+    <dt>9. Jelaskan penerapan Teknik Komputer pada tambang bawah tanah Freeport.</dt>
+    <dd>Private network Telkomsel dengan 5G BTS yang mencakup bawah tanah, edge computing dengan platform Hyperconnected Network, kamera terhubung AI, remote operation melalui Minegem, serta rencana remote blasting, pelacakan aset, dan analitik video. Implementasi dimulai 1 September 2022 dan diklaim sebagai yang pertama di Asia Tenggara. Angka peningkatan produktivitas yang beredar berasal dari Deloitte 2021, bukan dari PTFI.</dd>
+
+    <dt>10. Apa tantangan digitalisasi pertambangan?</dt>
+    <dd>Infrastruktur yang tidak merata, biaya investasi besar, talenta digital yang terbatas, keamanan siber, tata kelola data, kondisi lingkungan seperti debu dan hujan, serta keandalan sistem. Ketiadaan standar SNI khusus keamanan siber OT di Indonesia juga menjadi tantangan regulasi.</dd>
+
+    <dt>11. Berapa masa eksplorasi dan operasi produksi untuk mineral logam menurut UU 3 Tahun 2020?</dt>
+    <dd>Masa eksplorasi 8 tahun dan dapat diperpanjang satu tahun setiap kali. Masa operasi produksi 20 tahun dengan dua kali perpanjangan 10 tahun. Pemegang izin pada tahap operasi produksi wajib conducts eksplorasi lanjutan setiap tahun.</dd>
+
+    <dt>12. Mengapa UHF RFID tidak selalu lebih baik daripada LF di lingkungan tambang?</dt>
+    <dd>UHF bekerja dengan medan listrik far-field pada panjang gelombang sekitar 32,8 cm sehingga logam dan air sangat mengganggu dan zona baca tidak tegas. LF memakai induksi medan magnetik near-field, tahan logam, dengan zona baca yang jelas. Keduanya dipilih sesuai kebutuhan: LF untuk identifikasi dekat, UHF untuk penghitungan armada di luar.</dd>
+
+    <dt>13. Sebuah pompa 75 kW pada dudukan rigid menghasilkan 2,9 mm/s RMS. Apa artinya menurut ISO 20816-3?</dt>
+    <dd>Untuk grup 2 15 sampai 300 kW dengan dudukan rigid, batas atas zona B adalah 2,8 mm/s. Nilai 2,9 mm/s berarti sistem masuk zona C sehingga perlu tindakan korektif. Ambang alarm adalah baseline ditambah 25 persen batas atas zona B, dan tidak boleh lebih dari 1,25 kali batas zona B.</dd>
+
+    <dt>14. Apa yang terjadi jika data sensor benar tetapi perintah yang dikirim ke PLC salah?</dt>
+    <dd>Sistem kendali bertindak berdasarkan nilai yang salah meskipun pengukuran benar. Dampaknya berada pada bidang hardware, software, komunikasi, kendali, dan keamanan, sehingga integritas data dan autentikasi pesan sama pentingnya dengan akurasi sensor.</dd>
+
+    <dt>15. Mengapa network slicing dipakai pada jaringan tambang?</dt>
+    <dd>Karena traffic keselamatan, kendali, video, IoT, dan suara memiliki kebutuhan latensi, keandalan, serta prioritas yang berbeda. Slicing memisahkan kebutuhan tersebut sehingga video operator tidak mengganggu perintah emergency stop meski memakai jaringan fisik yang sama.</dd>
+  </dl>
+
+  <h2 id="s26">26. Daftar pustaka</h2>
+
+  <footer>
+    <ul class="refs">
+      <li><b>Republik Indonesia.</b> (2020). <em>Undang-Undang Nomor 3 Tahun 2020 tentang Perubahan atas Undang-Undang Nomor 4 Tahun 2009 tentang Pertambangan Mineral dan Batubara.</em> LNRI 2020 No. 147. <a href="https://jdih.esdm.go.id/dokumen/download?id=UU+No.+3+Thn+2020.pdf">jdih.esdm.go.id</a></li>
+      <li><b>Badan Pusat Statistik.</b> (2026). Distribusi Persentase Produk Domestik Bruto Menurut Lapangan Usaha, 2025; dan rilis pertumbuhan ekonomi 2025. <a href="https://www.bps.go.id/en/pressrelease/2026/02/05/2546/indonesia-s-economic-growth-in-2025-was-5-11-percent.html">bps.go.id</a></li>
+      <li><b>U.S. Geological Survey.</b> (2026). <em>Mineral Commodity Summaries 2026: Nickel.</em> <a href="https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-nickel.pdf">pubs.usgs.gov</a></li>
+      <li><b>U.S. Geological Survey.</b> (2026). <em>Mineral Commodity Summaries 2026: Copper.</em> <a href="https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-copper.pdf">pubs.usgs.gov</a></li>
+      <li><b>U.S. Geological Survey.</b> <em>Remote Sensing of Minerals</em> dan <em>Assessing Mineral Resources.</em> <a href="https://www.usgs.gov/science/remote-sensing-minerals">usgs.gov</a></li>
+      <li><b>U.S. Geological Survey.</b> <em>Circular 1525: Remote Sensing for Monitoring Mine Lands and Recovery Efforts.</em> <a href="https://pubs.usgs.gov/publication/cir1525/full">pubs.usgs.gov</a></li>
+      <li><b>LP DAAC / NASA.</b> <em>ASTER User Guide Version 4.</em> <a href="https://lpdaac.usgs.gov/documents/2243/ASTER_User_Guide_V4.pdf">lpdaac.usgs.gov</a></li>
+      <li><b>NASA.</b> <em>Landsat Spectral Bands and Applications.</em> <a href="https://science.nasa.gov/mission/landsat/spectral-bands-and-applications/">science.nasa.gov</a></li>
+      <li><b>U.S. Geological Survey.</b> <em>3D Elevation Program: Topographic Data Quality Levels.</em> <a href="https://www.usgs.gov/3d-elevation-program/topographic-data-quality-levels-qls">usgs.gov</a></li>
+      <li><b>U.S. Geological Survey.</b> (2022). Mendenhall Research Opportunity 20-34: <em>Machine Learning to Enhance Mineral Resource Assessments.</em> <a href="https://www.usgs.gov/centers/mendenhall-research-fellowship-program/20-34-machine-learning-enhance-mineral-resource">usgs.gov</a></li>
+      <li><b>Xiong, Zuo, dan Carranza.</b> (2018). Mineral prospectivity mapping için machine learning. <em>Ore Geology Reviews</em>, 102, 811&ndash;817.</li>
+      <li><b>Resources Victoria.</b> <em>State of Discovery: Mineral Resources Strategy 2018&ndash;2023.</em> <a href="https://resources.vic.gov.au/geology-exploration/industry-investment/mineral-resources-strategy-2018-2023">resources.vic.gov.au</a></li>
+      <li><b>ISO.</b> (2019). <em>ISO 17757:2019 Earth-moving machinery and mining: Safety requirements for autonomous and semi-autonomous machine systems.</em> <a href="https://www.iso.org/standard/76126.html">iso.org</a></li>
+      <li><b>ISO.</b> (2022). <em>ISO 20816-3:2022 Mechanical vibration: Evaluation of machine vibration by measurements on non-rotating parts.</em> <a href="https://www.iso.org/standard/78334.html">iso.org</a></li>
+      <li><b>ISO.</b> (2018). <em>ISO 17359:2018 Condition monitoring and diagnostics of machines: General guidelines.</em> <a href="https://www.iso.org/standard/60093.html">iso.org</a></li>
+      <li><b>ISO.</b> (2017). <em>ISO 15243:2017 Rolling bearings: Damage and failures.</em> <a href="https://www.iso.org/standard/60497.html">iso.org</a></li>
+      <li><b>Komatsu Ltd.</b> <em>FrontRunner Autonomous Haulage System</em> dan <em>DISPATCH fleet management.</em> <a href="https://www.komatsu.com/en-au/technology/smart-solutions/smart-mining/autonomous-haulage-system">komatsu.com</a></li>
+      <li><b>Komatsu Ltd.</b> (2026). <em>Komatsu Becomes First OEM to Commission 1000 Ultra-Class Autonomous Haul Trucks.</em> <a href="https://www.komatsu.com/en-us/newsroom/2026/komatsu-becomes-first-oem-to-commission-1000-ultra-class-autonomous-haul-trucks">komatsu.com</a></li>
+      <li><b>Caterpillar Inc.</b> <em>Cat MineStar Command for Hauling.</em> <a href="https://www.cat.com/en_US/news/machine-press-releases/cat-minestar-command-for-hauling-manages-the-autonomous-ecosystem.html">cat.com</a></li>
+      <li><b>Rio Tinto.</b> <em>Operations: Western Australia.</em> <a href="https://www.riotinto.com/en/operations/anz/western-australia">riotinto.com</a></li>
+      <li><b>Fortescue Ltd.</b> <em>Autonomy Leadership at Solomon Hub and Cloudbreak.</em> <a href="https://www.fortescue.com/en/articles/fortescue-team-continues-to-lead-on-autonomy-as-cloudbreak-trucks-go-live-2019-05-08">fortescue.com</a></li>
+      <li><b>Barrick Mining.</b> (2025). <em>Nevada Gold Mines and Komatsu Launch First Autonomous Haulage Partnership in the US.</em> <a href="https://www.barrick.com/English/news/news-details/2025/">barrick.com</a></li>
+      <li><b>Vale S.A.</b> (2025). <em>Vale, Caterpillar and Sotreq to Expand Autonomous Truck Fleet in the Northern System.</em> <a href="https://vale.com/">vale.com</a></li>
+      <li><b>Anti, N. Y. D., Frimpong, S., dan Raza, M. A.</b> (2026). Vehicle Autonomy to Ecosystem Intelligence: A Systematic Review of Dynamic Vision Architectures in Surface Mining Operations. <em>Sensors</em>, 26(13), 4258. <a href="https://www.mdpi.com/1424-8220/26/13/4258">mdpi.com</a></li>
+      <li><b>NIOSH.</b> <em>Mining and Machinery Struck-by Injuries.</em> DHHS (NIOSH) Publication No. 2007-114. <a href="https://www.cdc.gov/niosh/mining/topics/machinery-struck-by-injuries.html">cdc.gov</a></li>
+      <li><b>NIOSH.</b> (2007). <em>Recommendations for Evaluating and Implementing Proximity Warning Systems on Surface Mining Equipment.</em> DHHS (NIOSH) Publication No. 2007-146, RI 9672. <a href="https://stacks.cdc.gov/view/cdc/8494">stacks.cdc.gov</a></li>
+      <li><b>NIOSH.</b> (2024). <em>Exploring Approaches to Keep an AI-Enabled Workplace Safe for Workers.</em> NIOSH Science Bulletin. <a href="https://www.cdc.gov/niosh/bulletin/2024/ai-risk-management.html">cdc.gov</a></li>
+      <li><b>Bauerle, Dugdale, dan Poplin.</b> <em>Mineworker Fatigue Review.</em> NIOSH. <a href="https://stacks.cdc.gov/view/cdc/55670">stacks.cdc.gov</a></li>
+      <li><b>Ericsson.</b> (2024). <em>Newmont Case: A Journey to Cellular and the Safer, Smarter, More Sustainable Mine.</em> <a href="https://www.ericsson.com/4aea53/assets/local/cases/customer-cases/2024/ericsson_newmont_case-study2024.pdf">ericsson.com</a></li>
+      <li><b>Ericsson.</b> (2025). <em>Newmont Using World-First 5G Teleremote Dozer Fleet with Ericsson Private 5G.</em> <a href="https://www.ericsson.com/en/news/2025/4/">ericsson.com</a></li>
+      <li><b>Telkomsel.</b> (2022). <em>Telkomsel dan PT Freeport Indonesia Hadirkan Penerapan 5G Underground Smart Mining Pertama di Asia Tenggara.</em> 1 September 2022. <a href="https://www.telkomsel.com/en/about-us/news/telkomsel-and-freeport-indonesia-implement-first-5g-underground-smart-mining">telkomsel.com</a></li>
+      <li><b>Vale S.A.</b> (2019). <em>Vale Will Operate the First Private LTE Network in Partnership with Vivo.</em> <a href="https://saladeimprensa.vale.com/w/vale-will-operate-the-first-private-lte-network-in-partnership-with-vivo">vale.com</a></li>
+      <li><b>Nokia.</b> (2020). <em>Nokia and Vivo to Provide Private LTE Wireless Services to Vale Mining.</em> <a href="https://www.nokia.com/newsroom/nokia-and-vivo-to-provide-private-lte-wireless-services-to-vale-mining-industry-40-project-in-brazil">nokia.com</a></li>
+      <li><b>ITU-R.</b> <em>Recommendation M.2083-0: IMT-2020 Framework and Overall Objectives.</em> <a href="https://www.itu.int/dms_pubrec/itu-r/rec/m/r-rec-m.2083-0-201509-i!!pdf-e.pdf">itu.int</a></li>
+      <li><b>3GPP.</b> <em>TS 22.261: System Design for 5G System.</em> <a href="https://www.etsi.org/deliver/etsi_ts/122200_122299/122261/">etsi.org</a></li>
+      <li><b>NIST.</b> (2023). <em>SP 800-82 Rev. 3: Guide to Operational Technology (OT) Security.</em> <a href="https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-82r3.pdf">nvlpubs.nist.gov</a></li>
+      <li><b>ISA.</b> <em>ISA/IEC 62443-3-2: Security Risk Assessment for System Design.</em> <a href="https://www.isa.org/getmedia/661c718f-8e64-446d-acf9-2c6286db1b33/isa-62443-3-2-preview.pdf">isa.org</a></li>
+      <li><b>MITRE.</b> <em>ATT&amp;CK for Industrial Control Systems.</em> <a href="https://attack.mitre.org/matrices/ics/">attack.mitre.org</a></li>
+      <li><b>U.S. Department of Energy.</b> <em>Colonial Pipeline Cyber Incident Review.</em> <a href="https://www.energy.gov/ceser/colonial-pipeline-cyber-incident">energy.gov</a></li>
+      <li><b>CISA.</b> (2017). <em>AA22-083A: Russian Government Actors and APT29 Target US Critical Infrastructure, including Triton Safety Instrumented Systems.</em> <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa22-083a">cisa.gov</a></li>
+      <li><b>Republik Indonesia.</b> <em>PP No. 22 Tahun 2021 tentang Pelaksanaan Perlindungan dan Pengelolaan Lingkungan Hidup.</em> <\/em> <a href="https://jdih.setkab.go.id/PUUdoc/176367/PP_Nomor_22_Tahun_2021.pdf">jdih.setkab.go.id</a></li>
+      <li><b>Kementerian Lingkungan  dan Kehutanan.</b> <em>Permen LHK No. P.14/2020 tentang Indeks Standar Pencemaran Udara.</em> <a href="https://peraturan.bpk.go.id/Download/156214/Permen%20LHK%20Nomor%2014%20Tahun%202020.pdf">peraturan.bpk.go.id</a></li>
+      <li><b>Kementerian Lingkungan  dan Kehutanan.</b> (2022). <em>Permen LHK No. 5 Tahun 2022 tentang Pengolahan Air Limbah Pertambangan dengan Constructed Wetland.</em> <a href="https://jdih.kemenkoinfra.go.id/cfind/source/files/permen-lhk/2022/2022pmlhk005.pdf">jdih.kemenkoinfra.go.id</a></li>
+      <li><b>Kementerian ESDM.</b> (2018). <em>Kepmen ESDM No. 1827 K/30/MEM/2018 tentang Pedoman Kaidah Teknik Pertambangan yang Baik.</em> <a href="https://jdih.esdm.go.id/dokumen/download?id=Keputusan+Menteri+ESDM+Nomor+1827+K+30+MEM+2018.pdf">jdih.esdm.go.id</a></li>
+      <li><b>Kementerian ESDM.</b> (2018). <em>Permen ESDM No. 26 Tahun 2018 tentang Kaidah Pertambangan yang Baik.</em> <a href="https://jdih.esdm.go.id/dokumen/view?id=1798">jdih.esdm.go.id</a></li>
+      <li><b>Badan Standardisasi Nasional.</b> (2019). <em>SNI 4726:2019 tentang Pedoman Pelaporan Hasil Eksplorasi, Sumber Daya, dan Cadangan Mineral.</em></li>
+      <li><b>Espressif Systems.</b> <em>ESP32 Series Datasheet.</em> Rentang suhu kerja minus 40 sampai 125 derajat Celsius. <a href="https://www.espressif.com/en/products/socs/esp32">espressif.com</a></li>
+      <li><b>Texas Instruments.</b> <em>SCBA026: RFID Frequencies and Protocols.</em> <a href="https://www.ti.com/lit/an/scba026">ti.com</a></li>
+      <li><b>STMicroelectronics.</b> <em>LoRa Connectivity for Condition-Based and Predictive Maintenance.</em> <a href="https://www.st.com/resource/en/brochure/lora-connectivity-for-condition-based-and-predictive-maintenance.pdf">st.com</a></li>
+      <li><b>Microsoft.</b> <em>Newcrest Mining: AI and IoT Transformation with 3-Month ROI at Cadia Valley.</em> <a href="https://news.microsoft.com/en-au/features/newcrest-minings-ai-and-iot-transformation-3-month-roi">news.microsoft.com</a></li>
+      <li><b>Watusampu dkk.</b> <em>Sistem monitoring kualitas udara tambang pasir berbasis LoRa.</em> Jurnal JEECOM, Universitas Jambi. <a href="https://ejournal.unija.ac.id/index.php/jeecom/article/view/17080">ejournal.unija.ac.id</a></li>
+      <li><b>Scientia Technica.</b> (2024). <em>IoT architecture for environmental monitoring in mining.</em> <a href="http://www.scielo.org.co/">scielo.org.co</a></li>
+      <li><b>World Trade Organization.</b> <em>DS592: Indonesia &mdash; Measures Relating to Raw Materials.</em> <a href="https://www.wto.org/english/tratop_e/dispu_e/cases_e/ds592_e.htm">wto.org</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>

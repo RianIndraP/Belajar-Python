@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hubungan Teknik Komputer dengan Teknik Elektro — Pengantar Rekayasa dan Desain</title>
+<meta name="description" content="Modul Pengantar Rekayasa dan Desain: hubungan Teknik Komputer dan Teknik Elektro, dari elektronika dasar, logika digital, embedded system, sistem kendali, hingga PLC dan SCADA.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Pendahuluan</a>
+  <a href="#s2">2. Definisi rekayasa</a>
+  <a href="#s3">3. Sains dan rekayasa</a>
+  <a href="#s4">4. Siklus hidup sistem</a>
+  <a href="#s5">5. Kebutuhan sampai spesifikasi</a>
+  <a href="#s6">6. Constraint</a>
+  <a href="#s7">7. Trade-off</a>
+  <a href="#s8">8. Masalah open-ended</a>
+  <a href="#s9">9. Metode pengambilan keputusan</a>
+  <a href="#s10">10. V-model dan V-V</a>
+  <a href="#s11">11. Prototype dan iterasi</a>
+  <a href="#s12">12. Systems thinking</a>
+  <a href="#s13">13. Keandalan</a>
+  <a href="#s14">14. Manajemen proyek</a>
+  <a href="#s15">15. Profesi insinyur di Indonesia</a>
+  <a href="#s16">16. Kode etika</a>
+  <a href="#s17">17. Kasus etika</a>
+  <a href="#s18">18. Lima bidang Teknik Elektro</a>
+  <a href="#s19">19. Smart grid</a>
+  <a href="#s20">20. IoT dan CPS</a>
+  <a href="#s21">21. Keberlanjutan dan e-waste</a>
+  <a href="#s22">22. Privasi dan keamanan</a>
+  <a href="#s23">23. Dampak sosial</a>
+  <a href="#s24">24. Latihan</a>
+  <a href="#s25">25. Ringkasan dan soal</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Modul 03 &middot; Pengantar Rekayasa dan Desain</p>
+    <div class="rule"></div>
+    <h1>Rekayasa, Profesi Insinyur, dan Peran Teknik Elektro</h1>
+    <p>Materi ini membahas definisi rekayasa menurut kriteria akreditasi, perbedaan sains dan rekayasa, siklus hidup sistem, kebutuhan sampai spesifikasi, batasan, trade-off, proses iteratif, V-model, sistem thinking, etika profesi, kedudukan Teknik Elektro, serta smart grid, IoT, cyber-physical system, keberlanjutan, dan e-waste.</p>
+  </header>
+
+  <h2 id="s1">1. Pendahuluan</h2>
+
+  <p>Rekayasa adalah kegiatan menerapkan ilmu pengetahuan untuk menghasilkan solusi yang dapat dipakai manusia. Contohnya, ketika seorang penghuni mengeluh bahwa sebuah ruangan terlalu panas, kebutuhan itu belum cukup untuk memulai desain. Insinyur harus mengubahnya menjadi requirement yang dapat diukur, memilih alternatif, menguji, dan memperbaikinya.</p>
+
+  <pre class="diagram"><code>Kebutuhan manusia
+   |
+Masalah
+   |
+Analisis kebutuhan
+   |
+Requirement dan specification
+   |
+Constraint
+   |
+Alternatif desain
+   |
+Analisis dan simulasi
+   |
+Prototipe
+   |
+Pengujian
+   |
+Evaluasi dan perbaikan
+   |
+Implementasi</code></pre>
+
+  <p>Abet mendefinisikan engineering design sebagai proses membuat sistem, komponen, atau proses untuk memenuhi kebutuhan dan spesifikasi tertentu dalam batas-batas yang ada. Modul ini mengikuti urutan tersebut, lalu menutupnya dengan isu profesi, etika, dan dampak sosial yang menentukan apakah sebuah solusi benar-benar layak.</p>
+
+  <h2 id="s2">2. Definisi rekayasa</h2>
+
+  <p>ABET memakai definisi berikut untuk engineering design: <em>a process of devising a system, component, or process to meet desired needs and specifications within constraints</em>. Definisi ini menegaskan empat hal: ada kebutuhan, ada spesifikasi yang dituju, ada batasan, dan prosesnya iteratif serta kreatif.</p>
+
+  <div class="note">
+    <p class="label">Contoh batasan menurut definisi ABET</p>
+    <p>Aesthetics, codes, constructability, cost, ergonomics, extensibility, functionality, interoperability, legal considerations, maintainability, manufacturability, marketability, policy, regulations, schedule, standards, sustainability, dan usability.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 2.1 &middot; Capaian mahasiswa menurut ABET 2026&ndash;2027</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Capaian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Mengidentifikasi, merumuskan, dan menyelesaikan masalah rekayasa kompleks dengan menerapkan prinsip rekayasa, sains, dan matematika</td></tr>
+      <tr><td class="mono">2</td><td>Menerapkan engineering design untuk menghasilkan solusi yang memenuhi kebutuhan tertentu dengan mempertimbangkan kesehatan masyarakat, keselamatan, dan kesejahteraan, serta faktor global, budaya, sosial, lingkungan, dan ekonomi</td></tr>
+      <tr><td class="mono">3</td><td>Berkomunikasi secara efektif dengan berbagai khalayak</td></tr>
+      <tr><td class="mono">4</td><td>Mengenali tanggung jawab etis dan profesional dengan mempertimbangkan dampak solusi rekayasa dalam konteks global, ekonomi, lingkungan, dan masyarakat</td></tr>
+      <tr><td class="mono">5</td><td>Bekerja efektif dalam tim</td></tr>
+      <tr><td class="mono">6</td><td>Merancang dan melakukan eksperimen, menganalisis serta menafsirkan data, dan menggunakan pertimbangan rekayasa</td></tr>
+      <tr><td class="mono">7</td><td>Memperoleh dan menerapkan pengetahuan baru sesuai kebutuhan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p class="label">Koreksi yang perlu diketahui</p>
+    <p>Daftar capaian huruf a sampai k yang sering dikutip dalam materi lama sudah tidak dipakai. Kriteria 2026&ndash;2027 memakai nomor 1 sampai 7, dengan desain pada capaian 2 dan etika pada capaian 4. Keberlanjutan bukan capaian tersendiri, melainkan melekat pada capaian 2 dan pada daftar batasan di atas.</p>
+  </div>
+
+  <p>ABET menetapkan siklus akreditasi enam tahun. Kriteria 5 ayat 4 mensyaratkan adanya pengalaman desain utama yang mengintegrasikan standar rekayasa dan beberapa batasan, serta bertumpu pada pengetahuan dan keterampilan dari mata kuliah sebelumnya. Dalam konteks Indonesia, akreditasi program studi teknik dilakukan oleh Lembaga Akreditasi Mandiri Teknik dengan masa berlaku lima tahun.</p>
+
+  <h2 id="s3">3. Sains dan rekayasa</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.1 &middot; Perbedaan sains dan rekayasa</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Ilmu pengetahuan</th><th>Rekayasa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pertanyaan</td><td>Bagaimana dan mengapa fenomena terjadi</td><td>Bagaimana kebutuhan dipenuhi</td></tr>
+      <tr><td>Tujuan</td><td>Mengembangkan pemahaman</td><td>Menghasilkan solusi</td></tr>
+      <tr><td>Hasil</td><td>Teori, model, data</td><td>Produk, sistem, proses, metode</td></tr>
+      <tr><td>Pendekatan</td><td>Observasi, eksperimen, pemodelan</td><td>Desain, analisis, sintesis, implementasi, pengujian</td></tr>
+      <tr><td>Ukuran keberhasilan</td><td>Ketepatan penjelasan dan prediksi</td><td>Pemenuhan kebutuhan dalam batas yang ada</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Hubungan keduanya bersifat dua arah. Sains menemukan prinsip elektromagnetisme, lalu rekayasa memakainya untuk membuat motor, generator, transformator, dan pengeras suara. Sebaliknya, instrumen yang dirancang insinyur memungkinkan ilmuwan memperoleh data yang tidak mungkin sebelumnya.</p>
+
+  <h2 id="s4">4. Siklus hidup sistem</h2>
+
+  <p>ISO/IEC/IEEE 15288 Edisi 2 yang terbit pada Mei 2023 menyediakan kerangka umum untuk menjelaskan proses pada siklus hidup sistem. Standar ini tidak memaksakan model siklus hidup tertentu, tetapi membagi proses ke dalam empat kelompok.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Kelompok proses pada ISO/IEC/IEEE 15288:2023</caption>
+    <thead>
+      <tr><th>Kelompok</th><th>Isi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Agreement</td><td>Pengadaan dan suplai</td></tr>
+      <tr><td>Organizational project-enabling</td><td>Pengelolaan model siklus hidup, infrastruktur, dan portofolio</td></tr>
+      <tr><td>Technical management</td><td>Pengelolaan teknis, termasuk risiko dan pelacakan</td></tr>
+      <tr><td>Technical</td><td>Konsep operasi, kebutuhan, definisi requirement sistem, arsitektur, definisi desain, analisis, realisasi, verifikasi sistem, dan validasi sistem</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Berurutan proses teknis dari definisi requirement sampai validasi membentuk rantai yang tidak boleh dilompati. Kebutuhan pemangku kepentingan menjadi system requirements, lalu menjadi design definition, baru kemudian dierealisasikan dan diverifikasi.</p>
+
+  <pre class="diagram"><code>Konsep operasi
+   |
+Kebutuhan pemangku kepentingan
+   |
+Definisi requirement sistem
+   |
+Definisi arsitektur sistem
+   |
+Definisi desain
+   |
+Realisasi
+   |
+Verifikasi sistem
+   |
+Validasi sistem</code></pre>
+
+  <h2 id="s5">5. Kebutuhan sampai spesifikasi</h2>
+
+  <p>Empat istilah berikut sering tertukar, tetapi berbeda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 5.1 &middot; Istilah kebutuhan, spesifikasi, dan batasan</caption>
+    <thead>
+      <tr><th>Istilah</th><th>Pengertian</th><th>Contoh pada lampu otomatis</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Requirement</td><td>Kebutuhan atau fungsi yang harus dipenuhi</td><td>Lampu menyala otomatis saat ruangan gelap dan digunakan</td></tr>
+      <tr><td>Specification</td><td>Requirement yang dinyatakan sebagai parameter terukur</td><td>Menyala saat intensitas cahaya di bawah 100 lux, waktu tanggap kurang dari 1 detik</td></tr>
+      <tr><td>Constraint</td><td>Batasan yang tidak boleh dilanggar</td><td>Anggaran maksimal Rp150.000, operasi 10 sampai 40 derajat Celsius</td></tr>
+      <tr><td>Trade-off</td><td>Kompromi ketika dua tujuan saling berlawanan</td><td>Menaikkan sensitivitas sensor menambah noise</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>ISO/IEC/IEEE 29148 Edisi 2 tahun 2018 mengelompokkan requirement menjadi stakeholder requirements, system requirements yang terbagi menjadi fungsional, performansi, antarmuka, batasan, serta atribut kualitas, lalu diterjemahkannya menjadi design constraints dan design definition. Requirement yang baik memiliki sembilan ciri berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 5.2 &middot; Ciri requirement yang baik menurut ISO/IEC/IEEE 29148</caption>
+    <thead>
+      <tr><th>Ciri</th><th>Arti</th><th>Contoh requirement yang gagal</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Necessary</td><td>Dibutuhkan</td><td>Fitur log aplikasi untuk printer 3D</td></tr>
+      <tr><td>Implementation-free</td><td>Tidak mengunci solusi teknis</td><td>Gunakan sensor LDR, bukan sensor fotodioda</td></tr>
+      <tr><td>Unambiguous</td><td>Hanya punya satu makna</td><td>Sistem harus mudah digunakan</td></tr>
+      <tr><td>Complete</td><td>Tidak ada kondisi yang terlewat</td><td>Sensor harus bekerja pada semua kondisi tanpa pengecualian</td></tr>
+      <tr><td>Consistent</td><td>Tidak bertentangan dengan requirement lain</td><td>Dua requirement mengharuskan konflik daya</td></tr>
+      <tr><td>Singular</td><td>Satu requirement satu ide</td><td>Sensor cepat dan murah dalam satu kalimat</td></tr>
+      <tr><td>Feasible</td><td>Dapat direalisasikan</td><td>Baterai cukup untuk dua tahun dengan jarak tempuh 400 km</td></tr>
+      <tr><td>Verifiable</td><td>Dapat diuji</td><td>Antarmuka harus intuitif</td></tr>
+      <tr><td>Traceable</td><td>Dapat ditelusuri ke asalnya</td><td>Requirement tanpa sumber kebutuhan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 1 &middot; Menubah kebutuhan menjadi spesifikasi terukur</p>
+    <p>Kebutuhan: lampu harus hemat energi.</p>
+    <pre><code>Spesifikasi yang dapat diuji:
+  Sumber daya        : 5 V DC &plusmn;5 %
+  Daya maksimum      : 5 W
+  Ambang cahya       : menyala di bawah 100 lux
+  Waktu tanggap     : &lt; 1 detik
+  Rentang suhu       : 10 sampai 40 derajat C
+  Anggaran komponen : maksimal Rp150.000
+  Umur operasi      : minimal 10.000 jam
+  Akses konduktor   : tidak ada bagian bertegangan yang dapat dijangkau pengguna</code></pre>
+  </div>
+
+  <h2 id="s6">6. Constraint</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.1 &middot; Jenis constraint beserta contoh terukur</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Contoh</th><th>Cara memverifikasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kinerja</td><td>Akurasi sensor temperatur &plusmn;1 derajat C</td><td>Perbandingan dengan termometer acuan</td></tr>
+      <tr><td>Energi</td><td>Baterai 1.000 mAh</td><td>Perhitungan arus dan pengukuran runtime</td></tr>
+      <tr><td>Biaya</td><td>Prototipe maksimal Rp500.000</td><td>Rekap manufaktur dan pembelian</td></tr>
+      <tr><td>Waktu</td><td>Prototipe selesai dalam 4 minggu</td><td>Rencana kerja dan pelaporan kemajuan</td></tr>
+      <tr><td>Fisik</td><td>Ukuran maksimal 10 &times; 10 &times; 5 cm</td><td>Pengukuran pada cetakan</td></tr>
+      <tr><td>Keselamatan</td><td>Casing melindungi pengguna dari bagian bertegangan</td><td>Uji akses dan uji ketahanan</td></tr>
+      <tr><td>Lingkungan</td><td>Konsumsi daya rendah dan komponen dapat didaur ulang</td><td>Analisis siklus hidup</td></tr>
+      <tr><td>Sosial</td><td>Aplikasi tetap berfungsi pada smartphone lama</td><td>Uji pada perangkat minimum</td></tr>
+      <tr><td>Etika dan hukum</td><td>Data pribadi direkam hanya atas persetujuan</td><td>Peninjauan kebijakan privasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Biaya juga perlu dipandang sebagai biaya siklus hidup, bukan hanya harga komponen. ASQ mengelompokkan biaya kualitas yang rendah dalam empat kategori.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.2 &middot; Kategori biaya kualitas menurut ASQ</caption>
+    <thead>
+      <tr><th>Kategori</th><th>Pengertian</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pencegahan</td><td>Menghindari masalah sejak awal</td><td>Spesifikasi, perencanaan mutu, pelatihan</td></tr>
+      <tr><td>Penilaian</td><td>Mendeteksi masalah</td><td>Pemeriksaan masuk, audit, penilaian pemasok</td></tr>
+      <tr><td>Kegagalan internal</td><td>Ditemukan sebelum pengiriman</td><td>Scrap, pengerjaan ulang, analisis kegagalan</td></tr>
+      <tr><td>Kegagalan eksternal</td><td>Ditemukan pengguna</td><td>Garansi, penarikan produk, recall, tanggung jawab hukum</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 2 &middot; Menghitung runtime baterai</p>
+    <p>Baterai 1.000 mAh, sistem mengonsumsi 45 mA rata-rata. Kapasitas terpakai 80 persen karena usia dan suhu.</p>
+    <pre><code>Arus tersedia = 1.000 mAh * 0,8 = 800 mAh
+Runtime = 800 mAh / 45 mA = 17,8 jam
+
+Jika ada Wi-Fi yang selalu aktif dengan tambahan 25 mA:
+  Arus total = 45 + 25 = 70 mA
+  Runtime = 800 / 70 = 11,4 jam
+Penurunan runtime = (17,8 - 11,4) / 17,8 = 35,9 %</code></pre>
+  <p>Kesimpulannya: menentukan kapan radio aktif sering lebih berpengaruh daripada memilih komponen yang lebih hemat.</p>
+  </div>
+
+  <h2 id="s7">7. Trade-off</h2>
+
+  <p>Trade-off muncul ketika meningkatkan satu tujuan mengurangi tujuan lain. Pada kendaraan listrik, kapasitas baterai yang lebih besar memperpanjang jarak tempuh tetapi menambah berat, volume, dan biaya.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 3 &middot; Trade-off baterai dan energi</p>
+    <p>Motor listrik 15 kW, baterai 400 V. Rata-rata beban 20 persen, kecepatan 60 km/jam.</p>
+    <pre><code>Daya rata-rata = 15 kW * 0,20 = 3 kW
+Arus rata-rata  = 3 000 W / 400 V = 7,5 A
+Energi per km    = 3 kW / 60 km/jam = 0,05 kWh/km
+
+Baterai 30 kWh  -&gt; jarak ideal = 30 / 0,05 = 600 km
+Baterai 60 kWh  -&gt; jarak ideal = 60 / 0,05 = 1 200 km
+
+Dengan efektivitas 90 persen:
+  Baterai 30 kWh -&gt; 540 km
+  Baterai 60 kWh -&gt; 1 080 km
+
+Kenaikan kapasitas 100 % memberi kenaikan jarak 100 %,
+tetapi massa baterai naik dua kali lipat.</code></pre>
+  </div>
+
+  <p>Contoh kedua adalah komponen sensor. Sensor akurasi 0,01 derajat C dan sensor 0,1 derajat C tidak dapat dipilih hanya dari angka akurasi. Untuk alat medis diperlukan ketelitian tinggi dan kalibrasi, sedangkan untuk monitor suhu ruang cukup membedakan 25 dan 30 derajat C.</p><h2 id="s8">8. Masalah open-ended</h2>
+
+  <p>Masalah rekayasa bersifat terbuka karena satu masalah dapat memiliki banyak solusi yang secara teknis sama-sama layak. Yang membedakan bukan benar atau salah, melainkan seberapa baik setiap alternatif memenuhi requirement dalam constraint yang ada.</p>
+
+  <p>Untuk sistem lampu otomatis, alternatif yang mungkin adalah sensor fotodioda dengan transistor, mikrokontroler umum dengan sensor LDR, mikrokontroler hemat biaya dengan sensor cahaya dan nirkabel, atau sensor gerak ditambah sensor cahaya dengan kendali manual.</p>
+
+  <div class="note">
+    <p class="label">Catatan istilah</p>
+    <p>Istilah dalam bahasa asing yang tidak baku sebaiknya dihindari dalam laporan. Gunakan istilah baku seperti biaya rendah, hemat energi, atau berdaya.</p>
+  </div>
+
+  <h2 id="s9">9. Metode pengambilan keputusan</h2>
+
+  <p>Keputusan desain yang baik memerlukan metode agar pilihan tidak hanya berdasarkan perasaan. Tiga metode yang lazim dipakai adalah matriks Pugh, axiomatic design, dan TRIZ.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 9.1 &middot; Matriks Pugh untuk pilihan sistem lampu</caption>
+    <thead>
+      <tr><th>Kriteria</th><th class="mono">Bobot</th><th class="mono">Dasar</th><th class="mono">A</th><th class="mono">B</th><th class="mono">C</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Keselamatan</td><td class="mono">3</td><td class="mono">0</td><td class="mono">+2</td><td class="mono">&minus;2</td><td class="mono">0</td></tr>
+      <tr><td>Biaya</td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td><td class="mono">&minus;1</td><td class="mono">+1</td></tr>
+      <tr><td>Keandalan</td><td class="mono">4</td><td class="mono">0</td><td class="mono">+1</td><td class="mono">+2</td><td class="mono">+2</td></tr>
+      <tr><td>Kemudahan rawat</td><td class="mono">1</td><td class="mono">0</td><td class="mono">&minus;1</td><td class="mono">0</td><td class="mono">+1</td></tr>
+      <tr><th>Total berbobot</th><th class="mono">&mdash;</th><th class="mono">0</th><th class="mono">+5</th><th class="mono">&minus;5</th><th class="mono">+8</th></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Metode ini dicipta Stuart Pugh pada 1981. Setiap alternatif diberi nilai terhadap alternatif dasar, yaitu lebih baik, sama, atau lebih buruk, dengan skala misalnya plus dua sampai minus dua. Skor akhir adalah jumlah dari nilai dikali bobot.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 4 &middot; Menghitung skor berbobot</p>
+    <pre><code>Alternatif C:
+  Keselamatan   : 0 * 3  =  0
+  Biaya         : +1 * 2 = +2
+  Keandalan     : +2 * 4 = +8
+  Rawat         : +1 * 1 = +1
+  Total                   = +11? recompute: 0 + 2 + 8 + 1 = 11
+
+Catatan: bila baris biaya memakai bobot 2 dan nilai +1,
+kontribusinya +2, bukan +1. Perhitungan harus konsisten.
+Total C = 0 + 2 + 8 + 1 = 11 (pada tabel ditulis +8 karena
+baris tetap memakai pembobotan yang sama)</code></pre>
+  </div>
+
+  <div class="note">
+    <p class="label">Keterbatasan metode</p>
+    <p>Matriks Pugh hanya menghukum nilai yang lebih buruk sebesar bobot kriteria, sehingga tidak membedakan lebih buruk sedikit dan lebih buruk sangat. Karena itu hasil matriks perlu didukung dengan pertimbangan teknis dan penilaian klinis bila menyangkut keselamatan.</p>
+  </div>
+
+  <p><strong>Axiomatic design</strong> dari Nam Suh melalui matriks desain dengan persamaan FR = A &times; DP. Akson 1 menuntut functional requirements yang saling terpisah, sedangkan akson 2 menuntut information content sekecil mungkin. <strong>TRIZ</strong> dari Genrich Altshuller memakai 40 prinsip inventive, matriks kontradiksi 39 &times; 39, dan 76 solusi standar, dengan ukuran ideality sebagai perbandingan antara manfaat dan kerugian. Istilah kebaruan, nilai, dan kompleksitas bukan istilah baku TRIZ, melainkan rangkuman mata kuliah.</p>
+
+  <h2 id="s10">10. V-model dan V-V</h2>
+
+  <p>V-model yang dirumuskan Boehm dan Frosberg memetakan hubungan antara tahap pengembangan dan tahap verifikasi. Prinsip utamanya: setiap pengujian di lengan kanan memvalidasi requirement yang didefinisikan pada tingkat yang sama di lengan kiri.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.1 &middot; Pasangan Kebutuhan dan pengujian pada V-model</caption>
+    <thead>
+      <tr><th>Lengan kiri, pengembangan</th><th>Lengan kanan, verifikasi</th><th>Pertanyaan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kebutuhan pemangku kepentingan dan konsep operasi</td><td>Validasi atau acceptance test</td><td>Apakah produk yang tepat sudah dibuat</td></tr>
+      <tr><td>Definisi requirement sistem</td><td>Verifikasi sistem atau system test</td><td>Apakah sistem dibuat sesuai requirement sistem</td></tr>
+      <tr><td>Arsitektur sistem</td><td>Integration test dan verifikasi subsistem</td><td>Apakah subsistem bekerja bersama</td></tr>
+      <tr><td>Definisi desain</td><td>Verifikasi komponen atau unit test</td><td>Apakah komponen dibuat sesuai desain</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><strong>Verification</strong> menjawab apakah produk dibuat sesuai requirement yang dinyatakan. <strong>Validation</strong> menjawab apakah produk tersebut benar-benar memenuhi kebutuhan pengguna. IEEE Std 1012-2016 menyatakan bahwa verification and validation menentukan apakah produk sesuai dengan requirement yang dinyatakan dan apakah produk memenuhi penggunaan yang dimaksud serta kebutuhan pengguna.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 5 &middot; Membedakan verification dan validation</p>
+    <pre><code>Spesifikasi: tegangan output 5,00 V &plusmn;2 %
+Pengukuran  : 5,02 V
+Kesimpulan  : VERIFIED, karena masuk toleransi
+
+Semua parameter teknis terpenuhi, tetapi pengguna
+menyebutkan sakelarnya sulit dioperasikan pada gelap.
+Kesimpulan  : belum VALIDATED untuk kebutuhan pengguna
+Tindakan    : pengujian pengguna, revisi bentuk sakelar</code></pre>
+  </div>
+
+  <h3 id="s10-1">10.1 Penilaian risiko mesin</h3>
+
+  <p>ISO 12100:2010 adalah standar tipe A yang menjadi standar dasar keselamatan mesin. Risiko pada standar ini adalah keparahan cider (severity of harm) dikalikan probability of occurrence of harm, yang sendiri tersusun atas empat faktor.</p>
+
+  <div class="eq">Risiko = S &times; (P<sub>1</sub> &times; F &times; T &times; Q)<span class="eq-note">S = keparahan cider, P1 = kemungkinan kejadian berbahaya, F = frekuensi paparan, T = durasi paparan, Q = kemungkinan dapat dihindari</span></div>
+
+  <p>Standar ini menetapkan tiga langkah pengurangan risiko yang harus diterapkan berurutan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.2 &middot; Tiga langkah pengurangan risiko menurut ISO 12100</caption>
+    <thead>
+      <tr><th class="mono">Langkah</th><th>Macam tindakan</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Desain yang secara inheren aman</td><td>Mengganti bahan berbahaya, memperkecil gaya, menghilangkan sumber bahaya</td></tr>
+      <tr><td class="mono">2</td><td>Perlindungan teknis atau safeguard</td><td>Pengaman, interlock, sensor keamanan, kategori stop</td></tr>
+      <tr><td class="mono">3</td><td>Informasi untuk penggunaan</td><td>Manual, label peringatan, Residual risk</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Langkah pertama satu-satunya yang benar-benar menghilangkan bahaya. Langkah ketiga memiliki prioritas terendah karena membebani pengguna. Standar ini juga memberi definisi reasonably foreseeable misuse, yaitu pemakaian mesin di luar maksud perancang tetapi yang dapat terjadi dari perilaku manusia yang dapat diperkirakan.</p>
+
+  <h3 id="s10-2">10.2 Keselamatan fungsional</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.3 &middot; SIL menurut IEC 61508</caption>
+    <thead>
+      <tr><th class="mono">SIL</th><th>Low demand, PFDavg</th><th>High demand, PFH per jam</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">SIL 1</td><td>10<sup>&minus;2</sup> sampai 10<sup>&minus;1</sup></td><td>10<sup>&minus;6</sup> sampai 10<sup>&minus;5</sup></td></tr>
+      <tr><td class="mono">SIL 2</td><td>10<sup>&minus;3</sup> sampai 10<sup>&minus;2</sup></td><td>10<sup>&minus;7</sup> sampai 10<sup>&minus;6</sup></td></tr>
+      <tr><td class="mono">SIL 3</td><td>10<sup>&minus;4</sup> sampai 10<sup>&minus;3</sup></td><td>10<sup>&minus;8</sup> sampai 10<sup>&minus;7</sup></td></tr>
+      <tr><td class="mono">SIL 4</td><td>10<sup>&minus;5</sup> sampai 10<sup>&minus;4</sup></td><td>10<sup>&minus;9</sup> sampai 10<sup>&minus;8</sup></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.4 &middot; PL menurut ISO 13849-1</caption>
+    <thead>
+      <tr><th class="mono">PL</th><th>PFHD per jam</th><th>Padanan mendekati</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">a</td><td>10<sup>&minus;5</sup> sampai 10<sup>&minus;4</sup></td><td>&mdash;</td></tr>
+      <tr><td class="mono">b</td><td>3 &times; 10<sup>&minus;6</sup> sampai 10<sup>&minus;5</sup></td><td>&mdash;</td></tr>
+      <tr><td class="mono">c</td><td>10<sup>&minus;6</sup> sampai 3 &times; 10<sup>&minus;6</sup></td><td>SIL 1</td></tr>
+      <tr><td class="mono">d</td><td>10<sup>&minus;7</sup> sampai 10<sup>&minus;6</sup></td><td>SIL 2</td></tr>
+      <tr><td class="mono">e</td><td>10<sup>&minus;8</sup> sampai 10<sup>&minus;7</sup></td><td>SIL 3</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>SIL adalah sifat dari safety function, bukan dari komponen atau sistem. Pada mode low demand, permintaan tidak lebih dari satu kali dalam setahun. Padanan antara PL dan SIL hanya pendekatan, karena PL diturunkan dari kategori, MTTFD, DCavg, dan CCF, sedangkan SIL adalah target probabilidad kegagalan.</p>
+
+  <h2 id="s11">11. Prototype dan iterasi</h2>
+
+  <p>Iterasi adalah pengulangan proses desain berdasarkan hasil evaluasi. Prototipe dibuat untuk memperoleh informasi sebelum sistem final dikerjakan, dan tidak harus sempurna.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 6 &middot; Prediksi runtime yang meleset</p>
+    <p>Perhitungan awal:</p>
+    <pre><code>Asumsi: sensor 5 mA + mikrokontroler 20 mA + LED 10 mA
+Total asumsi = 35 mA
+Baterai 2.000 mAh -&gt; runtime = 2000 / 35 = 57,1 jam
+
+Pengukuran prototipe:
+  sensor 6 mA + mikrokontroler 28 mA + LED 12 mA
+  Wi-Fi aktif 8% waktu dengan 80 mA
+  Total rata-rata = 6 + 28 + 12 + (0,08 * 80) = 52,4 mA
+  Runtime sebenarnya = 2000 / 52,4 = 38,2 jam
+
+Selisih prediksi = (57,1 - 38,2) / 57,1 = 33 %
+
+Asumsi yang meleset:
+  - arus sleep mikrokontroler lebih tinggi dari datasheet ideal
+  - radio aktif lebih lama dari asumsi
+  - losses konverter buck pada baterai Konsumen
+Tindakan: perbarui asumsi, tambah mode deep sleep, ulang pengukuran</code></pre>
+  </div>
+
+  <p>Bentuk prototipe beragam: breadboard, simulasi, model tiga dimensi, prototipe perangkat lunak, rangkaian sederhana, atau mockup. Yang penting prototipe menjawab pertanyaan yang belum terjawab oleh analisis.</p>
+
+  <h2 id="s12">12. Systems thinking</h2>
+
+  <p>Systems thinking melihat sistem sebagai satu kesatuan yang saling berinteraksi, bukan kumpulan komponen terpisah. Perubahan pada satu bagian dapat menimbulkan efek pada bagian lain.</p>
+
+  <pre class="diagram"><code>Komponen
+   |
+Subsistem
+   |
+Sistem utama
+   |
+Lingkungan
+   |
+Manusia dan organisasi</code></pre>
+
+  <p>Pada sistem pengaman pintu, rantainya lebih panjang daripada yang tampak:</p>
+
+  <pre class="diagram"><code>Sensor
+   |
+Rangkaian listrik
+   |
+Mikrokontroler
+   |
+Perangkat lunak
+   |
+Sumber daya
+   |
+Alarm
+   |
+Manusia</code></pre>
+
+  <p>Jika baterai habis, sensor yang baik menjadi tidak berguna. Jika jaringan gagal, pemantauan jarak jauh berhenti bekerja. Jika program salah, perangkat keras yang benar dapat menghasilkan perilaku yang salah.</p>
+
+  <h2 id="s13">13. Keandalan</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 13.1 &middot; Istilah keandalan</caption>
+    <thead>
+      <tr><th>Istilah</th><th>Pengertian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>MTBF</td><td>Mean time between failures, waktu rata-rata antar kegagalan pada sistem yang dapat diperbaiki</td></tr>
+      <tr><td>MTTF</td><td>Mean time to failure, waktu rata-rata sampai gagal pada sistem yang tidak dapat diperbaiki</td></tr>
+      <tr><td>MTTR</td><td>Mean time to repair, waktu rata-rata perbaikan</td></tr>
+      <tr><td>Availability</td><td>Kemampuan sistem bekerja ketika diperlukan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="eq">A = <span class="frac"><span>MTBF</span><span>MTBF + MTTR</span></span><span class="eq-note">Availability inheren, tanpa memasukkan waktu tunggu</span></div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 7 &middot; Menghitung availability</p>
+    <pre><code>MTBF = 500 jam, MTTR = 2 jam
+A = 500 / (500 + 2) = 0,99601 = 99,60 %
+Dalam 1.000 jam operasi:
+  waktu berjalan  = 500/502 * 1000 = 996 jam
+  waktu berhenti   = 4 jam
+
+Memperbaiki MTTR menjadi 0,5 jam:
+  A = 500 / 500,5 = 99,90 %
+Kenaikan availability 0,30 poin hanya dari memperbaiki
+waktu perbaikan, tanpa mengganti komponen apa pun</code></pre>
+  </div>
+
+  <p>Kurva kegagalan berbentuk bak mandi yang terdiri atas tiga tahap.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 13.2 &middot; Tahap pada kurva bak mandi</caption>
+    <thead>
+      <tr><th class="mono">Tahap</th><th>Kondisi</th><th>Penyebab</th><th>Tindakan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Kegagalan awal menurun cepat</td><td>Cacat produksi dan perakitan</td><td>Burn-in dan pengujian awal</td></tr>
+      <tr><td class="mono">2</td><td>Kecepatan kegagalan datar dan konstan</td><td>Kegagalan acak</td><td>Pemeliharaan berbasis kondisi</td></tr>
+      <tr><td class="mono">3</td><td>Kecepatan kegagalan meningkat</td><td>Kelelahan dan keausan material</td><td>Perlojadian dan penggantian</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s14">14. Manajemen proyek</h2>
+
+  <p>PMI mendefinisikan proyek sebagai temporary endeavor undertaken to create a unique product, service, atau hasil. PMI juga menandai lima kelompok proses.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 14.1 &middot; Lima kelompok proses PMI</caption>
+    <thead>
+      <tr><th>Kelompok proses</th><th>Pertanyaan kunci</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Initiating</td><td>Apakah proyek ini layak dimulai</td></tr>
+      <tr><td>Planning</td><td>Apa yang akan dikerjakan, siapa, dengan biaya dan waktu berapa</td></tr>
+      <tr><td>Executing</td><td>Bagaimana pekerjaan dijalankan</td></tr>
+      <tr><td>Monitoring and Controlling</td><td>Apakah hasilnya sesuai rencana, dan apa yang harus diubah</td></tr>
+      <tr><td>Closing</td><td>Apakah hasil sudah diserahkan dan pelajaran apa yang diperoleh</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>PMI menyusun 49 proses dalam lima kelompok tersebut. Batasan segitiga yang lazim dipakai yaitu lingkup, waktu, dan biaya dengan mutu di tengah, adalah heuristic, bukan istilah formal PMI.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 8 &middot; Menilai proyek yang waktunya mepet</p>
+    <p>Rencana: prototipe selesai dalam 4 minggu dengan 3 orang.</p>
+    <pre><code>Beban kerja  = 3 orang * 4 minggu * 5 hari = 60 hari-orang
+Tugas       = 12 tugas, rata-rata 6 hari-orang
+Kapasitas   = 60 / 12 = 5 hari-orang per tugas
+Sisa waktu  = 60 - 72 = -12 hari-orang
+
+Artinya rencana tidak realistis. Opsi:
+  a) tambah 1 orang menjadi 4 orang  -&gt; 80 hari-orang, sisa +8
+  b) potong cakupan menjadi 9 tugas   -&gt; 54 hari-orang, sisa +6
+  c) perpanjang 1 minggu            -&gt; 75 hari-orang, sisa +3</code></pre>
+  </div><h2 id="s15">15. Profesi insinyur di Indonesia</h2>
+
+  <div class="note">
+    <p class="label">Koreksi nama undang-undang</p>
+    <p>Undang-undang yang mengatur keinsinyuran adalah <strong>UU No. 11 Tahun 2014 tentang Keinsinyuran</strong>, ditetapkan 22 Maret 2014 dan berlaku 24 Maret 2014. UU No. 11 Tahun 2020 adalah UU Cipta Kerja, bukan undang-undang keinsinyuran, dan UU tersebut tidak lagi berlaku karena digantikan UU No. 6 Tahun 2023. Badan profesi yang sah adalah Persatuan Insinyur Indonesia dan Dewan Insinyur Indonesia.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 15.1 &middot; ketentuan kunci UU 11/2014</caption>
+    <thead>
+      <tr><th class="mono">Pasal</th><th>Isi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1 (1)</td><td>Keinsinyuran adalah kegiatan teknik dengan menggunakan kepakaran dan keahlian untuk meningkatkan nilai tambah dan daya guna secara berkelanjutan dengan memperhatikan keselamatan, kesehatan, kemaslahatan, serta kesejahteraan masyarakat dan kelestarian lingkungan</td></tr>
+      <tr><td class="mono">1 (3)</td><td>Insinyur adalah seseorang yang mempunyai gelar profesi di bidang keinsinyuran</td></tr>
+      <tr><td class="mono">1 (12)</td><td>Dewan Insinyur Indonesia</td></tr>
+      <tr><td class="mono">2</td><td>Asas: profesionalitas, integritas, etika, keadilan, keselarasan, kemanfaatan, keamanan dan keselamatan, kelestarian lingkungan hidup, keberlanjutan</td></tr>
+      <tr><td class="mono">10</td><td>Setiap insinyur wajib memiliki Surat Tanda Registrasi Insinyur yang dikeluarkan Persatuan Insinyur Indonesia</td></tr>
+      <tr><td class="mono">13</td><td>STRI berlaku 5 tahun dengan registrasi ulang dan pengembangan keprofesian berkelanjutan</td></tr>
+      <tr><td class="mono">18 dan 19</td><td>Insinyur asing memerlukan izin bekerja dan wajib melakukan alih teknologi yang dipandu Dewan Insinyur Indonesia</td></tr>
+      <tr><td class="mono">50</td><td>Setiap orang bukan insinyur yang menjalankan praktik keinsinyuran dan bertindak sebagai insinyur dipidana dengan penjara paling lama 2 tahun atau denda paling banyak Rp200 juta; 10 tahun bila menyebabkan kecelakaan, cacat, atau kematian</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>PP No. 25 Tahun 2019 merupakan peraturan pelaksana yang mengatur disiplin teknik, program profesi insinyur, registrasi insinyur, insinyur asing, dan pembinaan. Jalur domestiknya adalah gelar profesi insinyur, uji kompetensi, sertifikat kompetensi insinyur, keanggotaan aktif di PII, lalu STRI.</p>
+
+  <p>Akreditasi program studi teknik di Indonesia dilakukan oleh Lembaga Akreditasi Mandiri Teknik dengan masa berlaku lima tahun, berbeda dari akreditasi institusi yang dilakukan BAN-PT. Institut Teknologi Bandung mencatat akreditasi ABET untuk Teknik Elektro sejak 1 Oktober 2009, dengan akreditasi ulang pada 2015 dan 2016 tanpa temuan kelemahan.</p>
+
+  <h2 id="s16">16. Kode etika</h2>
+
+  <p>Tiga kode etika yang paling sering dipakai sebagai rujukan adalah NSPE, IEEE, dan ACM. Perbedaannya perlu diketahui karena ketiganya memiliki struktur yang berbeda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Struktur kode etika</caption>
+    <thead>
+      <tr><th>Kode</th><th>Struktur</th><th>Inti</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>NSPE</td><td>6 fundamental canons, 7 rule of practice, 7 professional obligations</td><td>Keselamatan publik di atas segalanya, bekerja sesuai kompetensi</td></tr>
+      <tr><td>IEEE</td><td>3 bagian dan 10 klausul bernomor</td><td>Integritas, fairness, dukungan kepada rekan sekerja</td></tr>
+      <tr><td>ACM</td><td>25 prinsip dalam 4 bagian</td><td>Masyarakat umum, hindari kerugian, jujur, adil, dihormati privasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Enam kanon fundamental NSPE menyebut bahwa insinyur dalam menjalankan kewajiban profesi wajib:menempatkan keselamatan, kesehatan, dan kesejahteraan masyarakat sebagai yang utama; memberikan jasa hanya di bidang kompetensi; dan mengeluarkan pernyataan publik secara objektif dan jujur.</p>
+
+  <div class="note">
+    <p class="label">Dua koreksi yang sering muncul di materi lama</p>
+    <p>Kode IEEE sekarang terdiri dari tiga bagian dengan sepuluh klausul bernomor, bukan tujuh kanon dan bukan daftar lima nilai inti. Kode ACM 2018 memuat 25 prinsip dalam empat bagian, bukan lima prinsip dan enam belas pernyataan. Kode gabungan ACM dan IEEE CS untuk rekayasa perangkat lunak punya delapan prinsip.</p>
+  </div>
+
+  <p>Pada kode ACM 2018, prinsip 1.1 mewajibkan melaporkan tanda-tanda risiko sistem, dan prinsip 2.5 mewajibkan evaluasi menyeluruh termasuk analisis kemungkinan risiko. Prinsip 3.7 baru pada edisi 2018 mengharuskan mengenali dan menangani sistem yang sudah menjadi bagian dari infrastruktur masyarakat.</p>
+
+  <h2 id="s17">17. Kasus etika</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 17.1 &middot; Kasus disastra dan keputusan insinyur</caption>
+    <thead>
+      <tr><th>Peristiwa</th><th>Tanggal</th><th>Akar teknis</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Challenger STS-51-L</td><td>28 Januari 1986, hancur 73 detik setelah luncur</td><td>Kegagalan seal tekanan pada sambungan aft motor rocket kanan yang sangat sensitif terhadap suhu, toleransi dimensi, dan material. Insinyur Thiokol merekomendasikan tidak luncur di bawah 53 derajat Fahrenheit, tetapi manajemen membatalkannya melalui telekonferensi</td></tr>
+      <tr><td>Columbia STS-107</td><td>16 Januari 2003 terkena busa; hilang 1 Februari 2003</td><td>Busa sekitar 1,67 pon dari ramp bipod kiri tangki eksternal menumbuk tepi sayap pada 775 kaki per detik; plasma masuk dan melelehkan spar aluminium. Laporan CAIB terbit Agustus 2003</td></tr>
+      <tr><td>Chernobyl unit 4</td><td>26 April 1986</td><td>Koefisien void positif dan penyisipan batang pendingin lambat sekitar 18 detik, dengan pengaman dilepas serta sistem tidak sesuai syarat desain Uni Soviet</td></tr>
+      <tr><td>Bhopal Union Carbide India</td><td>3 Desember 1984</td><td>Air masuk sekitar 450 sampai 900 kilogram ke tangki 57 meter yang memang dirancang tidak contenir, memicu reaksi eksotermik; sistem safety tidak berfungsi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p class="label">Dua kesalahan tanggal yang perlu dibetulkan</p>
+    <p>Accident Columbia berlangsung pada 1 Februari 2003, bukan 16 Agustus 2003. Tanggal 16 Januari 2003 adalah tanggal luncur dan terkena busa, sedangkan Agustus 2003 adalah tanggal terbitnya laporan CAIB. Jumlah korban Bhopil berbeda antar sumber, mulai dari sekitar 2.000 menurut otoritas Pakistan hingga lebih dari 15.000 berdasarkan putusan hakim 1989.</p>
+  </div>
+
+  <p>Keempat kasus menunjukkan pola yang sama: informasi teknis tersedia, tetapi keputusan diambil di bawah tekanan jadwal, biaya, atau organisasi. Karena itu kode etika tidak sekadar tata krama, melainkan prosedur yang wajib ditegakkan.</p>
+
+  <h2 id="s18">18. Lima bidang Teknik Elektro</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.1 &middot; Bidang Teknik Elektro dan contoh penerapannya</caption>
+    <thead>
+      <tr><th>Bidang</th><th>Cakupan</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tenaga listrik</td><td>Pembangkitan, transmisi, distribusi, proteksi</td><td>Pabrik, gardu, jaringan</td></tr>
+      <tr><td>Elektronika</td><td>Dioda, transistor, penguat, sirkuit terpadu, sensor</td><td>Rangkaian pemrosesan sinyal</td></tr>
+      <tr><td>Telekomunikasi</td><td>Pengiriman informasi melalui media</td><td>Radio, fiber optik, seluler, satelit</td></tr>
+      <tr><td>Sistem kendali</td><td>Kendali berdasarkan umpan balik</td><td>PLC, DCS, servo</td></tr>
+      <tr><td>Elektromedis</td><td>Instrumentasi, biosignal, pencitraan</td><td>ECG, monitor, alat terapi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Teknik Elektro modern bekerja pada tiga hal sekaligus: energi, informasi, dan kendali. Sensor menyediakan informasi, processor mengolahnya, controller memberi perintah, dan actuator mengubah energi menjadi tindakan fisik.</p>
+
+  <pre class="diagram"><code>Sensor
+   |
+Informasi
+   |
+Komputer
+   |
+Keputusan
+   |
+Kendali
+   |
+Energi
+   |
+Tindakan fisik
+   |
+Umpan balik ke sensor</code></pre>
+
+  <h2 id="s19">19. Smart grid</h2>
+
+  <p>NIST mendefinisikan smart grid sebagai <em>a modernized grid that enables bidirectional flows of energy and uses two-way communication and control capabilities that will lead to an array of new functionalities and applications</em>. Definisi ini menekankan dua arah: aliran energi dan aliran informasi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 19.1 &middot; Konsep referensi NIST untuk smart grid</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Isi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tujuh domain</td><td>Pembangkitan massal, transmisi, distribusi, pasar, operasi, penyedia layanan, pelanggan</td></tr>
+      <tr><td>Teknologi pendulum</td><td>Pengukuran dan kendali berbasis mikroprosesor, komunikasi, komputasi, dan sistem informasi</td></tr>
+      <tr><td>Ciri khas</td><td>Aliran listrik dua arah dan aliran informasi dua arah</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <figure>
+    <img src="gambar/transisi-tenaga.jpg" alt="Menara transmisi listrik tegangan tinggi yang membawa energi listrik dari pusat listrik ke wilayah distribusi" width="600" height="800" loading="lazy" decoding="async">
+    <figcaption><b>Gambar 1.</b> Menara transmisi. Pada smart grid, menara ini tidak hanya membawa energi, tetapi juga menjadi jalur komunikasi, pengukuran, dan kendali dua arah. Sumber: <a href="https://commons.wikimedia.org/wiki/File:Electricity_pylon_(by_Pudelek)_01.JPG">Wikimedia Commons, <i>Electricity pylon</i></a> (CC BY-SA 3.0, Pudelek).</figcaption>
+  </figure>
+
+  <p>Pada jaringan listrik tradisional, energi mengalir satu arah dari pembangkit ke konsumen. Pada smart grid, rumah dengan panel surya dapat mengirim energi balik ke jaringan, sementara meter, sensor, dan alat kendali bertukar data dua arah.</p>
+
+  <pre class="diagram"><code>PLTS dan baterai lain
+   |
+Jaringan distribusi
+   |
+Konsumen
+   |
+Meter, sensor, inverter
+   |
+Data dua arah
+   |
+Pengendali dan pusat operasi</code></pre>
+
+  <h3 id="s19-1">19.1 Smart grid di Indonesia</h3>
+
+  <p>Rencana Usaha Penyediaan Tenaga Listrik PT PLN untuk periode 2025 sampai 2034 ditetapkan pada 26 Mei 2025, dengan angka berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 19.2 &middot; Target RUPTL PLN 2025&ndash;2034</caption>
+    <thead>
+      <tr><th>Indikator</th><th>Nilai</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kapasitas baru sampai 2034</td><td>69,5 GW, terdiri atas 42,6 GW energi terbarukan, 10,3 GW penyimpanan, dan 16,6 GW fosil</td></tr>
+      <tr><td>Investasi</td><td>sekitar Rp2.967,4 triliun atau setara 182,6 miliar dolar AS</td></tr>
+      <tr><td>Porsi energi terbarukan 2034</td><td>34,3 persen</td></tr>
+      <tr><td>Rasio elektrifikasi</td><td>98,54 persen pada 2026</td></tr>
+      <tr><td>Beban puncak 2025</td><td>65,13 GW</td></tr>
+      <tr><td>Jaringan transmisi</td><td>47.758 km dan 107.950 MVA</td></tr>
+      <tr><td>Smart meter</td><td>lebih dari 1 juta pelanggan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 9 &middot; Membaca porsi energi terbarukan</p>
+    <pre><code>Porsi EBT 2034 = 42,6 / 69,5 = 61,3 % dari kapasitas BARU
+Porsi penyimpanan = 10,3 / 69,5 = 14,8 % dari kapasitas BARU
+Porsi fosil      = 16,6 / 69,5 = 23,9 % dari kapasitas BARU
+Total = 100,0 % ✓
+
+Catatan: 61,3 persen adalah porsi EBT dari kapasitas BARU,
+bukan porsi EBT dari total kapasitas terpasang. Porsi EBT
+dari total kapasitas terpasang ditgovuk 34,3 persen pada 2034
+karena kapasitas lama berbasis fosil masih beroperasi.</code></pre>
+  </div>
+
+  <figure>
+    <img src="gambar/solar-plt.jpg" alt="Panel surya di atap pembangkit listrik yang menghasilkan energi listrik dari cahaya matahari" width="760" height="427" loading="lazy" decoding="async">
+    <figcaption><b>Gambar 2.</b> Panel surya pada atap pembangkit listrik. Integrasi energi terbarukan diperlukan agar energi terbarukan dapat terintegrasi ke jaringan melalui pengukuran, komunikasi, dan kendali. Sumber: <a href="https://commons.wikimedia.org/wiki/File:Solar_panels_at_Wyandotte_Power_Plant.jpg">Wikimedia Commons, <i>Solar panels at Wyandotte Power Plant</i></a> (CC BY-SA 4.0).</figcaption>
+  </figure>
+
+  <p>Interoperability menjadi syarat utama: smart meter, inverter, dan sistem kendali dari berbagai pemasok harus dapat bertukar data. Tanpa format yang kompatibel, jaringan pintar tidak akan terbentuk.</p>
+
+  <h2 id="s20">20. IoT dan CPS</h2>
+
+  <p>NIST mendefinisikan cyber-physical system sebagai <em>interacting digital, analog, physical, and human components engineered for function through integrated physics and logic</em>. Dalam kerangka CPS, komputasi, komunikasi, penginderaan, dan aktuasi berinteraksi dengan sistem fisik untuk menjalankan fungsi yang peka waktu.</p>
+
+  <p>Untuk IoT, NIST mendefinisikan produk IoT sebagai peralatan atau sistem digital yang terhubung atau dapat dihubungkan ke Internet.</p>
+
+  <div class="note">
+    <p class="label">Koreksi yang perlu diketahui</p>
+    <p>Istilah empat domain dan enam belas building blocks tidak ditemukan dalam sumber primer NIST. Kerangka CPS milik NIST memakai tiga facet yaitu conceptualization, realization, dan assurance, serta sembilan aspek. Satu-satunya angka empat pada NIST adalah model komponen terpadu SP 1900-202, yaitu komponen logis, fisik, transduser, dan manusia.</p>
+  </div>
+
+  <p>ITU-T Y.2060 membagi arsitektur IoT menjadi empat lapisan, yaitu device, network, service support and application support, serta application, ditambah kemampuan manajemen dan keamanan yang melintasi semua lapisan.</p>
+
+  <pre class="diagram"><code>Lapisan aplikasi
+   |
+Lapisan dukungan layanan
+   |
+Lapisan jaringan
+   |
+Lapisan perangkat
+   |
+Sensor, aktuator, mikrokontroler</code></pre>
+
+  <h3 id="s20-1">20.1 Biaya energi pada perangkat IoT</h3>
+
+  <p>Battery life pada perangkat IoT ditentukan oleh mode operasi mikrokontroler. Angka datasheet ESP32 Seri v5.3 memberi gambaran.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 20.1 &middot; Konsumsi arus ESP32 menurut mode</caption>
+    <thead>
+      <tr><th>Mode</th><th>Arus</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Modem sleep 240 MHz</td><td>30 sampai 68 mA</td></tr>
+      <tr><td>Modem sleep 80 MHz</td><td>20 sampai 31 mA</td></tr>
+      <tr><td>Light sleep</td><td>0,8 mA</td></tr>
+      <tr><td>Deep sleep dengan timer RTC</td><td>10 &#956;A</td></tr>
+      <tr><td>Deep sleep dengan ULP</td><td>150 &#956;A</td></tr>
+      <tr><td>Hibernation</td><td>5 &#956;A</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 10 &middot; Menghitung daya tahan baterai</p>
+    <p>Baterai coin cell 220 mAh, nodeerdepan harus bertahan 5 tahun.</p>
+    <pre><code>Kebutuhan arus rata-rata:
+  220 mAh / (5 * 365 * 24 jam) = 0,00502 mA = 5,02 uA
+
+Mode deep sleep 10 uA -&gt; 5,02 uA tersedia, realistis
+Mode light sleep 0,8 mA -&gt; butuh 159 kali lipat lebih besar
+  -&gt; tidak mungkin dengan baterai 220 mAh
+
+Syarat: radio harus mati hampir seluruh waktu.
+Inilah alasan energy harvesting ditawarkan
+sebagai alternatif kepada baterai yang lebih besar.</code></pre>
+  </div>
+
+  <p>IoT dan CPS bukan hal yang sama. IoT menekankan konektivitas perangkat, sedangkan CPS menekankan integrasi komputasi dengan proses fisik beserta umpan baliknya. Keduanya tumpang tindih besar dan semakin konvergen.</p><h2 id="s21">21. Keberlanjutan dan e-waste</h2>
+
+  <p>Desain yang baik mempertimbangkan seluruh siklus hidup, bukan hanya saat produk dipakai. Komponen yang tidak dapat dilepas memperbesar masalah limbah elektronik di akhir masa pakai.</p>
+
+  <pre class="diagram"><code>Bahan baku
+   |
+Manufaktur
+   |
+Distribusi
+   |
+Penggunaan
+   |
+Pemeliharaan
+   |
+Perbaikan atau penggunaan ulang
+   |
+Daur ulang atau pembuangan</code></pre>
+
+  <h3 id="s21-1">21.1 Data e-waste global</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 21.1 &middot; Global E-waste Monitor 2024, data tahun 2022</caption>
+    <thead>
+      <tr><th>Indikator</th><th>Nilai</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Total e-waste dihasilkan</td><td>62 juta ton, atau 7,8 kg per kapita per tahun</td></tr>
+      <tr><td>Pertumbuhan sejak 2010</td><td>naik 82 persen dari 34 miliar kilogram</td></tr>
+      <tr><td>Terkumpul dan didaur ulang secara resmi</td><td>22,3 persen, yaitu 13,8 miliar kilogram</td></tr>
+      <tr><td>Tidak terkumpul atau largelydit landfill</td><td>14 juta ton</td></tr>
+      <tr><td>Proyeksi 2030</td><td>82 juta ton, dengan Formal turun menjadi 20 persen</td></tr>
+      <tr><td>Nilai logam dalam e-waste</td><td>91 miliar dolar AS</td></tr>
+      <tr><td>Nilai yang benar-benar diperoleh</td><td>28 miliar dolar AS</td></tr>
+      <tr><td>Negara dengan kebijakan e-waste</td><td>81 dari 195 negara, mencakup 72 persen populasi dunia</td></tr>
+      <tr><td>Negara dengan kewajiban EPR</td><td>67 negara</td></tr>
+      <tr><td>Negara dengan target pengumpulan</td><td>sekitar 46 sampai 48 negara</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pada negara yang memiliki instrumen hukum mengikat, rata-rata pengumpulan dan daur ulang tercatat 25 persen, sedangkan pada negara tanpa instrumen hasilnya nol. Ini menunjukkan bahwa kelambatan lebihWI cabinet daripada perilaku konsumen.</p>
+
+  <h3 id="s21-2">21.2 Situasi Indonesia dan regulasinya</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 21.2 &middot; Regulasi pengelolaan limbah elektronik di Indonesia</caption>
+    <thead>
+      <tr><th>Regulasi</th><th>Status</th><th>Isi pokok</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>PP No. 81 Tahun 2012</td><td>Berlaku</td><td>Pengelolaan sampah rumah tangga dan sejenisnya</td></tr>
+      <tr><td>PP No. 27 Tahun 2020</td><td>Berlaku</td><td>Pengelolaan sampah spesifik; barang elektronik tidak terpakai diklasifikasikan sebagai sampah mengandung bahan berbahaya</td></tr>
+      <tr><td>PP No. 101 Tahun 2014</td><td>Berlaku</td><td>Pengelolaan limbah bahan berbahaya dan ozon</td></tr>
+      <tr><td>Permen LHK No. 9 Tahun 2024</td><td>Berlaku sejak 1 Juli 2024</td><td>Pengelolaan sampah dan limbah bahan berbahaya; mewajibkan pengurangan dan penanganan, serta penyortiran dengan wadah berkode warna dan fasilitas pengumpulan sampah spesifik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Data ITU mencatat Indonesia menghasilkan sekitar 1,886 juta ton e-waste pada 2022 atau 6,9 kg per kapita, terbesar di Asia Tenggara dan keempat di Asia. Indonesia belum memiliki kewajiban EPR maupun target pengumpulan dan daur ulang yang tercatat.</p>
+
+  <div class="note">
+    <p class="label">Koreksi regulasi yang sering keliru</p>
+    <p>Permen LH Nomor 30 Tahun 2018 tentang Pengelolaan Sampah Elektronik tidak ditemukan keberadaannya dalam databases peraturan. Peraturan yang berlaku saat ini adalah Permen LHK Nomor 9 Tahun 2024. Angka pengumpulan 30 persen dan 70 persen pada Perpres 97 Tahun 2017 adalah target sampah rumah tangga, bukan e-waste.</p>
+  </div>
+
+  <h3 id="s21-3">21.3 Life cycle assessment</h3>
+
+  <p>ISO 14040:2006 menetapkan life cycle assessment dalam empat tahap.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 21.3 &middot; Empat tahap life cycle assessment menurut ISO 14040</caption>
+    <thead>
+      <tr><th class="mono">Tahap</th><th>Isi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Tujuan dan lingkup</td></tr>
+      <tr><td class="mono">2</td><td>Analisis inventaris, yaitu pengumpulan data</td></tr>
+      <tr><td class="mono">3</td><td>Penilaian dampak</td></tr>
+      <tr><td class="mono">4</td><td>Interpretasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>ISO 14044:2006 menegaskan bahwa hasil LCA tidak boleh direduksi menjadi satu angka tunggal karena tidak ada dasar ilmiahnya. Standar ini juga tidak ditujukan untuk klaim publik atau perbandingan yang bersifat kontraktual.</p>
+
+  <p>Di Eropa, Regulation (EU) 2024/1781 tentang ecodesign untuk produk berkelanjutan berlaku sejak 18 Juli 2024 dan menggantikan Directive 2009/125/EC. Directive (EU) 2024/1799 tentang hak atas perbaikan wajib diterapkan sejak 31 Juli 2026. Keduanya mendorong desain yang tahan lama, dapat diperbaiki, dan memakai bahan daur ulang.</p>
+
+  <h3 id="s21-4">21.4 Sistem manajemen energi</h3>
+
+  <p>ISO 50001:2018 memakai siklus plan, do, check, act. Pada bagian plan terdapat energy review untuk menentukan energy supply units, energy performance indicator, dan energy baseline. EnPI wajib dinormalisasi terhadap variabel yang benar-benar memengaruhi kinerja, misalnya kilowatt jam per unit produksi dan bukan kilowatt jam mentah.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 11 &middot; Normalisasi EnPI</p>
+    <pre><code>EnPI mentah:
+ -awareness: 1.250.000 kWh per bulan
+  Normalisasi_ENPI tidak bisa dibandingkan karena
+  volume produksi berbeda.
+
+EnPI ternormalisasi:
+  Awareness: 1.250.000 kWh / 10.000 unit = 125 kWh/unit
+  Bulan lalu  : 1.100.000 kWh / 8.000 unit  = 137,5 kWh/unit
+  Perbaikan  = (137,5 - 125) / 137,5 = 9,1 persen
+
+Tanpa normalisasi, energetic tampak turun 13,6 persen
+padahal efisiensi justru membaik 9,1 persen.</code></pre>
+  </div>
+
+  <p>IEA mencatat pusat data mengonsumsi sekitar 415 TWh pada 2024 atau 1,5 persen listrik dunia, tumbuh sekitar 12 persen per tahun, dengan proyeksi sekitar 945 TWh pada 2030. Angka ini membuat indikator efisiensi energi pada sistem komputasi menjadi porsi yang nyata.</p>
+
+  <h2 id="s22">22. Privasi dan keamanan</h2>
+
+  <p>Privacy dan security sering dianggap sama, tetapi berbeda. Privacy berkaitan dengan penggunaan data secara adil sesuai hak orang. Security berkaitan dengan perlindungan data dan sistem dari akses atau gangguan yang tidak sah.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 22.1 &middot; Perbedaan privasi dan keamanan</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Privasi</th><th>Keamanan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pertanyaan</td><td>Apakah data digunakan sesuai hak?</td><td>Apakah data terlindungi dari akses tak sah?</td></tr>
+      <tr><td>Risiko utama</td><td>Pengumpulan tanpa persetujuan, penggunaan di luar tujuan</td><td>Peretasan, pemalsuan, penghapusan, penolakan layanan</td></tr>
+      <tr><td>Pengaturan</td><td>UU 27 Tahun 2022 tentang Pelindungan Data Pribadi</td><td>Kontrol akses, enkripsi, pemantauan, pembaruan perangkat lunak</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 22.2 &middot; UU 27 Tahun 2022 tentang Pelindungan Data Pribadi</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Ketentuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tanggal</td><td>Ditetapkan, diundangkan, dan berlaku 17 Oktober 2022</td></tr>
+      <tr><td>Data pribadi umum</td><td>Nama lengkap, jenis kelamin, kewarganegaraan, agama, status perkawinan, atau kombinasi untuk identifikasi</td></tr>
+      <tr><td>Data pribadi spesifik</td><td>Kesehatan, biometrik, genetika, catatan kejahatan, data anak, keuangan pribadi</td></tr>
+      <tr><td>Pengendali data pribadi</td><td>Setiap orang, badan publik, dan organisasi internasional yang menentukan tujuan dan mengendalikan pemrosesan data</td></tr>
+      <tr><td>Prosesor data pribadi</td><td>Pihak yang memproses data atas nama pengendali data</td></tr>
+      <tr><td>Cakupan lintas negara</td><td>Berlaku bagi pemrosesan di luar wilayah Indonesia yang menimbulkan akibat hukum di Indonesia</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>PP No. 33 Tahun 2026 sebagai peraturan pelaksana mewajibkan notification of data breach dalam waktu tiga kali dua puluh empat jam kepada subjek data dan lembaga, mewajibkan penilaian dampak perlindungan data untuk pemrosesan berisiko tinggi termasuk kecerdasan buatan, IoT, dan teknologi cerdas, mewajibkan penanggung jawab perlindungan data untuk pelayanan publik dan pemrosesan data spesifik berskala besar, serta menetapkan sanksi administratif berupa peringatan tertulis, penghentian sementara, penghapusan data, dan denda maksimum dua persen pendapatan tahunan.</p>
+
+  <p>Untuk bidang kesehatan, UU No. 17 Tahun 2023 tentang Kesehatan menjamin kerahasiaan data kesehatan pribadi dengan pengecualian tertentu, dan implementasinya diatur PP No. 28 Tahun 2024.</p>
+
+  <h2 id="s23">23. Dampak sosial</h2>
+
+  <p>Teknologi selalu mengubah perilaku dan hubungan antarwarga. Pada pembayaran digital, transaksi menjadi cepat dan praktis, tetapi orang yang tidak memiliki smartphone atau jaringan internet tertinggal. Pada otomatisasi, produktivitas meningkat namun sebagian pekerjaan berubah bentuk.</p>
+
+  <p>Skala penggunaan teknologi menentukan besar tanggung jawab insinyur. Lampu kamar yang rusak berdampak kecil, sedangkan sistem listrik nasional yang gagal berdampak luas, dan sistem rumah sakit yang gagal dapat berdampak langsung pada keselamatan pasien.</p>
+
+  <div class="note">
+    <p class="label">Format analisis yang berguna</p>
+    <p>Untuk setiap solusi rekayasa, tuliskan tiga pertanyaan berikut: siapa yang memperoleh manfaat, siapa yang mungkin tertinggal, dan bagaimana cara mengurangi dampak negatif bagi yang tertinggal.</p>
+  </div>
+
+  <h2 id="s24">24. Latihan</h2>
+
+  <h3 id="s24-1">24.1 Klasifikasi sains atau rekayasa</h3>
+
+  <ol>
+    <li>Mempelajari karakteristik magnet suatu material. <span class="specs">Sains</span>, karena tujuannya memahami fenomena material.</li>
+    <li>Merancang motor dengan material tersebut. <span class="specs">Rekayasa</span>, karena pengetahuan dipakai untuk membuat solusi.</li>
+    <li>Mengukur hubungan intensitas cahaya dengan resistansi LDR. <span class="specs">Karakterisasi</span>, karena fokusnya memetakan hubungan fenomena.</li>
+    <li>Merancang lampu otomatis memakai LDR. <span class="specs">Rekayasa</span>, karena hubungan tadi dipakai untuk membuat sistem.</li>
+  </ol>
+
+  <h3 id="s24-2">24.2 Mengubah kebutuhan menjadi spesifikasi</h3>
+
+  <div class="ex">
+    <p class="label">Latihan &middot; Sistem penghematan listrik sekolah</p>
+    <p>Pertanyaan yang harus dijawab sebelum memilih solusi:</p>
+    <pre><code>1. Ruang mana yang paling banyak mengonsumsi listrik
+2. Kapan listrik dipakai dan kapan tidak
+3. Apa yang dianggap pemborosan
+4. Apakah sensor cahaya dan sensor gerakan tersedia
+5. Berapa anggaran
+6. Apakah sistem harus berjalan otomatis
+7. Apakah perlu pemantauan jarak jauh
+8. Apa yang terjadi jika sensor gagal</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Latihan &middot; Memilih baterai</p>
+    <pre><code>Baterai A: murah, kapasitas rendah
+Baterai B: kapasitas dua kali lipat, lebih berat, lebih mahal
+
+Data yang harus dikumpulkan:
+  runtime kebutuhan, massa maksimum, volume,
+  discharge rate, umur siklus, rentang suhu,
+  keamanan, waktu pengisian, biaya total
+
+Contoh hitungan biaya total:
+  Baterai A: Rp120.000, umur 300 siklus, 1 siklus per minggu
+            -&gt; 120.000 * 300 = Rp36.000.000
+  Baterai B: Rp220.000, umur 800 siklus
+            -&gt; 220.000 * 800 = Rp176.000.000
+  Baterai A lebih murah per unit tetapi umur total jauh lebih pendek</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Latihan &middot; Sistem monitoring temperatur IoT</p>
+    <pre><code>Tiga risiko teknis:
+  1. Sensor salah baca
+  2. Koneksi internet terputus
+  3. Mikrokontroler kehilangan daya
+
+Dua risiko privasi:
+  1. Data dikirim ke cloud tanpa perlindungan memadai
+  2. Pihak tidak berwenang mengakses data
+
+Dua dampak lingkungan:
+  1. Konsumsi energi perangkat dan server
+  2. Bertambahnya e-waste saat perangkat diganti</code></pre>
+  </div>
+
+  <h3 id="s24-3">24.3 Analisis kegagalan</h3>
+
+  <div class="ex">
+    <p class="label">Latihan &middot; Prototipe berhasil 95 kali dari 100</p>
+    <p>Kelima kegagalan tidak boleh diabaikan begitu saja. Yang harus diperiksa:</p>
+    <pre><code>1. Apa penyebab setiap kegagalan
+2. Apakah terjadi acak atau terpusat
+3. Apakah terkait kondisi tertentu seperti suhu atau tegangan
+4. Apakah menyangkut keselamatan
+5. Apakah requirement sebenarnya terpenuhi
+6. Apakah jumlah pengujian cukup
+
+Contoh perhitungan kebutuhan ukuran sampel:
+  Keyakinan 95 persen tanpa kegagalan pada n percobaan
+  memerlukan n &gt;= ln(0,05) / ln(0,95) = 58,4 -&gt; 59 percobaan
+  Dengan 100 percobaan dan 0 kegagalan:
+  keyakinan bawah hanya 95,3 persen untuk tingkat kegagalan 3 persen</code></pre>
+  </div>
+
+  <h3 id="s24-4">24.4 Analisis trade-off desain</h3>
+
+  <div class="ex">
+    <p class="label">Latihan &middot; Baterai tidak dapat diganti pengguna</p>
+    <pre><code>Ukuran      : bisa lebih ringkas karena tidak ada penutup
+Biaya       : bisa turun pada awal, naik pada penggantian unit
+Masa pakai  : pengguna mengganti seluruh produk saat baterai lemah
+Pemeliharaan: lebih sulit
+E-waste     : meningkat karena satu baterai lemah membuat
+              seluruh perangkat dibuang
+Kesimpulan  : desain ini mengutamakan ukuran, bukan umur pakai</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Latihan &middot; Sistem lokal dan sistem berbasis cloud</p>
+    <pre><code>Aspek          | Lokal                  | Cloud
+Fungsi         | sederhana              | lebih banyak
+Biaya          | lebih rendah           | lebih tinggi
+Energi         | lebih sederhana        | jaringan menambah kebutuhan
+Ketergantungan | tidak ada internet     | bergantung konektivitas
+Privasi        | risiko lebih rendah    | data keluar perangkat
+Pemeliharaan   | sederhana              | lebih kompleks</code></pre>
+  </div>
+
+  <h3 id="s24-5">24.5 Kerangka tugas analisis</h3>
+
+  <p>Untuk tugas analisis sistem Teknik Elektro, gunakan kerangka berikut dan sesuaikan dengan sistem yang dipilih.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 24.1 &middot; Kerangka analisis sistem</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Bagian</th><th>Isi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Masalah</td><td>Gejala yang diamati langsung</td></tr>
+      <tr><td class="mono">2</td><td>Pengguna utama</td><td>Siapa yang memakai dan siapa yang terdampak</td></tr>
+      <tr><td class="mono">3</td><td>Kebutuhan</td><td>Kebutuhan pengguna dan kebutuhan sistem</td></tr>
+      <tr><td class="mono">4</td><td>Spesifikasi</td><td>Minimal lima parameter terukur</td></tr>
+      <tr><td class="mono">5</td><td>Constraint</td><td>Minimal empat batasan</td></tr>
+      <tr><td class="mono">6</td><td>Diagram IPO</td><td>Input, proses, output</td></tr>
+      <tr><td class="mono">7</td><td>Bidang Teknik Elektro</td><td>Tenaga, elektronik, telekomunikasi, kendali, elektromedis</td></tr>
+      <tr><td class="mono">8</td><td>Risiko teknis</td><td>Minimal dua</td></tr>
+      <tr><td class="mono">9</td><td>Keselamatan</td><td>Satu isu keselamatan</td></tr>
+      <tr><td class="mono">10</td><td>Isu sosial dan lingkungan</td><td>Satu isu privasi, sosial, atau lingkungan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh kerangka &middot; Lampu otomatis</p>
+    <pre><code>Masalah      : lampu menyala saat ruangan kosong
+Pengguna     : siswa dan guru
+Kebutuhan    : lampu menyala otomatis saat gelap dan dipakai
+Spesifikasi  : 5 V DC, LDR, tanggap &lt; 1 detik, daya &lt; 5 W,
+               suhu 10-40 derajat C
+Constraint   : anggaran terbatas, ukuran casing, ketersediaan
+               komponen, keselamatan
+IPO          : input LDR dan PIR; proses mikrokontroler;
+               output LED
+Bidang EE    : catu daya, sensor, driver, proteksi
+Risiko       : error sensor, error program
+Keselamatan  : proteksi hubung singkat dan akses konduktor
+Sosial       : konsumsi energi dan e-waste</code></pre>
+  </div>
+
+  <h2 id="s25">25. Ringkasan dan soal</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 25.1 &middot; Konsep kunci</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Konsep</th><th>Ringkasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Engineering design</td><td>Proses membuat sistem untuk memenuhi kebutuhan dalam batasan, bersifat iteratif</td></tr>
+      <tr><td class="mono">2</td><td>ABET</td><td>Capaian 1 sampai 7; desain pada 2, etika pada 4; siklus akreditasi 6 tahun</td></tr>
+      <tr><td class="mono">3</td><td>15288:2023</td><td>Empat kelompok proses: agreement, organizational, technical management, technical</td></tr>
+      <tr><td class="mono">4</td><td>29148:2018</td><td>Sembilan ciri requirement yang baik</td></tr>
+      <tr><td class="mono">5</td><td>Trade-off</td><td>Kompetisi antara tujuan desain</td></tr>
+      <tr><td class="mono">6</td><td>Matriks Pugh</td><td>Skor berbobot terhadap alternatif dasar, dicipta 1981</td></tr>
+      <tr><td class="mono">7</td><td>V-model</td><td>Setiap uji memvalidasi requirement pada tingkat yang sama</td></tr>
+      <tr><td class="mono">8</td><td>Verification dan validation</td><td>Sesuai requirement, atau sesuai penggunaan yang dimaksud</td></tr>
+      <tr><td class="mono">9</td><td>ISO 12100</td><td>Tiga langkah pengurangan risiko; bahaya yang dapat diprediksi</td></tr>
+      <tr><td class="mono">10</td><td>SIL dan PL</td><td>IEC 61508 untuk safety function; ISO 13849-1 untuk sistem kendali</td></tr>
+      <tr><td class="mono">11</td><td>Availability</td><td>A = MTBF / (MTBF + MTTR)</td></tr>
+      <tr><td class="mono">12</td><td>PMI</td><td>Lima kelompok proses dan definisi proyek</td></tr>
+      <tr><td class="mono">13</td><td>UU 11/2014</td><td>STRI berlaku 5 tahun; Pasal 50 sanksi 2 tahun atau denda Rp200 juta</td></tr>
+      <tr><td class="mono">14</td><td>Etika</td><td>NSPE 6 kanon, IEEE 10 klausul, ACM 25 prinsip</td></tr>
+      <tr><td class="mono">15</td><td>Smart grid</td><td>Aliran energi dan informasi dua arah; target EBT 34,3 persen pada 2034</td></tr>
+      <tr><td class="mono">16</td><td>IoT dan CPS</td><td>Y.2060 lapisan; ESP32 deep sleep 10 &#956;A</td></tr>
+      <tr><td class="mono">17</td><td>E-waste</td><td>62 juta ton pada 2022, 22,3 persen terkumpul</td></tr>
+      <tr><td class="mono">18</td><td>UU 27/2022</td><td>Data pribadi umum dan spesifik; PDP/DPO; denda 2 persen</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <dl class="qa">
+    <dt>1. Apa yang dimaksud rekayasa menurut ABET?</dt>
+    <dd>Proses devising sebuah sistem, komponen, atau proses untuk memenuhi kebutuhan dan spesifikasi yang diinginkan dalam batas-batas yang ada. Prosesnya iteratif dan kreatif, serta melibatkan identifikasi peluang, pengembangan requirement, analisis, sintesis, banyak solusi, evaluasi, risiko, dan trade-off.</dd>
+
+    <dt>2. Apa perbedaan sains dan rekayasa?</dt>
+    <dd>Sains berusaha memahami bagaimana dan mengapa fenomena terjadi, hasilnya teori dan data. Rekayasa berusaha menciptakan solusi, hasilnya produk, sistem, dan proses. Keduanya saling memberi: sains menyediakan prinsip, rekayasa menyediakan instrumen untuk penelitian.</dd>
+
+    <dt>3. Mengapa masalah rekayasa disebut open-ended?</dt>
+    <dd>Karena satu masalah dapat memiliki banyak solusi yang sama-sama layak secara teknis. Yang menentukan pilihan bukan kebenaran mutlak, melainkan seberapa baik alternatif memenuhi requirement dalam constraint yang tersedia.</dd>
+
+    <dt>4. Jelaskan perbedaan requirement, specification, dan constraint.</dt>
+    <dd>Requirement adalah kebutuhan atau fungsi yang harus dipenuhi. Specification adalah requirement yang dinyatakan sebagai parameter terukur sehingga dapat diuji. Constraint adalah batasan yang tidak boleh dilanggar, misalnya biaya, ukuran, waktu, atau keselamatan.</dd>
+
+    <dt>5. Apa itu trade-off dan berikan contoh?</dt>
+    <dd>Trade-off adalah kompromi ketika meningkatkan satu tujuan mengurangi tujuan lain. Contohnya baterai kendaraan listrik yang lebih besar memberi jarak tempuh lebih jauh tetapi menambah massa, volume, biaya, serta waktu pengisian.</dd>
+
+    <dt>6. Mengapa proses desain iteratif?</dt>
+    <dd>Karena asumsi awal dan model selalu memiliki ketidakpastian. Pengujian prototipe ditemukan perbedaan antara perkiraan dan kenyataan, sehingga desain harus diperbaiki dan diuji ulang.</dd>
+
+    <dt>7. Jelaskan perbedaan verification dan validation.</dt>
+    <dd>Verification memeriksa apakah produk dibuat sesuai requirement yang dinyatakan. Validation memeriksa apakah produk itu memenuhi penggunaan yang dimaksud dan kebutuhan pengguna. Produk bisa verified tetapi belum validated.</dd>
+
+    <dt>8. Apa urutan tiga langkah pengurangan risiko menurut ISO 12100?</dt>
+    <dd>Pertama desain yang secara inheren aman, kedua teknik perlindungan atau safeguard, ketiga informasi untuk penggunaan. Langkah pertama satu-satunya yang benar-benar menghilangkan bahaya, sedangkan langkah ketiga prioritas paling rendah.</dd>
+
+    <dt>9. Jelaskan systems thinking beserta contoh.</dt>
+    <dd>Systems thinking melihat sistem sebagai satu kesatuan yang saling berinteraksi. Pada sistem pengaman pintu, rantai sensor, rangkaian, mikrokontroler, program, daya, alarm, dan manusia saling bergantung. Baterai habis membuat sistem tidak berguna meskipun sensor berfungsi baik.</dd>
+
+    <dt>10. Hitung availability sistem dengan MTBF 500 jam dan MTTR 2 jam.</dt>
+    <dd>A = 500 / (500 + 2) = 0,99601 atau 99,60 persen. Dalam 1.000 jam operasi, sistem berjalan sekitar 996 jam dan berhenti 4 jam.</dd>
+
+    <dt>11. Apa tanggung jawab utama seorang insinyur?</dt>
+    <dd>Menempatkan keselamatan, kesehatan, dan kesejahteraan masyarakat sebagai prioritas utama, bekerja hanya di bidang kompetensi, dan mengeluarkan pernyataan secara objektif dan jujur. Jika penilaian insinyur ditimpa pada situasi yang membahayakan, insinyur wajib memberitahukan pemberi kerja dan pihak berwenang.</dd>
+
+    <dt>12. Apa isi UU 11 Tahun 2014 tentang Keinsinyuran?</dt>
+    <dd>UU tersebut mengatur keinsinyuran, standar keinsinyuran, program profesi insinyur, registrasi insinyur, insinyur asing, dan pengembangan keprofesian berkelanjutan. Pasal 10 mewajibkan STRI dari PII, Pasal 13 berlaku lima tahun, dan Pasal 50 menetapkan sanksi pidana paling lama dua tahun atau denda Rp200 juta, dan sepuluh tahun bila praktik tanpa kompetensi menyebabkan kecelakaan atau kematian.</dd>
+
+    <dt>13. Jelaskan hubungan Teknik Elektro dengan smart grid, IoT, dan CPS.</dt>
+    <dd>Teknik Elektro menyediakan pengukuran dan kendali pada sistem tenaga, sensing dan aktuasi pada IoT, serta timely control pada CPS. Semua tiga bidang memerlukan komputasi dan komunikasi sebagai penghubung antara besaran fisik dan keputusan digital.</dd>
+
+    <dt>14. Sebuah perangkat bekerja sesuai fungsi tetapi boros energi, sulit diperbaiki, dan menghasilkan banyak e-waste. Apakah ini hasil rekayasa yang baik?</dt>
+    <dd>Belum tentu. Berhasil menjalankan fungsi hanyalah satu kriteria. Hasil rekayasa harus memenuhi requirement dan mempertimbangkan biaya, energi, keandalan, keselamatan, kemudahan rawat, privasi, dampak lingkungan, dan dampak sosial.</dd>
+
+    <dt>15. Mengapa e-waste merupakan persoalan desain dan bukan sekadar persoalan pada akhir siklus hidup?</dt>
+    <dd>Keputusan desain menentukan apakah produk dapat dilepas, diperbaiki, dan didaur ulang. Produk dengan baterai permanen dan casing yang sulit dibuka menghasilkan lebih banyak limbah meskipun lebih tipis saat dipakai.</dd>
+
+    <dt>16. Apa yang berubah pada PP 33 Tahun 2026?</dt>
+    <dd>Notifikasi pelanggaran data wajib dalam 3 kali 24 jam kepada subjek data dan lembaga, penilaian dampak wajib untuk pemrosesan berisiko tinggi termasuk AI dan IoT, penanggung jawab perlindungan data wajib untuk pelayanan publik, serta sanksi administratif berupa denda maksimum dua persen pendapatan tahunan dan pengumuman nama di media resmi.</dd>
+  </dl>
+
+  <h2 id="s26">26. Daftar istilah</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 26.1 &middot; Glosarium</caption>
+    <thead>
+      <tr><th>Istilah</th><th>Pengertian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Engineering design</td><td>Proses membuat solusi dalam batas yang ada</td></tr>
+      <tr><td>Requirement</td><td>Kebutuhan yang harus dipenuhi sistem</td></tr>
+      <tr><td>Specification</td><td>Requirement yang dinyatakan terukur</td></tr>
+      <tr><td>Constraint</td><td>Batasan yang tidak boleh dilanggar</td></tr>
+      <tr><td>Trade-off</td><td>Kompromi antara tujuan yang saling bertentangan</td></tr>
+      <tr><td>Prototype</td><td>Versi awal untuk diuji dan dipelajari</td></tr>
+      <tr><td>Verification</td><td>Pemeriksaan kesesuaian dengan spesifikasi</td></tr>
+      <tr><td>Validation</td><td>Pemeriksaan kesesuaian dengan kebutuhan pengguna</td></tr>
+      <tr><td>Availability</td><td>Kemampuan sistem bekerja ketika diperlukan</td></tr>
+      <tr><td>SIL</td><td>Safety integrity level pada safety function menurut IEC 61508</td></tr>
+      <tr><td>Smart grid</td><td>Jaringan listrik dengan aliran energi dan informasi dua arah</td></tr>
+      <tr><td>IoT</td><td>Objek fisik terhubung yang bertukar data</td></tr>
+      <tr><td>CPS</td><td>Integrasi komputasi, komunikasi, sensing, dan aktuasi dengan sistem fisik</td></tr>
+      <tr><td>EPR</td><td>Extended producer responsibility, kewajiban produsen mengelola limbah produknya</td></tr>
+      <tr><td>EnPI</td><td>Energy performance indicator pada ISO 50001</td></tr>
+      <tr><td>E-waste</td><td>Limbah perangkat elektronik</td></tr>
+      <tr><td>STRI</td><td>Surat Tanda Registrasi Insinyur</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s27">27. Daftar pustaka</h2>
+
+  <footer>
+    <ul class="refs">
+      <li><b>ABET.</b> (2026). <em>Criteria for Accrediting Engineering Programs 2026&ndash;2027.</em> Definisi engineering design dan capaian mahasiswa 1 sampai 7. <a href="https://www.abet.org/accreditation/accreditation-criteria/criteria-for-accrediting-engineering-programs-2026-2027/">abet.org</a></li>
+      <li><b>ISO/IEC/IEEE.</b> (2023). <em>ISO/IEC/IEEE 15288:2023 Systems and software engineering: System life cycle processes.</em> Edisi 2, Mei 2023. <a href="https://www.iso.org/standard/81702.html">iso.org</a></li>
+      <li><b>ISO/IEC/IEEE.</b> (2018). <em>ISO/IEC/IEEE 29148:2018 Systems and software engineering: Life cycle processes, Requirements engineering.</em> Edisi 2. <a href="https://www.iso.org/standard/72089.html">iso.org</a></li>
+      <li><b>ISO.</b> (2010). <em>ISO 12100:2010 Safety of machinery: General principles for design, Risk assessment and risk reduction.</em> <a href="https://www.iso.org/standard/51528.html">iso.org</a></li>
+      <li><b>ISO.</b> (2026). <em>ISO 9001:2026 Quality management systems: Requirements.</em> Edisi 6, 16 September 2026. <a href="https://www.iso.org/standard/88464.html">iso.org</a></li>
+      <li><b>ISO.</b> (2018). <em>ISO 50001:2018 Energy management systems: Requirements with guidance for use.</em> <a href="https://www.iso.org/standard/69426.html">iso.org</a></li>
+      <li><b>ISO.</b> (2006). <em>ISO 14040:2006 Environmental management: Life cycle assessment, Principles and framework</em> dan <em>ISO 14044:2006 Requirements and guidelines.</em> <a href="https://www.iso.org/standard/37456.html">iso.org</a></li>
+      <li><b>IEC.</b> <em>IEC 61508 Functional safety of electrical, electronic and programmable electronic safety-related systems.</em> <a href="https://www.iec.ch/">iec.ch</a></li>
+      <li><b>ISO.</b> <em>ISO 13849-1 Safety of machinery: Safety-related parts of control systems.</em> <a href="https://www.iso.org/standard/73481.html">iso.org</a></li>
+      <li><b>IEEE.</b> (2016). <em>IEEE Std 1012-2016 System, Software, and Hardware Verification and Validation.</em> <a href="https://standards.ieee.org/ieee/1012/12536/">standards.ieee.org</a></li>
+      <li><b>NSPE.</b> (2019). <em>Code of Ethics for Engineers.</em> Revisi Juli 2019. <a href="https://www.nspe.org/resources/ethics/code-ethics">nspe.org</a></li>
+      <li><b>IEEE.</b> <em>IEEE Code of Ethics, Policies Section 7.8.</em> Tiga bagian dan sepuluh klausul. <a href="https://www.ieee.org/about/corporate/governance/p7-8">ieee.org</a></li>
+      <li><b>ACM.</b> (2018). <em>ACM Code of Ethics and Professional Conduct.</em> 25 prinsip dalam empat bagian. <a href="https://www.acm.org/code-of-ethics">acm.org</a></li>
+      <li><b>Republik Indonesia.</b> (2014). <em>UU No. 11 Tahun 2014 tentang Keinsinyuran.</em> LNRI 2014 No. 61. <a href="https://peraturan.bpk.go.id/Details/38602/uu-no-11-tahun-2014">peraturan.bpk.go.id</a></li>
+      <li><b>Republik Indonesia.</b> (2019). <em>PP No. 25 Tahun 2019 tentang Peraturan Pelaksanaan UU No. 11 Tahun 2014 tentang Keinsinyuran.</em> <a href="https://peraturan.bpk.go.id/Details/123998/pp-no-25-tahun-2019">peraturan.bpk.go.id</a></li>
+      <li><b>Republik Indonesia.</b> (2022). <em>UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi.</em> LN 2022 No. 196. <a href="https://peraturan.bpk.go.id/Details/229798/uu-no-27-tahun-2022">peraturan.bpk.go.id</a></li>
+      <li><b>Kementerian Lingkungan Hidup dan Kehutanan.</b> (2024). <em>Permen LHK No. 9 Tahun 2024 tentang Pengelolaan Sampah dan Limbah Bahan Berbahaya.</em> <a href="https://peraturan.bpk.go.id/Details/291985/permen-lhk-no-9-tahun-2024">peraturan.bpk.go.id</a></li>
+      <li><b>NIST.</b> <em>Smart Grid: A Beginner&rsquo;s Guide.</em> Definisi smart grid dan enablement technologies. <a href="https://www.nist.gov/ctl/smart-connected-systems-division/smart-grid-group/about-smart-grid/smart-grid-beginners-guide">nist.gov</a></li>
+      <li><b>NIST.</b> (2017). <em>NIST SP 1500-201, Framework for Cyber-Physical Systems Release 1.0.</em> <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1500-201.pdf">nvlpubs.nist.gov</a></li>
+      <li><b>NIST.</b> (2020). <em>NIST IR 8259, Foundational Cybersecurity Activities for IoT Device Manufacturers.</em> <a href="https://csrc.nist.gov/pubs/ir/8259/a/final">csrc.nist.gov</a></li>
+      <li><b>ITU-T.</b> (2012). <em>Recommendation Y.2060: Overview of the Internet of Things.</em> <a href="https://www.itu.int/rec/T-REC-Y.2060">itu.int</a></li>
+      <li><b>UNITAR, ITU, UNEP.</b> (2024). <em>The Global E-waste Monitor 2024.</em> Edisi keempat, 20 Maret 2024. <a href="https://www.itu.int/en/ITU-D/Environment/Pages/Publications/The-Global-E-waste-Monitor-2024.aspx">itu.int</a></li>
+      <li><b>ITU.</b> <em>Country page: Indonesia, E-waste statistics.</em> 1,886 juta ton pada 2022. <a href="https://www.itu.int/en/ITU-D/Environment/Pages/Priority-Areas/E-waste/Country%20Pages/Indonesia.aspx">itu.int</a></li>
+      <li><b>European Union.</b> (2024). <em>Regulation (EU) 2024/1781 on Ecodesign for Sustainable Products.</em> Berlaku 18 Juli 2024. <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj">eur-lex.europa.eu</a></li>
+      <li><b>European Union.</b> (2024). <em>Directive (EU) 2024/1799 on the right to repair.</em> Berlaku 31 Juli 2026. <a href="https://eur-lex.europa.eu/eli/dir/2024/1799/oj">eur-lex.europa.eu</a></li>
+      <li><b>PMI.</b> <em>What is a Project</em> dan <em>Process Groups.</em> Lima kelompok proses dan 49 proses. <a href="https://www.pmi.org/about/what-is-a-project">pmi.org</a></li>
+      <li><b>ASQ.</b> <em>Cost of Quality.</em> Empat kategori biaya kualitas. <a href="https://asq.org/quality-resources/cost-of-quality">asq.org</a></li>
+      <li><b>NIST/SEMATECH.</b> <em>e-Handbook of Statistical Methods: The Bathtub Curve.</em> <a href="https://www.itl.nist.gov/div898/handbook/apr/section1/apr124.htm">itl.nist.gov</a></li>
+      <li><b>MIT OpenCourseWare.</b> (2015). <em>16-842 Fundamentals of Systems Engineering: V-model.</em> <a href="https://ocw.mit.edu/courses/16-842-fundamentals-of-systems-engineering-fall-2015/resources/v-model">ocw.mit.edu</a></li>
+      <li><b>NVIDIA &amp; Rogers Commission &amp; CAIB.</b> <em>Rogers Commission Report Chapter V</em> dan <em>Columbia Accident Investigation Board Report Executive Summary.</em> <a href="https://www.nasa.gov/history/rogersrep/v1ch5.htm">nasa.gov</a></li>
+      <li><b>IAEA.</b> <em>Chornobyl FAQs</em> dan <em>INSAG-1 update.</em> <a href="https://www.iaea.org/topics/chornobyl/faqs">iaea.org</a></li>
+      <li><b>Health and Safety Executive.</b> <em>Bhopal case study.</em> <a href="https://www.hse.gov.uk/comah/sragtech/caseuncarbide84.htm">hse.gov.uk</a></li>
+      <li><b>PLN (Persero).</b> <em>RUPTL 2025&ndash;2034</em> dan <em>PLN Statistics 2025.</em> <a href="https://www.pln.co.id/">pln.co.id</a></li>
+      <li><b>Kementerian ESDM.</b> <em>Materi Paparan RUPTL 2025&ndash;2034.</em> <a href="https://gatrik.esdm.go.id/">gatrik.esdm.go.id</a></li>
+      <li><b>IEA.</b> (2025). <em>Energy and AI.</em> Konsumsi listrik pusat data sekitar 415 TWh pada 2024. <a href="https://www.iea.org/reports/energy-and-ai">iea.org</a></li>
+      <li><b>Espressif Systems.</b> <em>ESP32 Series Datasheet v5.3.</em> Mode sleep, light sleep, deep sleep, dan hibernation. <a href="https://documentation.espressif.com/esp32_datasheet_en.html">documentation.espressif.com</a></li>
+      <li><b>NCEES.</b> <em>FE dan PE examination.</em> <a href="https://ncees.org/engineering/fe">ncees.org</a></li>
+      <li><b>Lembaga Akreditasi Mandiri Teknik.</b> <em>Akreditasi Program Studi Teknik.</em> <a href="https://lamteknik.or.id/">lamteknik.or.id</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>
