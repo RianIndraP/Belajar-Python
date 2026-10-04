@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profesi Insinyur dan Skop Kerja &mdash; Pengantar Rekayasa dan Desain</title>
+<meta name="description" content="Modul Pengantar Rekayasa dan Desain: profesi insinyur dan skop kerja, UU 11/2014 tentang Keinsinyuran, program profesi insinyur, STRI, kode etik PII, KKNI, dan hubungan dengan UU Pendidikan Tinggi, UU Ketenagakerjaan, serta UU Cipta Kerja.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Peta materi</a>
+  <a href="#s2">2. Tujuan pembelajaran</a>
+  <a href="#s3">3. Arti profesi</a>
+  <a href="#s4">4. Empat kebutuhan dasar profesi</a>
+  <a href="#s5">5. Profesi insinyur menurut UU 11/2014</a>
+  <a href="#s6">6. Lima tanggung jawab utama insinyur</a>
+  <a href="#s7">7. Standar keinsinyuran</a>
+  <a href="#s8">8. Program Profesi Insinyur</a>
+  <a href="#s9">9. Uji kompetensi dan sertifikat kompetensi</a>
+  <a href="#s10">10. Registrasi dan STRI</a>
+  <a href="#s11">11. Pengembangan keprofesian berkelanjutan</a>
+  <a href="#s12">12. Asas keinsinyuran</a>
+  <a href="#s13">13. Hak insinyur</a>
+  <a href="#s14">14. Kewajiban insinyur</a>
+  <a href="#s15">15. Cakupan disiplin dan bidang keinsinyuran</a>
+  <a href="#s16">16. Skop kerja Teknik Elektro dan Teknik Komputer</a>
+  <a href="#s17">17. Scope of work dan batas kompetensi</a>
+  <a href="#s18">18. Organisasi profesi</a>
+  <a href="#s19">19. Persatuan Insinyur Indonesia</a>
+  <a href="#s20">20. Fungsi organisasi profesi</a>
+  <a href="#s21">21. Berorganisasi sejak mahasiswa</a>
+  <a href="#s22">22. Dewan Insinyur Indonesia</a>
+  <a href="#s23">23. Kode etik PII</a>
+  <a href="#s24">24. Kasus etika</a>
+  <a href="#s25">25. KKNI</a>
+  <a href="#s26">26. Pendidikan tinggi dan jenis pendidikan</a>
+  <a href="#s27">27. Tiga undang-undang dan hubungannya</a>
+  <a href="#s28">28. Ketenagakerjaan dan hubungan industrial</a>
+  <a href="#s29">29. Profesionalisme dalam praktik</a>
+  <a href="#s30">30. Keterampilan dan perkembangan karier</a>
+  <a href="#s31">31. Latihan</a>
+  <a href="#s32">32. Ringkasan dan soal</a>
+  <a href="#s33">33. Daftar istilah</a>
+  <a href="#s34">34. Daftar pustaka</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Modul 04 &middot; Pengantar Rekayasa dan Desain</p>
+    <div class="rule"></div>
+    <h1>Profesi Insinyur dan Skop Kerja</h1>
+    <p>Materi ini membahas arti profesi, empat kebutuhan dasar profesi, kedudukan insinyur menurut UU No. 11 Tahun 2014 tentang Keinsinyuran, program profesi insinyur, uji kompetensi, registrasi dan Surat Tanda Registrasi Insinyur, pengembangan keprofesian berkelanjutan, asas, hak dan kewajiban insinyur, cakupan disiplin dan bidang keinsinyuran, skop kerja Teknik Elektro dan Teknik Komputer, organisasi profesi dan Persatuan Insinyur Indonesia, Dewan Insinyur Indonesia, kode etik Catur Karsa dan Sapta Dharma, Kerangka Kualifikasi Nasional Indonesia, jenis pendidikan tinggi, hubungan antara UU Pendidikan Tinggi, UU Keinsinyuran, UU Ketenagakerjaan, dan UU Cipta Kerja, serta profesionalisme dalam praktik.</p>
+  </header>
+
+  <h2 id="s1">1. Peta materi</h2>
+
+  <p>Materi profesi insinyur dan skop kerja tidak berdiri sendiri. Materi ini merupakan bagian dari rangkaian mata kuliah Pengantar Rekayasa dan Desain yang bergerak dari konsep dasar rekayasa menuju praktik desain teknik.</p>
+
+  <pre class="diagram"><code>Konsep dasar rekayasa
+        |
+Profesi insinyur dan skop kerja
+        |
+Peran Teknik Elektro
+        |
+Hubungan Teknik Elektro dan Teknik Komputer
+        |
+Hubungan Teknik Elektro dan Teknik Mesin
+        |
+Hubungan Teknik Elektro dan Teknik Kimia
+        |
+Hubungan Teknik Elektro dan Teknik Sipil
+        |
+Ujian tengah semester
+        |
+Konseptualisasi desain
+        |
+Konsep alternatif dan evaluasi
+        |
+Desain rinci
+        |
+Manufaktur dan perakitan
+        |
+Pengujian dan evaluasi
+        |
+Laporan dan serah terima
+        |
+Prototipe dan putar balik
+        |
+Ujian akhir semester</code></pre>
+
+  <p>Posisi materi ini dalam rangkaian tersebut menjawab empat pertanyaan dasar: siapa insinyur sebagai profesional, apa yang diperbolehkan dan diwajibkan, di mana lingkup pekerjaannya berada, dan bagaimana hubungan pendidikan formal dengan praktik profesi.</p>
+
+  <h2 id="s2">2. Tujuan pembelajaran</h2>
+
+  <p>Sesi ini bertumpu pada pemahaman mengenai profesi insinyur, hak dan kewajiban insinyur, undang-undang keinsinyuran, ranah kerja insinyur, profesionalisme, dan pengembangan karier. Setiap tujuan tersebut diuraikan berikut ini.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 2.1 &middot; Tujuan sesi dan indikator pemahaman</caption>
+    <thead>
+      <tr><th>Tujuan</th><th>Indikator pemahaman</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menjelaskan arti profesi</td><td>Membedakan pekerjaan, profesi, dan vokasi serta menyebutkan empat kebutuhan dasar profesi</td></tr>
+      <tr><td>Menjelaskan kedudukan insinyur secara hukum</td><td>Menyebutkan definisi, asas, lingkup, dan struktur UU No. 11 Tahun 2014</td></tr>
+      <tr><td>Menjelaskan jalur pembentukan kompetensi</td><td>Mengurutkan pendidikan sarjana, program profesi insinyur, uji kompetensi, sertifikat kompetensi, dan registrasi</td></tr>
+      <tr><td>Menerjemahkan hak dan kewajiban</td><td>Menerapkan daftar kewajiban pada satu kasus proyek nyata</td></tr>
+      <tr><td>Menentukan skop kerja</td><td>Membedakan pekerjaan yang berada dan tidak berada dalam lingkup kompetensi Teknik Elektro dan Teknik Komputer</td></tr>
+      <tr><td>Menganalisis masalah etika</td><td>Menggunakan kode etik PII sebagai alat penilaian pilihan profesional</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Keseluruhan materi dipusatkan pada satu gagasan: hasil rekayasa tidak berdiri sendiri sebagai objek teknis, melainkan berada di dalam jaringan pengguna, perusahaan, masyarakat, pemerintah, hukum, dan etika. Keterkaitan ini menuntut batas tanggung jawab yang jauh lebih tinggi daripada pekerjaan teknis biasa.</p>
+
+  <pre class="diagram"><code>Rekayasa
+   |
+   +-- Teknologi
+   +-- Pengguna
+   +-- Perusahaan
+   +-- Masyarakat
+   +-- Pemerintah
+   +-- Hukum
+   +-- Etika
+   |
+   v
+Tanggung jawab profesional</code></pre>
+
+  <p>Kesalahan penulisan kode program pada situs internet umumnya menimbulkan kerugian data. Kesalahan pada sistem proteksi listrik, struktur, atau kendali Safety Instrumented System dapat menimbulkan kebakaran, cedera, atau kematian. Perbedaan konsekuensi inilah yang membedakan pekerjaan teknik biasa dari profesi insinyur.</p>
+
+  <h2 id="s3">3. Arti profesi</h2>
+
+  <p>Istilah <em>profession</em> berasal dari bahasa Latin. Dalam pemakaian modern, profesi menunjuk pada jenis pekerjaan yang menuntut pendidikan atau pelatihan tingkat lanjut, proses pendidikan yang panjang, dan kualifikasi formal yang diakui.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.1 &middot; Ciri pekerjaan biasa dan profesi</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Pekerjaan biasa</th><th>Profesi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kriteria entering</td><td>Pengalaman atau pengawasan</td><td>Pendidikan tinggi dan uji kompetensi</td></tr>
+      <tr><td>Dasar Competence</td><td>Keterampilan praktis</td><td>Pengetahuan, keterampilan, dan sikap kerja</td></tr>
+      <tr><td>Standar pekerjaan</td><td>Instruksi atasan</td><td>Standar profesi dan kode etik</td></tr>
+      <tr><td>Tanggung jawab</td><td>Terhadap atasan</td><td>Terhadap pengguna, pemanfaat, dan masyarakat</td></tr>
+      <tr><td>Pengakuan</td><td>Tidak ada pengakuan formal</td><td>Sertifikat kompetensi dan tanda registrasi</td></tr>
+      <tr><td>Konsekuensi pelanggaran</td><td>Sanksi administratif Biasa</td><td>Sanksi administratif, sanksi kode etik, dan sanksi pidana</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Contoh profesi yang diatur di Indonesia meliputi dokter, insinyur, apoteker, akuntan, pengacara, notaris, dan guru bersertifikat. Setiap profesi memiliki organisasi, mekanisme pendaftaran keanggotaan, standar kompetensi, serta kode etik tersendiri.</p>
+
+  <pre class="diagram"><code>Pendidikan
+   +
+Kompetensi
+   +
+Standar
+   +
+Etika
+   +
+Tanggung jawab
+   +
+Kepercayaan publik
+   |
+   v
+Profesi</code></pre>
+
+  <h2 id="s4">4. Empat kebutuhan dasar profesi</h2>
+
+  <p>Perlindungan hukum terhadap hasil kerja insinyur hanya berlaku apabila pengguna dapat mempercayai hasil kerja tersebut. Kepercayaan itu dibangun melalui empat kebutuhan dasar berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Empat kebutuhan dasar profesi</caption>
+    <thead>
+      <tr><th>Kebutuhan</th><th>Pengertian</th><th>Indikator pada hasil kerja insinyur</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Credibility</td><td>Alasan pihak lain memandangi seseorang kompeten</td><td>Ijazah, sertifikat kompetensi, STRI, rekam kerja terverifikasi</td></tr>
+      <tr><td>Professionalism</td><td>Cara menjalankan pekerjaan sesuai standar profesi</td><td>Tepat waktu, disiplin, terdokumentasi, transparan</td></tr>
+      <tr><td>Quality of service</td><td>Mutu layanan sesuai kebutuhan dan standar</td><td>Ketepatan, kelengkapan, keandalan, kesesuaian standar</td></tr>
+      <tr><td>Trust</td><td>Kepercayaan pengguna dan masyarakat</td><td>Tidak ada manipulasi data, konflik kepentingan terbuka</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Kedudukan keempat kebutuhan tersebut bersifat berurutan namun bukan siklus. Kredibilitas merupakan pintu masuk, kualitas kerja membuktikannya, profesionalisme menjaganya, dan kepercayaan merupakan hasil akhirnya.</p>
+
+  <pre class="diagram"><code>Kompetensi
+   |
+   v
+Kredibilitas
+   |
+   v
+Kualitas kerja
+   |
+   v
+Profesionalisme
+   |
+   v
+Kepercayaan publik</code></pre>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 1 &middot; Menguji keempat kebutuhan pada satu dokumen desain</p>
+    <p>Dokumen desain instalasi listrik ballroom hotel memuat empat butir berikut.</p>
+    <pre><code>Butir 1 : perhitungan beban 42,8 kW, metode faktor diversity
+Butir 2 : memakai circuit breaker Schneider Acti9 C32, dipilih oleh tim
+Butir 3 : hasil studi hubung singkat menunjukkan impedansi 0,21 ohm
+Butir 4 : tidak ada catatan tentang asumsi suhu ambient 35 derajat C</code></pre>
+    <p>Butir 1, 2, dan 3 menunjukkan kredibilitas dan kualitas kerja karena menggunakan metode dan data yang dapat diperiksa ulang. Butir 4 menunjukkan kekurangan pada kelengkapan. Dokumen tersebut belum memenuhi quality of service dan belum dapat menjadi dasar kepercayaan penuh karena asumsi yang menentukan hasil perhitungan tidak dicantumkan.</p>
+  </div>
+
+  <h2 id="s5">5. Profesi insinyur menurut UU 11/2014</h2>
+
+  <p>Pasal 1 UU No. 11 Tahun 2014 tentang Keinsinyuran menetapkan definisi teknis yang menjadi rujukan utama materi ini. Definisi tersebut mengikat seluruh peraturan turunannya, termasuk PP No. 25 Tahun 2019.</p>
+
+  <div class="note">
+    <p class="label">Definisi resmi menurut Pasal 1</p>
+    <p>Keinsinyuran adalah kegiatan teknik dengan menggunakan kepakaran dan keahlian berdasarkan penguasaan ilmu pengetahuan dan teknologi untuk meningkatkan nilai tambah dan daya guna secara berkelanjutan dengan memperhatikan keselamatan, kesehatan, kemaslahatan, serta kesejahteraan masyarakat dan kelestarian lingkungan.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 5.1 &middot; Istilah kunci menurut Pasal 1 UU No. 11 Tahun 2014</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Istilah</th><th>Pengertian menurut undang-undang</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Keinsinyuran</td><td>Kegiatan teknik dengan menggunakan kepakaran dan keahlian berdasarkan penguasaan ilmu pengetahuan dan teknologi untuk meningkatkan nilai tambah dan daya guna secara berkelanjutan dengan memperhatikan keselamatan, kesehatan, kemaslahatan, serta kesejahteraan masyarakat dan kelestarian lingkungan</td></tr>
+      <tr><td class="mono">2</td><td>Praktik Keinsinyuran</td><td>Penyelenggaraan kegiatan Keinsinyuran</td></tr>
+      <tr><td class="mono">3</td><td>Insinyur</td><td>Seseorang yang mempunyai gelar profesi di bidang Keinsinyuran</td></tr>
+      <tr><td class="mono">4</td><td>Insinyur Asing</td><td>Insinyur yang berkewarganegaraan asing</td></tr>
+      <tr><td class="mono">5</td><td>Program Profesi Insinyur</td><td>Program pendidikan tinggi setelah program sarjana untuk membentuk kompetensi Keinsinyuran</td></tr>
+      <tr><td class="mono">6</td><td>Uji Kompetensi</td><td>Proses penilaian kompetensi Keinsinyuran yang secara terukur dan objektif menilai capaian kompetensi dengan mengacu pada standar kompetensi Insinyur</td></tr>
+      <tr><td class="mono">7</td><td>Sertifikat Kompetensi Insinyur</td><td>Bukti tertulis yang diberikan kepada Insinyur yang telah lulus Uji Kompetensi</td></tr>
+      <tr><td class="mono">8</td><td>Surat Tanda Registrasi Insinyur</td><td>Bukti tertulis yang dikeluarkan Persatuan Insinyur Indonesia kepada Insinyur yang telah memiliki Sertifikat Kompetensi Insinyur dan diakui secara hukum untuk melakukan Praktik Keinsinyuran</td></tr>
+      <tr><td class="mono">9</td><td>Pengembangan Keprofesian Berkelanjutan</td><td>Upaya pemeliharaan kompetensi Insinyur untuk menjalankan Praktik Keinsinyuran secara berkesinambungan</td></tr>
+      <tr><td class="mono">10</td><td>Pengguna Keinsinyuran</td><td>Pihak yang menggunakan jasa Insinyur berdasarkan ikatan hubungan kerja</td></tr>
+      <tr><td class="mono">11</td><td>Pemanfaat Keinsinyuran</td><td>Masyarakat yang memanfaatkan hasil kerja Keinsinyuran</td></tr>
+      <tr><td class="mono">12</td><td>Dewan Insinyur Indonesia</td><td>Lembaga yang beranggotakan pemangku kepentingan dalam penyelenggaraan Keinsinyuran yang berwenang membuat kebijakan penyelenggaraan dan pengawasan pelaksanaannya</td></tr>
+      <tr><td class="mono">13</td><td>Persatuan Insinyur Indonesia</td><td>Organisasi wadah berhimpun Insinyur yang melaksanakan penyelenggaraan Keinsinyuran di Indonesia</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Dari definisi tersebut terdapat empat unsur yang harus dipenuhi secara bersamaan oleh setiap kegiatan keinsinyuran.</p>
+
+  <pre class="diagram"><code>Kepakaran dan keahlian
+   +
+Penguasaan ilmu pengetahuan dan teknologi
+   +
+Peningkatan nilai tambah dan daya guna berkelanjutan
+   +
+Keselamatan, kesehatan, kemaslahatan, kesejahteraan,
+kelestarian lingkungan
+   |
+   v
+KEINSINYURAN</code></pre>
+
+  <div class="note">
+    <p class="label">Perbedaan istilah yang sering tertukar</p>
+    <p>Insinyur adalah orang yang mempunyai gelar profesi di bidang Keinsinyuran, sedangkan sarjana teknik adalah gelar akademik. Kelulusan sarjana teknik tidak langsung memberikan gelar profesi Insinyur. Keinsinyuran merupakan kegiatan, sedangkan insinyur merupakan pelakunya.</p>
+  </div>
+
+  <h2 id="s6">6. Lima tanggung jawab utama insinyur</h2>
+
+  <p>Kerangka kerja yang digunakan dalam praktik rekayasa menempatkan lima kegiatan utama berikut sebagai tanggung jawab inti seorang insinyur.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.1 &middot; Lima tanggung jawab utama insinyur</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Tanggung jawab</th><th>Hasil kerja yang harus ada</th><th>Indikator pada Teknik Elektro</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Perancangan dan pengembangan</td><td>Sistem atau produk yang memenuhi kebutuhan terukur</td><td>Rancangan power distribution, panel, atau sistem kendali</td></tr>
+      <tr><td class="mono">2</td><td>Analisis dan pemecahan masalah</td><td>Akar penyebab masalah dan solusi berbasis data</td><td>Analisis-trip dan harmonik, penentuan kapasitas konduktor</td></tr>
+      <tr><td class="mono">3</td><td>Pengujian dan evaluasi</td><td>Bukti bahwa sistem memenuhi spesifikasi</td><td>Uji insulation resistance, uji beban, commissioning</td></tr>
+      <tr><td class="mono">4</td><td>Manajemen proyek</td><td>Proyek selesai sesuai biaya, waktu, mutu, dan risiko</td><td>Jadwal pekerjaan, anggaran, kesiapan material</td></tr>
+      <tr><td class="mono">5</td><td>Kepatuhan terhadap regulasi</td><td>Hasil kerja sesuai standar dan peraturan</td><td>Kepatuhan pada PUIL, SNI IEC, dan keputusan Menteri ESDM</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s6-1">6.1 Perancangan dan pengembangan</h3>
+
+  <p>Perancangan selalu berangkat dari kebutuhan yang terukur, bukan dari solusi yang tersedia. Untuk kebutuhan lampu otomatis pada ruang rapat, jalur yang harus dilalui adalah sensing, pemrosesan, aktuasi, dan sumber daya, kemudian diverifikasi terhadap kebutuhan pencahayaan.</p>
+
+  <pre class="diagram"><code>Kebutuhan: pencahayaan 300 lux pada ruang rapat
+        |
+Sensor LDR atau sensor PIR
+        |
+Pengkondisian sinyal
+        |
+Mikrokontroler atau PLC
+        |
+Relai dan driver
+        |
+Lampu LED
+        |
+Verifikasi 300 lux</code></pre>
+
+  <h3 id="s6-2">6.2 Analisis dan pemecahan masalah</h3>
+
+  <p>Gejala motor yang terlalu panas merupakan titik awal, bukan diagnosis. Pemecahan masalah menuntut pemisahan antara penyebab dan gejala.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 2 &middot; Menerjemahkan gejala motor menjadi daftar pemeriksaan</p>
+    <p>Gejala: suhu winding motor 1.250 rpm mencapai 95 derajat C, sedangkan nameplate mengizinkan Class F, yaitu 155 derajat C untuk rise 105 K pada ambient 50 K.</p>
+    <pre><code>Data  : T_winding = 95 C ; T_ambient = 40 C
+        T_rise  = 95 - 40 = 55 K
+        Class F : rise 105 K
+        Beban   = 55 / 105 = 52,4 persen
+
+Pemeriksaan yang tidak boleh dilewati:
+  1. Arus: I = P / (sqrt(3) x V x pf x ef)
+  2. Pendinginan: suhu udara masuk dan fouling pada sirip
+  3. Bearing: bearing roller yang macet menaikkan beban gesek
+  4. Kontrol: apakah VFD sudah mencapai batas arus atau tepi beban</code></pre>
+    <p>Temperatur rise sebesar 55 K secara nominal masih jauh di bawah batas Class F. Keluhan tersebut tidak dapat disimpulkan sebagai kerusakan motor; pemeriksaan lebih diarahkan pada Pendinginan, pengukuran arus yang keliru, dan konfigurasi kontrol. Kesimpulan tanpa pemeriksaan bentuknya merupakan pelanggaran kewajiban menyatakan pendapat yang dapat dipertanggungjawabkan.</p>
+  </div>
+
+  <h3 id="s6-3">6.3 Pengujian dan evaluasi</h3>
+
+  <p>Pengujian menuntut pengukuran yang dapat ditelusuri ke standar acuan. Menyebutkan bahwa pengujian berhasil tanpa menyebutkan alat acuan, ketidakpastian pengukuran, dan prosedur pengujian.
+</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 3 &middot; Menyusun pernyataan hasil uji sensor suhu</p>
+    <p>Sensor dikalibrasi terhadap termokopel standar pada titik 30, 60, dan 90 derajat C. Pembacaan adalah rata-rata lima sampel.</p>
+    <pre><code>Tacuan   : 30,0 ; 60,0 ; 90,0 C
+Sensor   : 29,4 ; 59,1 ; 90,9 C
+Selisih  : -0,6 ; -0,9 ; +0,9 C
+
+Kesalahan maksimum = 0,9 C
+Pengulangan pada titik nol = 0,3 C (sebaran pembacaan)
+Selisih di seluruh rentang = 0,9 - (-0,9) = 1,8 C
+
+Pernyataan yang dapat dibuat:
+  "Sensor memenuhi toleransi plus-minus 1,0 C pada rentang
+   30 sampai 90 C dengan acuan termokopel kelas toleransi 0,5 C."</code></pre>
+    <p>Pernyataan tersebut menyebut nilai, sumber acuan, dan kondisi pengujian. Pernyataan yang tidak dapat dipertanggungjawabkan berbunyi pengujian berhasil 100 persen.</p>
+  </div>
+
+  <h3 id="s6-4">6.4 Manajemen proyek</h3>
+
+  <p>Manajemen proyek pada bidang rekayasa dibatasi oleh empat besaran yang tidak dapat ditawar: anggaran, waktu, sumber daya, dan risiko. Batasan tersebut harus diterjemahkan menjadi keputusan desain, bukan sekadar permintaan.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 4 &middot; Menghitung hari kerja efektif sebuah proyek</p>
+    <p>Proyek penggantian sistem berlangsung lima bulan dengan anggaran Rp120.000.000 dan dua tenaga teknik.</p>
+    <pre><code>Bulan kerja   : 5 x 4,33 minggu      = 21,67 minggu
+Hari efektif  : 21,67 x 5 hari        = 108 hari
+Hari nasional : 108 + 12 hari libur  = 120 hari kalender
+
+Anggaran per insinyur : 120.000.000 / 2
+                        = Rp60.000.000
+
+Biaya per hari efektif : 60.000.000 / 108
+                          = Rp555.556 per hari
+
+Catatan: angka tersebut belum memasukkan pajak,
+asuransi profesi, biaya perangkat lunak, dan
+biaya pengujian laboratorium.</code></pre>
+    <p>Perhitungan ini memperlihatkan bahwa harga jasa insinyur ditentukan oleh produktivitas per hari efektif, bukan sekadar jumlah hari kalender. Proyek yang menerima scope baru harus dihitung ulang hari efektifnya, bukan ditambahkan pada perhitungan lama.</p>
+  </div>
+
+  <h3 id="s6-5">6.5 Kepatuhan terhadap regulasi</h3>
+
+  <p>Regulasi menetapkan batas yang tidak dapat ditentukan oleh preferensi teknis. Instalasi listrik tidak dapat dibangun hanya dengan argumen bahwa secara teorinya bekerja. Standar teknis, prosedur pengujian, dan ketentuan keselamatan tetap berlaku meskipun desain tampak masuk akal.</p>
+
+  <h2 id="s7">7. Standar keinsinyuran</h2>
+
+  <p>Pasal 6 ayat (1) UU No. 11 Tahun 2014 menetapkan tiga standar Keinsinyuran. Ketiganya menetapkan cara yang berbeda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 7.1 &middot; Tiga standar keinsinyuran menurut Pasal 6</caption>
+    <thead>
+      <tr><th class="mono">Ayat</th><th>Standar</th><th>Pembentuk</th><th>Fungsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">6(1)b</td><td>Standar layanan Insinyur</td><td>Menteri yang membina bidang Keinsinyuran atas usul PII</td><td>Menentukan mutu layanan yang harus diberikan kepada pengguna</td></tr>
+      <tr><td class="mono">6(1)c</td><td>Standar kompetensi Insinyur</td><td>Dewan Insinyur Indonesia bersama Menteri</td><td>Menentukan kompetensi minimal yang harus dimiliki</td></tr>
+      <tr><td class="mono">6(1)d</td><td>Standar Program Profesi Insinyur</td><td>Menteri atas usul perguruan tinggi bersama Menteri bidang Keinsinyuran dan DII</td><td>Menentukan bagaimana pendidikan profesi diselenggarakan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perbedaan ketiga standar ini penting karena kesalahan pada tahap mana akan menimbulkan akibat yang berbeda. Kesalahan pada standar kompetensi berujung pada kecacatan kompetensi; kesalahan pada standar program profesi berujung pada program pendidikan yang tidak diakui; kesalahan pada standar layanan berujung pada mutu hasil kerja yang rendah meskipun kompetensi individual memadai.</p>
+
+  <div class="note">
+    <p class="label">Dasar penyusunan standar kompetensi</p>
+    <p>Standar kompetensi dirumuskan dari unit-unit kompetensi Standar Kompetensi Kerja Nasional Indonesia yang disusun melalui komite Workplace Standar ini menjadi rujukan Uji Kompetensi, Program Profesi Insinyur, dan mekanisme rekognisi pembelajaran lampau.</p>
+  </div>
+
+  <h2 id="s8">8. Program Profesi Insinyur</h2>
+
+  <p>Pasal 7 ayat (1) UU No. 11 Tahun 2014 menetapkan syarat memperoleh gelar profesi Insinyur, yaitu kelulusan dari Program Profesi Insinyur.</p>
+
+  <p>Syarat mengikuti Program Profesi Insinyur menurut Pasal 7 ayat (2) adalah memiliki sarjana bidang teknik atau sarjana terapan bidang teknik, baik dari perguruan tinggi dalam negeri maupun luar negeri yang telah disetarakan, atau memiliki sarjana pendidikan bidang teknik atau sarjana bidang sains yang telah disetarakan melalui program penyetaraan. Pasal 7 ayat (3) membuka kemungkinan mekanisme rekognisi pembelajaran lampau bagi yang telah mencapai standar melalui pengalaman.</p>
+
+  <p>Pasal 8 ayat (1) menetapkan bahwa program ini diselenggarakan oleh perguruan tinggi bekerja sama dengan kementerian terkait, PII, dan kalangan industri. Pasal 9 menetapkan gelar profesi disingkat Ir. dan dicantumkan di depan nama yang berhak menyandangnya.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 5 &middot; Menentukan jalur yang tersedia bagi seorang lulusan</p>
+    <pre><code>Kasus A : S1 Teknik Elektro, 0 tahun pengalaman
+        -> wajib mengikuti Program Profesi Insinyur
+        -> lalu Uji Kompetensi
+        -> Sertifikat Kompetensi Insinyur
+        -> registrasi oleh PII -> STRI
+
+Kasus B : S1 Teknik Elektro, 12 tahun pengalaman,
+         sudah menyusun dan menandatangani dokumen
+         perhitungan dan gambar teknik
+        -> mekanisme rekognisi pembelajaran lampau
+        -> tetap melalui Uji Kompetensi
+        -> Sertifikat Kompetensi Insinyur -> STRI
+
+Kasus C : D3 Teknik Elektro, 15 tahun pengalaman
+        -> bukan sarjana; tidak dapat langsung mengikuti
+           Program Profesi Insinyur menurut Pasal 7 ayat (2)
+        -> jalur yang tersedia: jenjang KKNI setara
+           teknisi atau analis, atau melalui vokasi
+           menuju Sarjana Terapan bidang teknik</code></pre>
+    <p>Pengalaman kerja yang panjang belum otomatis memenuhi syarat gelar profesi. UU No. 11 Tahun 2014 membedakan antara kompetensi dan pengakuan pengalaman, dan keduanya harus dibuktikan melalui mekanisme yang ditentukan.</p>
+  </div>
+
+  <p>PP No. 25 Tahun 2019 Pasal 10 sampai 12 memperinci tata cara penyelenggaraan Program Profesi Insinyur, termasuk bahwa perguruan tinggi penyelenggara harus memperoleh izin Menteri serta memenuhi persyaratan peringkat akreditasi, jumlah program studi sarjana teknik, dan jumlah dosen.</p>
+<h2 id="s9">9. Uji kompetensi dan sertifikat kompetensi</h2>
+
+  <p>Pasal 1 angka 6 dan 7 UU No. 11 Tahun 2014 membedakan tiga hal yang kerap dipertukarkan, yaitu kompetensi, Uji Kompetensi, dan Sertifikat Kompetensi Insinyur.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 9.1 &middot; Pembedaan kompetensi, Uji Kompetensi, dan sertifikat</caption>
+    <thead>
+      <tr><th>Istilah</th><th>Sifat</th><th>Dasar</th><th>Masa berlaku</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kompetensi</td><td>Kemampuan yang dimiliki</td><td>Penguasaan pengetahuan, keterampilan, dan sikap kerja</td><td>Tidak dibatasi, tetapi harus dipelihara</td></tr>
+      <tr><td>Uji Kompetensi</td><td>Proses</td><td>Penilaian terukur dan objektif mengacu standar kompetensi Insinyur</td><td>Berakhir pada saat penilaian</td></tr>
+      <tr><td>Sertifikat Kompetensi Insinyur</td><td>Bukti tertulis</td><td>Diberikan kepada Insinyur yang lulus Uji Kompetensi</td><td>Tidak diatur dalam undang-undang</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pasal 11 ayat (3) menetapkan bahwa Uji Kompetensi dilakukan oleh lembaga sertifikasi profesi sesuai ketentuan peraturan perundang-undangan. Assessmen ini mengacu pada Standar Kompetensi Kerja Nasional Indonesia dan tidak sama dengan ujian mata kuliah.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 6 &middot; Membedakan tiga tingkat pembuktian</p>
+    <pre><code>Tingkat 1 : ijazah S1 Teknik Elektro
+           Membuktikan : menyelesaikan pendidikan akademik
+
+Tingkat 2 : Sertifikat Kompetensi Insinyur
+           Membuktikan : lulus Uji Kompetensi bidang tertentu
+
+Tingkat 3 : Surat Tanda Registrasi Insinyur
+           Membuktikan : diakui PII untuk melakukan Praktik Keinsinyuran</code></pre>
+    <p>Ketiganya tidak saling menggantikan. Ijazah tidak menggantikan sertifikat kompetensi, dan sertifikat kompetensi tidak menggantikan STRI. Pasal 10 ayat (1) mewajibkan setiap orang yang akan melakukan Praktik Keinsinyuran memiliki STRI.</p>
+  </div>
+
+  <h2 id="s10">10. Registrasi dan STRI</h2>
+
+  <p>Registrasi Insinyur diatur pada BAB VI UU No. 11 Tahun 2014, yaitu Pasal 10 sampai Pasal 17.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.1 &middot; Ketentuan registrasi menurut UU No. 11 Tahun 2014</caption>
+    <thead>
+      <tr><th class="mono">Pasal</th><th>Isi ketentuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">10</td><td>Setiap Insinyur yang akan melakukan Praktik Keinsinyuran di Indonesia harus memiliki Surat Tanda Registrasi Insinyur, yang dikeluarkan oleh PII</td></tr>
+      <tr><td class="mono">11</td><td>Sertifikat Kompetensi Insinyur merupakan syarat memperoleh STRI dan diperoleh setelah lulus Uji Kompetensi</td></tr>
+      <tr><td class="mono">12</td><td>STRI paling sedikit mencantumkan jenjang kualifikasi profesi dan masa berlaku</td></tr>
+      <tr><td class="mono">13</td><td>STRI berlaku lima tahun dan diregistrasi ulang setiap lima tahun dengan tetap memenuhi persyaratan Pasal 11 dan persyaratan Pengembangan Keprofesian Berkelanjutan</td></tr>
+      <tr><td class="mono">14</td><td>STRI tidak berlaku karena habis masa berlaku tanpa pendaftaran ulang, atas permintaan yang bersangkutan, karena kematian, atau karena pencabutan oleh PII atas malapraktik dan pelanggaran kode etik</td></tr>
+      <tr><td class="mono">15</td><td>Insinyur yang melakukan kegiatan tanpa STRI dikenai sanksi administratif berupa peringatan tertulis, penghentian sementara kegiatan, dan denda bila menimbulkan kerugian materiil</td></tr>
+      <tr><td class="mono">16</td><td>Insinyur teregistrasi yang menimbulkan kerugian materiil dikenai sanksi administratif berupa peringatan tertulis, denda, penghentian sementara kegiatan, pembekuan STRI, dan pencabutan STRI</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jenjang kualifikasi profesi yang dicantumkan pada STRI dijelaskan PP No. 25 Tahun 2019 Pasal 20 ayat (1) dan Pasal 21.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.2 &middot; Jenjang kualifikasi profesi Insinyur</caption>
+    <thead>
+      <tr><th>Jenjang</th><th>Posisi dalam karier</th><th>Ciri pembeda</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Insinyur profesional pratama</td><td>Tahap awal praktik</td><td>Masa pengalaman yang relatif pendek setelah sarjana atau setelah mengikuti PPI</td></tr>
+      <tr><td>Insinyur profesional madya</td><td>Tahap menengah</td><td>Pengalaman, keluasan tanggung jawab, dan kemampuan memimpin tim yang lebih besar</td></tr>
+      <tr><td>Insinyur profesional utama</td><td>Tahap tertinggi jenjang</td><td>Kompetensi dan pengalaman maksimum serta kontribusi pada bidang keahlian</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p class="label">Status angka pengalaman</p>
+    <p>Undang-undang dan peraturan pemerintah tidak menetapkan angka tahun pengalaman secara langsung. PP No. 25 Tahun 2019 Pasal 21 ayat (2) mendelegasikan penetapan kriteria jenjang kepada Menteri yang dibantu koordinasi dengan menteri atau kepala lembaga pemerintah nonkementerian terkait serta rekomendasi Dewan Insinyur Indonesia. Angka tiga tahun, delapan tahun, dan enam belas tahun yang beredar di lingkungan PII merupakan pedoman jabatan, bukan angka dalam undang-undang, dan harus diperiksa pada ketentuan teknis yang berlaku saat pengajuan.</p>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 7 &middot; Menghitung tanggal berakhir STRI</p>
+    <p>Sebuah STRI diterbitkan pada 20 April 2019.</p>
+    <pre><code>Tanggal terbit   : 20 April 2019
+Masa berlaku     : 5 tahun
+Tanggal berakhir : 19 April 2024
+
+STATUS pada 19 April 2024 : masih berlaku
+STATUS pada 20 April 2024 : sudah tidak berlaku
+
+Pasal 14 ayat (1) huruf a : STRI tidak berlaku karena
+  habis masa berlakunya tanpa mendaftarkan ulang</code></pre>
+    <p>Perbedaan satu hari tersebut menentukan apakah kegiatan Praktik Keinsinyuran pada tanggal tersebut sah atau tidak.</p>
+  </div>
+<h2 id="s11">11. Pengembangan keprofesian berkelanjutan</h2>
+
+  <p>BAB VIII UU No. 11 Tahun 2014 mengatur Pengembangan Keprofesian Berkelanjutan pada Pasal 23. Upaya ini dirumuskan sebagai pemeliharaan kompetensi untuk menjalankan Praktik Keinsinyuran secara berkelanjutan, bukan sebagai kegiatan tambahan yang sukarela.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 11.1 &middot; Ketentuan Pengembangan Keprofesian Berkelanjutan</caption>
+    <thead>
+      <tr><th class="mono">Ayat</th><th>Isi ketentuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">23(1)a</td><td>Tujuan memelihara kompetensi dan profesionalitas Insinyur</td></tr>
+      <tr><td class="mono">23(1)b</td><td>Tujuan mengembangkan tanggung jawab sosial Insinyur pada lingkungan profesi dan masyarakat di sekitarnya</td></tr>
+      <tr><td class="mono">23(2)</td><td>Diselenggarakan oleh PII dan dapat bekerja sama dengan lembaga pelatihan dan pengembangan profesi</td></tr>
+      <tr><td class="mono">23(3)</td><td>Standar ditetapkan Dewan Insinyur Indonesia sesuai perkembangan ilmu pengetahuan dan teknologi</td></tr>
+      <tr><td class="mono">23(4)</td><td>Merupakan syarat untuk perpanjangan STRI</td></tr>
+      <tr><td class="mono">23(5)</td><td>PII melakukan pemantauan dan penilaian atas pelaksanaannya</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Karena PKB merupakan syarat perpanjangan STRI, ketidakpatuhan berdampak langsung pada kemampuan seseorang untuk melakukan Praktik Keinsinyuran. Dampak tersebut menuntut rencana sejak awal, bukan penyusunan di akhir masa berlaku.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 8 &middot; Menyusun rencana PKB selama lima tahun</p>
+    <pre><code>Target PKB per tahun : 20 poin
+Total lima tahun     : 20 x 5 = 100 poin
+
+Rencana setiap tahun:
+  Seminar teknis atau webinar bersertifikat : 5 poin
+  Kursus atau pelatihan teknis               : 8 poin
+  Kajian makalah atau publikasi teknis      : 4 poin
+  Kunjungan lapangan atau studi banding     : 3 poin
+                                          --------
+  Total                                     20 poin</code></pre>
+    <p>Komposisi tersebut menunjukkan bahwa PKB tidak hanya berupa pelatihan formal. Kegiatan yang menyasar kebutuhan teknis terkini merupakan bukti bahwa kompetensi tetap terpelihara pada perubahan teknologi.</p>
+  </div>
+
+  <h2 id="s12">12. Asas keinsinyuran</h2>
+
+  <p>Pasal 2 UU No. 11 Tahun 2014 menetapkan sembilan asas pengaturan Keinsinyuran. Asas tersebut menjadi landasan penafsiran seluruh pasal berikutnya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 12.1 &middot; Sembilan asas keinsinyuran menurut Pasal 2</caption>
+    <thead>
+      <tr><th class="mono">Ayat</th><th>Asas</th><th>Implikasi pada praktik</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">2(a)</td><td>Profesionalitas</td><td>Pekerjaan dikerjakan oleh pihak yang kompeten dan sesuai standar</td></tr>
+      <tr><td class="mono">2(b)</td><td>Integritas</td><td>Tidak ada manipulasi data dan tidak ada buscadores keuntungan pribadi</td></tr>
+      <tr><td class="mono">2(c)</td><td>Etika</td><td>Kode etik menjadi ukuran perilaku, bukan sekadar dokumen</td></tr>
+      <tr><td class="mono">2(d)</td><td>Keadilan</td><td>Tidak ada perlakuan diskriminatif dalam praktik profesi</td></tr>
+      <tr><td class="mono">2(e)</td><td>Keselarasan</td><td>Keputusan teknis diselaraskan dengan kepentingan bersama</td></tr>
+      <tr><td class="mono">2(f)</td><td>Kemanfaatan</td><td>Hasil kerja memberi manfaat nyata bagi pengguna dan masyarakat</td></tr>
+      <tr><td class="mono">2(g)</td><td>Keamanan dan keselamatan</td><td>Keselamatan menjadi pertimbangan utama pada setiap tahap</td></tr>
+      <tr><td class="mono">2(h)</td><td>Kelestarian lingkungan hidup</td><td>Dampak lingkungan diperhitungkan sejak tahap desain</td></tr>
+      <tr><td class="mono">2(i)</td><td>Keberlanjutan</td><td>Hasil kerja tetap berguna lintas generasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Kesembilan asas tersebut dapat diuji pada satu proyek pembangkit listrik tenaga surya.</p>
+
+  <pre class="diagram"><code>Keamanan dan keselamatan
+  -> proteksi hubung singkat, grounding, pengaman kerja
+Kemanfaatan
+  -> energi listrik pada biaya yang masuk akal bagi pengguna
+Kelestarian lingkungan
+  -> jejak karbon dan pengelolaan modul di akhir masa pakai
+Keberlanjutan
+  -> desain yang dapat dilanjutkan lintas generasi
+Keadilan
+  -> akses listrik yang merata
+Etika dan integritas
+  -> data hubungan dan biaya investasi dinyatakan apa adanya</code></pre>
+
+  <h2 id="s13">13. Hak insinyur</h2>
+
+  <p>Pasal 24 ayat (1) UU No. 11 Tahun 2014 menetapkan lima hak Insinyur dan Insinyur Asing.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 13.1 &middot; Hak Insinyur menurut Pasal 24 ayat (1)</caption>
+    <thead>
+      <tr><th class="mono">Huruf</th><th>Hak</th><th>Dasar kepentingan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">a</td><td>Melakukan kegiatan Keinsinyuran sesuai dengan standar Keinsinyuran</td><td>Kepastian bahwa pekerjaan dilakukan dalam kerangka standar</td></tr>
+      <tr><td class="mono">b</td><td>Memperoleh jaminan pelindungan hukum selama melaksanakan tugasnya sesuai kode etik Insinyur dan standar Keinsinyuran</td><td>Pelindungan terhadap tuduhan yang tidak beralasan</td></tr>
+      <tr><td class="mono">c</td><td>Memperoleh informasi, data, dan dokumen lain yang lengkap dan benar dari Pengguna Keinsinyuran</td><td>Tanpa data yang benar, hasil kerja tidak dapat dipertanggungjawabkan</td></tr>
+      <tr><td class="mono">d</td><td>Menerima imbalan hasil kerja sesuai dengan perjanjian kerja</td><td>Kepastian ekonomi sebagai ganti tanggung jawab profesi</td></tr>
+      <tr><td class="mono">e</td><td>Mendapatkan pembinaan dan pemeliharaan kompetensi profesi Keinsinyuran</td><td>Menjaga kompetensi agar tetap relevan terhadap perkembangan teknologi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Hak pada huruf c berdampak langsung pada mutu desain. Panel listrik yang disusun berdasarkan data tegangan 220 V, sedangkan tegangan sebenarnya 380 V, menghasilkan pilihan komponen yang salah dan dapat menimbulkan bahaya pada pemeliharaan berikutnya.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 9 &middot; Menunjukkan dampak data yang tidak benar</p>
+    <pre><code>Data diberikan pengguna : 220 V, 1 fase
+Data sebenarnya         : 380 V, 3 fase
+
+Rancangan memakai data 220 V:
+  Arus nominal rancangan : 60 A
+  Arus sebenarnya di lapangan : 60 x 380 / 220 = 103,6 A
+
+Pemutus 60 A tidak lagi melindungi konduktor
+Konsekuensi : konduktor panas, risiko kebakaran</code></pre>
+    <p>Dari kasus ini terlihat bahwa hak memperoleh data yang lengkap dan benar merupakan syarat agar standar dapat dipenuhi.</p>
+  </div>
+<h2 id="s14">14. Kewajiban insinyur</h2>
+
+  <p>Pasal 25 UU No. 11 Tahun 2014 menetapkan sebelas kewajiban Insinyur dan Insinyur Asing. Kewajiban inilah yang menjadi ukuran ketika sebuah keputusan profesional dinilai benar atau keliru.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 14.1 &middot; Kewajiban Insinyur menurut Pasal 25</caption>
+    <thead>
+      <tr><th class="mono">Huruf</th><th>Kewajiban</th><th>Bentuk bukti</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">a</td><td>Melaksanakan kegiatan Keinsinyuran sesuai keahlian dan kode etik Insinyur</td><td>Kepatuhan pada kode etik dalam setiap keputusan</td></tr>
+      <tr><td class="mono">b</td><td>Melaksanakan tugas profesi sesuai keahlian dan kualifikasi yang dimiliki</td><td>Batas kerja yang dinyatakan tegas dalam dokumen kerja</td></tr>
+      <tr><td class="mono">c</td><td>Melaksanakan tugas profesi sesuai standar Keinsinyuran</td><td>Rujukan standar pada setiap gambar dan spesifikasi</td></tr>
+      <tr><td class="mono">d</td><td>Menyelesaikan pekerjaan sesuai perjanjian kerja dengan Pengguna Keinsinyuran</td><td>Kepatuhan pada ruang lingkup, mutu, dan waktu</td></tr>
+      <tr><td class="mono">e</td><td>Melaksanakan profesi tanpa membedakan suku, agama, ras, gender, golongan, latar belakang sosial, politik, dan budaya</td><td>Pemilihan dan penugasan tanpa diskriminasi</td></tr>
+      <tr><td class="mono">f</td><td>Memutakhirkan ilmu pengetahuan dan teknologi serta mengikuti PKB</td><td>Bukti kegiatan PKB</td></tr>
+      <tr><td class="mono">g</td><td>Mengutamakan kaidah keselamatan, kesehatan kerja, dan kelestarian lingkungan hidup</td><td>Prosedur K3 dan pengelolaan lingkungan</td></tr>
+      <tr><td class="mono">h</td><td>Mengupayakan inovasi dan nilai tambah dalam kegiatan Keinsinyuran secara berkesinambungan</td><td>Perbaikan proses dan efisiensi</td></tr>
+      <tr><td class="mono">i</td><td>Menerapkan keberpihakan pada sumber daya manusia, lembaga kerja, dan produk hasil Keinsinyuran nasional</td><td>Penggunaan komponen dan tenaga lokal sesuai ketentuan</td></tr>
+      <tr><td class="mono">j</td><td>Melaksanakan secara berkala dan teratur kegiatan darma bakti masyarakat yang bersifat sukarela</td><td>Program pengabdian yang terencana</td></tr>
+      <tr><td class="mono">k</td><td>Melakukan pencatatan rekam kerja Keinsinyuran dalam format sesuai standar Keinsinyuran</td><td>Rekam kerja yang dapat diverifikasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pasal 25 huruf e merupakan kewajiban non diskriminasi yang dinyatakan tegas, dan Pasal 25 huruf k mewajibkan pencatatan rekam kerja dalam format tertentu. Kedua ketentuan tersebut berkaitan langsung dengan profesionalitas, sebab rekam kerja yang tidak rapi dan tidak dapat ditelusuri tidak dapat dipakai untuk membuktikan kompetensi.</p>
+
+  <p>UU No. 11 Tahun 2014 tidak hanya mengatur kewajiban Insinyur. Pasal 26 sampai Pasal 29 mengatur hak dan kewajiban Pengguna Keinsinyuran serta Pemanfaat Keinsinyuran, sehingga hubungan antara para pihak bersifat timbal balik.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 14.2 &middot; Hak dan kewajiban pengguna serta pemanfaat keinsinyuran</caption>
+    <thead>
+      <tr><th class="mono">Pasal</th><th>Pihak dan jenis</th><th>Isi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">26</td><td>Pengguna Keinsinyuran, hak</td><td>Mendapatkan cakupan dan mutu sesuai perjanjian, informasi lengkap dan benar, pelindungan hukum sebagai konsumen, menyampaikan pendapat dan memperoleh tanggapan, menolak hasil yang tidak sesuai perjanjian, serta melakukan tindakan hukum atas pelanggaran perjanjian</td></tr>
+      <tr><td class="mono">27</td><td>Pengguna Keinsinyuran, kewajiban</td><td>Memberikan informasi, data, dan dokumen lengkap dan benar, mengikuti petunjuk Insinyur atas hasil yang diterima, memberikan imbalan yang setara dan adil sesuai jenjang kualifikasi, serta mematuhi ketentuan di tempat pelaksanaan Praktik Keinsinyuran</td></tr>
+      <tr><td class="mono">28</td><td>Pemanfaat Keinsinyuran, hak</td><td>Mendapatkan informasi atas keselamatan hasil kegiatan, memanfaatkan hasil secara aman dan nyaman sesuai standar, serta memperoleh pelindung hukum dari malapraktik</td></tr>
+      <tr><td class="mono">29</td><td>Pemanfaat Keinsinyuran, kewajiban</td><td>Mengikuti ketentuan standar penggunaan hasil kegiatan Keinsinyuran</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 10 &middot; Menyusun daftar periksa kewajiban Pasal 25</p>
+    <p>Sebuah tim menjalankan proyek otomasi gudang dengan sistem konveyor, PLC, dan sistem kamera.</p>
+    <pre><code>Pasal 25 huruf | Tindakan pada proyek ini
+a              | Menetapkan wajib Safety PLC terpisah dari PLC proses
+b              | Menuliskan bahwa konfigurasi jaringan
+                | berada di luar lingkup kerja tim PLC
+c              | Menyertakan standar instalasi listrik pada gambar
+d              | Mengikat diri pada daftar periksa serah terima
+e              | Menjadwalkan pelatihan operator tanpa memilih
+                | kandidat berdasarkan jenis kelamin
+f              | Mendaftarkan dua anggota tim pada pelatihan PLC
+g              | Menyusun prosedur lockout tagout dan folder K3
+h              | Menambahkan penghitung energi pada laporan harian
+i              | Mengutamakan produk lokal yang setara spesifikasi
+j              | Melakukan perbaikan sistem di sekolah terdekat
+k              | Mencatat setiap perubahan program beserta alasan</code></pre>
+    <p>Daftar periksa tersebut memperlihatkan bahwa kewajiban Pasal 25 dapat diuji pada dokumen dan aktivitas nyata, bukan sekadar dibaca sebagai daftar.</p>
+  </div>
+
+  <h2 id="s15">15. Cakupan disiplin dan bidang keinsinyuran</h2>
+
+  <p>Pasal 5 UU No. 11 Tahun 2014 menetapkan cakupan Keinsinyuran dalam dua tingkat, yaitu disiplin teknik dan bidang Keinsinyuran. PP No. 25 Tahun 2019 Pasal 5 sampai Pasal 8 memperinci kedua tingkat tersebut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 15.1 &middot; Cakupan disiplin teknik menurut PP No. 25 Tahun 2019</caption>
+    <thead>
+      <tr><th class="mono">Pasal 5 huruf</th><th>Disiplin teknik</th><th>Subdisiplin menurut Pasal 6</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">a</td><td>Kebumian dan energi</td><td>Teknik geofisika; teknik geodesi dan geomatika; teknik geologi; teknik geokimia</td></tr>
+      <tr><td class="mono">b</td><td>Rekayasa sipil dan lingkungan terbangun</td><td>Teknik bangunan; perencanaan perkotaan dan wilayah; teknik penyehatan</td></tr>
+      <tr><td class="mono">c</td><td>Industri</td><td>Teknik mesin; teknik kimia; teknik industri; teknik fisika; teknik material; teknik elektro; teknik telekomunikasi; teknik informatika; teknik farmasi</td></tr>
+      <tr><td class="mono">d</td><td>Konservasi dan pengelolaan sumber daya alam</td><td>Teknik pertambangan; teknik perminyakan; teknik metalurgi; teknik lingkungan; teknik konservasi energi; teknik bioenergi dan kemurgi</td></tr>
+      <tr><td class="mono">e</td><td>Pertanian dan hasil pertanian</td><td>Teknik pertanian; teknik industri pertanian; teknik kehutanan; teknik hasil pertanian; teknik peternakan</td></tr>
+      <tr><td class="mono">f</td><td>Teknologi kelautan dan perkapalan</td><td>Teknik kelautan; teknik perkapalan</td></tr>
+      <tr><td class="mono">g</td><td>Aeronotika dan astronotika</td><td>Teknik penerbangan; teknik dirgantara; teknik astronotika</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p class="label">Letak Teknik Elektro dan Teknik Komputer dalam struktur Keinsinyuran</p>
+    <p>PP No. 25 Tahun 2019 menempatkan teknik elektro, teknik telekomunikasi, dan teknik informatika sebagai subdisiplin dari disiplin teknik industri. Penempatan ini berbeda dari pembagian jurusan pada perguruan tinggi, sehingga nama program studi tidak dapat disamakan langsung dengan disiplin Keinsinyuran. Keterangan tersebut penting ketika memetakan ijazah pada jenjang kualifikasi profesi.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 15.2 &middot; Cakupan bidang Keinsinyuran menurut PP No. 25 Tahun 2019</caption>
+    <thead>
+      <tr><th class="mono">Pasal 7 huruf</th><th>Bidang</th><th>Contoh kegiatan menurut Pasal 8</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">a</td><td>Pendidikan dan pelatihan teknik dan teknologi</td><td>Perencanaan program; penerapan program pendidikan tinggi; penerapan program pelatihan</td></tr>
+      <tr><td class="mono">b</td><td>Penelitian, pengembangan, pengkajian, dan komersialisasi</td><td>Konsep teknologi; metode dan inovasi; penelitian; percobaan; pemodelan; pengembangan; komersialisasi</td></tr>
+      <tr><td class="mono">c</td><td>Konsultansi, rancang bangun, dan konstruksi</td><td>Pengkajian kelayakan; penelitian tanah; perencanaan; perancangan; pelaksanaan; pengawasan; pembangunan terintegrasi; pengoperasian; pemeliharaan; pembongkaran; manajemen penyelenggaraan konstruksi bangunan; pembangunan kembali</td></tr>
+      <tr><td class="mono">d</td><td>Teknik dan manajemen industri, manufaktur, pengolahan, dan proses produk</td><td>Pengembangan teknik produksi; perencanaan proses manufaktur; pengoperasian; pemeliharaan; pengembangan; modifikasi; pelayanan kepada masyarakat; jasa industri</td></tr>
+      <tr><td class="mono">e</td><td>Eksplorasi dan eksploitasi sumber daya mineral</td><td>Survei pendahuluan; eksplorasi; studi kelayakan; konstruksi; penambangan atau eksploitasi; pengolahan dan pemurnian; pengangkutan dan penjualan; pemanfaatan; pasca tambang</td></tr>
+      <tr><td class="mono">f</td><td>Penggalian, penanaman, peningkatan, dan pemuliaan sumber daya alam</td><td>Pengkajian kelayakan; penelitian kesesuaian alam; perencanaan; perancangan; penerapan teknologi budi daya; pengelolaan; pemeliharaan; komersialisasi</td></tr>
+      <tr><td class="mono">g</td><td>Pembangunan, pembentukan, pengoperasian, dan pemeliharaan aset</td><td>Pelaksanaan fungsi manajemen; pelayanan publik; pembangunan aset negara; pengembangan aset negara; penerbitan regulasi dan kebijakan pelayanan publik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Tujuh bidang pada Tabel 15.2 memberikan jawaban langsung mengenai tempat seorang insinyur dapat bekerja. Ruang lingkup tersebut jauh lebih luas daripada sekadar perusahaan rekayasa.</p>
+<h2 id="s16">16. Skop kerja Teknik Elektro dan Teknik Komputer</h2>
+
+  <p>Bidang keinsinyuran pada Tabel 15.2 dapat dipetakan ke arah karier Teknik Elektro maupun Teknik Komputer.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Pemetaan bidang keinsinyuran ke karier Teknik Elektro</caption>
+    <thead>
+      <tr><th class="mono">Bidang</th><th>Karier Teknik Elektro</th><th>Kompetensi yang dipakai</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">Pendidikan dan pelatihan</td><td>Dosen, instruktur, trainer</td><td>Penguasaan konsep, metode-metode pengajaran, dan asesmen</td></tr>
+      <tr><td class="mono">Penelitian dan pengembangan</td><td>Riset sensor, robot, daya elektronik, sistem energi</td><td>Metodologi penelitian, pengukuran, dan analisis data</td></tr>
+      <tr><td class="mono">Konsultansi dan rancang bangun</td><td>Rancang sistem daya, panel, otomasi, kendali</td><td>Analisis beban, pemilihan perangkat, gambar teknik</td></tr>
+      <tr><td class="mono">Industri dan manufaktur</td><td>Perancangan lini produksi, instrumen, pemeliharaan</td><td>Proses, toleransi, pemeliharaan prediktif</td></tr>
+      <tr><td class="mono">Pengoperasian dan pemeliharaan aset</td><td>Operasi pembangkit, gardu, instalasi</td><td>Prosedur operasi, izin kerja, dan analisis risiko</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>Tenaga listrik
+  -&gt; pembangkit, transmisi, distribusi, energi terbarukan
+
+Elektronika
+  -&gt; papan sirkuit, perangkat tertanam, instrumentasi
+
+Kendali
+  -&gt; PLC, SCADA, otomasi, robotika
+
+Telekomunikasi
+  -&gt; seluler, fiber optik, nirkabel, jaringan
+
+Industri
+  -&gt; manufaktur, pemeliharaan, commissioning, manajemen teknik</code></pre>
+
+  <p>Pada Teknik Komputer, arah yang sama dapat diturunkan melalui perpaduan dengan bidang kelistrikan.</p>
+
+  <pre class="diagram"><code>Teknik Elektro
+       +
+Teknik Komputer
+       |
+       v
+Perangkat tertanam
+IoT
+Otomasi
+Robotika
+Jaringan pintar
+Sistem siber fisik
+Keamanan siber</code></pre>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 11 &middot; Memetakan satu proyek ke bidang keinsinyuran</p>
+    <p>Sebuah pabrik tekstil memasang sistem peng-monitoring konsumsi energi pada 40 mesin jahit.</p>
+    <pre><code>Komponen       : sensor arus, gateway, jaringan, dashboard
+Bidang utama    : teknik dan manajemen industri
+                : bidang d Pasal 7 huruf d PP No. 25 Tahun 2019
+
+Subbidang      : bidang a penelitian, pengembangan, dan
+                  komersialisasi karena ada pengembangan
+                  perangkat pengukur
+
+Kompetensi perlu: teknik pengukuran, pemrosesan sinyal,
+                  jaringan, dan analisis konsumsi energi</code></pre>
+    <p>Satu proyek dapat masuk lebih dari satu bidang sekaligus. Pemetaan yang benar memungkinkan penentuan standar dan kompetensi yang perlu disiapkan.</p>
+  </div>
+
+  <h2 id="s17">17. Scope of work dan batas kompetensi</h2>
+
+  <p>Istilah <em>scope of work</em> atau lingkup kerja menunjuk pada batas dan cakupan pekerjaan yang dijalankan oleh seseorang atau suatu organisasi dalam sebuah proyek. Batas tersebut bukan formalitas administrasi karena menjadi dasar penentuan tanggung jawab.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 17.1 &middot; Pembagian lingkup kerja pada sebuah instalasi gedung</caption>
+    <thead>
+      <tr><th>Pekerjaan</th><th>Disiplin utama</th><th>Alasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Perhitungan beban dan pemilihan feeder utama</td><td>Teknik elektro</td><td>Menentukan kapasitas konduktor dan proteksi</td></tr>
+      <tr><td>Rancangan diagram panel distribusi</td><td>Teknik elektro</td><td>Menentukan susunan komponen dan rating</td></tr>
+      <tr><td>Program PLC pada sistem pompa</td><td>Teknik elektro atau komputer, sesuai bukti kompetensi</td><td>Memerlukan kemampuan pemrograman</td></tr>
+      <tr><td>Pemasangan troughing dan jalur kabel</td><td>Teknik elektro</td><td>Berhubungan dengan jalur dan proteksi kabel</td></tr>
+      <tr><td>Perhitungan serta gambar pondasi dan portal</td><td>Teknik sipil</td><td>Memerlukan analisis struktur dan tanah</td></tr>
+      <tr><td>Rancangan sistem sprinkeler</td><td>Teknik sipil dengan kewajiban keselamatan</td><td>Berkaitan dengan risiko struktur dan analisis hidraulik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perbedaan disiplin pada Tabel 17.1 berimplikasi langsung pada Pasal 25 huruf b, yaitu kewajiban melaksanakan tugas profesi sesuai keahlian dan kualifikasi yang dimiliki.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 12 &middot; Menandai pekerjaan di luar lingkup</p>
+    <p>Seorang insinyur elektro diminta menandatangani gambar struktur atap gedung.</p>
+    <pre><code>Yang diminta  : menandatangani gambar struktur atap
+Yang dilakukan: menolak, dengan alasan kehalusan
+
+Dasar alasan:
+  1. Pasal 25 huruf b : tugas profesi sesuai keahlian
+  2. Gambar struktur menentukan keselamatan
+     dan keekonomian bangunan
+  3. Penandatanganan memindahkan tanggung jawab
+     kepada pihak lain
+
+Tindakan yang tepat:
+  - menyampaikan keterbatasan kompetensi secara tertulis
+  - menawarkan perubahan melalui insinyur struktur
+  - menandatangani hanya bagian lingkup kerja sendiri
+  - mendokumentasikan hasil pembahasan secara tertulis</code></pre>
+    <p>Penolakan tersebut merupakan pernyataan batas kompetensi, bukan penolakan atas pekerjaan.</p>
+  </div>
+
+  <h2 id="s18">18. Organisasi profesi</h2>
+
+  <p>Organisasi profesi adalah wadah orang-orang dalam suatu profesi untuk membangun, menjaga, dan mengembangkan standar profesinya. Kedudukan organisasi profesi berbeda dari lembaga negara yang menetapkan kebijakan umum.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.1 &middot; Contoh organisasi profesi regulated di Indonesia</caption>
+    <thead>
+      <tr><th>Profesi</th><th>Organisasi</th><th>Dasar hukum atau dasar pembentukan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Insinyur</td><td>Persatuan Insinyur Indonesia</td><td>Pasal 13 angka 13 dan Pasal 36 UU No. 11 Tahun 2014</td></tr>
+      <tr><td>Dokter</td><td>Ikatan Dokter Indonesia</td><td>Undang-Undang tentang Kedokteran</td></tr>
+      <tr><td>Akuntan</td><td>Ikatan Akuntan Indonesia</td><td>Undang-Undang tentang Profesi Akuntan</td></tr>
+      <tr><td>Apoteker</td><td>Ikatan Sarjana Farmasi Indonesia</td><td>Undang-Undang tentang Farmasi</td></tr>
+      <tr><td>Teknik komputer dan informatika</td><td>Ikatan Profesi Komputer dan Informatika Indonesia</td><td>Associations</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perbedaan utama terletak pada sumber kewenangan. Organisasi profesi bergerak atas dasar keanggotaan dan kode etik, sedangkan lembaga negara yang bergerak atas dasar kewenangan yang diberikan undang-undang.</p>
+
+  <pre class="diagram"><code>Organisasi profesi
+  -&gt; keanggotaan
+  -&gt; standar kompetensi
+  -&gt; kode etik
+  -&gt; sanksi terhadap anggota
+
+Lembaga negara
+  -&gt; kebijakan
+  -&gt; pengaturan
+  -&gt; pengawasan
+  -&gt; sanksi administratif</code></pre>
+
+  <p>Kedudukan insinyur dalam sistem Keinsinyuran menurut UU No. 11 Tahun 2014 dijelaskan pada Tabel 19.1.</p>
+<h2 id="s19">19. Persatuan Insinyur Indonesia</h2>
+
+  <p>Pasal 1 angka 13 UU No. 11 Tahun 2014 mendefinisikan Persatuan Insinyur Indonesia sebagai organisasi wadah berhimpun Insinyur yang melaksanakan penyelenggaraan Keinsinyuran di Indonesia. BAB XI UU tersebut mengatur PII pada Pasal 36 sampai Pasal 44.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 19.1 &middot; Kedudukan PII dalam sistem Keinsinyuran</caption>
+    <thead>
+      <tr><th class="mono">Pasal</th><th>Isi ketentuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">36</td><td>PII adalah organisasi wadah berhimpun Insinyur yang melaksanakan penyelenggaraan Keinsinyuran di Indonesia</td></tr>
+      <tr><td class="mono">38</td><td>PII melaksanakan program profesi insinyur, registrasi, standar kompetensi, dan pengembangan keprofesian berkelanjutan</td></tr>
+      <tr><td class="mono">39</td><td>PII berwenang menyatakan terpenuhi atau tidaknya persyaratan registrasi sesuai jenjang kualifikasi, menerbitkan, memperpanjang, membekukan, dan mencabut STRI, serta menjatuhkan sanksi terhadap anggota yang tidak memenuhi standar Keinsinyuran</td></tr>
+      <tr><td class="mono">43</td><td>Pendanaan PII bersumber dari iuran anggota dan sumber pendanaan lain yang sah, dikelola secara transparan dan akuntabel, serta diaudit</td></tr>
+      <tr><td class="mono">44</td><td>Struktur, tata kerja, rekrutmen pengurus, kode etik, dan pendanaan PII diatur dalam anggaran dasar dan anggaran rumah tangga PII</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p class="label">Perbedaan PII dan Dewan Insinyur Indonesia</p>
+    <p>PII adalah organisasi profesi yang bergerak atas dasar keanggotaan dan kesukarelaan anggota. Dewan Insinyur Indonesia adalah lembaga yang beranggotakan pemangku kepentingan dan berwenang membuat kebijakan serta pengawasan pelaksanaan. Keanggotaannya ditetapkan Presiden atas usul Menteri dan berlaku lima tahun.</p>
+  </div>
+
+  <h2 id="s20">20. Fungsi organisasi profesi</h2>
+
+  <p>Dalam sistem Keinsinyuran, fungsi organisasi profesi nyata pada lima hal berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 20.1 &middot; Lima fungsi organisasi profesi</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Fungsi</th><th>Bentuk kerja</th><th>Dasar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Mengatur keanggotaan</td><td>Persyaratan, pendaftaran, struktur, dan hak serta kewajiban anggota</td><td>Pasal 38 dan 39 UU No. 11 Tahun 2014</td></tr>
+      <tr><td class="mono">2</td><td>Memperbarui pengetahuan</td><td>Seminar, lokakarya, kursus, dan kunjungan belajar</td><td>Pasal 23 ayat (2) UU No. 11 Tahun 2014</td></tr>
+      <tr><td class="mono">3</td><td>Menyelenggarakan sertifikasi</td><td>Pelayanan uji kompetensi dan penerbitan sertifikat</td><td>Pasal 11 ayat (3) UU No. 11 Tahun 2014</td></tr>
+      <tr><td class="mono">4</td><td>Menetapkan kode etik</td><td>Penerbitan kode etik dan penigansan pelanggaran</td><td>Pasal 44 UU No. 11 Tahun 2014</td></tr>
+      <tr><td class="mono">5</td><td>Menjatuhkan sanksi</td><td>Peringatan, pembekuan STRI, dan pencabutan STRI</td><td>Pasal 14, 16, dan 39 UU No. 11 Tahun 2014</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Fungsi kedua memerlukan penjelasan tambahan. Teknologi kedaluwarsa dengan cepat, sehingga organisasi profesi menjadi jembatan antara perkembangan teknologi dan anggota.</p>
+
+  <pre class="diagram"><code>Sebelum 2015
+  -&gt; kendali dengan PLC dan panel
+  -&gt; instrumentasi analog
+
+Sekarang
+  -&gt; PLC terhubung dengan jaringan
+  -&gt; data logger di tepi jaringan
+  -&gt; Pemantauan jarak jauh
+
+Efeknya pada insinyur
+  -&gt; kompetensi PLC saja sudah tidak cukup
+  -&gt; diperlukan pemahaman jaringan dan keamanan data
+  -&gt; PKB wajib agar kompetensi tidak tertinggal</code></pre>
+
+  <h2 id="s21">21. Berorganisasi sejak mahasiswa</h2>
+
+  <p>Kerangka 5W1H dipakai untuk menyusun langkah berorganisasi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 21.1 &middot; Kerangka 5W1H untuk berorganisasi</caption>
+    <thead>
+      <tr><th class="mono">Unsur</th><th>Pertanyaan</th><th>Jawaban pada konteks profesi teknik</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">What</td><td>Apa yang dibentuk</td><td>Wadah untuk menjaga dan mengembangkan profesi teknik</td></tr>
+      <tr><td class="mono">Why</td><td>Mengapa perlu</td><td>Profesi berkembang melalui berbagi ilmu, jaringan, pendidikan, dan pengalaman</td></tr>
+      <tr><td class="mono">When</td><td>Kapan dimulai</td><td>Sejak menjadi mahasiswa, melalui keanggotaan mahasiswa pada organisasi profesi dan asosiasi teknik</td></tr>
+      <tr><td class="mono">Who</td><td>Siapa yang terlibat</td><td>Mahasiswa teknik, sarjana teknik, insinyur, teknisi, dan>)</td></tr>
+      <tr><td class="mono">Where</td><td>Di mana</td><td>Lokal, nasional, regional, internasional, komunitas daring, dan tempat kerja</td></tr>
+      <tr><td class="mono">How</td><td>Bagaimana</td><td>Menjadi anggota, mengikuti kegiatan, berkontribusi, menerbitkan karya, dan bersertifikasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>Mahasiswa
+  -&gt; keanggotaan mahasiswa
+  -&gt; aktif dalam kegiatan
+  -&gt; jaringan profesional
+  -&gt; kontribusi
+  -&gt; sarjana dan insinyur
+  -&gt; sertifikasi
+  -&gt; karya ilmiah dan inovasi</code></pre>
+
+  <p>Urutan tersebut menunjukkan bahwa jaringan profesional lebih baik dibangun, ketika biaya untuk mencoba peran masih ringan dan kesempatan masih luas.</p>
+
+  <h2 id="s22">22. Dewan Insinyur Indonesia</h2>
+
+  <p>Pasal 1 angka 12 mendefinisikan Dewan Insinyur Indonesia sebagai lembaga yang beranggotakan pemangku kepentingan dalam penyelenggaraan Keinsinyuran yang berwenang membuat kebijakan penyelenggaraan dan pengawasan pelaksanaannya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 22.1 &middot; Ketentuan Dewan Insinyur Indonesia</caption>
+    <thead>
+      <tr><th class="mono">Pasal</th><th>Isi ketentuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">30(2)</td><td>Dewan Insinyur Indonesia bertanggung jawab kepada Presiden</td></tr>
+      <tr><td class="mono">30(4)</td><td>Beranggotakan paling sedikit lima orang yang terdiri atas unsur pemerintah, industri, perguruan tinggi, PII, dan Pemanfaat Keinsinyuran</td></tr>
+      <tr><td class="mono">30(5)</td><td>Keanggotaan ditetapkan oleh Presiden atas usul Menteri</td></tr>
+      <tr><td class="mono">30(6)</td><td>Keanggotaan berlaku lima tahun dan dapat diangkat kembali untuk satu kali masa jabatan berikutnya</td></tr>
+      <tr><td class="mono">31</td><td>Fungsi merumuskan kebijakan penyelenggaraan dan pengawasan pelaksanaan Praktik Keinsinyuran</td></tr>
+      <tr><td class="mono">32</td><td>Menetapkan kebijakan sistem registrasi Insinyur, menetapkan standar Pengembangan Keprofesian Berkelanjutan, menetapkan standar kompetensi Insinyur, menetapkan kebijakan sistem Uji Kompetensi, serta mengawasi pelaksanaan Praktik Keinsinyuran oleh PII</td></tr>
+      <tr><td class="mono">33</td><td>Mengesahkan sistem registrasi Insinyur dan sistem Uji Kompetensi, serta membuat peraturan pelaksanaan mengenai fungsi, tugas, dan kewenangan</td></tr>
+      <tr><td class="mono">35</td><td>Ketentuan lebih lanjut diatur dengan Peraturan Presiden</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>Presiden
+  |
+  v
+Dewan Insinyur Indonesia
+  -&gt; kebijakan dan pengawasan
+  |
+  +---- mengesahkan ----&gt; PII
+                            -&gt; organisasi profesi
+                            -&gt; program profesi insinyur
+                            -&gt; registrasi dan pengembangan keprofesian
+Pengguna dan Pemanfaat Keinsinyuran
+  -&gt; pihak yang memakai dan memanfaatkan hasil kerja</code></pre>
+
+  <h2 id="s23">23. Kode etik PII</h2>
+
+  <p>Kode etik adalah sistem norma, nilai, dan aturan profesional tertulis yang menjelaskan apa yang benar dan tidak benar bagi seorang profesional. Kode etik Insinyur Indonesia dirumuskan oleh PII dengan nama Catur Karsa Sapta Dharma.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 23.1 &middot; Catur Karsa, prinsip dasar Insinyur Indonesia</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Prinsip dasar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Mengutamakan keluhuran budi</td></tr>
+      <tr><td class="mono">2</td><td>Menggunakan pengetahuan dan kemampuannya untuk kepentingan kesejahteraan umat manusia</td></tr>
+      <tr><td class="mono">3</td><td>Bekerja secara sungguh-sungguh untuk kepentingan masyarakat, sesuai dengan tugas dan tanggung jawabnya</td></tr>
+      <tr><td class="mono">4</td><td>Meningkatkan kompetensi dan martabat berdasarkan keahlian profesional keinsinyuran</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 23.2 &middot; Sapta Dharma, tujuh tuntunan sikap Insinyur Indonesia</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Tuntunan sikap</th><th>Penerapan pada Teknik Elektro dan Teknik Komputer</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Mengutamakan keselamatan, kesehatan, dan kesejahteraan masyarakat</td><td>Proteksi, K3, dan prosedur pengujian</td></tr>
+      <tr><td class="mono">2</td><td>Bekerja sesuai dengan kompetensinya</td><td>Batas lingkup kerja dan penandaan dokumen</td></tr>
+      <tr><td class="mono">3</td><td>Hanya menyatakan pendapat yang dapat dipertanggungjawabkan</td><td>Pernyataan hasil uji dan opini teknis</td></tr>
+      <tr><td class="mono">4</td><td>Menghindari terjadinya pertentangan kepentingan dalam tanggung jawab tugasnya</td><td>Pengungkapan hubungan dengan pemasok</td></tr>
+      <tr><td class="mono">5</td><td>Membangun reputasi profesi berdasarkan kemampuan masing-masing</td><td>Rekam kerja yang dapat diverifikasi</td></tr>
+      <tr><td class="mono">6</td><td>Memegang teguh kehormatan, integritas, dan martabat profesi</td><td>Tidak memutarbalikkan fakta</td></tr>
+      <tr><td class="mono">7</td><td>Mengembangkan kemampuan profesionalnya</td><td>Pelatihan dan kajian teknis berkelanjutan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pembedaan kedua tabel tersebut penting. Catur Karsa menyatakan arah dan orientasi, sedangkan Sapta Dharma menyatakan sikap yang harus dijalankan secara langsung dalam pekerjaan sehari-hari.</p>
+<h2 id="s24">24. Kasus etika</h2>
+
+  <p>Pemahaman kode etik diuji melalui kasus, bukan melalui hafalan. Empat kasus berikut memperlihatkan penerapannya.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 13 &middot; Menyembunyikan data pengujian</p>
+    <p>Seratus percobaan dilakukan pada sistem proteksi. Hasilnya 95 percobaan berhasil dan 5 percobaan gagal.</p>
+    <pre><code>Jumlah percobaan    : 100
+Berhasil            : 95
+Gagal               : 5
+Tingkat keberhasilan : 95 persen
+
+Pernyataan yang tidak dapat dipertanggungjawabkan:
+  "Sistem berhasil 100 persen"
+
+Pernyataan yang dapat dipertanggungjawabkan:
+  "Pada 100 percobaan, 95 berhasil dan 5 gagal,
+   dengan kondisi pengujian sebagai berikut"
+
+Dasar etika : Sapta Dharma angka 3 dan angka 6</code></pre>
+    <p>Pernyataan yang diputarbalikkan dapat menyebabkan keputusan pengguna yang salah, sehingga yang dirugikan bukan hanya pengguna, tetapi masyarakat.</p>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 14 &middot; Konflik kepentingan pada pemilihan komponen</p>
+    <pre><code>Jumlah relay yang diperlukan : 12
+Komponen                      : relay SSR 40 A
+
+Pemasok A : Rp 1.200.000 per unit, garansi 5 tahun
+Pemasok B : Rp 1.000.000 per unit, garansi 3 tahun
+
+Kebutuhan total : 100.000 operasi
+
+Biaya kepemilikan A : 12 x 1.200.000 = 14.400.000
+Biaya kepemilikan B : 100.000 / 60.000 x 12 x 1.000.000
+                       = 20.000.000
+Selisih             : 5.600.000 untuk A</code></pre>
+    <p>Pemasok yang lebih murah secara satuan justru lebih mahal secara kepemilikan. Bila perancang memiliki hubungan pribadi dengan pemasok A, konflik kepentingan harus diumumkan dan dikendalikan. Kewajiban tersebut terdapat pada Sapta Dharma angka 4.</p>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 15 &middot; Instruksi yang berbahaya bagi keselamatan</p>
+    <p>Pemberi tugas meminta memakai komponen yang sertifikatnya tidak berlaku untuk kelas beban yang diperlukan.</p>
+    <pre><code>Instruksi : gunakan komponen tipe X agar biaya turun
+Temuan    : sertifikat hanya berlaku untuk kelas 10 kA,
+            sedangkan instalasi memerlukan 25 kA
+
+Tindakan insinyur:
+  1. Menyampaikan data ukuran dan konsekuensi teknis
+  2. Menelaskan pilihan komponen yang memenuhi syarat
+  3. Meminta keputusan tertulis atas pilihan akhir
+  4. Mencatat hasil pembahasan dalam risalah rapat
+  5. Bila diminta tetap memakai komponen yang tidak
+     memenuhi syarat, menyampaikan keberatan tertulis
+
+Dasar etika : Pasal 25 huruf c, Sapta Dharma angka 1,
+              asas keamanan dan keselamatan</code></pre>
+    <p>Tindakan tersebut adalah menyampaikan risiko dan membiarkan keputusan berada pada pihak yang berwenang, bukan menolak tanpa penjelasan.</p>
+  </div>
+
+  <div class="note">
+    <p class="label">Tiga bentuk pelanggaran yang paling sering dijumpai</p>
+    <p>Ketidakmampuan, ketidakjujuran, dan konflik kepentingan. Ketidakmampuan sering tertutupi dengan klaim yang berlebihan, ketidakjujuran menutupi data, dan konflik kepentingan memengaruhi pemilihan teknis. Ketiganya berbeda cara penanganannya.</p>
+  </div>
+<h2 id="s25">25. Kerangka Kualifikasi Nasional Indonesia</h2>
+
+  <p>Kerangka Kualifikasi Nasional Indonesia ditetapkan dengan Peraturan Presiden No. 8 Tahun 2012. KKNI terdiri atas sembilan jenjang kualifikasi dengan pengelompokan berikut.</p>
+
+  <pre class="diagram"><code>Jenjang 1 sampai 3 : jabatan operator
+Jenjang 4 sampai 6 : jabatan teknisi atau analis
+Jenjang 7 sampai 9 : jabatan ahli</code></pre>
+
+  <p>Jenjang 1 merupakan jenjang terendah dan jenjang 9 merupakan jenjang tertinggi. KKNI menyandingkan, menyetarakan, dan mengintegrasikan kemampuan yang diperoleh melalui pendidikan, pelatihan kerja, dan pengalaman kerja.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 25.1 &middot; Ringkasan jenjang KKNI</caption>
+    <thead>
+      <tr><th class="mono">Jenjang</th><th>Kelompok</th><th>Inti uraian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Operator</td><td>Mampu melaksanakan tugas sederhana, terbatas, dan rutin di bawah bimbingan dan pengawasan</td></tr>
+      <tr><td class="mono">2</td><td>Operator</td><td>Mampu melaksanakan tugas yang lebih kompleks dengan prosedur yang sesuai</td></tr>
+      <tr><td class="mono">3</td><td>Operator</td><td>Mampu bekerja pada konteks yang lebih luas dan mulai memikul tanggung jawab lebih besar</td></tr>
+      <tr><td class="mono">4</td><td>Teknisi atau analis</td><td>Mampu menganalisis pekerjaan berlingkup luas dan menyelesaikan masalah dengan metode yang sesuai</td></tr>
+      <tr><td class="mono">5</td><td>Teknisi atau analis</td><td>Mampu memilih metode dari beragam pilihan yang sudah maupun belum baku</td></tr>
+      <tr><td class="mono">6</td><td>Teknisi atau analis</td><td>Mampu mengaplikasikan bidang keahlian, mengambil keputusan berdasarkan analisis, dan bertanggung jawab atas pekerjaannya sendiri</td></tr>
+      <tr><td class="mono">7</td><td>Ahli</td><td>Mampu merencanakan dan mengelola sumber daya di bawah tanggung jawabnya</td></tr>
+      <tr><td class="mono">8</td><td>Ahli</td><td>Mampu melakukan riset dan mengambil keputusan strategis dengan akuntabilitas penuh</td></tr>
+      <tr><td class="mono">9</td><td>Ahli</td><td>Mampu mengembangkan pengetahuan atau teknologi baru hingga menghasilkan karya kreatif dan teruji</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p class="label">Pemetaan pendidikan terhadap jenjang KKNI</p>
+    <p>Penetapan jenjang dilakukan melalui pengakuan dan penyetaraan yang melibatkan Kementerian Ketenagakerjaan, instansi teknis, dan perguruan tinggi. Secara umum, ijazah sarjana terapan dan sarjana setara jenjang 6, magister dan magister terapan setara jenjang 8, serta doktor dan doktor terapan setara jenjang 9. Penetapan resmi atas seorang tenaga kerja dilakukan melalui proses pengakuan pada basis data kompetensi yang dikelola oleh instansi teknis bidang masing-masing.</p>
+  </div>
+<h2 id="s26">26. Pendidikan tinggi dan jenis pendidikan</h2>
+
+  <p>UU No. 12 Tahun 2012 tentang Pendidikan Tinggi membedakan Jenjang pendidikan tinggi atas akademik, vokasi, dan profesi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 26.1 &middot; Jenjang pendidikan tinggi menurut UU No. 12 Tahun 2012</caption>
+    <thead>
+      <tr><th>Jenjang</th><th>Kelas</th><th>Sasaran</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Diploma</td><td>Vokasi</td><td>Menguasai keterampilan teknis yang berorientasi pada penerapan</td></tr>
+      <tr><td>Sarjana</td><td>Akademik</td><td>Menguasai dan mengembangkan ilmu pengetahuan</td></tr>
+      <tr><td>Magister</td><td>Akademik</td><td>Mengembangkan ilmu pengetahuan melalui penelitian</td></tr>
+      <tr><td>Doktor</td><td>Akademik</td><td>Menghasilkan kontribusi orisinal terhadap ilmu pengetahuan</td></tr>
+      <tr><td>Gelar profesi</td><td>Profesi</td><td>Memiliki kompetensi pada bidang profesi tertentu</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pembedaan tersebut menempatkan sarjana terapan pada jalur vokasi dengan jenjang setara sarjana. Perbedaan utama terletak pada orientasi:</p>
+
+  <pre class="diagram"><code>Pendidikan akademik
+  -&gt; penguasaan cabang ilmu
+  -&gt;penalaran ilmiah
+  -&gt; kontribusi pada pengembangan ilmu
+
+Pendidikan vokasi
+  -&gt; penerapan terapan
+  -&gt; keterampilan kerja
+  -&gt; koneksi ke industri
+
+Pendidikan profesi
+  -&gt; kompetensi profesi
+  -&gt; praktik keinsinyuran</code></pre>
+
+  <div class="note">
+    <p class="label">Hubungan pendidikan sarjana dan profesi</p>
+    <p>Pasal 7 ayat (1) UU No. 11 Tahun 2014 menetapkan bahwa gelar profesi Insinyur diperoleh setelah lulus Program Profesi Insinyur. Dengan demikian, pendidikan sarjana dan pendidikan profesi berada pada urutan yang berurutan, bukan pada pilihan yang saling menggantikan.</p>
+  </div>
+
+  <h2 id="s27">27. Tiga undang-undang dan hubungannya</h2>
+
+  <p>Tiga peraturan berikut mengatur tiga lapis yang berbeda dalam perkembangan seorang sarjana teknik hingga menjadi tenaga kerja.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 27.1 &middot; Ruang lingkup tiga undang-undang</caption>
+    <thead>
+      <tr><th>Undang-Undang</th><th>Status</th><th>Ruang lingkup</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UU No. 12 Tahun 2012 tentang Pendidikan Tinggi</td><td>Berlaku sejak 10 Agustus 2012</td><td>Jenjang pendidikan tinggi, jenis pendidikan, dan gelarnya</td></tr>
+      <tr><td>UU No. 11 Tahun 2014 tentang Keinsinyuran</td><td>Berlaku sejak 24 Maret 2014</td><td>Profesi insinyur, standar, program profesi, registrasi, hak dan kewajiban</td></tr>
+      <tr><td>UU No. 13 Tahun 2003 Ketenagakerjaan</td><td>Berlaku, diubah oleh UU No. 11 Tahun 2020, Perppu No. 2 Tahun 2022, dan UU No. 6 Tahun 2023</td><td>Tenaga kerja, hubungan kerja, perlindungan, pengupahan, dan hubungan industrial</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>Pendidikan tinggi
+  -&gt; kompetensi akademik
+  -&gt; UU No. 12 Tahun 2012
+       |
+       v
+Keinsinyuran
+  -&gt; kompetensi profesi dan registrasi
+  -&gt; UU No. 11 Tahun 2014
+       |
+       v
+Hubungan kerja
+  -&gt; hak dan kewajiban pekerja
+  -&gt; UU No. 13 Tahun 2003
+       |
+       v
+Perubahan kerangka
+  -&gt; UU No. 6 Tahun 2023 tentang Cipta Kerja</code></pre>
+
+  <div class="note">
+    <p class="label">Status UU No. 11 Tahun 2020 tentang Cipta Kerja</p>
+    <p>Materi perkuliahan menyebut UU No. 11 Tahun 2020 sebagai rujukan. Undang-undang tersebut telah dicabut. Peraturannya ditetapkan menjadi UU No. 6 Tahun 2023 melalui Perppu No. 2 Tahun 2022. Oleh sebab itu, penyebutan peraturan yang berlaku saat ini harus menggunakan UU No. 6 Tahun 2023.</p>
+  </div>
+
+  <div class="note">
+    <p class="label">Status standar mutu pendidikan tinggi</p>
+    <p>Permenristekdikti No. 44 Tahun 2015 tentang Standar Nasional Pendidikan Tinggi sudah tidak berlaku. Peraturan tentang penjaminan mutu pendidikan tinggi pada 2026 adalah Permendikti Saintek No. 39 Tahun 2025 sebagaimana diubah dengan Permendikti Saintek No. 10 Tahun 2026. Nomor peraturan pada materi perkuliahan tetap perlu dikenali, tetapi statusnya perlu diperiksa.</p>
+  </div>
+<h2 id="s28">28. Ketenagakerjaan dan hubungan industrial</h2>
+
+  <p>UU No. 13 Tahun 2003 mengatur ketenagakerjaan, yang mencakup segala hal yang berhubungan dengan tenaga kerja sebelum, selama, dan sesudah masa kerja.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 28.1 &middot; Istilah ketenagakerjaan menurut UU No. 13 Tahun 2003</caption>
+    <thead>
+      <tr><th>Istilah</th><th>Pengertian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ketenagakerjaan</td><td>Segala hal yang berhubungan dengan tenaga kerja pada waktu sebelum, selama, dan sesudah masa kerja</td></tr>
+      <tr><td>Tenaga kerja</td><td>Orang yang mampu melakukan pekerjaan untuk menghasilkan barang atau jasa</td></tr>
+      <tr><td>Pekerja atau buruh</td><td>Orang yang bekerja dan menerima upah atau imbalan dalam bentuk lain</td></tr>
+      <tr><td>Pemberi kerja</td><td>Orang perseorangan, pengusaha, badan hukum, atau badan lain yang mempekerjakan tenaga kerja dengan membayar upah atau imbalan</td></tr>
+      <tr><td>Hubungan kerja</td><td>Hubungan antara pengusaha dan pekerja karena pekerjaan tertentu yang terletak dalam hubungan kerja</td></tr>
+      <tr><td>Perjanjian kerja</td><td>Perjanjian antara pekerja dan pemberi kerja yang memuat syarat kerja, hak, dan kewajiban para pihak</td></tr>
+      <tr><td>Hubungan industrial</td><td>Sistem hubungan antara pengusaha, pekerja, dan pemerintah dalam proses produksi barang atau jasa</td></tr>
+      <tr><td>Pemutusan hubungan kerja</td><td>Berakhirnya hubungan kerja karena suatu sebab sehingga hak dan kewajiban antara pekerja dan pengusaha berakhir</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perbedaan antara tenaga kerja dan pekerja atau buruh perlu diperhatikan. Tenaga kerja merupakan kategori yang lebih luas, sedangkan pekerja atau buruh adalah orang yang berada dalam hubungan kerja dan menerima imbalan.</p>
+
+  <pre class="diagram"><code>Pemerintah
+   |
+   v
+Hubungan industrial
+   |
+   +------&gt; Pengusaha
+   |
+   +------&gt; Pekerja
+   |
+   v
+Perjanjian kerja
+   |
+   +-- hak pekerja
+   +-- kewajiban pekerja
+   +-- hak pengusaha
+   +-- kewajiban pengusaha</code></pre>
+
+  <p>Pasal 24 UU No. 13 Tahun 2003 mengatur tiga unsur hubungan kerja, yaitu adanya pekerjaan, upah, dan perintah. Unsur tersebut harus dibedakan dari hubungan industrial, yang mencakup hubungan antara pemerintah, pengusaha, dan pekerja.</p>
+
+  <h2 id="s29">29. Profesionalisme dalam praktik</h2>
+
+  <p>Profesionalisme diuji pada situasi ketika berdiri antara dua perintah yang saling bertentangan. Situasi yang paling sering muncul adalah permintaan untuk mengubah hasil pengujian atau membiarkan kondisi tidak aman.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 29.1 &middot; Langkah profesional menghadapi instruksi yang tidak aman</caption>
+    <thead>
+      <tr><th class="mono">Langkah</th><th>Tindakan</th><th>Dasar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Menyampaikan temuan beserta data pendukung</td><td>Sapta Dharma angka 3</td></tr>
+      <tr><td class="mono">2</td><td>Menjelaskan konsekuensi teknis dan risiko keselamatan</td><td>Pasal 25 huruf g</td></tr>
+      <tr><td class="mono">3</td><td>Menawarkan alternatif yang memenuhi standar</td><td>Pasal 25 huruf a dan c</td></tr>
+      <tr><td class="mono">4</td><td>Meminta keputusan tertulis dari pihak berwenang</td><td>Pasal 24 ayat (1) huruf b</td></tr>
+      <tr><td class="mono">5</td><td>Mendokumentasikan seluruh pembahasan dalam risalah</td><td>Pasal 25 huruf k</td></tr>
+      <tr><td class="mono">6</td><td>Menyampaikan keberatan tertulis apabila instruksi tetap diberikan</td><td>Asas keamanan dan keselamatan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 16 &middot; Menyusun risalah atas temuan pengujian</p>
+    <pre><code>Nomor   : 07/RT/Laporan/2026
+Hal     : Temuan uji proteksi panas pada panel MDP-2
+Data    : 100 dari 120 percobaan, 18,4 ohm pada 60 derajat C
+Standar : &lt;= 25 ohm pada 60 derajat C
+Tindakan: setelan dinyalikan 120 detik
+Dasar   : Pasal 25 huruf c dan asas keselamatan
+
+Tanda tangan insinyur   : tidak ditandatangani sampai temuan ditangani
+Tanda tangan penerima    : menyetujui dengan catatan tertulis</code></pre>
+    <p>Tanpa pencatatan tertulis, temuan tersebut dapat hilang pada pergantian proyek. Dengan pencatatan, keputusan menjadi dapat ditelusuri dan tidak bergantung pada ingatan.</p>
+  </div>
+<h2 id="s30">30. Keterampilan dan perkembangan karier</h2>
+
+  <p>Keterampilan insinyur dapat dikelompokkan menjadi empat kelompok yang saling melengkapi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 30.1 &middot; Empat kelompok keterampilan insinyur</caption>
+    <thead>
+      <tr><th>Kelompok</th><th>Isi</th><th>Bukti validator</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Keterampilan teknis</td><td>Matematika, fisika, analisis rekayasa, perancangan, pengujian, dan penggunaan perangkat lunak teknik</td><td>Hasil perhitungan, gambar teknik, laporan uji, dan prototipe</td></tr>
+      <tr><td>Keterampilan profesional</td><td>Komunikasi, kerja sama tim, dokumentasi, manajemen waktu, dan pemecahan masalah</td><td>Risalah rapat, jadwal proyek, dan laporan serah terima</td></tr>
+      <tr><td>Keterampilan etis</td><td>Kejujuran data, integritas, tanggung jawab, kerahasiaan, dan pengakuan perbedaan kepentingan</td><td>Dokumentasi keputusan dan pengungkapan konflik kepentingan</td></tr>
+      <tr><td>Keterampilan karier</td><td>Jaringan profesional, sertifikasi, pembelajaran berkelanjutan, portofolio, dan pengalaman</td><td>Sertifikat, publikasi, dan rekam kerja terverifikasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perubahan teknologi menuntut pembaruan kompetensi secara berkelanjutan.</p>
+
+  <pre class="diagram"><code>Kelistrikan
+  -&gt; Elektronika
+  -&gt; Digital
+  -&gt; Perangkat tertanam
+  -&gt; IoT
+  -&gt; Komputasi awan dan tepi
+  -&gt; Otomasi dan kecerdasan buatan
+  -&gt; Sistem siber fisik</code></pre>
+
+  <p>Setiap perpindahan tahap menuntut kompetensi tambahan. Insinyur yang berhenti belajar pada tahap awal akan kehilangan kemampuan mengikuti perkembangan perangkat dan sistem yang diandalkannya.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 17 &middot; Menyusun rencana kompetensi lima tahun</p>
+    <pre><code>Tahun 1 : MATLAB lanjutan, analisis daya
+Tahun 2 : pemrograman PLC dan HMI
+Tahun 3 : jaringan industri dan OPC UA
+Tahun 4 : pemrograman mikrokontroler dan IoT
+Tahun 5 : standar pengujian dan kepatuhan
+
+Perkiraan biaya:
+  Kursus        : 3 x 1.500.000 =  4.500.000
+  Buku     : 5 x 300.000   =  1.500.000
+  Perpindahan dan akomodasi : 2 x 1.000.000 = 2.000.000
+  Total lima tahun       = 8.000.000
+  Biaya per tahun       = 1.600.000</code></pre>
+    <p>Perhitungan ini diperlukan karena PKB merupakan syarat perpanjangan STRI. Biaya yang tidak direncanakan berisiko menghentikan kegiatan pemeliharaan kompetensi.</p>
+  </div>
+
+  <h2 id="s31">31. Latihan</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 31.1 &middot; Latihan dan jawaban ringkas</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Soal</th><th>Inti jawaban</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Apa itu profesi?</td><td>Pekerjaan yang menuntut pendidikan tinggi, kompetensi, standar, dan tanggung jawab</td></tr>
+      <tr><td class="mono">2</td><td>Mengapa profesi memerlukan organisasi?</td><td>Untuk mengembangkan kompetensi, menjaga standar, membina etika, dan membangun jaringan</td></tr>
+      <tr><td class="mono">3</td><td>Apa fungsi PII?</td><td>Organisasi wadah Insinyur yang melaksanakan program profesi, registrasi, dan pembinaan</td></tr>
+      <tr><td class="mono">4</td><td>Apa itu KKNI?</td><td>Kerangka sembilan jenjang yang menyandingkan kompetensi pendidikan, pelatihan, dan pengalaman</td></tr>
+      <tr><td class="mono">5</td><td>Apa perbedaan sarjana dan profesi?</td><td>Sarjana adalah pendidikan akademik; profesi adalah pendidikan tinggi setelah sarjana</td></tr>
+      <tr><td class="mono">6</td><td>Apa perbedaan sertifikat kompetensi dan STRI?</td><td>Sertifikat adalah bukti lulus uji; STRI adalah bukti registrasi untuk Praktik Keinsinyuran</td></tr>
+      <tr><td class="mono">7</td><td>Mengapa insinyur wajib sesuai kompetensi?</td><td>Untuk mencegah kesalahan dan melindungi keselamatan, kesehatan, aset, dan lingkungan</td></tr>
+      <tr><td class="mono">8</td><td>Apa itu Catur Karsa dan Sapta Dharma?</td><td>Empat prinsip dasar dan tujuh tuntunan sikap Insinyur Indonesia menurut PII</td></tr>
+    </tbody>
+  </table>
+  </div>
+<h2 id="s32">32. Ringkasan dan soal</h2>
+
+  <pre class="diagram"><code>Pendidikan tinggi
+  -&gt; kompetensi akademik
+  -&gt; KKNI jenjang 6 untuk sarjana dan sarjana terapan
+  -&gt; UU No. 12 Tahun 2012
+       |
+       v
+Program Profesi Insinyur
+  -&gt; Uji Kompetensi
+  -&gt; Sertifikat Kompetensi Insinyur
+  -&gt; STRI berlaku lima tahun
+  -&gt; UU No. 11 Tahun 2014
+       |
+       v
+Pengembangan Keprofesian Berkelanjutan
+  -&gt; syarat perpanjangan STRI
+       |
+       v
+Praktik Keinsinyuran
+  -&gt; hubungan kerja
+  -&gt; UU No. 13 Tahun 2003
+       |
+       v
+Kode etik
+  -&gt; Catur Karsa dan Sapta Dharma
+       |
+       v
+Keselamatan dan kesejahteraan masyarakat</code></pre>
+
+  <dl class="qa">
+    <dt>1. Apa definisi keinsinyuran menurut UU No. 11 Tahun 2014?</dt>
+    <dd>Kegiatan teknik dengan menggunakan kepakaran dan keahlian berdasarkan penguasaan ilmu pengetahuan dan teknologi untuk meningkatkan nilai tambah dan daya guna secara berkelanjutan dengan memperhatikan keselamatan, kesehatan, kemaslahatan, serta kesejahteraan masyarakat dan kelestarian lingkungan.</dd>
+
+    <dt>2. Apa perbedaan sarjana teknik dan Insinyur?</dt>
+    <dd>Sarjana teknik adalah gelar akademik bagi lulusan pendidikan tinggi bidang teknik. Insinyur adalah seseorang yang mempunyai gelar profesi di bidang Keinsinyuran, yaitu gelar yang diperoleh setelah lulus Program Profesi Insinyur.</dd>
+
+    <dt>3. Apa urutan pembentukan kompetensi sampai Praktik Keinsinyuran?</dt>
+    <dd>Pendidikan sarjana bidang teknik, Program Profesi Insinyur atau rekognisi pembelajaran lampau, Uji Kompetensi, Sertifikat Kompetensi Insinyur, dan registrasi yang menghasilkan STRI.</dd>
+
+    <dt>4. Apa tiga standar keinsinyuran dan siapa yang penetapnya?</dt>
+    <dd>Standar layanan Insinyur ditetapkan Menteri atas usul PII, standar kompetensi Insinyur ditetapkan Dewan Insinyur Indonesia bersama Menteri, dan standar Program Profesi Insinyur ditetapkan Menteri atas usul perguruan tinggi bersama Menteri bidang Keinsinyuran dan Dewan Insinyur Indonesia.</dd>
+
+    <dt>5. Berapa lama STRI berlaku dan apa syarat perpanjangannya?</dt>
+    <dd>Berlaku lima tahun dan diregistrasi ulang setiap lima tahun dengan tetap memenuhi persyaratan Pengembangan Keprofesian Berkelanjutan serta persyaratan pada Pasal 11.</dd>
+
+    <dt>6. Apa saja hak Insinyur menurut Pasal 24?</dt>
+    <dd>Melakukan kegiatan sesuai standar, memperoleh pelindungan hukum, memperoleh informasi dan data yang lengkap dan benar, menerima imbalan sesuai perjanjian, serta memperoleh pembinaan dan pemeliharaan kompetensi.</dd>
+
+    <dt>7. Mengapa data yang lengkap dan benar sangat penting bagi insinyur?</dt>
+    <dd>Karena hasil perhitungan dan pemilihan komponen bergantung pada data tersebut. Data yang salah dapat menghasilkan rancangan yang tidak melindungi pengguna.</dd>
+
+    <dt>8. Apa isi kewajiban Insinyur pada Pasal 25 huruf i dan huruf k?</dt>
+    <dd>Huruf i mewajibkan keberpihakan pada sumber daya manusia, lembaga kerja, dan produk hasil Keinsinyuran nasional. Huruf k mewajibkan pencatatan rekam kerja Keinsinyuran dalam format sesuai standar Keinsinyuran.</dd>
+
+    <dt>9. Jelaskan Catur Karsa dan Sapta Dharma.</dt>
+    <dd>Catur Karsa terdiri atas empat prinsip dasar, yaitu mengutamakan keluhuran budi, menggunakan pengetahuan dan kemampuan untuk kesejahteraan umat manusia, bekerja sungguh-sungguh untuk masyarakat, serta meningkatkan kompetensi dan martabat berdasarkan keahlian profesional. Sapta Dharma terdiri atas tujuh tuntunan sikap mengenai keselamatan dan kesejahteraan masyarakat, bekerja sesuai kompetensi, pendapat yang dapat dipertanggungjawabkan, penghindaran pertentangan kepentingan, pembangunan reputasi, kehormatan dan integritas, serta pengembangan kemampuan profesional.</dd>
+
+    <dt>10. Apa yang terjadi pada STRI yang tidak diperpanjang tepat waktu?</dt>
+    <dd>Berdasarkan Pasal 14 ayat (1) huruf a, STRI tidak berlaku karena habis masa berlakunya tanpa mendaftarkan ulang.</dd>
+
+    <dt>11. Apa sanksi yang berlaku bagi orang bukan Insinyur yang melakukan Praktik Keinsinyuran?</dt>
+    <dd>Berdasarkan Pasal 50 ayat (1), dipidana dengan penjara paling lama dua tahun atau denda paling banyak Rp200.000.000,00. Berdasarkan ayat (2), Ketentuan yang mengakibatkan kecelakaan, cacat, hilangnya nyawa, kegagalan pekerjaan, atau hilangnya harta benda dipidana dengan penjara paling lama sepuluh tahun dan/atau denda paling banyak Rp1.000.000.000,00.</dd>
+
+    <dt>12. Apa perbedaan UU No. 11 Tahun 2020 dan UU No. 6 Tahun 2023 tentang Cipta Kerja?</dt>
+    <dd>UU No. 11 Tahun 2020 telah dicabut. Peraturannya ditetapkan menjadi UU No. 6 Tahun 2023 melalui Perppu No. 2 Tahun 2022, sehingga penyebutan kerangka Cipta Kerja yang berlaku saat ini menggunakan UU No. 6 Tahun 2023.</dd>
+
+    <dt>13. Apa perbedaan hubungan kerja dan hubungan industrial?</dt>
+    <dd>Hubungan kerja adalah hubungan antara pengusaha dan pekerja karena pekerjaan tertentu yang memuat unsur pekerjaan, upah, dan perintah. Hubungan industrial adalah sistem hubungan yang lebih luas, meliputi hubungan antara pemerintah, pengusaha, dan pekerja dalam proses produksi.</dd>
+
+    <dt>14. Mengapa insinyur wajib melakukan pemeliharaan kompetensi?</dt>
+    <dd>Karena teknologi, standar, dan risiko berubah. Pasal 23 ayat (4) menetapkan PKB sebagai syarat perpanjangan STRI, sehingga ketidakpatuhan berdampak langsung pada kemampuan melakukan Praktik Keinsinyuran.</dd>
+  </dl>
+<h2 id="s33">33. Daftar istilah</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 33.1 &middot; Glosarium</caption>
+    <thead>
+      <tr><th>Istilah</th><th>Pengertian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Keinsinyuran</td><td>Kegiatan teknik dengan menggunakan kepakaran dan keahlian berdasarkan penguasaan ilmu pengetahuan dan teknologi</td></tr>
+      <tr><td>Praktik Keinsinyuran</td><td>Penyelenggaraan kegiatan Keinsinyuran</td></tr>
+      <tr><td>Insinyur</td><td>Seseorang yang mempunyai gelar profesi di bidang Keinsinyuran</td></tr>
+      <tr><td>Insinyur Asing</td><td>Insinyur yang berkewarganegaraan asing</td></tr>
+      <tr><td>Program Profesi Insinyur</td><td>Program pendidikan tinggi setelah program sarjana untuk membentuk kompetensi Keinsinyuran</td></tr>
+      <tr><td>Uji Kompetensi</td><td>Penilaian kompetensi yang terukur dan objektif mengacu standar kompetensi Insinyur</td></tr>
+      <tr><td>Sertifikat Kompetensi Insinyur</td><td>Bukti tertulis bagi Insinyur yang lulus Uji Kompetensi</td></tr>
+      <tr><td>STRI</td><td>Surat Tanda Registrasi Insinyur, bukti yang diakui secara hukum untuk melakukan Praktik Keinsinyuran</td></tr>
+      <tr><td>Pengembangan Keprofesian Berkelanjutan</td><td>Upaya pemeliharaan kompetensi Insinyur secara berkesinambungan</td></tr>
+      <tr><td>Pengguna Keinsinyuran</td><td>Pihak yang memakai jasa Insinyur berdasarkan hubungan kerja</td></tr>
+      <tr><td>Pemanfaat Keinsinyuran</td><td>Masyarakat yang memanfaatkan hasil kerja Keinsinyuran</td></tr>
+      <tr><td>Dewan Insinyur Indonesia</td><td>Lembaga pemangku kepentingan yang berwenang membuat kebijakan dan pengawasan</td></tr>
+      <tr><td>Persatuan Insinyur Indonesia</td><td>Organisasi wadah berhimpun Insinyur yang melaksanakan penyelenggaraan Keinsinyuran</td></tr>
+      <tr><td>Jenjang kualifikasi profesi</td><td>Jenjang pada STRI berupa Insinyur profesional pratama, madya, atau utama</td></tr>
+      <tr><td>Scope of work</td><td>Batas dan cakupan pekerjaan dalam satu proyek</td></tr>
+      <tr><td>KKNI</td><td>Kerangka Kualifikasi Nasional Indonesia dengan sembilan jenjang</td></tr>
+      <tr><td>Catur Karsa</td><td>Empat prinsip dasar Insinyur Indonesia</td></tr>
+      <tr><td>Sapta Dharma</td><td>Tujuh tuntunan sikap Insinyur Indonesia</td></tr>
+      <tr><td>Tenaga kerja</td><td>Orang yang mampu melakukan pekerjaan untuk menghasilkan barang atau jasa</td></tr>
+      <tr><td>Pekerja atau buruh</td><td>Orang yang bekerja dan menerima upah atau imbalan dalam bentuk lain</td></tr>
+      <tr><td>Hubungan industrial</td><td>Sistem hubungan antara pemerintah, pengusaha, dan pekerja</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s34">34. Daftar pustaka</h2>
+
+  <footer>
+    <ul class="refs">
+      <li><b>Republik Indonesia.</b> (2014). <em>UU No. 11 Tahun 2014 tentang Keinsinyuran.</em> LNRI 2014 No. 61, ditetapkan 22 Maret 2014 dan diundangkan 24 Maret 2014. <a href="https://peraturan.bpk.go.id/Details/38602/uu-no-11-tahun-2014">peraturan.bpk.go.id</a></li>
+      <li><b>Republik Indonesia.</b> (2019). <em>PP No. 25 Tahun 2019 tentang Peraturan Pelaksanaan UU No. 11 Tahun 2014 tentang Keinsinyuran.</em> <a href="https://peraturan.bpk.go.id/Details/105550/pp-no-25-tahun-2019">peraturan.bpk.go.id</a></li>
+      <li><b>Republik Indonesia.</b> (2012). <em>Perpres No. 8 Tahun 2012 tentang Kerangka Kualifikasi Nasional Indonesia.</em> <a href="https://peraturan.bpk.go.id/Details/41251/perpres-no-8-tahun-2012">peraturan.bpk.go.id</a></li>
+      <li><b>Republik Indonesia.</b> (2012). <em>UU No. 12 Tahun 2012 tentang Pendidikan Tinggi.</em> <a href="https://peraturan.bpk.go.id/Details/39063/uu-no-12-tahun-2012">peraturan.bpk.go.id</a></li>
+      <li><b>Republik Indonesia.</b> (2003). <em>UU No. 13 Tahun 2003 Ketenagakerjaan</em>, diubah dengan UU No. 11 Tahun 2020, Perppu No. 2 Tahun 2022, dan UU No. 6 Tahun 2023. <a href="https://peraturan.bpk.go.id/Details/43013/uu-no-13-tahun-2003">peraturan.bpk.go.id</a></li>
+      <li><b>Republik Indonesia.</b> (2023). <em>UU No. 6 Tahun 2023 tentang Penetapan Perppu No. 2 Tahun 2022 tentang Cipta Kerja menjadi Undang-Undang.</em> <a href="https://peraturan.bpk.go.id/Details/246523/uu-no-6-tahun-2023">peraturan.bpk.go.id</a></li>
+      <li><b>Republik Indonesia.</b> (2020). <em>UU No. 11 Tahun 2020 tentang Cipta Kerja</em>, telah dicabut. <a href="https://peraturan.bpk.go.id/Details/149750/uu-no-11-tahun-2020">peraturan.bpk.go.id</a></li>
+      <li><b>Kementerian Ketenagakerjaan.</b> <em>Sekretariat Kelembagaan SKKNI: Tentang KKNI, Jenjang dan Deskripsi.</em> <a href="https://skkni.kemnaker.go.id/kkni/jenjang-deskripsi">skkni.kemnaker.go.id</a></li>
+      <li><b>Kementerian Ketenagakerjaan.</b> <em>Tentang KKNI: Penyetaraan Jenjang.</em> <a href="https://skkni.kemnaker.go.id/kkni/penyetaraan-jenjang">skkni.kemnaker.go.id</a></li>
+      <li><b>Persatuan Insinyur Indonesia.</b> <em>Keanggotaan, Program Profesi Insinyur, dan layanan profesi.</em> <a href="https://pii.or.id/">pii.or.id</a></li>
+      <li><b>Persatuan Insinyur Indonesia.</b> <em>Kode Etik Insinyur Indonesia: Catur Karsa dan Sapta Dharma.</em> <a href="https://bkip-pii.org/kode-etik/">bkip-pii.org</a></li>
+      <li><b>Sekretariat Negara RI.</b> <em>Dewan Insinyur Indonesia.</em> <a href="https://www.setneg.go.id/">setneg.go.id</a></li>
+      <li><b>Lembaga Akreditasi Mandiri Teknik.</b> <em>Akreditasi Program Studi Teknik.</em> <a href="https://lamteknik.or.id/">lamteknik.or.id</a></li>
+      <li><b>Kementerian Energi dan Sumber Daya Mineral.</b> <em>JDIH Kementerian ESDM</em> untuk ketentuan bidang teknik dan pertambangan. <a href="https://jdih.esdm.go.id/">jdih.esdm.go.id</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>
