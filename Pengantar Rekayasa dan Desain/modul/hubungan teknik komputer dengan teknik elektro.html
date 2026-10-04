@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hubungan Teknik Komputer dengan Teknik Elektro — Pengantar Rekayasa dan Desain</title>
+<meta name="description" content="Modul Pengantar Rekayasa dan Desain: hubungan Teknik Komputer dan Teknik Elektro, dari elektronika dasar, logika digital, embedded system, sistem kendali, hingga PLC dan SCADA.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Pendahuluan</a>
+  <a href="#s2">2. Peta materi</a>
+  <a href="#s3">3. Besaran listrik</a>
+  <a href="#s4">4. Komponen dan transistor</a>
+  <a href="#s5">5. Rangkaian listrik</a>
+  <a href="#s6">6. Logika digital</a>
+  <a href="#s7">7. Arsitektur processor</a>
+  <a href="#s8">8. Microcontroller</a>
+  <a href="#s9">9. Memori dan GPIO</a>
+  <a href="#s10">10. Antarmuka hardware dan software</a>
+  <a href="#s11">11. Sensor dan signal conditioning</a>
+  <a href="#s12">12. ADC dan DAC</a>
+  <a href="#s13">13. Actuator</a>
+  <a href="#s14">14. Embedded system</a>
+  <a href="#s15">15. Sistem kendali</a>
+  <a href="#s16">16. Komunikasi dan networking</a>
+  <a href="#s17">17. IoT dan cyber-physical system</a>
+  <a href="#s18">18. PLC dan SCADA</a>
+  <a href="#s19">19. Keamanan sistem OT</a>
+  <a href="#s20">20. Ringkasan dan contoh soal</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Modul 01 &middot; Pengantar Rekayasa dan Desain</p>
+    <div class="rule"></div>
+    <h1>Hubungan Teknik Komputer dengan Teknik Elektro</h1>
+    <p>Materi ini membahas titik pertemuan kedua bidang: dari tegangan dan arus listrik, transistor dan logika digital, processor, sensor, sistem kendali, komunikasi, embedded system, hingga PLC, SCADA, dan keamanan sistem industri.</p>
+  </header>
+
+  <h2 id="s1">1. Pendahuluan</h2>
+
+  <p>Teknik Elektro bekerja pada domain listrik: rangkaian, elektronika, sinyal, instrumentasi, komunikasi, dan kendali. Teknik Komputer bekerja pada domain sistem komputasi: perangkat keras, perangkat lunak, arsitektur komputer, pemrosesan data, serta cara komputer berinteraksi dengan perangkat lain.</p>
+
+  <p>Keduanya bertemu ketika membangun <strong>sistem elektronik yang memiliki kemampuan komputasi</strong>. Pada sistem seperti itu, bagian sensor, rangkaian, sinyal, aktuator, dan kelistrikan membutuhkan pengetahuan Teknik Elektro, sedangkan bagian processor, program, algoritma, dan pengolahan data membutuhkan Teknik Komputer.</p>
+
+  <pre class="diagram"><code>Dunia fisik
+     |
+   Sensor                    bidang Teknik Elektro
+     |
+  Rangkaian elektronik
+     |
+  Signal conditioning
+     |
+    ADC
+     |
+ Processor / microcontroller  bidang Teknik Komputer
+     |
+   Program
+     |
+  Keputusan
+     |
+  GPIO / driver
+     |
+  Actuator
+     |
+  Dunia fisik</code></pre>
+
+  <p>ACM dan IEEE Computer Society menyatakan integrasi hardware dan software sebagai unsur kritis dalam pekerjaan computer engineering (ACM &amp; IEEE CS, 2016). ABET sendiri memasukkan rangkaian, pemrograman, elektronika analog dan digital, microcontroller, sistem kendali, komunikasi, serta sistem komputer ke dalam kriteria pendidikan electrical dan computer engineering.</p>
+
+  <h2 id="s2">2. Peta materi</h2>
+
+  <p>Enam belas materi berikut bukan bagian yang terpisah. Semuanya membentuk satu rantai yang berjalan dari fisik ke digital dan kembali ke fisik.</p>
+
+  <div class="scroll">
+  <table>
+    <caption>Tabel 2.1 &middot; Peta materi</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Materi</th><th>Isi ringkas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Besaran listrik</td><td>Tegangan, arus, resistansi, daya, muatan, energi, resistivitas</td></tr>
+      <tr><td class="mono">2</td><td>Komponen dan transistor</td><td>Resistor, kapasitor, induktor, dioda, BJT, MOSFET, timer 555</td></tr>
+      <tr><td class="mono">3</td><td>Rangkaian listrik</td><td>Seri, paralel, pembagi tegangan dan arus, Hukum Kirchhoff</td></tr>
+      <tr><td class="mono">4</td><td>Logika digital</td><td>Biner, Boolean, gerbang, adder, K-map, logika sequential, flip-flop</td></tr>
+      <tr><td class="mono">5</td><td>Arsitektur processor</td><td>Von Neumann dan Harvard, CISC dan RISC, pipeline, cache, ISA</td></tr>
+      <tr><td class="mono">6</td><td>Microcontroller</td><td>Blok terintegrasi,família MCU, MCU dan MPU</td></tr>
+      <tr><td class="mono">7</td><td>Memori dan GPIO</td><td>SRAM, DRAM, Flash, NOR dan NAND, memory-mapped I/O, mode GPIO</td></tr>
+      <tr><td class="mono">8</td><td>Antarmuka hardware dan software</td><td>Instruksi, register, peripheral, interrupt, DMA, driver, HAL, RTOS</td></tr>
+      <tr><td class="mono">9</td><td>Sensor dan conditioning</td><td>Klasifikasi sensor, spesifikasi, op-amp, filter, jembatan Wheatstone</td></tr>
+      <tr><td class="mono">10</td><td>ADC dan DAC</td><td>Resolusi, kuantisasi, sampling, aliasing, SNR, ENOB</td></tr>
+      <tr><td class="mono">11</td><td>Actuator</td><td>Motor, relay, solenoid, heater, driver, H-bridge</td></tr>
+      <tr><td class="mono">12</td><td>Embedded system</td><td>Definisi, ciri, arsitektur, RTOS, real-time</td></tr>
+      <tr><td class="mono">13</td><td>Sistem kendali</td><td>Plant, transfer function, PID, Ziegler-Nichols, sampling</td></tr>
+      <tr><td class="mono">14</td><td>Komunikasi</td><td>UART, SPI, I2C, CAN, Modbus, Ethernet, nirkabel</td></tr>
+      <tr><td class="mono">15</td><td>IoT dan CPS</td><td>Arsitektur berlapis, edge computing, digital twin, 4 pilar</td></tr>
+      <tr><td class="mono">16</td><td>PLC dan SCADA</td><td>Siklus scan, IEC 61131-3, I/O, ISA-95, HMI, historian, alarm</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s3">3. Besaran listrik</h2>
+
+  <p>Elektronika mempelajari dan menggunakan komponen serta rangkaian untuk mengendalikan aliran listrik dan memproses sinyal. Bagi Teknik Komputer, elektronika adalah fondasi fisik yang memungkinkan komputer bekerja, karena pada akhirnya komputer tersusun atas rangkaian listrik yang sangat kompleks.</p>
+
+  <pre class="diagram"><code>Listrik -&gt; Transistor -&gt; Logic gate -&gt; Rangkaian digital -&gt; Processor -&gt; Komputer</code></pre>
+
+  <h3 id="s3-1">3.1 Makna tiap besaran</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.1 &middot; Besaran, simbol, satuan, dan rumus</caption>
+    <thead>
+      <tr><th>Besaran</th><th class="mono">Simbol</th><th>Satuan</th><th>Rumus</th><th>Arti</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tegangan</td><td class="mono">V</td><td>volt (V)</td><td class="mono">V = W/A = J/C</td><td>Perbedaan potensial listrik antara dua titik; dorongan yang menyebabkan muatan bergerak</td></tr>
+      <tr><td>Arus</td><td class="mono">I</td><td>ampere (A)</td><td class="mono">I = Q/t = V/R</td><td>Laju aliran muatan listrik</td></tr>
+      <tr><td>Resistansi</td><td class="mono">R</td><td>ohm (&#8486;)</td><td class="mono">R = V/I</td><td>Kemampuan komponen menghambat aliran arus</td></tr>
+      <tr><td>Konduktansi</td><td class="mono">G</td><td>siemens (S)</td><td class="mono">G = 1/R</td><td>Kebalikan resistansi; Curriculum persamaan I&#8722;V pada resistor ohmik</td></tr>
+      <tr><td>Resistivitas</td><td class="mono">&#961;</td><td>ohm&middot;meter</td><td class="mono">R = &#961;L/A</td><td>Sifat material, tidak bergantung panjang atau luas penampang</td></tr>
+      <tr><td>Muatan</td><td class="mono">Q</td><td>coulomb (C)</td><td class="mono">Q = I&middot;t</td><td>Jumlah muatan listrik yang lewat satu titik</td></tr>
+      <tr><td>Daya</td><td class="mono">P</td><td>watt (W)</td><td class="mono">P = V&middot;I = I&sup2;R = V&sup2;/R</td><td>Laju penggunaan atau transfer energi listrik</td></tr>
+      <tr><td>Energi</td><td class="mono">E</td><td>joule (J)</td><td class="mono">E = P&middot;t = V&middot;Q</td><td>Energi listrik yang terpakai atau disimpan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Muatan satu elektron adalah <strong>e = 1,602176634 &times; 10<sup>&minus;19</sup> C</strong>, nilai yang eksak sejak redefinisi SI pada 2019. Karena itu satu coulomb setara dengan 6,241509 &times; 10<sup>18</sup> elektron, dan satu ampere sama dengan satu coulomb per detik (NIST, <em>SI Units: Electric Current</em>).</p>
+
+  <h3 id="s3-2">3.2 Hukum Ohm dan daya</h3>
+
+  <p>Hubungan mendasar antara tegangan, arus, dan resistansi adalah Hukum Ohm:</p>
+
+  <div class="eq"><var>V</var> = <var>I</var> &middot; <var>R</var><span class="eq-note">Bentuk lain: I = V / R dan R = V / I. Berlaku untuk material dan rangkaian yang ohmik.</span></div>
+
+  <p>Pada diagram karakteristik I&#8211;V, kemiringan garis bernilai 1/R, sehingga sama dengan konduktansi. Komponen disebut ohmik apabila arus sebanding linier dengan tegangan.</p>
+
+  <figure>
+    <img src="gambar/hukum-ohm.png" alt="Rangkaian listrik sederhana dengan sumber tegangan 24 V, resistor 100 ohm, dan arus 0,24 A" width="760" height="583" loading="lazy" decoding="async">
+    <figcaption><b>Gambar 1.</b> Rangkaian sederhana yang menunjukkan hubungan tegangan, resistansi, dan arus. Pada gambar, U = 24 V dan R = 100 &#8486; menghasilkan I = 0,24 A. Sumber: <a href="https://commons.wikimedia.org/wiki/File:Ohm%27s_law_simple_circuit.svg">Wikimedia Commons, <i>Ohm&rsquo;s law simple circuit</i></a> (CC BY 3.0, Vesa Linja-aho).</figcaption>
+  </figure>
+
+  <p>Pemilihan bentuk rumus mengikuti kondisi yang diketahui. Ketika tegangan tetap, gunakan <code>P = V&sup2;/R</code> agar tidak perlu menghitung arus terlebih dahulu. Ketika arus tetap, gunakan <code>P = I&sup2;R</code>.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 1 &middot; Empat besaran dari satu resistor</p>
+    <p>Diberikan R = 470 &#8486; dan V = 12 V:</p>
+    <pre><code>I = V / R = 12 / 470 = 0,02553 A = 25,53 mA
+P = V * I = 12 * 0,02553 = 0,3064 W
+P = I^2 * R = (0,02553)^2 * 470 = 0,3064 W   (cek)
+P = V^2 / R = 144 / 470 = 0,3064 W            (cek)
+E dalam 1 jam = P * t = 0,3064 * 3600 = 1103 J = 1,10 kJ</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 2 &middot; Muatan, energi, dan jumlah elektron</p>
+    <p>Diberikan I = 2,0 A pada 230 V selama 5 menit:</p>
+    <pre><code>t    = 5 * 60 = 300 s
+Q    = I * t = 2,0 * 300 = 600 C
+E    = V * Q = 230 * 600 = 138 000 J = 138 kJ
+E    = 138 000 / 3,6 * 10^6 = 0,0383 kWh = 38,3 Wh
+N    = Q / e = 600 / (1,602176634 * 10^-19) = 3,745 * 10^21 elektron
+P    = V * I = 230 * 2,0 = 460 W</code></pre>
+  </div>
+
+  <h3 id="s3-3">3.3 Resistansi, resistivitas, dan pengaruh suhu</h3>
+
+  <p>Resistansi kawat bukan sifat tetap, melainkan <code>R = &#961;L/A</code>. Kawat yang lebih panjang memiliki R lebih besar, kawat yang lebih tebal memiliki R lebih kecil, dan R juga naik terhadap suhu untuk logam.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.2 &middot; Resistivitas material pada 20 &#8450;C</caption>
+    <thead>
+      <tr><th>Material</th><th class="mono">&#961; (&#8486;&middot;m)</th><th class="mono">&#963; (S/m)</th><th>Penggunaan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Perak</td><td class="mono">1,59 &times; 10<sup>&minus;8</sup></td><td class="mono">6,30 &times; 10<sup>7</sup></td><td>Kontak dan konduktor premium</td></tr>
+      <tr><td>Tembaga</td><td class="mono">1,68 &times; 10<sup>&minus;8</sup></td><td class="mono">5,96 &times; 10<sup>7</sup></td><td>Kabel dan PCB</td></tr>
+      <tr><td>Emas</td><td class="mono">2,44 &times; 10<sup>&minus;8</sup></td><td class="mono">4,10 &times; 10<sup>7</sup></td><td>Bonding pada cip</td></tr>
+      <tr><td>Aluminium</td><td class="mono">2,82 &times; 10<sup>&minus;8</sup></td><td class="mono">3,5 &times; 10<sup>7</sup></td><td>Penghantar listrik dan kabel</td></tr>
+      <tr><td>Tungsten</td><td class="mono">5,60 &times; 10<sup>&minus;8</sup></td><td class="mono">1,79 &times; 10<sup>7</sup></td><td>Filamen, target vakum</td></tr>
+      <tr><td>Constantan</td><td class="mono">4,9 &times; 10<sup>&minus;7</sup></td><td class="mono">2 &times; 10<sup>6</sup></td><td>Resistor presisi</td></tr>
+      <tr><td>Silikon (intrinsik)</td><td class="mono">sekitar 10<sup>3</sup></td><td class="mono">sekitar 10<sup>&minus;4</sup></td><td>Semikonduktor</td></tr>
+      <tr><td>Kaca</td><td class="mono">10<sup>10</sup> sampai 10<sup>14</sup></td><td class="mono">10<sup>&minus;14</sup> sampai 10<sup>&minus;10</sup></td><td>Isolator</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pengaruh suhu mengikuti persamaan:</p>
+
+  <div class="eq"><var>R<sub>T</sub></var> = <var>R</var><sub>0</sub> [1 + &alpha;(<var>T</var> &minus; <var>T</var><sub>0</sub>)]<span class="eq-note">&#945; adalah koefisien suhu material. Logam memiliki &#945; positif, semikonduktor negatif.</span></div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 3 &middot; Resistivitas kawat dan perubahan suhu</p>
+    <p>Kawat tembaga L = 10 m dengan luas penampang 2 mm&sup2;:</p>
+    <pre><code>A = 2 mm^2 = 2 * 10^-6 m^2
+R = rho * L / A = (1,68 * 10^-8 * 10) / (2 * 10^-6) = 0,084 ohm
+G = 1 / R = 11,90 S
+
+Tembaga dipanaskan dari 20 C ke 100 C, alpha = 3,9 * 10^-3 /C, R_20 = 100 ohm:
+R_100 = 100 * [1 + 0,0039 * (100 - 20)] = 100 * 1,312 = 131,2 ohm</code></pre>
+  </div>
+
+  <h3 id="s3-4">3.4 Resistor: kode warna, toleransi, dan rating daya</h3>
+
+  <p>Nilai resistor القراءة dari pita warna mengikuti <code>R = (A &times; 10 + B) &times; 10<sup>C</sup></code> dengan toleransi pita keempat. Pita keempat pada resistor lima pita adalah pengali, bukan toleransi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.3 &middot; Kode warna resistor (IEC 60063)</caption>
+    <thead>
+      <tr><th>Warna</th><th class="mono">Angka</th><th>Warna</th><th class="mono">Angka</th><th>Pengali</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hitam</td><td class="mono">0</td><td>Biru</td><td class="mono">6</td><td class="mono">Emas &times;0,1</td></tr>
+      <tr><td>Cokelat</td><td class="mono">1</td><td>Ungu</td><td class="mono">7</td><td class="mono">Perak &times;0,01</td></tr>
+      <tr><td>Merah</td><td class="mono">2</td><td>Abu-abu</td><td class="mono">8</td><td class="mono">Tanpa pita toleransi &plusmn;20 %</td></tr>
+      <tr><td>Oranye</td><td class="mono">3</td><td>Putih</td><td class="mono">9</td><td class="mono">E24 &plusmn;5 %, E96 &plusmn;1 %</td></tr>
+      <tr><td>Kuning</td><td class="mono">4</td><td>Emas</td><td class="mono">&mdash;</td><td class="mono">Toleransi &plusmn;5 %</td></tr>
+      <tr><td>Hijau</td><td class="mono">5</td><td>Perak</td><td class="mono">&mdash;</td><td class="mono">Toleransi &plusmn;10 %</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Deret standar E24, E48, dan E96 berisi jumlah nilai per dekade yang berbeda agar rentang toleransi tidak saling tumpang tindih. Rating daya resistor yang umum adalah 1/8 W, 1/4 W, 1/2 W, dan 1 W untuk tipe through-hole, serta sekitar 1/16 W untuk SMD 0402 sampai 1 W untuk SMD 2512.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 4 &middot; Membaca kode dan memilih resistor untuk LED</p>
+    <p>Resistor empat pita kuning&ndash;ungu&ndash;oranye&ndash;emas:</p>
+    <pre><code>R = (4 * 10 + 7) * 10^3 = 47 kohm, toleransi &plusmn;5 %
+R_min = 47 000 * 0,95 = 44 650 ohm
+R_maks = 47 000 * 1,05 = 49 350 ohm
+
+LED dari sumber 5 V, V_F = 0,7 V, arus 10 mA:
+R = (V_s - V_F) / I = (5 - 0,7) / 0,010 = 430 ohm
+Nilai E24 terdekat di atas 430 ohm = 470 ohm
+I = 4,3 / 470 = 9,15 mA
+P = I^2 * R = 0,0393 W
+Pilih rating 1/4 W, faktor keamanan 0,25 / 0,0393 = 6,35 kali</code></pre>
+  </div>
+
+  <h2 id="s4">4. Komponen dan transistor</h2>
+
+  <p>Komponen elektronik dasar menentukan apakah suatu sistem dapat bekerja. Setiap komponen menyimpan atau menghambat energi dengan cara berbeda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Komponen dasar, prinsip, dan rumus</caption>
+    <thead>
+      <tr><th>Komponen</th><th>Prinsip</th><th>Rumus penting</th><th>Fungsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Resistor</td><td>Menghambat arus, melepaskan panas</td><td class="mono">P = I&sup2;R</td><td>Membatasi arus, membagi tegangan, pull-up</td></tr>
+      <tr><td>Kapasitor</td><td>Menyimpan energi di medan listrik</td><td class="mono">&#964; = R&middot;C, X<sub>C</sub> = 1/(2&#960;fC)</td><td>Filtering, decoupling, timing</td></tr>
+      <tr><td>Induktor</td><td>Menyimpan energi di medan magnet</td><td class="mono">&#964; = L/R, X<sub>L</sub> = 2&#960;fL</td><td>Power supply, filter, konverter</td></tr>
+      <tr><td>Dioda</td><td>Arus satu arah</td><td class="mono">V<sub>F</sub> Si &asymp; 0,7 V</td><td>Penyearah, proteksi, flyback</td></tr>
+      <tr><td>BJT</td><td>Arus collector dikendalikan arus base</td><td class="mono">I<sub>C</sub> = &beta;&middot;I<sub>B</sub></td><td>Sakelar dan penguat</td></tr>
+      <tr><td>MOSFET</td><td>Arus drain dikendalikan tegangan gate</td><td class="mono">I<sub>D</sub> pada triode dan saturasi</td><td>Sakelar dan penguat</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s4-1">4.1 Kapasitor dan induktor: respons transien</h3>
+
+  <p>Respons pengisian kapasitor governed konstanta waktu:</p>
+
+  <div class="eq"><var>V<sub>C</sub></var>(<var>t</var>) = <var>V<sub>s</sub></var> [1 &minus; e<sup>&minus;t/&#964;</sup>] &nbsp;&nbsp; dengan &nbsp;&nbsp; &#964; = <var>R</var>&middot;<var>C</var><span class="eq-note">Pelepasan: V_C(t) = V_0 * e^(-t/tau). Frekuensi corner: f_c = 1/(2*pi*R*C).</span></div>
+
+  <p>Pada satu konstanta waktu, kapasitor telah mencapai 63,2 % nilai akhir, pada dua konstanta waktu 86,5 %, pada tiga konstanta waktu 95 %, dan pada lima konstanta waktu 99,3 %. Untuk induktor, arus pada dua konstanta waktu mencapai 86,5 % dan pada tiga konstanta waktu 95 %.</p>
+
+  <div class="note">
+    <p class="label">Perhatikan</p>
+    <p>Pada saat pertama kali diberi tegangan, kapasitor berperilaku sebagai hubung singkat karena tegangan tidak dapat berubah seketika, sedangkan induktor berperilaku sebagai TERBUKA karena arus tidak dapat berubah seketika.</p>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 5 &middot; Pengisian kapasitor dan konstanta waktu filter</p>
+    <pre><code>V_s = 5 V, R = 10 kohm, C = 100 uF
+tau = R * C = 10 000 * 100 * 10^-6 = 1,0 s
+V_C(1s)  = 5 * (1 - e^-1) = 3,161 V
+V_C(3s)  = 5 * (1 - e^-3) = 4,751 V
+V_C(5s)  = 5 * (1 - e^-5) = 4,966 V
+Waktu mencapai 3 V: t = -tau * ln(0,4) = 0,916 s
+E tersimpan = 1/2 * C * V^2 = 1,25 mJ
+f_c = 1/(2*pi*tau) = 0,159 Hz
+
+RL: V_s = 12 V, R = 50 ohm, L = 0,1 H
+tau = L/R = 0,1/50 = 2 ms
+I(2 ms) = (12/50) * (1 - e^-1) = 0,24 * 0,632 = 0,152 A
+E_L = 1/2 * L * I^2 = 2,88 mJ
+X_L pada 1 kHz = 2*pi*1000*0,1 = 628,3 ohm</code></pre>
+  </div>
+
+  <h3 id="s4-2">4.2 Dioda sebagai penyearah</h3>
+
+  <p>Tegangan maju bergantung pada tipe dioda dan besar arus. Germanium sekitar 0,3 V, silikon 0,7 V, Schottky 0,3 sampai 0,45 V, LED merah 1,8 sampai 2,0 V, dan LED biru atau putih 3,0 sampai 3,4 V. Pada penyearah gelombang penuh jembatan, dua dioda masing-masing menghantarkan arus sehingga tegangan output turun 2V<sub>F</sub>, dan frekuensi ripple menjadi dua kali frekuensi jaringan.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 6 &middot; Penyearah jembatan dengan filter</p>
+    <pre><code>V_rms = 12 V, f = 60 Hz, R_L = 1 kohm, C = 100 uF, V_F = 0,7 V
+V_m = sqrt(2) * 12 = 16,97 V
+V_p = V_m - 2*V_F = 15,57 V
+f_ripple = 2f = 120 Hz
+V_r(pp) = V_p / (f_ripple * R_L * C) = 15,57 / (120 * 1000 * 100 * 10^-6) = 1,30 V
+V_dc &asymp; 15,57 - 0,65 = 14,92 V
+I_L = 14,92 / 1000 = 14,9 mA</code></pre>
+  </div>
+
+  <h3 id="s4-3">4.3 Transistor sebagai sakelar</h3>
+
+  <p>Transistor adalah unsur yang menghubungkan elektronika dengan komputer. Transistor dapat functioning sebagai sakelar elektronik yang merepresentasikan kondisi 0 dan 1, sehingga membentuk logic gate, rangkaian digital, dan akhirnya processor.</p>
+
+  <pre class="diagram"><code>Transistor -&gt; Sakelar elektronik -&gt; 0 / 1 -&gt; Logic gate -&gt; Rangkaian digital -&gt; CPU</code></pre>
+
+  <p>BJT memiliki tiga daerah operasi: <strong>cutoff</strong> saat I<sub>B</sub> = 0 sehingga transistor terbuka, <strong>forward-active</strong> saat junction base-emitter forward bias dan base-collector reverse bias sehingga transistor behaving as penguat, serta <strong>saturasi</strong> saat kedua junction forward bias sehingga transistor behaving as sakelar tertutup. Agar saturasi pasti, rasio &beta; paksa = I<sub>C</sub>/I<sub>B</sub> sekurang-kurangnya 10.</p>
+
+  <p>MOSFET memiliki tiga daerah: <strong>cutoff</strong> saat V<sub>GS</sub> &lt; V<sub>T</sub>, <strong>triode</strong> saat V<sub>DS</sub> &lt; V<sub>GS</sub> &minus; V<sub>T</sub>, dan <strong>saturasi</strong> saat V<sub>DS</sub> &ge; V<sub>GS</sub> &minus; V<sub>T</sub>. Karena gate terisolasi oksida, arus gate mendekati nol sehingga impedansi input sangat tinggi.</p>
+
+  <div class="eq">
+    Triode: <var>I<sub>D</sub></var> = K[(<var>V<sub>GS</sub></var> &minus; <var>V<sub>T</sub></var>)<var>V<sub>DS</sub></var> &minus; <var>V<sub>DS</sub></var>&sup2;/2] &nbsp;&middot;&nbsp;
+    Saturasi: <var>I<sub>D</sub></var> = 1&middot;K(<var>V<sub>GS</sub></var> &minus; <var>V<sub>T</sub></var>)&sup2;
+    <span class="eq-note">K = mu_n * C_ox * (W/L), dan V_DSAT = V_GS - V_T</span>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 7 &middot; MOSFET pada dua daerah operasi</p>
+    <p>NMOS dengan V<sub>T</sub> = 0,7 V, &mu;<sub>n</sub>C<sub>ox</sub> = 200 &micro;A/V&sup2;, W/L = 10, V<sub>GS</sub> = 1,7 V:</p>
+    <pre><code>K = 200 uA/V^2 * 10 = 2 mA/V^2
+V_OV = 1,7 - 0,7 = 1,0 V,  V_DSAT = 1,0 V
+
+V_DS = 0,5 V  (triode): I_D = 2 * [(1,0)(0,5) - 0,25/2] = 0,75 mA
+V_DS = 2,0 V  (saturasi): I_D = 0,5 * 2 * (1,0)^2 = 1,00 mA</code></pre>
+  </div>
+
+  <h3 id="s4-4">4.4 Timer 555</h3>
+
+  <p>Timer 555 memiliki dua pembanding dengan ambang satu pertiga dan dua pertiga V<sub>CC</sub>, satu flip-flop SR, satu transistor discharge, dan pembagi tiga resistor internal. Dalam mode astable, periode dan frekuensinya:</p>
+
+  <div class="eq"><var>T</var> = 0,693(<var>R<sub>A</sub></var> + 2<var>R<sub>B</sub></var>)<var>C</var> &nbsp;&middot;&nbsp; <var>f</var> = 1,443 / [(<var>R<sub>A</sub></var> + 2<var>R<sub>B</sub></var>)<var>C</var>]<span class="eq-note">t_HIGH = 0,693 (R_A + R_B) C ; t_LOW = 0,693 R_B C ; duty cycle minimum 50 %</span></div>
+
+  <p>Dalam mode monostable, lebar pulsa sesaat adalah <code>t = 1,1 &middot; R &middot; C</code>.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 8 &middot; Frekuensi astable 555</p>
+    <pre><code>R_A = 10 kohm, R_B = 10 kohm, C = 0,1 uF
+T = 0,693 * (10 000 + 2 * 10 000) * 0,1 * 10^-6 = 2,079 ms
+f = 1 / 2,079 ms = 481 Hz
+t_HIGH = 1,386 ms ; t_LOW = 0,693 ms ; duty cycle = 66,7 %</code></pre>
+  </div><h2 id="s5">5. Rangkaian listrik</h2>
+
+  <p>Rangkaian seri dan paralel adalah dua bentuk dasar dari setiap jaringan listrik. Perbedaan keduanya menentukan cara kerja pembagi tegangan, pembagi arus, dan analisis rangkaian.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 5.1 &middot; Perbandingan rangkaian seri dan paralel</caption>
+    <thead>
+      <tr><th>Sifat</th><th>Seri</th><th>Paralel</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Arus</td><td>Sama pada semua resistor</td><td>Tercah menjadi I<sub>1</sub> + I<sub>2</sub> + ...</td></tr>
+      <tr><td>Tegangan</td><td>Tercah menjadi V<sub>1</sub> + V<sub>2</sub> + ...</td><td>Sama pada semua resistor</td></tr>
+      <tr><td>Resistansi</td><td class="mono">R = R<sub>1</sub> + R<sub>2</sub> + ...</td><td class="mono">1/R = 1/R<sub>1</sub> + 1/R<sub>2</sub> + ...</td></tr>
+      <tr><td>Dua resistor</td><td class="mono">R = R<sub>1</sub> + R<sub>2</sub></td><td class="mono">R = (R<sub>1</sub>R<sub>2</sub>)/(R<sub>1</sub>+R<sub>2</sub>)</td></tr>
+      <tr><td>Batas resistansi</td><td>Lebih besar dari resistor terbesar</td><td>Lebih kecil dari resistor terkecil</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pembagi tegangan muncul pada rangkaian seri, pembagi arus muncul pada rangkaian paralel:</p>
+
+  <div class="eq">V<sub>out</sub> = <var>V<sub>in</sub></var> &middot; <span class="frac"><span>R<sub>2</sub></span><span>R<sub>1</sub> + R<sub>2</sub></span></span> &nbsp;&nbsp;&middot;&nbsp;&nbsp; I<sub>1</sub> = <var>I<sub>total</sub></var> &middot; <span class="frac"><span>R<sub>2</sub></span><span>R<sub>1</sub> + R<sub>2</sub></span></span><span class="eq-note">Pada pembagi arus, resistor besar menerima arus kecil.</span></div>
+
+  <h3 id="s5-1">5.1 Hukum Kirchhoff</h3>
+
+  <p>Hukum Kirchhoff menyatakan dua kekekalan. <strong>KCL</strong>, hukum arus, menyatakan jumlah aljabar arus yang masuk sebuah simpul sama dengan jumlah yang keluar, karena muatan tidak diciptakan atau dimusnahkan. <strong>KVL</strong>, hukum tegangan, menyatakan jumlah aljabar tegangan pada satu lintasan tertutup sama dengan nol, karena energi tidak diciptakan atau dimusnahkan.</p>
+
+  <p>Strategi penyelesaian: gunakan analisis nodal bila jumlah sumber tegangan banyak, dan analisis mesh bila jumlah sumber arus banyak.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 9 &middot; Seri dan paralel tiga resistor</p>
+    <p>V<sub>s</sub> = 12 V, R<sub>1</sub> = 100 &#8486; seri dengan (R<sub>2</sub> = 200 &#8486; paralel R<sub>3</sub> = 300 &#8486;).</p>
+    <pre><code>R_23 = (200 * 300) / (200 + 300) = 120 ohm
+R_total = 100 + 120 = 220 ohm
+I_total = 12 / 220 = 54,55 mA
+V_1 = 54,55 mA * 100 = 5,45 V
+V_23 = 12 - 5,45 = 6,55 V
+I_2 = 6,55 / 200 = 32,73 mA
+I_3 = 6,55 / 300 = 21,82 mA
+Cek KCL: 32,73 + 21,82 = 54,55 mA
+P_total = 12 * 0,05455 = 0,6545 W
+Cek: P1 + P2 + P3 = 0,2975 + 0,2142 + 0,1428 = 0,6545 W</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 10 &middot; Pembagi tegangan dan pembagi arus</p>
+    <pre><code>Pembagi tegangan: V_in = 10 V, R_1 = 33 kohm, R_2 = 10 kohm
+R_total = 43 kohm, I = 10 / 43 000 = 232,6 uA
+V_out = 232,6 uA * 10 kohm = 2,326 V
+Cek rumus: 10 * 10 000 / 43 000 = 2,326 V
+
+Pembagi arus: I_total = 1 A ke R_1 = 10 ohm paralel R_2 = 40 ohm
+R_par = (10 * 40) / 50 = 8 ohm
+V = 1 * 8 = 8 V
+I_1 = 8 / 10 = 0,8 A ; I_2 = 8 / 40 = 0,2 A ; jumlah = 1,0 A</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 11 &middot; Analisis mesh dua loop</p>
+    <p>Sumber 12 V di kiri, R<sub>1</sub> = 4 &#8486; di atas, R<sub>2</sub> = 2 &#8486; di tengah, R<sub>3</sub> = 3 &#8486; dan sumber 6 V di kanan.</p>
+    <pre><code>Mesh 1: 12 - 4 i_1 - 2 (i_1 - i_2) = 0  ->  3 i_1 - i_2 = 6
+Mesh 2: 3 i_2 + 6 + 2 (i_2 - i_1) = 0    ->  -2 i_1 + 5 i_2 = -6
+Substitusi i_2 = 3 i_1 - 6:
+  -2 i_1 + 15 i_1 - 30 = -6  ->  13 i_1 = 24  ->  i_1 = 1,846 A
+i_2 = 3 * 1,846 - 6 = -0,462 A
+Arus pada R_2: I = i_1 - i_2 = 2,308 A
+Cek KVL mesh 1: 12 - 4(1,846) - 2(2,308) = 0,00 V
+Cek KVL mesh 2: 3(-0,462) + 6 + 2(-2,308) = 0,00 V</code></pre>
+    <p>Tanda negatif pada i<sub>2</sub> menunjukkan arah arus mesh kedua berlawanan dengan asumsi awal.</p>
+  </div>
+
+  <h2 id="s6">6. Logika digital</h2>
+
+  <p>Sistem digital bekerja dengan representasi diskrit, sedangkan sistem analog bekerja dengan nilai kontinu. Komputer menggunakan bilangan biner yang hanya terdiri dari dua nilai, dan satu digit biner disebut bit.</p>
+
+  <div class="eq">1011<sub>2</sub> = 1(2<sup>3</sup>) + 0(2<sup>2</sup>) + 1(2<sup>1</sup>) + 1(2<sup>0</sup>) = 11<sub>10</sub></div>
+
+  <p>oktal setara dengan tiga bit, dan heksadesimal setara dengan empat bit. Satu heksadesimal disebut nibble.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.1 &middot; Konversi bilangan</caption>
+    <thead>
+      <tr><th class="mono">Desimal</th><th class="mono">Biner</th><th class="mono">Oktal</th><th class="mono">Heksa</th><th class="mono">Desimal</th><th class="mono">Biner</th><th class="mono">Heksa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">0</td><td class="mono">0000</td><td class="mono">0</td><td class="mono">0</td><td class="mono">8</td><td class="mono">1000</td><td class="mono">8</td></tr>
+      <tr><td class="mono">1</td><td class="mono">0001</td><td class="mono">1</td><td class="mono">1</td><td class="mono">9</td><td class="mono">1001</td><td class="mono">9</td></tr>
+      <tr><td class="mono">2</td><td class="mono">0010</td><td class="mono">2</td><td class="mono">2</td><td class="mono">10</td><td class="mono">1010</td><td class="mono">A</td></tr>
+      <tr><td class="mono">3</td><td class="mono">0011</td><td class="mono">3</td><td class="mono">3</td><td class="mono">11</td><td class="mono">1011</td><td class="mono">B</td></tr>
+      <tr><td class="mono">4</td><td class="mono">0100</td><td class="mono">4</td><td class="mono">4</td><td class="mono">12</td><td class="mono">1100</td><td class="mono">C</td></tr>
+      <tr><td class="mono">5</td><td class="mono">0101</td><td class="mono">5</td><td class="mono">5</td><td class="mono">13</td><td class="mono">1101</td><td class="mono">D</td></tr>
+      <tr><td class="mono">6</td><td class="mono">0110</td><td class="mono">6</td><td class="mono">6</td><td class="mono">14</td><td class="mono">1110</td><td class="mono">E</td></tr>
+      <tr><td class="mono">7</td><td class="mono">0111</td><td class="mono">7</td><td class="mono">7</td><td class="mono">15</td><td class="mono">1111</td><td class="mono">F</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 12 &middot; Konversi dan operasi biner</p>
+    <pre><code>156 desimal -&gt; biner: 10011100
+  cek: 128 + 16 + 8 + 4 = 156
+156 desimal -&gt; heksa: kelompok 4 bit = 1001 1100 = 9 C
+156 desimal -&gt; oktal: kelompok 3 bit = 010 011 100 = 2 3 4
+0x2A = 2*16 + 10 = 42 desimal = 101010 biner = 052 oktal
+0,625 desimal = 0,101 biner = 0,5 + 0,125
+
+Penambahan: 7 + 3 = 10 desimal
+  0111
++ 0011
+= 1000</code></pre>
+  </div>
+
+  <h3 id="s6-1">6.1 Aljabar Boolean</h3>
+
+  <p>Aljabar Boolean dipakai untuk menyederhanakan dan merancang rangkaian logika. Hukum yang paling sering dipakai:</p>
+
+  <div class="eq">
+    Komutatif: A&middot;B = B&middot;A &nbsp;&middot;&nbsp; Distributif: A&middot;(B+C) = A&middot;B + A&middot;C &nbsp;&middot;&nbsp;
+    Identitas: A&middot;1 = A, A + 0 = A &nbsp;&middot;&nbsp; Komplemen: A&middot;A&#772; = 0, A + A&#772; = 1 &nbsp;&middot;&nbsp;
+    Absorpsi: A&middot;(A+B) = A &nbsp;&middot;&nbsp; De Morgan: (A+B)&#772; = A&#772;&middot;B&#772;, (A&middot;B)&#772; = A&#772; + B&#772;
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.2 &middot; Truth table gerbang logika dua input</caption>
+    <thead>
+      <tr><th class="mono">A</th><th class="mono">B</th><th class="mono">AND</th><th class="mono">OR</th><th class="mono">NAND</th><th class="mono">NOR</th><th class="mono">XOR</th><th class="mono">XNOR</th><th class="mono">NOT A</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">0</td><td class="mono">0</td><td class="mono">0</td><td class="mono">0</td><td class="mono">1</td><td class="mono">1</td><td class="mono">0</td><td class="mono">1</td><td class="mono">1</td></tr>
+      <tr><td class="mono">0</td><td class="mono">1</td><td class="mono">0</td><td class="mono">1</td><td class="mono">1</td><td class="mono">0</td><td class="mono">1</td><td class="mono">0</td><td class="mono">1</td></tr>
+      <tr><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td><td class="mono">1</td><td class="mono">1</td><td class="mono">0</td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+      <tr><td class="mono">1</td><td class="mono">1</td><td class="mono">1</td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td><td class="mono">0</td><td class="mono">1</td><td class="mono">0</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perbedaan yang paling sering terlewat: <code>1 OR 1 = 1</code>, sedangkan <code>1 XOR 1 = 0</code>. NAND dan NOR disebut universal gate karena seluruh fungsi logika dapat dibangun hanya dengan salah satunya. Bentuk kanonik yang dipakai adalah sum of products dari minterm, ditulis f = &Sigma;m(&hellip;), dan product of sums dari maxterm, ditulis f = &Pi;M(&hellip;), dengan jumlah keduanya sebanyak 2<sup>n</sup>.</p>
+
+  <h3 id="s6-2">6.2 Adder, dekoder, dan multiplexer</h3>
+
+  <p>Half adder menambahkan dua bit tanpa carry-in, sedangkan full adder menambahkan dua bit beserta carry-in.</p>
+
+  <div class="eq">
+    Half adder: S = A &oplus; B, C = A&middot;B<br>
+    Full adder: S = A &oplus; B &oplus; C<sub>in</sub>, C<sub>out</sub> = A&middot;B + C<sub>in</sub>(A &oplus; B)
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.3 &middot; Blok kombinasional</caption>
+    <thead>
+      <tr><th>Blok</th><th>Fungsi</th><th>Catatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Decoder</td><td>2<sup>n</sup> input menjadi n output</td><td>Decoder 3-ke-8 menyalakan Y<sub>i</sub> saat input sama dengan i</td></tr>
+      <tr><td>Encoder</td><td>Menyusun 2<sup>n</sup> input menjadi n output</td><td>Priority encoder menyelesaikan lebih dari satu input aktif</td></tr>
+      <tr><td>Multiplexer</td><td>Memilih satu dari beberapa input</td><td>2<sup>n</sup>-ke-1 setara dengan 2<sup>n</sup>&minus;1 MUX 2-ke-1</td></tr>
+      <tr><td>Demultiplexer</td><td>Meny distributes satu input ke banyak output</td><td>Kebalikan dari multiplexer</td></tr>
+      <tr><td>Comparator</td><td>Membandingkan dua bilangan</td><td>Menghasilkan A &gt; B, A = B, dan A &lt; B</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s6-3">6.3 Peta Karnaugh</h3>
+
+  <p>Peta Karnaugh menyusun ulang tabel kebenaran dengan urutan Gray code, yaitu 00, 01, 11, 10, sehingga sel yang berbeda hanya satu bit bersebelahan. Kelompok berukuran 1, 2, 4, 8, atau 16, tidak boleh diagonal, boleh saling tumpang tindih, dan boleh melingkar dari baris pertama ke terakhir. Kondisi don't care boleh dipakai sebagai satu atau nol untuk memperbesar kelompok.</p>
+
+  <h3 id="s6-4">6.4 Logika combinational dan sequential</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.4 &middot; Perbedaan jenis logika</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Combinational</th><th>Sequential</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Output bergantung pada</td><td>Input saat itu saja</td><td>Input saat itu dan keadaan sebelumnya</td></tr>
+      <tr><td>Memori keadaan</td><td>Tidak ada</td><td>Ada, melalui latch atau flip-flop</td></tr>
+      <tr><td>Alat analisis</td><td>Aljabar Boolean dan K-map</td><td>Diagram status dan tabel transisi</td></tr>
+      <tr><td>Contoh</td><td>Adder, MUX, comparator, decoder</td><td>Flip-flop, register, counter, FSM</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Komputer harus menyimpan keadaan dan informasi, bukan sekadar menghitung input sesaat. Karena itu logika sequential menjadi bagian penting dari arsitektur komputer.</p>
+
+  <h3 id="s6-5">6.5 Flip-flop, register, counter, dan ALU</h3>
+
+  <p>Flip-flop adalah elemen penyimpan satu bit keadaan. SR latch dibangun dari dua gerbang NOR atau NAND yang saling berumpan balik, D flip-flop menyalin input ke output pada tepi clock, dan JK flip-flop menghilangkan_condition ambigu latch SR. Dari flip-flop dapat dibangun register, dari register dapat dibangun counter dan shift register.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.5 &middot; Elemen penyimpan dan pemroses</caption>
+    <thead>
+      <tr><th>Elemen</th><th>Fungsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flip-flop</td><td>Menyimpan satu bit keadaan sampai ada pemicu berikutnya</td></tr>
+      <tr><td>Register</td><td>Kumpulan flip-flop untuk menyimpan data internal, misalnya register 8-bit menyimpan <code>10110101</code></td></tr>
+      <tr><td>Counter</td><td>Menghitung urutan nilai menggunakan logika sequential</td></tr>
+      <tr><td>Shift register</td><td>Menggeser data satu posisi per pulsa clock</td></tr>
+      <tr><td>ALU</td><td>Arithmetic Logic Unit; menjalankan operasi aritmetika dan logika, termasuk perbandingan</td></tr>
+      <tr><td>Control unit</td><td>Mengubah opcode menjadi sinyal kontrol bagi unit lain</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>CPU
+ +-- ALU
+ +-- Control Unit
+ +-- Registers</code></pre>
+
+  <p>Dengan transistor sebagai sakelar, logika gate, ALU, register, dan unit kontrol inilah yang membentuk processor. Pada level paling dasar, komputer dapat dipandang sebagai kumpulan rangkaian logika elektronik yang sangat kompleks.</p>
+
+  <h2 id="s7">7. Arsitektur processor</h2>
+
+  <h3 id="s7-1">7.1 Von Neumann, Harvard, dan ISA</h3>
+
+  <p><strong>Von Neumann</strong> memakai satu memori dan satu set bus alamat dan data untuk kode sekaligus data. Konsekuensinya adalah <strong>bottleneck von Neumann</strong>: processor tidak dapat mengambil instruksi dan mengakses data secara bersamaan. <strong>Harvard</strong> memisahkan memori instruksi dan memori data beserta busnya, sehingga keduanya dapat diakses bersamaan. Arsitektur <strong>modified Harvard</strong>, yang paling umum pada CPU modern, memisahkan cache L1 instruksi dan L1 data, tetapi menyatukan ruang alamat di bawah cache.</p>
+
+  <p><strong>ISA</strong> atau Instruction Set Architecture adalah kontrak yang terlihat oleh programmer: jenis dan format instruksi, register yang tersedia, mode pengalamatan, dan semantik exception. <strong>Mikroarsitektur</strong> adalah implementasi konkret dari ISA tersebut, meliputi jumlah tahap pipeline, lebar issue, ukuran cache, dan algoritma prediksi branch. Intel Core dan AMD Zen menjalankan program yang sama karena ISA x86-64 sama, tetapi mikroarsitekturnya berbeda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 7.1 &middot; CISC dan RISC</caption>
+    <thead>
+      <tr><th>Aspek</th><th>CISC</th><th>RISC</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Jumlah instruksi</td><td>Ratusan sampai ribuan</td><td>Sekitar 50 sampai 200</td></tr>
+      <tr><td>Panjang instruksi</td><td>Variabel, 1 sampai 15 byte pada x86</td><td>Umumnya tetap, 16 atau 32 bit pada ARM</td></tr>
+      <tr><td>Mode pengalamatan</td><td>Banyak</td><td>Sedikit, berbasis load dan store</td></tr>
+      <tr><td>Contoh</td><td>x86, Motorola 68000</td><td>ARM, RISC-V, MIPS, AVR</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Processor x86 modern bukan CISC murni. Instruksi didekode menjadi unit operasi kecil yang menyerupai RISC sebelum dieksekusi, sehingga argumen bahwa satu ISA selalu lebih efisien tidak berlaku (Blem, Menon, dan Sankaralingam, HPCA 2013).</p>
+
+  <h3 id="s7-2">7.2 Pipeline</h3>
+
+  <p>Pipeline memecah eksekusi instruksi menjadi tahap fetch, decode, execute, memory, dan write-back sehingga beberapa instruksi diproses bersamaan. Acceleration ideal untuk N instruksi dengan k tahap adalah:</p>
+
+  <div class="eq">Speedup = <span class="frac"><span>k &times; N</span><span>N + k &minus; 1</span></span><span class="eq-note">Siklus pipeline = k + (N - 1). Batasnya adalah k, bukan lebih dari k.</span></div>
+
+  <p>Tiga jenis hambatan unsett pipeline. <strong>Structural</strong> terjadi ketika dua instruksi butuh unit yang sama. <strong>Data</strong> terjadi ketika operand belum siap. <strong>Control</strong> terjadi pada percabangan. Prediksi branch mengurangi hambatan control dengan menebak arahcabangan sebelum tahu pasti; bila tebakan salah, instruksi spekulatif dibuang.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 13 &middot; Pipeline dan waktu eksekusi</p>
+    <pre><code>Pipeline 5 tahap, N = 100 instruksi, asumsi ideal
+  Non-pipelined : 5 * 100 = 500 siklus
+  Pipelined     : 5 + 99 = 104 siklus
+  Speedup       : 500 / 104 = 4,81 kali
+
+Pipeline 3 tahap (Cortex-M3), N = 100 pada 72 MHz
+  Non-pipelined : 300 siklus = 4,167 us
+  Pipelined     : 102 siklus = 1,417 us
+  Speedup       : 2,94 kali</code></pre>
+  </div>
+
+  <h3 id="s7-3">7.3 Frekuensi, CPI, dan T_CPU</h3>
+
+  <p>Frekuensi clock yang lebih tinggi tidak otomatis berarti lebih cepat. Waktu eksekusi program ditentukan:</p>
+
+  <div class="eq"><var>T<sub>CPU</sub></var> = <span class="frac"><span>IC &times; CPI</span><span>f<sub>clock</sub></span></span><span class="eq-note">IC = jumlah instruksi, CPI = cycles per instruction.</span></div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 14 &middot; CPI rata-rata dan MIPS</p>
+    <pre><code>Program 100 000 instruksi pada 400 MHz:
+  Integer aritmetika  45 000 x CPI 1 =  45 000 siklus
+  Transfer data       32 000 x CPI 2 =  64 000 siklus
+  Floating point      15 000 x CPI 2 =  30 000 siklus
+  Kontrol transfer     8 000 x CPI 2 =  16 000 siklus
+  Total              100 000          = 155 000 siklus
+
+CPI_avg = 155 000 / 100 000 = 1,55
+MIPS    = 400 / 1,55 = 258 MIPS
+T_CPU   = 155 000 / (400 * 10^6) = 387,5 us</code></pre>
+    <p>MIPS tidak dapat dipakai untuk membandingkan dua processor berbeda, karena processor dengan MIPS lebih rendah dapat tetap lebih cepat bila jumlah instruksi programnya lebih sedikit.</p>
+  </div>
+
+  <h3 id="s7-4">7.4 Cache dan hierarki memori</h3>
+
+  <p>Cache explotación dua sifat akses memori, yaitu localitas spasial untuk alamat yang berdekatan dan localitas temporal untuk alamat yang sama diulang. Tiga jenis cache miss adalah <strong>compulsory</strong> saat blok pertama diakses, <strong>capacity</strong> saat cache terlalu kecil, dan <strong>conflict</strong> saat dua blok menempati set yang sama.</p>
+
+  <div class="eq">AMAT = <var>t</var><sub>hit</sub> + (miss rate &times; <var>t</var><sub>penalty</sub>)<span class="eq-note">AMAT = average memory access time.</span></div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 15 &middot; Struktur cache dan AMAT bertingkat</p>
+    <pre><code>L1 = 32 kB, 4-way, baris 64 B, alamat 32 bit
+  Offset = log2(64) = 6 bit
+  Index  = log2(32 768 / (4 * 64)) = log2(128) = 7 bit
+  Tag    = 32 - 6 - 7 = 19 bit, jumlah set 128
+
+Dari 10 000 akses: 9 400 hit L1, 570 hit L2, 30 sampai DRAM
+  miss L1 = 600/10 000 = 0,06 ; miss L2 = 30/600 = 0,05
+  AMAT_L3 = 30 + 1,00 * 200      = 230 siklus
+  AMAT_L2 = 11 + 0,05 * 230      = 22,5 siklus
+  AMAT_L1 = 1 + 0,06 * 22,5      = 2,35 siklus
+  Speedup terhadap akses DRAM langsung = 200 / 2,35 = 85 kali</code></pre>
+  </div>
+
+  <h3 id="s7-5">7.5 Endianness</h3>
+
+  <p>Pada little-endian, byte paling tidak signifikan berada di alamat terkecil. Pada big-endian, byte paling signifikan berada di alamat terkecil. Urutan byte pada jaringan internet adalah big-endian.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 16 &middot; Endianness</p>
+    <pre><code>Nilai 32-bit 0x0A0B0C0D disimpan mulai alamat 0x2000
+  Little-endian: [2000]=0D [2001]=0C [2002]=0B [2003]=0A
+  Big-endian   : [2000]=0A [2001]=0B [2002]=0C [2003]=0D
+Nilai 0x11223344 pada little-endian dibaca dari RAM: 44 33 22 11</code></pre>
+  </div>
+
+  <h2 id="s8">8. Microcontroller</h2>
+
+  <p><strong>Microprocessor</strong> adalah processor sebagai pusat pemrosesan yang memerlukan komponen pendukung eksternal. <strong>Microcontroller</strong> adalah komputer kecil yang mengintegrasikan CPU core, memori program, memori data, dan peripheral I/O dalam satu chip.</p>
+
+  <pre class="diagram"><code>+---------------------------+
+|      MICROCONTROLLER      |
+|  CPU core                 |
+|  Flash / ROM (program)    |
+|  SRAM                     |
+|  GPIO                     |
+|  Timer / PWM              |
+|  ADC / DAC                |
+|  UART, SPI, I2C, CAN      |
+|  Watchdog                 |
++---------------------------+</code></pre>
+
+  <h3 id="s8-1">8.1 Contoh microcontroller dari datasheet</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 8.1 &middot; Spesifikasi MCU yang sering dipakai</caption>
+    <thead>
+      <tr><th>Parameter</th><th>ATmega328P</th><th>PIC16F877A</th><th>STM32F103C8</th><th>MSP430G2553</th><th>ESP32</th><th>RP2040</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Inti</td><td>AVR 8-bit</td><td>PIC 8-bit</td><td>Cortex-M3 32-bit</td><td>RISC 16-bit</td><td>Dua Xtensa LX6 32-bit</td><td>Dua Cortex-M0+</td></tr>
+      <tr><td>Frekuensi</td><td>20 MHz</td><td>20 MHz</td><td>72 MHz</td><td>16 MHz</td><td>240 MHz</td><td>133 MHz</td></tr>
+      <tr><td>Flash</td><td>32 kB</td><td>14 kB</td><td>64 kB</td><td>16 kB</td><td>4 MB eksternal</td><td>tidak ada, QSPI sampai 16 MB</td></tr>
+      <tr><td>SRAM</td><td>2 kB</td><td>368 B</td><td>20 kB</td><td>512 B</td><td>520 kB</td><td>264 kB</td></tr>
+      <tr><td>EEPROM</td><td>1 kB</td><td>256 B</td><td>tidak ada</td><td>tidak ada</td><td>tidak ada</td><td>tidak ada</td></tr>
+      <tr><td>ADC</td><td>10-bit, 15 kSPS</td><td>10-bit, 8 kanal</td><td>12-bit, 1 &#956;s</td><td>10-bit, 200 kSPS</td><td>12-bit, INL &plusmn;12 LSB</td><td>12-bit, 500 kSPS</td></tr>
+      <tr><td>Timer PWM</td><td>6 kanal</td><td>2 timer</td><td>4 timer 16-bit</td><td>2 timer 16-bit</td><td>16 kanal, 16-bit</td><td>16 kanal</td></tr>
+      <tr><td>Komunikasi</td><td>UART, SPI, I2C</td><td>UART, SPI, I2C</td><td>3 UART, 2 SPI, 2 I2C, USB, CAN</td><td>UART, SPI, I2C</td><td>4 SPI, 3 UART, 2 I2C, Wi-Fi, BLE, CAN</td><td>2 UART, 2 SPI, 2 I2C, USB</td></tr>
+      <tr><td>Khusus</td><td>I/O 5 V</td><td>Flash 100 k siklus</td><td>5-V tolerant, 7 kanal DMA</td><td>wake-up di bawah 1 &#956;s</td><td>ADC moins akurat</td><td>8 state machine PIO</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Angka pada tabel diambil dari datasheet resmi Microchip, Texas Instruments, ST, Espressif, dan Raspberry Pi. Three hal yang sering terlewat:ESP32 tidak memiliki toleransi tegangan 5 V pada GPIO, STM32F103 memiliki toleransi 5 V pada sebagian besar pin I/O, dan STM32F103 bekerja pada 1,25 DMIPS per MHz.</p>
+
+  <h3 id="s8-2">8.2 MCU dan MPU</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 8.2 &middot; Perbandingan MCU dan MPU</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Microcontroller</th><th>Microprocessor</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Isi chip</td><td>CPU, flash, SRAM, banyak peripheral</td><td>CPU, cache, memory controller</td></tr>
+      <tr><td>Memori eksternal</td><td>Umumnya tidak diperlukan</td><td>DRAM eksternal, DDR</td></tr>
+      <tr><td>MMU dan virtual memory</td><td>Tidak ada</td><td>Ada</td></tr>
+      <tr><td>Lebar bus data</td><td>8, 16, atau 32 bit</td><td>32 atau 64 bit</td></tr>
+      <tr><td>Pipeline</td><td>2 sampai 7 tahap</td><td>10 sampai 20 tahap</td></tr>
+      <tr><td>Sistem operasi</td><td>Tanpa OS, atau RTOS kecil seperti FreeRTOS</td><td>Linux, Android, RTOS penuh</td></tr>
+      <tr><td>Daya</td><td>Mikrowatt sampai miliwatt, mode tidur mikroampere</td><td>Rosa watt sampai puluhan watt</td></tr>
+      <tr><td>Target tugas</td><td>Kontrol real-time dengan deadline pasti</td><td>Throughput umum, multitasking, antarmuka</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Batas keduanya terus menyempit. ESP32 misalnya memiliki processor dual core 240 MHz ditambah Wi-Fi, sehingga secara funsi mendekati MPU, sementara tetap memakai integrasi peripheral seperti MCU. Microcontroller dapat menjalankan RTOS, dan microprocessor dapat menjalankan RTOS, sehingga pembagian ini adalah soal kebutuhan sistem, bukan Playstation kategori.</p>
+
+  <h2 id="s9">9. Memori dan GPIO</h2>
+
+  <h3 id="s9-1">9.1 SRAM, DRAM, dan Flash</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 9.1 &middot; Sifat memori</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Sel</th><th>Refresh</th><th>Granularitas tulis</th><th>Endurance</th><th>Pakai untuk</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>SRAM</td><td>6 transistor flip-flop</td><td>Tidak</td><td>Bit</td><td>Tidak terbatas</td><td>Cache, register, SRAM MCU</td></tr>
+      <tr><td>DRAM</td><td>1 transistor dan 1 kapasitor</td><td>Periodik</td><td>Bit</td><td>Tidak terbatas</td><td>RAM utama</td></tr>
+      <tr><td>EEPROM</td><td>Sel flott</td><td>Tidak</td><td>Byte</td><td>10<sup>4</sup> sampai 10<sup>6</sup></td><td>Kalibrasi, konfigurasi</td></tr>
+      <tr><td>Flash NOR</td><td>Sel NOR paralel</td><td>Tidak</td><td>Blok</td><td>10<sup>4</sup> sampai 10<sup>5</sup></td><td>Firmware, bootloader, XIP</td></tr>
+      <tr><td>Flash NAND</td><td>Sel NAND serial</td><td>Tidak</td><td>Halaman</td><td>10<sup>3</sup> sampai 10<sup>5</sup></td><td>Penyimpanan massal, SSD</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Flash NOR dapat dijalankan langsung dari alamatnya karena mendukung random access sekitar 84 ns, sedangkan Flash NAND memerlukan sekitar 10 sampai 25 &#956;s dan tidak dapat dijalankan langsung tanpa terlebih dahulu disalin ke RAM. Erase blokNOR memerlukan sekitar 200 ms, sedangkan NAND hanya sekitar 2 ms. Karena itu firmware dan bootloader memakai NOR, sedangkan penyimpanan data memakai NAND dengan controller yang menangani ECC dan wear leveling (NXP AN2711, Micron Flash Guide).</p>
+
+  <p>Pada ARMv7-M seperti Cortex-M3, ruang alamat 32-bit dipetakan sebagai berikut: 0x0000_0000 untuk kode, 0x2000_0000 untuk SRAM, 0x4000_0000 untuk peripheral, dan 0xE000_0000 untuk ruang kendali sistem. Peripheral dipetakan ke ruang alamat yang sama dengan memori sehingga operasi LOAD dan STORE biasa dapat digunakan untuk. Utilizzo I/O ports bukan memory: sebagian bit hanya dibaca, sebagian hanya ditulis, dan sebagian hanya dapat di-reset atau di-set.</p>
+
+  <h3 id="s9-2">9.2 Mode GPIO</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 9.2 &middot; Mode GPIO</caption>
+    <thead>
+      <tr><th>Mode</th><th>Perilaku</th><th>Penggunaan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Input</td><td>Data masuk ke buffer input</td><td>Membaca sensor dan saklar</td></tr>
+      <tr><td>Input dengan pull</td><td>Input dengan pull-up atau pull-down internal</td><td>Tombol dan pin I2C</td></tr>
+      <tr><td>Output push-pull</td><td>Driver aktif menghasilkan HIGH maupun LOW</td><td>LED langsung pada pin</td></tr>
+      <tr><td>Output open-drain</td><td>Hanya dapat menarik ke LOW atau melepas menjadi impedansi tinggi</td><td>I2C, bus multimaster</td></tr>
+      <tr><td>Alternate function</td><td>Pin dikendalikan peripheral</td><td>SPI, I2C, UART, timer PWM</td></tr>
+      <tr><td>Analog</td><td>Buffer digital dimatikan</td><td>Input ADC</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Open-drain hanya punya dua aksi: menarik line ke LOW, atau melepasnya menjadi impedansi tinggi. Keadaan impedansi tinggi bukan HIGH yang kuat, sehingga diperlukan resistor pull-up eksternal. Pada I2C, tidak ada perangkat yang boleh memaksa HIGH agar dua perangkat tidak saling pendek secara listrik.</p>
+
+  <div class="note">
+    <p class="label">Batas penting</p>
+    <p>Pin STM32F103 direkomendasikan 8 mA per pin dengan total 150 mA. Motor, solenoid, dan relay tidak boleh disambungkan langsung ke pin GPIO karena membutuhkan arus far lebih besar; diperlukan driver MOSFET atau driver relay.</p>
+  </div>
+
+  <h2 id="s10">10. Antarmuka hardware dan software</h2>
+
+  <p>Software tidak bekerja langsung pada listrik. Setiap tindakan pada perangkat fisik berjalan melalui lapisan abstraksi.</p>
+
+  <pre class="diagram"><code>Program
+   |
+Kode mesin / instruksi
+   |
+Processor: fetch, decode, execute
+   |
+Register umum dan register peripheral
+   |
+GPIO
+   |
+Sinyal listrik
+   |
+Perangkat fisik</code></pre>
+
+  <div class="ex">
+    <p class="label">Contoh alur &middot; Menyalakan LED dan membaca tombol</p>
+    <pre><code>Program menulis HIGH ke register GPIO
+   |
+Register GPIO berubah keadaan
+   |
+Pin GPIO menghasilkan tegangan
+   |
+Arus mengalir melalui resistor dan LED
+   |
+LED menyala
+
+Tombol ditekan -&gt; pin berubah -&gt; interrupt -&gt; ISR dijalankan -&gt; kembali ke program utama</code></pre>
+  </div>
+
+  <p>Jalur tersebut memuat unsur Teknik Komputer, yaitu program, processor, register, dan GPIO, sekaligus unsur Teknik Elektro, yaitu tegangan, arus, resistor, LED, dan rangkaian.</p>
+
+  <h3 id="s10-1">10.1 Interrupt, DMA, timer, dan PWM</h3>
+
+  <p><strong>Interrupt</strong> adalah mekanisme yang memungkinkan processor merespons kejadian tanpa memeriksa seluruh kondisi secara manual. Alurnya: program berjalan, kejadian terjadi, interrupt dipicu, interrupt service routine dijalankan, lalu processor kembali ke program utama. <strong>DMA</strong> memindahkan data antara peripheral dan memori tanpa intervensi CPU, yang membuat ADC berkecepatan tinggi menjadi praktis.</p>
+
+  <p><strong>Timer</strong> digunakan untuk mengukur waktu, menghasilkan delay, dan membuat tugas periodik. <strong>PWM</strong> mengatur daya efektif yang diberikan kepada beban dengan mengubah duty cycle sinyal digital.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 17 &middot; Duty cycle PWM dari clock timer</p>
+    <pre><code>Timer 16-bit dengan clock 1 MHz, tanpa prescaler
+  Periode counter = 1 / 1 000 000 = 1 us
+  Sepanjang satu siklus 20 ms diperlukan 20 000 tick
+  Tick per counter 16-bit = 65 536, jadi_perioda dibatasi prescaler
+  Dengan prescaler 4: tick = 4 us, jumlah tick = 20 000 / 4 = 5 000 tick
+  Duty 40 % = 2 000 tick pada 2 000/65 536 * 100 % = 3,05 % dari rentang
+  Duty 40 % dari rentang 5 000 tick = 2 000 tick
+  Resolusi duty cycle yang dapat Duty = 1 / 5 000 = 0,02 %</code></pre>
+    <p>Kesimpulan praktis: duty cycle PWM tidak mungkin lebih kecil dari satu tick timer, sehingga frekuensi PWM dan resolusi bertrade-off secara langsung.</p>
+  </div>
+
+  <h3 id="s10-2">10.2 Lapisan perangkat lunak</h3>
+
+  <pre class="diagram"><code>Aplikasi
+   |
+Pustaka dan middleware
+   |
+Sistem operasi
+   |
+Device driver
+   |
+Hardware Abstraction Layer
+   |
+Register peripheral
+   |
+Perangkat keras</code></pre>
+
+  <p><strong>Device driver</strong> adalah perangkat lunak yang membantu sistem operasi berkomunikasi dengan perangkat keras tertentu. <strong>HAL</strong> menyediakan lapisan abstraksi tambahan sehingga kode aplikasi tidak harus selalu berhubungan langsung dengan detail hardware. Pada sistem tertanam, pilihan antara <strong>bare-metal</strong> dan <strong>RTOS</strong> menentukan bagaimana penjadwalan microcontroller bekerja: bare-metal berjalan sebagai satu urutan tugas, sedangkan RTOS menyediakan preemptive scheduling, semaphores, dan mutual exclusion.</p>
+
+  <p>Carnegie Mellon membahas hubungan ini secara khusus dalam mata kuliah <em>Computer Systems and the Hardware-Software Interface</em> (CMU ECE, 18-344).</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 18 &middot; Menghitung jitter interrupt</p>
+    <p>Interrupt triggered setiap 1 ms pada jam 72 MHz. Overhead Procedure Call+ Context Save adalah 30 siklus:</p>
+    <pre><code>Waktu = 30 siklus / (72 * 10^6 Hz) = 0,4167 us
+Jitter = 0,4167 us / 1000 us = 0,042 %
+Jika periode interrupt 100 us, jitter = 0,42 %</code></pre>
+  </div><h2 id="s11">11. Sensor dan signal conditioning</h2>
+
+  <p>Sensor dan actuator adalah jembatan antara sistem digital dan dunia fisik. Sensor mengubah besaran fisik menjadi sinyal listrik, sedangkan actuator melakukan tindakan terhadap sistem fisik. Keduanya adalah dua arah transducer yang sama; yang berbeda hanya arah konversi energi.</p>
+
+  <h3 id="s11-1">11.1 Klasifikasi dan spesifikasi sensor</h3>
+
+  <p>Sensor pasif tidak memerlukan sumber daya eksternal untuk menghasilkan sinyal, misalnya thermocouple dan RTD. Sensor aktif memerlukan sinyal eksitasi, misalnya LM35 dan sensor ultrasonik. Berdasarkan keluarannya, sensor bersifat analog kontinu atau digital biner. Berdasarkan besaran listrik yang dipengaruhi, sensor bersifat resistif, kapasitif, induktif, atau piezoelectric.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 11.1 &middot; Spesifikasi sensor yang perlu dipahami</caption>
+    <thead>
+      <tr><th>Spesifikasi</th><th>Definisi</th><th>Satuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sensitivity</td><td>Perubahan output per perubahan input</td><td>mV/&#176;C, mV/(V&middot;mm)</td></tr>
+      <tr><td>Span dan range</td><td>Selisih nilai atas dan bawah, serta rentang kerja</td><td>satuan input</td></tr>
+      <tr><td>Accuracy</td><td> closeness nilai terhadap nilai benar</td><td>&plusmn; %FS</td></tr>
+      <tr><td>Precision</td><td>Konsistensi antar pengukuran berulang</td><td>deviasi standar</td></tr>
+      <tr><td>Resolution</td><td>Perubahan input terkecil yang mengubah output satu kode</td><td>satuan input</td></tr>
+      <tr><td>Hysteresis</td><td>Perbedaan output saat input naik dan turun</td><td>%FS</td></tr>
+      <tr><td>Response time</td><td>Waktu mencapai 63,2 % nilai akhir</td><td>detik</td></tr>
+      <tr><td>Drift</td><td>Perubahan output pada input tetap seiring waktu</td><td>% per tahun</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Istilah accuracy dan precision sering diterjemahkan sama-sama sebagai ketepatan. Dalam materi ajar keduanya perlu dibedakan: akurasi adalah closeness terhadap nilai benar, presisi adalah closeness antarulangan.</p>
+
+  <h3 id="s11-2">11.2 Sensor suhu yang paling sering dipakai</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 11.2 &middot; Perbandingan sensor suhu</caption>
+    <thead>
+      <tr><th>Sensor</th><th>Keluaran</th><th>Akurasi</th><th>Resolusi</th><th>Rentang</th><th>Catatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LM35</td><td>Analog, 10 mV/&#176;C</td><td>&plusmn;0,25 &#176;C tipikal</td><td>Analog</td><td>&minus;55 sampai 150 &#176;C</td><td>Perlu ADC eksternal</td></tr>
+      <tr><td>DS18B20</td><td>Digital, 1-Wire</td><td>&plusmn;0,5 &#176;C</td><td>0,0625 &#176;C pada 12 bit</td><td>&minus;55 sampai 125 &#176;C</td><td>Konversi 750 ms pada 12 bit</td></tr>
+      <tr><td>DHT22</td><td>Digital satu kawat</td><td>&plusmn;0,5 &#176;C dan &plusmn;2 %RH</td><td>0,1 &#176;C dan 0,1 %RH</td><td>&minus;40 sampai 80 &#176;C</td><td>Periode sampling 2 s</td></tr>
+      <tr><td>Pt100 RTD</td><td>Resistif, pasif</td><td>Kelas A sampai AA</td><td>0,385 &#8486;/&#176;C</td><td>&minus;200 sampai 850 &#176;C</td><td>Perlu eksitasi dan kompensasi lead</td></tr>
+      <tr><td>Thermocouple Tipe K</td><td>Tegangan, 41,2 &#956;V/&#176;C</td><td>&plusmn;2,2 &#176;C atau &plusmn;0,75 %</td><td>Analog</td><td>&minus;200 sampai 1260 &#176;C</td><td>Perlu kompensasi junction Dingin</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 19 &middot; LM35 dengan ADC 12 bit</p>
+    <p>LM35 memiliki sensitivitas 10,0 mV/&#176;C, dan ADC 12 bit memakai tegangan acuan 3,300 V.</p>
+    <pre><code>LSB ADC = 3,300 / 4096 = 0,805664 mV
+Resolusi suhu = 0,805664 mV / 10,0 mV/C = 0,0806 C per LSB
+Error kuantisasi = &plusmn;0,5 LSB = &plusmn;0,0403 C
+
+T = 100 C  -&gt;  V_sensor = 10,0 mV/C * 100 C = 1,000 V
+Kode ADC  = 1,000 / 3,300 * 4096 = 1241
+T dari kode = (1241 * 0,805664 mV) / 10,0 mV/C = 99,98 C
+Error total terburuk = &plusmn;0,2 C sensor + &plusmn;0,040 C ADC = &plusmn;0,24 C</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 20 &middot; Thermistor NTC dan error lead RTD</p>
+    <pre><code>NTC 10 kohm, B25/85 = 3435 K, T = 50 C = 323,15 K
+  1/T - 1/T25 = 1/323,15 - 1/298,15 = -2,58855 * 10^-4
+  R = 10 000 * exp(3435 * -2,58855 * 10^-4) = 4,11 kohm
+
+Pt100, R0 = 100 ohm, alpha = 0,003851 /C, lead 1 ohm
+  Sensitivitas dR/dT = 100 * 0,003851 = 0,3851 ohm/C
+  Error lead 2 kawat, total 1 ohm = 1 / 0,3851 = 2,60 C
+  Error lead total 2 ohm = 5,19 C
+  Solusi: koneksi 3 kawat atau 4 kawat, atau memakai Pt1000 sehingga
+  error pada R0 = 1000 ohm menjadi 0,26 C</code></pre>
+  </div>
+
+  <h3 id="s11-3">11.3 Signal conditioning</h3>
+
+  <p>Sinyal sensor sering terlalu kecil, berisik, tidak linier, atau tidak sesuai jangkauan ADC. Signal conditioning menyiapkan sinyal sebelum digitasi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 11.3 &middot; Fungsi conditioning dan rumus</caption>
+    <thead>
+      <tr><th>Fungsi</th><th>Rumus</th><th>Kapan dipakai</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Penguat inverting</td><td class="mono">G = &minus;R<sub>F</sub>/R<sub>G</sub></td><td>Penguatan lebih besar dari satu</td></tr>
+      <tr><td>Penguat non-inverting</td><td class="mono">G = 1 + R<sub>F</sub>/R<sub>G</sub></td><td>Penguatan sampai sekitar 100</td></tr>
+      <tr><td>Instrumentation amplifier</td><td class="mono">G = 1 + 2R<sub>F</sub>/R<sub>G</sub></td><td>Sinyal kecil di atas tegangan common-mode besar</td></tr>
+      <tr><td>Pembatas tegangan</td><td class="mono">V<sub>out</sub>/V<sub>in</sub> = R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>)</td><td>Input melebihi tegangan acuan</td></tr>
+      <tr><td>Filter low-pass RC</td><td class="mono">f<sub>c</sub> = 1/(2&#960;RC)</td><td>Anti-aliasing dan peredam derau</td></tr>
+      <tr><td>Jembatan Wheatstone</td><td class="mono">V<sub>out</sub> &asymp; (V<sub>exc</sub>/4)&middot;(&Delta;R/R)</td><td>Strain gauge dan sensor resistif</td></tr>
+      <tr><td>Eksitasi</td><td class="mono">V = I&middot;R</td><td>RTD dan termistor</td></tr>
+      <tr><td>Isolasi</td><td class="mono">&mdash;</td><td>Sensor pada tegangan tinggi atau ground berbeda</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 21 &middot; Memilih R dan C untuk filter 1 kHz</p>
+    <pre><code>RC = 1/(2*pi*f_c) = 1/(6,28319 * 1000) = 159,155 us
+
+Pilihan A: R = 1,59 kohm, C = 100 nF
+  f_c = 1/(2*pi*1590*100*10^-9) = 1001 Hz
+Pilihan B: R = 10,0 kohm, C = 15,9 nF  -&gt; f_c = 1001 Hz
+
+Redaman pada 10 f_c:
+  |H| = 1/sqrt(1 + 100) = 0,0996 = -20,0 dB
+Waktu sampai 1 LSB untuk DAC 12 bit memerlukan sekitar 9 kali konstanta waktu
+  t = 9 * 159 us = 1,43 ms</code></pre>
+  </div>
+
+  <div class="note">
+    <p class="label">Peringatan desain</p>
+    <p>Kapasitor ceramic kelas II seperti X7R mengalami pengurangan kapasitas akibat tegangan bias searah, sehingga frekuensi cutoff dapat bergeser. Untuk filter yang memerlukan presisi, gunakan kapasitor C0G atau NP0. Pada filter anti-aliasing untuk ADC 12 bit, redaman yang dibutuhkan pada frekuensi Nyquist adalah sekitar &minus;72 dB, yang pada filter orde empat hanya tercapai bila frekuensi cutoff dipilih sekitar sepuluh kali bandwidth sinyal.</p>
+  </div>
+
+  <h2 id="s12">12. ADC dan DAC</h2>
+
+  <h3 id="s12-1">12.1 Resolusi dan kuantisasi</h3>
+
+  <p>ADC mengubah sinyal analog menjadi representasi digital. Jumlah kode ditentukan oleh jumlah bit, dan besar satu kode adalah:</p>
+
+  <div class="eq"><var>LSB</var> = <span class="frac"><span>V<sub>ref</sub></span><span>2<sup>N</sup></span></span><span class="eq-note">Jumlah kode = 2^N. Error kuantisasi maksimum = &plusmn;0,5 LSB. Derau kuantisasi RMS = LSB/sqrt(12).</span></div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 22 &middot; ADC 12 bit dengan acuan 3,3 V</p>
+    <pre><code>Jumlah kode   = 2^12 = 4096 kode, rentang 0 sampai 4095
+LSB          = 3,300 / 4096 = 0,805664 mV
+Error maks   = &plusmn;0,402832 mV
+Derau RMS    = 0,805664 mV / sqrt(12) = 0,23256 mV
+SNR ideal    = 6,02 * 12 + 1,76 = 74,0 dB
+ENOB         = (SNR - 1,76) / 6,02 = 12,0 bit
+
+Input 2,3718 V:
+  kode = 2,3718 / 0,000805664 = 2944,3 -&gt; 2944
+  tegangan kode = 2944 * 0,805664 mV = 2,3711 V
+  error = 2,3718 - 2,3711 = 0,7 mV = 0,87 LSB</code></pre>
+  </div>
+
+  <p>Sinyal penuh yang ideal memiliki SNR sebesar 6,02N + 1,76 dB. Effective Number of Bits adalah jumlah bit setara dengan ADC ideal yang menghasilkan SNR sama, dirumuskan ENOB = (SNR &minus; 1,76) / 6,02. Ketidaklinieran ditunjukkan oleh INL, yaitu penyimpangan kurva transfer dari garis lurus terbaik, sedangkan DNL adalah penyimpangan lebar setiap langkah dari satu LSB. DNL yang lebih negatif dari satu LSB menyebabkan kode hilang, dan DNL negatif juga menyebabkan sifat non-monotonic.</p>
+
+  <h3 id="s12-2">12.2 Sampling dan aliasing</h3>
+
+  <div class="eq"><var>f<sub>s</sub></var> &gt; 2 &middot; <var>f<sub>max</sub></var><span class="eq-note">Prinsip Nyquist-Shannon. Frekuensi Nyquist = f_s/2. Setiap komponen di atas f_Nyquist muncul sebagai alias.</span></div>
+
+  <p>Alias bersifat merusak karena tidak dapat dibedakan dari komponen asli dan tidak dapat dihilangkan dengan filter digital, karena sudah tercampur sejak sampling. Karena itu filter anti-aliasing harus dipasang secara analog sebelum ADC. Oversampling dengan f<sub>s</sub> jauh lebih besar dari dua kali bandwidth meningkatkan SNR sebesar 10 log<sub>10</sub>(OSR) dB, tetapi menambah laju data dan konsumsi daya.</p>
+
+  <p>Untuk jaringan listrik 50 Hz, konvensi umum memakai dual-slope ADC yang mengintegrasikan tepat satu periode 20 ms, sehingga gangguan 50 Hz ditolak tanpa sisa.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 23 &middot; Memilih laju sampling</p>
+    <pre><code>Sinyal sensor bandwidth 100 Hz
+  Syarat minimum: f_s &gt; 200 Hz
+  Praktik: f_s = 10 kali bandwidth = 1 000 Hz
+  Filter anti-aliasing: f_c sekitar 500 Hz, orde 4
+  f_Nyquist = 500 Hz, redaman yang dibutuhkan pada 500 Hz:
+    A = -20 * 4 * log10(500/500) ... dihitung terhadap gain error 1 LSB
+    pada 12 bit diperlukan redaman sekitar 72 dB -&gt; orde 6 dengan f_c 500 Hz
+    A = -20 * 6 * log10(1000/500) = -18 dB pada 1 kHz, belum cukup
+   ggi f_c = 200 Hz, orde 6 pada 1 kHz: A = -120 * log10(5) = -83,9 dB</code></pre>
+    <p>Alternatif yang lebih hemat: sampling pada kelipatan frekuensi jaringan, misalnya 100 Hz untuk sinyal Slow dengan filter digital notch 50 Hz.</p>
+  </div>
+
+  <h3 id="s12-3">12.3 DAC</h3>
+
+  <p>DAC melakukan kebalikan dari ADC, yaitu mengubah data digital menjadi tegangan atau arus yang proporsional. Penerapannya umumnya memakai ladder R-2R atau resistor berbobot. Untuk DAC 8 bit dengan V<sub>ref</sub> 5 V memberikan besar langkah:</p>
+
+  <div class="eq"><var>LSB</var> = 5 V / 256 = 19,53 mV<span class="eq-note">Kode 128 menghasilkan 128 * 19,53 mV = 2,500 V</span></div>
+
+  <h2 id="s13">13. Actuator</h2>
+
+  <p>Actuator adalah perangkat yang melakukan tindakan terhadap sistem fisik berdasarkan perintah kontrol. MIT mencantumkan motor, heater, valve, pump, FET, dan generator sebagai contoh actuator.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 13.1 &middot; Jenis actuator dan penggeraknya</caption>
+    <thead>
+      <tr><th>Actuator</th><th>Penggerak</th><th>Catatan aplikasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LED</td><td>Langsung dari GPIO dengan resistor</td><td>Arus 5 sampai 20 mA, aman dari pin GPIO</td></tr>
+      <tr><td>Relay</td><td>Transistor atau driver relay</td><td>Perlu dioda flyback pada kumparan</td></tr>
+      <tr><td>Motor DC</td><td>Driver H-bridge dengan MOSFET</td><td>Kecepatan diatur lewat PWM</td></tr>
+      <tr><td>Servo</td><td>Signal 50 Hz, driver khusus</td><td>Sudut ditentukan lebar pulsa</td></tr>
+      <tr><td>Stepper</td><td>Driver stepper dengan transistor</td><td>Sudut sangat presisi, perlu driver</td></tr>
+      <tr><td>Solenoid valve</td><td>Driver MOSFET atau latching relay</td><td>Aliran fluids dan Executor valve</td></tr>
+      <tr><td>Heater</td><td>TRIAC atau SSR untuk AC, PWM untuk DC</td><td>Daya besar, sering pakai ON-OFF dengan histeresis</td></tr>
+      <tr><td>Buzzer dan speaker</td><td>Driver transistor</td><td>Dipakai sebagai indikator alarm</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 24 &middot; Menghitung daya dan duty PWM</p>
+    <pre><code>Motor DC 12 V, arus 0,5 A, PWM duty 40 % pada 1 kHz
+  Daya saat duty 100 % = 12 * 0,5 = 6 W
+  Daya rata-rata = 0,40 * 6 = 2,4 W
+  Frekuensi PWM = 1 kHz, periode 1 ms
+  Sinyal HIGH = 40 % * 1 ms = 400 us
+
+Heater 2 kW pada 220 V, kontrol dengan PWM 50 Hz
+  Daya rata-rata = 0,5 * 2 000 = 1 000 W
+  Dengan SSR, sudut konduksi thyristor diubah, bukan frekuensinya</code></pre>
+  </div>
+
+  <div class="note">
+    <p class="label">Flyback diode</p>
+    <p>Kumparan relay, solenoid, dan motor bersifat induktor. Saat sakelar dimatikan, energi medan magnet diubah menjadi tegangan tinggi yang dapat merusak transistor. Dioda antiparalel pada kumparrudo memberikan jalur bagi arus yang terputus. Tanpa dioda ini, transistor driver hampir selalu rusak saat beban dimatikan.</p>
+  </div>
+
+  <h2 id="s14">14. Embedded system</h2>
+
+  <p>Embedded system adalah sistem komputer yang ditanamkan di dalam produk atau sistem untuk menjalankan fungsi tertentu: mesin cuci, microwave, printer, mobil, kamera, robot, router, drone, smartwatch, alat medis, dan sistem industri (Valvano, UT Austin).</p>
+
+  <p>Disebut embedded karena komputer tersebut tertanam di dalam sistem lain. Ketika memakai mesin cuci, kita tidak mengatakan sedang memakai sebuah komputer, meskipun di dalamnya ada komputer kecil yang mengatur fungsi tertentu.</p>
+
+  <h3 id="s14-1">14.1 Ciri embedded system</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 14.1 &middot; Ciri umum embedded system</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Ciri</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Dedicated</td><td>Dirancang untuk fungsi atau domain aplikasi tertentu</td></tr>
+      <tr><td class="mono">2</td><td>Keterbatasan sumber daya</td><td>Memori, daya pemrosesan, energi, dan penyimpanan terbatas</td></tr>
+      <tr><td class="mono">3</td><td>Berinteraksi dengan hardware</td><td>Sensor, motor, LED, relay, display</td></tr>
+      <tr><td class="mono">4</td><td>Real-time</td><td>Perlu merespons dalam batas waktu yang dipersyaratkan</td></tr>
+      <tr><td class="mono">5</td><td>Gabungan hardware dan software</td><td>Merupakan inti hubungan Teknik Elektro dan Teknik Komputer</td></tr>
+      <tr><td class="mono">6</td><td>Umur panjang</td><td>Perangkat dapat dipasang selama 10 sampai 20 tahun</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>Sensor -&gt; Signal conditioning -&gt; ADC -&gt; +-----------------+
+                                   | MICROCONTROLLER  |
+                                   | CPU, memory,     |
+                                   | GPIO, timer,     |
+                                   | communication    |
+                                   +-----------------+
+                                        |
+                                 Output driver
+                                        |
+                                      Actuator</code></pre>
+
+  <h3 id="s14-2">14.2 Arsitektur perangkat lunak</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 14.2 &middot; Bare-metal, RTOS, dan embedded Linux</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Bare-metal</th><th>RTOS</th><th>Embedded Linux</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Penjadwalan</td><td>Satu urutan, superloop</td><td>Preemptive berbasis prioritas</td><td>Preemptive penuh, time sharing</td></tr>
+      <tr><td>Waktu respons</td><td>Tidak dapat diprediksi</td><td>Dapat ditentukan</td><td>Tidak dapat diprediksi</td></tr>
+      <tr><td>Memori</td><td>Sangat kecil</td><td>Kecil sampai sedang</td><td>Butuh MB RAM</td></tr>
+      <tr><td>Contoh</td><td>Program AVR dasar</td><td>FreeRTOS, Zephyr</td><td>Embedded Linux pada SoC</td></tr>
+      <tr><td>Cocok untuk</td><td>Satu tugas sederhana</td><td>Beberapa tugas dengan deadline</td><td>Konektivitas dan antarmuka web</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Konsep penting lain adalah <strong>WCET</strong>, yaitu worst-case execution time, yaitu batas waktu eksekusi terburuk. Untuk sistem hard real-time, WCET harus dapat dihitung dan tidak boleh terlampaui. Sistem embedded umumnya menghindari virtual memory karena page fault menimbulkan latency yang sulit diprediksi, dan MMU memakan luas cip serta daya.</p>
+
+  <h3 id="s14-3">14.3 Real-time</h3>
+
+  <p>Real-time berarti sistem memberikan respons dalam batas waktu yang dipersyaratkan, bukan sekadar cepat.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 14.3 &middot; Hard real-time dan soft real-time</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Konsekuensi keterlambatan</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hard real-time</td><td>Melewati deadline dianggap kegagalan sistem</td><td>Sistem keselamatan, kontrol kritis, sebagian sistem medis</td></tr>
+      <tr><td>Soft real-time</td><td>Masih dapat ditoleransi, kualitas menurun</td><td>Multimedia, dashboard, sebagian monitoring</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Carnegie Mellon memasukkan prinsip real-time, penjadwalan, sinkronisasi, interrupt, pengelolaan sumber daya, sensor, actuator, debugging, dan optimisasi dalam pembelajaran embedded systems (CMU ECE, 18-349).</p>
+
+  <h2 id="s15">15. Sistem kendali</h2>
+
+  <p>Sistem kendali menggunakan input agar suatu sistem atau plant berperilaku sesuai tujuan. Istilah dasarnya:</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 15.1 &middot; Istilah dalam sistem kendali</caption>
+    <thead>
+      <tr><th>Istilah</th><th>Arti</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Setpoint</td><td>Nilai yang diinginkan</td><td>Suhu target 25 &#176;C</td></tr>
+      <tr><td>Plant</td><td>Sistem yang dikendalikan</td><td>Tangki, motor, mesin, ruangan</td></tr>
+      <tr><td>Sensor</td><td>Mengukur kondisi aktual</td><td>Sensor suhu</td></tr>
+      <tr><td>Controller</td><td>Menentukan tindakan dari error</td><td>Thermostat, PLC, MCU</td></tr>
+      <tr><td>Actuator</td><td>Melakukan tindakan terhadap plant</td><td>Kompresor, valve, motor</td></tr>
+      <tr><td>Disturbance</td><td>Masukan yang tidak diinginkan</td><td>Beban berubah, suhu ruang, derau</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="eq"><var>e</var>(<var>t</var>) = <var>r</var>(<var>t</var>) &minus; <var>y</var>(<var>t</var>)<span class="eq-note">r(t) = desired output atau setpoint, y(t) = output aktual.</span></div>
+
+  <p>Pada <strong>closed-loop</strong>, output diukur dan dikembalikan sebagai umpan balik. Pada <strong>open-loop</strong>, output tidak dikembalikan, misalnya timer yang menyalakan motor selama sepuluh detik tanpa memeriksa kondisi motor.</p>
+
+  <figure>
+    <img src="gambar/diagram-kendali-tertutup.png" alt="Diagram blok sistem kendali tertutup: r(t), error e(t), controller, kontrol u(t), process, dan keluaran y(t) yang diumpan balik ke titik penjumlahan" width="822" height="181" loading="lazy" decoding="async">
+    <figcaption><b>Gambar 2.</b> Struktur dasar sistem kendali tertutup. Sinyal error <code>e(t)</code> diperoleh dari selisih desired output <code>r(t)</code> terhadap measured output <code>y(t)</code>. Sumber: <a href="https://commons.wikimedia.org/wiki/File:Closed_loop_diagram.png">Wikimedia Commons, <i>Closed loop diagram</i></a> (CC BY-SA 4.0, Luca Ghio).</figcaption>
+  </figure>
+
+  <p><strong>Feedforward</strong> menggunakan informasi disturbance yang diukur lebih dahulu untuk bertindak tanpa menunggu error. Feedforward membutuhkan model disturbance, tidak dapat menangani disturbance yang tidak terukur, dan tidak memengaruhi kestabilan loop karena berada paralel di luar loop.</p>
+
+  <h3 id="s15-1">15.1 Transfer function dan konstanta waktu</h3>
+
+  <p>Untuk sistem linear, transfer function memberi tahu apa yang dilakukan sistem. Pembilang menyatakan nilai yang membuat output nol, penyebut merupakan pole yang menentukan mode alami dan kestabilan, serta nilai pada frekuensi nol adalah gain statis.</p>
+
+  <div class="eq"><var>G</var>(<var>s</var>) = <span class="frac"><span><var>b</var><sub>m</sub><var>s</var><sup>m</sup> + &hellip; + <var>b</var><sub>0</sub></span><span><var>a</var><sub>n</sub><var>s</var><sup>n</sup> + &hellip; + <var>a</var><sub>0</sub></span></span></div>
+
+  <p>Sistem orde pertama <code>G(s) = K / (&#964;s + 1)</code> memiliki respons step:</p>
+
+  <div class="eq"><var>y</var>(<var>t</var>) = <var>K</var>&middot;<var>A</var>[1 &minus; e<sup>&minus;t/&#964;</sup>]<span class="eq-note">63,2 % pada 1&#964;, 86,5 % pada 2&#964;, 95 % pada 3&#964;, 98 % pada 4&#964;, 99,3 % pada 5&#964;.</span></div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 25 &middot; Respons sistem orde pertama</p>
+    <p>G(s) = 2,5 / (4s + 1), sehingga K = 2,5 &#176;C per unit dan &#964; = 4 s.</p>
+    <pre><code>y(4 s)  = 2,5 * (1 - e^-1) = 1,580 C   (63,2 %)
+y(12 s) = 2,5 * (1 - e^-3) = 2,376 C   (95 %)
+y(15,65 s) = 2,5 * (1 - e^-3,912) = 2,45 C  (98 %)
+Kemiringan awal dy/dt = K * A / tau = 2,5 / 4 = 0,625 C/s
+
+Waktu untuk 98 % dihitung langsung:
+  0,98 = 1 - e^(-t/4)  ->  t = -4 * ln(0,02) = 15,65 s</code></pre>
+  </div>
+
+  <h3 id="s15-2">15.2 Controller P, PI, dan PID</h3>
+
+  <div class="eq"><var>u</var> = <var>K<sub>p</sub></var><var>e</var> + <var>K<sub>i</sub></var>&int;<var>e</var>&thinsp;d<i>t</i> + <var>K<sub>d</sub></var> <span class="frac"><span>d<var>e</var></span><span>d<var>t</var></span></span><span class="eq-note">Ki = Kp/Ti, Kd = Kp*Td. Bentuk ISA: Kp[1 + 1/(Ti s) + Td s]</span></div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 15.2 &middot; Peran tiap suku PID</caption>
+    <thead>
+      <tr><th>Suku</th><th>Efek menambah</th><th>Efek mengurangi</th><th>Masalah</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Proportional</td><td>Kecepatan respons</td><td>Error steady-state dan overshoot</td><td>Tidak dapat menghilangkan offset</td></tr>
+      <tr><td>Integral</td><td>Menghilangkan error steady-state</td><td>Kecepatan respons dan margin kestabilan</td><td>Overshoot dan integral windup</td></tr>
+      <tr><td>Derivative</td><td>Damping dan margin kestabilan</td><td>Kecepatan respons</td><td>Menguatkan derau sensor</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Praktik: untuk laju flow, digunakan PI karena loop sudah cepat dan derau flowmeter cukup besar. Untuk suhu, digunakan PID dengan turunan pada measurement, bukan pada error, agar tidak terjadi lonjakan saat setpoint berubah. Semua integrator digital memerlukan anti-windup, yaitu pembatasan nilai integrator pada rentang output.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 26 &middot; Menentukan gain P dan tuning Ziegler-Nichols</p>
+    <pre><code>Level tank: setpoint 60 %, PV terbaca 45 %, Output yang dibutuhkan 45 %
+  e = 60 - 45 = 15 %
+  Kc = u / e = 45 / 15 = 3,00
+  Proportional band = 100 / Kc = 33,3 %
+
+Tuning Ziegler-Nichols dari Ku = 8,00 dan Tu = 10 s:
+  PID : Kc = 0,60 * Ku = 4,80 ; Ti = Tu/2 = 5,00 s ; Td = Tu/8 = 1,25 s
+        Ki = Kc/Ti = 0,960 /s ; Kd = Kp*Td = 6,00 s
+  PI  : Kc = 0,45 * Ku = 3,60 ; Ti = Tu/1,2 = 8,33 s
+
+Error steady-state sistem P pada plant 1/(5s+1), Kc = 2:
+  K_loop = Kc * K = 2
+  e_ss = 1 / (1 + 2) = 0,333 = 33,3 %
+Dengan suku integral, error steady-state untuk step menjadi nol</code></pre>
+  </div>
+
+  <h3 id="s15-3">15.3 Kontrol digital</h3>
+
+  <p>Controller digital bekerja pada periode sampling tetap. Syarat Nyquist tetap berlaku, tetapi untuk control loops aturan praktis yang banyak dipakai adalah frekuensi sampling sekurang-kurangnya sepuluh kali bandwidth loop tertutup.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 27 &middot; Memilih periode sampling</p>
+    <pre><code>Plant G(s) = 1/(0,5s+1), Kc = 4,00
+  Konstanta waktu loop tertutup = 0,5 / (1 + 4) = 0,100 s
+  Bandwidth approx f_c = 1 / 0,100 = 10 rad/s = 1,59 Hz
+  Aturan 10 kali: f_s &gt;= 15,9 Hz  -&gt;  T_s &lt;= 0,063 s
+  Pilih T_s = 0,05 s
+
+Implementasi P diskret setiap T_s:
+  ERR = SP - PV ; U = Kc * ERR ; U = clamp(U, 0, 100)
+
+Turunan diskret dengan backward difference:
+  D = Kc * Td * (PV[k] - PV[k-1]) / T_s
+  Karena ada pembagian dengan T_s, derau sensor diperbesar sebesar 1/T_s
+  sehingga turunan wajib diberi filter orde satu</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 28 &middot; Uji kestabilan Routh</p>
+    <p>Polinomial karakteristik loop tertutup: p(s) = s&sup3; + 2s&sup2; + 2s + 10.</p>
+    <pre><code>Routh:
+  s^3 :  1        2
+  s^2 :  2       10
+  s^1 : (2*2 - 1*10)/2 = -3     0
+  s^0 : 10
+Kolom pertama: 1, 2, -3, 10
+Perubahan tanda = 2  -&gt; ada 2 pole di bidang kanan -&gt; tidak stabil
+Cek syarat aljabar: a2*a1 &gt; a0 ? 2*2 = 4 &gt; 10? tidak -&gt; tidak stabil
+Batas kestabilan: a2 = 5,0 dengan a0 = 10 dan a1 = 2 -&gt; marginal</code></pre>
+  </div>
+
+  <p>Pada sistem cascading, loop dalam harus tiga sampai lima kali lebih cepat daripada loop luar, dan setiap loop harus memakai sensor sendiri. Satu transmitter tidak boleh dipakai bersama oleh dua loop.</p><h2 id="s16">16. Komunikasi dan networking</h2>
+
+  <p>Pada sistem yang tersebar, perangkat tidak berdiri sendiri. Data harus dikirim dari perangkat lapangan ke ruang kontrol, dan perintah harus dikirim kembali. Bit rate diukur dalam bit per detik, sedangkan baud adalah jumlah simbol per detik; pada sistem yang memakai satu bit per simbol, keduanya sama.</p>
+
+  <h3 id="s16-1">16.1 Perbandingan protokol</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Karakteristik protokol komunikasi</caption>
+    <thead>
+      <tr><th>Protokol</th><th>Kabel</th><th>Kecepatan tipikal</th><th>Jarak tipikal</th><th>Ciri khas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UART</td><td>TX dan RX</td><td>9600 baud sampai 4,5 Mbit/s</td><td>1 sampai 2 m logis</td><td>Asinkron, tanpa jam bersama</td></tr>
+      <tr><td>SPI</td><td>4,PlusGround</td><td>hingga 50 Mbit/s</td><td>k Incentif beberapa cm sampai 1 m</td><td>Full duplex, master harus memilih slave</td></tr>
+      <tr><td>I2C</td><td>SDA dan SCL</td><td>100 kHz, 400 kHz, 1 MHz, 3,5 MHz</td><td>beberapa meter</td><td>Banyak peripheral berbagi bus dengan addressing</td></tr>
+      <tr><td>CAN</td><td>CAN-H dan CAN-L</td><td>125k, 250k, 500k, 1 Mbit/s</td><td>1 km pada 1 Mbit/s, 5 km pada 125 kbit/s</td><td>Arbitrasi berbasis ID, tahan gangguan</td></tr>
+      <tr><td>Modbus RTU</td><td>RS-485</td><td>9600 sampai 115200 baud</td><td>1200 m</td><td>Protokol sederhana, banyak dipakai industri</td></tr>
+      <tr><td>Modbus TCP</td><td>Ethernet</td><td>100 Mbit/s ke atas</td><td>jaringan lokal</td><td>Modbus di dalam TCP/IP</td></tr>
+      <tr><td>Ethernet</td><td>Cat5e atau fiber</td><td>100 Mbit/s sampai 10 Gbit/s</td><td>100 m per segmen</td><td>Peralatan industri dan_edge</td></tr>
+      <tr><td>Wi-Fi</td><td>nirkabel</td><td>hingga beberapa hundred Mbit/s</td><td>10 sampai 50 m</td><td>Mudah dipasang, tidak moonlight</td></tr>
+      <tr><td>Bluetooth LE</td><td>nirkabel</td><td>hingga 2 Mbit/s</td><td>10 sampai 100 m</td><td>Konsumsi daya rendah</td></tr>
+      <tr><td>LoRaWAN</td><td>nirkabel</td><td>0,3 sampai 50 kbit/s</td><td>2 sampai 15 km</td><td>Jangkauan jauh, baterai hemat</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 29 &middot; Baud rate, CAN, dan I2C</p>
+    <pre><code>UART ATmega328P 16 MHz, U2X=0, UBRR = 104
+  Baud = 16 000 000 / (16 * (104 + 1)) = 9524 baud
+  Error terhadap 9600 baud = -0,79 %  (masih dapat diterima)
+
+CAN pada 1 Mbit/s dengan bit time 1 us, composée 25 %:
+ (sample point) = sample_time / bit_time = 25 %
+  Total bit time 1 us = 10 bit: sync 1, arbitration 11, 2 data, 2 CRC, ack 2, stuff 3
+
+I2C pada 100 kHz, pull-up 4,7 kohm, bus capacitance 200 pF
+  Rise time batas untuk I2C mode standar = 1000 ns
+  t_r = 0,8473 * R * C = 0,8473 * 4 700 * 200 * 10^-12 = 796 ns
+  796 ns < 1000 ns  -&gt; memenuhi syarat</code></pre>
+  </div>
+
+  <figure>
+    <img src="gambar/modbus.png" alt="Arsitektur jaringan Modbus yang menghubungkan PLC, HMI, I/O, drive, dan device melalui gateway serta jaringan TCP/IP" width="900" height="529" loading="lazy" decoding="async">
+    <figcaption><b>Gambar 3.</b> Contoh arsitektur jaringan industri berbasis Modbus. PLC, HMI, I/O, dan device terhubung melalui jaringan TCP/IP maupun MB+ dan RS485, dengan gateway sebagai penerjemah protokol. Sumber: <a href="https://commons.wikimedia.org/wiki/File:MODBUS_Network_Architecture.png">Wikimedia Commons, <i>MODBUS Network Architecture</i></a> (CC BY-SA 4.0, Modbus Organization).</figcaption>
+  </figure>
+
+  <p>Teknik Elektro menyediakan sinyal, media transmisi, dan perangkat komunikasi; Teknik Komputer menyediakan data, protokol, antarmuka jaringan, dan pemrosesan. Gabungan keduanya menghasilkan sistem yang terhubung.</p>
+
+  <h2 id="s17">17. IoT dan cyber-physical system</h2>
+
+  <p><strong>IoT</strong> adalah paradigma yang memberi perangkat fisik kemampuan sensing, processing, communication, dan action sehingga dapat terhubung melalui jaringan. Arsitektur referensi IoT biasanya terdiri dari lapisan persepsi, lapisan jaringan, lapisan platform, dan lapisan aplikasi.</p>
+
+  <pre class="diagram"><code>Sensor -&gt; Microcontroller -&gt; Wi-Fi / Ethernet -&gt; Internet -&gt; Cloud -&gt; Dashboard / smartphone</code></pre>
+
+  <p>Pada contoh lampu rumah pintar, perintah mengalir smartphone, internet, server, Wi-Fi, ESP32, relay, dan lampu. Unsur listriknya ada pada relay, lampu, dan daya; unsur komputasinya ada pada ESP32, program, dan server; unsur komunikasinya ada pada Wi-Fi dan internet.</p>
+
+  <p><strong>Edge computing</strong> menjalankan sebagian pemrosesan di dekat sumber data. Alasannya adalah latensi, penggunaan bandwidth, privasi data, dan keandalan saat koneksi terputus. <strong>Digital twin</strong> adalah model digital dari aset fisik yang dipakai untuk simulasi dan pemeliharaan sebelum perubahan nyata dilakukan.</p>
+
+  <p><strong>Cyber-Physical System</strong> adalah sistem yang mengintegrasikan komputasi dengan proses fisik, dengan perilaku sistem ditentukan oleh bagian komputasional dan fisik (NIST). Empat pilar yang lazim dipakai adalah fisika, komputasi, komunikasi, dan kontrol.</p>
+
+  <pre class="diagram"><code>+-----------------+         +------------------+
+| CYBER           |&lt;------&gt;| PHYSICAL          |
+| Processor       |         | Sensor, motor     |
+| Software        |         | Machine           |
+| Data, network   |         | Environment       |
++-----------------+         +------------------+</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 17.1 &middot; Perbedaan penekanan konsep</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Embedded system</th><th>IoT</th><th>CPS</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Fokus</td><td>Fungsi khusus pada satu perangkat</td><td>Konektivitas antar perangkat</td><td>Integrasi komputasi dan proses fisik</td></tr>
+      <tr><td>Jaringan</td><td>Belum tentu ada</td><td>Wajib ada</td><td>Dapat ada atau tidak</td></tr>
+      <tr><td>Skala</td><td>Satu unit</td><td>RIBuan hingga jutaan unit</td><td>Sistem dengan loop kendali</td></tr>
+      <tr><td>Contoh</td><td>Mesin cuci, remote TV</td><td>Smart home, smart meter</td><td>Robot, smart grid, turbin</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pada <strong>pertanian pintar</strong>, sensor kelembapan tanah dibaca microcontroller, program menentukan tanah terlalu kering, data dikirim ke server, perintah dikirim balik melalui internet ke relay, dan pompa air menyala. Pengukuran ulang oleh sensor menutup siklusnya.</p>
+
+  <p>Pada <strong>pabrik pintar</strong>, alurnya sensor, PLC, network, SCADA, database, analytics, operator, kemudian perintah dikirim kembali operator, SCADA, PLC, actuator, mesin.</p>
+
+  <h2 id="s18">18. PLC dan SCADA</h2>
+
+  <p><strong>PLC</strong> adalah komputer industri yang dirancang untuk memantau input dan mengontrol output berdasarkan program logika (Rockwell Automation, <em>Plex</em>). <strong>SCADA</strong> adalah kombinasi hardware dan software untuk mengirim perintah dan memperoleh data demi monitoring dan controlling (ISA, <em>SCADA Systems</em>).</p>
+
+  <h3 id="s18-1">18.1 Struktur dan siklus scan PLC</h3>
+
+  <pre class="diagram"><code>         +----------------+
+INPUT -&gt; |                | -&gt; OUTPUT
+         |      PLC       |
+         | CPU            |
+         | Memory         |
+         | I/O            |
+         | Program        |
+         +----------------+</code></pre>
+
+  <pre class="diagram"><code>+--------------+   +--------------+   +--------------+   +--------------+
+| 1 INPUT SCAN |-&gt;| 2 PROGRAM    |-&gt;| 3 OUTPUT SCAN |-&gt;| 4 HOUSEKEEPING|
+| salin input  |   | SCAN         |   | salin output  |   | komunikasi,   |
+| ke image     |   | rung atas ke |   | ke modul      |   | diagnostik,  |
+| table        |   | bawah        |   | output        |   | watchdog      |
++--------------+   +--------------+   +--------------+   +--------------+
+                 satu siklus scan lengkap</code></pre>
+
+  <p>Scan time meliputi seluruh empat tahap tersebut, umumnya 1 sampai 20 ms untuk logika mesin. Dua konsekuensi penting: denyut yang lebih pendek daripada scan time akan terlewat, dan output baru berubah pada tahap output scan sehingga selalu ada penundaan satu siklus. Coordinate yang sama dalam program selalu menambah satu siklus penundaan.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 30 &middot; Scan time dan latensi</p>
+    <pre><code>24 input analog, 40 output digital, 700 rung logika
+  Input scan   : 24 * 1,0 ms            = 24,0 ms
+  Program scan : 700 * 25 us            = 17,5 ms
+  Output scan  : 40 * 5 us              =  0,2 ms
+  Housekeeping :                        =  3,0 ms
+  Total                                  = 45,5 ms
+
+Solusi: pindahkan konversi analog ke cyclic interrupt task, dan
+masukkan logika interlock motor ke task cepat 10 ms
+
+Latensi deteksi level high:
+  filter input 10 ms + scan terburuk 21,5 ms + output scan 0,2 ms = 31,7 ms
+  Jika level naik 2 %/s dan selisih LSH ke HHH 10 %, waktu tempuh 5 s
+  31,7 ms << 5 s, sehingga PLC standar cukup untuk trip ini</code></pre>
+  </div>
+
+  <h3 id="s18-2">18.2 Bahasa pemrograman dan I/O</h3>
+
+  <p>IEC 61131-3 Edisi 3 menetapkan empat bahasa utama: <strong>LD</strong> ladder diagram untuk logika boolean dan interlock, <strong>FBD</strong> function block diagram untuk rantai sinyal analog dan blok kendali, <strong>ST</strong> structured text untuk algoritma bergaya bahasa Pascal, dan <strong>SFC</strong> sequential function chart untuk urutan dan batch. Instruction List ada pada edisi sebelumnya dan sudah tidak direkomendasikan pada edisi 3.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.1 &middot; Input analog tegangan dan arus</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Tegangan</th><th>Arus</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rentang tipikal</td><td>0 sampai 10 V, 4 sampai 20 mA</td><td>4 sampai 20 mA</td></tr>
+      <tr><td>Resistansi lead</td><td>Menyebabkan error</td><td>Tidak berpengaruh karena impedansi sumber tinggi</td></tr>
+      <tr><td>Deteksi kabel putus</td><td>Tidak, 0 V terbaca sebagai 0 %</td><td>Ya, 4 mA menandakan gangguan</td></tr>
+      <tr><td>Ketahanan derau</td><td>Rendah</td><td>Tinggi</td></tr>
+      <tr><td>Kabel panjang atau area berbahaya</td><td>Kurang sesuai</td><td>Lebih sesuai</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Istilah sink dan source menggambarkan arah arus di perangkat lapangan, bukan jenis PLC. Pada modul input digital, NPN atau sinking berarti arus masuk ke perangkat, sedangkan PNP atau sourcing berarti arus mendorong ke arah perangkat.</p>
+
+  <h3 id="s18-3">18.3 PLC, DCS, dan SCADA</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.2 &middot; Perbandingan PLC, DCS, dan SCADA</caption>
+    <thead>
+      <tr><th>Aspek</th><th>PLC</th><th>DCS</th><th>SCADA</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cakupan</td><td>Mesin atau unit</td><td>Seluruh pabrik</td><td>Banyak lokasi tersebar geografis</td></tr>
+      <tr><td>Peran utama</td><td>Logika diskret cepat, motion, motor</td><td>Kontrol proses analog kontinu</td><td>Monitoring dan supervisory</td></tr>
+      <tr><td>Waktu kontrol</td><td>1 sampai 20 ms</td><td>100 sampai 500 ms</td><td>Detik hingga menit</td></tr>
+      <tr><td>Jumlah I/O</td><td>Ratusan hingga beberapa ribu</td><td>Ribuan hingga puluhan ribu</td><td>Ribuan tersebar geografis</td></tr>
+      <tr><td>Redundansi</td><td>Tambahan biaya</td><td>Bawaan standar</td><td>Redundansi master station</td></tr>
+      <tr><td>Historian</td><td>Terbatas</td><td>Terintegrasi</td><td>Fungsi inti</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s18-4">18.4 Level ISA-95 dan Purdue</h3>
+
+  <p>ISA-95 atau IEC 62264 membagi aktivitas industri menjadi lima level. Purdue Reference Model membagi jaringan/site menjadi level yang berbeda, dan dipakai sebagai basis segmentasi jaringan pada keamanan OT. Keduanya perlu disebut secara eksplisit karena penempatan SCADA berbeda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.3 &middot; Perbandingan ISA-95 dan Purdue</caption>
+    <thead>
+      <tr><th>Level</th><th>ISA-95 (aktivitas)</th><th>Purdue (jaringan)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">L4</td><td>Perencanaan bisnis, ERP</td><td>Jaringan perusahaan</td></tr>
+      <tr><td class="mono">L3</td><td>Manajemen operasi manufaktur, MES, SCADA menurut ISA</td><td>Supervisory seluruh site</td></tr>
+      <tr><td class="mono">L2</td><td>Monitoring dan supervisory control, PLC dan DCS</td><td>Supervisory area, SCADA menurut Purdue</td></tr>
+      <tr><td class="mono">L1</td><td>Pengsensoran dan manipulasi proses, sensor, valve</td><td>Kontrol lokal, PLC dan RTU</td></tr>
+      <tr><td class="mono">L0</td><td>Proses fisik dan mesin</td><td>Field device, sensor dan actuator</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perbedaan ini karena ISA-95 memakai batas aktivitas logis, sedangkan Purdue memakai batas segmentasi jaringan. Keduanya dapat dipertahankan tanpa kontradiksi.</p>
+
+  <h3 id="s18-5">18.5 Komponen SCADA</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.4 &middot; Komponen SCADA dan fungsinya</caption>
+    <thead>
+      <tr><th>Komponen</th><th>Fungsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>RTU</td><td>Unit lapangan dengan CPU, memori, dan modem yang polls sensor lokal lalu melapor ke master</td></tr>
+      <tr><td>PLC atau DCS</td><td>Menjalankan loop kontrol lokal di lokasi remote</td></tr>
+      <tr><td>Tag</td><td>Titik data bernama dan unik, misalnya TK-101.LT.PV; unit konfigurasi utama</td></tr>
+      <tr><td>Historian</td><td>Database deret waktu dengan kompresi dan deadband untuk trending dan laporan</td></tr>
+      <tr><td>Alarm engine</td><td>Mendeteksi penyimpangan, menerapkan delay dan deadband, lalu membevois operator</td></tr>
+      <tr><td>HMI atau mimic</td><td>Layar P&amp;ID interaktif bagi operator</td></tr>
+      <tr><td>Jaringan komunikasi</td><td>Fiber, tembaga, seluler, satelit, atau radio</td></tr>
+      <tr><td>Replikasi</td><td>Master hot standby dan historian mirror agar satu kegagalan tidak kehilangan visibility</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Standar ANSI ISA 18.2 mengatur pengelolaan alarm. Prinsip yang paling penting adalah alarm bukan sama dengan fungsi proteksi. Jika waktu yang dibutuhkan operator untuk bertindak lebih lama daripada waktu menuju konsekuensi, maka setpoint tersebut harus diubah menjadi fungsi proteksi otomatis, bukan alarm.</p>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 31 &middot; Alarm versus proteksi</p>
+    <p>Level alarm LSH 85 %, HHH 95 %, level naik 2 %/s, waktu tanggap operator 30 s.</p>
+    <pre><code>Waktu LSH ke HHH   = (95 - 85) / 2 = 5,0 s
+Waktu LSH ke 100 % = (100 - 85) / 2 = 7,5 s
+  7,5 s &lt; 30 s -&gt; operator tidak cukup cepat untuk
+  =&gt; LSH harus informatif saja
+Waktu HHH ke 100 %  = (100 - 95) / 2 = 2,5 s
+  =&gt; HHH harus menjadi proteksi otomatis, bukan alarm
+Alarm proses yang bisa ditangani: LEVEL HIGH di 75 %
+  (100 - 75) / 2 = 12,5 s, masih menuangkankan waktu tanggap</code></pre>
+  </div>
+
+  <div class="ex">
+    <p class="label">Contoh hitung 32 &middot; Contoh level tangki lengkap</p>
+    <pre><code>Sensor level -&gt; PLC input -&gt; program -&gt; output valve
+  Program (Structured Text):
+    IF LT.PV &gt; 85 THEN LevelHigh := TRUE; END_IF;
+    IF LT.PV &gt; 95 THEN
+        InletValve.Close();
+        TransferPump.Start();
+    END_IF;
+    IF LT.PV &lt; 80 THEN LevelHigh := FALSE; END_IF;
+
+Histeresis 85 dan 80 mencegah alarm berulang pada level 85
+Data: PLC -&gt; network -&gt; SCADA -&gt; operator melihat level dan trend</code></pre>
+  </div>
+
+  <h2 id="s19">19. Keamanan sistem OT</h2>
+
+  <p>Operational Technology mencakup sistem terprogram yang berinteraksi langsung dengan lingkungan fisik, termasuk ICS, PLC, dan SCADA. NIST SP 800-82 Rev. 3 menyatakan bahwa tujuan keamanan OT biasanya mengutamakan integritas dan availability, lalu confidentiality, dengan safety sebagai prioritas yang menaungi keduanya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 19.1 &middot; Inciden keamanan OT yang noteworthy</caption>
+    <thead>
+      <tr><th class="mono">Tahun</th><th>Insiden</th><th>Dampak</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">2010</td><td>Stuxnet</td><td>Serangan pada program centrifuge Enrichment, merusak PLC centrifuge</td></tr>
+      <tr><td class="mono">2021</td><td>Colonial Pipeline</td><td>Peng-taking-an sistem_SCADA industri dan penghentian jalur bahan bakar</td></tr>
+      <tr><td class="mono">2017</td><td>Triton</td><td>Serangan pada Safety Instrumented System plant petrokimia</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Vektor serangan yang paling sering exploited adalah media removable, celah segmentasi jaringan, protokol lama tanpa autentikasi, dan sistem yang tidak dipatch karena risiko operasional. Mitigasi yang lazim adalah segmentasi jaringan dan DMZ, gateway satu arah, allow-listing, pemisahan safety PLC dari control PLC, serta pemantauan khusus ICS.</p>
+
+  <div class="note">
+    <p class="label">Standar yang relevan</p>
+    <p>IEC 62443 adalah standar keamanan untuk sistem otomasi dan kendali industri, bukan standar TI umum. Pada sistem yang memiliki fungsi keselamatan, pemisahan antara safety PLC dan PLC proses merupakan Persyaratan mutlak.</p>
+  </div>
+
+  <h2 id="s20">20. Ringkasan dan contoh soal</h2>
+
+  <h3 id="s20-1">20.1 Konsep kunci</h3>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 20.1 &middot; Konsep kunci per materi</caption>
+    <thead>
+      <tr><th class="mono">No</th><th>Konsep</th><th>Ringkasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Hukum Ohm</td><td><var>V</var> = <var>I</var> &middot; <var>R</var>, sehingga <var>I</var> = <var>V</var>/<var>R</var> dan <var>R</var> = <var>V</var>/<var>I</var></td></tr>
+      <tr><td class="mono">2</td><td>Daya</td><td><var>P</var> = <var>V</var>&middot;<var>I</var>; untuk resistor <var>P</var> = <var>I</var>&sup2;<var>R</var> = <var>V</var>&sup2;/<var>R</var></td></tr>
+      <tr><td class="mono">3</td><td>Rangkaian</td><td>Seri: arus sama dan R dijumlahkan. Paralel: tegangan sama dan R lebih kecil</td></tr>
+      <tr><td class="mono">4</td><td>Transistor</td><td>Empat atau tiga daerah operasi; sebagai sakelar merepresentasikan 0 dan 1</td></tr>
+      <tr><td class="mono">5</td><td>Konstanta waktu</td><td>RC untuk kapasitor, L/R untuk induktor; 63,2 % pada satu konstanta waktu</td></tr>
+      <tr><td class="mono">6</td><td>Logic gate</td><td>AND, OR, NOT, NAND, NOR, XOR, XNOR; NAND dan NOR universal</td></tr>
+      <tr><td class="mono">7</td><td>Logika digital</td><td>Combinational mengikuti input saat ini; sequential melibatkan keadaan sebelumnya</td></tr>
+      <tr><td class="mono">8</td><td>Processor</td><td>ISA adalah kontrak, mikroarsitektur adalah implementasi; T_CPU = IC &times; CPI / f</td></tr>
+      <tr><td class="mono">9</td><td>Pipeline</td><td>Speedup = kN / (N + k &minus; 1), dibatasi k</td></tr>
+      <tr><td class="mono">10</td><td>Cache</td><td>AMAT = t_hit + miss rate &times; penalty; tiga jenis miss</td></tr>
+      <tr><td class="mono">11</td><td>Microcontroller</td><td>CPU, memori, GPIO, timer, ADC, dan peripheral komunikasi dalam satu chip</td></tr>
+      <tr><td class="mono">12</td><td>Memori</td><td>Flash NOR untuk XIP, NAND untuk penyimpanan; SRAM volatil, DRAM perlu refresh</td></tr>
+      <tr><td class="mono">13</td><td>GPIO</td><td>Push-pull, open-drain, alternate function, analog; open-drain butuh pull-up</td></tr>
+      <tr><td class="mono">14</td><td>Antarmuka hardware dan software</td><td>Program, instruksi, processor, register, peripheral, sinyal listrik, perangkat</td></tr>
+      <tr><td class="mono">15</td><td>Sensor</td><td>Membaca kondisi dunia fisik; diluluskan lewat signal conditioning</td></tr>
+      <tr><td class="mono">16</td><td>ADC</td><td>LSB = V_ref / 2^N; error &plusmn;0,5 LSB; f_s &gt; 2 f_max</td></tr>
+      <tr><td class="mono">17</td><td>Actuator</td><td>Melakukan tindakan; motor, relay, solenoid, heater</td></tr>
+      <tr><td class="mono">18</td><td>Embedded system</td><td>Komputer yang ditanamkan untuk menjalankan fungsi tertentu dengan deadline</td></tr>
+      <tr><td class="mono">19</td><td>Kendali</td><td>e(t) = r(t) &minus; y(t); setpoint, controller, actuator, plant, sensor</td></tr>
+      <tr><td class="mono">20</td><td>PID</td><td>P menambah kecepatan, I menghilangkan offset, D menambah damping</td></tr>
+      <tr><td class="mono">21</td><td>Komunikasi</td><td>UART, SPI, I2C, CAN, Modbus, Ethernet, nirkabel</td></tr>
+      <tr><td class="mono">22</td><td>IoT dan CPS</td><td>Perangkat terhubung; integrasi komputasi dengan proses fisik</td></tr>
+      <tr><td class="mono">23</td><td>PLC</td><td>Siklus scan: input, program, output, housekeeping; logika IEC 61131-3</td></tr>
+      <tr><td class="mono">24</td><td>SCADA</td><td>Monitoring, akuisisi data, supervisory control; historian, tag, HMI, alarm</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s20-2">20.2 Contoh soal dan jawaban</h3>
+
+  <dl class="qa">
+    <dt>1. Mengapa komputer memerlukan ADC?</dt>
+    <dd>Sensor di dunia nyata umumnya menghasilkan sinyal analog, sedangkan komputer memproses data dalam bentuk digital. ADC mengubah sinyal analog tersebut menjadi representasi digital yang dapat diproses oleh processor.</dd>
+
+    <dt>2. Berapa besar satu kode ADC 12 bit dengan tegangan acuan 5 V?</dt>
+    <dd>LSB = 5 V / 4096 = 1,2207 mV. Error kuantisasi maksimum adalah setengah dari itu, yaitu &plusmn;0,6104 mV.</dd>
+
+    <dt>3. Mengapa embedded system merupakan gabungan Teknik Komputer dan Teknik Elektro?</dt>
+    <dd>Embedded system menggabungkan perangkat keras elektronik seperti sensor, actuator, rangkaian, dan power dengan processor, memori, software, serta komunikasi untuk menjalankan fungsi tertentu.</dd>
+
+    <dt>4. Apa hubungan sensor dan actuator?</dt>
+    <dd>Sensor memberikan informasi kondisi dunia fisik kepada controller, sedangkan actuator menerima perintah dari controller untuk mengubah kondisi dunia fisik.</dd>
+
+    <dt>5. Apa perbedaan open-loop dan closed-loop?</dt>
+    <dd>Open-loop tidak menggunakan output sebagai umpan balik untuk memperbaiki tindakan, sedangkan closed-loop menggunakan hasil pengukuran output sebagai umpan balik untuk menentukan tindakan berikutnya.</dd>
+
+    <dt>6. Mengapa SCADA memerlukan komputer sekaligus sistem listrik?</dt>
+    <dd>Sistem listrik menghasilkan dan mengendalikan proses fisik melalui sensor, instrumentasi, dan actuator, sedangkan komputer digunakan untuk akuisisi data, pengolahan, komunikasi, monitoring, penyimpanan, dan supervisory control.</dd>
+
+    <dt>7. Jelaskan hubungan Teknik Elektro dan Teknik Komputer pada sistem monitoring suhu.</dt>
+    <dd>Teknik Elektro menangani sensor, rangkaian, ADC, dan actuator. Teknik Komputer menangani microcontroller, software, pemrosesan, dan networking. Keduanya bertemu pada embedded system dan control system.</dd>
+
+    <dt>8. Bagaimana komputer dapat mengendalikan motor?</dt>
+    <dd>Program menentukan nilai, CPU menjalankan instruksi, register dan GPIO atau PWM mengubah keluarannya, lalu driver dan antarmuka daya yang sesuai menggerakkan motor. Motor memiliki karakteristik arus dan elektrik yang berbeda dari kemampuan pin digital.</dd>
+
+    <dt>9. Mengapa digital logic menghubungkan kedua bidang?</dt>
+    <dd>Transistor berfungsi sebagai sakelar elektronik yang merepresentasikan kondisi 0 dan 1. Gabungan transistor membentuk logic gate, lalu rangkaian digital, kemudian ALU, register, memori, dan CPU.</dd>
+
+    <dt>10. Sebuah resistansi 10 kohm diberi tegangan 12 V. Berapa arus dan dayanya?</dt>
+    <dd>I = 12 / 10 000 = 1,2 mA. P = V&sup2;/R = 144 / 10 000 = 14,4 mW. Resistor 1/4 W masih aman dengan faktor keamanan lebih dari 17 kali.</dd>
+
+    <dt>11. Mengapa frekuensi clock yang lebih tinggi tidak selalu berarti lebih cepat?</dt>
+    <dd>Waktu eksekusi adalah T_CPU = IC &times; CPI / f. Processor dengan frekuensi lebih tinggi dapat memiliki CPI lebih besar karena cache miss atau branch miss, sehingga total waktunya lebih lama.</dd>
+
+    <dt>12. Apakah output PLC berubah begitu coil diaktifkan dalam program?</dt>
+    <dd>Tidak. Output baru berubah pada tahap output scan di akhir siklus, sehingga selalu ada penundaan satu siklus scan.</dd>
+
+    <dt>13. Mengapa PID lebih sering menggunakan PI pada loop flow?</dt>
+    <dd>Loop flow sudah cepat sehingga turunan menambah sedikit manfaat, sedangkan suku turunan memperkuat derau pada flowmeter. PI sudah cukup untuk menghilangkan offset dan lebih sederhana.</dd>
+
+    <dt>14. Apa yang terjadi jika data sensor benar tetapi command yang dikirim ke PLC salah?</dt>
+    <dd>Sistem kendali akan bertindak berdasarkan nilai yang salah meskipun pengukuran benar. Dampaknya berada pada bidang hardware, software, komunikasi, kendali, dan keamanan, sehingga integritas data dan autentikasi pesan sama pentingnya dengan akurasi sensor.</dd>
+  </dl>
+
+  <h2 id="s21">21. Daftar pustaka</h2>
+
+  <footer>
+    <ul class="refs">
+      <li><b>ACM &amp; IEEE Computer Society.</b> (2016). <em>Computer Engineering Curricula 2016 (CE2016).</em> Digital systems, embedded systems, processor, sensor, actuator, ADC, DAC, dan komunikasi. <a href="https://acm.org/binaries/content/assets/education/ce2016-final-report.pdf">acm.org</a></li>
+      <li><b>ABET.</b> (2026&ndash;2027). <em>Criteria for Accrediting Engineering Programs.</em> <a href="https://www.abet.org/accreditation/accreditation-criteria/criteria-for-accrediting-engineering-programs-2026-2027/">abet.org</a></li>
+      <li><b>ABET.</b> (2026&ndash;2027). <em>Criteria for Accrediting Engineering Technology Programs.</em> Control systems, instrumentation systems, microcontrollers, dan computer systems. <a href="https://www.abet.org/accreditation/accreditation-criteria/criteria-for-accrediting-engineering-technology-programs-2026-2027/">abet.org</a></li>
+      <li><b>Carnegie Mellon University ECE.</b> (2025). <em>18-344: Computer Systems and the Hardware-Software Interface.</em> <a href="https://courses.ece.cmu.edu/18344">courses.ece.cmu.edu</a></li>
+      <li><b>Carnegie Mellon University ECE.</b> (2025). <em>18-349: Introduction to Embedded Systems.</em> <a href="https://courses.apps.ece.cmu.edu/18349">courses.apps.ece.cmu.edu</a></li>
+      <li><b>University of Virginia SEAS.</b> <em>ECE Core Undergraduate Curriculum.</em> Digital logic design: switch, gate, CPU, ALU, register, counter. <a href="https://engineering.virginia.edu/department/electrical-and-computer-engineering/academics/undergraduate-programs/undergraduate-curriculum">engineering.virginia.edu</a></li>
+      <li><b>Valvano, J. W.</b> <em>Introduction to Embedded Systems.</em> University of Texas at Austin. <a href="https://users.ece.utexas.edu/~valvano/mspm0/ebook/Ch1_Introduction.html">users.ece.utexas.edu</a></li>
+      <li><b>OpenStax.</b> <em>College Physics, Chapter 20 dan 23.</em> Ohm, hukum Kirchhoff, rangkaian RC dan RL. <a href="https://openstax.org/books/college-physics/pages/20-2-ohms-law-resistance-and-simple-circuits">openstax.org</a></li>
+      <li><b>Analog Devices.</b> <em>MT-001: Taking the Mystery out of the Infamous Formula, SNR = 6,02N + 1,76 dB.</em> <a href="https://www.analog.com/media/en/training-seminars/tutorials/MT-001.pdf">analog.com</a></li>
+      <li><b>Analog Devices.</b> <em>Data Converter</em> dan <em>Designer's Guide to Instrumentation Amplifiers.</em> <a href="https://www.analog.com/en/resources/glossary/data-converter.html">analog.com</a></li>
+      <li><b>National Instruments.</b> <em>Sensor Terminology</em> dan <em>Signal Conditioning.</em> <a href="https://www.ni.com/en/shop/data-acquisition/sensor-fundamentals/sensor-terminology.html">ni.com</a></li>
+      <li><b>Texas Instruments.</b> LM35, DS18B20 analog, dan aplikasi nota antarmuka SLYT626, SLYT683, SLVA704. <a href="https://www.ti.com/lit/ds/symlink/lm35.pdf">ti.com</a></li>
+      <li><b>Microchip Technology.</b> Datasheet ATmega328P dan PIC16F877A; <em>Differences Between MCU and MPU Development.</em> <a href="https://ww1.microchip.com/downloads/jp/DeviceDoc/jp604759.pdf">microchip.com</a></li>
+      <li><b>STMicroelectronics.</b> Datasheet STM32F103x8/xB. <a href="https://www.st.com/resource/en/datasheet/stm32f103c8.pdf">st.com</a></li>
+      <li><b>Espressif Systems.</b> <em>ESP32 Series Datasheet.</em> <a href="https://www.espressif.com/en/support/documents/esp32-datasheet-en">espressif.com</a></li>
+      <li><b>Raspberry Pi.</b> <em>RP2040 Datasheet.</em> <a href="https://pip.raspberrypi.com/documents/RP-008371-DS-rp2040-datasheet.pdf">pip.raspberrypi.com</a></li>
+      <li><b>Texas Instruments.</b> <em>MSP430G2553 LaunchPad User's Guide.</em> <a href="https://www.ti.com/lit/ug/slau772a/slau772a.pdf">ti.com</a></li>
+      <li><b>NXP.</b> AN2711 <em>Flash Architectures for i.MX.</em> Perbandingan NOR dan NAND flash. <a href="https://www.nxp.com/docs/en/application-note/AN2711.pdf">nxp.com</a></li>
+      <li><b>Micron.</b> <em>NOR and NAND Flash Guide.</em> <a href="https://assets.micron.com/adobe/assets/urn:aaid:aem:e98bc653-e42d-45a7-9b8c-03cb3d488f05/renditions/original/as/nor-nand-flash-guide.pdf">micron.com</a></li>
+      <li><b>NIST.</b> (2023). <em>SP 800-82 Rev. 3: Guide to Operational Technology (OT) Security.</em> <a href="https://csrc.nist.gov/pubs/sp/800/82/r3/final">csrc.nist.gov</a></li>
+      <li><b>NIST.</b> <em>Cyber-Physical Systems and Internet of Things Foundations.</em> <a href="https://www.nist.gov/programs-projects/cyber-physical-systems-and-internet-things-foundations">nist.gov</a></li>
+      <li><b>NIST.</b> <em>SI Units: Electric Current.</em> Nilai muatan elektron eksak dan definisi ampere. <a href="https://www.nist.gov/pml/owm/si-units-electric-current">nist.gov</a></li>
+      <li><b>International Society of Automation.</b> <em>ANSI/ISA-95.00.01</em> dan <em>ANSI/ISA-112.00.01-2025, SCADA Systems.</em> <a href="https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard">isa.org</a></li>
+      <li><b>ISA.</b> <em>ISA-18.2 Management of Alarm Systems for the Process Industries.</em> <a href="https://www.isa.org/standards-and-publications/isa-standards/isa-18-2-2016-management-of-alarm-systems-for-the-process-industries">isa.org</a></li>
+      <li><b>IEC.</b> <em>IEC 61131-3 Programmable controllers: Programming languages</em> dan <em>IEC 62443 Industrial automation and control systems security.</em> <a href="https://webstore.iec.ch/">webstore.iec.ch</a></li>
+      <li><b>Ziegler, J. G. &amp; Nichols, N. B.</b> (1942). Optimum Settings for Automatic Controllers. <em>Transactions of the ASME</em>, 64, 759&ndash;768.</li>
+      <li><b>Blem, J. E., Menon, A. K., &amp; Sankaralingam, S.</b> (2013). Power Struggles: Revisiting the RISC vs. CISC Debate on Contemporary ARM and x86 Architectures. <em>HPCA 2013</em>. <a href="https://course.ece.cmu.edu/~ece742/S23/paper_pdfs/Power_struggles_Revisiting_the_RISC_vs._CISC_debate_on_contemporary_ARM_and_x86_architectures.pdf">cmu.edu</a></li>
+      <li><b>Arm.</b> <em>Cortex-M3 Technical Reference Manual</em> dan dokumentasi Harvard dan von Neumann. <a href="https://support.arm.com/documentation/ddi0337/">support.arm.com</a></li>
+      <li><b>MIT OpenCourseWare.</b> <em>Feedback Control</em> dan <em>Introducing Control Concepts.</em> <a href="https://ocw.mit.edu/courses/2-017j-design-of-electromechanical-robotic-systems-fall-2009/">ocw.mit.edu</a></li>
+      <li><b>Modbus Organization.</b> <em>MODBUS Application Protocol Specification V1.1b3</em> dan <em>MODBUS Messaging on TCP/IP Implementation Guide V1.0b.</em> <a href="https://www.modbus.org/">modbus.org</a></li>
+      <li><b>Purdue University.</b> <em>Purdue Reference Model</em> dan IEC 62646 pada segmentasi jaringan industri.</li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>

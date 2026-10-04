@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catatan Belajar — Daftar Mata Kuliah</title>
-<meta name="description" content="Catatan pribadi kuliah: Python dari nol, Pengantar Rekayasa dan Desain, dan materi berikutnya.">
+<title>Pengantar Rekayasa dan Desain — Daftar Modul</title>
+<meta name="description" content="Daftar modul catatan Pengantar Rekayasa dan Desain.">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <style>
   :root {
@@ -18,7 +18,6 @@
     --faint: #94A3B8;
     --primary: #4F46E5;
     --primary-soft: #EEF2FF;
-    --primary-hover: #4338CA;
     --gold: #D99A16;
     --border: #E2E8F0;
     --success: #16A34A;
@@ -37,10 +36,9 @@
       --faint: #64748B;
       --primary: #818CF8;
       --primary-soft: rgba(129, 140, 248, .12);
-      --primary-hover: #A5B4FC;
       --gold: #F5C451;
       --border: #263244;
-      --success: #4ADE80;
+      --success: #16A34A;
       --glow-1: rgba(79, 70, 229, .16);
       --glow-2: rgba(245, 196, 81, .06);
     }
@@ -56,7 +54,6 @@
     --faint: #64748B;
     --primary: #818CF8;
     --primary-soft: rgba(129, 140, 248, .12);
-    --primary-hover: #A5B4FC;
     --gold: #F5C451;
     --border: #263244;
     --success: #4ADE80;
@@ -78,38 +75,25 @@
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 62rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
 
-  .masthead {
+  .topbar {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    gap: 2rem;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid var(--border);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
   }
-  .eyebrow {
+  .crumb {
     font-family: ui-monospace, 'Cascadia Code', monospace;
-    font-size: .72rem;
-    letter-spacing: .2em;
+    font-size: .74rem;
+    letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--primary);
-    margin: 0 0 .9rem;
+    text-decoration: none;
+    color: var(--muted);
   }
-  .rule {
-    width: 2.75rem;
-    height: 2px;
-    background: var(--gold);
-    margin: 0 0 1.1rem;
-  }
-  h1 {
-    font-size: clamp(1.9rem, 5vw, 2.6rem);
-    line-height: 1.15;
-    letter-spacing: -.03em;
-    color: var(--heading);
-    margin: 0;
-  }
-  .masthead p.lede { color: var(--muted); margin: .9rem 0 0; max-width: 44ch; }
+  .crumb:hover { color: var(--primary); }
+  .crumb:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
 
   .theme-toggle {
     flex: none;
@@ -124,79 +108,76 @@
     font-size: 1rem;
     line-height: 1;
     cursor: pointer;
-    transition: color .18s ease, border-color .18s ease, background .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
   }
   .theme-toggle:hover { color: var(--primary); border-color: var(--primary); transform: translateY(-1px); }
   .theme-toggle:active { transform: translateY(0) scale(.96); }
   .theme-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
-  .section-label {
+  .eyebrow {
     font-family: ui-monospace, 'Cascadia Code', monospace;
     font-size: .72rem;
-    letter-spacing: .18em;
+    letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--faint);
-    margin: 2.75rem 0 1rem;
+    color: var(--primary);
+    margin: 0 0 .9rem;
   }
+  .rule { width: 2.75rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 {
+    font-size: clamp(1.75rem, 4.5vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -.03em;
+    color: var(--heading);
+    margin: 0;
+  }
+  .lede { color: var(--muted); margin: .9rem 0 0; max-width: 52ch; }
 
-  ol.courses { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
-  @media (min-width: 48rem) { ol.courses { gap: 1.25rem; } }
+  ol.modules { list-style: none; margin: 2.75rem 0 0; padding: 0; }
+  ol.modules > li { border-bottom: 1px solid var(--border); }
 
-  .course {
+  .module {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    gap: 0 1.5rem;
+    gap: 0 1.25rem;
     align-items: start;
-    padding: 1.6rem 1.75rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    padding: 1.35rem .75rem 1.35rem 0;
     text-decoration: none;
     color: inherit;
-    transition: background .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+    border-radius: 10px;
+    transition: background .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
   }
-  a.course:hover { background: var(--surface-hover); border-color: var(--primary); transform: translateY(-2px); }
-  a.course:active { transform: translateY(0) scale(.995); }
-  a.course:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+  a.module:hover { background: var(--surface); transform: translateX(4px); }
+  a.module:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
   .badge {
     font-family: ui-monospace, 'Cascadia Code', monospace;
-    font-size: .8rem;
-    letter-spacing: .04em;
+    font-size: .78rem;
     color: var(--primary);
     background: var(--primary-soft);
     border-radius: 8px;
-    padding: .3rem .55rem;
+    padding: .28rem .5rem;
     line-height: 1;
   }
-
   .title {
     display: block;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: -.015em;
     color: var(--heading);
   }
-  .desc {
-    display: block;
-    color: var(--muted);
-    font-size: .93rem;
-    margin-top: .35rem;
-    max-width: 54ch;
-  }
+  .desc { display: block; color: var(--muted); font-size: .92rem; margin-top: .3rem; max-width: 58ch; }
   .meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: .55rem;
-    margin-top: .85rem;
+    gap: .45rem;
+    margin-top: .6rem;
     font-family: ui-monospace, 'Cascadia Code', monospace;
-    font-size: .72rem;
-    letter-spacing: .1em;
+    font-size: .7rem;
+    letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--faint);
   }
-  .meta .sep { color: var(--border); }
   .meta .ok { color: var(--success); display: inline-flex; align-items: center; gap: .4rem; }
   .meta .none { color: var(--muted); display: inline-flex; align-items: center; gap: .4rem; }
   .dot { width: .45rem; height: .45rem; border-radius: 50%; flex: none; }
@@ -209,9 +190,7 @@
     padding-top: .3rem;
     transition: color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
   }
-  a.course:hover .go { color: var(--primary); transform: translateX(4px); }
-  .course[data-state="soon"] .title { font-weight: 500; color: var(--muted); }
-  .course[data-state="soon"] .go { visibility: hidden; }
+  a.module:hover .go { color: var(--primary); transform: translateX(4px); }
 
   footer {
     margin-top: 3.5rem;
@@ -227,52 +206,34 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .course, .go, .theme-toggle { transition: none; }
-    a.course:hover, a.course:hover .go, .theme-toggle:hover { transform: none; }
+    .module, .go, .theme-toggle { transition: none; }
+    a.module:hover, a.module:hover .go, .theme-toggle:hover { transform: none; }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="masthead">
-    <div>
-      <p class="eyebrow">Catatan Kuliah</p>
-      <div class="rule"></div>
-      <h1>Catatan Belajar</h1>
-      <p class="lede">Catatan pribadi untuk tiap mata kuliah. Pilih mata kuliah untuk masuk ke daftar bab di dalamnya.</p>
-    </div>
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Mata kuliah</a>
     <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="masthead">
+    <p class="eyebrow">Mata Kuliah 02</p>
+    <div class="rule"></div>
+    <h1>Pengantar Rekayasa dan Desain</h1>
+    <p class="lede">Catatan kuliah rekayasa dan desain. Daftar modul beserta isi materinya.</p>
   </header>
 
-  <p class="section-label">Mata Kuliah</p>
   <main>
-    <ol class="courses" id="list">
-      <li>
-        <a class="course" href="Pyhton/index.html" data-haystack="python pemrograman 1 variabel tipe data input loop function list oop bab catatan">
+    <ol class="modules" id="list">
+      <li data-haystack="modul 1 hubungan teknik komputer teknik elektro elektronika logika digital microcontroller embedded sistem kendali plc scada iot cps">
+        <a class="module" href="modul/hubungan%20teknik%20komputer%20dengan%20teknik%20elektro.html">
           <span class="badge">01</span>
           <span>
-            <span class="title">Python</span>
-            <span class="desc">Belajar Python dari nol: menjalankan interpreter, variabel dan tipe data, input pengguna, sampai loop, function, dan OOP.</span>
-            <span class="meta">
-              <span>8 bab</span>
-              <span class="sep">/</span>
-              <span class="ok"><span class="dot filled"></span>2 tersedia</span>
-            </span>
-          </span>
-          <span class="go" aria-hidden="true">&#8594;</span>
-        </a>
-      </li>
-      <li>
-        <a class="course" href="Pengantar%20Rekayasa%20dan%20Desain/index.html" data-haystack="pengantar rekayasa desain kuliah teknik industri metode gambar teknik">
-          <span class="badge">02</span>
-          <span>
-            <span class="title">Pengantar Rekayasa dan Desain</span>
-            <span class="desc">Hubungan Teknik Komputer dengan Teknik Elektro, dari elektronika dasar sampai PLC dan SCADA.</span>
-            <span class="meta">
-              <span>1 modul</span>
-              <span class="sep">/</span>
-              <span class="ok"><span class="dot filled"></span>1 tersedia</span>
-            </span>
+            <span class="title">Hubungan Teknik Komputer dengan Teknik Elektro</span>
+            <span class="desc">Dari besaran listrik, transistor, dan logika digital sampai arsitektur processor, microcontroller, sensor, ADC, actuator, sistem kendali, komunikasi, IoT, CPS, PLC, SCADA, dan keamanan OT.</span>
+            <span class="meta"><span class="ok"><span class="dot filled"></span>Tersedia</span><span>20 bagian</span><span>33 tabel</span><span>38 contoh hitung</span></span>
           </span>
           <span class="go" aria-hidden="true">&#8594;</span>
         </a>
@@ -281,8 +242,7 @@
   </main>
 
   <footer>
-    <span>2 mata kuliah</span>
-    <span>Catatan pribadi</span>
+    <span>1 modul tersedia</span>
   </footer>
 </div>
 
