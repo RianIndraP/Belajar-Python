@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Penerapan Teknik Elektro dan Teknik Komputer pada Teknik Mesin &mdash; Pengantar Rekayasa dan Desain</title>
-<meta name="description" content="Modul Pengantar Rekayasa dan Desain: hubungan Teknik Elektro dan Teknik Komputer dengan Teknik Mesin, thermal design, perpindahan panas, mekanika fluida, termodinamika, machine design, machine elements, roda gigi, manufaktur, CNC, robotika, energi terbarukan, kendaraan listrik, dan manufaktur cerdas.">
+<meta name="description" content="Modul Pengantar Rekayasa dan Desain: hubungan Teknik Elektro dan Teknik Komputer dengan Teknik Mesin, perancangan termal, perpindahan panas, mekanika fluida, termodinamika, perancangan mesin, elemen mesin, roda gigi, manufaktur, CNC, robotika, energi terbarukan, kendaraan listrik, dan manufaktur cerdas.">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <style>
   :root {
@@ -338,7 +338,7 @@
   <a href="#s4">4. Review Teknik Komputer</a>
   <a href="#s5">5. Review Teknik Mesin</a>
   <a href="#s6">6. Contoh penerapan Teknik Mesin</a>
-  <a href="#s7">7. Thermal design</a>
+  <a href="#s7">7. Perancangan termal</a>
   <a href="#s8">8. Panas dan kesetimbangan termal</a>
   <a href="#s9">9. Mekanisme perpindahan panas</a>
   <a href="#s10">10. Konduksi dan hukum Fourier</a>
@@ -355,10 +355,10 @@
   <a href="#s21">21. Hukum pertama dan energi internal</a>
   <a href="#s22">22. Hukum kedua dan efisiensi</a>
   <a href="#s23">23. Rantai konversi energi</a>
-  <a href="#s24">24. Machine design</a>
+  <a href="#s24">24. Perancangan mesin</a>
   <a href="#s25">25. Tegangan dan sifat material</a>
   <a href="#s26">26. Kelelahan dan keandalan</a>
-  <a href="#s27">27. Machine elements</a>
+  <a href="#s27">27. Elemen mesin</a>
   <a href="#s28">28. Roda gigi dan transmisi</a>
   <a href="#s29">29. Torsi, daya, dan kecepatan sudut</a>
   <a href="#s30">30. Motor listrik dan penggerak</a>
@@ -369,7 +369,7 @@
   <a href="#s35">35. Robot industri</a>
   <a href="#s36">36. Energi terbarukan dan kendaraan listrik</a>
   <a href="#s37">37. Digital twin dan pemeliharaan prediktif</a>
-  <a href="#s38">38. Smart manufacturing dan Industri 4.0</a>
+  <a href="#s38">38. Manufaktur cerdas dan Industri 4.0</a>
   <a href="#s39">39. Perbandingan peran tiga bidang</a>
   <a href="#s40">40. Latihan</a>
   <a href="#s41">41. Ringkasan dan soal</a>
@@ -387,7 +387,7 @@
     <p class="eyebrow">Modul 05 &middot; Pengantar Rekayasa dan Desain</p>
     <div class="rule"></div>
     <h1>Penerapan Teknik Elektro dan Teknik Komputer pada Teknik Mesin</h1>
-    <p>Materi ini membahas review Teknik Elektro, Teknik Komputer, dan Teknik Mesin, thermal design, perpindahan panas, konveksi, radiasi, penukar panas, mekanika fluida, statika dan dinamika fluida, persamaan kontinuitas, Bernoulli, viskositas, termodinamika, hukum pertama dan kedua, rantai konversi energi, machine design, tegangan, regangan, kelelahan, keandalan, machine elements, roda gigi dan transmisi, hubungan torsi dan daya, motor listrik, mekatronika, sensor, aktuator, sistem kendali, PLC, manufaktur, CNC, CAD, CAM, CAE, FEA, CFD, robot industri, energi terbarukan, kendaraan listrik, pengereman regeneratif, digital twin, pemeliharaan prediktif, manufaktur cerdas, dan Industri 4.0.</p>
+    <p>Materi ini membahas review Teknik Elektro, Teknik Komputer, dan Teknik Mesin, perancangan termal, perpindahan panas, konveksi, radiasi, penukar panas, mekanika fluida, statika dan dinamika fluida, persamaan kontinuitas, Bernoulli, viskositas, termodinamika, hukum pertama dan kedua, rantai konversi energi, perancangan mesin, tegangan, regangan, kelelahan, keandalan, elemen mesin, roda gigi dan transmisi, hubungan torsi dan daya, motor listrik, mekatronika, sensor, aktuator, sistem kendali, PLC, manufaktur, CNC, CAD, CAM, CAE, FEA, CFD, robot industri, energi terbarukan, kendaraan listrik, pengereman regeneratif, digital twin, pemeliharaan prediktif, manufaktur cerdas, dan Industri 4.0.</p>
   </header>
 <h2 id="s1">1. Peta materi</h2>
 
@@ -439,12 +439,12 @@ Mesin yang dapat dikendalikan</code></pre>
       <tr><th>Tujuan</th><th>Indikator pemahaman</th></tr>
     </thead>
     <tbody>
-      <tr><td>Mengenal struktur disciplines Teknik Mesin</td><td>Menyebutkan bidang thermal design dan machine design beserta subbidangnya</td></tr>
-      <tr><td>Memahami phenomena termal dan fluida</td><td>Menjelaskan conduction, convection, radiation, tekanan hidrostatik, dan Bernoulli</td></tr>
-      <tr><td>Memahami perilaku material</td><td>Menghubungkan stress, strain, yield, fatigue, dan reliability pada komponen mesin</td></tr>
-      <tr><td>Memahami machine elements dan transmisi</td><td>Menghitung rasio gigi serta hubungan torsi, kecepatan, dan daya</td></tr>
+      <tr><td>Mengenal struktur disiplin Teknik Mesin</td><td>Menyebutkan bidang perancangan termal dan perancangan mesin beserta subbidangnya</td></tr>
+      <tr><td>Memahami fenomena termal dan fluida</td><td>Menjelaskan conduction, convection, radiation, tekanan hidrostatik, dan Bernoulli</td></tr>
+      <tr><td>Memahami perilaku material</td><td>Menghubungkan tegangan, regangan, titik leleh, kelelahan, dan keandalan pada komponen mesin</td></tr>
+      <tr><td>Memahami elemen mesin dan transmisi</td><td>Menghitung rasio gigi serta hubungan torsi, kecepatan, dan daya</td></tr>
       <tr><td>Menjelaskan kontribusi Teknik Elektro</td><td>Menjelaskan kontribusi daya, motor, sensor, dan kendali pada mesin</td></tr>
-      <tr><td>Meny Contribution Technique Komputer</td><td>Menjelaskan kontribusi komputasi, perangkat lunak, dan jaringan pada mesin</td></tr>
+      <tr><td>Menyusun kontribusi Teknik Komputer</td><td>Menjelaskan kontribusi komputasi, perangkat lunak, dan jaringan pada mesin</td></tr>
       <tr><td>Menganalisis sistem terpadu</td><td>Menentukan sumber gangguan pada mesin CNC atau robot</td></tr>
     </tbody>
   </table>
@@ -516,18 +516,19 @@ Kendali</code></pre>
 
   <p>Teknik Mesin merupakan disiplin yang sangat serbaguna. Hampir setiap aspek kehidupan berhubungan dengan Teknik Mesin, terutama benda yang bergerak atau menggunakan energi. Insinyur mesin menangani desain, pengujian, dan produksi dengan mempertimbangkan aspek ekonomi, sosial, lingkungan, dan etika.</p>
 
-  <p>Pada dasarnya Teknik Mesin terdiri atas thermal design dan machine design.</p>
+  <p>Pada dasarnya Teknik Mesin terdiri atas perancangan termal dan perancangan mesin.</p>
 
   <pre class="diagram"><code>              TEKNIK MESIN
                      |
         +------------+------------+
         |                         |
- THERMAL DESIGN                MACHINE DESIGN
         |                         |
- Perpindahan panas           Perilaku material
- Mekanika fluida             Machine elements
- Termodinamika               Manufaktur
- Pembakaran                  Struktur dan mekanisme</code></pre>
+ Perancangan termal         Perancangan mesin
+        |                         |
+ Perpindahan panas          Perilaku material
+ Mekanika fluida            Elemen mesin
+ Termodinamika              Manufaktur
+ Pembakaran                 Struktur dan mekanisme</code></pre>
 
   <div class="scroll">
   <table class="tight">
@@ -536,8 +537,8 @@ Kendali</code></pre>
       <tr><th>Bagian</th><th>Subbidang</th><th>Contoh persoalan</th></tr>
     </thead>
     <tbody>
-      <tr><td>Thermal design</td><td>Termodinamika, mekanika fluida, perpindahan panas, pembakaran</td><td>Pendingin mesin, sistem pembakaran, recuperator</td></tr>
-      <tr><td>Machine design</td><td>Perilaku material, machine elements, mekanisme, manufaktur</td><td>Rancangan poros, roda gigi, transmisi, rancangan alat</td></tr>
+      <tr><td>Perancangan termal</td><td>Termodinamika, mekanika fluida, perpindahan panas, pembakaran</td><td>Pendingin mesin, sistem pembakaran, recuperator</td></tr>
+      <tr><td>Perancangan mesin</td><td>Perilaku material, elemen mesin, mekanisme, manufaktur</td><td>Rancangan poros, roda gigi, transmisi, rancangan alat</td></tr>
     </tbody>
   </table>
   </div>
@@ -563,9 +564,9 @@ Kendali</code></pre>
 
   <p>Pembagian pada Tabel 6.1 merupakan pembagian yang lazim pada studi kasus, bukan pembagian mutlak. Pada proyek nyata, batas pekerjaan sering berbeda menurut perusahaan dan spesialisasi.</p>
 
-  <h2 id="s7">7. Thermal design</h2>
+  <h2 id="s7">7. Perancangan termal</h2>
 
-  <p>Thermal design meliputi termodinamika, mekanika fluida, perpindahan panas, dan pembakaran. Keempat bidang tersebut saling memerlukan karena temperatur, aliran fluida, dan energi selalu berkaitan.</p>
+  <p>Perancangan termal meliputi termodinamika, mekanika fluida, perpindahan panas, dan pembakaran. Keempat bidang tersebut saling memerlukan karena temperatur, aliran fluida, dan energi selalu berkaitan.</p>
 
   <pre class="diagram"><code>Termodinamika
    -&gt; berapa energi yang masuk dan keluar
@@ -733,7 +734,7 @@ Kesimpulan: menambah ketebalan menurunkan laju konduksi secara tidak linear</cod
   <p>Dengan demikian berlaku:</p>
 
   <div class="eq">
-    <var>Q</var> = <span class="frac"><span>&Delta;<var>T</var></span><span><var>R</var><sub>thermal</sub></span></span>
+    <var>Q</var> = <span class="frac"><span>&Delta;<var>T</var></span><span><var>R</var><sub>termal</sub></span></span>
   </div>
 
   <p>Bentuk tersebut menyerupai hukum Ohm pada rangkaian listrik.</p>
@@ -1333,7 +1334,7 @@ Dampak pada pendinginan:
   </div>
 
   <p>Listrik yang tersedia pada jaringan distribusi merupakan hasil konversi energi yang tidak seluruhnya berubah menjadi listrik. Pembangkit listrik sendiri merupakan tahap konversi, sehingga efisiensi setiap tahap dan kebutuhan bahan bakar harus dipertimbangkan bersama.</p>
-<h2 id="s24">24. Machine design dan perilaku material</h2>
+<h2 id="s24">24. Perancangan mesin dan perilaku material</h2>
 
   <p>Perancangan pada dasarnya adalah proses pengambilan keputusan. Desain berarti mengembangkan rencana untuk memenuhi kebutuhan atau menyelesaikan masalah, dan sejalan dengan proses yang telah dibahas pada modul sebelumnya.</p>
 
@@ -1348,11 +1349,11 @@ Dampak pada pendinginan:
 
   <p>Perancangan tidak hanya menjawab apakah komponen dapat dibuat. Perancangan menjawab pertanyaan komponen mana yang paling sesuai untuk kondisi operasi tertentu.</p>
 
-  <p>Perilaku material dalam kondisi operasi meliputi tegangan, regangan, elastisitas, titik leleh, kekuatan, toughness, kelelahan, getaran, dan keandalan.</p>
+  <p>Perilaku material dalam kondisi operasi meliputi tegangan, regangan, elastisitas, titik leleh, kekuatan, ketahanan patah, kelelahan, getaran, dan keandalan.</p>
 
   <div class="note">
     <p class="label">Istilah yang sering tertukar</p>
-    <p>Kekuatan berkaitan dengan kemampuan menahan beban tanpa kerusakan. Hardness berkaitan dengan ketahanan terhadap penetrasi yang diukur dengan uji indentasi. Toughness berkaitan dengan kemampuan menyerap energi sebelum patah. Ketiganya memiliki satuan dan cara uji yang berbeda.</p>
+    <p>Kekuatan berkaitan dengan kemampuan menahan beban tanpa kerusakan. Kekerasan berkaitan dengan ketahanan terhadap penetrasi yang diukur dengan uji indentasi. Ketahanan patah berkaitan dengan kemampuan menyerap energi sebelum patah. Ketiganya memiliki satuan dan cara uji yang berbeda.</p>
   </div>
 
   <h2 id="s25">25. Tegangan, regangan, dan sifat material</h2>
@@ -1477,13 +1478,13 @@ Nilai 8,93 GPa di bawah nilai baja struktural 200 GPa
     <p class="label">Faktor keamanan</p>
     <p>Faktor keamanan adalah perbandingan tegangan leleh material terhadap tegangan kerja. Nilainya menentukan cadangan kemampuan terhadap beban tak terduga, ketidaktepatan data, dan degradasi material. Faktor keamanan terlalu kecil meningkatkan risiko kerusakan, sedangkan terlalu besar menyebabkan material dan biaya berlebihan.</p>
   </div>
-<h2 id="s27">27. Machine elements</h2>
+<h2 id="s27">27. Elemen mesin</h2>
 
-  <p>Machine elements adalah komponen dasar yang menjadi building blocks sebuah mesin. Contoh umumnya meliputi poros, roda gigi, bearing, pengikat, pegas, seal, dan kopling.</p>
+  <p>Elemen mesin adalah komponen dasar yang menjadi building blocks sebuah mesin. Contoh umumnya meliputi poros, roda gigi, bearing, pengikat, pegas, seal, dan kopling.</p>
 
   <div class="scroll">
   <table class="tight">
-    <caption>Tabel 27.1 &middot; Machine elements dan fungsinya</caption>
+    <caption>Tabel 27.1 &middot; Elemen mesin dan fungsinya</caption>
     <thead>
       <tr><th>Elemen</th><th>Fungsi utama</th><th>Persyaratan utama</th></tr>
     </thead>
@@ -1785,7 +1786,7 @@ Bila motor tidak dapat mencapai 1.500 rpm,
     <p>Contoh tersebut memperlihatkan bahwa penyimpangan yang menetap harus diperiksa lebih dahulu. Penyimpangan yang berasal dari keterbatasan mesin tidak dapat dihilangkan hanya dengan mengatur pengendali.</p>
   </div>
 
-  <h3 id="s31-3">31.3 Open loop dan closed loop</h3>
+  <h3 id="s31-3">31.3 Kendali terbuka dan tertutup</h3>
 
   <div class="scroll">
   <table class="tight">
@@ -1866,7 +1867,7 @@ Laju removal:
   MRR = m / waktu
       = 1,652 kg / 12 menit
       = 0,138 kg per menit</code></pre>
-    <p>Laju pelepasan material tersebut diperlukan untuk menentukan laju umpan pahat dan permintaan daya pemotong. Feed yang terlalu tinggi menyebabkan pahat cepat habis.</p>
+    <p>Laju pelepasan material tersebut diperlukan untuk menentukan laju umpan pahat dan permintaan daya pemotong. Laju umpan yang terlalu tinggi menyebabkan pahat cepat habis.</p>
   </div>
 
   <div class="scroll">
@@ -2155,9 +2156,9 @@ Kesimpulan : rasio mendekati ambang, pemeriksaan
   harus dilakukan sebelum mencapai 2,5 kali</code></pre>
     <p>Analisis ini sederhana, tetapi mekanismenya sama dengan sistem pemeliharaan prediktif yang sesungguhnya: data dibandingkan dengan keadaan normal, selisih dihitung, dan keputusan diambil berdasarkan ambang yang ditentukan.</p>
   </div>
-<h2 id="s38">38. Smart manufacturing dan Industri 4.0</h2>
+<h2 id="s38">38. Manufaktur cerdas dan Industri 4.0</h2>
 
-  <p>Manufaktur cerdas atau smart manufacturing menggunakan integrasi data dari perancangan sampai pemeriksaan produk.</p>
+  <p>Manufaktur cerdas menggunakan integrasi data dari perancangan sampai pemeriksaan produk.</p>
 
   <pre class="diagram"><code>Perancangan
    -&gt; CAD
@@ -2169,7 +2170,7 @@ Kesimpulan : rasio mendekati ambang, pemeriksaan
    -&gt; analitik
    -&gt; mutu</code></pre>
 
-  <p>Konsep digital thread menghubungkan informasi sepanjang daur hidup produk, mulai dari perancangan, manufaktur, pemeriksaan, dukungan produk, hingga akhir masa pakai.</p>
+  <p>Konsep benang digital menghubungkan informasi sepanjang daur hidup produk, mulai dari perancangan, manufaktur, pemeriksaan, dukungan produk, hingga akhir masa pakai.</p>
 
   <p>Industri 4.0 biasanya ditandai dengan otomasi, internet of things, sistem siber fisik, analitik data, kecerdasan buatan, robotika, konektivitas, dan manufaktur cerdas.</p>
 
@@ -2262,8 +2263,8 @@ Hasilnya
 <h2 id="s41">41. Ringkasan dan soal</h2>
 
   <pre class="diagram"><code>TEKNIK MESIN
-  -&gt; thermal design
-  -&gt; machine design
+  -&gt; perancangan termal
+  -&gt; perancangan mesin
   -&gt; energi, fluida, material, elemen mesin, manufaktur
        |
        v
@@ -2283,8 +2284,8 @@ MEKATRONIKA
      manufaktur cerdas</code></pre>
 
   <dl class="qa">
-    <dt>1. Apa itu thermal design dan apa saja cakupannya?</dt>
-    <dd>Thermal design adalah perancangan sistem dengan mempertimbangkan fenomena termal agar temperatur, energi, dan kinerja berada pada keadaan yang diinginkan. Cakupannya meliputi termodinamika, mekanika fluida, perpindahan panas, dan pembakaran.</dd>
+    <dt>1. Apa itu perancangan termal dan apa saja cakupannya?</dt>
+    <dd>Perancangan termal adalah perancangan sistem dengan mempertimbangkan fenomena termal agar temperatur, energi, dan kinerja berada pada keadaan yang diinginkan. Cakupannya meliputi termodinamika, mekanika fluida, perpindahan panas, dan pembakaran.</dd>
 
     <dt>2. Bedakan temperatur dan panas.</dt>
     <dd>Temperatur menggambarkan kondisi termal benda dan diukur dengan termometer. Panas merupakan energi yang berpindah akibat perbedaan temperatur dan diukur dalam joule. Panas berpindah dari benda yang lebih panas ke benda yang lebih dingin sampai tercapai kesetimbangan termal.</dd>
@@ -2325,8 +2326,8 @@ MEKATRONIKA
     <dt>14. Mengapa kelelahan lebih berbahaya daripada beban statis?</dt>
     <dd>Karena tegangan pada setiap siklus dapat berada di bawah tegangan leleh, sehingga tidak terlihat dari uji beban statis. Kerusakan baru muncul setelah ribuan hingga jutaan siklus pada poros, roda gigi, dan mesin yang berputar.</dd>
 
-    <dt>15. Bedakan kekuatan, hardness, dan toughness.</dt>
-    <dd>Kekuatan berkaitan dengan kemampuan menahan beban. Hardness berkaitan dengan ketahanan terhadap penetrasi yang diukur dengan uji indentasi. Toughness berkaitan dengan kemampuan menyerap energi sebelum patah.</dd>
+    <dt>15. Bedakan kekuatan, kekerasan, dan ketahanan patah.</dt>
+    <dd>Kekuatan berkaitan dengan kemampuan menahan beban. Kekerasan berkaitan dengan ketahanan terhadap penetrasi yang diukur dengan uji indentasi. Ketahanan patah berkaitan dengan kemampuan menyerap energi sebelum patah.</dd>
 
     <dt>16. Tuliskan hubungan daya rotasi dengan torsi dan kecepatan sudut.</dt>
     <dd><var>P</var> = &tau; &omega;. Pada kecepatan sudut tertentu, semakin besar torsi, semakin besar daya. Hubungan ini diperlukan saat memilih motor untuk conveyor, robot, atau mesin industri.</dd>
@@ -2353,7 +2354,7 @@ MEKATRONIKA
     <dd>Ketika kendaraan melambat, motor listrik bekerja sebagai generator sehingga energi kinetik diubah menjadi energi listrik dan dikembalikan ke baterai. Karena masih ada kehilangan pada motor, inverter, dan aki, hanya sebagian energi yang dapat dipulihkan.</dd>
 
     <dt>24. Jika mesin CNC menghasilkan ukuran yang salah, apakah penyebabnya pasti mekanis?</dt>
-    <dd>Tidak. Penyimpangan dapat berasal dari backlash, getaran, keausan pahat, encoder, penggerak servo, motor, kode program, lintasan alat, atau parameter pemotongan. Pendekatan yang benar adalah memeriksa setiap tahap secara berurutan.</dd>
+    <dd>Tidak. Penyimpangan dapat berasal dari main longgar, getaran, keausan pahat, encoder, penggerak servo, motor, kode program, lintasan alat, atau parameter pemotongan. Pendekatan yang benar adalah memeriksa setiap tahap secara berurutan.</dd>
 
     <dt>25. Mengapa Teknik Elektro penting bagi Teknik Mesin?</dt>
     <dd>Karena mesin modern membutuhkan sumber energi listrik, motor, aktuator, sensor, instrumentasi, sistem kendali, dan elektronik daya. Teknik Elektro memungkinkan mesin tidak hanya bergerak secara mekanik, tetapi juga dapat diukur, dikendalikan, dipantau, dan dioptimalkan.</dd>
@@ -2373,8 +2374,8 @@ MEKATRONIKA
       <tr><th>Istilah</th><th>Pengertian</th></tr>
     </thead>
     <tbody>
-      <tr><td>Thermal design</td><td>Perancangan yang mempertimbangkan fenomena termal pada sistem mesin</td></tr>
-      <tr><td>Machine design</td><td>Perancangan struktur, elemen mesin, dan proses manufaktur</td></tr>
+      <tr><td>Perancangan termal</td><td>Perancangan yang mempertimbangkan fenomena termal pada sistem mesin</td></tr>
+      <tr><td>Perancangan mesin</td><td>Perancangan struktur, elemen mesin, dan proses manufaktur</td></tr>
       <tr><td>Panas</td><td>Energi yang berpindah akibat perbedaan temperatur</td></tr>
       <tr><td>Konduksi</td><td>Perpindahan panas melalui materi tanpa perpindahan massa makroskopis</td></tr>
       <tr><td>Konveksi</td><td>Perpindahan panas melalui gerakan fluida</td></tr>
@@ -2401,7 +2402,7 @@ MEKATRONIKA
       <tr><td>PLC</td><td>Pengendali sekuensial yang bekerja berdasarkan urutan instruksi</td></tr>
       <tr><td>Digital twin</td><td>Representasi digital aset fisik yang menggunakan data aktual untuk pemantauan dan analisis</td></tr>
       <tr><td>Pengereman regeneratif</td><td>Konversi energi kinetik kendaraan menjadi energi listrik saat pengereman</td></tr>
-      <tr><td>Digital thread</td><td>Penghubungan data sepanjang daur hidup produk</td></tr>
+      <tr><td>Benang digital</td><td>Penghubungan data sepanjang daur hidup produk</td></tr>
     </tbody>
   </table>
   </div>
