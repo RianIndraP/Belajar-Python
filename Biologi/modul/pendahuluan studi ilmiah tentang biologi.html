@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendahuluan: Studi Ilmiah tentang Biologi &mdash; Biologi Dasar</title>
+<meta name="description" content="Modul Biologi Dasar: pengertian biologi, atom dan molekul, sel dan teori sel, tingkat organisasi kehidupan, ciri makhluk hidup, metabolisme, homeostasis, adaptasi, evolusi, metode ilmiah, dan sikap ilmiah.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Peta materi</a>
+  <a href="#s2">2. Tujuan pembelajaran</a>
+  <a href="#s3">3. Pengertian dan ruang lingkup biologi</a>
+  <a href="#s4">4. Cabang-cabang biologi</a>
+  <a href="#s5">5. Peran biologi dalam kehidupan sehari-hari</a>
+  <a href="#s6">6. Biologi sebagai ilmu yang dapat diuji</a>
+  <a href="#s7">7. Materi dan energi</a>
+  <a href="#s8">8. Atom</a>
+  <a href="#s9">9. Struktur atom</a>
+  <a href="#s10">10. Unsur dan tabel periodik</a>
+  <a href="#s11">11. Dari atom menjadi molekul</a>
+  <a href="#s12">12. Makromolekul biologis</a>
+  <a href="#s13">13. Sel sebagai unit dasar kehidupan</a>
+  <a href="#s14">14. Teori sel</a>
+  <a href="#s15">15. Mikroskop</a>
+  <a href="#s16">16. Sel prokariotik</a>
+  <a href="#s17">17. Sel eukariotik</a>
+  <a href="#s18">18. Organel sel</a>
+  <a href="#s19">19. Membran plasma</a>
+  <a href="#s20">20. Tingkat organisasi kehidupan</a>
+  <a href="#s21">21. Jaringan</a>
+  <a href="#s22">22. Organ dan sistem organ</a>
+  <a href="#s23">23. Organisme, populasi, dan komunitas</a>
+  <a href="#s24">24. Ekosistem</a>
+  <a href="#s25">25. Bioma dan biosfer</a>
+  <a href="#s26">26. Ciri-ciri makhluk hidup</a>
+  <a href="#s27">27. Metabolisme</a>
+  <a href="#s28">28. Katabolisme dan anabolisme</a>
+  <a href="#s29">29. ATP sebagai mata uang energi</a>
+  <a href="#s30">30. Reproduksi</a>
+  <a href="#s31">31. Pertumbuhan dan perkembangan</a>
+  <a href="#s32">32. Respons terhadap lingkungan</a>
+  <a href="#s33">33. Homeostasis</a>
+  <a href="#s34">34. Umpan balik negatif dan positif</a>
+  <a href="#s35">35. Adaptasi dan evolusi</a>
+  <a href="#s36">36. Faktor pendukung kehidupan</a>
+  <a href="#s37">37. Tiga domain kehidupan</a>
+  <a href="#s38">38. Hubungan biologi dengan ilmu lain</a>
+  <a href="#s39">39. Sikap ilmiah</a>
+  <a href="#s40">40. Fakta, opini, dan kejujuran data</a>
+  <a href="#s41">41. Metode ilmiah</a>
+  <a href="#s42">42. Tahapan metode ilmiah</a>
+  <a href="#s43">43. Variabel penelitian dan kelompok kontrol</a>
+  <a href="#s44">44. Pengumpulan dan analisis data</a>
+  <a href="#s45">45. Penalaran induktif dan deduktif</a>
+  <a href="#s46">46. Ilmu dasar dan ilmu terapan</a>
+  <a href="#s47">47. Latihan</a>
+  <a href="#s48">48. Ringkasan</a>
+  <a href="#s49">49. Daftar istilah</a>
+  <a href="#s50">50. Daftar pustaka</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Modul 01 &middot; Biologi Dasar (STIK1013)</p>
+    <div class="rule"></div>
+    <h1>Pendahuluan: Studi Ilmiah tentang Biologi</h1>
+    <p>Materi ini membangun dasar biologi dari tingkat paling kecil ke tingkat terbesar. Pembahasan dimulai dari materi dan energi, atom, molekul, dan makromolekul, lalu naik ke sel, teori sel, jaringan, organ, dan sistem organ. Materi dilanjutkan ke tingkat populasi, komunitas, ekosistem, bioma, dan biosfer. Bagian berikutnya membahas ciri-ciri makhluk hidup, metabolisme, ATP, reproduksi, pertumbuhan, respons, homeostasis, adaptasi, evolusi, faktor pendukung kehidupan, tiga domain kehidupan, hubungan biologi dengan ilmu lain, sikap ilmiah, fakta dan opini, metode ilmiah, variabel penelitian, analisis data, penalaran induktif dan deduktif, serta ilmu dasar dan ilmu terapan.</p>
+  </header>
+
+  <main>
+<h2 id="s1">1. Peta materi</h2>
+
+  <p>Biologi tidak dapat dipelajari sebagai daftar nama bagian tubuh. Materi ini disusun berurutan dari partikel terkecil menuju keseluruhan kehidupan di Bumi, sehingga setiap konsep menjadi dasar bagi konsep berikutnya.</p>
+
+  <pre class="diagram"><code>Tingkat materi
+   |
+ Atom -&gt; molekul -&gt; makromolekul
+   |
+Tingkat seluler
+   |
+ Organel -&gt; sel
+   |
+Tingkat jaringan dan organ
+   |
+ Jaringan -&gt; organ -&gt; sistem organ
+   |
+Tingkat organisme
+   |
+ Organisme
+   |
+Tingkat ekologi
+   |
+ Populasi -&gt; komunitas -&gt; ekosistem
+   |
+ Bioma -&gt; biosfer
+
+Di setiap tingkat berlaku proses kehidupan
+   |
+ Metabolisme, reproduksi, pertumbuhan,
+ respons, homeostasis, adaptasi, evolusi
+
+Cara memperoleh pengetahuan
+   |
+ Observasi -&gt; masalah -&gt; hipotesis -&gt; percobaan
+   |
+ Data -&gt; analisis -&gt; kesimpulan -&gt; komunikasi</code></pre>
+
+  <p>Ada dua arah yang dapat dipakai untuk memahami materi ini. Arah pertama menelusuri struktur dari bawah ke atas, yaitu dari atom menuju biosfer. Arah kedua mengikuti proses yang dijalankan makhluk hidup, yaitu metabolisme, homeostasis, dan reproduksi. Kedua arah tersebut saling melengkapi karena struktur menentukan kemungkinan proses, sedangkan proses mempertahankan kelangsungan hidup struktur tersebut.</p>
+
+  <h2 id="s2">2. Tujuan pembelajaran</h2>
+
+  <p>Setelah mengikuti sesi ini, mahasiswa mampu menjelaskan pengertian dan ruang lingkup biologi, menguraikan hubungan atom, molekul, sel, dan tingkat organisasi kehidupan, menganalisis ciri-ciri makhluk hidup, serta menjelaskan bagaimana ilmuwan memperoleh pengetahuan secara sistematis melalui metode ilmiah.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 2.1 &middot; Tujuan sesi dan indikator pemahaman</caption>
+    <thead>
+      <tr><th>Tujuan</th><th>Indikator pemahaman</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menjelaskan pengertian biologi</td><td>Menyebutkan definisi biologi dan asal kata Yunani bios dan logos</td></tr>
+      <tr><td>Mengidentifikasi ruang lingkup biologi</td><td>Menyebutkan cabang biologi serta hubungannya dengan ilmu lain</td></tr>
+      <tr><td>Menjelaskan dasar materi kehidupan</td><td>Menguraikan atom, struktur atom, unsur, molekul, dan makromolekul biologis</td></tr>
+      <tr><td>Memahami sel sebagai unit kehidupan</td><td>Menjelaskan teori sel serta perbedaan sel prokariotik dan eukariotik</td></tr>
+      <tr><td>Mengurutkan tingkat organisasi kehidupan</td><td>Menyusun urutan dari atom hingga biosfer dengan benar</td></tr>
+      <tr><td>Menganalisis ciri makhluk hidup</td><td>Menjelaskan metabolisme, homeostasis, adaptasi, reproduksi, dan evolusi</td></tr>
+      <tr><td>Memahami cara memperoleh pengetahuan</td><td>Menjelaskan sikap ilmiah, fakta dan opini, serta tahapan metode ilmiah</td></tr>
+      <tr><td>Menerapkan metode ilmiah</td><td>Merancang percobaan sederhana yang melibatkan variabel bebas, terikat, dan kontrol</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s3">3. Pengertian dan ruang lingkup biologi</h2>
+
+  <p>Biologi adalah ilmu yang mempelajari kehidupan dan makhluk hidup. Definisi ini tampak sederhana, tetapi cakupannya sangat luas. Biologi tidak hanya mempelajari bagian tubuh manusia, tetapi juga struktur dan proses pada bakteri, tumbuhan, hewan, jamur, dan kelompok organisme lain.</p>
+
+  <p>Istilah biologi berasal dari bahasa Yunani, yaitu <em>bios</em> yang berarti hidup dan <em>logos</em> yang berarti pengetahuan. Secara harfiah, biologi berarti ilmu pengetahuan tentang kehidupan. Encyclopaedia Britannica merumuskan biologi sebagai kajian makhluk hidup dan proses-proses vitalnya, sedangkan OpenStax menyusun definisi yang lebih ringkas, yaitu kajian tentang kehidupan.</p>
+
+  <div class="note">
+    <p>Ruang lingkup biologi meliputi empat pertanyaan besar. Pertama, apa yang membuat sesuatu itu hidup. Kedua, bagaimana kehidupan tersusun pada berbagai tingkat organisasi. Ketiga, bagaimana organisme berinteraksi satu sama lain dan dengan lingkungan. Keempat, bagaimana keanekaragaman kehidupan berubah dari waktu ke waktu melalui evolusi.</p>
+  </div>
+
+  <p>Keempat pertanyaan tersebut menjadi benang merah seluruh bidang biologi. Sitologi menjawab pertanyaan pertama pada tingkat sel. Ekologi menjawab pertanyaan kedua dan ketiga pada tingkat populasi hingga biosfer. Biologi evolusioner menjawab pertanyaan keempat pada seluruh skala kehidupan.</p>
+
+  <pre class="diagram"><code>Empat pertanyaan dasar biologi
+   |
+ 1. Apa yang membuat sesuatu itu hidup?
+   |
+ 2. Bagaimana kehidupan tersusun bertingkat?
+   |
+ 3. Bagaimana organisme berinteraksi?
+   |
+ 4. Bagaimana kehidupan berubah dari waktu ke waktu?</code></pre>
+
+  <p>Ruang lingkup tersebut menjelaskan mengapa biologi tidak cukup dengan dihafal. Nama tulang, nama organ, atau klasifikasi tumbuhan memang perlu diketahui, tetapi nama akan bermakna hanya apabila dapat dikaitkan dengan fungsi dan proses yang melandasinya.</p>
+
+  <h2 id="s4">4. Cabang-cabang biologi</h2>
+
+  <p>Cabang biologi dibagi menurut tingkat organisasi yang dikaji dan menurut jenis organisme yang menjadi objek kajian. Pembagian ini bersifat praktis untuk memudahkan belajar, bukan batas yang mutlak. Seorang peneliti dapat berada pada dua cabang sekaligus.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Cabang biologi menurut objek kajian</caption>
+    <thead>
+      <tr><th>Cabang</th><th>Objek kajian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Morfologi</td><td>Bentuk dan struktur bagian tubuh organisme</td></tr>
+      <tr><td>Anatomi</td><td>Struktur internal organisme</td></tr>
+      <tr><td>Sitologi</td><td>Struktur dan fungsi sel</td></tr>
+      <tr><td>Histologi</td><td>Jaringan tumbuhan dan hewan</td></tr>
+      <tr><td>Fisiologi</td><td>Fungsi dan proses kerja tubuh organisme</td></tr>
+      <tr><td>Ekologi</td><td>Hubungan organisme dengan lingkungan dan sesama organisme</td></tr>
+      <tr><td>Genetika</td><td>Pewarisan sifat dan mekanisme pewarisan</td></tr>
+      <tr><td>Biologi evolusioner</td><td>Perubahan dan kekerabatan organisme</td></tr>
+      <tr><td>Taksonomi dan sistematika</td><td>Klasifikasi dan penamaan organisme</td></tr>
+      <tr><td>Botani</td><td>Tumbuhan dan alga</td></tr>
+      <tr><td>Zoologi</td><td>Hewan</td></tr>
+      <tr><td>Mikrobiologi</td><td>Mikroorganisme seperti bakteri, jamur, dan protozoa</td></tr>
+      <tr><td>Biokimia</td><td>Reaksi kimia di dalam organisme</td></tr>
+      <tr><td>Biologi molekuler</td><td>Molekul biologis dan informasi yang dibawanya</td></tr>
+      <tr><td>Biogeografi</td><td>Sebaran geografis organisme</td></tr>
+      <tr><td>Biostatistika</td><td>Analisis data biologis secara statistik</td></tr>
+      <tr><td>Bioteknologi</td><td>Penerapan proses biologis untuk menghasilkan produk</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Bidang yang beririsan juga banyak. Biokimia dan biologi molekuler berada pada garis antara ilmu hayati dan ilmu alam dasar, sedangkan bioinformatika berada pada garis antara biologi dan ilmu komputer.</p>
+  </div>
+
+  <h2 id="s5">5. Peran biologi dalam kehidupan sehari-hari</h2>
+
+  <p>Hasil kajian biologi muncul pada banyak bidang yang dipakai masyarakat. Pemahaman mengenai peran tersebut membantu melihat bahwa biologi bukan mata kuliah yang terpisah dari kehidupan nyata.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 5.1 &middot; Bidang penerapan dan bentuk manfaat biologi</caption>
+    <thead>
+      <tr><th>Bidang</th><th>Contoh penerapan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kesehatan</td><td>Diagnosis penyakit, produksi obat, vaksin, imunologi, dan mikrobiologi</td></tr>
+      <tr><td>Pertanian</td><td>Pemuliaan tanaman, pengendalian hama, pupuk hayati, dan kultur jaringan</td></tr>
+      <tr><td>Peternakan</td><td>Pembitian hewan dan pemilihan ras yang lebih produktif</td></tr>
+      <tr><td>Perikanan</td><td>Budidaya ikan dan pengelolaan wilayah tangkapan</td></tr>
+      <tr><td>Kehidupan liar</td><td>Konservasi, pemulihan ekosistem, dan pemantauan keanekaragaman hayati</td></tr>
+      <tr><td>Lingkungan</td><td>Pemantauan pencemaran dan kualitas air</td></tr>
+      <tr><td>Industri</td><td>Fermentasi, produksi enzim, pengolahan pangan, dan biofarmasi</td></tr>
+      <tr><td>Forensik</td><td>Analisis DNA untuk menentukan identitas</td></tr>
+      <tr><td>Teknologi informasi</td><td>Analisis data genomika dan pemodelan populasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Penerapan bioteknologi dapat meningkatkan produksi pangan, tetapi juga memunculkan pertanyaan mengenai keanekaragaman genetik dan dampak lingkungan. Ilmu membantu dalam menilai pilihan tersebut secara rasional.</p>
+<h2 id="s6">6. Biologi sebagai ilmu yang dapat diuji</h2>
+
+  <p>Istilah <em>sains</em> berasal dari bahasa Latin <em>scientia</em> yang berarti pengetahuan. Sains adalah pengetahuan umum yang diperoleh melalui pengujian. Karena itu, sebuah pernyataan disebut ilmiah apabila dapat diuji dan diuji kembali oleh orang lain.</p>
+
+  <p>Dalam biologi, pengujian dilakukan dengan pengamatan, eksperimen, dan perbandingan. Contoh pengujian berupa pengukuran diameter sel dengan mikroskop, pengukuran laju pertumbuhan, atau pengujian dugaan bahwa tanaman memerlukan nitrogen untuk tumbuh. Pernyataan yang tidak dapat diuji, misalnya tanaman lebih bagus daripada tanaman lain karena terlihat lebih hias, tidak termasuk pernyataan ilmiah.</p>
+
+  <div class="note">
+    <p>Ilmuwan umumnya bekerja dalam dua cara yang saling melengkapi. Ilmu deskriptif bertujuan mengamati dan mencatat kenyataan tanpa menguji dugaan. Ilmu berbasis hipotesis bertujuan menguji dugaan melalui eksperimen yang dirancang secara sengaja.</p>
+  </div>
+
+  <h2 id="s7">7. Materi dan energi</h2>
+
+  <p>Materi adalah segala sesuatu yang memiliki massa dan menempati ruang. Contoh materi meliputi air, udara, tanah, batu, makanan, tubuh manusia, tumbuhan, dan bakteri. Materi pada tingkat yang sangat kecil tersusun atas partikel, dan partikel terkecil yang masih mempertahankan identitas suatu unsur disebut atom.</p>
+
+  <p>Energi adalah kemampuan melakukan kerja atau menghasilkan perubahan. Energi hanya berubah bentuk, misalnya dari energi kimia menjadi energi listrik pada sel, atau dari energi cahaya menjadi energi kimia pada fotosintesis. Tubuh organisme memakai energi untuk menyusun molekul, bergerak, memompa zat, dan menjaga keadaan internal.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 7.1 &middot; Bentuk energi pada organisme</caption>
+    <thead>
+      <tr><th>Bentuk energi</th><th>Peran pada organisme</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Energi kimia</td><td>Tersimpan pada makromolekul seperti karbohidrat, lipid, dan protein</td></tr>
+      <tr><td>Energi cahaya</td><td>Dipakai organisme fotosintetik untuk menyusun gula</td></tr>
+      <tr><td>Energi listrik</td><td>Menggerakkan impuls saraf dan kerja ion pada membran sel</td></tr>
+      <tr><td>Energi mekanik</td><td>Gerakan otot, gerak flagel, dan perpindahan cairan</td></tr>
+      <tr><td>Energi panas</td><td>Hasil sampingan reaksi yang tidak dipakai untuk kerja sel</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s8">8. Atom</h2>
+
+  <p>Atom adalah unit terkecil suatu unsur yang masih mempertahankan identitas kimia unsur tersebut dan dapat berperan dalam reaksi kimia. Unsur yang berbeda dibedakan oleh jumlah proton dalam atomnya.</p>
+
+  <p>Istilah atom berasal dari bahasa Yunani <em>atomos</em> yang berarti tidak dapat dipotong. Gagasan ini kemudian berkembang menjadi teori atom melalui penelitian mengenai hukum-hukum kimia yang diamati pada reaksi dan pengukuran massa. Teori atom Dalton menjadi dasar pemahaman modern tentang atom.</p>
+
+  <p>Catatan penting perlu disampaikan di sini. Dalam ilmu modern, atom bukan partikel yang benar-benar tidak dapat dibagi. Atom tersusun atas partikel yang lebih kecil lagi, yaitu proton, neutron, dan elektron.</p>
+
+  <h2 id="s9">9. Struktur atom</h2>
+
+  <p>Atom memiliki tiga jenis partikel subatom utama. Proton dan neutron membentuk inti atom atau nukleus. Elektron berada pada wilayah di luar inti yang dalam penggambaran sederhana sering disebut kulit elektron.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 9.1 &middot; Sifat partikel penyusun atom</caption>
+    <thead>
+      <tr><th>Partikel</th><th>Muatan</th><th>Massa relatif</th><th>Lokasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Proton</td><td>+1e</td><td>1</td><td>Di dalam nukleus</td></tr>
+      <tr><td>Neutron</td><td>0</td><td>1</td><td>Di dalam nukleus</td></tr>
+      <tr><td>Elektron</td><td>&minus;1e</td><td>1/1836</td><td>Di luar nukleus</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jumlah proton disebut nomor atom dan menentukan identitas unsur. Jumlah elektron pada atom yang bermuatan netral sama dengan jumlah proton. Kelebihan elektron membuat atom bermuatan negatif, sedangkan kekurangan elektron membuat atom bermuatan positif.</p>
+
+  <pre class="diagram"><code>Model sederhana atom
+   |
+ elektron pada kulit luar
+        .---------------------.
+       /    e   e      e       \
+      |         INTI           |
+      |    proton  p = +1      |
+      |    neutron n =  0      |
+       \    e        e         /
+        '---------------------'
+   |
+ Catatan: gambar ini hanya model sederhana.
+ Model modern memakai konsep orbital dan
+ peluang keberadaan elektron.</code></pre>
+
+  <div class="note">
+    <p>Model planet yang sering dipakai di sekolah memberi kesan bahwa elektron mengitari inti seperti planet mengitari Matahari. Model ini berguna sebagai gambaran visual, tetapi secara ilmiah elektron tidak mengikuti lintasan tetap. Posisi elektron dinyatakan sebagai peluang menemukan elektron pada suatu daerah, bukan sebagai نقطة yang pasti.</p>
+  </div>
+
+  <h2 id="s10">10. Unsur dan tabel periodik</h2>
+
+  <p>Unsur adalah zat yang seluruh atomnya memiliki jumlah proton yang sama. Contohnya karbon, oksigen, hidrogen, nitrogen, dan natrium. Tabel periodik mengelompokkan unsur berdasarkan jumlah proton dan pola sifat kimianya, sehingga hubungan antarunsur dapat dibaca dengan cepat.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.1 &middot; Unsur yang sering muncul pada biologi</caption>
+    <thead>
+      <tr><th>Unsur</th><th>Simbol</th><th>Nomor atom</th><th>Peran dalam kehidupan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hidrogen</td><td>H</td><td>1</td><td>Bagian air, asam amino, dan ikatan antaratom</td></tr>
+      <tr><td>Karbon</td><td>C</td><td>6</td><td>Kerangka molekul organik</td></tr>
+      <tr><td>Nitrogen</td><td>N</td><td>7</td><td>Protein, asam nukleat, dan klorofil</td></tr>
+      <tr><td>Oksigen</td><td>O</td><td>8</td><td>Respirasi, air, dan konstituen molekul organik</td></tr>
+      <tr><td>Fosfor</td><td>P</td><td>15</td><td>ATP, asam nukleat, dan membran sel</td></tr>
+      <tr><td>Sulfur</td><td>S</td><td>16</td><td>Asam amino sistein dan metionin</td></tr>
+      <tr><td>Kalium</td><td>K</td><td>19</td><td>Gradien ion pada membran dan aktivitas enzim</td></tr>
+      <tr><td>Natrium</td><td>Na</td><td>11</td><td>Gradien ion, transmisi impuls saraf, dan keseimbangan cairan</td></tr>
+      <tr><td>Kalsium</td><td>Ca</td><td>20</td><td>Kontraksi otot, koagulasi darah, dan struktur tulang</td></tr>
+      <tr><td>Magnesium</td><td>Mg</td><td>12</td><td>Pusat atom pada klorofil</td></tr>
+      <tr><td>Klor</td><td>Cl</td><td>17</td><td>Gradien ion dan keseimbangan cairan tubuh</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s11">11. Dari atom menjadi molekul</h2>
+
+  <p>Atom dapat berikatan dengan atom lain melalui ikatan kimia. Ketika dua atom atau lebih terikat, terbentuk molekul. Molekul adalah struktur kimia yang tersusun atas sekurang-kurangnya dua atom yang dihubungkan oleh satu atau lebih ikatan kimia.</p>
+
+  <p>Ada tiga jenis utama ikatan yang berperan pada molekul biologis. Ikatan ion terbentuk karena tarikan antara muatan berbeda. Ikatan kovalen terjadi karena pemakaian bersama pasangan elektron. Ikatan hidrogen terbentuk antara atom hidrogen yang bermuatan parsial positif dan atom yang memiliki pasangan elektron bebas.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 11.1 &middot; Perbandingan jenis ikatan pada molekul biologis</caption>
+    <thead>
+      <tr><th>Jenis ikatan</th><th>Mekanisme</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ikatan ionik</td><td>Tarikan elektrostatik antara ion</td><td>Na dan Cl pada garam</td></tr>
+      <tr><td>Ikatan kovalen</td><td>Pemakaian bersama pasangan elektron</td><td>C dan H pada metana</td></tr>
+      <tr><td>Ikatan hidrogen</td><td>Tarikan parsial pada H dan atom elektronegatif</td><td>Antaruntun air dan pasangan basa DNA</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Molekul air memiliki bentuk yang tidak simetris sehingga bersifat polar. Sifat polar inilah yang membuat air menjadi pelarut baik bagi banyak zat berion maupun zat polar, dan sekaligus membuat molekul air dapat membentuk ikatan hidrogen dengan molekul lain.</p>
+
+  <pre class="diagram"><code>H + O + H  -&gt;  H2O
+O + O          -&gt;  O2
+C + O + O      -&gt;  CO2</code></pre>
+
+  <h2 id="s12">12. Makromolekul biologis</h2>
+
+  <p>Makromolekul adalah molekul berukuran besar yang biasanya terbentuk melalui polimerisasi, yaitu penggabungan banyak unit kecil yang disebut monomer. Empat kelompok makromolekul biologis utama meliputi karbohidrat, lipid, protein, dan asam nukleat.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 12.1 &middot; Empat kelompok makromolekul biologis</caption>
+    <thead>
+      <tr><th>Kelompok</th><th>Contoh</th><th>Fungsi utama</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Karbohidrat</td><td>Glukosa, pati, glikogen, selulosa</td><td>Sumber energi, penyimpanan energi, dan struktur</td></tr>
+      <tr><td>Lipid</td><td>Lemak, fosfolipid, steroid, lilin</td><td>Cadangan energi, penyusun membran, perlindungan, dan sinyal</td></tr>
+      <tr><td>Protein</td><td>Enzim, antibodi, keratin, hemoglobin, reseptor</td><td>Katalis, pengangkut, struktural, kontraktil, dan pengenal</td></tr>
+      <tr><td>Asam nukleat</td><td>DNA dan RNA</td><td>Penyimpanan dan penggunaan informasi genetik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Enzim merupakan protein yang berfungsi sebagai katalis biologis. Enzim menurunkan energi aktivasi sehingga reaksi dapat berlangsung lebih cepat tanpa ikut berubah dalam reaksi tersebut. Setiap enzim umumnya bekerja pada substrat tertentu dan pada kondisi suhu serta pH tertentu.</p>
+  </div>
+<h2 id="s13">13. Sel sebagai unit dasar kehidupan</h2>
+
+  <p>Sel adalah unit dasar kehidupan. Sel bukan sekadar bagian kecil tubuh, melainkan unit yang memiliki struktur dan sistem sehingga dapat menjalankan berbagai proses kehidupan seperti nutrisi, respirasi, sintesis protein, dan reproduksi.</p>
+
+  <p>OpenStax menegaskan bahwa sel merupakan unit dasar kehidupan dan bahwa seluruh organisme tersusun atas satu atau lebih sel. Konsep ini penting karena sebagian besar kajian biologi modern bekerja pada tingkat sel.</p>
+
+  <div class="note">
+    <p>Menurut definisi ini, virus tidak termasuk makhluk hidup. Virus tidak tersusun atas sel dan tidak dapat berkembang biak sendiri. Untuk memperbanyak diri, virus harus mengambil alih mekanisme reproduksi sel inang yang hidup.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 13.1 &middot; Contoh organisme berdasarkan jumlah sel</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Contoh</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Uniseluler</td><td>Bakteri, Amoeba, Paramecium</td><td>Satu sel melakukan seluruh fungsi kehidupan</td></tr>
+      <tr><td>Kolonial</td><td>Volvox dan beberapa kolonial bryozoa</td><td>Banyak sel membentuk koloni yang tersusun</td></tr>
+      <tr><td>Multiseluler</td><td>Manusia, pohon, ikan</td><td>Sel membentuk jaringan, organ, dan sistem</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s14">14. Teori sel</h2>
+
+  <p>Teori sel modern memiliki tiga gagasan dasar. Pertama, seluruh makhluk hidup tersusun atas satu atau lebih sel. Kedua, sel merupakan unit dasar kehidupan. Ketiga, sel baru berasal dari sel yang sudah ada sebelumnya.</p>
+
+  <pre class="diagram"><code>Robert Hooke, 1665
+   |
+ Memeriksa potongan kayu gabus dan melihat
+ ruang-ruang kecil yang menyerupai sel jantung
+   |
+ Istilah "sel" berasal dari bahasa Latin
+ cellula yang berarti ruang kecil
+   |
+Antoni van Leeuwenhoek
+   |
+ Mengamati mikroorganisme hidup pada air
+   |
+ Matthias Schleiden dan Theodor Schwann
+   |
+ Menyusun gagasan bahwa seluruh makhluk hidup
+ tersusun atas sel
+   |
+ Robert Remak dan Rudolf Virchow
+   |
+ Menyatakan bahwa setiap sel berasal dari sel lain
+   |
+ TEORI SEL MODERN</code></pre>
+
+  <div class="note">
+    <p>Gagasan bahwa sel berasal dari sel yang sudah ada sebelumnya penting bagi perkembangan ilmu. Joachim Beale dan Rudolf Virchow membantu mengenalkan gagasan ini, yang umum dikenal sebagai doktrin <em>omnis cellula e cellula</em>.</p>
+  </div>
+
+  <p>Konsep tersebut menjelaskan bahwa manusia tidak terbentuk sebagai organisme utuh dari nol. Pertumbuhan manusia melibatkan pembelahan sel yang berulang, kemudian diferensiasi sehingga terbentuk sel-sel khusus dengan fungsi yang berbeda.</p>
+
+  <h2 id="s15">15. Mikroskop</h2>
+
+  <p>Sebagian besar sel berukuran sangat kecil sehingga tidak dapat dilihat dengan mata telanjang. Batas penglihatan mata manusia adalah sekitar 0,1 milimeter atau 100 mikrometer. Mikroskop diperlukan untuk melihat struktur yang lebih kecil dari batas tersebut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 15.1 &middot; Perbandingan jenis mikroskop</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Mikroskop cahaya</th><th>Mikroskop elektron</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sumber</td><td>Cahaya tampak</td><td>Berkas elektron</td></tr>
+      <tr><td>Perbesar maksimum</td><td>Sekitar 1000 kali</td><td>Hingga 100.000 kali</td></tr>
+      <tr><td>Batas resolusi</td><td>Sekitar 200 nanometer</td><td>Sekitar 0,1 nanometer</td></tr>
+      <tr><td>Benda hidup</td><td>Dapat diamati</td><td>Tidak dapat diamati</td></tr>
+      <tr><td>Sampel</td><td>Mudah disiapkan</td><td>Perlu fiksasi dan pelapisan logam</td></tr>
+      <tr><td>Kesan struktur</td><td>Dapat melihat bagian dalam sel</td><td>Dapat melihat membran dan organel kecil</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Istilah resolusi perlu dibedakan dari perbesar. Perbesar membuat objek tampak lebih besar, sedangkan resolusi menentukan apakah dua objek berdekatan dapat dipisahkan. Mikroskop cahaya memiliki resolusi sekitar 200 nanometer, sehingga virus dan organel kecil masih berada di luar batas pengamatan.</p>
+
+  <div class="note">
+    <p>Perbesar total mikroskop diperoleh dengan mengalikan perbesar objektif dengan perbesar okular. Objektif 40 kali dengan okular 10 kali menghasilkan perbesar total 400 kali.</p>
+  </div>
+
+  <h2 id="s16">16. Sel prokariotik</h2>
+
+  <p>Sel prokariotik adalah sel yang tidak mempunyai nukleus yang dibungkus membran. Materi genetiknya berada pada daerah yang disebut nukleoid, dan DNA tersebut umumnya berbentuk lingkaran.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Ciri sel prokariotik</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Nukleus</td><td>Tidak ada nukleus bermembran</td></tr>
+      <tr><td>Materi genetik</td><td>DNA berbentuk lingkaran pada nukleoid, sering dengan plasmid</td></tr>
+      <tr><td>Ukuran</td><td>Umumnya kecil, sekitar 1 sampai 10 mikrometer</td></tr>
+      <tr><td>Ribosom</td><td>Ada, tetapi lebih kecil dan berbeda dari ribosom eukariot</td></tr>
+      <tr><td>Organel bermembran</td><td>Tidak ada mitokondria, kloroplas, maupun aparatus Golgi</td></tr>
+      <tr><td>Dinding sel</td><td>Umumnya ada dan mengandung peptidoglikan</td></tr>
+      <tr><td>Contoh</td><td>Bakteri dan Archaea</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s17">17. Sel eukariotik</h2>
+
+  <p>Sel eukariotik memiliki nukleus yang dibungkus membran inti serta organel bermembran lainnya. Sel eukariotik umumnya lebih besar dan lebih kompleks dibandingkan sel prokariotik.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 17.1 &middot; Perbandingan sel prokariotik dan eukariotik</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Prokariotik</th><th>Eukariotik</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ukuran</td><td>1 sampai 10 mikrometer</td><td>10 sampai 100 mikrometer</td></tr>
+      <tr><td>Nukleus</td><td>Tidak ada</td><td>Ada, dibungkus membran</td></tr>
+      <tr><td>DNA</td><td>Lingkaran, tanpa histon</td><td>Linear, berpasangan dengan histon</td></tr>
+      <tr><td>Organel bermembran</td><td>Tidak ada</td><td>Ada</td></tr>
+      <tr><td>Ribosom</td><td>70S</td><td>80S pada sitoplasma</td></tr>
+      <tr><td>Pembelahan</td><td>Mitosis tidak terjadi</td><td>Mitosis dan meiosis</td></tr>
+      <tr><td>Contoh</td><td>Bakteri, Archaea</td><td>Hewan, tumbuhan, jamur, protista</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>Sel prokariotik                Sel eukariotik
+   |                               |
+ tidak ada nukleus bermembran    nukleus bermembran
+   |                               |
+ DNA lingkaran                   DNA linear
+   |                               |
+ tidak ada organel bermembran   organel bermembran
+   |                               |
+ membran plasma                 membran plasma
+   |                               |
+ BAKTERI, ARCHAEA              HAYAWAN, TUMBUHAN,
+                                JAMUR, PROTISTA</code></pre>
+
+  <h2 id="s18">18. Organel sel</h2>
+
+  <p>Organel adalah struktur kecil di dalam sel yang menjalankan fungsi tertentu. Sel dapat diibaratkan sebagai kota yang setiap bagiannya memiliki tugas tertentu. Organel pada sel eukariotik dikelompokkan berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.1 &middot; Organel sel dan fungsinya</caption>
+    <thead>
+      <tr><th>Organel</th><th>Fungsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Nukleus</td><td>Menyimpan sebagian besar DNA dan mengatur banyak aktivitas sel</td></tr>
+      <tr><td>Ribosom</td><td>Tempat sintesis protein</td></tr>
+      <tr><td>Mitokondria</td><td>Menghasilkan sebagian besar ATP melalui respirasi seluler</td></tr>
+      <tr><td>Kloroplas</td><td>Tempat fotosintesis pada tumbuhan dan alga</td></tr>
+      <tr><td>Retikulum endoplasma kasar</td><td>Terikat ribosom dan berperan dalam sintesis protein</td></tr>
+      <tr><td>Retikulum endoplasma halus</td><td>Berperan dalam sintesis lipid dan pengangkutan zat</td></tr>
+      <tr><td>Aparatus Golgi</td><td>Memproses, menyortir, dan mengemas molekul</td></tr>
+      <tr><td>Lisosom</td><td>Menguraikan berbagai material di dalam sel hewan</td></tr>
+      <tr><td>Peroksisom</td><td>Menguraikan asam lemak dan menghasilkan peroksida</td></tr>
+      <tr><td>Sitoskeleton</td><td>Memberi bentuk sel, menahan organel, dan memudahkan gerak</td></tr>
+      <tr><td>Vakuola sentral</td><td>Menyimpan air dan zat terlarut, terutama pada sel tumbuhan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Sel tumbuhan dan sel hewan memiliki kesamaan besar, tetapi juga perbedaan. Sel tumbuhan umumnya memiliki dinding sel, kloroplas, dan vakuola sentral yang besar. Sel hewan tidak memiliki ketiga struktur tersebut, tetapi memiliki lisosom yang berkembang baik serta sentrosom untuk membantu pembelahan.</p>
+  </div>
+
+  <h2 id="s19">19. Membran plasma</h2>
+
+  <p>Membran plasma atau membran sel membungkus seluruh isi sel dan mengatur pertukaran zat antara sel dengan lingkungannya. Membran tersusun atas lapisan ganda fosfolipid dengan protein yang tertanam di dalamnya.</p>
+
+  <pre class="diagram"><code>Luar sel
+   |
+   |  protein kanal dan protein pembawa
+   |  fosfolipid    fosfolipid    fosfolipid
+   |====================================|
+   |  protein pengangkut   protein reseptor
+   |  fosfolipid    fosfolipid    fosfolipid
+   |====================================|
+   |  protein enzim   protein kerangka
+   |
+Dalam sel</code></pre>
+
+  <div class="note">
+    <p>Membran bersifat semipermeabel karena lapisan ganda fosfolipid hanya dapat dilalui oleh sebagian kecil molekul. Molekul besar dan bermuatan memerlukan protein pembawa untuk melewati membran. Contohnya ion natrium dan kalium memerlukan pompa khusus.</p>
+  </div>
+
+  <figure>
+    <img src="gambar/atom.svg" alt="Diagram struktur atom yang memperlihatkan inti atom, proton, neutron, dan elektron" width="900" height="900" loading="lazy" decoding="async">
+    <figcaption>Struktur atom pada model sederhana. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="gambar/sel-hewan.svg" alt="Diagram sel hewan lengkap dengan nukleus, ribosom, retikulum endoplasma, aparatus Golgi, mitokondria, lisosom, sitoskeleton, dan membran sel" width="1000" height="700" loading="lazy" decoding="async">
+    <figcaption>Organel utama pada sel hewan. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="gambar/sel-tumbuhan.svg" alt="Diagram sel tumbuhan yang memperlihatkan dinding sel, membran, vakuola, kloroplas, nukleus, dan organel lainnya" width="1200" height="800" loading="lazy" decoding="async">
+    <figcaption>Struktur umum sel tumbuhan. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <p>Model membran yang umum dipakai saat ini adalah model mosaik fluida. Istilah mosaik menunjukkan adanya protein yang tersebar di antara lipid, sedangkan fluida menunjukkan bagian lipid dapat bergerak ke samping sehingga membran bersifat lentur.</p>
+<h2 id="s20">20. Tingkat organisasi kehidupan</h2>
+
+  <p>Seluruh kehidupan tersusun berjenjang dari partikel terkecil sampai ke seluruh permukaan Bumi. Urutan lengkap dapat dimulai dari tingkat kimia.</p>
+
+  <pre class="diagram"><code>ATOM
+   |
+ MOLEKUL
+   |
+ MAKROMOLEKUL
+   |
+ ORGANEL
+   |
+ SEL
+   |
+ JARINGAN
+   |
+ ORGAN
+   |
+ SISTEM ORGAN
+   |
+ ORGANISME
+   |
+ POPULASI
+   |
+ KOMUNITAS
+   |
+ EKOSISTEM
+   |
+ BIOMA
+   |
+ BIOSFER</code></pre>
+
+  <figure>
+    <img src="gambar/tingkat-organisasi.svg" alt="Diagram bertingkat yang menunjukkan susunan kehidupan dari tingkat atom dan molekul menuju jaringan, organ, organisme, populasi, dan ekosistem" width="800" height="1200" loading="lazy" decoding="async">
+    <figcaption>Tingkat organisasi kehidupan dari tingkat terkecil hingga tingkat populasi dan ekosistem. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <p>Urutan tersebut bukan sekadar daftar. Setiap tingkat memiliki ciri khas yang tidak dimiliki oleh tingkat sebelumnya. Molekul memiliki ikatan kimia, sel memiliki membran dan organel, jaringan memiliki fungsi khusus, dan ekosistem memiliki interaksi antara komponen biotik dan abiotik.</p>
+
+  <div class="note">
+    <p>Urutan tersebut berjalan dua arah. Dalam arah naik, bagian-bagian kecil menyusun bagian yang lebih besar. Dalam arah turun, perubahan pada tingkat yang lebih besar dapat memengaruhi tingkat yang lebih kecil. Contohnya, kekeringan dapat mengubah jaringan tumbuhan, yang kemudian memengaruhi sel, molekul, dan akhirnya gen yang dipakai untuk membuat protein.</p>
+  </div>
+
+  <h2 id="s21">21. Jaringan</h2>
+
+  <p>Jaringan adalah kumpulan sel yang memiliki struktur serupa dan menjalankan fungsi yang berkaitan. Pada tumbuhan, jaringan dasar meliputi jaringan meristem, epidermis, fundamental, dan pengangkut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 21.1 &middot; Jaringan dasar pada tumbuhan dan hewan</caption>
+    <thead>
+      <tr><th>Jaringan</th><th>Letak dan fungsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Jaringan meristem</td><td>Sel muda yang aktif membelah dan menambah jumlah jaringan</td></tr>
+      <tr><td>Jaringan epidermis</td><td>Lapisan luar pada tumbuhan, melindungi dan mengatur pertukaran gas</td></tr>
+      <tr><td>Jaringan fundamental</td><td>Jaringan dasar tumbuhan yang menyimpan cadangan makanan</td></tr>
+      <tr><td>Jaringan pengangkut</td><td>Mengangkut air, mineral, dan hasil fotosintesis</td></tr>
+      <tr><td>Jaringan epitel</td><td>Melapisi permukaan tubuh dan mengisi rongga dalam</td></tr>
+      <tr><td>Jaringan ikat</td><td>Menghubungkan, menopang, dan melindungi organ</td></tr>
+      <tr><td>Jaringan otot</td><td>Menghasilkan kontraksi sehingga tubuh dapat bergerak</td></tr>
+      <tr><td>Jaringan saraf</td><td>Menerima, meneruskan, dan memproses rangsangan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s22">22. Organ dan sistem organ</h2>
+
+  <p>Organ adalah struktur yang tersusun atas beberapa jenis jaringan yang bekerja bersama untuk menjalankan fungsi tertentu. Contohnya jantung tersusun atas jaringan otot, jaringan saraf, jaringan ikat, dan jaringan pembuluh darah yang bersama-sama menghasilkan fungsi pemompaan darah.</p>
+
+  <p>Sistem organ merupakan tingkat berikutnya. Sistem organ terdiri atas organ-organ yang bekerja sama untuk menjalankan satu fungsi besar.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 22.1 &middot; Sistem organ pada manusia dan fungsinya</caption>
+    <thead>
+      <tr><th>Sistem</th><th>Organ utama</th><th>Fungsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pencernaan</td><td>Mulut, kerongkongan, lambung, usus, hati, pankreas</td><td>Mencerna makanan dan menyerap zat</td></tr>
+      <tr><td>Peredar darah</td><td>Jantung, pembuluh darah, darah</td><td>Mengangkut zat dan oksigen ke seluruh tubuh</td></tr>
+      <tr><td>Respirasi</td><td>Hidung, trakea, bronkus, paru-paru</td><td>Menyediakan oksigen dan mengeluarkan karbon dioksida</td></tr>
+      <tr><td>Ekskresi</td><td>Ginjal, ureter, kandung kencing, uretra</td><td>Mengatur air dan membuang sisa metabolisme</td></tr>
+      <tr><td>Reproduksi</td><td>Testis, ovarium, rahim, bakal biji, dan biji</td><td>Menghasilkan keturunan</td></tr>
+      <tr><td>Saraf</td><td>Otak, medula spinalis, saraf perifer</td><td>Mengkoordinasikan respons tubuh</td></tr>
+      <tr><td>Gerak</td><td>Otot, tulang, tendon, ligamen, sendi</td><td>Menghasilkan gerak dan menopang tubuh</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Organ tidak selalu bekerja sendirian. Jantung memerlukan paru-paru untuk memperoleh oksigen, dan memerlukan hati untuk memproses zat yang tiba dari saluran pencernaan. Hubungan antarorgan tersebut menjelaskan mengapa gangguan pada satu organ dapat memengaruhi organ lain.</p>
+
+  <h2 id="s23">23. Organisme, populasi, dan komunitas</h2>
+
+  <p>Organisme adalah satu individu makhluk hidup. Satu manusia, satu kucing, satu pohon mangga, dan satu bakteri masing-masing merupakan satu organisme.</p>
+
+  <p>Populasi adalah kumpulan individu dari spesies yang sama yang hidup pada wilayah tertentu dan memiliki potensi untuk berinteraksi. Seratus ekor ikan nila dalam satu kolam dapat dianggap sebagai satu populasi apabila memenuhi syarat wilayah dan interaksinya.</p>
+
+  <p>Komunitas adalah kumpulan berbagai populasi yang hidup pada suatu wilayah dan berinteraksi satu sama lain. Di sebuah kolam terdapat populasi ikan, populasi tumbuhan air, populasi plankton, populasi bakteri, dan populasi serangga. Gabungan seluruh populasi tersebut membentuk komunitas.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 23.1 &middot; Perbedaan organisme, populasi, dan komunitas</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Organisme</th><th>Populasi</th><th>Komunitas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Satuan</td><td>Satu individu</td><td>Kumpulan individu satu spesies</td><td>Kumpulan berbagai populasi</td></tr>
+      <tr><td>Wilayah</td><td>Tidak dibatasi wilayah</td><td>Wilayah tertentu</td><td>Wilayah tertentu</td></tr>
+      <tr><td>Contoh</td><td>Satu pohon jati</td><td>Hutan jati pada satu wilayah</td><td>Seluruh organisme pada hutan tersebut</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s24">24. Ekosistem</h2>
+
+  <p>Ekosistem lebih luas lagi karena memasukkan komponen tidak hidup. Ekosistem merupakan kesatuan antara komunitas organisme hidup dan lingkungan abiotik tempat mereka hidup beserta interaksinya.</p>
+
+  <pre class="diagram"><code>EKOSISTEM
+   |
+   +-- komponen biotik
+   |     tumbuhan, hewan, bakteri,
+   |     jamur, plankton
+   |
+   +-- komponen abiotik
+   |     air, udara, tanah, cahaya,
+   |     suhu, pH, mineral, kelembapan
+   |
+   +-- interaksi di antaranya
+         aliran energi, daur zat,
+         hubungan makan-dimakan</code></pre>
+
+  <p>Pada ekosistem, energi mengalir masuk dari luar, terutama cahaya matahari, dan berpindah dari satu tingkat trofik ke tingkat trofik berikutnya. Sebaliknya, zat berupa air, karbon, nitrogen, dan mineral berputar dalam daur di dalam ekosistem. Perbedaan antara aliran energi dan daur zat penting untuk memahami cara kerja ekosistem.</p>
+
+  <div class="note">
+    <p>Energi mengalir satu arah dan kehilangan sebagian besar sebagai panas pada setiap perpindahan tingkat trofik. Zat justru didaur ulang sehingga dapat dipakai berulang kali. Karena itu, ekosistem yang kehilangan besar energi akan segera mengalami gangguan.</p>
+  </div>
+
+  <h2 id="s25">25. Bioma dan biosfer</h2>
+
+  <p>Bioma adalah wilayah ekologi yang sangat luas dengan kondisi lingkungan dan komunitas organisme yang khas. Nama bioma biasanya diambil dari bentuk vegetasi dominan di wilayah tersebut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 25.1 &middot; Bioma dan cirinya</caption>
+    <thead>
+      <tr><th>Bioma</th><th>Ciri lingkungan</th><th>Vegetasi dominan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hutan hujan tropis</td><td>Hujan tinggi, suhu tinggi, keanekaragaman tinggi</td><td>Pohon tinggi berlapis</td></tr>
+      <tr><td>Hutan gugur daun</td><td>Musim dingin dan hangat</td><td>Pohon yang kehilangan daun pada musim dingin</td></tr>
+      <tr><td>Taiga</td><td>Suhu sangat dingin, curah hujan sedang</td><td>Konifer seperti cemara dan pinus</td></tr>
+      <tr><td>Tundra</td><td>Suhu sangat dingin, tanah beku sebagian</td><td>Tumbuhan pendek dan lumut</td></tr>
+      <tr><td>Padang rumput</td><td>Curah hujan sedang, gangguan api</td><td>Rumput dan herba</td></tr>
+      <tr><td>Gurun</td><td>Curah hujan sangat sedikit, suhu ekstrem</td><td>Tumbuhan annual yang tahan kekeringan</td></tr>
+      <tr><td>Wetland</td><td>Tanah jenuh air secara terus-menerus</td><td>Tumbuhan air dan rawa</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Biosfer adalah keseluruhan bagian Bumi yang mendukung kehidupan. Biosfer meliputi daratan, perairan, dan bagian atmosfer tempat kehidupan dapat berlangsung. Biosfer merupakan tingkat organisasi kehidupan yang paling luas.</p>
+
+  <pre class="diagram"><code>ORGANISME
+   |
+ POPULASI
+   |
+ KOMUNITAS
+   |
+ EKOSISTEM
+   |
+ BIOMA
+   |
+ BIOSFER</code></pre>
+
+  <h2 id="s26">26. Ciri-ciri makhluk hidup</h2>
+
+  <p>OpenStax merangkum ciri-ciri kehidupan menjadi delapan karakteristik utama. Kedelapan ciri tersebut dipakai untuk membedakan makhluk hidup dari benda mati.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 26.1 &middot; Karakteristik kehidupan</caption>
+    <thead>
+      <tr><th>Karakteristik</th><th>Penjelasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Keteraturan dan organisasi</td><td>Struktur tersusun berjenjang dari atom hingga organisme</td></tr>
+      <tr><td>Respons terhadap lingkungan</td><td>Merespons rangsangan seperti cahaya, panas, dan bahan kimia</td></tr>
+      <tr><td>Reproduksi</td><td>Mampu menghasilkan keturunan agar generasi berlanjut</td></tr>
+      <tr><td>Adaptasi</td><td>Memiliki ciri yang membantu hidup pada lingkungannya</td></tr>
+      <tr><td>Pertumbuhan dan perkembangan</td><td>Berubah ukuran, bentuk, dan fungsi selama hidup</td></tr>
+      <tr><td>Regulasi dan homeostasis</td><td>Mempertahankan keadaan internal dalam rentang tertentu</td></tr>
+      <tr><td>Pemrosesan energi</td><td>Menggunakan dan melepaskan energi melalui metabolisme</td></tr>
+      <tr><td>Evolusi</td><td>Perubahan sifat populasi dari generasi ke generasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Tidak ada satu ciri pun yang menjadi syarat tunggal. Api yang menyala memiliki beberapa ciri, tetapi tidak melakukan metabolisme dan tidak bereproduksi. Karena itu, penentuan apakah sesuatu itu hidup selalu mempertimbangkan gabungan seluruh ciri tersebut.</p>
+  </div>
+<h2 id="s27">27. Metabolisme</h2>
+
+  <p>Metabolisme adalah keseluruhan reaksi kimia yang berlangsung di dalam organisme atau sel. Metabolisme mencakup proses memecah makanan, menghasilkan energi, membuat protein, membuat DNA, menyimpan energi, dan menggunakan energi.</p>
+
+  <p>Seluruh reaksi kimia di dalam sel yang menggunakan atau melepaskan energi termasuk dalam lingkup metabolisme. Karena metabolisme berlangsung terus-menerus, organisme harus memperoleh bahan bakar dan energi dari lingkungan secara terus-menerus juga.</p>
+
+  <div class="note">
+    <p>Metabolisme dapat dibedakan menjadi dua arah yang saling melengkapi. Katabolisme memecah molekul kompleks menjadi molekul yang lebih sederhana sambil melepaskan energi. Anabolisme menyusun molekul sederhana menjadi molekul yang lebih kompleks dengan memakai energi.</p>
+  </div>
+
+  <h2 id="s28">28. Katabolisme dan anabolisme</h2>
+
+  <pre class="diagram"><code>KATABOLISME
+   |
+ molekul kompleks
+   |
+   v
+ molekul lebih sederhana + energi dapat dipakai
+   |
+ contoh: glikogen dipecah menjadi glukosa
+
+ANABOLISME
+   |
+ molekul sederhana
+   |
+   v
+ molekul kompleks + energi dibutuhkan
+   |
+ contoh: asam amino disusun menjadi protein
+           nukleotida disusun menjadi DNA</code></pre>
+
+  <p>Kedua arah tersebut tidak terpisah. Hasil katabolisme seperti ATP dan asam amino dipakai sebagai bahan dasar anabolisme. Hubungan dua arah itu membuat metabolisme berjalan sebagai satu sistem yang utuh.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 28.1 &middot; Perbandingan katabolisme dan anabolisme</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Katabolisme</th><th>Anabolisme</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Arah</td><td>Kompleks menjadi sederhana</td><td>Sederhana menjadi kompleks</td></tr>
+      <tr><td>Energi</td><td>Melepaskan energi</td><td>Memerlukan energi</td></tr>
+      <tr><td>Contoh</td><td>Glikolisis, respirasi seluler</td><td>Sintesis protein, fotosintesis</td></tr>
+      <tr><td>Peran</td><td>Menyediakan energi dan bahan awal</td><td>Membangun struktur dan bahan kerja</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s29">29. ATP sebagai mata uang energi</h2>
+
+  <p>Adenosin trifosfat atau ATP sering disebut sebagai mata uang energi sel karena sel menggunakannya untuk menjalankan berbagai kerja biologis. ATP tersusun atas basa adenin, gula ribosa, dan tiga gugus fosfat yang diberi label alfa, beta, dan gamma.</p>
+
+  <div class="eq">
+    ATP + H<sub>2</sub>O -&gt; ADP + P<sub>i</sub> + energi bebas
+    <span class="eq-note">Reaksi ini disebut hidrolisis karena memakai molekul air</span>
+  </div>
+
+  <p>Energi yang dibebaskan pada hidrolisis ATP dalam kondisi standar sekitar 30,5 kilojoule per mol. Di dalam sel yang sedang aktif, nilai tersebut dapat menjadi sekitar 57 kilojoule per mol karena kondisi di dalam sel tidak sama dengan kondisi standar.</p>
+
+  <div class="note">
+    <p>ATP tidak menyediakan energi karena satu ikatan tertentu yang sangat kuat. Energi muncul karena produk reaksi, yaitu ADP dan fosfat anorganik, memiliki energi bebas yang lebih rendah daripada pereaksi ADP dan air. Sel kemudian memakai energi itu melalui pengkoplan, yaitu menggabungkan reaksi yang melepaskan energi dengan reaksi yang memerlukan energi.</p>
+  </div>
+
+  <p>Contoh pengkoplan energi pada sel terdapat pada pompa natrium-kalium. Pompa tersebut mengeluarkan tiga ion natrium dan memasukkan dua ion kalium untuk setiap satu ATP yang dihidrolisis. Fosfat dari ATP dipindahkan ke protein pompa, dan perubahan bentuk protein tersebut memungkinkan ion natrium keluar serta kalium masuk.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 29.1 &middot; Kegunaan ATP pada aktivitas sel</caption>
+    <thead>
+      <tr><th>Aktivitas</th><th>Peran ATP</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kontraksi otot</td><td>Menggerak filamen aktin dan miosin</td></tr>
+      <tr><td>Transpor aktif</td><td>Menggerakkan pompa ion melalui membran</td></tr>
+      <tr><td>Sintesis protein</td><td>Menyediakan energi untuk ikatan peptida dan translasi</td></tr>
+      <tr><td>Replikasi DNA</td><td>Menyediakan energi untuk polimerase</td></tr>
+      <tr><td>Gerakan silia dan flagel</td><td>Menjalankan motor protein</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s30">30. Reproduksi</h2>
+
+  <p>Makhluk hidup mempunyai kemampuan menghasilkan keturunan. Reproduksi menjamin bahwa jenis kehidupan tertentu tidak hilang ketika individu tersebut mati.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 30.1 &middot; Perbandingan reproduksi aseksual dan seksual</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Aseksual</th><th>Seksual</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pelibatan gamet</td><td>Tidak ada</td><td>Ada</td></tr>
+      <tr><td>Jumlah induk</td><td>Satu induk</td><td>Dua induk</td></tr>
+      <tr><td>Kecepatan</td><td>Cepat</td><td>Lebih lambat</td></tr>
+      <tr><td>Variasi keturunan</td><td>Sangat sedikit</td><td>Lebih banyak</td></tr>
+      <tr><td>Contoh</td><td>Membelah diri, tunas, spora, vegetatif</td><td>Berlangkap, bertelur, melahirkan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Reproduksi seksual tidak selalu melibatkan penggabungan dua gamet dari dua induk berbeda. Pada tumbuhan dan beberapa hewan, pembuahan terjadi sendiri. Pada beberapa organisme, keturunan berkembang biak tanpa perkawinan sama sekali.</p>
+  </div>
+
+  <h2 id="s31">31. Pertumbuhan dan perkembangan</h2>
+
+  <p>Makhluk hidup dapat mengalami perubahan ukuran dan bentuk selama hidupnya. Perubahan tersebut mencakup pertumbuhan dan perkembangan yang keduanya tidak dapat dipisahkan.</p>
+
+  <pre class="diagram"><code>ZIGOT
+   |
+ EMBRIO
+   |
+ BAYI
+   |
+ ANAK
+   |
+ REMAJA
+   |
+ DEWASA
+   |
+ LANGSIA</code></pre>
+
+  <p>Pertumbuhan tidak sekadar berarti menjadi lebih besar. Dalam biologi, perkembangan juga mencakup perubahan struktural dan fungsional. Contohnya, sel embrio yang sama berkembang menjadi sel otot, sel saraf, atau sel kulit yang memiliki fungsi sangat berbeda.</p>
+
+  <h2 id="s32">32. Respons terhadap lingkungan</h2>
+
+  <p>Makhluk hidup mampu merespons rangsangan. Pada hewan, respons terhadap rangsangan berlangsung melalui rangkaian dari reseptor hingga gerakan otot.</p>
+
+  <pre class="diagram"><code>Rangsangan panas
+   |
+ Reseptor mendeteksi
+   |
+ Sinyal saraf
+   |
+ Pemrosesan di pusat saraf
+   |
+ Otot berkontraksi
+   |
+ Tangan ditarik</code></pre>
+
+  <p>Tumbuhan juga memberikan respons, tetapi melalui mekanisme yang berbeda karena tidak memiliki sistem saraf. Contohnya, akar tumbuhan menjauhi cahaya, sedangkan batang menuju cahaya. Respons tersebut disebut fototropisme.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 32.1 &middot; Contoh respons organisme terhadap lingkungan</caption>
+    <thead>
+      <tr><th>Organisme</th><th>Rangsangan</th><th>Respons</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Manusia</td><td>Suhu panas</td><td>Keringat meningkat</td></tr>
+      <tr><td>Manusia</td><td>Cahaya terang</td><td>Dilipit mata</td></tr>
+      <tr><td>Tumbuhan</td><td>Cahaya dari satu sisi</td><td>Batang membungkuk ke arah cahaya</td></tr>
+      <tr><td>Tumbuhan</td><td>Berat</td><td>Akar tumbuh ke bawah</td></tr>
+      <tr><td>Bakteri</td><td>Zat kimia</td><td>Bergerak menuju atau menjauhi zat</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s33">33. Homeostasis</h2>
+
+  <p>Homeostasis adalah kemampuan organisme mempertahankan keadaan internal yang relatif stabil meskipun terjadi perubahan lingkungan. Istilah ini berasal dari bahasa Yunani yang berarti keadaan tetap.</p>
+
+  <p>Homeostasis bukan berarti tubuh selalu berada pada angka yang persis sama. Tubuh mempertahankan keadaan internal dalam rentang tertentu, dan terus melakukan penyesuaian kecil. Karena itu, homeostasis disebut sebagai keseimbangan dinamis.</p>
+
+  <pre class="diagram"><code>Suhu tubuh meningkat
+   |
+ Sensor pada kulit dan hipotalamus
+ mendeteksi perubahan
+   |
+ Pusat pengatur merespons
+   |
+ Keringat meningkat
+   |
+ Pelepasan panas meningkat
+   |
+ Suhu kembali ke rentang normal</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 33.1 &middot; Contoh homeostasis pada manusia</caption>
+    <thead>
+      <tr><th>Variabel</th><th>Rentang normal</th><th>Mekanisme pengaturan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Suhu tubuh</td><td>Sekitar 36 sampai 37 derajat Celsius</td><td>Keringat dan perubahan pembuluh darah</td></tr>
+      <tr><td>Gula darah</td><td>Sekitar 70 sampai 110 miligram per desiliter</td><td>Insulin dan glukagon dari pankreas</td></tr>
+      <tr><td>pH darah</td><td>Sekitar 7,35 sampai 7,45</td><td>Sistem penyangga dan pernapasan</td></tr>
+      <tr><td>Kadar air</td><td>Sekitar 55 sampai 65 persen massa tubuh</td><td>Hilus dan hormon aldosteron</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s34">34. Umpan balik negatif dan positif</h2>
+
+  <p>Dalam pengaturan tubuh terdapat mekanisme umpan balik. Umpan balik negatif adalah respons yang mengurangi perubahan awal. Umpan balik positif adalah respons yang memperkuat perubahan awal.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 34.1 &middot; Perbandingan umpan balik negatif dan positif</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Umpan balik negatif</th><th>Umpan balik positif</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Arah respons</td><td>Melawan perubahan awal</td><td>Memperkuat perubahan awal</td></tr>
+      <tr><td>Fungsi utama</td><td>Menjaga keseimbangan</td><td>Memperkuat perubahan sampai batas tertentu</td></tr>
+      <tr><td>Contoh</td><td>Pengaturan suhu tubuh dan gula darah</td><td>Kontraksi rahim saat persalinan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Homeostasis terutama bekerja melalui umpan balik negatif. Umpan balik positif muncul pada proses yang memang harus berjalan terus sampai tujuan tercapai, misalnya kontraksi saat persalinan. Pada proses tersebut, umpan balik positif berhenti setelah tujuan tercapai.</p>
+  </div>
+
+  <h2 id="s35">35. Adaptasi dan evolusi</h2>
+
+  <p>Adaptasi adalah karakteristik yang membantu organisme hidup sesuai dengan lingkungannya. Adaptasi merupakan hasil proses evolusi, bukan hasil keputusan individu.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 35.1 &middot; Contoh adaptasi pada organisme</caption>
+    <thead>
+      <tr><th>Organisme</th><th>Lingkungan</th><th>Adaptasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Beruang kutub</td><td>Suhu sangat dingin</td><td>Bulu tebal, lapisan lemak, bentuk tubuh yang mengurangi kehilangan panas</td></tr>
+      <tr><td>Kaktus</td><td>Gurun kering</td><td>Batang berair, daun berubah menjadi duri, akar dangkal</td></tr>
+      <tr><td>Burung air</td><td>Air</td><td>Kaki berselaput, bentuk tubuh ramping</td></tr>
+      <tr><td>Archaea</td><td>Suhu dan pH ekstrem</td><td>Membran dan enzim yang tahan panas atau asam</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Kesalahpahaman yang sering terjadi adalah anggapan bahwa hewan melihat lingkungannya lalu memutuskan mengubah tubuhnya. Dalam biologi evolusi, adaptasi merupakan hasil perubahan pada populasi lintas generasi yang dipengaruhi seleksi alam. Individu tidak mengubah gennya karena kebutuhan, tetapi populasi yang memiliki variasi lebih sesuai akan lebih banyak menghasilkan keturunan.</p>
+  </div>
+
+  <p>Evolusi membahas perubahan karakteristik populasi dari generasi ke generasi. Evolusi menjelaskan keanekaragaman kehidupan, hubungan kekerabatan antarorganisme, perubahan bentuk tubuh dari nenek moyang ke keturunannya, adaptasi, dan munculnya berbagai bentuk kehidupan. Dalam biologi modern, evolusi menjadi salah satu konsep yang menyatukan berbagai bidang biologi.</p>
+
+  <h2 id="s36">36. Faktor pendukung kehidupan</h2>
+
+  <p>Organisme dipengaruhi oleh faktor lingkungan biotik maupun abiotik. Faktor abiotik meliputi air, cahaya, suhu, oksigen, pH, nutrien, dan kelembapan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 36.1 &middot; Faktor pendukung kehidupan dan pengaruhnya</caption>
+    <thead>
+      <tr><th>Faktor</th><th>Pengaruh terhadap organisme</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Air</td><td>Pelarut, medium reaksi, pengatur suhu, dan bahan bangun</td></tr>
+      <tr><td>Cahaya</td><td>Sumber energi fotosintesis dan pengatur waktu biologis pada beberapa organisme</td></tr>
+      <tr><td>Suhu</td><td>Memengaruhi laju reaksi kimia dan aktivitas enzim</td></tr>
+      <tr><td>Oksigen</td><td>Diperlukan respirasi aerobik pada banyak organisme</td></tr>
+      <tr><td>pH</td><td>Memengaruhi bentuk molekul dan aktivitas enzim</td></tr>
+      <tr><td>Nutrien</td><td>Diperlukan untuk pertumbuhan, metabolisme, dan pembentukan molekul biologis</td></tr>
+      <tr><td>Kelembapan</td><td>Memengaruhi transpirasi dan penyerapan air pada tumbuhan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Setiap organisme memiliki toleransi tertentu terhadap setiap faktor. Organisme yang tidak toleran disebut steno, sedangkan organisme yang memiliki toleransi luas disebut eury. Memahami toleransi membantu menjelaskan pembagian organisme pada habitat yang berbeda.</p>
+  </div>
+<h2 id="s37">37. Tiga domain kehidupan</h2>
+
+  <p>Sebelum dahulu, makhluk hidup dikelompokkan menjadi enam kerajaan, yaitu Animalia, Plantae, Fungi, Protista, Archaea, dan Bacteria. Pengelompokan itu didasarkan terutama pada ciri bentuk tubuh.</p>
+
+  <p>Penelitian mikrobiolog Amerika Carl Woese pada awal 1970-an mengubah gambaran tersebut. Woese mengurutkan ulang kehidupan berdasarkan hubungan genetik, khususnya urutan gen RNA ribosomal, dan mendapatkan tiga garis keturunan utama yang disebut domain.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 37.1 &middot; Perbandingan tiga domain kehidupan</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Bacteria</th><th>Archaea</th><th>Eukarya</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Jenis sel</td><td>Prokariotik</td><td>Prokariotik</td><td>Eukariotik</td></tr>
+      <tr><td>Nukleus bermembran</td><td>Tidak ada</td><td>Tidak ada</td><td>Ada</td></tr>
+      <tr><td>Bentuk DNA</td><td>Lingkaran</td><td>Lingkaran</td><td>Linear di dalam nukleus</td></tr>
+      <tr><td>Memiliki histon</td><td>Tidak</td><td>Beberapa jenis memiliki</td><td>Ya</td></tr>
+      <tr><td>Dinding sel</td><td>Peptidoglikan</td><td>Tidak mengandung peptidoglikan</td><td>Bukan peptidoglikan</td></tr>
+      <tr><td>Membran plasma</td><td>Ester</td><td>Eter</td><td>Ester</td></tr>
+      <tr><td>Contoh</td><td>Bakteri tanah, bakteri patogen</td><td>Bakteri yang hidup di mata air panas</td><td>Hewan, tumbuhan, jamur, protista</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <figure>
+    <img src="gambar/tiga-domain.png" alt="Diagram hubungan evolusioner antara domain Bacteria, Archaea, dan Eukarya" width="512" height="268" loading="lazy" decoding="async">
+    <figcaption>Tiga domain kehidupan. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <h3 id="s37-1">37.1 Bacteria</h3>
+
+  <p>Bakteri merupakan organisme prokariotik. Bakteri umumnya bersel tunggal, tidak memiliki nukleus sejati, tetapi tetap mempunyai DNA dan ribosom. Bakteri sangat beragam dan banyak hidup pada lingkungan manusia maupun lingkungan lainnya.</p>
+
+  <h3 id="s37-2">37.2 Archaea</h3>
+
+  <p>Archaea juga prokariotik, tetapi tidak dapat dianggap sekadar bakteri yang hidup di tempat ekstrem. Archaea memiliki karakteristik molekuler yang membuatnya cukup berbeda sehingga ditempatkan pada domain tersendiri. Sebagian besar Archaea memang hidup pada kondisi ekstrem, tetapi sebagian lain hidup pada kondisi biasa.</p>
+
+  <h3 id="s37-3">37.3 Eukarya</h3>
+
+  <p>Eukarya mencakup organisme dengan sel eukariotik. Kelompok ini meliputi Animalia, Plantae, Fungi, serta berbagai organisme yang secara tradisional dimasukkan ke dalam Protista.</p>
+
+  <div class="note">
+    <p>Dasar pemisahan ketiga domain bukan sekadar tempat hidup, melainkan bukti molekuler. Perbedaan struktur membran sel dan jenis RNA ribosomal menjadi bukti utama yang digunakan untuk menempatkan organisme ke dalam domain yang berbeda.</p>
+  </div>
+
+  <h2 id="s38">38. Hubungan biologi dengan ilmu lain</h2>
+
+  <p>Biologi tidak berdiri sendiri. Proses kehidupan melibatkan reaksi kimia, gaya dan gerak, perhitungan, serta data yang sangat banyak. Karena itu, biologi selalu berpadu dengan ilmu lain.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 38.1 &middot; Hubungan biologi dengan ilmu lain</caption>
+    <thead>
+      <tr><th>Ilmu</th><th>Peran dalam biologi</th><th>Bidang gabungan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kimia</td><td>Reaksi dalam sel, struktur protein dan DNA, enzim, metabolisme, sifat air, asam basa</td><td>Biokimia</td></tr>
+      <tr><td>Fisika</td><td>Gerak, gaya, tekanan, aliran darah, panas, listrik saraf, pencitraan medis</td><td>Biofisika</td></tr>
+      <tr><td>Matematika</td><td>Statistik, grafik, pertumbuhan populasi, probabilitas genetika, pemodelan</td><td>Biostatistika</td></tr>
+      <tr><td>Informatika</td><td>Analisis DNA, analisis protein, basis data gen, genomika, pembelajaran mesin</td><td>Bioinformatika</td></tr>
+      <tr><td>Geografi</td><td>Sebaran organisme secara geografis dan pengaruhnya terhadap lingkungan</td><td>Biogeografi</td></tr>
+      <tr><td>Ekonomi</td><td>Pertanian, peternakan, perikanan, pangan, farmasi, pengelolaan sumber daya</td><td>Ekonomi hayati</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Contoh sederhana hubungan tersebut adalah aliran darah. Darah bergerak melalui pembuluh darah, dan gerak itu tidak hanya persoalan biologis, tetapi juga persoalan mekanika fluida dan tekanan.</p>
+
+  <div class="note">
+    <p>Bioinformatika menjadi contoh yang berkembang paling cepat. Peneliti menggunakan komputasi untuk mengolah data genom dalam jumlah sangat besar. Tanpa perangkat komputasi, data tersebut tidak dapat dianalisis dalam waktu yang masuk akal.</p>
+  </div>
+
+  <h2 id="s39">39. Sikap ilmiah</h2>
+
+  <p>Sikap ilmiah sangat penting karena ilmu pengetahuan bukan hanya tentang apa yang dipelajari, tetapi juga tentang bagaimana seseorang memperoleh dan memperlakukan pengetahuan tersebut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 39.1 &middot; Sikap ilmiah dalam penelitian</caption>
+    <thead>
+      <tr><th>Sikap</th><th>Bentuk penerapan dalam penelitian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rasa ingin tahu</td><td>Mengajukan pertanyaan baru ketika hasil tidak sesuai dugaan</td></tr>
+      <tr><td>Jujur terhadap data</td><td>Mencatat hasil apa adanya, termasuk hasil yang tidak mendukung dugaan</td></tr>
+      <tr><td>Disiplin dan tekun</td><td>Mengulangi pengukuran dan mengikuti prosedur secara konsisten</td></tr>
+      <tr><td>Berani bertanya</td><td>Berani menyampaikan pertanyaan yang belum terjawab</td></tr>
+      <tr><td>Santun</td><td>Menghormati pendapat peneliti lain</td></tr>
+      <tr><td>Bekerja sama</td><td>Membagi data kepada peneliti lain untuk memeriksa ulang hasil</td></tr>
+      <tr><td>Bertanggung jawab</td><td>Menjaga etika penelitian agar tidak merugikan makhluk lain dan lingkungan</td></tr>
+      <tr><td>Peduli lingkungan</td><td>Menghindari pencemaran dan kerusakan saat mengambil contoh di lapangan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Kejujuran terhadap data merupakan sikap yang paling mudah dilanggar. Peneliti yang mengabaikan hasil yang tidak mendukung dugaan membuat kesimpulan penelitian tidak dapat dipercaya.</p>
+  </div>
+<h2 id="s40">40. Fakta, opini, dan kejujuran data</h2>
+
+  <p>Pernyataan dalam ilmu pengetahuan dapat dibedakan menjadi fakta dan opini. Fakta adalah pernyataan yang dapat diperiksa atau dibuktikan menggunakan bukti. Opini adalah pernyataan yang bersifat penilaian atau pandangan seseorang.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 40.1 &middot; Perbedaan fakta dan opini</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Fakta</th><th>Opini</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sifat</td><td>Dapat diuji</td><td>Bersifat penilaian</td></tr>
+      <tr><td>Bukti</td><td>Ada bukti pendukung</td><td>Tidak memerlukan bukti</td></tr>
+      <tr><td>Contoh</td><td>Air terdiri dari hidrogen dan oksigen</td><td>Biologi adalah mata kuliah yang paling menarik</td></tr>
+      <tr><td>Perubahan</td><td>Bukti dapat menambah atau mengurangi keyakinan</td><td>Bervariasi menurut orang</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Pernyataan yang banyak diucapkan orang tidak otomatis menjadi fakta ilmiah. Klasifikasi ilmiah membutuhkan bukti, metode, pengamatan, dan analisis. Karena itu, sebuah klaim yang hanya berupa anggapan perlu diuji seperti fakta lain.</p>
+  </div>
+
+  <p>Kejujuran terhadap data merupakan bagian dari sikap ilmiah. Data harus dicatat sesuai hasil pengamatan, termasuk ketika hasilnya tidak sesuai dengan harapan peneliti.</p>
+
+  <pre class="diagram"><code>Data hasil eksperimen
+   |
+ Eksperimen A  -&gt; 10 cm
+ Eksperimen B  -&gt;  8 cm
+ Eksperimen C  -&gt;  7 cm
+   |
+ Rata-rata
+   = (10 + 8 + 7) / 3
+   = 8,3 cm
+   |
+ Catatan: nilai 7 cm tidak boleh diganti 9 cm
+ hanya supaya rata-rata menjadi lebih besar</code></pre>
+
+  <h2 id="s41">41. Metode ilmiah</h2>
+
+  <p>Metode ilmiah adalah cara menjawab pertanyaan ilmiah melalui langkah-langkah yang dapat diperiksa. Pendekatan ini pertama kali didokumentasikan secara lengkap oleh Francis Bacon pada abad ke-17, yang mengajukan pendekatan induktif dalam pencarian ilmiah.</p>
+
+  <figure>
+    <img src="gambar/metode-ilmiah.svg" alt="Diagram alur metode ilmiah mulai dari observasi, pertanyaan, hipotesis, percobaan, analisis, hingga kesimpulan" width="900" height="450" loading="lazy" decoding="async">
+    <figcaption>Alur metode ilmiah. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <div class="note">
+    <p>Metode ilmiah bukan satu urutan kaku yang selalu identik untuk setiap penelitian. Dalam penelitian nyata, peneliti dapat kembali ke langkah sebelumnya, memperbaiki pertanyaan, membuat percobaan baru, atau mengubah hipotesis berdasarkan data yang diperoleh. Yang tetap dijaga adalah keterlacakan setiap keputusan pada data dan bukti.</p>
+  </div>
+
+  <p>Ilmu deskriptif dan ilmu berdasarkan hipotesis saling melengkapi. Ilmu deskriptif mengamati dan mendeskripsikan apa yang ada. Ilmu berdasarkan hipotesis menguji dugaan melalui eksperimen yang dirancang secara sengaja. Batas antara keduanya sering kabur, karena pengamatan yang teliti dapat langsung memunculkan pertanyaan.</p>
+
+  <h2 id="s42">42. Tahapan metode ilmiah</h2>
+
+  <pre class="diagram"><code>OBSERVASI
+   |
+ IDENTIFIKASI MASALAH
+   |
+ RUMUSAN MASALAH
+   |
+ HIPOTESIS
+   |
+ PERANCANGAN PERCOBAAN
+   |
+ PENGUMPULAN DATA
+   |
+ ANALISIS DATA
+   |
+ KESIMPULAN
+   |
+ KOMUNIKASI HASIL</code></pre>
+
+  <h3 id="s42-1">42.1 Observasi</h3>
+
+  <p>Observasi adalah pengamatan terhadap fenomena. Pengamatan dapat berupa data kualitatif seperti daun yang tampak lebih hijau, maupun data kuantitatif seperti tinggi tumbuhan 15 sentimeter.</p>
+
+  <h3 id="s42-2">42.2 Identifikasi masalah</h3>
+
+  <p>Masalah penelitian dapat diperoleh dari pengamatan sehari-hari. Contohnya, tumbuhan dengan perlakuan berbeda menunjukkan pertumbuhan yang berbeda. Gejala tersebut memerlukan penjelasan.</p>
+
+  <h3 id="s42-3">42.3 Rumusan masalah</h3>
+
+  <p>Rumusan masalah harus jelas, lengkap, dan menentukan ruang lingkup penelitian. Pernyataan yang terlalu luas tidak dapat diuji sehingga tidak layak dijadikan rumusan masalah.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 42.1 &middot; Perbandingan rumusan masalah yang kurang dan baik</caption>
+    <thead>
+      <tr><th>Rumusan</th><th>Penilaian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mengapa tumbuhan berbeda?</td><td>Terlalu luas dan tidak dapat diuji</td></tr>
+      <tr><td>Apakah jumlah pupuk memengaruhi pertumbuhan kacang hijau?</td><td>Jelas, dapat diuji, dan memiliki variabel yang terukur</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s42-4">42.4 Hipotesis</h3>
+
+  <p>Hipotesis adalah dugaan atau jawaban sementara yang dapat diuji. Hipotesis ilmiah harus dapat dibuktikan salah. Dalam ilmu pengetahuan, tidak ada hipotesis yang terbukti mutlak selamanya karena kesimpulan dapat diperbarui ketika muncul bukti baru.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 42.2 &middot; Hipotesis nol dan hipotesis alternatif</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Isi</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>H0</td><td>Tidak ada pengaruh</td><td>Pupuk tidak memengaruhi tinggi tumbuhan</td></tr>
+      <tr><td>H1</td><td>Ada pengaruh</td><td>Pupuk memengaruhi tinggi tumbuhan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s42-5">42.5 Perancangan percobaan</h3>
+
+  <p>Perancangan percobaan perlu mempertimbangkan lokasi, alat, bahan, metode, unit percobaan, perlakuan, variabel, dan pengamatan. Hal yang paling menentukan adalah penetapan perlakuan dan pemilihan kelompok pembanding.</p>
+
+  <h3 id="s42-6">42.6 Pengumpulan data</h3>
+
+  <p>Data hasil pengamatan dikumpulkan dan dapat disajikan dalam bentuk tabel atau grafik agar pola dan perbandingannya mudah dibaca.</p>
+
+  <h3 id="s42-7">42.7 Analisis data</h3>
+
+  <p>Data dapat diolah dengan tabel, grafik, rata-rata, persentase, dan statistik. Hasil rata-rata pada percobaan pertumbuhan tumbuhan menunjukkan perbedaan antarperlakuan.</p>
+
+  <div class="note">
+    <p>Data yang menunjukkan perbedaan belum otomatis berarti perbedaan tersebut disebabkan oleh perlakuan yang diuji. Peneliti harus memeriksa apakah faktor lain juga memengaruhi hasil. Di sinilah pengendalian variabel dan analisis statistik menjadi penting.</p>
+  </div>
+
+  <h3 id="s42-8">42.8 Kesimpulan</h3>
+
+  <p>Kesimpulan disusun berdasarkan hasil analisis data dan pengujian hipotesis. Kesimpulan yang baik merujuk pada kondisi percobaan yang benar-benar dipakai, bukan klaim yang lebih luas daripada bukti yang tersedia.</p>
+
+  <pre class="diagram"><code>Rumusan masalah
+   |
+ Apakah jumlah pupuk memengaruhi
+ pertumbuhan kacang hijau?
+   |
+Hipotesis
+   |
+ H1: semakin sesuai dosis pupuk,
+     semakin tinggi pertumbuhan
+   |
+Analisis data
+   |
+ Kontrol 6 cm, Pupuk A 9 cm, Pupuk B 12 cm
+   |
+Kesimpulan
+   |
+ Dalam kondisi percobaan yang digunakan,
+ perlakuan pupuk menunjukkan perbedaan
+ pertumbuhan dibandingkan kelompok kontrol.
+ Kesimpulan yang melampaui bukti data
+ sebaiknya dihindari.</code></pre>
+
+  <h3 id="s42-9">42.9 Mengomunikasikan hasil</h3>
+
+  <p>Hasil penelitian perlu ditulis menggunakan bahasa ilmiah yang baku agar dapat diperiksa dan dimanfaatkan oleh pihak lain. Bentuk komunikasi meliputi laporan, makalah, presentasi, poster ilmiah, artikel ilmiah, dan forum ilmiah.</p>
+<h2 id="s43">43. Variabel penelitian dan kelompok kontrol</h2>
+
+  <p>Variabel adalah faktor yang dapat berubah dalam penelitian. Pembagian variabel menentukan peran setiap faktor dan menjaga agar percobaan benar-benar dapat menguji satu pengaruh.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 43.1 &middot; Jenis variabel penelitian</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Definisi</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Variabel bebas</td><td>Faktor yang sengaja diubah oleh peneliti</td><td>Jumlah pupuk</td></tr>
+      <tr><td>Variabel terikat</td><td>Faktor yang diamati atau diukur sebagai hasil</td><td>Tinggi tumbuhan</td></tr>
+      <tr><td>Variabel kontrol</td><td>Faktor yang dijaga tetap sama</td><td>Jenis tumbuhan, jenis tanah, jumlah air, intensitas cahaya, ukuran pot</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Kelompok kontrol adalah kelompok yang tidak menerima perlakuan yang sedang diuji. Kelompok eksperimen menerima perlakuan tersebut. Perbandingan antara keduanya memungkinkan peneliti mengaitkan perbedaan hasil dengan manipulasi yang dilakukan.</p>
+
+  <pre class="diagram"><code>Enam pot berisi kacang hijau
+   |
+ Pot 1, 2, 3  -&gt; KELOMPOK KONTROL
+                  tanpa pupuk
+   |
+ Pot 4, 5, 6  -&gt; KELOMPOK EKSPERIMEN
+                  dengan pupuk
+   |
+ Semua faktor lain dikendalikan sama
+   |
+ Pengukuran tinggi setiap tiga hari
+   |
+ Perbandingan hasil</code></pre>
+
+  <div class="note">
+    <p>Kelompok kontrol mempertahankan kondisi percobaan tetapi tidak menerima perlakuan yang diuji. Keberadaan kelompok kontrol memungkinkan perbedaan hasil dikaitkan dengan manipulasi, selama faktor lain dikendalikan dengan baik.</p>
+  </div>
+
+  <h2 id="s44">44. Pengumpulan dan analisis data</h2>
+
+  <p>Data pengamatan pada penelitian pertumbuhan dapat disusun dalam tabel sebagai berikut. Data kualitatif dan kuantitatif sama-sama berguna, tetapi keduanya harus dicatat terpisah.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 44.1 &middot; Data tinggi kacang hijau pada empat waktu pengukuran</caption>
+    <thead>
+      <tr><th>Hari</th><th>Kontrol</th><th>Pupuk A</th><th>Pupuk B</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>3 cm</td><td>3 cm</td><td>3 cm</td></tr>
+      <tr><td>3</td><td>4 cm</td><td>5 cm</td><td>6 cm</td></tr>
+      <tr><td>5</td><td>5 cm</td><td>7 cm</td><td>9 cm</td></tr>
+      <tr><td>7</td><td>6 cm</td><td>9 cm</td><td>12 cm</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Data pada tabel tersebut dapat diolah dengan menghitung rata-rata, membuat grafik, atau menerapkan analisis statistik. Rata-rata tinggi pada hari ketujuh adalah 6 sentimeter untuk kontrol, 9 sentimeter untuk pupuk A, dan 12 sentimeter untuk pupuk B.</p>
+
+  <div class="note">
+    <p>Perlu dibedakan antara dua pertanyaan berbeda. Pertanyaan pertama adalah apakah terdapat perbedaan hasil. Pertanyaan kedua adalah apakah perbedaan tersebut dapat dikaitkan dengan variabel bebas. Hanya pertanyaan kedua yang memerlukan pengendalian variabel dan analisis statistik.</p>
+  </div>
+
+  <h2 id="s45">45. Penalaran induktif dan deduktif</h2>
+
+  <p>Dalam ilmu pengetahuan terdapat dua cara berpikir logis yang keduanya dipakai secara bersamaan. Penalaran induktif bergerak dari pengamatan khusus menuju kesimpulan umum. Penalaran deduktif bergerak dari prinsip umum menuju prediksi khusus.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 45.1 &middot; Perbandingan penalaran induktif dan deduktif</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Induktif</th><th>Deduktif</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Arah</td><td>Khusus ke umum</td><td>Umum ke khusus</td></tr>
+      <tr><td>Dasar</td><td>Banyak pengamatan</td><td>Prinsip atau hukum umum</td></tr>
+      <tr><td>Hasil</td><td>Generalisasi</td><td>Prediksi yang dapat diuji</td></tr>
+      <tr><td>Ciri</td><td>Kesimpulan dapat direvisi</td><td>Kesimpulan pasti benar bila premis benar</td></tr>
+      <tr><td>Contoh</td><td>Banyak tumbuhan tumbuh lebih baik dengan cahaya</td><td>Tumbuhan perlu kondisi tertentu untuk tumbuh</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>PENALARAN INDUKTIF
+   |
+ Tumbuhan A tumbuh lebih baik dengan cahaya
+ Tumbuhan B juga demikian
+ Tumbuhan C juga demikian
+   |
+ Generalisasi
+   |
+ Cahaya berpengaruh terhadap pertumbuhan
+ tumbuhan tertentu
+
+PENOALARAN DEDUKTIF
+   |
+ Tumbuhan membutuhkan kondisi tertentu
+ untuk tumbuh
+   |
+ Prediksi
+   |
+ Jika kondisi tersebut tidak terpenuhi,
+ pertumbuhan akan terganggu
+   |
+ Prediksi tersebut diuji melalui percobaan</code></pre>
+
+  <div class="note">
+    <p>Ilmuwan sering bekerja hanya dengan satu cara berpikir. Pengamatan lapangan umumnya bersifat induktif, sedangkan perumusan hipotesis dan perancangan percobaan bersifat deduktif. Kombinasi keduanyalah yang membuat penelitian berjalan.</p>
+  </div>
+
+  <h2 id="s46">46. Ilmu dasar dan ilmu terapan</h2>
+
+  <p>Ilmu dasar bertujuan memperluas pengetahuan, sedangkan ilmu terapan bertujuan menggunakan pengetahuan untuk menyelesaikan masalah nyata. Keduanya bukan dua hal yang saling bertentangan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 46.1 &middot; Perbandingan ilmu dasar dan ilmu terapan</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Ilmu dasar</th><th>Ilmu terapan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tujuan utama</td><td>Meng memperluas pengetahuan</td><td>Menyelesaikan masalah nyata</td></tr>
+      <tr><td>Sasaran</td><td>Penemuan dan pemahaman</td><td>Penerapan pengetahuan</td></tr>
+      <tr><td>Contoh</td><td>Memahami mekanisme replikasi DNA</td><td>Menerapkan analisis DNA untuk diagnosis penyakit</td></tr>
+      <tr><td>Hasil</td><td>Pengetahuan baru</td><td>Produk, jasa, atau prosedur</td></tr>
+      <tr><td>Hubungan</td><td>Menjadi fondasi ilmu terapan</td><td>Menguetaikan hasil ilmu dasar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pengetahuan dasar sering menjadi fondasi bagi penerapan praktis yang muncul jauh kemudian. Contohnya, penelitian tentang struktur DNA menghasilkan informasi yang kemudian dimanfaatkan pada diagnosis penyakit, analisis genetik, forensik, dan teknologi medis.</p>
+
+  <div class="note">
+    <p>Ilmuwan yang bekerja pada ilmu dasar tetap memberikan manfaat, meskipun hasilnya belum dapat langsung diterapkan. Tanpa fondasi pengetahuan yang kuat, penerapan praktis akan kehilangan dasar dan sulit dipercaya.</p>
+  </div>
+
+  <h2 id="s47">47. Latihan</h2>
+
+  <p>Kerjakan latihan berikut untuk memeriksa pemahaman terhadap materi bab ini.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 47.1 &middot; Latihan dan jawaban ringkas</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan</th><th>Jawaban ringkas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Apa itu biologi dan apa asal katanya?</td><td>Ilmu yang mempelajari kehidupan, dari bahasa Yunani bios dan logos</td></tr>
+      <tr><td>2</td><td>Bedakan temperatur dan panas.</td><td>Temperatur menggambarkan keadaan termal, panas adalah energi yang berpindah</td></tr>
+      <tr><td>3</td><td>Jelaskan tiga partikel penyusun atom.</td><td>Proton bermuatan positif, neutron netral, elektron bermuatan negatif</td></tr>
+      <tr><td>4</td><td>Apa yang menentukan identitas suatu unsur?</td><td>Jumlah proton atau nomor atom</td></tr>
+      <tr><td>5</td><td>Bedakan molekul dan makromolekul.</td><td>Molekul tersusun atas sedikit atom, makromolekul berukuran besar dari banyak monomer</td></tr>
+      <tr><td>6</td><td>Bedakan sel prokariotik dan eukariotik.</td><td>Prokariotik tidak bermembran nukleus, eukariotik memilikinya</td></tr>
+      <tr><td>7</td><td>Bedakan resolusi dan perbesar mikroskop.</td><td>Resolusi menentukan pemisahan objek, perbesar hanya memperbesar ukuran tampak</td></tr>
+      <tr><td>8</td><td>Urutkan tingkat organisasi kehidupan.</td><td>Atom, molekul, organel, sel, jaringan, organ, sistem organ, organisme, populasi, komunitas, ekosistem, bioma, biosfer</td></tr>
+      <tr><td>9</td><td>Bedakan populasi dan komunitas.</td><td>Populasi satu spesies pada wilayah tertentu, komunitas kumpulan berbagai populasi</td></tr>
+      <tr><td>10</td><td>Apa komponen ekosistem?</td><td>Komponen biotik, komponen abiotik, dan interaksinya</td></tr>
+      <tr><td>11</td><td>Apa yang dimaksud metabolisme?</td><td>Keseluruhan reaksi kimia yang menggunakan atau melepaskan energi</td></tr>
+      <tr><td>12</td><td>Bedakan katabolisme dan anabolisme.</td><td>Katabolisme memecah dan melepaskan energi, anabolisme menyusun dan memerlukan energi</td></tr>
+      <tr><td>13</td><td>Mengapa ATP disebut mata uang energi?</td><td>Karena sel memakainya untuk berbagai kerja biologis</td></tr>
+      <tr><td>14</td><td>Apa itu homeostasis?</td><td>Kemampuan mempertahankan keadaan internal dalam rentang tertentu</td></tr>
+      <tr><td>15</td><td>Bedakan umpan balik negatif dan positif.</td><td>Negatif melawan perubahan awal, positif memperkuatnya</td></tr>
+      <tr><td>16</td><td>Bedakan adaptasi dan evolusi.</td><td>Evolusi perubahan populasi lintas generasi, adaptasi ciri yang dihasilkan melalui evolusi</td></tr>
+      <tr><td>17</td><td>Sebutkan tiga domain kehidupan.</td><td>Bacteria, Archaea, dan Eukarya</td></tr>
+      <tr><td>18</td><td>Bedakan fakta dan opini.</td><td>Fakta dapat diuji dengan bukti, opini berupa penilaian</td></tr>
+      <tr><td>19</td><td>Sebutkan tiga jenis variabel penelitian.</td><td>Variabel bebas, variabel terikat, dan variabel kontrol</td></tr>
+      <tr><td>20</td><td>Apa fungsi kelompok kontrol?</td><td>Menjadi pembanding untuk mengaitkan perbedaan hasil dengan perlakuan</td></tr>
+      <tr><td>21</td><td>Bedakan penalaran induktif dan deduktif.</td><td>Induktif dari khusus ke umum, deduktif dari umum ke khusus</td></tr>
+      <tr><td>22</td><td>Bedakan ilmu dasar dan ilmu terapan.</td><td>Dasar memperluas pengetahuan, terapan menyelesaikan masalah nyata</td></tr>
+    </tbody>
+  </table>
+  </div>
+<h2 id="s48">48. Ringkasan</h2>
+
+  <p>Seluruh materi bab ini dapat dirangkum menjadi satu pemahaman besar. Biologi adalah ilmu tentang kehidupan. Kehidupan tersusun secara bertingkat, mulai dari atom dan molekul menuju sel, jaringan, organ, sistem organ, organisme, populasi, komunitas, ekosistem, bioma, dan biosfer.</p>
+
+  <pre class="diagram"><code>Urutan tingkat organisasi
+   |
+ ATOM -&gt; MOLEKUL -&gt; MAKROMOLEKUL -&gt; ORGANEL -&gt; SEL
+   |
+ JARINGAN -&gt; ORGAN -&gt; SISTEM ORGAN -&gt; ORGANISME
+   |
+ POPULASI -&gt; KOMUNITAS -&gt; EKOSISTEM -&gt; BIOMA -&gt; BIOSFER
+
+Proses kehidupan pada tingkat organisme
+   |
+ METABOLISME, REPRODUKSI, PERTUMBUHAN,
+ RESPONS, HOMEOSTASIS, ADAPTASI, EVOLUSI
+
+Interaksi dengan lingkungan
+   |
+ LINGKUNGAN
+    |-- biotik
+    +-- abiotik
+
+Ilimu yang bekerja sama
+   |
+ BIOLOGI
+    |-- KIMIA
+    |-- FISIKA
+    |-- MATEMATIKA
+    |-- INFORMATIKA
+    |-- GEOGRAFI
+    +-- ILMU LAIN
+
+Cara memperoleh pengetahuan
+   |
+ OBSERVASI -&gt; IDENTIFIKASI MASALAH -&gt; RUMUSAN MASALAH
+   |
+ HIPOTESIS -&gt; PERCOBAAN -&gt; DATA -&gt; ANALISIS
+   |
+ KESIMPULAN -&gt; KOMUNIKASI</code></pre>
+
+  <p>Organisme menjalankan berbagai proses kehidupan. Metabolisme mengubah energi dan materi. ATP menyediakan energi untuk berbagai kerja sel. Reproduksi menjaga keberlanjutan generasi. Pertumbuhan dan perkembangan membentuk struktur dan fungsi. Respons menghubungkan organisme dengan lingkungan. Homeostasis menjaga keadaan internal dalam rentang tertentu. Adaptasi dan evolusi menjelaskan kesesuaian organisme dengan lingkungannya.</p>
+
+  <p>Pemahaman seluruh materi ini menjadi fondasi bagi materi berikutnya. Setelah materi ini, kajian beralih pada sel, reproduksi sel, respirasi, dan fotosintesis. Fondasi yang sudah terbentuk membuat materi tersebut tidak dipelajari sebagai hafalan, tetapi sebagai kelanjutan logis.</p>
+
+  <div class="note">
+    <p>Tiga hal yang perlu diperhatikan. Pertama, perbedaan antara temperatur dan panas. Kedua, perbedaan antara fakta dan opini. Ketiga, perbedaan antara adaptasi yang dihasilkan melalui evolusi dan perubahan yang dilakukan individu saat hidup. Ketiganya merupakan sumber kesalahan yang paling sering muncul pada pemahaman biologi dasar.</p>
+  </div>
+
+  <h2 id="s49">49. Daftar istilah</h2>
+
+  <dl class="qa">
+    <dt>Adaptasi</dt>
+    <dd>Karakteristik yang membantu organisme hidup sesuai dengan lingkungannya dan dihasilkan melalui proses evolusi.</dd>
+
+    <dt>ATP</dt>
+    <dd>Adenosin trifosfat, molekul yang terutama dipakai sel sebagai sumber energi.</dd>
+
+    <dt>Anabolisme</dt>
+    <dd>Bagian metabolisme yang menyusun molekul sederhana menjadi molekul kompleks dengan memerlukan energi.</dd>
+
+    <dt>Atom</dt>
+    <dd>Unit terkecil suatu unsur yang masih mempertahankan identitas kimia unsur tersebut.</dd>
+
+    <dt>Biologi</dt>
+    <dd>Ilmu yang mempelajari kehidupan dan makhluk hidup beserta interaksinya.</dd>
+
+    <dt>Bioma</dt>
+    <dd>Wilayah ekologi yang sangat luas dengan kondisi lingkungan dan komunitas organisme yang khas.</dd>
+
+    <dt>Biosfer</dt>
+    <dd>Keseluruhan bagian Bumi yang mendukung kehidupan.</dd>
+
+    <dt>Elektron</dt>
+    <dd>Partikel bermuatan negatif yang berada di luar nukleus atom.</dd>
+
+    <dt>Ekosistem</dt>
+    <dd>Komunitas organisme hidup beserta lingkungan abiotik dan interaksinya.</dd>
+
+    <dt>Eukariotik</dt>
+    <dd>Sifat sel yang memiliki nukleus dan organel bermembran.</dd>
+
+    <dt>Evolusi</dt>
+    <dd>Perubahan karakteristik populasi dari generasi ke generasi.</dd>
+
+    <dt>Fakta</dt>
+    <dd>Pernyataan yang dapat diperiksa atau dibuktikan menggunakan bukti.</dd>
+
+    <dt>Fotosintesis</dt>
+    <dd>Proses penyusunan senyawa organik dari karbon dioksida dan air dengan bantuan energi cahaya.</dd>
+
+    <dt>Homeostasis</dt>
+    <dd>Kemampuan organisme mempertahankan keadaan internal yang relatif stabil dalam rentang tertentu.</dd>
+
+    <dt>Hipotesis</dt>
+    <dd>Dugaan atau jawaban sementara yang dapat diuji melalui percobaan.</dd>
+
+    <dt>Ilmu terapan</dt>
+    <dd>Bidang ilmu yang bertujuan menggunakan pengetahuan untuk menyelesaikan masalah nyata.</dd>
+
+    <dt>Katabolisme</dt>
+    <dd>Bagian metabolisme yang memecah molekul kompleks dan melepaskan energi.</dd>
+
+    <dt>Komunitas</dt>
+    <dd>Kumpulan berbagai populasi yang hidup pada suatu wilayah dan berinteraksi.</dd>
+
+    <dt>Lisosom</dt>
+    <dd>Organel yang menguraikan berbagai material di dalam sel hewan.</dd>
+
+    <dt>Makromolekul</dt>
+    <dd>Molekul berukuran besar yang terbentuk dari banyak unit kecil yang disebut monomer.</dd>
+
+    <dt>Orbital</dt>
+    <dd>Daerah di sekitar inti atom tempat kemungkinan menemukan elektron paling besar.</dd>
+
+    <dt>Metabolisme</dt>
+    <dd>Keseluruhan reaksi kimia yang berlangsung di dalam organisme atau sel.</dd>
+
+    <dt>Metode ilmiah</dt>
+    <dd>Cara menjawab pertanyaan ilmiah melalui langkah-langkah yang dapat diperiksa.</dd>
+
+    <dt>Mikroskop</dt>
+    <dd>Alat untuk melihat objek yang terlalu kecil untuk diamati dengan mata telanjang.</dd>
+
+    <dt>Molekul</dt>
+    <dd>Struktur kimia yang tersusun atas sekurang-kurangnya dua atom yang terikat.</dd>
+
+    <dt>Nukleus</dt>
+    <dd>Struktur bermembran pada sel eukariotik yang menyimpan sebagian besar DNA.</dd>
+
+    <dt>Organ</dt>
+    <dd>Struktur yang tersusun atas beberapa jaringan dan menjalankan fungsi tertentu.</dd>
+
+    <dt>Organel</dt>
+    <dd>Struktur kecil di dalam sel yang menjalankan fungsi tertentu.</dd>
+
+    <dt>Organisme</dt>
+    <dd>Satu individu makhluk hidup.</dd>
+
+    <dt>Populasi</dt>
+    <dd>Kumpulan individu satu spesies yang hidup pada wilayah tertentu dan dapat berinteraksi.</dd>
+
+    <dt>Prokariotik</dt>
+    <dd>Sifat sel yang tidak memiliki nukleus bermembran.</dd>
+
+    <dt>Proton</dt>
+    <dd>Partikel bermuatan positif yang berada di dalam nukleus atom.</dd>
+
+    <dt>Resolusi</dt>
+    <dd>Kemampuan alat untuk memisahkan dua objek berdekatan agar dapat dibedakan.</dd>
+
+    <dt>Ribosom</dt>
+    <dd>Organel yang menjadi tempat sintesis protein.</dd>
+
+    <dt>Sistem organ</dt>
+    <dd>Tingkat organisasi yang terdiri atas organ-organ yang bekerja sama.</dd>
+
+    <dt>Variabel</dt>
+    <dd>Faktor yang dapat berubah dalam penelitian.</dd>
+
+    <dt>Variabel bebas</dt>
+    <dd>Variabel yang sengaja diubah oleh peneliti.</dd>
+
+    <dt>Variabel kontrol</dt>
+    <dd>Variabel yang dijaga tetap sama selama percobaan.</dd>
+
+    <dt>Variabel terikat</dt>
+    <dd>Variabel yang diamati atau diukur sebagai hasil perlakuan.</dd>
+  </dl>
+
+  <h2 id="s50">50. Daftar pustaka</h2>
+
+  <p>Daftar pustaka disusun dari sumber utama materi kuliah, buku teks, dan sumber gambar yang dipakai pada modul ini.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 50.1 &middot; Ringkasan sumber</caption>
+    <thead>
+      <tr><th>Nomor</th><th>Sumber</th><th>Bagian yang dipakai</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Materi kuliah Biologi (STIK1013), Ganjil 2026/2027</td><td>Pendahuluan: Studi Ilmiah tentang Biologi</td></tr>
+      <tr><td>2</td><td>OpenStax Biology 2e, bab 1</td><td>Pengertian biologi, metode ilmiah, penalaran, ilmu dasar dan terapan</td></tr>
+      <tr><td>3</td><td>OpenStax Biology 2e, bab 6</td><td>Energi dan metabolisme, ATP</td></tr>
+      <tr><td>4</td><td>OpenStax Biology 2e, bab 22</td><td>Domain Bacteria, Archaea, dan Eukarya</td></tr>
+      <tr><td>5</td><td>OpenStax Biology 2e, bab 33</td><td>Homeostasis dan mekanisme umpan balik</td></tr>
+      <tr><td>6</td><td>OpenStax Biology 2e, bab 44 dan 45</td><td>Ruang lingkup ekologi, populasi, dan komunitas</td></tr>
+      <tr><td>7</td><td>OpenStax Biology 2e, bab 46</td><td>Ekosistem dan komponen biotik serta abiotik</td></tr>
+      <tr><td>8</td><td>OpenStax Chemistry 2e, bab 2</td><td>Gagasan awal tentang teori atom</td></tr>
+      <tr><td>9</td><td>OpenStax Concepts of Biology, bab 3</td><td>Teori sel, prokariotik, eukariotik, dan mikroskop</td></tr>
+      <tr><td>10</td><td>Britannica, Biology</td><td>Definisi biologi dan cabang-cabangnya</td></tr>
+      <tr><td>11</td><td>Biology LibreTexts, Fundamentals of Cell Biology</td><td>Perbesar dan resolusi mikroskop</td></tr>
+      <tr><td>12</td><td>NCBI Bookshelf, Molecular Biology of the Cell</td><td>Batas resolusi mikroskop cahaya dan elektron</td></tr>
+      <tr><td>13</td><td>Universitas Mulawarman, Modul Ajar Biologi Dasar</td><td>Struktur materi biologi dasar untuk konteks perkuliahan</td></tr>
+      <tr><td>14</td><td>Wikimedia Commons</td><td>Diagram atom, sel hewan, sel tumbuhan, tingkat organisasi, tiga domain, dan metode ilmiah</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  </main>
+
+  <footer>
+    <ul class="refs">
+      <li><b>Materi kuliah.</b> <em>Biologi (STIK1013), Ganjil 2026/2027.</em> Bagian <em>Pendahuluan: Studi Ilmiah tentang Biologi</em>. Sumber utama kerangka pembahasan.</li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 1.1 The Science of Biology.</em> Definisi biologi, metode ilmiah, penalaran induktif dan deduktif, ilmu dasar dan ilmu terapan. <a href="https://openstax.org/books/biology-2e/pages/1-1-the-science-of-biology">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 1.2 Themes and Concepts of Biology.</em> Karakteristik kehidupan dan tingkat organisasi biologis. <a href="https://openstax.org/books/biology-2e/pages/1-2-themes-and-concepts-of-biology">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 6.1 Energy and Metabolism.</em> Katabolisme, anabolisme, dan energi dalam sel. <a href="https://openstax.org/books/biology-2e/pages/6-1-energy-and-metabolism">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 6.4 ATP: Adenosine Triphosphate.</em> Struktur ATP dan energi bebas pada hidrolisis. <a href="https://openstax.org/books/biology-2e/pages/6-4-atp-adenosine-triphosphate">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 22 Introduction.</em> Domain Bacteria, Archaea, dan Eukarya berdasarkan data RNA ribosomal. <a href="https://openstax.org/books/biology-2e/pages/22-introduction">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 33.3 Homeostasis.</em> Homeostasis dan mekanisme umpan balik. <a href="https://openstax.org/books/biology-2e/pages/33-3-homeostasis">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 44.1 The Scope of Ecology.</em> Ruang lingkup ekologi. <a href="https://openstax.org/books/biology-2e/pages/44-1-the-scope-of-ecology">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 45.1 Population Demography.</em> Pengertian populasi. <a href="https://openstax.org/books/biology-2e/pages/45-1-population-demography">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 45.6 Community Ecology.</em> Pengertian komunitas. <a href="https://openstax.org/books/biology-2e/pages/45-6-community-ecology">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Biology 2e: 46.1 Ecology of Ecosystems.</em> Ekosistem serta komponen biotik dan abiotik. <a href="https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Chemistry 2e: 2.1 Early Ideas in Atomic Theory.</em> Perkembangan teori atom. <a href="https://openstax.org/books/chemistry-2e/pages/2-1-early-ideas-in-atomic-theory">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>Concepts of Biology: 3.1 How Cells Are Studied.</em> Teori sel, tipe sel, dan mikroskop. <a href="https://openstax.org/books/concepts-biology/pages/3-1-how-cells-are-studied">openstax.org</a></li>
+      <li><b>Encyclopaedia Britannica.</b> <em>Biology.</em> Definisi biologi sebagai kajian makhluk hidup dan proses vitalnya. <a href="https://www.britannica.com/science/biology">britannica.com</a></li>
+      <li><b>Encyclopaedia Britannica.</b> <em>Biology and its Branches.</em> Pembagian cabang biologi. <a href="https://www.britannica.com/summary/biology">britannica.com</a></li>
+      <li><b>Biology LibreTexts.</b> <em>Fundamentals of Cell Biology: Magnification and Resolution.</em> Perbedaan perbesar dan resolusi mikroskop. <a href="https://open.oregonstate.education/cellbiology/chapter/microscopy/">open.oregonstate.education</a></li>
+      <li><b>NCBI Bookshelf.</b> <em>Looking at the Structure of Cells in the Microscope.</em> Batas resolusi mikroskop cahaya dan elektron. <a href="https://www.ncbi.nlm.nih.gov/books/NBK26880/">ncbi.nlm.nih.gov</a></li>
+      <li><b>Universitas Mulawarman.</b> <em>Modul Ajar Biologi Dasar.</em> Struktur materi biologi dasar dalam konteks perkuliahan Indonesia. <a href="https://repository.unmul.ac.id/">repository.unmul.ac.id</a></li>
+      <li><b>Wikimedia Commons.</b> <em>Atom Diagram, Animal Cell, Plant Cell Structure, Levels of Organization, 3 Domains of Life, dan The Scientific Method.</em> Sumber seluruh gambar pada modul ini. <a href="https://commons.wikimedia.org/">commons.wikimedia.org</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>
