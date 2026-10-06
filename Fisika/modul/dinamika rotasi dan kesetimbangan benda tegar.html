@@ -25,6 +25,7 @@
     --glow-1: rgba(79, 70, 229, .10);
     --glow-2: rgba(217, 154, 22, .07);
     --note-bg: #FFFBEB;
+    --bar-bg: rgba(248, 250, 252, .88);
     --note-border: #D99A16;
   }
   @media (prefers-color-scheme: dark) {
@@ -46,6 +47,7 @@
       --glow-1: rgba(79, 70, 229, .16);
       --glow-2: rgba(245, 196, 81, .06);
       --note-bg: #1A1608;
+      --bar-bg: rgba(11, 15, 25, .84);
       --note-border: #F5C451;
     }
   }
@@ -67,6 +69,7 @@
     --glow-1: rgba(79, 70, 229, .16);
     --glow-2: rgba(245, 196, 81, .06);
     --note-bg: #1A1608;
+    --bar-bg: rgba(11, 15, 25, .84);
     --note-border: #F5C451;
   }
 
@@ -370,7 +373,8 @@
   @media (max-width: 1279.98px) {
     .menu-btn { display: grid; }
     .toc {
-      display: block;
+      display: flex;
+      flex-direction: column;
       inset: 0 auto 0 0;
       width: min(86vw, 300px);
       max-height: none;
@@ -662,12 +666,76 @@
   @media (prefers-reduced-motion: reduce) {
     .quiz-layer, .quiz-card, .toc, .scrim { transition: none; }
   }
+/* ===================== topbar lengket ===================== */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    margin: -1.1rem -0.6rem 2.4rem;
+    padding: 0.55rem 0.6rem;
+    border-radius: 12px;
+    background: var(--bar-bg);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    backdrop-filter: blur(12px) saturate(140%);
+    transition: box-shadow .2s ease, border-color .2s ease;
+    border: 1px solid transparent;
+  }
+  .topbar.is-stuck {
+    border-color: var(--border);
+    box-shadow: 0 6px 22px -12px rgba(15, 23, 42, .45);
+  }
+  .topbar::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background: var(--border);
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+  .topbar.is-stuck::after { opacity: 1; }
+
+  /* tombol tutup di dalam drawer daftar isi */
+  .toc-close {
+    display: none;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    flex: none;
+    margin: -0.4rem 0 0.4rem auto;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: .85rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .toc-close:hover { color: var(--accent); border-color: var(--accent); }
+  .toc-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+
+  /* judul tidak tertutup topbar lengket saat lompat tautan */
+  h2, h3 { scroll-margin-top: 5.75rem; }
+
+  @media (max-width: 1279.98px) {
+    .toc { position: fixed; display: flex; flex-direction: column; }
+    .toc-close { display: grid; }
+    .toc .eyebrow { flex: none; }
+  }
+  @media (max-width: 560px) {
+    .topbar { margin: -0.9rem -0.35rem 2rem; padding: 0.45rem 0.35rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .topbar, .topbar::after { transition: none; }
+  }
 </style>
 </head>
 
 <body data-kuis="rotasi-04">
 <nav class="toc">
   <p class="eyebrow">Daftar Isi</p>
+  <button class="toc-close" id="toc-close" type="button" aria-label="Tutup daftar isi">&#10005;</button>
   <a href="#n1">1. Peta materi</a>
   <a href="#n2">2. Tujuan pembelajaran</a>
   <a href="#n3">3. Kedudukan materi terhadap modul sebelumnya</a>
@@ -3180,38 +3248,50 @@ DALAM SUDUT PANDANG MOMENTUM
   })();
 </script>
 <script>
-/* ===== daftar isi untuk layar kecil ===== */
+/* ===== daftar isi untuk layar kecil + topbar lengket ===== */
   (function () {
     var btn = document.getElementById('menu');
     var scrim = document.getElementById('scrim');
     var toc = document.querySelector('.toc');
-    if (!btn || !scrim || !toc) return;
+    var bar = document.querySelector('.topbar');
+    var closer = document.getElementById('toc-close');
 
     function open() {
       document.body.classList.add('nav-open');
-      btn.setAttribute('aria-expanded', 'true');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
     }
     function close() {
       document.body.classList.remove('nav-open');
-      btn.setAttribute('aria-expanded', 'false');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
     }
 
-    btn.addEventListener('click', function () {
-      document.body.classList.contains('nav-open') ? close() : open();
-    });
-    scrim.addEventListener('click', close);
-    toc.addEventListener('click', function (e) {
-      if (e.target.closest('a')) close();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
-        close();
-        btn.focus();
-      }
-    });
-    window.addEventListener('resize', function () {
-      if (window.innerWidth >= 1280) close();
-    });
+    if (btn && scrim && toc) {
+      btn.addEventListener('click', function () {
+        document.body.classList.contains('nav-open') ? close() : open();
+      });
+      scrim.addEventListener('click', close);
+      toc.addEventListener('click', function (e) {
+        if (e.target.closest('a')) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+          close();
+          if (btn) btn.focus();
+        }
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1280) close();
+      });
+    }
+    if (closer) closer.addEventListener('click', close);
+
+    if (bar) {
+      var sync = function () {
+        bar.classList.toggle('is-stuck', window.scrollY > 6);
+      };
+      window.addEventListener('scroll', sync, { passive: true });
+      sync();
+    }
   })();
 </script>
 </body>
