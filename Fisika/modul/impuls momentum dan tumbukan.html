@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impuls, Momentum, Tumbukan, dan Pusat Massa &mdash; Fisika Dasar</title>
+<meta name="description" content="Modul Fisika Dasar: momentum sebagai besaran vektor, impuls, teorema impuls-momentum, kekekalan momentum, jenis tumbukan, tumbukan dua dimensi, momentum sistem, dan pusat massa.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Peta materi</a>
+  <a href="#s2">2. Tujuan pembelajaran</a>
+  <a href="#s3">3. Kedudukan materi terhadap modul sebelumnya</a>
+  <a href="#s4">4. Mengapa diperlukan momentum</a>
+  <a href="#s5">5. Pengertian momentum</a>
+  <a href="#s6">6. Memahami momentum secara sederhana</a>
+  <a href="#s7">7. Momentum sebagai besaran vektor</a>
+  <a href="#s8">8. Satuan momentum</a>
+  <a href="#s9">9. Pengertian impuls</a>
+  <a href="#s10">10. Peran waktu dalam impuls</a>
+  <a href="#s11">11. Teorema impuls dan momentum</a>
+  <a href="#s12">12. Bentuk persamaan impuls momentum</a>
+  <a href="#s13">13. Menghitung perubahan momentum</a>
+  <a href="#s14">14. Raket memukul bola</a>
+  <a href="#s15">15. Mengapa tumbukan menghasilkan gaya besar</a>
+  <a href="#s16">16. Airbag dan zona crumple</a>
+  <a href="#s17">17. Mendarat dengan lutut ditekuk</a>
+  <a href="#s18">18. Contoh petenis dan bola</a>
+  <a href="#s19">19. Aliran air yang menabrak benda</a>
+  <a href="#s20">20. Sistem terisolasi</a>
+  <a href="#s21">21. Hukum kekekalan momentum</a>
+  <a href="#s22">22. Mengapa momentum dapat kekal</a>
+  <a href="#s23">23. Contoh dua mobil menempel</a>
+  <a href="#s24">24. Newton's cradle</a>
+  <a href="#s25">25. Pengertian tumbukan</a>
+  <a href="#s26">26. Jenis tumbukan</a>
+  <a href="#s27">27. Nasib energi kinetik pada tumbukan</a>
+  <a href="#s28">28. Tumbukan elastis</a>
+  <a href="#s29">29. Tumbukan elastis satu dimensi</a>
+  <a href="#s30">30. Hubungan kecepatan relatif</a>
+  <a href="#s31">31. Tumbukan tidak elastis</a>
+  <a href="#s32">32. Tumbukan tidak elastis sempurna</a>
+  <a href="#s33">33. Perbandingan jenis tumbukan</a>
+  <a href="#s34">34. Momentum dan energi bukan besaran yang sama</a>
+  <a href="#s35">35. Contoh senapan dan recoil</a>
+  <a href="#s36">36. Mengapa senapan bergerak mundur</a>
+  <a href="#s37">37. Tumbukan dua dimensi</a>
+  <a href="#s38">38. Mengapa tumbukan dua dimensi lebih sulit</a>
+  <a href="#s39">39. Pengertian pusat massa</a>
+  <a href="#s40">40. Rata-rata berbobot</a>
+  <a href="#s41">41. Pusat massa satu dan dua dimensi</a>
+  <a href="#s42">42. Hubungan pusat massa dengan momentum</a>
+  <a href="#s43">43. Pusat massa saat ledakan</a>
+  <a href="#s44">44. Penghubungan tiga hukum</a>
+  <a href="#s45">45. Kapan menggunakan impuls</a>
+  <a href="#s46">46. Kapan menggunakan kekekalan momentum</a>
+  <a href="#s47">47. Kapan menggunakan kekekalan energi</a>
+  <a href="#s48">48. Cara mengerjakan soal</a>
+  <a href="#s49">49. Kesalahan yang sering terjadi</a>
+  <a href="#s50">50. Ringkasan rumus</a>
+  <a href="#s51">51. Latihan</a>
+  <a href="#s52">52. Daftar istilah</a>
+  <a href="#s53">53. Daftar pustaka</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Modul 03 &middot; Fisika Dasar</p>
+    <div class="rule"></div>
+    <h1>Impuls, Momentum, Tumbukan, dan Pusat Massa</h1>
+    <p>Materi ini merupakan kelanjutan yang erat dari dua modul sebelumnya. Hukum Newton meninjau perubahan gerak melalui gaya dan percepatan, sedangkan usaha dan energi melalui kerja dan energi. Modul ini meninjau perubahan gerak dari sudut ketiga, yaitu momentum dan impuls. Pembahasan dimulai dari pengertian momentum sebagai besaran vektor, satuan momentum, pengertian impuls, serta peran waktu terhadap besar impuls. Bagian berikutnya membahas teorema impuls momentum, perhitungan perubahan momentum, contoh raket memukul bola, alasan tumbukan menghasilkan gaya besar, dan penerapan pada airbag, zona deformasi kendaraan, serta pendaratan. Materi dilanjutkan ke sistem terisolasi, hukum kekekalan momentum, hubungan dengan Hukum III Newton, contoh dua mobil menempel, Newton's cradle, jenis tumbukan, tumbukan elastis satu dimensi dan hubungan kecepatan relatif, tumbukan tidak elastis dan tidak elastis sempurna, serta perbandingan momentum dan energi sebagai besaran. Bagian akhir membahas tumbukan dua dimensi, pengertian pusat massa, rata-rata berbobot, koordinat pusat massa, hubungan momentum total dengan kecepatan pusat massa, pusat massa saat ledakan, serta pedoman pemilihan rumus dan kesalahan yang sering terjadi.</p>
+  </header>
+
+  <main>
+<h2 id="s1">1. Peta materi</h2>
+
+  <p>Tiga materi pertama dalam Fisika Dasar dapat dipandang sebagai tiga sudut pandang berbeda untuk menjelaskan perubahan gerak sebuah benda.</p>
+
+  <pre class="diagram"><code>HUKUM NEWTON
+  Sum F = m a
+  -&gt; bagaimana gaya menyebabkan percepatan?
+
+
+USAHA DAN ENERGI
+  W net = delta E K
+  -&gt; bagaimana kerja mengubah energi kinetik?
+
+
+IMPULS DAN MOMENTUM
+  I = delta p
+  -&gt; bagaimana gaya selama waktu tertentu
+     mengubah momentum?
+
+
+ALUR UTAMA MATERI INI
+
+  GAYA
+    |
+    | menghasilkan
+    v
+  IMPULS
+    |
+    | sama dengan
+    v
+  PERUBAHAN MOMENTUM
+    |
+    | pada sistem terisolasi
+    v
+  KEKEKALAN MOMENTUM
+    |
+    | dianalisis melalui
+    v
+  TUMBUKAN
+
+Perluasan:
+  -&gt; jenis tumbukan
+  -&gt; tumbukan dua dimensi
+  -&gt; pusat massa</code></pre>
+
+  <p>Hubungan ketiganya dapat diturunkan satu per satu. Impuls bukan konsep yang muncul tiba-tiba, melainkan pengembangan langsung dari Hukum II Newton.</p>
+
+  <h2 id="s2">2. Tujuan pembelajaran</h2>
+
+  <p>Setelah mengikuti sesi ini, mahasiswa mampu menentukan momentum sebagai besaran vektor, menghitung impuls, menerapkan teorema impuls momentum, menganalisis kekekalan momentum pada sistem terisolasi, membedakan jenis tumbukan, serta menghitung koordinat pusat massa sistem banyak benda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 2.1 &middot; Tujuan sesi dan indikator pemahaman</caption>
+    <thead>
+      <tr><th>Tujuan</th><th>Indikator pemahaman</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menjelaskan pengertian momentum</td><td>Menyebutkan momentum sebagai hasil kali massa dan kecepatan serta menyatakan sifatnya sebagai vektor</td></tr>
+      <tr><td>Menghitung impuls</td><td>Menggunakan rumus I sama dengan gaya rata-rata kali selang waktu</td></tr>
+      <tr><td>Menerapkan teorema impuls momentum</td><td>Menghubungkan impuls dengan perubahan momentum</td></tr>
+      <tr><td>Menjelaskan sistem terisolasi</td><td>Menentukan kapan momentum total dapat dianggap kekal</td></tr>
+      <tr><td>Menganalisis kekekalan momentum</td><td>Menyusun persamaan momentum untuk dua benda dan banyak benda</td></tr>
+      <tr><td>Membedakan jenis tumbukan</td><td>Membedakan elastis, tidak elastis, dan tidak elastis sempurna</td></tr>
+      <tr><td>Menghitung kecepatan relatif</td><td>Menerapkan hubungan kecepatan relatif pada tumbukan elastis satu dimensi</td></tr>
+      <tr><td>Menghitung pusat massa</td><td>Menentukan koordinat pusat massa pada satu dan dua dimensi</td></tr>
+      <tr><td>Menghubungkan pusat massa dengan momentum</td><td>Menyatakan momentum total sebagai massa total kali kecepatan pusat massa</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s3">3. Kedudukan materi terhadap modul sebelumnya</h2>
+
+  <p>Pada modul Hukum Newton, hubungan yang dipakai adalah:</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var> = <var>m</var><var>a</var>
+    <span class="eq-note">Menjelaskan perubahan gerak melalui gaya dan percepatan</span>
+  </div>
+
+  <p>Pada modul usaha dan energi, hubungan yang dipakai adalah:</p>
+
+  <div class="eq">
+    <var>W</var><sub>net</sub> = &Delta;<var>E</var><sub>K</sub>
+    <span class="eq-note">Menjelaskan perubahan gerak melalui kerja dan energi</span>
+  </div>
+
+  <p>Pada modul ini, hubungan yang dipakai adalah:</p>
+
+  <div class="eq">
+    <var>I</var> = &Delta;<var>p</var>
+    <span class="eq-note">Menjelaskan perubahan gerak melalui impuls dan momentum</span>
+  </div>
+
+  <p>Ketiganya merupakan tiga cara berbeda untuk menganalisis perubahan gerak, dan ketiganya saling berhubungan secara matematis.</p>
+
+  <h2 id="s4">4. Mengapa diperlukan momentum</h2>
+
+  <p>Pada sebagian besar soal biasa, kita dapat menggunakan bentuk sederhana F = m a. Namun ketika menghadapi tumbukan yang berlangsung sangat cepat, gaya dapat berubah sangat drastis dalam waktu yang sangat singkat.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Situasi yang sulit dianalisis dengan bentuk F = m a</caption>
+    <thead>
+      <tr><th>Situasi</th><th>Kendala analisis</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Raket memukul bola</td><td>Gaya sangat besar dan hanya bekerja sangat singkat</td></tr>
+      <tr><td>Kaki menendang bola</td><td>Gaya berubah besar selama kontak yang sangat singkat</td></tr>
+      <tr><td>Mobil bertabrakan</td><td>Gaya besar bekerja hanya beberapa sentidetik</td></tr>
+      <tr><td>Bola memantul dari dinding</td><td>Momentum berbalik arah dalam waktu singkat</td></tr>
+      <tr><td>Orang mendarat setelah melompat</td><td>Selang waktu penghentian sangat pendek</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pada kondisi tersebut, sering lebih mudah meninjau perubahan momentum daripada mengikuti besar gaya pada setiap saat.</p>
+
+  <p>Newton sebenarnya juga dapat menyatakan hukum keduanya menggunakan momentum.</p>
+
+  <div class="eq">
+    <var>F</var><sub>net</sub> = d<var>p</var>/d<var>t</var>
+    <span class="eq-note">Bentuk umum Hukum II Newton</span>
+  </div>
+
+  <p>Untuk selang waktu tertentu dan massa konstan, bentuk sederhananya adalah:</p>
+
+  <div class="eq">
+    <var>F</var><sub>net</sub> = &Delta;<var>p</var>/&Delta;<var>t</var>
+  </div>
+
+  <h2 id="s5">5. Pengertian momentum</h2>
+
+  <p>Momentum linear didefinisikan sebagai hasil kali massa dan kecepatan.</p>
+
+  <div class="eq">
+    <var>p</var> = <var>mv</var>
+    <span class="eq-note">m adalah massa benda dan v adalah kecepatannya</span>
+  </div>
+
+  <p>Momentum merupakan besaran vektor, sehingga mempunyai besar dan arah. Arah momentum selalu sama dengan arah kecepatan benda.</p>
+
+  <div class="note">
+    <p>Momentum sering dianggap sebagai besaran yang menggambarkan seberapa sulit menghentikan benda. Semakin besar momentum, semakin besar usaha yang diperlukan untuk mengubah geraknya.</p>
+  </div>
+
+  <h2 id="s6">6. Memahami momentum secara sederhana</h2>
+
+  <p>Perbandingan berikut memperlihatkan mengapa besaran momentum diperlukan.</p>
+
+  <div class="eq">
+    Bola: m = 0,1 kg, v = 10 m/s
+  </div>
+
+  <div class="eq">
+    <var>p</var> = <var>mv</var> = (0,1)(10) = 1 kg m/s
+  </div>
+
+  <div class="eq">
+    Mobil: m = 1000 kg, v = 10 m/s
+  </div>
+
+  <div class="eq">
+    <var>p</var> = <var>mv</var> = (1000)(10) = 10.000 kg m/s
+  </div>
+
+  <p>Kecepatan keduanya sama, tetapi momentumnya berbeda jauh karena massanya berbeda. Mobil memiliki momentum sepuluh ribu kali lebih besar daripada bola.</p>
+
+  <h2 id="s7">7. Momentum sebagai besaran vektor</h2>
+
+  <p>Misalkan kita memilih arah kanan sebagai arah positif.</p>
+
+  <pre class="diagram"><code>Benda A: v = +10 m/s
+  -&gt; p = +m v
+  -&gt; momentum ke kanan
+
+Benda B: v = -10 m/s
+  &lt;- p = -m v
+  &lt;- momentum ke kiri
+
+Tanda negatif bukan berarti momentumnya
+buruk atau momentumnya hilang.
+
+Tanda negatif hanya menunjukkan arah
+yang berlawanan dengan arah positif yang
+kita pilih.</code></pre>
+
+  <div class="note">
+    <p>Karena itu, menentukan arah positif dan negatif sangat penting pada soal momentum. Kesalahan paling sering terjadi pada soal tumbukan adalah keliru memberikan tanda.</p>
+  </div>
+
+  <h2 id="s8">8. Satuan momentum</h2>
+
+  <p>Karena momentum adalah hasil kali massa dan kecepatan, satuan momentum diperoleh dari perkalian satuan keduanya.</p>
+
+  <div class="eq">
+    [<var>p</var>] = [<var>mv</var>] = kg &middot; m/s
+    <span class="eq-note">Satuan SI momentum adalah kilogram kali meter per sekon</span>
+  </div>
+
+  <div class="note">
+    <p>Satuan kilogram kali meter per sekon tidak memiliki nama khusus. Bandingkan dengan satuan gaya yang dinamakan newton, dan satuan kerja yang dinamakan joule.</p>
+  </div>
+
+  <h2 id="s9">9. Pengertian impuls</h2>
+
+  <p>Impuls menggambarkan efek suatu gaya yang bekerja selama selang waktu tertentu.</p>
+
+  <div class="eq">
+    <var>I</var> = <var>F</var><sub>avg</sub>&Delta;<var>t</var>
+    <span class="eq-note">Impuls juga sering dilambangkan dengan huruf J</span>
+  </div>
+
+  <p>Perhatikan bahwa impuls bukan gaya. Impuls memperhitungkan dua hal sekaligus, yaitu besar gaya dan lamanya gaya itu bekerja.</p>
+
+  <h2 id="s10">10. Peran waktu dalam impuls</h2>
+
+  <p>Karena I = F delta t, efek gaya dipengaruhi oleh dua hal, yaitu besar gaya dan lama gaya bekerja.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.1 &middot; Pengaruh lama gaya terhadap besar impuls</caption>
+    <thead>
+      <tr><th>Gaya</th><th>Waktu</th><th>Impuls</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>100 N</td><td>0,01 s</td><td>1 Ns</td><td>Kontak sangat singkat</td></tr>
+      <tr><td>100 N</td><td>0,1 s</td><td>10 Ns</td><td>Kontak sepuluh kali lebih lama</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Gaya kedua tetap sama besarnya, tetapi impulsnya sepuluh kali lebih besar. Inilah alasan memperpanjang waktu kontak mengurangi gaya rata-rata.</p>
+
+  <h2 id="s11">11. Teorema impuls dan momentum</h2>
+
+  <p>Inilah bagian paling penting dalam materi ini. Kita mulai dari Hukum II Newton dalam bentuk momentum.</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var> = &Delta;<var>p</var>/&Delta;<var>t</var>
+  </div>
+
+  <p>Kalikan kedua ruas dengan delta t, sehingga:</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var>&Delta;<var>t</var> = &Delta;<var>p</var>
+  </div>
+
+  <p>Karena impuls didefinisikan sebagai gaya dikali selang waktu, diperoleh:</p>
+
+  <div class="eq">
+    <var>I</var> = &Delta;<var>p</var>
+    <span class="eq-note">Impuls sama dengan perubahan momentum</span>
+  </div>
+
+  <div class="note">
+    <p>Pernyataan ini berarti bahwa impuls yang diberikan kepada benda sama dengan perubahan momentum benda. Inilah teorema impuls momentum, dan inilah hubungan yang paling sering dipakai pada soal tumbukan.</p>
+  </div>
+
+  <h2 id="s12">12. Bentuk persamaan impuls momentum</h2>
+
+  <p>Kita memiliki dua bentuk yang berbeda untuk jenis soal yang berbeda.</p>
+
+  <div class="eq">
+    <var>I</var> = <var>F</var><sub>avg</sub>&Delta;<var>t</var>
+  </div>
+
+  <div class="eq">
+    <var>I</var> = &Delta;<var>p</var> = <var>p</var><sub>f</sub> &minus; <var>p</var><sub>i</sub>
+  </div>
+
+  <p>Untuk massa konstan, karena p = mv, bentuk terakhirnya menjadi:</p>
+
+  <div class="eq">
+    <var>I</var> = <var>mv</var><sub>f</sub> &minus; <var>mv</var><sub>i</sub>
+  </div>
+
+  <div class="eq">
+    <var>I</var> = <var>m</var>(<var>v</var><sub>f</sub> &minus; <var>v</var><sub>i</sub>)
+    <span class="eq-note">Berlaku untuk massa konstan</span>
+  </div>
+
+  <h2 id="s13">13. Menghitung perubahan momentum</h2>
+
+  <p>Perubahan momentum adalah selisih antara momentum akhir dan momentum awal.</p>
+
+  <div class="eq">
+    &Delta;<var>p</var> = <var>p</var><sub>f</sub> &minus; <var>p</var><sub>i</sub>
+    <span class="eq-note">Bukan sekadar m v akhir</span>
+  </div>
+
+  <p>Contoh sederhana. Jika momentum awal sebesar 5 kilogram meter per sekon dan momentum akhir sebesar 12 kilogram meter per sekon, maka:</p>
+
+  <div class="eq">
+    &Delta;<var>p</var> = 12 &minus; 5 = 7 kg m/s
+  </div>
+
+  <p>Jika arahnya berbalik, tanda harus tetap diperhitungkan. Momentum awal sebesar 10 dan momentum akhir sebesar minus 10 memberikan:</p>
+
+  <div class="eq">
+    &Delta;<var>p</var> = &minus;10 &minus; (+10) = &minus;20
+  </div>
+
+  <p>Perubahan momentumnya justru sangat besar karena arahnya berbalik, meskipun besar momentumnya sama.</p>
+
+  <h2 id="s14">14. Raket memukul bola</h2>
+
+  <p>Bayangkan bola bergerak ke kiri, kemudian raket memukulnya sehingga bergerak ke kanan.</p>
+
+  <pre class="diagram"><code>Sebelum tumbukan
+
+  p i &lt;-
+  [BOLA]  &lt;-  v awal
+
+Setelah tumbukan
+
+  p f -&gt;
+  [BOLA]  -&gt;  v akhir
+
+  delta p = p f - p i
+  bertanda besar karena arah berbalik
+
+
+  v awal &lt;- [BOLA] -&gt; v akhir
+
+Tumbukan ini membutuhkan impuls besar.
+Jika tumbukan berlangsung sangat singkat,
+gaya rata-ratanya menjadi sangat besar.</code></pre>
+
+  <h2 id="s15">15. Mengapa tumbukan menghasilkan gaya besar</h2>
+
+  <p>Dari hubungan gaya rata-rata dengan perubahan momentum, kita dapat melihat pengaruh waktu terhadap besar gaya.</p>
+
+  <div class="eq">
+    <var>F</var><sub>avg</sub> = &Delta;<var>p</var>/&Delta;<var>t</var>
+  </div>
+
+  <p>Bayangkan perubahan momentum tetap. Jika selang waktunya mengecil, gaya rata-ratanya membesar. Sebaliknya, jika selang waktunya membesar, gaya rata-ratanya mengecil.</p>
+
+  <div class="note">
+    <p>Prinsip inilah yang menjadi dasar banyak sistem keselamatan. Sabuk pengaman, bantalan dasbor, dan selongsong pelindung pada alat elektronik bekerja dengan cara yang sama. Pelindung yang baik memperpanjang waktu sehingga gaya yang diterimakan menjadi lebih kecil.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 15.1 &middot; Hubungan perubahan momentum tetap dengan selang waktu</caption>
+    <thead>
+      <tr><th>Selang waktu</th><th>Gaya rata-rata</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Diperpendek</td><td>Membesar</td></tr>
+      <tr><td>Diperpanjang</td><td>Mengecil</td></tr>
+      <tr><td>Tetap</td><td>Tetap</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s16">16. Airbag dan zona crumple</h2>
+
+  <p>Misalkan seseorang berada dalam mobil yang berhenti mendadak. Momentum tubuh harus berubah, sehingga perubahan momentum tetap diperlukan.</p>
+
+  <p>Airbag tidak membuat perubahan momentum menjadi nol. Yang dilakukan airbag adalah memperbesar waktu penghentian. Karena gaya rata-rata sama dengan perubahan momentum dibagi selang waktu, memperbesar selang waktu dapat mengurangi gaya rata-rata.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Perbandingan penghentian mendadak dan bertahap</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Tanpa perlindungan tambahan</th><th>Dengan airbag dan sabuk</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Perubahan momentum</td><td>Sama</td><td>Sama</td></tr>
+      <tr><td>Selang waktu penghentian</td><td>Sangat pendek</td><td>Lebih panjang</td></tr>
+      <tr><td>Gaya rata-rata</td><td>Sangat besar</td><td>Lebih kecil</td></tr>
+      <tr><td>Cedera yang dihasilkan</td><td>Berat</td><td>Lebih ringan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Zona deformasi kendaraan bekerja dengan prinsip yang sama. Bagian yang sengaja dirancang dapat berubah bentuk memperpanjang waktu menghentikan kendaraan secara bertahap, sehingga gaya yang diterima penumpang berkurang.</p>
+  </div>
+
+  <h2 id="s17">17. Mendarat dengan lutut ditekuk</h2>
+
+  <p>Penerapan yang mudah dilihat dalam kehidupan nyata adalah cara mendarat setelah melompat. Perubahan momentum tetap harus terjadi, karena tubuh harus berhenti dari gerak ke keadaan diam.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 17.1 &middot; Pengaruh posisi lutut terhadap gaya pendaratan</caption>
+    <thead>
+      <tr><th>Cara mendarat</th><th>Selang waktu</th><th>Gaya rata-rata</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kaki lurus</td><td>Sangat pendek</td><td>Sangat besar</td></tr>
+      <tr><td>Lutut ditekuk</td><td>Lebih panjang</td><td>Lebih kecil</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Membengkokkan lutut memperpanjang jarak yang ditempuh tubuh untuk berhenti, sehingga memperbesar selang waktu dan mengurangi gaya pada tulang.</p>
+
+  <h2 id="s18">18. Contoh petenis dan bola</h2>
+
+  <p>Misalkan raket memukul bola dengan massa 0,060 kilogram dan kecepatan sekitar 55 meter per sekon. Waktu kontak antara raket dan bola hanya beberapa milidetik.</p>
+
+  <p>Gunakan hubungan I = delta p terlebih dahulu untuk memperkirakan besar impuls, lalu gunakan I = gaya rata-rata kali delta t untuk memperoleh gaya rata-ratanya.</p>
+
+  <pre class="diagram"><code>Diketahui:
+  m bola    = 0,060 kg
+  v sebelum  = 55 m/s
+  v sesudah = 0 (bola tertahan raket)
+  waktu kontak = 2,3 x 10-3 s
+
+Momentum awal:
+  p i = 0,060 x 55
+     = 3,3 kg m/s
+
+Impuls:
+  I = 3,3 - 0
+    = 3,3 Ns
+
+Gaya rata-rata:
+  F = I per delta t
+    = 3,3 per 2,3 x 10-3
+    = 1.435 N
+
+Nilai gaya ini bergantung pada waktu kontak
+yang dipakai, sehingga hasilnya sangat peka
+terhadap ketepatan data.</code></pre>
+
+  <div class="note">
+    <p>Perhitungan ini memperlihatkan bahwa kecilnya selang waktu membuat gaya yang dihitung menjadi besar. Karena itu, waktu kontak harus diketahui dengan teliti. Memakai asumsi waktu yang berbeda dapat menghasilkan gaya yang berbeda beberapa kali lipat.</p>
+  </div>
+
+  <h2 id="s19">19. Aliran air yang menabrak benda</h2>
+
+  <p>Air yang mengalir menabrak mobil merupakan kasus yang sedikit berbeda, karena air terus-menerus mengalir dan massa yang bertumbukan tidak tetap.</p>
+
+  <p>Secara konseptual, gaya sebanding dengan laju perubahan momentum. Jika laju massa yang masuk per satuan waktu dinyatakan dengan notasi laju massa, dan kecepatannya adalah v, untuk kasus sederhana tertentu berlaku:</p>
+
+  <div class="eq">
+    <var>F</var> &asymp; <var>m</var>&#775; <var>v</var>
+    <span class="eq-note">Dengan tanda dan arah ditentukan oleh sistem yang dipilih</span>
+  </div>
+
+  <p>Untuk air yang mengalir dengan debit tetap, gaya dapat juga ditulis sebagai massa jenis kali luas penampang kali debit kali kecepatan. Bentuk ini lazim dipakai pada perancangan komponen hidrodinamika.</p>
+
+  <div class="note">
+    <p>Inilah alasan soal aliran air tidak sebaiknya diperlakukan hanya sebagai satu benda dengan massa tetap. Massa yang berinteraksi terus berubah, sehingga hubungan impuls momentum harus ditulis dalam bentuk laju perubahan.</p>
+  </div>
+<h2 id="s20">20. Sistem terisolasi</h2>
+
+  <p>Momentum total sebuah sistem akan tetap jika resultan gaya eksternal pada sistem dapat diabaikan selama interval interaksi yang dianalisis.</p>
+
+  <div class="eq">
+    <var>F</var><sub>ext, net</sub> &asymp; 0
+    <span class="eq-note">Syarat sistem terisolasi</span>
+  </div>
+
+  <p>Dalam bahasa impuls, syarat yang sama dapat ditulis sebagai impuls eksternal yang mendekati nol.</p>
+
+  <div class="eq">
+    <var>I</var><sub>ext</sub> &asymp; 0 &nbsp;&rArr;&nbsp; <var>p</var><sub>total, awal</sub> = <var>p</var><sub>total, akhir</sub>
+  </div>
+
+  <div class="note">
+    <p>Tidak ada benda yang benar-benar terisolasi dari segalanya. Dalam soal fisika, istilah tersebut berarti resultan gaya eksternal cukup kecil sehingga pengaruhnya dapat diabaikan dibandingkan momentum yang sedang dibahas.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 20.1 &middot; Sistem yang umumnya dapat dianggap terisolasi</caption>
+    <thead>
+      <tr><th>Sistem</th><th>Alasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dua bola yang bertumbukan di ruang hampa</td><td>Tidak ada gesekan udara yang berarti</td></tr>
+      <tr><td>Senapan dan peluru saat ditembak</td><td>Waktu interaksi sangat singkat sehingga dorongan gas luar dapat diabaikan</td></tr>
+      <tr><td>Batu yang pecah menjadi pecahan kecil</td><td>Gaya gravitasi eksternal sangat kecil dibanding gaya pengikat saat pecah</td></tr>
+      <tr><td>Dua bola di atas permukaan es yang sangat licin</td><td>Gaya gesekan diabaikan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s21">21. Hukum kekekalan momentum</h2>
+
+  <p>Untuk dua benda, persamaan kekekalan momentum ditulis sebagai:</p>
+
+  <div class="eq">
+    m<sub>1</sub>v<sub>1</sub> + m<sub>2</sub>v<sub>2</sub> = m<sub>1</sub>v<sub>1</sub>&prime; + m<sub>2</sub>v<sub>2</sub>&prime;
+    <span class="eq-note">Tanda prima berarti keadaan setelah interaksi</span>
+  </div>
+
+  <p>Untuk banyak benda, bentuk umumnya adalah:</p>
+
+  <div class="eq">
+    &Sigma;<var>p</var><sub>awal</sub> = &Sigma;<var>p</var><sub>akhir</sub>
+  </div>
+
+  <div class="note">
+    <p>Persamaan momentum harus selalu ditulis lengkap untuk semua benda dalam sistem, dengan tanda yang sesuai untuk masing-masing arah gerak. Tanda minus tidak boleh dihilangkan karena sering menyulitkan saat menyamakan kedua ruas.</p>
+  </div>
+
+  <h2 id="s22">22. Mengapa momentum dapat kekal</h2>
+
+  <p>Hubungannya dengan Hukum III Newton sangat penting untuk dipahami. Misalkan benda A berinteraksi dengan benda B.</p>
+
+  <pre class="diagram"><code>A memberi gaya ke B:  F A B
+B memberi gaya ke A:  F B A
+
+Menurut Hukum III Newton:
+  F A B = - F B A
+
+Selama interval waktu yang sama:
+  I A B = - I B A
+
+Dengan teorema impuls momentum:
+  delta p A = - delta p B
+  delta p A + delta p B = 0
+
+Maka:
+  p total = konstan</code></pre>
+
+  <div class="eq">
+    &Delta;<var>p</var><sub>A</sub> + &Delta;<var>p</var><sub>B</sub> = 0
+  </div>
+
+  <p>Jadi kekekalan momentum sangat erat hubungannya dengan gaya internal yang muncul berpasangan serta tidak adanya impuls eksternal netto yang signifikan.</p>
+
+  <div class="note">
+    <p>Kekekalan momentum bukan keajaiban, melainkan konsekuensi langsung dari Hukum III Newton yang digabungkan dengan teorema impuls momentum. Memahami asal-usul ini membuat syarat sistem terisolasi terasa wajar.</p>
+  </div>
+
+  <h2 id="s23">23. Contoh dua mobil menempel</h2>
+
+  <p>Misalkan mobil A bermassa sepuluh ribu kilogram bergerak dengan kecepatan 24 meter per sekon, sedangkan mobil B bermassa sama mula-mula diam. Setelah bertumbukan, keduanya menempel dan bergerak bersama.</p>
+
+  <div class="eq">
+    m<sub>A</sub>v<sub>A</sub> + m<sub>B</sub>v<sub>B</sub> = (m<sub>A</sub> + m<sub>B</sub>)v&prime;
+  </div>
+
+  <div class="eq">
+    10.000(24) + 10.000(0) = 20.000 v&prime;
+  </div>
+
+  <div class="eq">
+    240.000 = 20.000 v&prime;
+  </div>
+
+  <div class="eq">
+    v&prime; = 12 m/s
+  </div>
+
+  <p>Kecepatan akhir berada tepat di tengah antara kecepatan awal kedua mobil, sebagaimana diharapkan untuk dua massa yang sama.</p>
+
+  <h2 id="s24">24. Newton's cradle</h2>
+
+  <figure>
+    <img src="gambar/newtons-cradle.jpg" alt="Newtons cradle, alat demonstrasi transfer momentum dan energi melalui deretan bola yang saling bertumbukan" width="3073" height="2737" loading="lazy" decoding="async">
+    <figcaption>Newtons cradle sebagai demonstrasi kekekalan momentum dan energi. Sumber: Wikimedia Commons, CC BY-SA.</figcaption>
+  </figure>
+
+  <p>Newtons cradle merupakan salah satu demonstrasi visual terbaik untuk konsep transfer momentum dan energi. Ketika satu atau beberapa bola dilepaskan, bola-bola tersebut menumbuk bola di ujung lain sehingga bola di ujung itu bergerak.</p>
+
+  <div class="note">
+    <p>Perhatikan bahwa momentum diteruskan melalui seluruh deretan bola, tetapi energi kinetiknya sendiri tidak berpindah. Yang berpindah melalui sistem adalah momentum, sedangkan energi kinetik tetap berada pada bola-bola yang bergerak. Inilah perbedaan penting antara kedua besaran tersebut.</p>
+  </div>
+
+  <h2 id="s25">25. Pengertian tumbukan</h2>
+
+  <p>Tumbukan adalah interaksi singkat antara dua benda atau lebih yang menyebabkan momentum masing-masing benda berubah.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 25.1 &middot; Contoh tumbukan dalam berbagai situasi</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bola dengan bola</td><td>Pertandingan tenis dan biliar</td></tr>
+      <tr><td>Raket dengan bola</td><td>Pemukul dalam permainan tenis</td></tr>
+      <tr><td>Mobil dengan mobil</td><td>Tabrakan kendaraan bermotor</td></tr>
+      <tr><td>Benda dengan dinding</td><td>Bola yang dipantulkan</td></tr>
+      <tr><td>Partikel dengan partikel</td><td>Tumbukan partikel dalam eksperimen fisika nuklir</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Dalam analisis tumbukan, kita biasanya membandingkan keadaan sebelum tumbukan dan keadaan sesudah tumbukan. Pada sistem terisolasi, momentum total kedua keadaan tersebut sama.</p>
+
+  <h2 id="s26">26. Jenis tumbukan</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 26.1 &middot; Tiga jenis tumbukan dan sifat dasarnya</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Momentum total</th><th>Energi kinetik total</th><th>Ciri khas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Elastis</td><td>Kekal</td><td>Kekal</td><td>Tidak ada energi yang berubah bentuk</td></tr>
+      <tr><td>Tidak elastis</td><td>Kekal</td><td>Tidak kekal</td><td>Sebagian energi berubah menjadi bentuk lain</td></tr>
+      <tr><td>Tidak elastis sempurna</td><td>Kekal</td><td>Tidak kekal</td><td>Benda menempel dan bergerak bersama</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Perlu ditegaskan bahwa momentum total tetap kekal pada ketiga jenis tumbukan, asalkan sistemnya terisolasi. Yang membedakan ketiganya hanya apakah energi kinetik total ikut kekal atau tidak.</p>
+  </div>
+
+  <h2 id="s27">27. Nasib energi kinetik pada tumbukan</h2>
+
+  <p>Pada tumbukan tidak elastis, kita tidak mengatakan energi hilang. Energi kinetik dapat berubah menjadi bentuk lain.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 27.1 &middot; Bentuk energi hasil dari tumbukan tidak elastis</caption>
+    <thead>
+      <tr><th>Bentuk energi</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Deformasi</td><td>Badan mobil yang penyok</td></tr>
+      <tr><td>Panas</td><td>Permukaan yang saling bergesek</td></tr>
+      <tr><td>Suara</td><td>Bunyi benturan</td></tr>
+      <tr><td>Getaran</td><td>Bagian kendaraan yang bergetar setelah benturan</td></tr>
+      <tr><td>Energi internal</td><td>Perubahan struktur material</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jadi energi total dapat tetap terkonservasi, sedangkan energi kinetiknya tidak harus tetap.</p>
+
+  <h2 id="s28">28. Tumbukan elastis</h2>
+
+  <p>Pada tumbukan elastis, terdapat dua persamaan kekekalan yang harus dipenuhi.</p>
+
+  <div class="eq">
+    m<sub>1</sub>v<sub>1</sub> + m<sub>2</sub>v<sub>2</sub> = m<sub>1</sub>v<sub>1</sub>&prime; + m<sub>2</sub>v<sub>2</sub>&prime;
+    <span class="eq-note">Kekekalan momentum</span>
+  </div>
+
+  <div class="eq">
+    &frac12;m<sub>1</sub>v<sub>1</sub><sup>2</sup> + &frac12;m<sub>2</sub>v<sub>2</sub><sup>2</sup> = &frac12;m<sub>1</sub>v<sub>1</sub>&prime;<sup>2</sup> + &frac12;m<sub>2</sub>v<sub>2</sub>&prime;<sup>2</sup>
+    <span class="eq-note">Kekekalan energi kinetik</span>
+  </div>
+
+  <p>Karena ada dua persamaan dengan dua besaran yang tidak diketahui, yaitu kecepatan akhir kedua benda, sistem persamaan ini dapat diselesaikan secara lengkap.</p>
+
+  <div class="note">
+    <p>Dalam kenyataan, sangat sedikit tumbukan yang benar-benar elastis sempurna. Pada setiap tumbukan nyata selalu muncul deformasi, suara, panas, dan getaran. Namun beberapa sistem dapat dimodelkan mendekati elastis, sehingga asumsi ini tetap sangat berguna dalam fisika.</p>
+  </div>
+
+  <h2 id="s29">29. Tumbukan elastis satu dimensi</h2>
+
+  <p>Satu dimensi berarti gerak hanya dipelajari sepanjang satu garis. Contohnya dua bola bergerak sepanjang sumbu x.</p>
+
+  <div class="eq">
+    m<sub>A</sub>v<sub>A</sub> + m<sub>B</sub>v<sub>B</sub> = m<sub>A</sub>v<sub>A</sub>&prime; + m<sub>B</sub>v<sub>B</sub>&prime;
+  </div>
+
+  <div class="eq">
+    &frac12;m<sub>A</sub>v<sub>A</sub><sup>2</sup> + &frac12;m<sub>B</sub>v<sub>B</sub><sup>2</sup> = &frac12;m<sub>A</sub>v<sub>A</sub>&prime;<sup>2</sup> + &frac12;m<sub>B</sub>v<sub>B</sub>&prime;<sup>2</sup>
+  </div>
+
+  <div class="note">
+    <p>Kedua persamaan tersebut dapat dikurangi satu sama lain sehingga menghasilkan hubungan kecepatan relatif. Hubungan itu dinyatakan pada bagian berikut dan sangat berguna karena dapat dituliskan dengan bentuk yang sederhana.</p>
+  </div>
+
+  <h2 id="s30">30. Hubungan kecepatan relatif</h2>
+
+  <p>Untuk tumbukan elastis satu dimensi, kecepatan relatif sebelum dan sesudah tumbukan mempunyai besar yang sama tetapi arah berlawanan.</p>
+
+  <div class="eq">
+    <var>v</var><sub>A</sub> &minus; <var>v</var><sub>B</sub> = &minus;(<var>v</var><sub>A</sub>&prime; &minus; <var>v</var><sub>B</sub>&prime;)
+    <span class="eq-note">Bentuk lain dari kekekalan energi kinetik dan momentum</span>
+  </div>
+
+  <figure>
+    <img src="gambar/tumbukan-elastis.svg" alt="Ilustrasi tumbukan elastis antara dua benda bermassa sama dengan salah satu benda mula-mula diam" width="800" height="600" loading="lazy" decoding="async">
+    <figcaption>Pertukaran gerak pada tumbukan elastis antara dua benda bermassa sama. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="gambar/animasi-tumbukan-elastis.svg" alt="Animasi perbandingan beberapa kondisi tumbukan elastis dengan perubahan massa dan kecepatan" width="600" height="450" loading="lazy" decoding="async">
+    <figcaption>Animasi perbandingan kondisi tumbukan elastis. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <div class="note">
+    <p>Pada kasus khusus dua benda bermassa sama dengan salah satu mula-mula diam, hubungan ini memberikan hasil yang mudah diingat. Benda yang mula-mula diam akan bergerak dengan kecepatan yang semula dimiliki benda lain, sedangkan benda yang menumbuk akan berhenti.</p>
+  </div>
+
+  <h2 id="s31">31. Tumbukan tidak elastis</h2>
+
+  <p>Pada tumbukan tidak elastis, momentum total tetap kekal, tetapi energi kinetik total tidak kekal.</p>
+
+  <div class="eq">
+    &Delta;<var>E</var><sub>K</sub> = <var>E</var><sub>Kf</sub> &minus; <var>E</var><sub>Ki</sub>
+    <span class="eq-note">Selisih ini berpindah ke bentuk energi lain</span>
+  </div>
+
+  <p>Contoh yang paling mudah diamati adalah mobil yang penyok setelah bertabrakan. Mobil berbalik arah dan berhenti tidak tepat di tempatnya semula, sementara bodinya mengalami deformasi yang menelan sebagian energi kinetiknya.</p>
+
+  <h2 id="s32">32. Tumbukan tidak elastis sempurna</h2>
+
+  <p>Ini adalah kondisi ketika benda-benda menyatu setelah tumbukan dan bergerak bersama dengan satu kecepatan.</p>
+
+  <pre class="diagram"><code>Sebelum tumbukan
+
+  v A -&gt;        [A]  -&gt;   [B]  v B = 0
+
+
+Setelah tumbukan
+
+  v -&gt;   [ (A+B) ]
+         keduanya menjadi satu
+
+
+Persamaan momentum:
+
+  m A v A + m B v B = (m A + m B) v'
+
+
+Kecepatan akhir dapat dihitung langsung
+dari persamaan tersebut tanpa perlu
+persamaan energi kinetik.</code></pre>
+
+  <figure>
+    <img src="gambar/tumbukan-tidak-elastis.gif" alt="Simulasi dua kereta yang bertumbukan lalu bergerak bersama setelah bertumbukan" width="370" height="218" loading="lazy" decoding="async">
+    <figcaption>Simulasi tumbukan tidak elastis sempurna. Momentum tetap dikonservasikan, sementara sebagian energi kinetik berubah menjadi bentuk energi lain. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <div class="note">
+    <p>Pada kasus ini, persamaan energi kinetik tidak dapat digunakan karena energi kinetik pasti berkurang. Kita hanya mempunyai satu persamaan, yaitu kekekalan momentum.</p>
+  </div>
+
+  <h2 id="s33">33. Perbandingan jenis tumbukan</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 33.1 &middot; Perbandingan tumbukan elastis dan tidak elastis</caption>
+    <thead>
+      <tr><th>Sifat</th><th>Elastis</th><th>Tidak elastis</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Momentum total</td><td>Kekal pada sistem terisolasi</td><td>Kekal pada sistem terisolasi</td></tr>
+      <tr><td>Energi kinetik</td><td>Kekal</td><td>Tidak kekal</td></tr>
+      <tr><td>Deformasi</td><td>Idealnya sangat kecil dan tidak permanen</td><td>Dapat terjadi dan tidak kembali</td></tr>
+      <tr><td>Energi menjadi panas dan suara</td><td>Idealnya diabaikan</td><td>Dapat signifikan</td></tr>
+      <tr><td>Benda menempel</td><td>Tidak harus</td><td>Bisa, pada kasus tidak elastis sempurna</td></tr>
+      <tr><td>Contoh model</td><td>Bola ideal yang pantul sempurna</td><td>Mobil bertabrakan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Pesan paling penting dari tabel ini adalah bahwa momentum dapat kekal meskipun energi kinetik tidak kekal. Banyak kesalahan penalaran muncul karena kedua besaran dianggap selalu berubah dengan cara yang sama.</p>
+  </div>
+
+  <h2 id="s34">34. Momentum dan energi bukan besaran yang sama</h2>
+
+  <p>Momentum adalah besaran vektor dengan satuan kilogram meter per sekon, sedangkan energi kinetik adalah besaran skalar dengan satuan joule.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 34.1 &middot; Perbedaan momentum dan energi kinetik</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Momentum</th><th>Energi kinetik</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rumus</td><td>p sama dengan m v</td><td>E K sama dengan satu per dua m v kuadrat</td></tr>
+      <tr><td>Sifat</td><td>Vektor</td><td>Skalar</td></tr>
+      <tr><td>Satuan</td><td>kg m/s</td><td>Joule</td></tr>
+      <tr><td>Hubungan dengan kecepatan</td><td>Sebanding dengan kecepatan</td><td>Sebanding dengan kuadrat kecepatan</td></tr>
+      <tr><td>Memiliki arah</td><td>Ya</td><td>Tidak</td></tr>
+      <tr><td>Kekal pada sistem terisolasi</td><td>Selalu</td><td>Hanya pada tumbukan elastis</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perhatikan perbedaan ketergantungan terhadap kecepatan. Momentum sebanding dengan kecepatan, sedangkan energi kinetik sebanding dengan kuadrat kecepatan.</p>
+
+  <div class="note">
+    <p>Contoh yang memperlihatkan perbedaan ini adalah benda yang berbalik arah tanpa mengubah kelajuannya. Jika kecepatan awalnya 10 meter per sekon dan kecepatan akhirnya minus 10 meter per sekon, kelajuannya tetap 10 meter per sekon sehingga energi kinetiknya tetap sama. Namun momentumnya berubah tanda, sehingga perubahan momentumnya besar sekali.</p>
+  </div>
+
+  <h2 id="s35">35. Contoh senapan dan recoil</h2>
+
+  <p>Perhatikan sistem senapan dan peluru dengan massa senapan lima kilogram dan massa peluru 0,02 kilogram, sedangkan peluru bergerak dengan kecepatan 620 meter per sekon.</p>
+
+  <div class="eq">
+    <var>p</var><sub>total, awal</sub> = 0
+    <span class="eq-note">Sistem mula-mula diam</span>
+  </div>
+
+  <p>Setelah ditembak, jumlah momentum peluru dan senapan harus tetap nol.</p>
+
+  <div class="eq">
+    m<sub>p</sub>v<sub>p</sub> + m<sub>s</sub>v<sub>s</sub> = 0
+  </div>
+
+  <div class="eq">
+    <var>v</var><sub>s</sub> = &minus;m<sub>p</sub>v<sub>p</sub> / m<sub>s</sub>
+  </div>
+
+  <div class="eq">
+    <var>v</var><sub>s</sub> = &minus;(0,02)(620) / 5
+  </div>
+
+  <div class="eq">
+    <var>v</var><sub>s</sub> = &minus;2,48 m/s
+  </div>
+
+  <p>Tanda negatif menunjukkan bahwa senapan bergerak berlawanan arah dengan arah gerak peluru.</p>
+
+  <h2 id="s36">36. Mengapa senapan bergerak mundur</h2>
+
+  <p>Sebelum ditembak, momentum total sistem bernilai nol. Setelah ditembak, peluru memperoleh momentum ke depan. Agar momentum total tetap nol, senapan harus memperoleh momentum dengan arah berlawanan.</p>
+
+  <figure>
+    <img src="gambar/recoil-meriam.svg" alt="Diagram gaya dan recoil pada meriam sebagai ilustrasi bahwa keluarnya proyektil menghasilkan respons gerak berlawanan pada sistem peluncur" width="900" height="600" loading="lazy" decoding="async">
+    <figcaption>Prinsip recoil pada meriam. Sumber: Wikimedia Commons, CC BY-SA 4.0 oleh Grasyl.</figcaption>
+  </figure>
+
+  <div class="note">
+    <p>Besarnya kecepatan mundur berlawanan dengan perbandingan massa. Senapan yang jauh lebih berat daripada peluru akan bergerak mundur dengan kecepatan yang sangat kecil. Jika berat peluru ditambah tanpa menambah massa senapan, kecepatan mundur senapan menjadi lebih besar.</p>
+  </div>
+
+  <h2 id="s37">37. Tumbukan dua dimensi</h2>
+
+  <p>Momentum sebenarnya juga berlaku pada dua dan tiga dimensi. Pada dua dimensi, kita harus memisahkan momentum menjadi komponen pada sumbu x dan sumbu y.</p>
+
+  <div class="eq">
+    &Sigma;<var>p</var><sub>x</sub><sup>awal</sup> = &Sigma;<var>p</var><sub>x</sub><sup>akhir</sup>
+  </div>
+
+  <div class="eq">
+    &Sigma;<var>p</var><sub>y</sub><sup>awal</sup> = &Sigma;<var>p</var><sub>y</sub><sup>akhir</sup>
+  </div>
+
+  <figure>
+    <img src="gambar/momentum-2d.svg" alt="Diagram vektor momentum pada tumbukan dua dimensi yang memperlihatkan penjumlahan momentum sebelum dan sesudah interaksi" width="800" height="600" loading="lazy" decoding="async">
+    <figcaption>Kekekalan momentum pada tumbukan dua dimensi. Sumber: Wikimedia Commons, CC BY-SA 4.0 oleh Cmglee.</figcaption>
+  </figure>
+
+  <p>Karena ada dua persamaan independen, kita dapat menentukan dua besaran yang tidak diketahui. Inilah alasan tumbukan dua dimensi dapat dianalisis secara lengkap hanya dengan kekekalan momentum.</p>
+
+  <h2 id="s38">38. Mengapa tumbukan dua dimensi lebih sulit</h2>
+
+  <p>Pada tumbukan dua dimensi, kita tidak hanya menentukan besar kecepatan, tetapi juga harus menentukan arahnya. Sebuah benda dapat setelah tumbukan bergerak ke arah kanan atas, sedangkan benda lain bergerak ke arah kanan bawah.</p>
+
+  <pre class="diagram"><code>Setelah tumbukan dua dimensi
+
+       v 1
+        /
+       /  -&gt;  v 1 x positif
+      /
+     ( 1)
+
+           ( 2)
+            \
+             \
+              \  -&gt;  v 2 x positif
+               \
+                v 2
+
+Komponen x kedua benda saling menjaga,
+sedangkan komponen y harus saling
+meniadakan karena mula-mula nol.</code></pre>
+
+  <p>Karena itu, tidak selalu ada kemungkinan bahwa momentum total awal dapat dipertahankan untuk kedua sumbu sekaligus.</p>
+
+  <h2 id="s39">39. Pengertian pusat massa</h2>
+
+  <p>Pusat massa adalah posisi rata-rata suatu sistem yang dibobot berdasarkan massa. Untuk dua benda pada satu dimensi:</p>
+
+  <div class="eq">
+    <var>x</var><sub>CM</sub> = (m<sub>1</sub>x<sub>1</sub> + m<sub>2</sub>x<sub>2</sub>) / (m<sub>1</sub> + m<sub>2</sub>)
+  </div>
+
+  <p>Untuk banyak benda:</p>
+
+  <div class="eq">
+    <var>x</var><sub>CM</sub> = &Sigma;m<sub>i</sub>x<sub>i</sub> / &Sigma;m<sub>i</sub>
+  </div>
+
+  <figure>
+    <img src="gambar/pusat-massa.svg" alt="Diagram dua benda dengan posisi dan massa yang memperlihatkan letak pusat massa sistem" width="800" height="400" loading="lazy" decoding="async">
+    <figcaption>Pusat massa dua benda sebagai rata-rata berbobot. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <div class="note">
+    <p>Pusat massa bukan berarti terdapat massa terkumpul di titik tersebut. Yang terkumpul di titik itu adalah seluruh massa sistem secara rata.</p>
+  </div>
+
+  <h2 id="s40">40. Rata-rata berbobot</h2>
+
+  <p>Perhatikan contoh berikut. Benda pertama bermassa 10 kilogram berada di posisi nol, sedangkan benda kedua bermassa 1 kilogram berada di posisi 10 meter.</p>
+
+  <p>Jika kita mengambil rata-rata biasa, hasilnya:</p>
+
+  <div class="eq">
+    (0 + 10) / 2 = 5 m
+  </div>
+
+  <p>Hasil tersebut keliru karena massa kedua benda tidak sama. Dengan pembobotan yang benar:</p>
+
+  <div class="eq">
+    <var>x</var><sub>CM</sub> = (10)(0) + (1)(10) beratas 10 + 1
+  </div>
+
+  <div class="eq">
+    <var>x</var><sub>CM</sub> = 10 / 11
+  </div>
+
+  <div class="eq">
+    <var>x</var><sub>CM</sub> &asymp; 0,91 m
+  </div>
+
+  <p>Pusat massa berada jauh lebih dekat ke benda yang massanya 10 kilogram, sesuai dengan dugaan kita secara intuitif.</p>
+
+  <h2 id="s41">41. Pusat massa satu dan dua dimensi</h2>
+
+  <p>Untuk sistem dua dimensi, koordinat pusat massa dituliskan sebagai:</p>
+
+  <div class="eq">
+    <var>x</var><sub>CM</sub> = &Sigma;m<sub>i</sub>x<sub>i</sub> / &Sigma;m<sub>i</sub>
+  </div>
+
+  <div class="eq">
+    <var>y</var><sub>CM</sub> = &Sigma;m<sub>i</sub>y<sub>i</sub> / &Sigma;m<sub>i</sub>
+  </div>
+
+  <p>Lokasi pusat massa kemudian dituliskan sebagai pasangan koordinat.</p>
+
+  <div class="eq">
+    (x<sub>CM</sub>, y<sub>CM</sub>)
+  </div>
+
+  <p>Untuk sistem tiga dimensi juga terdapat komponen z, sehingga lokasinya ditulis sebagai:</p>
+
+  <div class="eq">
+    (x<sub>CM</sub>, y<sub>CM</sub>, z<sub>CM</sub>)
+  </div>
+
+  <div class="note">
+    <p>Pembagian rumus untuk setiap sumbu selalu sama. Sumbu yang tidak dipakai cukup diabaikan, karena tidak ada yang perlu dihitung pada arah tersebut.</p>
+  </div>
+
+  <h2 id="s42">42. Hubungan pusat massa dengan momentum</h2>
+
+  <p>Untuk suatu sistem dengan massa total M, momentum total sistem dapat dituliskan sebagai:</p>
+
+  <div class="eq">
+    <var>p</var><sub>total</sub> = <var>M</var><var>v</var><sub>CM</sub>
+    <span class="eq-note">Momentum total sistem sama dengan massa total kali kecepatan pusat massa</span>
+  </div>
+
+  <p>Artinya, gerak pusat massa dapat digunakan untuk menggambarkan momentum total sistem secara keseluruhan.</p>
+
+  <p>Jika tidak ada resultan gaya eksternal, maka momentum total konstan sehingga kecepatan pusat massa juga konstan.</p>
+
+  <div class="eq">
+    <var>F</var><sub>ext</sub> = 0 &nbsp;&rArr;&nbsp; <var>v</var><sub>CM</sub> = konstan
+  </div>
+
+  <div class="note">
+    <p>Inilah alasan pusat massa sangat penting dalam analisis sistem banyak benda. Kita dapat memperlakukan seluruh sistem sebagai satu titik yang terletak pada pusat massa, tanpa perlu mengikuti setiap benda secara individual.</p>
+  </div>
+
+  <h2 id="s43">43. Pusat massa saat ledakan</h2>
+
+  <p>Bayangkan sebuah benda diam kemudian meledak menjadi beberapa bagian. Setiap bagian dapat bergerak ke arah yang berbeda.</p>
+
+  <p>Momentum total sistem tetap terjaga meskipun pecahan benda menyebar ke berbagai arah, sehingga gerak keseluruhan sistem tetap memenuhi hukum momentum.</p>
+
+  <pre class="diagram"><code>Sebelum ledakan
+
+  [Benda diam]
+  p total = 0
+  v CM = 0
+
+
+Setelah ledakan
+
+ pecahan 1    pecahan 2    pecahan 3
+      /             |              \
+     /              |               \
+    v 1             v 2             v 3
+
+  Jumlah vektor v tetap nol,
+  sehingga v CM tetap nol.
+
+  Pecahan bergerak ke segala arah,
+  tetapi pusat massa tidak bergeser.</code></pre>
+
+  <p>Ini adalah salah satu kegunaan penting konsep pusat massa, yaitu menganalisis ledakan dan sistem partikel.</p>
+
+  <h2 id="s44">44. Penghubungan tiga hukum</h2>
+
+  <p>Setelah mempelajari tiga modul terakhir, hubungan antarkonsep menjadi jelas.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 44.1 &middot; Tiga sudut pandang untuk perubahan gerak</caption>
+    <thead>
+      <tr><th>Topik</th><th>Persamaan</th><th>Menjawab pertanyaan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hukum Newton</td><td>Sum F sama dengan m a</td><td>Bagaimana gaya menyebabkan percepatan</td></tr>
+      <tr><td>Usaha dan energi</td><td>W net sama dengan delta E K</td><td>Bagaimana kerja mengubah energi kinetik</td></tr>
+      <tr><td>Impuls dan momentum</td><td>I sama dengan delta p</td><td>Bagaimana gaya selama waktu tertentu mengubah momentum</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Ketiganya merupakan tiga cara berbeda untuk menganalisis hal yang sama, yaitu perubahan gerak benda. Tidak ada yang lebih benar dari yang lain, masing-masing hanya lebih cocok untuk jenis soal tertentu.</p>
+  </div>
+
+  <h2 id="s45">45. Kapan menggunakan impuls</h2>
+
+  <p>Pendekatan impuls momentum dipilih ketika soal berfokus pada hal-hal berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 45.1 &middot; Situasi yang cocok memakai teorema impuls momentum</caption>
+    <thead>
+      <tr><th>Situasi</th><th>Alasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tumbukan</td><td>Yang diminta perubahan momentum</td></tr>
+      <tr><td>Pukulan dan tendangan</td><td>Gaya besar bekerja sangat singkat</td></tr>
+      <tr><td>Raket memukul bola</td><td>Selang waktu kontak sangat pendek</td></tr>
+      <tr><td>Orang mendarat</td><td>Perubahan kecepatan besar dalam waktu singkat</td></tr>
+      <tr><td>Mencari gaya rata-rata</td><td>Diketahui perubahan momentum dan lama kontak</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="eq">
+    <var>I</var> = <var>F</var><sub>avg</sub>&Delta;<var>t</var> = &Delta;<var>p</var>
+    <span class="eq-note">Rumus utama pendekatan ini</span>
+  </div>
+
+  <h2 id="s46">46. Kapan menggunakan kekekalan momentum</h2>
+
+  <p>Pendekatan kekekalan momentum dipilih ketika memenuhi syarat berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 46.1 &middot; Syarat penggunaan kekekalan momentum</caption>
+    <thead>
+      <tr><th>Syarat</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ada dua benda atau lebih</td><td>Sistem harus terdiri atas lebih dari satu bagian</td></tr>
+      <tr><td>Benda berinteraksi</td><td>Ada gaya internal yang bekerja</td></tr>
+      <tr><td>Tumbukan atau ledakan</td><td>Interaksi berlangsung singkat</td></tr>
+      <tr><td>Sistem terisolasi</td><td>Resultan gaya eksternal dapat diabaikan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="eq">
+    <var>p</var><sub>i</sub> = <var>p</var><sub>f</sub>
+  </div>
+
+  <h2 id="s47">47. Kapan menggunakan kekekalan energi</h2>
+
+  <p>Persamaan kekekalan energi kinetik hanya dipakai pada tumbukan elastis, karena pada jenis tumbukan lainnya energi kinetik tidak kekal.</p>
+
+  <div class="scroll">
+    <table class="tight">
+      <caption>Tabel 47.1 &middot; Persamaan yang dipakai pada setiap jenis tumbukan</caption>
+      <thead>
+        <tr><th>Jenis tumbukan</th><th>Persamaan yang dipakai</th><th>Jumlah persamaan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Elastis satu dimensi</td><td>Momentum dan energi kinetik</td><td>Dua</td></tr>
+        <tr><td>Elastis dua dimensi</td><td>Momentum pada dua sumbu</td><td>Dua</td></tr>
+        <tr><td>Tidak elastis</td><td>Momentum saja</td><td>Satu</td></tr>
+        <tr><td>Tidak elastis sempurna</td><td>Momentum saja</td><td>Satu</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <p>Pada tumbukan elastis satu dimensi kita membutuhkan dua persamaan untuk dua besaran yang tidak diketahui. Pada tumbukan dua dimensi, kedua persamaan momentum pada dua sumbu sudah cukup. Perbedaan jumlah persamaan inilah yang menentukan soal mana yang dapat diselesaikan.</p>
+  </div>
+
+  <h2 id="s48">48. Cara mengerjakan soal</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 48.1 &middot; Tujuh langkah mengerjakan soal impuls momentum</caption>
+    <thead>
+      <tr><th>Langkah</th><th>Kegiatan</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tentukan sistem</td><td>Bola saja, bola dengan raket, atau seluruh kendaraan</td></tr>
+      <tr><td>2</td><td>Tentukan arah positif</td><td>Pilih satu arah sebagai positif dan konsisten</td></tr>
+      <tr><td>3</td><td>Momentum awal</td><td>Jumlahkan p sama dengan m v untuk seluruh benda</td></tr>
+      <tr><td>4</td><td>Momentum akhir</td><td>Tentukan kondisi setelah interaksi</td></tr>
+      <tr><td>5</td><td>Periksa gaya eksternal</td><td>Tentukan apakah sistem dapat dianggap terisolasi</td></tr>
+      <tr><td>6</td><td>Pilih persamaan</td><td>Gunakan I sama dengan delta p bila gaya dan waktu dibahas</td></tr>
+      <tr><td>7</td><td>Tambahkan energi kinetik bila elastis</td><td>Hanya berlaku pada tumbukan elastis</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Langkah kedua sering diabaikan, padahal menentukan arah positif adalah langkah yang paling menentukan pada soal momentum. Kesalahan tanda menghasilkan jawaban yang terlihat masuk akal tetapi nilainya salah.</p>
+  </div>
+
+  <h2 id="s49">49. Kesalahan yang sering terjadi</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 49.1 &middot; Kesalahan umum dan bentuk yang benar</caption>
+    <thead>
+      <tr><th>Kesalahan</th><th>Bentuk yang benar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menganggap momentum hanya angka</td><td>Momentum adalah besaran vektor dengan besar dan arah</td></tr>
+      <tr><td>Menganggap impuls sama dengan gaya</td><td>Impuls memperhitungkan gaya dan selang waktu</td></tr>
+      <tr><td>Menghitung perubahan momentum secara keliru</td><td>Perubahan momentum adalah momentum akhir dikurangi momentum awal</td></tr>
+      <tr><td>Menganggap momentum setiap benda kekal</td><td>Yang kekal adalah momentum total sistem</td></tr>
+      <tr><td>Menganggap energi kinetik selalu kekal pada tumbukan</td><td>Hanya kekal pada tumbukan elastis ideal</td></tr>
+      <tr><td>Menganggap energi kinetik yang berkurang berarti energi hilang</td><td>Energi berpindah menjadi panas, suara, dan deformasi</td></tr>
+      <tr><td>Menyamakan kelajuan dengan kecepatan</td><td>Kelajuan tidak memiliki arah, kecepatan memiliki arah</td></tr>
+      <tr><td>Mengabaikan sistem yang tidak terisolasi</td><td>Gaya eksternal dapat mengubah momentum total</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Kedelapan kesalahan tersebut berakar pada dua hal, yaitu melupakan bahwa momentum adalah vektor dan melupakan bahwa yang kekal adalah momentum total sistem, bukan momentum setiap benda.</p>
+  </div>
+
+  <h2 id="s50">50. Ringkasan rumus</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 50.1 &middot; Kumpulan rumus utama beserta syaratnya</caption>
+    <thead>
+      <tr><th>Konsep</th><th>Rumus</th><th>Syarat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Momentum</td><td>p sama dengan m v</td><td>Besaran vektor</td></tr>
+      <tr><td>Perubahan momentum</td><td>delta p sama dengan p akhir dikurangi p awal</td><td>Perbedaan vektor</td></tr>
+      <tr><td>Hukum Newton bentuk momentum</td><td>F net sama dengan delta p dibagi delta t</td><td>Massa konstan untuk bentuk selang</td></tr>
+      <tr><td>Impuls</td><td>I sama dengan gaya rata-rata kali delta t</td><td>Gaya rata-rata selama selang waktu</td></tr>
+      <tr><td>Teorema impuls momentum</td><td>I sama dengan delta p</td><td>Resultan gaya eksternal</td></tr>
+      <tr><td>Impuls untuk massa konstan</td><td>I sama dengan m kali (v akhir dikurangi v awal)</td><td>Massa tidak berubah</td></tr>
+      <tr><td>Kekekalan momentum</td><td>p awal sama dengan p akhir</td><td>Sistem terisolasi</td></tr>
+      <tr><td>Kekekalan momentum dua benda</td><td>m1 v1 plus m2 v2 sama dengan m1 v1 baru plus m2 v2 baru</td><td>Sistem terisolasi</td></tr>
+      <tr><td>Tumbukan tidak elastis sempurna</td><td>m1 v1 plus m2 v2 sama dengan jumlah massa kali v baru</td><td>Benda menempel</td></tr>
+      <tr><td>Kecepatan relatif elastis satu dimensi</td><td>v1 dikurangi v2 sama dengan minus (v1 baru dikurangi v2 baru)</td><td>Elastis satu dimensi</td></tr>
+      <tr><td>Pusat massa satu dimensi</td><td>x CM sama dengan jumlah m x dibagi jumlah m</td><td>Sistem berbentuk partikel</td></tr>
+      <tr><td>Pusat massa dua dimensi</td><td>y CM sama dengan jumlah m y dibagi jumlah m</td><td>Sistem pada bidang datar</td></tr>
+      <tr><td>Momentum sistem</td><td>p total sama dengan M kali v CM</td><td>M adalah massa total sistem</td></tr>
+      <tr><td>Gaya pada aliran fluida</td><td>F sebanding dengan laju massa kali kecepatan</td><td>Massa tidak tetap</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Membaca kolom syarat sama pentingnya dengan mengingat rumusnya. Sebagian besar kesalahan muncul karena rumus dipakai pada kondisi yang tidak memenuhi syaratnya.</p>
+  </div>
+<h2 id="s51">51. Latihan</h2>
+
+  <p>Kerjakan latihan berikut untuk memeriksa pemahaman terhadap materi bab ini.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 51.1 &middot; Latihan dan jawaban ringkas</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan</th><th>Jawaban ringkas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tuliskan rumus momentum linear.</td><td>Hasil kali massa dengan kecepatan</td></tr>
+      <tr><td>2</td><td>Apakah momentum merupakan besaran vektor?</td><td>Ya, arahnya sama dengan arah kecepatan</td></tr>
+      <tr><td>3</td><td>Apa satuan momentum dalam SI?</td><td>Kilogram kali meter per sekon</td></tr>
+      <tr><td>4</td><td>Tuliskan rumus impuls.</td><td>Gaya rata-rata dikali selang waktu</td></tr>
+      <tr><td>5</td><td>Tuliskan teorema impuls momentum.</td><td>Impuls sama dengan perubahan momentum</td></tr>
+      <tr><td>6</td><td>Bagaimana perubahan momentum dihitung?</td><td>Momentum akhir dikurangi momentum awal</td></tr>
+      <tr><td>7</td><td>Mengapa memperpanjang waktu kontak mengurangi gaya?</td><td>Karena gaya rata-rata sama dengan perubahan momentum dibagi waktu</td></tr>
+      <tr><td>8</td><td>Apa fungsi airbag dalam mengurangi cedera?</td><td>Memperpanjang waktu penghentian sehingga gaya rata-rata mengecil</td></tr>
+      <tr><td>9</td><td>Apa syarat sistem terisolasi?</td><td>Resultan gaya eksternal dapat diabaikan</td></tr>
+      <tr><td>10</td><td>Tuliskan hukum kekekalan momentum untuk dua benda.</td><td>Jumlah momentum awal sama dengan jumlah momentum akhir</td></tr>
+      <tr><td>11</td><td>Mengapa momentum dapat kekal?</td><td>Karena gaya internal berpasangan sesuai Hukum III Newton</td></tr>
+      <tr><td>12</td><td>Berapa kecepatan akhir dua mobil bermassa sama yang salah satunya diam?</td><td>Setengah dari kecepatan awal benda yang bergerak</td></tr>
+      <tr><td>13</td><td>Sebutkan tiga jenis tumbukan.</td><td>Elastis, tidak elastis, dan tidak elastis sempurna</td></tr>
+      <tr><td>14</td><td>Apa yang berbeda pada tumbukan elastis?</td><td>Momentum dan energi kinetik sama-sama kekal</td></tr>
+      <tr><td>15</td><td>Ke mana energi kinetik berubah pada tumbukan tidak elastis?</td><td>Menjadi panas, suara, deformasi, dan energi internal</td></tr>
+      <tr><td>16</td><td>Tuliskan persamaan tumbukan tidak elastis sempurna.</td><td>Jumlah momentum awal sama dengan jumlah massa kali kecepatan baru</td></tr>
+      <tr><td>17</td><td>Tuliskan hubungan kecepatan relatif pada tumbukan elastis satu dimensi.</td><td>Kecepatan relatif sebelum sama dengan minus kecepatan relatif sesudah</td></tr>
+      <tr><td>18</td><td>Mengapa momentum dan energi kinetik bukan besaran yang sama?</td><td>Momentum vektor dan linier pada kecepatan, energi kinetik skalar dan kuadratik</td></tr>
+      <tr><td>19</td><td>Apa yang disebut recoil?</td><td>Gerak berlawanan arah pada sistem peluncur setelah proyektil keluar</td></tr>
+      <tr><td>20</td><td>Berapa persamaan yang dipakai pada tumbukan elastis satu dimensi?</td><td>Dua, yaitu momentum dan energi kinetik</td></tr>
+      <tr><td>21</td><td>Berapa persamaan yang dipakai pada tumbukan dua dimensi?</td><td>Dua, yaitu momentum pada sumbu x dan sumbu y</td></tr>
+      <tr><td>22</td><td>Apa itu pusat massa?</td><td>Posisi rata-rata sistem yang dibobot berdasarkan massa</td></tr>
+      <tr><td>23</td><td>Tuliskan rumus pusat massa satu dimensi.</td><td>Jumlah massa kali posisi dibagi jumlah massa</td></tr>
+      <tr><td>24</td><td>Bagaimana pusat massa bergerak saat benda meledak?</td><td>Tetap mengikuti gerak semula karena tidak ada gaya eksternal</td></tr>
+      <tr><td>25</td><td>Tuliskan hubungan momentum total dengan kecepatan pusat massa.</td><td>Momentum total sama dengan massa total kali kecepatan pusat massa</td></tr>
+      <tr><td>26</td><td>Kapan sebaiknya memakai teorema impuls momentum?</td><td>Saat gaya besar bekerja sangat singkat pada tumbukan atau pendaratan</td></tr>
+      <tr><td>27</td><td>Apa kesalahan yang sering terjadi pada soal momentum?</td><td>Keliru memberikan tanda dan melupakan bahwa momentum adalah vektor</td></tr>
+      <tr><td>28</td><td>Mengapa energi kinetik boleh tetap pada tumbukan yang berbalik arah?</td><td>Karena energi kinetik bergantung pada kelajuan, sedangkan momentum bergantung pada arah</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s52">52. Daftar istilah</h2>
+
+  <dl class="qa">
+    <dt>Elastis</dt>
+    <dd>Sifat tumbukan pada momentum dan energi kinetik sama-sama kekal.</dd>
+
+    <dt>Gaya eksternal</dt>
+    <dd>Gaya yang bekerja dari luar sistem yang dianalisis, yang dapat mengubah momentum total sistem.</dd>
+
+    <dt>Impuls</dt>
+    <dd>Besaran yang menyatakan efek gaya selama selang waktu tertentu.</dd>
+
+    <dt>Kelajuan</dt>
+    <dd>Besar kecepatan yang tidak memiliki arah.</dd>
+
+    <dt>Kecepatan relatif</dt>
+    <dd>Kecepatan benda satu relatif terhadap benda lain.</dd>
+
+    <dt>Laju massa</dt>
+    <dd>Laju massa yang mengalir per satuan waktu, dipakai pada analisis gaya pada fluida.</dd>
+
+    <dt>Momentum linear</dt>
+    <dd>Besaran vektor yang nilainya hasil kali massa dan kecepatan.</dd>
+
+    <dt>Newtons cradle</dt>
+    <dd>Alat demonstrasi deretan bola yang memvisualkan transfer momentum pada tumbukan.</dd>
+
+    <dt>Perubahan momentum</dt>
+    <dd>Selisih vektor antara momentum akhir dan momentum awal.</dd>
+
+    <dt>Pusat massa</dt>
+    <dd>Posisi titik yang mewakili sistem sebagai hasil rata-rata posisi yang dibobot massa.</dd>
+
+    <dt>Recoil</dt>
+    <dd>Gerak berlawanan arah pada senapan atau meriam setelah proyektil keluar.</dd>
+
+    <dt>Sistem terisolasi</dt>
+    <dd>Sistem yang resultan gaya eksternalnya dapat diabaikan selama interaksi.</dd>
+
+    <dt>Teorema impuls momentum</dt>
+    <dd>Pernyataan bahwa impuls sama dengan perubahan momentum benda.</dd>
+
+    <dt>Tumbukan</dt>
+    <dd>Interaksi singkat antara dua benda atau lebih yang mengubah momentum masing-masing.</dd>
+
+    <dt>Tumbukan elastis</dt>
+    <dd>Tumbukan pada momentum dan energi kinetik total sama-sama kekal.</dd>
+
+    <dt>Tumbukan tidak elastis</dt>
+    <dd>Tumbukan pada momentum kekal tetapi energi kinetik total berubah.</dd>
+
+    <dt>Tumbukan tidak elastis sempurna</dt>
+    <dd>Tumbukan pada kedua benda menempel dan bergerak bersama setelah berinteraksi.</dd>
+  </dl>
+
+  <h2 id="s53">53. Daftar pustaka</h2>
+
+  <p>Daftar pustaka disusun dari sumber utama materi kuliah, buku teks, dan sumber gambar yang dipakai pada modul ini.</p>
+
+  <footer>
+    <ul class="refs">
+      <li><b>Materi kuliah.</b> <em>Impuls dan Momentum.</em> Sumber utama yang mencakup momentum, impuls, hubungan impuls momentum, kekekalan momentum, tumbukan, dan pusat massa.</li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 8.1 Linear Momentum: Force and Impulse.</em> Definisi momentum dan hubungan gaya dengan laju perubahan momentum. <a href="https://openstax.org/books/college-physics-2e/pages/8-1-linear-momentum-force-and-impulse">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 8.2 Impulse.</em> Pengertian impuls, teorema impuls momentum, dan penerapan pada sistem keselamatan. <a href="https://openstax.org/books/college-physics-2e/pages/8-2-impulse">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 8.3 Conservation of Momentum.</em> Sistem terisolasi dan hukum kekekalan momentum. <a href="https://openstax.org/books/college-physics-2e/pages/8-3-conservation-of-momentum">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 8.4 Elastic Collisions.</em> Tumbukan elastis satu dimensi dan hubungan kecepatan relatif. <a href="https://openstax.org/books/college-physics-2e/pages/8-4-elastic-collisions">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 8.5 Inelastic Collisions.</em> Tumbukan tidak elastis dan tumbukan tidak elastis sempurna. <a href="https://openstax.org/books/college-physics-2e/pages/8-5-inelastic-collisions">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 8.6 Collisions in Two Dimensions.</em> Kekekalan momentum pada dua sumbu dan tumbukan dua dimensi. <a href="https://openstax.org/books/college-physics-2e/pages/8-6-collisions-in-two-dimensions">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>University Physics Volume 1: 9.2 Impulse and Collisions.</em> Pembahasan yang lebih mendalam mengenai impuls dan momentum sebagai besaran vektor. <a href="https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>University Physics Volume 1: 9.6 Center of Mass.</em> Koordinat pusat massa, hubungan momentum total dengan kecepatan pusat massa, dan gerak sistem banyak benda. <a href="https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass">openstax.org</a></li>
+      <li><b>Physics LibreTexts.</b> <em>Linear Momentum and the Center of Mass.</em> Rujukan tambahan untuk momentum, impuls, tumbukan, dan pusat massa. <a href="https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Introductory_Physics_-_Building_Models_to_Describe_Our_World_%28Martin_Neary_Rinaldo_and_Woodman%29/10%3A_Linear_Momentum_and_the_Center_of_Mass">phys.libretexts.org</a></li>
+      <li><b>Physics LibreTexts.</b> <em>Collisions.</em> Pembedaan antara tumbukan elastis dan tidak elastis. <a href="https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Introductory_Physics_-_Building_Models_to_Describe_Our_World_%28Martin_Neary_Rinaldo_and_Woodman%29/10%3A_Linear_Momentum_and_the_Center_of_Mass/10.02%3A_Collisions">phys.libretexts.org</a></li>
+      <li><b>Wikimedia Commons.</b> <em>Linear momentum conservation in 2D, Elastic collision, animasi tumbukan elastis, Newtons cradle, Kereta bertumbukan tidak elastis, diagram recoil meriam, dan pusat massa dua benda.</em> Sumber seluruh gambar pada modul ini. <a href="https://commons.wikimedia.org/">commons.wikimedia.org</a></li>
+    </ul>
+  </footer>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>

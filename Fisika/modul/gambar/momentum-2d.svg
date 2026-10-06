@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="-280 -285 1026 1824">
+ <title>linear momentum conservation 2d</title>
+ <desc>Graphical solution to an example conservation of linear momentum problem by CMG Lee. 1. A 3 g ball moving south at 2 m/s collides with a 2 g ball moving northeast at &#8730;8 m/s. If the 2 g ball reverses course at half its initial speed, how is the 3 g ball deflected? If instead the collision were perfectly inelastic, how do the balls move? 2. Vectors representing each momentum is drawn by multiplying each mass and velocity, keeping the resultant momentum before and after the collision the same. 3. Dividing the magnitude of the vector by its mass gives the desired velocity: 2 m/s eastwards. A perfectly inelastic collision would make the balls move together as a 5 g mass in the direction of the resultant dashed purple arrow at 2&#8730;5/5 m/s.</desc>
+ <style type="text/css">
+svg  { font-family:'Liberation Sans',Helvetica,Arial,sans-serif; font-size:72px; text-anchor:middle; color:#000; fill:currentColor; stroke:currentColor; stroke-width:8; }
+text { stroke:none; }
+.title { color:#000; font-size:120px; }
+.large { color:#00f; marker-end:url(#marker_large); }
+.small { color:#c00; marker-end:url(#marker_small); }
+.combo { color:#90f; marker-end:url(#marker_combo); stroke-width:12; stroke-dasharray:40,8; }
+.after { stroke-dasharray:8,8; }
+ </style>
+ <defs>
+  <filter id="filter_blur"><feGaussianBlur stdDeviation="4"/></filter>
+  <radialGradient id="grad_sphere" cx="50%" cy="50%" r="50%" fx="50%" fy="90%">
+   <stop offset="0%"  stop-color="#000000" stop-opacity="0"/>
+   <stop offset="99%" stop-color="#000000" stop-opacity="0.3"/>
+  </radialGradient>
+  <linearGradient id="grad_highlight" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="10%" stop-color="#ffffff" stop-opacity="0.9"/>
+   <stop offset="99%" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+  <g id="orb" stroke="none">
+   <circle  cx="0" cy="0" r="100"/>
+   <circle  cx="0" cy="0" r="100" fill="url(#grad_sphere)"/>
+   <ellipse cx="0" cy="-45" rx="70" ry="50" fill="url(#grad_highlight)" stroke="none" filter="url(#filter_blur)"/>
+  </g>
+  <marker id="marker_large" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+   <path class="large" d="M 1,1 L 7,4 L 1,7" stroke="none"/>
+  </marker>
+  <marker id="marker_small" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+   <path class="small" d="M 1,1 L 7,4 L 1,7" stroke="none"/>
+  </marker>
+  <marker id="marker_combo" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+   <path class="combo" d="M 1,1 L 7,4 L 1,7" stroke="none"/>
+  </marker>
+  <g id="large" class="large"><use xlink:href="#orb" fill="currentColor" transform="scale(0.3)"/></g>
+  <g id="small" class="small"><use xlink:href="#orb" fill="currentColor" transform="scale(0.2)"/></g>
+  <radialGradient id="grad_collide" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+   <stop offset="10%" stop-color="#ff0"/>
+   <stop offset="99%" stop-color="#f90"/>
+  </radialGradient>
+  <path id="arrow" d="M 0,0 h 80 m -26,-15 l 26,15 l -26,15" fill="none" stroke-linecap="round"/>
+ </defs>
+ <circle cx="0" cy="0" r="99999" fill="#fff"/>
+ <g id="common">
+  <g transform="translate(50,0)">
+   <path d="M 8,0 Q 0,0 4,7 Q 0,0 -4,7 Q 0,0 -8,0 Q 0,0 -4,-7 Q 0,0 4,-7 Q 0,0 8,0" fill="url(#grad_collide)" stroke="none" transform="scale(15)"/>
+   <use xlink:href="#large" transform="translate(   0,-234)"/>
+   <use xlink:href="#small" transform="translate(-218, 218)"/>
+   <text class="large" transform="translate(-100,-230)" x="0" y="0.7ex">3&#8202;g</text>
+   <text class="large" transform="translate(-100,-120)" x="0" y="0.7ex">2&#8202;m/s</text>
+   <text class="small" transform="translate(-110, 200)" x="0" y="0.7ex">2&#8202;g</text>
+   <text class="small" transform="translate(  30, 130)" x="0" y="0.7ex">2&#8730;2&#8202;m/s</text>
+   <path class="large" d="M 0,-200 V 0"/>
+   <path class="small" d="M -200,200 L 0,0"/>
+  </g>
+  <use xlink:href="#arrow" transform="translate(210,0)"/>
+  <g transform="translate(440,0)">
+   <use xlink:href="#small" transform="translate(-118,118)"/>
+   <text class="small" transform="translate(-110, 180)" x="0" y="0.7ex">2&#8202;g</text>
+   <text class="small" transform="translate(  60, 100)" x="0" y="0.7ex">&#8730;2&#8202;m/s</text>
+   <path class="small after" d="M 0,0 L -100,100"/>
+  </g>
+ </g>
+ <text class="title" transform="translate(-210,-215)" x="0" y="0.7ex">1.</text>
+ <text class="large" transform="translate(500,-40)" x="0" y="0.7ex" font-size="120">?</text>
+ <g transform="translate(-130,260)" letter-spacing="-3">
+  <text class="title" transform="translate(-70,120)" x="0" y="0.7ex">2.</text>
+  <path class="large"       d="M 600,  0 V 600"/>
+  <path class="small"       d="M 200,400 L 600,  0"/>
+  <path class="combo"       d="M 200,400 L 600,600"/>
+  <path class="small after" d="M 200,400 L   0,600"/>
+  <path class="large after" d="M   0,600 H 600"/>
+  <text class="large" transform="translate(730,300)" x="0" y="0.7ex">&#119823;&#8322;<tspan x="0" dy="2ex">(6 gm/s)</tspan></text>
+  <text class="large" transform="translate(330,650)" x="0" y="0.7ex">&#119823;&#8322;&#8242;&#8202;=&#8202;&#8722;&#119823;&#8321;&#8242;+&#119823;&#8321;+&#119823;&#8322; (6 gm/s)</text>
+  <text class="small" transform="translate(230, 90)" x="0" y="0.7ex">&#119823;&#8321;<tspan x="0" dy="2ex">(4&#8730;2 gm/s)</tspan></text>
+  <text class="small" transform="translate( 30,300)" x="0" y="0.7ex">&#119823;&#8321;&#8242;<tspan x="0" dy="2ex">(2&#8730;2 gm/s)</tspan></text>
+  <text class="combo" transform="translate(430,345)" x="0" y="0.7ex">&#119823;&#8321;+&#119823;&#8322;<tspan x="-9" dy="2ex">=&#119823;&#8321;&#8242;+&#119823;&#8322;&#8242;</tspan><tspan x="-150" dy="3ex">(2&#8730;5 gm/s)</tspan></text>
+  <g transform="translate(750,150)">
+   <text transform="translate( 50, 50)" x="0" y="0.7ex">x</text>
+   <text transform="translate(-50,-70)" x="0" y="0.7ex">y</text>
+   <use xlink:href="#arrow"/>
+   <use xlink:href="#arrow" transform="rotate(270)"/>
+  </g>
+ </g>
+ <g transform="translate(0,1280)">
+  <text class="title" transform="translate(-200,-210)" x="0" y="0.7ex">3.</text>
+  <use xlink:href="#common"/>
+  <g transform="translate(440,0)">
+   <use xlink:href="#large" transform="translate(233,0)"/>
+   <text class="large" transform="translate( 220,-90)" x="0" y="0.7ex">3&#8202;g</text>
+   <text class="large" transform="translate(  60,-70)" x="0" y="0.7ex">2&#8202;m/s</text>
+   <path class="large after" d="M 0,0 H 200"/>
+  </g>
+ </g>
+</svg>
