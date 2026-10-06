@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usaha, Energi, dan Daya &mdash; Fisika Dasar</title>
+<meta name="description" content="Modul Fisika Dasar: kerja W = Fs cos theta, satuan joule, kerja oleh gaya berubah, energi kinetik, teorema kerja-energi, energi potensial, titik acuan, gaya konservatif, energi mekanik, kekekalan energi, dan daya.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Peta materi</a>
+  <a href="#s2">2. Tujuan pembelajaran</a>
+  <a href="#s3">3. Kedudukan materi terhadap Hukum Newton</a>
+  <a href="#s4">4. Pengertian usaha</a>
+  <a href="#s5">5. Sudut antara gaya dan perpindahan</a>
+  <a href="#s6">6. Tiga kondisi kerja</a>
+  <a href="#s7">7. Kerja dan kenyamanan fisik</a>
+  <a href="#s8">8. Satuan joule</a>
+  <a href="#s9">9. Kerja oleh gaya yang berubah</a>
+  <a href="#s10">10. Contoh perhitungan kerja</a>
+  <a href="#s11">11. Tanda kerja pada gerak lift</a>
+  <a href="#s12">12. Pengertian energi</a>
+  <a href="#s13">13. Energi kinetik</a>
+  <a href="#s14">14. Arti rumus energi kinetik</a>
+  <a href="#s15">15. Teorema kerja dan energi</a>
+  <a href="#s16">16. Makna teorema kerja dan energi</a>
+  <a href="#s17">17. Hubungan dengan Hukum Newton</a>
+  <a href="#s18">18. Energi potensial</a>
+  <a href="#s19">19. Energi potensial pada ketinggian berbeda</a>
+  <a href="#s20">20. Titik acuan energi potensial</a>
+  <a href="#s21">21. Energi potensial sebagai energi sistem</a>
+  <a href="#s22">22. Gaya konservatif</a>
+  <a href="#s23">23. Contoh gaya konservatif</a>
+  <a href="#s24">24. Sifat khas gaya konservatif</a>
+  <a href="#s25">25. Gaya non-konservatif</a>
+  <a href="#s26">26. Mengapa gesekan non-konservatif</a>
+  <a href="#s27">27. Energi dan gesekan</a>
+  <a href="#s28">28. Kerja total dari banyak gaya</a>
+  <a href="#s29">29. Energi mekanik</a>
+  <a href="#s30">30. Kekekalan energi mekanik</a>
+  <a href="#s31">31. Pengertian energi kekal</a>
+  <a href="#s32">32. Contoh roller coaster</a>
+  <a href="#s33">33. Perhitungan gerak tanpa gesekan</a>
+  <a href="#s34">34. Mengapa massa dapat dicoret</a>
+  <a href="#s35">35. Sistem dengan gaya non-konservatif</a>
+  <a href="#s36">36. Energi pegas</a>
+  <a href="#s37">37. Energi potensial dan gaya konservatif</a>
+  <a href="#s38">38. Daya</a>
+  <a href="#s39">39. Daya sesaat</a>
+  <a href="#s40">40. Contoh daya pada tangga</a>
+  <a href="#s41">41. Daya dan konsumsi listrik</a>
+  <a href="#s42">42. Daya bukan energi</a>
+  <a href="#s43">43. Pilihan metode penyelesaian</a>
+  <a href="#s44">44. Contoh perbandingan dua metode</a>
+  <a href="#s45">45. Langkah mengerjakan soal</a>
+  <a href="#s46">46. Kesalahan konsep</a>
+  <a href="#s47">47. Ringkasan rumus</a>
+  <a href="#s48">48. Latihan</a>
+  <a href="#s49">49. Daftar istilah</a>
+  <a href="#s50">50. Daftar pustaka</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Modul 02 &middot; Fisika Dasar</p>
+    <div class="rule"></div>
+    <h1>Usaha, Energi, dan Daya</h1>
+    <p>Materi ini merupakan kelanjutan dari pembahasan Hukum Newton. Alih-alih mencari gaya dan percepatan, kita sekarang menanyakan berapa kerja yang dilakukan gaya, berapa energi yang dimiliki benda, dan seberapa cepat energi itu ditransfer. Pembahasan dimulai dari pengertian usaha dan persamaan W sama dengan F s cos theta, satuan joule, serta kerja oleh gaya yang berubah. Bagian berikutnya membahas tiga kondisi tanda kerja, energi kinetik, teorema kerja dan energi, energi potensial gravitasi, titik acuan, gaya konservatif, gaya non-konservatif, energi mekanik, kekekalan energi, energi pegas, serta daya rata-rata dan daya sesaat. Materi ditutup dengan pilihan metode penyelesaian, langkah mengerjakan soal, kesalahan konsep yang sering terjadi, dan ringkasan rumus.</p>
+  </header>
+
+  <main>
+<h2 id="s1">1. Peta materi</h2>
+
+  <p>Materi ini memakai pendekatan yang berbeda dari materi Hukum Newton. Pada materi sebelumnya, gaya yang bekerja pada benda digunakan untuk menentukan percepatannya. Pada materi ini, pertanyaannya bergeser menjadi berapa kerja yang dilakukan gaya, berapa energi yang dimiliki benda, dan seberapa cepat energi tersebut dialirkan.</p>
+
+  <pre class="diagram"><code>ALUR KONSEP
+
+  GAYA
+    |
+    | melakukan
+    v
+  USAHA (KERJA)
+    |
+    | berhubungan dengan
+    v
+  PERUBAHAN ENERGI KINETIK
+    |
+    | memiliki
+    v
+  ENERGI POTENSIAL
+    |
+    | digabung menjadi
+    v
+  ENERGI MEKANIK
+    |
+    | kekal bila
+    v
+  Kekekalan energi mekanik
+    |
+    | diukur dengan
+    v
+  DAYA</code></pre>
+
+  <p>Hubungan terpenting yang perlu diingat sejak awal adalah perpindahan dari gaya menuju perubahan gerak melalui kerja.</p>
+
+  <pre class="diagram"><code>GAYA -&gt; KERJA -&gt; PERUBAHAN ENERGI -&gt; PERUBAHAN GERAK
+
+Alternatif yang setara:
+
+  Sum F = m a          (pendekatan Newton)
+  W net = delta E K    (pendekatan energi)</code></pre>
+
+  <p>Kedua pendekatan tersebut tidak bertentangan. Hukum Newton menjelaskan perubahan gerak melalui gaya dan percepatan, sedangkan metode energi menjelaskan perubahan gerak melalui kerja dan energi.</p>
+
+  <h2 id="s2">2. Tujuan pembelajaran</h2>
+
+  <p>Setelah mengikuti sesi ini, mahasiswa mampu menghitung kerja oleh gaya konstan dan gaya yang berubah, menganalisis tanda kerja, menerapkan teorema kerja dan energi, menghitung energi kinetik dan potensial, menjelaskan sifat gaya konservatif, serta menghitung daya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 2.1 &middot; Tujuan sesi dan indikator pemahaman</caption>
+    <thead>
+      <tr><th>Tujuan</th><th>Indikator pemahaman</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menjelaskan pengertian usaha</td><td>Menghubungkan usaha dengan transfer energi akibat gaya dan perpindahan</td></tr>
+      <tr><td>Menghitung usaha gaya konstan</td><td>Menggunakan rumus W = F s cos theta dengan benar</td></tr>
+      <tr><td>Menentukan tanda usaha</td><td>Membedakan usaha positif, negatif, dan nol menurut sudut gaya</td></tr>
+      <tr><td>Memahami satuan joule</td><td>Menurunkan satuan joule dari satuan gaya dan perpindahan</td></tr>
+      <tr><td>Menghitung energi kinetik</td><td>Menggunakan rumus E K = satu per dua m v kuadrat</td></tr>
+      <tr><td>Menerapkan teorema kerja dan energi</td><td>Menghubungkan kerja netto dengan perubahan energi kinetik</td></tr>
+      <tr><td>Menghitung energi potensial</td><td>Menggunakan rumus E P = m g h dan titik acuan yang sesuai</td></tr>
+      <tr><td>Membedakan jenis gaya</td><td>Menjelaskan sifat konservatif dan non-konservatif serta akibatnya pada energi</td></tr>
+      <tr><td>Menerapkan kekekalan energi</td><td>Menyusun persamaan energi untuk gerak tanpa gesekan dan dengan gesekan</td></tr>
+      <tr><td>Menghitung daya</td><td>Menggunakan rumus P = W per t dan P = F v</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s3">3. Kedudukan materi terhadap Hukum Newton</h2>
+
+  <p>Pada materi sebelumnya, hubungan yang paling sering dipakai adalah:</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var> = <var>m</var><var>a</var>
+  </div>
+
+  <p>Persamaan tersebut menjawab pertanyaan mengenai gaya, percepatan, gaya normal, tegangan tali, dan gesekan. Pada materi ini, pertanyaan yang dijawab berbeda. Kita menanyakan berapa kerja yang dilakukan gaya, berapa energi yang dimiliki benda, bagaimana energi berubah, dan seberapa cepat energi itu digunakan.</p>
+
+  <div class="note">
+    <p>Pendekatan energi sering kali lebih singkat karena tidak memerlukan percepatan pada setiap titik lintasan. Pendekatan ini cukup langsung karena yang dibutuhkan hanyalah keadaan awal dan keadaan akhir.</p>
+  </div>
+
+  <h2 id="s4">4. Pengertian usaha</h2>
+
+  <p>Dalam percakapan sehari-hari, kata kerja dipakai untuk berbagai aktivitas, misalnya bekerja selama delapan jam. Dalam fisika, istilah yang dipakai adalah usaha atau kerja, yang memiliki definisi khusus.</p>
+
+  <p>Kerja adalah transfer energi yang terjadi ketika gaya menyebabkan perpindahan benda.</p>
+
+  <div class="eq">
+    <var>W</var> = <var>F</var><var>s</var> cos&theta;
+    <span class="eq-note">Berlaku untuk gaya konstan dan perpindahan searah garis gaya</span>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Arti setiap besaran pada rumus kerja</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Arti</th><th>Satuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>W</td><td>Kerja atau usaha</td><td>Joule</td></tr>
+      <tr><td>F</td><td>Besar gaya</td><td>Newton</td></tr>
+      <tr><td>s</td><td>Besar perpindahan</td><td>Meter</td></tr>
+      <tr><td>theta</td><td>Sudut antara gaya dan perpindahan</td><td>Derajat</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Kerja secara ilmiah hanya bergantung pada komponen gaya yang sejajar dengan perpindahan. Komponen gaya tegak lurus perpindahan tidak memberikan kontribusi apa pun.</p>
+
+  <h2 id="s5">5. Sudut antara gaya dan perpindahan</h2>
+
+  <p>Keberadaan faktor cosinus pada rumus kerja memiliki alasan yang jelas.</p>
+
+  <pre class="diagram"><code>        F
+       /
+      / theta
+     /
+----/-----------------&gt;
+    A        s         B
+
+Gaya F diuraikan menjadi:
+
+  sejajar perpindahan : F x = F cos theta
+  tegak lurus        : F y = F sin theta
+
+Yang bekerja hanya komponen sejajar:
+
+  W = F x x s
+  W = (F cos theta) x s
+  W = F s cos theta</code></pre>
+
+  <div class="note">
+    <p>Sudut yang dipakai adalah sudut antara arah gaya dan arah perpindahan. Jika gaya arahnya sama dengan perpindahan, sudutnya nol sehingga cosinusnya satu dan kerja bernilai paling besar untuk besar gaya dan perpindahan yang tetap.</p>
+  </div>
+
+  <h2 id="s6">6. Tiga kondisi kerja</h2>
+
+  <p>Dari rumus W = F s cos theta diperoleh tiga kondisi kerja yang perlu dibedakan dengan jelas.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.1 &middot; Tiga kondisi tanda kerja</caption>
+    <thead>
+      <tr><th>Sudut</th><th>Nilai cosinus</th><th>Tanda kerja</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0 sampai 90 derajat</td><td>Positif</td><td>W lebih besar dari nol</td><td>Benda ditarik searah perpindahan</td></tr>
+      <tr><td>Lebih dari 90 sampai 180 derajat</td><td>Negatif</td><td>W kurang dari nol</td><td>Gaya gesek saat benda meluncur</td></tr>
+      <tr><td>Tepat 90 derajat</td><td>Nol</td><td>W sama dengan nol</td><td>Gaya angkat saat tas dibawa horizontal</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s6-1">6.1 Kerja positif</h3>
+
+  <p>Kerja positif terjadi ketika gaya memiliki komponen searah perpindahan. Gaya membantu gerakan sehingga energi benda bertambah.</p>
+
+  <pre class="diagram"><code>  F -&gt;
+  [BENDA] ---&gt; s
+
+  Sudut kecil, cosinus mendekati 1
+  W = F s cos theta bernilai positif
+
+  Contoh: menarik mobil yang sedang diam
+         mendorong tombol tekan</code></pre>
+
+  <h3 id="s6-2">6.2 Kerja negatif</h3>
+
+  <p>Kerja negatif terjadi ketika gaya memiliki komponen berlawanan dengan perpindahan. Contoh paling mudah adalah gaya gesekan.</p>
+
+  <pre class="diagram"><code>  s -&gt;
+  [BENDA]
+  f &lt;-
+
+  Sudut mendekati 180 derajat,
+  cosinus bernilai negatif
+  W = F s cos theta bernilai negatif
+
+  Contoh: gesekan saat benda meluncur
+         gaya tekan pada pegas</code></pre>
+
+  <p>Kerja negatif berarti gaya tersebut mentransfer energi keluar dari gerak benda dalam kerangka yang sedang dianalisis.</p>
+
+  <h3 id="s6-3">6.3 Kerja nol</h3>
+
+  <p>Kerja nol terjadi ketika gaya tegak lurus perpindahan, sehingga cosinus sembilan puluh derajat bernilai nol.</p>
+
+  <pre class="diagram"><code>      F (ke atas)
+      |
+     [TAS] ---&gt; s (horizontal)
+
+  Sudut 90 derajat
+  W = F s cos 90 = 0
+
+  Tas bergerak horizontal, tetapi gaya
+  tangan arahnya ke atas. Tegak lurus,
+  sehingga tidak ada kerja.
+
+  Contoh: membawa tas mendatar
+         dorongan pada dinding tegak lurus
+         gaya normal saat bola meluncur
+         di lantai licin</code></pre>
+
+  <div class="note">
+    <p>Kerja nol tidak berarti gaya nol. Gaya normal pada lantai bisa besarnya sangat besar, tetapi arahnya tegak lurus gerak horizontal benda sehingga kontribusinya nol.</p>
+  </div>
+<h2 id="s7">7. Kerja dan kelelahan fisik</h2>
+
+  <p>Definisi kerja dalam fisika berbeda dari makna kerja dalam kehidupan sehari-hari. Bayangkan seseorang menahan tas berat sambil berdiri diam.</p>
+
+  <p>Orang tersebut mungkin merasa sangat lelah. Namun terhadap tas, jika tas tidak mengalami perpindahan, maka:</p>
+
+  <div class="eq">
+    <var>W</var> = <var>F</var><var>s</var> = 0
+    <span class="eq-note">Gaya ada, tetapi perpindahan nol sehingga kerja mekanis nol</span>
+  </div>
+
+  <p>Kelelahan yang dirasakan muncul dari proses fisiologis pada tubuh, bukan dari kerja mekanis pada tas. Tubuh tetap melakukan kerja pada bahan makanan di dalam metabolisme, tetapi itu merupakan kerja pada sistem yang berbeda.</p>
+
+  <div class="note">
+    <p>Contoh yang sering dipakai untuk menunjukkan perbedaan ini adalah pekerjaan rumah. Seseorang dapat mengerjakan banyak tugas rumah tanpa melakukan kerja mekanis yang besar pada benda yang dipindahkan, karena kerja pada tubuh sendiri berlangsung melalui metabolisme.</p>
+  </div>
+
+  <h2 id="s8">8. Satuan joule</h2>
+
+  <p>Kerja memiliki satuan yang disebut joule, ditulis dengan huruf J.</p>
+
+  <div class="eq">
+    1 J = 1 N &middot; m
+  </div>
+
+  <p>Karena satu newton setara dengan satu kilogram kali satu meter per detik kuadrat, satuan joule dapat dituliskan sebagai:</p>
+
+  <div class="eq">
+    1 J = 1 kg &middot; m<sup>2</sup>/s<sup>2</sup>
+  </div>
+
+  <p>Joule juga merupakan satuan energi. Hal ini bukan kebetulan, karena kerja merupakan salah satu cara energi ditransfer dari satu sistem ke sistem lain.</p>
+
+  <div class="note">
+    <p>Konsekuensinya penting. Setiap kali kita menghitung kerja, kita sebenarnya menghitung energi yang berpindah. Kerangka ini akan dipakai berulang kali pada bagian energi potensial dan daya.</p>
+  </div>
+
+  <h2 id="s9">9. Kerja oleh gaya yang berubah</h2>
+
+  <p>Rumus W = F s cos theta cocok untuk gaya konstan. Jika gaya berubah selama benda berpindah, kita tidak dapat selalu menggunakan satu nilai F.</p>
+
+  <div class="eq">
+    <var>W</var> = &int; <var>F</var> &middot; d<var>r</var>
+    <span class="eq-note">Bentuk umum kerja dalam notasi vektor</span>
+  </div>
+
+  <p>Untuk gerak satu dimensi, bentuknya menjadi:</p>
+
+  <div class="eq">
+    <var>W</var> = &int;<sub>x i</sub><sup>x f</sup> <var>F</var><sub>x</sub> d<var>x</var>
+  </div>
+
+  <p>Artinya, luas di bawah grafik gaya terhadap perpindahan menyatakan kerja. Untuk gaya konstan, luas di bawah grafik sama dengan luas persegi panjang yang berdimensi gaya kali perpindahan.</p>
+
+  <figure>
+    <img src="gambar/gaya-perpindahan.svg" alt="Grafik gaya terhadap perpindahan yang luas di bawah grafik menyatakan kerja" width="900" height="600" loading="lazy" decoding="async">
+    <figcaption>Hubungan gaya, perpindahan, dan kerja pada grafik gaya terhadap perpindahan. Sumber: Wikimedia Commons, CC0.</figcaption>
+  </figure>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 9.1 &middot; Perbandingan gaya konstan dan gaya berubah</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Gaya konstan</th><th>Gaya berubah</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rumus</td><td>W = F s cos theta</td><td>Integral F dikali dx</td></tr>
+      <tr><td>Grafik</td><td>Luas persegi panjang</td><td>Luas di bawah kurva</td></tr>
+      <tr><td>Cara memperoleh</td><td>Kalikan langsung</td><td>Jumlahkan luas pada setiap bagian</td></tr>
+      <tr><td>Contoh</td><td>Benda ditarik dengan gaya tetap</td><td>Benda ditarik oleh pegas</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Grafik gaya terhadap perpindahan merupakan salah satu cara paling efektif untuk memahami kerja. Benda yang sedang berhenti memiliki gaya yang mengecil, sehingga kurva turun. Benda yang sedang dipercepat memiliki gaya yang membesar, sehingga kurva naik.</p>
+  </div>
+
+  <h2 id="s10">10. Contoh perhitungan kerja</h2>
+
+  <p>Misalkan gaya sebesar empat puluh lima newton bekerja pada benda yang berpindah tujuh puluh lima meter, dan membentuk sudut lima puluh derajat terhadap perpindahan.</p>
+
+  <div class="eq">
+    <var>W</var> = <var>F</var><var>s</var> cos&theta;
+  </div>
+
+  <div class="eq">
+    <var>W</var> = (45)(75) cos 50&deg;
+  </div>
+
+  <div class="eq">
+    <var>W</var> &asymp; 2170 J
+    <span class="eq-note">Kosinus lima puluh derajat bernilai sekitar 0,643</span>
+  </div>
+
+  <p>Perhatikan bahwa hasilnya lebih kecil daripada kalau gaya dianggap searah perpindahan. Hal itu karena komponen gaya yang tegak lurus perpindahan tidak memberikan kontribusi pada kerja.</p>
+
+  <div class="note">
+    <p>Contoh ini menunjukkan mengapa besar gaya saja tidak cukup untuk menentukan kerja. Sudut antara gaya dan perpindahan harus selalu diketahui.</p>
+  </div>
+
+  <h2 id="s11">11. Tanda kerja pada gerak lift</h2>
+
+  <p>Contoh yang baik untuk memahami tanda kerja adalah gerakan barbel oleh atlet.</p>
+
+  <pre class="diagram"><code>BARBEL DIANGKAT
+
+       F atlet -&gt; (ke atas)
+              |
+              v  s (ke atas)
+          [BARBEL]
+              |
+              v
+       m g (ke bawah)
+
+  W atlet  = positif
+  W gravitasi = negatif
+
+
+BARBEL DITURUNKAN
+
+       s (ke bawah)
+              |
+              v
+          [BARBEL]
+              |
+              v
+       F atlet (ke atas)
+
+  W gravitasi = positif
+  W atlet  = negatif</code></pre>
+
+  <div class="note">
+    <p>Tanda kerja ditentukan oleh hubungan arah gaya dan perpindahan, bukan oleh jenis gayanya. Gravitasi selalu negatif ketika benda naik, tetapi menjadi positif ketika benda turun.</p>
+  </div>
+
+  <h2 id="s12">12. Pengertian energi</h2>
+
+  <p>Energi dapat dipahami sebagai kemampuan sistem untuk melakukan kerja atau menyebabkan perubahan. Dalam fisika, energi muncul dalam berbagai bentuk.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 12.1 &middot; Bentuk-bentuk energi yang dikenal</caption>
+    <thead>
+      <tr><th>Bentuk energi</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Energi kinetik</td><td>Energi akibat gerak benda</td></tr>
+      <tr><td>Energi potensial</td><td>Energi akibat posisi atau konfigurasi sistem</td></tr>
+      <tr><td>Energi termal</td><td>Energi akibat gerak partikel pada suhu tertentu</td></tr>
+      <tr><td>Energi kimia</td><td>Energi pada ikatan antara atom dan molekul</td></tr>
+      <tr><td>Energi listrik</td><td>Energi akibat muatan listrik</td></tr>
+      <tr><td>Energi nuklir</td><td>Energi pada inti atom</td></tr>
+      <tr><td>Energi cahaya</td><td>Energi pada gelombang elektromagnetik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Untuk materi ini, perhatian utama diberikan pada energi mekanik, terutama energi kinetik dan energi potensial. Energi mekanik dibedakan menjadi dua komponen tersebut dan dihubungkan dengan prinsip kekekalan energi.</p>
+
+  <h2 id="s13">13. Energi kinetik</h2>
+
+  <p>Energi kinetik adalah energi yang dimiliki benda karena geraknya.</p>
+
+  <div class="eq">
+    <var>E</var><sub>K</sub> = &frac12; <var>mv</var><sup>2</sup>
+    <span class="eq-note">m adalah massa benda dan v adalah kelajuannya</span>
+  </div>
+
+  <p>Satuan energi kinetik adalah joule.</p>
+
+  <div class="note">
+    <p>Rumus ini berlaku untuk benda massa titik yang bergerak translasi. Untuk benda yang juga berotasi, energi kinetik total merupakan jumlah energi kinetik translasi dan rotasi.</p>
+  </div>
+
+  <h2 id="s14">14. Arti rumus energi kinetik</h2>
+
+  <p>Rumus energi kinetik menunjukkan dua hubungan yang penting.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 14.1 &middot; Hubungan energi kinetik dengan massa dan kecepatan</caption>
+    <thead>
+      <tr><th>Perubahan</th><th>Hubungan</th><th>Penjelasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Massa menjadi dua kali lipat</td><td>Energi kinetik menjadi dua kali</td><td>Energi kinetik sebanding dengan massa</td></tr>
+      <tr><td>Kecepatan menjadi dua kali lipat</td><td>Energi kinetik menjadi empat kali</td><td>Energi kinetik sebanding dengan kuadrat kecepatan</td></tr>
+      <tr><td>Kecepatan menjadi tiga kali lipat</td><td>Energi kinetik menjadi sembilan kali</td><td>Pengaruh kecepatan sangat besar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jika kecepatan menjadi dua kali lipat, energi kinetiknya menjadi:</p>
+
+  <div class="eq">
+    <var>E</var><sub>K</sub>&prime; = &frac12; <var>m</var>(2<var>v</var>)<sup>2</sup> = 4(&frac12; <var>mv</var><sup>2</sup>)
+  </div>
+
+  <div class="eq">
+    <var>E</var><sub>K</sub>&prime; = 4<var>E</var><sub>K</sub>
+  </div>
+
+  <div class="note">
+    <p>Implikasi praktisnya, pengurangan kecepatan memberikan keuntungan yang besar. Menurunkan laju menjadi setengah dari nilai semula mengurangi energi kinetik menjadi seperempat, bukan setengahnya.</p>
+  </div>
+
+  <h2 id="s15">15. Teorema kerja dan energi</h2>
+
+  <p>Teorema kerja dan energi merupakan hubungan utama antara kerja dan energi kinetik. Teorema ini menyatakan bahwa kerja netto yang dilakukan pada benda sama dengan perubahan energi kinetiknya.</p>
+
+  <div class="eq">
+    <var>W</var><sub>net</sub> = &Delta;<var>E</var><sub>K</sub>
+  </div>
+
+  <div class="eq">
+    <var>W</var><sub>net</sub> = <var>E</var><sub>K f</sub> &minus; <var>E</var><sub>K i</sub>
+    <span class="eq-note">i adalah keadaan awal dan f adalah keadaan akhir</span>
+  </div>
+
+  <div class="eq">
+    <var>W</var><sub>net</sub> = &frac12; <var>mv</var><sub>f</sub><sup>2</sup> &minus; &frac12; <var>mv</var><sub>i</sub><sup>2</sup>
+  </div>
+
+  <h2 id="s16">16. Makna teorema kerja dan energi</h2>
+
+  <p>Tanda kerja netto memberikan informasi langsung tentang perubahan energi kinetik.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Makna tanda kerja netto</caption>
+    <thead>
+      <tr><th>Kerja netto</th><th>Perubahan energi kinetik</th><th>Arti</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Lebih besar dari nol</td><td>Menambah</td><td>Benda bertambah cepat</td></tr>
+      <tr><td>Kurang dari nol</td><td>Berkurang</td><td>Benda bertambah lambat</td></tr>
+      <tr><td>Sama dengan nol</td><td>Tetap</td><td>Benda bergerak dengan kecepatan konstan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Pernyataan bahwa kerja positif berarti benda pasti bergerak bukan pernyataan yang berdiri sendiri. Yang penting adalah perubahan energi kinetik akibat kerja netto. Benda yang bergerak lambat dapat bertambah lambat karena kerja positif, selama kerja tersebut lebih kecil daripada besar gaya penghambat.</p>
+  </div>
+
+  <h2 id="s17">17. Hubungan dengan Hukum Newton</h2>
+
+  <p>Pada materi sebelumnya, hubungan yang dipakai adalah:</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var> = <var>m</var><var>a</var>
+  </div>
+
+  <p>Pada materi ini, hubungan yang dipakai adalah:</p>
+
+  <div class="eq">
+    <var>W</var><sub>net</sub> = &Delta;<var>E</var><sub>K</sub>
+  </div>
+
+  <p>Keduanya tidak bertentangan. Hukum Newton menjelaskan perubahan gerak melalui gaya dan percepatan, sedangkan metode energi menjelaskan perubahan gerak melalui kerja dan energi.</p>
+
+  <div class="note">
+    <p>Kedua hubungan tersebut memang terhubung. Gaya neto menyebabkan percepatan, dan gaya neto itulah yang melakukan kerja neto. Hubungan ini akan dipakai berulang kali pada materi selanjutnya, dan kita selalu berhadapan dengan informasi yang sama dalam dua bentuk berbeda.</p>
+  </div>
+
+  <h2 id="s18">18. Energi potensial</h2>
+
+  <p>Energi kinetik berkaitan dengan gerak, sedangkan energi potensial berkaitan dengan posisi atau konfigurasi sistem. Contoh paling sederhana adalah energi potensial gravitasi.</p>
+
+  <div class="eq">
+    <var>E</var><sub>P</sub> = <var>mgh</var>
+    <span class="eq-note">Berlaku untuk kondisi dekat permukaan Bumi</span>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.1 &middot; Arti setiap besaran pada energi potensial gravitasi</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Arti</th><th>Satuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>m</td><td>Massa benda</td><td>Kilogram</td></tr>
+      <tr><td>g</td><td>Percepatan gravitasi</td><td>Meter per detik kuadrat</td></tr>
+      <tr><td>h</td><td>Ketinggian relatif terhadap titik acuan</td><td>Meter</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Ketinggian pada rumus ini bukan ketinggian mutlak, melainkan ketinggian relatif terhadap titik acuan yang kita tentukan sendiri. Karena itu, selalu sebutkan titik acuan yang dipakai.</p>
+  </div>
+
+  <h2 id="s19">19. Energi potensial pada ketinggian berbeda</h2>
+
+  <p>Jika massa dan percepatan gravitasi tetap, maka energi potensial sebanding dengan ketinggian.</p>
+
+  <div class="eq">
+    <var>E</var><sub>P</sub> &prop; <var>h</var>
+  </div>
+
+  <pre class="diagram"><code>Batu yang lebih tinggi
+
+  h besar
+     |
+     |    -&gt; E P besar
+     |
+     |
+  ---------------
+  titik acuan h = 0
+
+  Batu tersebut memiliki kemampuan
+  menghasilkan perubahan yang lebih
+  besar ketika turun ke titik acuan.</code></pre>
+
+  <h2 id="s20">20. Titik acuan energi potensial</h2>
+
+  <p>Kita bebas memilih posisi tertentu sebagai titik acuan yang memiliki energi potensial nol.</p>
+
+  <pre class="diagram"><code>Pilihan titik acuan A: lantai
+
+  lantai h = 0  -&gt;  E P = 0
+  meja  h = 0,9 m -&gt; E P = m g x 0,9
+
+
+Pilihan titik acuan B: meja
+
+  meja  h = 0  -&gt;  E P = 0
+  lantai h = -0,9 -&gt; E P = minus m g x 0,9
+
+
+Nilai E P berubah, tetapi selisihnya tetap sama.
+Yang penting adalah PERBEDAAN energi potensial
+antara dua keadaan, bukan nilai mutlaknya.</code></pre>
+
+  <div class="note">
+    <p>Hukum fisik tidak berubah ketika titik acuan dipindahkan. Yang berubah hanya angka yang muncul pada perhitungan. Karena itu, pilihan titik acuan harus digunakan secara konsisten pada seluruh persamaan dalam satu soal.</p>
+  </div>
+<h2 id="s21">21. Energi potensial sebagai energi sistem</h2>
+
+  <p>Energi potensial bukan sekadar energi yang dimiliki benda sendirian. Energi potensial biasanya berkaitan dengan konfigurasi interaksi, misalnya sistem benda bersama Bumi.</p>
+
+  <p>Untuk gravitasi dekat permukaan Bumi, bentuknya adalah mgh. Untuk gravitasi pada jarak yang sangat jauh dari pusat benda langit, bentuknya berbeda.</p>
+
+  <div class="eq">
+    <var>U</var><sub>g</sub> = &minus;<var>GMm</var>/<var>r</var>
+    <span class="eq-note">Bentuk gravitasi umum untuk jarak jauh dari pusat benda langit</span>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 21.1 &middot; Perbandingan dua bentuk energi potensial gravitasi</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Bentuk pendekatan dekat permukaan</th><th>Bentuk gravitasi umum</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rumus</td><td>U sama dengan m g h</td><td>U sama dengan minus G M m per r</td></tr>
+      <tr><td>Besaran yang dipakai</td><td>Ketinggian relatif</td><td>Jarak dari pusat massa</td></tr>
+      <tr><td>Acuan</td><td>Ketinggian nol dapat dipilih bebas</td><td>Nilai nol pada jarak tak hingga</td></tr>
+      <tr><td>Pemakaian</td><td>Soal sehari-hari</td><td>Satelit dan orbit</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Rumus mgh merupakan bentuk pendekatan yang sangat berguna ketika ketinggian relatif kecil dibandingkan radius benda langit. Untuk orbit satelit yang jauh dari Bumi, bentuk yang tepat adalah bentuk gravitasi umum.</p>
+  </div>
+
+  <h2 id="s22">22. Gaya konservatif</h2>
+
+  <p>Gaya konservatif memiliki sifat bahwa kerja yang dilakukan untuk memindahkan benda dari titik awal ke titik akhir tidak bergantung pada lintasan, hanya pada keadaan awal dan keadaan akhir.</p>
+
+  <pre class="diagram"><code>Benda berpindah dari A ke B
+
+  Jalur 1 (langsung)
+
+     A ----------&gt; B
+
+
+  Jalur 2 (memutar jauh)
+
+     A ----+
+     |     |
+     |     |
+     +---------&gt; B
+
+
+Untuk gaya konservatif:
+  W jalur 1 = W jalur 2
+
+Karena hasil akhirnya sama, maka
+beda potensialnya juga sama.</code></pre>
+
+  <div class="note">
+    <p>Sifat inilah yang memungkinkan kita menuliskan energi potensial. Karena kerja hanya bergantung pada keadaan awal dan akhir, kita cukup menyimpan informasi itu sebagai fungsi energi potensial pada tiap titik.</p>
+  </div>
+
+  <h2 id="s23">23. Contoh gaya konservatif</h2>
+
+  <p>Gaya konservatif yang paling penting untuk dipelajari pada materi ini adalah gravitasi, gaya pegas, dan gaya listrik.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 23.1 &middot; Bentuk energi potensial pada gaya konservatif</caption>
+    <thead>
+      <tr><th>Gaya</th><th>Fungsi energi potensial</th><th>Catatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Gravitasi dekat permukaan</td><td>U g sama dengan m g h</td><td>Bentuk yang paling sering dipakai pada soal</td></tr>
+      <tr><td>Gravitasi umum</td><td>U g sama dengan minus G M m per r</td><td>Untuk jarak jauh dari pusat</td></tr>
+      <tr><td>Pegas ideal</td><td>U pegas sama dengan satu per dua k x kuadrat</td><td>Untuk pegas yang mengikuti Hukum Hooke</td></tr>
+      <tr><td>Gaya listrik</td><td>U listrik sama dengan q1 q2 per empat pi epsilon r</td><td>Untuk muatan titik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s24">24. Sifat khas gaya konservatif</h2>
+
+  <p>Jika benda bergerak dalam lintasan tertutup, yaitu kembali ke titik semula, maka kerja total gaya konservatif bernilai nol.</p>
+
+  <div class="eq">
+    <var>W</var><sub>tertutup</sub> = 0
+    <span class="eq-note">Untuk lintasan tertutup yang kembali ke titik awal</span>
+  </div>
+
+  <p>Dengan demikian ada dua cara untuk mengenali gaya konservatif.</p>
+
+  <pre class="diagram"><code>Cara pertama:
+  kerja tidak bergantung pada lintasan
+
+
+Cara kedua:
+  kerja pada lintasan tertutup bernilai nol
+
+
+Kedua cara ini setara karena energi potensial
+adalah fungsi yang hanya mempunyai satu nilai
+pada setiap titik.</code></pre>
+
+  <div class="note">
+    <p>Untuk memeriksa apakah suatu gaya termasuk konservatif melalui kurva gaya terhadap perpindahan, kita cukup melihat apakah kurva tersebut memiliki luas tertutup. Jika ada, berarti kerja sepanjang lintasan tertutup tidak nol, sehingga gaya tersebut tidak konservatif.</p>
+  </div>
+
+  <h2 id="s25">25. Gaya non-konservatif</h2>
+
+  <p>Gaya non-konservatif adalah gaya yang kerja totalnya bergantung pada lintasan. Contoh paling penting adalah gaya gesekan dan gaya hambat udara.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 25.1 &middot; Perbandingan gaya konservatif dan non-konservatif</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Konservatif</th><th>Non-konservatif</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kerja pada lintasan tertutup</td><td>Nol</td><td>Tidak nol</td></tr>
+      <tr><td>Contoh</td><td>Gravitasi, pegas, listrik</td><td>Gesekan, hambatan udara</td></tr>
+      <tr><td>Fungsi energi potensial</td><td>Dapat didefinisikan</td><td>Tidak dapat didefinisikan</td></tr>
+      <tr><td>Pengaruh pada energi mekanik</td><td>Energi mekanik kekal</td><td>Energi mekanik berkurang</td></tr>
+      <tr><td>Arah dibalik oleh gerak</td><td>Tidak selalu dibalik</td><td>Selalu berlawanan arah</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Gaya gesekan merupakan contoh yang paling mudah dipahami. Gaya gesekan selalu berlawanan arah dengan gerak relatif, sehingga tidak dapat menyimpan energi potensial pada suatu titik. Setiap kali benda bergerak pada lintasan yang lebih panjang, besar kerja gesekan menjadi lebih besar.</p>
+
+  <h2 id="s26">26. Mengapa gesekan non-konservatif</h2>
+
+  <p>Misalkan benda berpindah dari titik A ke titik B melalui dua jalur berbeda.</p>
+
+  <pre class="diagram"><code>Jalur pertama : 10 m
+  ------------------------------------&gt; B
+
+Jalur kedua  : 100 m
+  +-----------------------------------&gt;
+  |                                    |
+  +------------------------------------
+
+Jika gaya gesek lebih kurang tetap:
+
+  W gesek jalur 1  = -f x 10
+  W gesek jalur 2  = -f x 100
+
+Jalur kedua memberi kerja negatif yang
+lebih besar besarnya.
+
+Karena besar kerja berbeda, gaya gesekan
+tidak konservatif.</code></pre>
+
+  <div class="eq">
+    <var>W</var><sub>f</sub> &asymp; &minus;<var>fd</var>
+    <span class="eq-note">Kerja gesekan sebanding dengan panjang lintasan</span>
+  </div>
+
+  <div class="note">
+    <p>Inilah yang membedakannya dari gravitasi dalam kasus ideal. Pada gravitasi, kerja hanya bergantung pada selisih ketinggian, bukan pada panjang lintasan yang ditempuh.</p>
+  </div>
+
+  <h2 id="s27">27. Energi dan gesekan</h2>
+
+  <p>Perhatikan apa yang terjadi pada energi ketika terdapat gesekan. Misalkan sebuah wahana tanpa roda bergerak menuruni lintasan.</p>
+
+  <pre class="diagram"><code>Tanpa gesekan (ideal)
+
+  E P  -&gt;  E K
+
+  Energi potensial berubah menjadi energi kinetik.
+  Jumlah keduanya tetap.
+
+
+Dengan gesekan
+
+  E P  -&gt;  E K + energi termal
+
+  Sebagian energi mekanik berubah menjadi
+  energi internal atau termal.</code></pre>
+
+  <div class="eq">
+    <var>W</var><sub>nc</sub> = &Delta;<var>E</var><sub>mek</sub>
+    <span class="eq-note">Kerja gaya non-konservatif sama dengan perubahan energi mekanik</span>
+  </div>
+
+  <div class="note">
+    <p>Pernyataan bahwa energi hilang karena gesekan merupakan penyederhanaan yang kurang tepat. Energi mekanik memang berkurang, tetapi energi total sistem tetap terjaga karena ada transfer ke bentuk energi lain.</p>
+  </div>
+
+  <h2 id="s28">28. Kerja total dari banyak gaya</h2>
+
+  <p>Jika terdapat gaya konservatif dan gaya non-konservatif sekaligus, kerja total merupakan jumlah keduanya.</p>
+
+  <div class="eq">
+    <var>W</var> = <var>W</var><sub>c</sub> + <var>W</var><sub>nc</sub>
+  </div>
+
+  <p>Dari teorema kerja dan energi, kerja total sama dengan perubahan energi kinetik.</p>
+
+  <div class="eq">
+    <var>W</var><sub>c</sub> + <var>W</var><sub>nc</sub> = &Delta;<var>E</var><sub>K</sub>
+  </div>
+
+  <p>Untuk gaya konservatif berlaku hubungan:</p>
+
+  <div class="eq">
+    <var>W</var><sub>c</sub> = &minus;&Delta;<var>E</var><sub>P</sub>
+    <span class="eq-note">Tanda minus muncul karena perubahan energi potensial berlawanan arah dengan kerja gaya konservatif</span>
+  </div>
+
+  <p>Memasukkan hubungan tersebut ke dalam persamaan sebelumnya:</p>
+
+  <div class="eq">
+    &minus;&Delta;<var>E</var><sub>P</sub> + <var>W</var><sub>nc</sub> = &Delta;<var>E</var><sub>K</sub>
+  </div>
+
+  <div class="eq">
+    <var>W</var><sub>nc</sub> = &Delta;<var>E</var><sub>K</sub> + &Delta;<var>E</var><sub>P</sub>
+  </div>
+
+  <p>Karena energi mekanik adalah jumlah energi kinetik dan potensial, bentuk akhirnya adalah:</p>
+
+  <div class="eq">
+    <var>W</var><sub>nc</sub> = &Delta;<var>E</var><sub>mek</sub>
+  </div>
+
+  <div class="note">
+    <p>Bentuk ini sangat penting karena menjadi dasar untuk membedakan dua kasus. Tanpa gaya non-konservatif, energi mekanik kekal. Dengan gaya non-konservatif, energi mekanik berubah sebesar kerja gaya tersebut.</p>
+  </div>
+
+  <h2 id="s29">29. Energi mekanik</h2>
+
+  <p>Energi mekanik adalah jumlah energi kinetik dan energi potensial.</p>
+
+  <div class="eq">
+    <var>E</var><sub>mek</sub> = <var>E</var><sub>K</sub> + <var>E</var><sub>P</sub>
+  </div>
+
+  <p>Untuk gravitasi dekat permukaan Bumi:</p>
+
+  <div class="eq">
+    <var>E</var><sub>mek</sub> = &frac12; <var>mv</var><sup>2</sup> + <var>mgh</var>
+  </div>
+
+  <figure>
+    <img src="gambar/energi-potensial-kinetik.png" alt="Grafik yang menggambarkan hubungan energi potensial, energi kinetik, dan energi mekanik pada gerak benda" width="964" height="673" loading="lazy" decoding="async">
+    <figcaption>Hubungan energi kinetik, energi potensial, dan energi mekanik. Sumber: Wikimedia Commons, domain publik.</figcaption>
+  </figure>
+
+  <div class="note">
+    <p>Perhatikan bahwa energi mekanik hanya mencakup dua bentuk energi, yaitu energi kinetik dan energi potensial. Bentuk energi lain seperti energi termal dan energi kimia berada di luar lingkup energi mekanik ini.</p>
+  </div>
+
+  <h2 id="s30">30. Kekekalan energi mekanik</h2>
+
+  <p>Jika tidak ada kerja gaya non-konservatif, maka energi mekanik kekal.</p>
+
+  <div class="eq">
+    <var>E</var><sub>mek, i</sub> = <var>E</var><sub>mek, f</sub>
+  </div>
+
+  <p>Untuk gravitasi dekat permukaan Bumi, bentuk lengkapnya adalah:</p>
+
+  <div class="eq">
+    &frac12; <var>mv</var><sub>i</sub><sup>2</sup> + <var>mgh</var><sub>i</sub> = &frac12; <var>mv</var><sub>f</sub><sup>2</sup> + <var>mgh</var><sub>f</sub>
+  </div>
+
+  <figure>
+    <img src="gambar/pendulum.svg" alt="Pendulum yang memperlihatkan perubahan energi potensial menjadi energi kinetik dan sebaliknya selama gerak" width="800" height="500" loading="lazy" decoding="async">
+    <figcaption>Perubahan energi potensial dan energi kinetik pada pendulum. Sumber: Wikimedia Commons, CC BY-SA.</figcaption>
+  </figure>
+
+  <div class="note">
+    <p>Perhatikan bahwa massa muncul pada kedua ruas. Pada banyak soal, massa dapat dicoret sehingga perhitungan menjadi jauh lebih ringkas. Persamaan ini juga dapat ditulis dalam bentuk perubahan, yaitu energi mekanik awal sama dengan energi mekanik akhir.</p>
+  </div>
+
+  <h2 id="s31">31. Pengertian energi kekal</h2>
+
+  <p>Kita sering mendengar pernyataan bahwa energi tidak dapat diciptakan dan tidak dapat dimusnahkan. Maksudnya bukan energi selalu berada dalam bentuk yang sama.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 31.1 &middot; Contoh perubahan bentuk energi</caption>
+    <thead>
+      <tr><th>Transformasi</th><th>Contoh penerapan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Energi potensial menjadi energi kinetik</td><td>Benda yang turun dari ketinggian</td></tr>
+      <tr><td>Energi kinetik menjadi energi potensial</td><td>Bola yang dilempar ke atas</td></tr>
+      <tr><td>Energi kimia menjadi energi mekanik</td><td>Mesin pembakaran</td></tr>
+      <tr><td>Energi mekanik menjadi energi termal</td><td>Gesekan pada rem</td></tr>
+      <tr><td>Energi listrik menjadi energi mekanik</td><td>Motor listrik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Yang tetap adalah jumlah energi total pada sistem yang terisolasi. Energi total sistem tertutup dan terisolasi selalu konstan, sedangkan energi mekanik dapat berubah apabila terdapat gaya non-konservatif.</p>
+
+  <div class="note">
+    <p>Contoh yang baik untuk membedakan keduanya adalah rem mobil. Saat pengereman, energi kinetik mobil berkurang drastis. Energi tersebut tidak hilang, melainkan berubah menjadi energi termal pada kampas rem dan cincin roda. Biji yang bertunas juga kehilangan energi potensial yang tersimpan di dalamnya.</p>
+  </div>
+
+  <h2 id="s32">32. Contoh roller coaster</h2>
+
+  <p>Wahana tanpa roda dan rel yang berbentuk lintasan turun naik merupakan contoh yang sangat baik untuk memahami transformasi energi.</p>
+
+  <figure>
+    <img src="gambar/roller-coaster.jpg" alt="Wahana roller coaster yang menunjukkan energi potensial besar di puncak dan energi kinetik yang meningkat saat turun" width="5368" height="2048" loading="lazy" decoding="async">
+    <figcaption>Konservasi energi mekanik pada lintasan roller coaster. Sumber: Wikimedia Commons, CC BY-SA 3.0.</figcaption>
+  </figure>
+
+  <pre class="diagram"><code>Di puncak lintasan
+
+  h besar
+  E P besar
+  E K kecil (kecepatan hampir nol)
+
+
+Saat turun
+
+  h mengecil
+  E P -&gt; E K
+  kecepatan bertambah
+
+
+Saat naik kembali
+
+  h bertambah
+  E K -&gt; E P
+  kecepatan berkurang
+
+Tanpa gesekan:
+  E K + E P = konstan</code></pre>
+
+  <div class="note">
+    <p>Pada wahana sungguhan, gesekan dan hambatan udara menyebabkan energi mekanik berkurang sedikit pada setiap lintasan. Karena itu, lintasan kedua selalu lebih rendah daripada lintasan pertama.</p>
+  </div>
+
+  <h2 id="s33">33. Perhitungan gerak tanpa gesekan</h2>
+
+  <p>Misalkan benda mulai dari ketinggian lima puluh sembilan koma empat meter dengan kecepatan awal yang mendekati nol, lalu turun tanpa gesekan.</p>
+
+  <pre class="diagram"><code>Keadaan awal              Keadaan akhir
+
+  h = 59,4 m                h = 0
+  v = 0                     v = ?
+
+  E P = m g h               E K = satu per dua m v kuadrat
+
+
+Kekekalan energi mekanik:
+
+  m g h = satu per dua m v kuadrat
+
+Massa dapat dicoret:
+
+  g h = satu per dua v kuadrat
+
+  v = akar dari dua g h
+  v = akar dari dua kali 9,8 kali 59,4
+  v = akar dari 1164,2
+  v = 34,1 m/s</code></pre>
+
+  <div class="eq">
+    <var>v</var> = &radic;(2<var>gh</var>) &asymp; 34,1 m/s
+    <span class="eq-note">Benda dapat mencapai kecepatan ini setelah turun 59,4 meter tanpa gesekan</span>
+  </div>
+
+  <h2 id="s34">34. Mengapa massa dapat dicoret</h2>
+
+  <p>Mulai dari persamaan mgh sama dengan satu per dua mv kuadrat. Kedua ruas mengandung m, sehingga massa dapat dicoret.</p>
+
+  <div class="eq">
+    <var>mgh</var> = &frac12; <var>mv</var><sup>2</sup> &nbsp;&rArr;&nbsp; <var>gh</var> = &frac12; <var>v</var><sup>2</sup>
+  </div>
+
+  <div class="eq">
+    <var>v</var> = &radic;(2<var>gh</var>)
+    <span class="eq-note">Massa tidak muncul pada hasil akhir</span>
+  </div>
+
+  <div class="note">
+    <p>Hasil ini menunjukkan sifat penting metode energi. Pada kondisi jatuh bebas ideal, benda dengan massa berbeda dapat memiliki kecepatan yang sama setelah mengalami penurunan ketinggian yang sama, apabila hambatan udara diabaikan.</p>
+  </div>
+
+  <h2 id="s35">35. Sistem dengan gaya non-konservatif</h2>
+
+  <p>Jika terdapat gaya non-konservatif, persamaan kekekalan energi mekanik tidak dapat langsung dipakai. Yang berlaku adalah:</p>
+
+  <div class="eq">
+    <var>E</var><sub>f</sub> &minus; <var>E</var><sub>i</sub> = <var>W</var><sub>nc</sub>
+  </div>
+
+  <div class="eq">
+    <var>E</var><sub>f</sub> = <var>E</var><sub>i</sub> + <var>W</var><sub>nc</sub>
+    <span class="eq-note">Kerja non-konservatif dapat menambah atau mengurangi energi mekanik, tergantung tandanya</span>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 35.1 &middot; Pengaruh tanda kerja non-konservatif</caption>
+    <thead>
+      <tr><th>Tanda kerja</th><th>Pengaruh</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Positif</td><td>Energi mekanik bertambah</td><td>Mesin pada roket yang sedang menyala</td></tr>
+      <tr><td>Negatif</td><td>Energi mekanik berkurang</td><td>Gesekan dan hambatan udara</td></tr>
+      <tr><td>Nol</td><td>Energi mekanik kekal</td><td>Lintasan tanpa gesekan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="s35-1">35.1 Contoh benda bermotor</h3>
+
+  <p>Misalkan sebuah benda bermassa dua puluh senigram bergerak dari keadaan diam hingga mencapai ketinggian dua puluh sembilan meter, sementara mesin memberikan kerja sebesar empat ratus dua puluh lima joule.</p>
+
+  <div class="eq">
+    <var>E</var><sub>f</sub> = <var>E</var><sub>i</sub> + <var>W</var><sub>nc</sub>
+  </div>
+
+  <p>Pada keadaan awal energi mekanik nol karena benda diam dan ketinggian awal dianggap nol. Pada keadaan akhir, energi mekanik terdiri dari energi kinetik dan energi potensial.</p>
+
+  <div class="eq">
+    <var>W</var><sub>nc</sub> = &frac12; <var>mv</var><sup>2</sup> + <var>mgh</var>
+  </div>
+
+  <div class="eq">
+    425 = &frac12; (0,2)<var>v</var><sup>2</sup> + (0,2)(9,8)(29)
+  </div>
+
+  <div class="eq">
+    425 = 0,1<var>v</var><sup>2</sup> + 56,8
+  </div>
+
+  <div class="eq">
+    <var>v</var><sup>2</sup> = 3682
+  </div>
+
+  <div class="eq">
+    <var>v</var> &asymp; 61 m/s
+    <span class="eq-note">Kecepatan akhir setelah bekerja mesin</span>
+  </div>
+
+  <div class="note">
+    <p>Tanpa kerja mesin, benda tersebut hanya akan mencapai kecepatan sekitar dua puluh empat meter per detik dari energi potensialnya saja. Tambahan energi dari mesin membuat kecepatannya jauh lebih besar.</p>
+  </div>
+<h2 id="s36">36. Energi pegas</h2>
+
+  <p>Gaya elastik dari pegas merupakan contoh lain dari gaya konservatif. Untuk pegas ideal yang memenuhi Hukum Hooke, gaya pegas berbanding lurus dengan perubahan panjang pegas.</p>
+
+  <div class="eq">
+    <var>F</var> = &minus;<var>kx</var>
+    <span class="eq-note">Tanda minus menunjukkan gaya selalu melawan deformasi</span>
+  </div>
+
+  <p>Energi potensial elastiknya adalah:</p>
+
+  <div class="eq">
+    <var>E</var><sub>P, pegas</sub> = &frac12; <var>kx</var><sup>2</sup>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 36.1 &middot; Arti setiap besaran pada energi pegas</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Arti</th><th>Satuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>k</td><td>Konstanta pegas</td><td>Newton per meter</td></tr>
+      <tr><td>x</td><td>Perubahan panjang dari posisi setimbang</td><td>Meter</td></tr>
+      <tr><td>E P</td><td>Energi potensial elastik</td><td>Joule</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <figure>
+    <img src="gambar/hooke.png" alt="Diagram gaya pegas yang menunjukkan hubungan gaya, deformasi pegas, dan konstanta pegas" width="785" height="581" loading="lazy" decoding="async">
+    <figcaption>Hubungan gaya dan deformasi pada pegas. Sumber: Wikimedia Commons.</figcaption>
+  </figure>
+
+  <p>Karena energi potensial sebanding dengan kuadrat perubahan panjang, pegas yang diregangkan lebih jauh menyimpan energi yang jauh lebih besar.</p>
+
+  <div class="note">
+    <p>Konstanta pegas menyatakan besarnya ketahanan pegas terhadap perubahan bentuk. Pegas yang k-nya kecil mudah diregangkan, sedangkan pegas yang k-nya besar lebih keras. Energi yang tersimpan pada pegas adalah luas di bawah kurva gaya terhadap perpindahan, yang berbentuk segitiga pada grafik linear.</p>
+  </div>
+
+  <h2 id="s37">37. Energi potensial dan gaya konservatif</h2>
+
+  <p>Untuk gaya konservatif, perubahan energi potensial berkaitan dengan kerja yang dilakukan gaya.</p>
+
+  <div class="eq">
+    <var>W</var><sub>c</sub> = &minus;&Delta;<var>U</var>
+  </div>
+
+  <p>Tanda minus tersebut memiliki makna fisik yang jelas. Jika gaya konservatif melakukan kerja positif, energi potensial justru berkurang.</p>
+
+  <pre class="diagram"><code>Benda jatuh
+
+  W gravitasi &gt; 0
+  -&gt; delta U &lt; 0
+  -&gt; U gravitasi berkurang
+  -&gt; K bertambah
+
+  Energi potensial berubah menjadi
+  energi kinetik.
+
+
+Benda dinaikkan
+
+  W gravitasi &lt; 0
+  -&gt; delta U &gt; 0
+  -&gt; U gravitasi bertambah
+  -&gt; K berkurang
+
+  Kita melakukan kerja melawan gravitasi.</code></pre>
+
+  <div class="note">
+    <p>Pola ini berlaku untuk semua gaya konservatif, termasuk pegas dan gaya listrik. Kerja dan energi potensial selalu berlawanan arah perubahan.</p>
+  </div>
+
+  <h2 id="s38">38. Daya</h2>
+
+  <p>Setelah dibahas kerja dan energi, materi masuk ke daya. Pertanyaan yang dijawab daya adalah seberapa cepat kerja dilakukan.</p>
+
+  <div class="eq">
+    <var>P</var> = <var>W</var>/<var>t</var>
+    <span class="eq-note">Daya rata-rata</span>
+  </div>
+
+  <p>Satuan daya adalah watt, ditulis dengan huruf W.</p>
+
+  <div class="eq">
+    1 W = 1 J/s
+  </div>
+
+  <div class="note">
+    <p>Sebutan watt berasal dari nama James Watt, yang menyempurnakan mesin uap dan memberikan kontribusi besar pada revolusi industri.</p>
+  </div>
+
+  <h2 id="s39">39. Daya sesaat</h2>
+
+  <p>Untuk gaya dan kecepatan yang berubah terhadap waktu, daya sesaat dapat ditulis sebagai:</p>
+
+  <div class="eq">
+    <var>P</var> = d<var>W</var>/d<var>t</var>
+  </div>
+
+  <p>Karena kerja adalah hasil kali skalar gaya dengan perpindahan, dan kecepatan adalah perpindahan per satuan waktu, diperoleh:</p>
+
+  <div class="eq">
+    <var>P</var> = <var>F</var> &middot; <var>v</var>
+    <span class="eq-note">Untuk gaya dan kecepatan searah</span>
+  </div>
+
+  <p>Dalam bentuk vektor, rumus yang benar adalah:</p>
+
+  <div class="eq">
+    <var>P</var> = <var>F</var> &middot; <var>v</var>
+    <span class="eq-note">Hasil kali titik, bukan hasil kali biasa</span>
+  </div>
+
+  <div class="note">
+    <p>Rumus ini memberikan informasi yang berguna. Gaya yang besar tidak selalu berarti daya yang besar. Gaya yang tegak lurus kecepatan justru memberikan daya nol karena tidak ada komponen gerak searah gaya.</p>
+  </div>
+
+  <h2 id="s40">40. Contoh daya pada tangga</h2>
+
+  <p>Misalkan seseorang menaiki tangga. Energi yang bertambah setidaknya mencakup energi potensial.</p>
+
+  <div class="eq">
+    &Delta;<var>E</var><sub>P</sub> = <var>mgh</var>
+  </div>
+
+  <p>Jika waktu yang diperlukan adalah t, daya rata-ratanya:</p>
+
+  <div class="eq">
+    <var>P</var><sub>rata-rata</sub> = <var>mgh</var>/<var>t</var>
+  </div>
+
+  <p>Jika orang tersebut juga mempercepat, maka energi kinetiknya berubah sehingga energi mekanik yang bertambah mencakup keduanya.</p>
+
+  <div class="eq">
+    <var>P</var> = (&Delta;<var>E</var><sub>K</sub> + &Delta;<var>E</var><sub>P</sub>)/<var>t</var>
+  </div>
+
+  <div class="note">
+    <p>Contoh ini menunjukkan bahwa kebutuhan daya untuk sekadar naik tangga sudah melebihi kebutuhan untuk berdiri di tempat. Tubuh tidak hanya menopang berat, tetapi juga mengubah energinya.</p>
+  </div>
+
+  <h2 id="s41">41. Daya dan konsumsi listrik</h2>
+
+  <p>Daya sangat dekat dengan kehidupan sehari-hari. Perhatikan label pada peralatan listrik di rumah.</p>
+
+  <div class="eq">
+    <var>E</var> = <var>Pt</var>
+    <span class="eq-note">Energi yang digunakan = daya dikali waktu</span>
+  </div>
+
+  <p>Contohnya lampu dengan daya enam puluh watt menggunakan energi sekitar enam puluh joule setiap detik.</p>
+
+  <div class="note">
+    <p>Pada konsumsi listrik rumah tangga, satuan yang lazim dipakai adalah kilowatt jam. Satu kilowatt jam setara dengan seribu watt yang berjalan selama satu jam, yaitu sebesar tiga juta enam ratus kilojoule.</p>
+  </div>
+
+  <h2 id="s42">42. Daya bukan energi</h2>
+
+  <p>Perbedaan antara energi dan daya perlu ditegaskan karena keduanya sering tertukar.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 42.1 &middot; Perbedaan energi dan daya</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Energi</th><th>Daya</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menyatakan</td><td>Berapa banyak energi</td><td>Seberapa cepat energi ditransfer</td></tr>
+      <tr><td>Satuan</td><td>Joule</td><td>Watt</td></tr>
+      <tr><td>Hubungan</td><td>E sama dengan P kali t</td><td>P sama dengan E per t</td></tr>
+      <tr><td>Analogi</td><td>Jumlah air dalam tangki</td><td>Laju air yang mengalir dari keran</td></tr>
+      <tr><td>Contoh benda</td><td>Baterai menyimpan energi</td><td>Motor mempunyai daya</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Analogi tangki air cukup membantu. Baterai berperan seperti tangki yang menyimpan energi, sedangkan motor berperan seperti keran yang menentukan seberapa cepat energi itu dialirkan. Motor dengan daya lebih besar dapat menghabiskan baterai lebih cepat meskipun energinya sama.</p>
+  </div>
+
+  <h2 id="s43">43. Pilihan metode penyelesaian</h2>
+
+  <p>Ada dua pendekatan utama untuk menyelesaikan soal dinamika, dan memilih yang tepat dapat menghemat banyak pekerjaan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 43.1 &middot; Perbandingan pendekatan Newton dan pendekatan energi</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Pendekatan Newton</th><th>Pendekatan energi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Persamaan dasar</td><td>Sum F sama dengan m a</td><td>W net sama dengan delta E K</td></tr>
+      <tr><td>Cocok untuk mencari</td><td>Gaya, percepatan, gaya normal, tegangan, gesekan</td><td>Kecepatan akhir, energi, jarak tempuh dari energi</td></tr>
+      <tr><td>Kebutuhan data</td><td>Gaya pada setiap bagian lintasan</td><td>Hanya keadaan awal dan keadaan akhir</td></tr>
+      <tr><td>Panjang perhitungan</td><td>Cenderung lebih panjang</td><td>Cenderung lebih singkat</td></tr>
+      <tr><td>Kendala</td><td>Tidak ada jika gaya diketahui</td><td>Tidak dapat dipakai jika ada kerja gaya luar yang tidak diketahui</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Contoh kesalahan yang sering terjadi adalah mencoba menggunakan metode energi untuk mencari gaya normal. Metode energi memang praktis untuk mencari kecepatan, tetapi tidak dapat menentukan gaya pada setiap titik lintasan.</p>
+  </div>
+
+  <h2 id="s44">44. Contoh perbandingan dua metode</h2>
+
+  <p>Misalkan bola dilepaskan dari ketinggian h tanpa gesekan.</p>
+
+  <h3 id="s44-1">44.1 Dengan metode Newton</h3>
+
+  <p>Pertama, kita cari percepatan bola yang besarnya sama dengan g. Kemudian kita gunakan persamaan kinematika.</p>
+
+  <div class="eq">
+    <var>v</var><sub>f</sub><sup>2</sup> = <var>v</var><sub>i</sub><sup>2</sup> + 2<var>a</var>&Delta;<var>y</var>
+  </div>
+
+  <p>Dengan memasukkan nilai percepatan gravitasi dan jarak jatuh, kita memperoleh kecepatan akhir. Cara ini membutuhkan beberapa langkah.</p>
+
+  <h3 id="s44-2">44.2 Dengan metode energi</h3>
+
+  <p>Langsung kita tulis persamaan kekekalan energi mekanik.</p>
+
+  <div class="eq">
+    <var>mgh</var> = &frac12; <var>mv</var><sup>2</sup>
+  </div>
+
+  <p>Setelah massa dicoret, kecepatan akhir langsung diperoleh tanpa perlu mencari percepatan terlebih dahulu.</p>
+
+  <div class="note">
+    <p>Untuk persoalan seperti ini, metode energi jelas lebih ringkas. Prinsip ini menunjukkan bahwa pemilihan metode merupakan bagian dari proses menyelesaikan soal, bukan sekadar langkah teknis terakhir.</p>
+  </div>
+
+  <h2 id="s45">45. Langkah mengerjakan soal</h2>
+
+  <p>Langkah berikut membantu menghindari kesalahan yang paling sering terjadi pada soal usaha dan energi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 45.1 &middot; Tujuh langkah mengerjakan soal usaha dan energi</caption>
+    <thead>
+      <tr><th>Langkah</th><th>Kegiatan</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tentukan sistem</td><td>Benda saja, benda dengan Bumi, atau benda dengan pegas</td></tr>
+      <tr><td>2</td><td>Tentukan keadaan awal dan akhir</td><td>Tandai dengan indeks i dan f</td></tr>
+      <tr><td>3</td><td>Identifikasi energi</td><td>Sebutkan energi kinetik, potensial gravitasi, atau potensial pegas yang ada</td></tr>
+      <tr><td>4</td><td>Periksa gaya non-konservatif</td><td>Tanyakan apakah ada gesekan, hambatan, mesin, atau gaya luar</td></tr>
+      <tr><td>5</td><td>Pilih titik acuan</td><td>Tentukan posisi yang memiliki energi potensial nol</td></tr>
+      <tr><td>6</td><td>Masukkan persamaan</td><td>Angka baru dimasukkan setelah persamaan lengkap</td></tr>
+      <tr><td>7</td><td>Periksa satuan</td><td>Energi dalam joule, kecepatan dalam meter per sekon, daya dalam watt</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Langkah keempat adalah yang paling menentukan. Banyak soal gagal diselesaikan karena kerja gaya non-konservatif diabaikan padahal jelas ada, misalnya gesekan pada rel yang licin tetapi tidak tanpa gesekan.</p>
+  </div>
+
+  <h2 id="s46">46. Kesalahan konsep</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 46.1 &middot; Kesalahan umum dan bentuk yang benar</caption>
+    <thead>
+      <tr><th>Kesalahan</th><th>Bentuk yang benar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Merasa lelah berarti pasti melakukan kerja secara fisika</td><td>Kerja mekanis memerlukan perpindahan pada titik tempat gaya bekerja</td></tr>
+      <tr><td>Kerja selalu positif</td><td>Kerja dapat positif, negatif, atau nol menurut sudut gaya</td></tr>
+      <tr><td>Kerja nol berarti gaya nol</td><td>Gaya tegak lurus perpindahan tetap bernilai besar tetapi kerja nol</td></tr>
+      <tr><td>Energi mekanik selalu kekal</td><td>Kekekalan energi mekanik memerlukan tidak adanya kerja gaya non-konservatif</td></tr>
+      <tr><td>Energi hilang karena gesekan</td><td>Energi mekanik berubah dan sebagian ditransfer menjadi energi internal atau termal</td></tr>
+      <tr><td>Kerja negatif selalu berarti benda bergerak</td><td>Tanda kerja menunjukkan perubahan energi kinetik akibat kerja netto</td></tr>
+      <tr><td>Daya adalah jumlah energi</td><td>Daya adalah laju transfer energi, yaitu energi per satuan waktu</td></tr>
+      <tr><td>Nilai energi potensial bersifat mutlak</td><td>Nilai energi potensial bergantung pada titik acuan yang dipilih</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Seluruh kesalahan tersebut memiliki akar yang sama, yaitu mengabaikan bahwa energi dapat berpindah bentuk dan besarnya, tanpa hilang. Menyebutkan sistem dan titik acuan secara eksplisit akan menghilangkan sebagian besar dari kesalahan itu.</p>
+  </div>
+
+  <h2 id="s47">47. Ringkasan rumus</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 47.1 &middot; Kumpulan rumus utama beserta syaratnya</caption>
+    <thead>
+      <tr><th>Konsep</th><th>Rumus</th><th>Syarat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kerja gaya konstan</td><td>W = F s cos theta</td><td>Gaya konstan sepanjang perpindahan</td></tr>
+      <tr><td>Kerja gaya berubah</td><td>W = integral F dikali d r</td><td>Gaya fungsi posisi</td></tr>
+      <tr><td>Energi kinetik</td><td>E K = satu per dua m v kuadrat</td><td>Gerak translasi</td></tr>
+      <tr><td>Teorema kerja dan energi</td><td>W net = delta E K</td><td>Hanya gaya eksternal yang diperhitungkan</td></tr>
+      <tr><td>Energi potensial gravitasi</td><td>E P = m g h</td><td>Dekat permukaan Bumi</td></tr>
+      <tr><td>Energi gravitasi umum</td><td>U = minus G M m per r</td><td>Jarak jauh dari pusat benda langit</td></tr>
+      <tr><td>Energi potensial pegas</td><td>E P = satu per dua k x kuadrat</td><td>Pegas ideal menurut Hukum Hooke</td></tr>
+      <tr><td>Kerja gaya konservatif</td><td>W c = minus delta E P</td><td>Gaya konservatif</td></tr>
+      <tr><td>Kerja gaya non-konservatif</td><td>W nc = delta E mek</td><td>Bentuk umum</td></tr>
+      <tr><td>Energi mekanik</td><td>E mek = E K ditambah E P</td><td>Hanya translasi</td></tr>
+      <tr><td>Kekekalan energi mekanik</td><td>E i sama dengan E f</td><td>Tanpa kerja gaya non-konservatif</td></tr>
+      <tr><td>Daya rata-rata</td><td>P = W per t</td><td>Kerja dan waktu diketahui</td></tr>
+      <tr><td>Daya sesaat</td><td>P = dW per dt</td><td>Besaran berubah terhadap waktu</td></tr>
+      <tr><td>Daya gaya dan kecepatan</td><td>P = F titik v</td><td>Hasil kali titik</td></tr>
+      <tr><td>Daya saat searah</td><td>P = F v</td><td>Gaya dan kecepatan searah</td></tr>
+      <tr><td>Energi dari daya</td><td>E = P t</td><td>Daya konstan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Membaca kolom syarat sama pentingnya dengan mengingat rumusnya. Sebagian besar kesalahan muncul karena rumus dipakai pada kondisi yang tidak memenuhi syaratnya.</p>
+  </div>
+<h2 id="s48">48. Latihan</h2>
+
+  <p>Kerjakan latihan berikut untuk memeriksa pemahaman terhadap materi bab ini.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 48.1 &middot; Latihan dan jawaban ringkas</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan</th><th>Jawaban ringkas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Apa definisi kerja dalam fisika?</td><td>Transfer energi akibat gaya yang menyebabkan perpindahan benda</td></tr>
+      <tr><td>2</td><td>Mengapa ada faktor cosinus pada rumus kerja?</td><td>Karena hanya komponen gaya sejajar perpindahan yang melakukan kerja</td></tr>
+      <tr><td>3</td><td>Kapan kerja bernilai positif?</td><td>Sudut antara gaya dan perpindahan kurang dari 90 derajat</td></tr>
+      <tr><td>4</td><td>Kapan kerja bernilai negatif?</td><td>Sudut antara gaya dan perpindahan lebih dari 90 derajat</td></tr>
+      <tr><td>5</td><td>Apakah kerja nol berarti gaya nol?</td><td>Tidak, gaya tegak lurus perpindahan tetap bernilai besar tetapi kerja nol</td></tr>
+      <tr><td>6</td><td>Mengapa orang yang menahan tas berat tidak melakukan kerja pada tas?</td><td>Karena tas tidak mengalami perpindahan sehingga perpindahan bernilai nol</td></tr>
+      <tr><td>7</td><td>Apa satuan kerja dan bagaimana cara mendapatkannya?</td><td>Joule, diperoleh dari newton kali meter</td></tr>
+      <tr><td>8</td><td>Bagaimana cara menghitung kerja oleh gaya yang berubah?</td><td>Dengan integral gaya dikali perpindahan, setara luas di bawah grafik</td></tr>
+      <tr><td>9</td><td>Bagaimana tanda kerja berubah pada gerakan lift?</td><td>Berlawanan antara gaya atlet dan gravitasi karena arah perpindahan berbalik</td></tr>
+      <tr><td>10</td><td>Apa yang dimaksud energi?</td><td>Kemampuan sistem untuk melakukan kerja atau menyebabkan perubahan</td></tr>
+      <tr><td>11</td><td>Tuliskan rumus energi kinetik dan hubungannya dengan kecepatan.</td><td>Setengah m v kuadrat, sebanding dengan kuadrat kecepatan</td></tr>
+      <tr><td>12</td><td>Apakah Hukum Newton bertentangan dengan teorema kerja dan energi?</td><td>Tidak, keduanya menjelaskan perubahan gerak dalam dua cara berbeda</td></tr>
+      <tr><td>13</td><td>Tuliskan rumus energi potensial gravitasi dan batas penggunaannya.</td><td>m g h untuk kondisi dekat permukaan Bumi</td></tr>
+      <tr><td>14</td><td>Mengapa titik acuan energi potensial boleh dipilih bebas?</td><td>Yang penting adalah selisih energi potensial, bukan nilai mutlaknya</td></tr>
+      <tr><td>15</td><td>Apa sifat utama gaya konservatif?</td><td>Kerja tidak bergantung pada lintasan dan kerja lintasan tertutup nol</td></tr>
+      <tr><td>16</td><td>Sebutkan tiga contoh gaya konservatif.</td><td>Gravitasi, gaya pegas, dan gaya listrik</td></tr>
+      <tr><td>17</td><td>Mengapa gesekan termasuk gaya non-konservatif?</td><td>Karena besar kerja gesekan sebanding dengan panjang lintasan</td></tr>
+      <tr><td>18</td><td>Apa yang terjadi pada energi saat terdapat gesekan?</td><td>Energi mekanik berubah menjadi energi kinetik dan termal</td></tr>
+      <tr><td>19</td><td>Tuliskan hubungan kerja non-konservatif dengan energi mekanik.</td><td>Kerja non-konservatif sama dengan perubahan energi mekanik</td></tr>
+      <tr><td>20</td><td>Apakah energi mekanik selalu kekal?</td><td>Tidak, hanya kekal bila tidak ada kerja gaya non-konservatif</td></tr>
+      <tr><td>21</td><td>Tuliskan rumus energi potensial pegas.</td><td>Setengah k x kuadrat</td></tr>
+      <tr><td>22</td><td>Kenapa kerja konservatif bertanda negatif perubahan energi potensial?</td><td>Karena keduanya berlawanan arah, jarak dari sumber gaya berubah</td></tr>
+      <tr><td>23</td><td>Apa definisi daya dan satuannya?</td><td>Laju kerja atau transfer energi, bersatuan watt</td></tr>
+      <tr><td>24</td><td>Bedakan energi dan daya.</td><td>Energi menyatakan jumlah, daya menyatakan laju perpindahannya</td></tr>
+      <tr><td>25</td><td>Kapan rumus daya sama dengan F dikali v?</td><td>Ketika gaya dan kecepatan searah atau keduanya konstan</td></tr>
+      <tr><td>26</td><td>Kapan metode energi lebih singkat daripada metode Newton?</td><td>Ketika yang dibutuhkan hanya keadaan awal dan akhir tanpa detail percepatan</td></tr>
+      <tr><td>27</td><td>Apa langkah paling menentukan sebelum menyusun persamaan energi?</td><td>Memeriksa apakah ada gaya non-konservatif yang melakukan kerja</td></tr>
+      <tr><td>28</td><td>Mengapa energi tidak dapat disebut hilang akibat gesekan?</td><td>Karena energi berpindah bentuk menjadi energi termal dan energi total tetap</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s49">49. Daftar istilah</h2>
+
+  <dl class="qa">
+    <dt>Benda bermotor</dt>
+    <dd>Benda yang mendapat tambahan energi dari mesin, sehingga kerja non-konservatifnya tidak nol.</dd>
+
+    <dt>Daya</dt>
+    <dd>Laju kerja atau transfer energi, bersatuan watt.</dd>
+
+    <dt>Daya sesaat</dt>
+    <dd>Daya pada suatu saat, dinyatakan dengan turunan kerja terhadap waktu.</dd>
+
+    <dt>Energi kinetik</dt>
+    <dd>Energi yang dimiliki benda karena geraknya, sebesar setengah m v kuadrat.</dd>
+
+    <dt>Energi mekanik</dt>
+    <dd>Jumlah energi kinetik dan energi potensial.</dd>
+
+    <dt>Energi potensial</dt>
+    <dd>Energi yang berkaitan dengan posisi atau konfigurasi sistem.</dd>
+
+    <dt>Energi potensial elastik</dt>
+    <dd>Energi yang tersimpan pada pegas yang berubah bentuk, sebesar setengah k x kuadrat.</dd>
+
+    <dt>Energi potensial gravitasi</dt>
+    <dd>Energi yang berkaitan dengan ketinggian benda, sebesar m g h untuk kondisi dekat permukaan Bumi.</dd>
+
+    <dt>Gaya konservatif</dt>
+    <dd>Gaya yang kerja totalnya tidak bergantung pada lintasan dan bernilai nol pada lintasan tertutup.</dd>
+
+    <dt>Gaya non-konservatif</dt>
+    <dd>Gaya yang kerja totalnya bergantung pada lintasan, seperti gesekan.</dd>
+
+    <dt>Integral</dt>
+    <dd>Operasi penjumlahan pada selang kontinu yang digunakan untuk menghitung kerja gaya berubah.</dd>
+
+    <dt>Joule</dt>
+    <dd>Satuan SI kerja dan energi, setara dengan satu newton kali satu meter.</dd>
+
+    <dt>Kekekalan energi mekanik</dt>
+    <dd>Kondisi ketika energi mekanik tetap karena tidak ada kerja gaya non-konservatif.</dd>
+
+    <dt>Kerja negatif</dt>
+    <dd>Kerja dengan tanda kurang yang menunjukkan energi dipindahkan keluar dari gerak benda.</dd>
+
+    <dt>Kerja neto</dt>
+    <dd>Jumlah seluruh gaya yang bekerja pada benda.</dd>
+
+    <dt>Kerja nol</dt>
+    <dd>Kerja yang bernilai nol karena gaya tegak lurus perpindahan.</dd>
+
+    <dt>Kerja positif</dt>
+    <dd>Kerja dengan tanda positif yang menunjukkan energi masuk ke gerak benda.</dd>
+
+    <dt>Kilowatt jam</dt>
+    <dd>Satuan energi listrik yang lazim dipakai pada tagihan listrik.</dd>
+
+    <dt>Konstanta pegas</dt>
+    <dd>Besaran yang menyatakan ketahanan pegas terhadap perubahan bentuk.</dd>
+
+    <dt>Pegas ideal</dt>
+    <dd>Pegas yang mengikuti Hukum Hooke tanpa kehilangan energi.</dd>
+
+    <dt>Roller coaster</dt>
+    <dd>Wahana tanpa roda yang menggambarkan transformasi energi potensial dan kinetik.</dd>
+
+    <dt>Teorema kerja dan energi</dt>
+    <dd>Pernyataan bahwa kerja netto sama dengan perubahan energi kinetik.</dd>
+
+    <dt>Titik acuan</dt>
+    <dd>Posisi yang dipilih sebagai titik nol energi potensial.</dd>
+
+    <dt>Watt</dt>
+    <dd>Satuan SI daya, setara dengan satu joule per sekon.</dd>
+
+
+    <dt>Usaha</dt>
+    <dd>Istilah bahasa Indonesia yang setara dengan kerja atau work dalam fisika.</dd>
+  </dl>
+
+  <h2 id="s50">50. Daftar pustaka</h2>
+
+  <p>Daftar pustaka disusun dari sumber utama materi kuliah, buku teks, dan sumber gambar yang dipakai pada modul ini.</p>
+
+  <footer>
+    <ul class="refs">
+      <li><b>Materi kuliah.</b> <em>Usaha dan Energi.</em> Sumber utama yang mencakup definisi kerja, energi kinetik, teorema kerja dan energi, energi potensial, gaya konservatif dan non-konservatif, energi mekanik, kekekalan energi, serta daya.</li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 7.1 Work: The Scientific Definition.</em> Definisi kerja secara ilmiah dan hubungannya dengan komponen gaya sejajar perpindahan. <a href="https://openstax.org/books/college-physics-2e/pages/7-1-work-the-scientific-definition">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 7.2 Kinetic Energy and the Work-Energy Theorem.</em> Rumus energi kinetik dan teorema kerja dan energi. <a href="https://openstax.org/books/college-physics-2e/pages/7-2-kinetic-energy-and-the-work-energy-theorem">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 7.3 Work and Energy for Particles.</em> Penerapan teorema kerja dan energi pada gerak partikel. <a href="https://openstax.org/books/college-physics-2e/pages/7-3-work-and-energy-for-particles">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 7.4 Conservative Forces and Potential Energy.</em> Sifat gaya konservatif, energi potensial, dan kekekalan energi mekanik. <a href="https://openstax.org/books/college-physics-2e/pages/7-4-conservative-forces-and-potential-energy">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 7.5 Nonconservative Forces and Work-Energy Theorem.</em> Pengaruh gaya non-konservatif terhadap energi mekanik. <a href="https://openstax.org/books/college-physics-2e/pages/7-5-nonconservative-forces-and-work-energy-theorem">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 7.6 Energy Conservation and Changes in Mechanical Energy.</em> Penerapan kekekalan energi pada berbagai kasus. <a href="https://openstax.org/books/college-physics-2e/pages/7-6-energy-conservation-and-changes-in-mechanical-energy">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 7.7 Power.</em> Daya rata-rata, watt, dan hubungan daya dengan energi. <a href="https://openstax.org/books/college-physics-2e/pages/7-7-power">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>University Physics Volume 1: 7.1 Work.</em> Bentuk umum integral gaya dikali perpindahan serta grafik gaya terhadap perpindahan. <a href="https://openstax.org/books/university-physics-volume-1/pages/7-1-work">openstax.org</a></li>
+      <li><b>Physics LibreTexts.</b> <em>Potential Energy and Conservation of Energy.</em> Pembahasan tambahan mengenai gaya konservatif dan kekekalan energi. <a href="https://phys.libretexts.org/Bookshelves/University_Physics/Physics_%28Boundless%29/6%3A_Work_and_Energy/6.5%3A_Potential_Energy_and_Conservation_of_Energy">phys.libretexts.org</a></li>
+      <li><b>Khan Academy.</b> <em>Gravitational Potential Energy and Conservative Forces Review.</em> Rujukan tambahan untuk konsep energi potensial dan klasifikasi gaya. <a href="https://www.khanacademy.org/science/in-in-class11th-physics/in-in-class11th-physics-work-energy-and-power/in-in-class11-gravitational-potential-energy-and-conservative-forces/a/gravitational-potential-energy-ap-physics-1">khanacademy.org</a></li>
+      <li><b>Wikimedia Commons.</b> <em>Force distance diagram, Roller coaster energy conservation, Potential and kinetic energy, Pendulum energy, dan diagram gaya pegas.</em> Sumber seluruh gambar pada modul ini. <a href="https://commons.wikimedia.org/">commons.wikimedia.org</a></li>
+    </ul>
+  </footer>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>
