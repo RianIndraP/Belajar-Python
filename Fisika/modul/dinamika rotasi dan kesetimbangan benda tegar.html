@@ -327,10 +327,345 @@
     .theme-toggle { transition: none; }
     .theme-toggle:hover { transform: none; }
   }
+/* ===================== navigasi layar kecil ===================== */
+  .bar-start { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+  .menu-btn {
+    display: none;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease;
+  }
+  .menu-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .menu-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .bars, .bars::before, .bars::after {
+    display: block;
+    width: 15px;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+  }
+  .bars { position: relative; }
+  .bars::before, .bars::after { content: ''; position: absolute; left: 0; }
+  .bars::before { top: -5px; }
+  .bars::after { top: 5px; }
+  .scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, .5);
+    z-index: 55;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  body.nav-open { overflow: hidden; }
+  body.nav-open .scrim { opacity: 1; pointer-events: auto; }
+
+  @media (max-width: 1279.98px) {
+    .menu-btn { display: grid; }
+    .toc {
+      display: block;
+      inset: 0 auto 0 0;
+      width: min(86vw, 300px);
+      max-height: none;
+      padding: 1.4rem 1.4rem 3rem;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      transform: translateX(-102%);
+      transition: transform .28s cubic-bezier(.16, 1, .3, 1);
+      z-index: 60;
+      box-shadow: 0 0 48px rgba(15, 23, 42, .2);
+    }
+    body.nav-open .toc { transform: none; }
+    .toc a { padding: .34rem 0; border-bottom: 1px solid var(--border); }
+    .toc a:last-child { border-bottom: 0; }
+  }
+
+  /* ===================== kuis interaktif ===================== */
+  .quiz {
+    margin: 2rem 0 0;
+    padding: 1.4rem 1.4rem 1.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .quiz-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; }
+  .quiz-head .badge {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: .12rem .6rem;
+  }
+  .quiz-head h2 { margin: 0; border: 0; padding: 0; font-size: 1.2rem; }
+  .quiz-lede { font-size: .9rem; margin: .35rem 0 1.1rem; }
+
+  .quiz-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem 1rem;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .76rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .quiz-track {
+    flex: 1 1 140px;
+    height: 6px;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .quiz-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    transition: width .3s ease;
+  }
+  .quiz-reset {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    font: inherit;
+    font-size: .72rem;
+    padding: .2rem .7rem;
+    cursor: pointer;
+  }
+  .quiz-reset:hover { color: var(--accent); border-color: var(--accent); }
+
+  .quiz-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: .5rem;
+  }
+  .quiz-grid button {
+    width: 100%;
+    aspect-ratio: 1;
+    min-height: 46px;
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .82rem;
+    color: var(--text);
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform .16s cubic-bezier(.16, 1, .3, 1), color .16s ease, border-color .16s ease;
+  }
+  .quiz-grid button:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+  .quiz-grid button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .quiz-grid button[data-state='benar'] { background: rgba(22, 163, 74, .14); border-color: var(--success); color: var(--success); }
+  .quiz-grid button[data-state='salah'] { background: rgba(220, 38, 38, .12); border-color: #dc2626; color: #dc2626; }
+  .quiz-grid button[data-state='benar']::after,
+  .quiz-grid button[data-state='salah']::after {
+    content: '';
+    position: absolute;
+    margin: -26px 0 0 22px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .quiz-grid button { position: relative; }
+
+  .quiz-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    margin-top: 1.1rem;
+  }
+  .btn {
+    font: inherit;
+    font-size: .9rem;
+    border-radius: 10px;
+    padding: .6rem 1.1rem;
+    cursor: pointer;
+    border: 1px solid var(--accent);
+    transition: filter .18s ease, transform .16s cubic-bezier(.16, 1, .3, 1);
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:active { transform: scale(.98); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-ghost { background: none; color: var(--muted); border-color: var(--border); }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); filter: none; }
+
+  /* ---- lapisan kuis ---- */
+  .quiz-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, .62);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .22s ease, visibility .22s ease;
+  }
+  .quiz-layer.open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .quiz-card {
+    width: min(620px, 100%);
+    max-height: 88vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, .35);
+    padding: 1.35rem 1.35rem 1.5rem;
+    transform: translateY(12px) scale(.98);
+    transition: transform .22s cubic-bezier(.16, 1, .3, 1);
+  }
+  .quiz-layer.open .quiz-card { transform: none; }
+  .quiz-top {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .9rem;
+  }
+  .quiz-top .qcount {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .72rem;
+    color: var(--faint);
+  }
+  .quiz-head h3 { margin: 0; font-size: 1.2rem; }
+  .quiz-top .qno {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .72rem;
+    letter-spacing: .1em;
+    color: var(--accent);
+  }
+  .quiz-top .qref {
+    font-size: .72rem;
+    color: var(--faint);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .1rem .55rem;
+  }
+  .quiz-top .qclose {
+    margin-left: auto;
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .quiz-top .qclose:hover { color: var(--accent); border-color: var(--accent); }
+  .qtext { color: var(--heading); font-size: 1rem; margin: 0 0 1rem; line-height: 1.65; }
+
+  .qopts { display: grid; gap: .55rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+  .qopt {
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    font-size: .92rem;
+    color: var(--text);
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .65rem .8rem;
+    cursor: pointer;
+    transition: border-color .16s ease, color .16s ease;
+  }
+  .qopt:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  .qopt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .qopt .key {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+  }
+  .qopt[aria-pressed='true'] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .qopt[aria-pressed='true'] .key { border-color: var(--accent); background: var(--accent); color: #fff; }
+  .qopt[data-mark='benar'] { border-color: var(--success); color: var(--success); background: rgba(22, 163, 74, .12); }
+  .qopt[data-mark='benar'] .key { border-color: var(--success); background: var(--success); color: #fff; }
+  .qopt[data-mark='salah'] { border-color: #dc2626; color: #dc2626; background: rgba(220, 38, 38, .1); }
+  .qopt[data-mark='salah'] .key { border-color: #dc2626; background: #dc2626; color: #fff; }
+  .qopt:disabled { cursor: default; }
+
+  .verdict {
+    display: none;
+    border-radius: 10px;
+    padding: .85rem .95rem;
+    margin: 0 0 1rem;
+    font-size: .9rem;
+    border: 1px solid var(--border);
+  }
+  .verdict.show { display: block; }
+  .verdict b { display: block; margin-bottom: .3rem; letter-spacing: .04em; font-size: .78rem; text-transform: uppercase; }
+  .verdict.ok { border-color: var(--success); background: rgba(22, 163, 74, .1); }
+  .verdict.ok b { color: var(--success); }
+  .verdict.no { border-color: #dc2626; background: rgba(220, 38, 38, .08); }
+  .verdict.no b { color: #dc2626; }
+  .verdict .ansline { color: var(--heading); font-weight: 600; margin-bottom: .35rem; }
+  .verdict .why { color: var(--muted); }
+
+  .quiz-foot { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .quiz-foot .spacer { flex: 1 1 auto; }
+
+  .done h3 { margin: 0 0 .5rem; }
+  .done .score {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+  .done .score small { font-size: 1rem; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    .quiz-grid { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
+    .quiz-layer { padding: 0; place-items: stretch; }
+    .quiz-card {
+      width: 100%;
+      max-height: 100vh;
+      height: 100%;
+      border-radius: 0;
+      border: 0;
+      padding: 1.1rem 1rem 1.4rem;
+    }
+    .quiz { padding: 1.1rem 1rem 1.3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .quiz-layer, .quiz-card, .toc, .scrim { transition: none; }
+  }
 </style>
 </head>
 
-<body>
+<body data-kuis="rotasi-04">
 <nav class="toc">
   <p class="eyebrow">Daftar Isi</p>
   <a href="#n1">1. Peta materi</a>
@@ -410,11 +745,16 @@
   <a href="#n75">75. Daftar istilah</a>
   <a href="#n76">76. Daftar pustaka</a>
   <a href="#n77">77. Daftar sumber gambar</a>
+  <a href="#nQUIZ">78. Kuis Interaktif</a>
 </nav>
+<div class="scrim" id="scrim"></div>
 
 <div class="wrap">
   <div class="topbar">
-    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <div class="bar-start">
+      <button class="menu-btn" id="menu" type="button" aria-label="Buka daftar isi" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+      <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    </div>
     <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
   </div>
 
@@ -2166,6 +2506,47 @@ DALAM SUDUT PANDANG MOMENTUM
   </div>
 
   <p>Modul ini menutup rangkaian empat modul Fisika Dasar. Translasi yang dipelajari pada modul pertama sampai ketiga sekarang memiliki pasangan rotasi yang lengkap, mulai dari posisi sudut sampai kekekalan momentum sudut.</p>
+<h2 id="nQUIZ">78. Kuis Interaktif</h2>
+
+  <div class="quiz" id="quiz" data-kuis="rotasi-04">
+    <div class="quiz-head">
+      <span class="badge">Kuis</span>
+      <h3>Uji Pemahaman 26 Soal</h3>
+    </div>
+    <p class="quiz-lede">Setiap nomor di bawah ini memuat satu soal pilihan ganda beserta pembahasannya. Tekan nomor untuk membuka soalnya, pilih jawaban, lalu tekan tombol periksa. Jawaban benar disertai penjelasan, sedangkan jawaban salah menampilkan jawaban yang benar beserta alasannya. Kemajuan kuis tersimpan otomatis pada perangkat ini.</p>
+
+    <div class="quiz-bar">
+      <span class="qstat">0 dijawab dari 26 soal</span>
+      <span class="quiz-track"><span class="quiz-fill"></span></span>
+      <button class="quiz-reset" type="button">Ulangi Semua</button>
+    </div>
+
+    <ul class="quiz-grid"></ul>
+
+    <div class="quiz-cta">
+      <button class="btn btn-primary" type="button" data-start>Mulai Kuis</button>
+      <a class="btn btn-ghost" href="#n1">Kembali ke Materi</a>
+    </div>
+
+    <div class="quiz-layer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Soal kuis">
+      <div class="quiz-card">
+        <div class="quiz-top">
+          <span class="qno">Soal 1</span>
+          <span class="qref"></span>
+          <span class="qcount"></span>
+          <button class="qclose" type="button" aria-label="Tutup soal">&#10005;</button>
+        </div>
+        <p class="qtext"></p>
+        <ul class="qopts"></ul>
+        <div class="verdict"></div>
+        <div class="quiz-foot">
+          <button class="btn btn-primary" type="button" data-next disabled style="display:none">Periksa Jawaban</button>
+          <span class="spacer"></span>
+          <button class="btn btn-ghost" type="button" data-skip>Lewati soal</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 </div>
 
@@ -2190,6 +2571,647 @@ DALAM SUDUT PANDANG MOMENTUM
     });
 
     paint();
+  })();
+</script>
+
+<script>
+/* ===================================================================
+   Mesin kuis interaktif. Data soal diambil dari variabel KUIS_DATA.
+   =================================================================== */
+  var KUIS_DATA = [
+  {
+    "ref": "Bagian 6",
+    "q": "Pasangan rotasi dari besaran massa dan kecepatan linear adalah:",
+    "o": [
+      "Momen inersia dan kecepatan sudut",
+      "Torsi dan gaya normal",
+      "Momentum sudut dan percepatan linear",
+      "Teorema sumbu sejajar dan gaya berat"
+    ],
+    "a": 0,
+    "why": "Massa menentukan kelambatan translasi, sedangkan momen inersia menentukan kelambatan rotasi. Kecepatan linear berpasangan dengan kecepatan sudut. Pasangan lengkapnya dapat dilihat pada tabel perbandingan translasi dan rotasi."
+  },
+  {
+    "ref": "Bagian 7",
+    "q": "Berapa nilai satu putaran penuh dalam satuan radian?",
+    "o": [
+      "180 radian",
+      "360 radian",
+      "Dua pi radian",
+      "Satu pi radian"
+    ],
+    "a": 2,
+    "why": "Satu putaran penuh sama dengan 360 derajat yang setara dengan dua pi radian. Semua rumus rotasi ditulis dengan satuan radian karena satuan itu membuat rumus tetap sederhana tanpa faktor pi tambahan."
+  },
+  {
+    "ref": "Bagian 11",
+    "q": "Sebuah roda berjari-jari 0,4 meter berputar dengan kecepatan sudut 10 radian per sekon pada poros tetapnya. Berapa kecepatan linear titik di tepi roda?",
+    "o": [
+      "0,04 meter per sekon",
+      "2,5 meter per sekon",
+      "4 meter per sekon",
+      "25 meter per sekon"
+    ],
+    "a": 2,
+    "why": "Kecepatan linear titik pada radius r adalah kecepatan sudut dikali jarak ke poros. Nilainya adalah 10 dikali 0,4 sehingga 4 meter per sekon. Titik di pusat poros memiliki kecepatan linear nol meskipun kecepatan sudutnya tidak nol."
+  },
+  {
+    "ref": "Bagian 13 dan 14",
+    "q": "Mengapa mendorong pintu tepat pada garis engsel hampir tidak menghasilkan putaran?",
+    "o": [
+      "Karena gaya yang diberikan terlalu kecil",
+      "Karena lengan gaya mendekati nol sehingga torsi mendekati nol",
+      "Karena pintu tidak memiliki momen inersia",
+      "Karena gaya pada engsel selalu menghambat gerak"
+    ],
+    "a": 1,
+    "why": "Yang menentukan besar torsi bukan jarak terjauh melainkan jarak tegak lurus antara sumbu dan garis kerja gaya. Pada dorongan tepat di garis engsel, lengan gaya bernilai nol sehingga torsinya nol. Karena itu pintu tidak berputar berapa pun besarnya gaya yang diberikan."
+  },
+  {
+    "ref": "Bagian 16",
+    "q": "Torsi maksimum terjadi ketika sudut antara gaya dan lengan gaya bernilai:",
+    "o": [
+      "0 derajat",
+      "45 derajat",
+      "90 derajat",
+      "180 derajat"
+    ],
+    "a": 2,
+    "why": "Torsi adalah gaya dikali jarak dikali sinus sudut. Sinus mencapai nilai terbesar yaitu satu pada 90 derajat, sehingga torsi maksimum terjadi saat gaya tegak lurus terhadap lengan gaya. Pada sudut 0 derajat maupun 180 derajat torsinya nol."
+  },
+  {
+    "ref": "Bagian 17",
+    "q": "Menurut konvensi yang dipakai modul ini, torsi berlawanan arah jarum jam diberi tanda:",
+    "o": [
+      "Positif",
+      "Negatif",
+      "Nol",
+      "Tidak dapat ditentukan"
+    ],
+    "a": 0,
+    "why": "Konvensi yang dipakai adalah berlawanan arah jarum jam bernilai positif dan searah jarum jam bernilai negatif. Konvensi lain juga ada, asalkan diterapkan konsisten pada seluruh perhitungan satu soal."
+  },
+  {
+    "ref": "Bagian 18",
+    "q": "Sebuah benda memiliki resultan torsi nol. Apa yang terjadi pada percepatan sudutnya?",
+    "o": [
+      "Percepatan sudutnya sama dengan nol",
+      "Percepatan sudutnya menjadi tidak terdefinisi",
+      "Percepatan sudutnya pasti positif",
+      "Percepatan sudutnya negatif"
+    ],
+    "a": 0,
+    "why": "Dari persamaan resultan torsi sama dengan momen inersia dikali percepatan sudut, torsi nol memaksa percepatan sudut nol. Benda yang berputar dengan kecepatan sudut konstan juga memiliki resultan torsi nol. Benda yang diam juga memiliki percepatan sudut nol."
+  },
+  {
+    "ref": "Bagian 19",
+    "q": "Cakram pejal bermassa 4 kilogram dengan jari-jari 0,2 meter mengalami torsi resultan 0,6 newton meter. Berapa percepatan sudutnya?",
+    "o": [
+      "0,08 radian per sekon kuadrat",
+      "1,2 radian per sekon kuadrat",
+      "7,5 radian per sekon kuadrat",
+      "15 radian per sekon kuadrat"
+    ],
+    "a": 2,
+    "why": "Momen inersia cakram pejal adalah setengah massa dikali kuadrat jari-jari yaitu 0,08 kilogram meter kuadrat. Percepatan sudutnya adalah torsi dibagi momen inersia sehingga 7,5 radian per sekon kuadrat. Bila momen inersia diperbesar, percepatan sudut akan mengecil."
+  },
+  {
+    "ref": "Bagian 21",
+    "q": "Jika jarak suatu massa terhadap sumbu rotasi menjadi dua kali lipat, kontribusinya terhadap momen inersia menjadi:",
+    "o": [
+      "Dua kali lebih besar",
+      "Empat kali lebih besar",
+      "Delapan kali lebih besar",
+      "Tetap sama"
+    ],
+    "a": 1,
+    "why": "Momen inersia bergantung pada kuadrat jarak terhadap sumbu, sedangkan massa hanya berpengaruh linear. Maka ketika jarak menjadi dua kali lipat, kontribusi massa tersebut menjadi empat kali lipat. Inilah alasan massa yang jauh dari sumbu sangat menentukan perilaku rotasi benda."
+  },
+  {
+    "ref": "Bagian 23",
+    "q": "Manakah yang mempunyai momen inersia terbesar terhadap sumbu pusatnya: cincin tipis, bola pejal, atau kulit bola tipis, dengan massa dan jari-jari sama?",
+    "o": [
+      "Bola pejal",
+      "Kulit bola tipis",
+      "Cincin tipis",
+      "Semuanya sama besar"
+    ],
+    "a": 2,
+    "why": "Cincin tipis memiliki momen inersia sebesar massa dikali kuadrat jari-jari karena seluruh massanya berada pada jarak maksimal dari sumbu. Bola pejal hanya dua per lima, sedangkan kulit bola tipis dua per tiga. Semakin besar bagian massa yang jauh dari sumbu, semakin besar momen inersianya."
+  },
+  {
+    "ref": "Bagian 26",
+    "q": "Sebuah batang homogen bermassa 12 kilogram memiliki momen inersia 1,2 kilogram meter kuadrat terhadap sumbu melalui pusatnya. Berapa momen inersia terhadap sumbu yang tegak lurus batang melalui ujungnya? Gunakan teorema sumbu sejajar.",
+    "o": [
+      "1,2 kilogram meter kuadrat",
+      "3,6 kilogram meter kuadrat",
+      "4,8 kilogram meter kuadrat",
+      "4 kilogram meter kuadrat"
+    ],
+    "a": 2,
+    "why": "Karena momen inersia batang terhadap pusat sama dengan satu per dua belas massa kali kuadrat panjang, maka kuadrat panjang batang bernilai 1,2. Jarak antara kedua sumbu adalah setengah panjang batang sehingga kuadrat jaraknya bernilai 0,3. Momen inersia terhadap ujung menjadi 1,2 ditambah 12 kali 0,3 yaitu 4,8 kilogram meter kuadrat. Nilainya selalu lebih besar daripada terhadap pusat."
+  },
+  {
+    "ref": "Bagian 27",
+    "q": "Berapa syarat yang harus dipenuhi agar sebuah benda tegar disebut setimbang?",
+    "o": [
+      "Resultan gaya nol saja",
+      "Resultan torsi nol saja",
+      "Resultan gaya nol dan resultan torsi nol sekaligus",
+      "Kecepatan sudut tetap"
+    ],
+    "a": 2,
+    "why": "Kesetimbangan benda tegar menuntut dua syarat sekaligus, yaitu resultan gaya nol untuk mencegah perubahan gerak translasi dan resultan torsi nol untuk mencegah rotasi. Memenuhi satu syarat saja belum menjamin benda diam. Benda yang berputar dengan kecepatan tetap tetap memiliki resultan torsi nol."
+  },
+  {
+    "ref": "Bagian 28",
+    "q": "Dua gaya sama besar dengan arah berlawanan bekerja pada sebuah batang, tetapi kedua garis kerjanya berbeda. Apa yang terjadi?",
+    "o": [
+      "Benda diam karena resultan gayanya nol",
+      "Resultan gaya nol tetapi resultan torsinya tidak nol sehingga benda berputar",
+      "Resultan gaya dan resultan torsi sama-sama nol",
+      "Benda bergerak dipercepat searah resultan gaya"
+    ],
+    "a": 1,
+    "why": "Kedua gaya saling meniadakan sehingga resultan gaya nol dan pusat massa tidak bergerak. Tetapi karena garis kerjanya berbeda, kedua gaya menghasilkan torsi searah yang tidak saling meniadakan. Benda pun berputar meskipun resultan gaya nolnya."
+  },
+  {
+    "ref": "Bagian 29",
+    "q": "Pada jungkat-jungkit, dua anak dengan massa berbeda dapat setimbang hanya jika:",
+    "o": [
+      "Anak yang lebih berat duduk lebih dekat dengan titik tumpu",
+      "Anak yang lebih berat duduk lebih jauh dari titik tumpu",
+      "Keduanya duduk pada jarak yang sama dari titik tumpu",
+      "Anak yang lebih ringan duduk tepat di atas titik tumpu"
+    ],
+    "a": 0,
+    "why": "Kesetimbangan menuntut momen gaya kedua sisi sama besar, yaitu massa dikali jarak sama dengan massa dikali jarak. Karena massa tidak dapat diubah pada titik tumpu, jarak harus diatur. Anak yang lebih berat harus duduk lebih dekat agar momen gaya keduanya sama."
+  },
+  {
+    "ref": "Bagian 30",
+    "q": "Mengapa dalam soal tangga yang bersandar pada dinding, titik tumpu kaki di tanah lazim dipakai sebagai titik acuan torsi?",
+    "o": [
+      "Supaya gaya berat tangga dapat dihitung lebih mudah",
+      "Supaya gaya normal dan gaya gesek di titik tumpu memiliki lengan gaya nol sehingga tidak perlu diketahui nilainya",
+      "Supaya resultan torsi menjadi lebih besar",
+      "Supaya titik tumpu tidak boleh bergerak"
+    ],
+    "a": 1,
+    "why": "Gaya yang bekerja tepat pada titik acuan memiliki lengan gaya nol sehingga torsinya nol. Dengan memilih titik tumpu sebagai acuan, gaya normal dan gaya gesek di titik itu hilang dari persamaan torsi. Persamaan yang tersisa tinggal memuat gaya yang tidak diketahui."
+  },
+  {
+    "ref": "Bagian 32 dan 33",
+    "q": "Syarat praktis kestabilan sebuah benda tegar adalah:",
+    "o": [
+      "Proyeksi vertikal pusat gravitasinya berada di dalam daerah dasar tumpuan",
+      "Besar gaya normal harus lebih besar dari berat benda",
+      "Pusat massa harus berada tepat di titik tumpu",
+      "Pusat gravitasi harus berada paling tinggi dari benda"
+    ],
+    "a": 0,
+    "why": "Selama proyeksi pusat gravitasi masih berada di dalam daerah dasar tumpuan, gangguan kecil akan mengembalikan benda ke posisi semula. Ketika proyeksi itu keluar dari daerah tumpuan, benda menjadi tidak stabil. Memperlebar urutan langkah kaki memperbesar daerah tumpuan sehingga kestabilan meningkat."
+  },
+  {
+    "ref": "Bagian 34",
+    "q": "Sebuah torsi sebesar 12 newton meter memutar benda sejauh 1,5 radian. Berapa kerja torsi tersebut?",
+    "o": [
+      "8 joule",
+      "12 joule",
+      "18 joule",
+      "24 joule"
+    ],
+    "a": 2,
+    "why": "Kerja rotasi adalah torsi dikali sudut putar dalam radian. Nilainya adalah 12 dikali 1,5 sehingga 18 joule. Karena satuan radian tidak berdimensi, satuan torsi newton meter tetap terjaga menjadi joule."
+  },
+  {
+    "ref": "Bagian 35 dan 36",
+    "q": "Mengapa flywheel yang bermassa besar dapat menyimpan energi yang besar pada kecepatan sudut yang relatif kecil?",
+    "o": [
+      "Karena energi kinetik rotasi sebanding dengan kuadrat kecepatan sudut",
+      "Karena energi kinetik rotasi sebanding dengan momen inersia, sehingga momen inersia besar menyimpan energi besar",
+      "Karena flywheel memiliki gaya gesek yang besar",
+      "Karena energi kinetik rotasi tidak bergantung pada momen inersia"
+    ],
+    "a": 1,
+    "why": "Energi kinetik rotasi adalah setengah momen inersia dikali kuadrat kecepatan sudut. Pada kecepatan sudut yang sama, momen inersia yang lebih besar menghasilkan energi yang lebih besar. Cakram flywheel yang besar memiliki momen inersia besar sehingga dapat menyimpan energi besar tanpa perlu berputar sangat cepat."
+  },
+  {
+    "ref": "Bagian 37",
+    "q": "Berapa bentuk rumus energi kinetik total untuk benda yang menggelinding tanpa slip?",
+    "o": [
+      "Setengah massa dikali kuadrat kecepatan saja",
+      "Setengah momen inersia dikali kuadrat kecepatan sudut saja",
+      "Setengah massa dikali kuadrat kecepatan ditambah setengah momen inersia dikali kuadrat kecepatan sudut",
+      "Momentum sudut dikali kecepatan sudut"
+    ],
+    "a": 2,
+    "why": "Benda yang menggelinding melakukan dua gerak sekaligus, yaitu gerak pusat massa dan rotasi. Karena itu energi kinetiknya merupakan jumlah energi kinetik translasi dan energi kinetik rotasi. Menghitung hanya salah satu komponen akan menghasilkan kecepatan yang terlalu besar."
+  },
+  {
+    "ref": "Bagian 42 dan 43",
+    "q": "Empat benda homogen dengan massa dan jari-jari sama dilepas dari ketinggian yang sama pada bidang miring dan menggelinding tanpa slip. Benda manakah yang tiba di dasar bidang miring paling awal?",
+    "o": [
+      "Cincin tipis, karena momen inersianya paling besar",
+      "Bola pejal, karena momen inersianya paling kecil",
+      "Silinder pejal, karena momen inersianya paling kecil",
+      "Semuanya tiba bersamaan karena massanya sama"
+    ],
+    "a": 1,
+    "why": "Kecepatan benda yang menggelinding ditentukan oleh rasio momen inersia terhadap massa kali kuadrat jari-jari. Rasio terkecil dimiliki bola pejal sehingga ia berputar paling murah dan percepatannya paling besar. Urutan tercepat adalah bola pejal, silinder pejal, bola kulit, lalu cincin tipis."
+  },
+  {
+    "ref": "Bagian 45 dan 47",
+    "q": "Apa hubungan antara torsi netto dan momentum sudut?",
+    "o": [
+      "Torsi netto sama dengan momentum sudut",
+      "Torsi netto sama dengan laju perubahan momentum sudut terhadap waktu",
+      "Momentum sudut sama dengan laju perubahan torsi",
+      "Keduanya tidak berhubungan"
+    ],
+    "a": 1,
+    "why": "Hubungan tersebut merupakan pasangan dari hubungan gaya dengan laju perubahan momentum linear. Torsi yang bekerja mengubah momentum sudut, sehingga momentum sudut dapat bertambah besar maupun arahnya dapat berubah. Inilah dasar hubungan konservasi momentum sudut."
+  },
+  {
+    "ref": "Bagian 48 dan 49",
+    "q": "Seorang pemain seluncur sedang berputar menarik tangannya ke dekat tubuh. Apa yang terjadi pada kecepatan sudutnya?",
+    "o": [
+      "Kecepatan sudut tetap karena torsi eksternal nol",
+      "Kecepatan sudut meningkat karena momen inersia berkurang sementara momentum sudut tetap",
+      "Kecepatan sudut menurun karena momen inersia berkurang",
+      "Kecepatan sudut tidak berubah karena energi kinetiknya kekal"
+    ],
+    "a": 1,
+    "why": "Menarik tangan memperkecil jarak massa terhadap sumbu sehingga momen inersia berkurang. Karena torsi eksternal dapat diabaikan, momentum sudut tetap dan kecepatan sudut harus meningkat untuk mengimbangi penurunan momen inersia. Energi kinetiknya justru bertambah karena kerja internal dari gerak otot."
+  },
+  {
+    "ref": "Bagian 51",
+    "q": "Bagaimana arah vektor kecepatan sudut ditentukan pada gerak rotasi?",
+    "o": [
+      "Dengan aturan tangan kanan, ibu jari searah sumbu dan jari mengikuti arah putaran",
+      "Dengan membandingkan besar gaya yang bekerja",
+      "Dengan menghitung momen inersia benda",
+      "Arah kecepatan sudut selalu sama dengan arah gaya yang bekerja"
+    ],
+    "a": 0,
+    "why": "Kecepatan sudut, momentum sudut, dan torsi merupakan besaran vektor sehingga arahnya ditentukan dengan aturan tangan kanan. Ibu jari menunjuk arah vektor sedangkan jari-jari mengikuti arah putaran. Untuk torsi, tangannya diarahkan dari vektor posisi menuju vektor gaya."
+  },
+  {
+    "ref": "Bagian 52 dan 53",
+    "q": "Apa yang menyebabkan presesi pada sebuah piring yang berputar?",
+    "o": [
+      "Perubahan besar momentum sudut",
+      "Torsi yang tegak lurus terhadap arah putaran sehingga yang berubah hanya arah momentum sudut",
+      "Berkurangnya kecepatan sudut akibat gesekan",
+      "Momentum sudut yang bernilai nol"
+    ],
+    "a": 1,
+    "why": "Pada presesi, torsi bekerja tegak lurus terhadap arah putaran sehingga besar momentum sudut tetap tetapi arahnya berubah. Sumbu putar lalu bergerak melingkar dan tidak jatuh. Hal ini juga yang membuat bumi mengalami presesi yang sangat lambat."
+  },
+  {
+    "ref": "Bagian 55 dan 56",
+    "q": "Motor listrik memberikan torsi 30 newton meter pada poros yang berputar dengan kecepatan sudut 20 radian per sekon. Berapa daya mekaniknya?",
+    "o": [
+      "50 watt",
+      "150 watt",
+      "600 watt",
+      "Nol watt"
+    ],
+    "a": 2,
+    "why": "Daya pada gerak rotasi adalah torsi dikali kecepatan sudut. Nilainya adalah 30 dikali 20 sehingga 600 watt. Inilah sebabnya spesifikasi motor selalu mencantumkan torsi dan kecepatan putar sekaligus, karena kedua besaran itu menentukan daya."
+  },
+  {
+    "ref": "Bagian 66",
+    "q": "Mengapa momen inersia tidak boleh ditulis dalam satuan kilogram saja seperti massa?",
+    "o": [
+      "Karena momen inersia bukan besaran fisis",
+      "Karena momen inersia bergantung pada jarak massa terhadap sumbu sehingga satuannya kilogram meter kuadrat",
+      "Karena momen inersia bergantung pada kecepatan sudut",
+      "Karena kilogram tidak berlaku untuk besaran rotasi"
+    ],
+    "a": 1,
+    "why": "Momen inersia memuat faktor jarak terhadap sumbu yang diukuadratkan, sehingga satuannya menjadi kilogram meter kuadrat. Massa sendiri cukup kilogram karena tidak memuat jarak. Perbedaan satuan ini muncul karena jarak harus ikut diperhitungkan."
+  }
+];
+
+  (function () {
+    var DATA = KUIS_DATA;
+    var KEY = 'kuis:' + document.body.getAttribute('data-kuis') || 'kuis';
+    var root = document.documentElement;
+    var wrap = document.getElementById('quiz');
+    if (!wrap || !DATA.length) return;
+
+    var grid = wrap.querySelector('.quiz-grid');
+    var fill = wrap.querySelector('.quiz-fill');
+    var stat = wrap.querySelector('.qstat');
+    var resetBtn = wrap.querySelector('.quiz-reset');
+    var startBtn = wrap.querySelector('[data-start]');
+    var layer = wrap.querySelector('.quiz-layer');
+    var card = layer.querySelector('.quiz-card');
+    var qnoEl = card.querySelector('.qno');
+    var qrefEl = card.querySelector('.qref');
+    var qtextEl = card.querySelector('.qtext');
+    var optBox = card.querySelector('.qopts');
+    var verdict = card.querySelector('.verdict');
+    var nextBtn = card.querySelector('[data-next]');
+    var closeBtn = card.querySelector('.qclose');
+    var counter = card.querySelector('.qcount');
+    var skipBtn = card.querySelector('[data-skip]');
+
+    var cur = 0;
+    var picked = -1;
+    var answered = {};
+    var lastFocus = null;
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+      if (saved && typeof saved === 'object') {
+        for (var k in saved) {
+          if (saved.hasOwnProperty(k) && /^\d+$/.test(k)) answered[k] = saved[k];
+        }
+      }
+    } catch (e) {}
+
+    function persist() {
+      try { localStorage.setItem(KEY, JSON.stringify(answered)); } catch (e) {}
+    }
+
+    function score() {
+      var ok = 0, n = 0;
+      for (var i = 0; i < DATA.length; i++) {
+        if (answered[i] !== undefined) { n++; if (answered[i]) ok++; }
+      }
+      return { ok: ok, n: n };
+    }
+
+    function paintGrid() {
+      grid.innerHTML = '';
+      for (var i = 0; i < DATA.length; i++) {
+        (function (idx) {
+          var li = document.createElement('li');
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.textContent = idx + 1;
+          b.setAttribute('aria-label', 'Buka soal nomor ' + (idx + 1));
+          if (answered[idx] !== undefined) b.setAttribute('data-state', answered[idx] ? 'benar' : 'salah');
+          b.addEventListener('click', function () { open(idx); });
+          li.appendChild(b);
+          grid.appendChild(li);
+        })(i);
+      }
+    }
+
+    function markBtn(idx) {
+      var b = grid.children[idx] && grid.children[idx].children[0];
+      if (b) b.setAttribute('data-state', answered[idx] ? 'benar' : 'salah');
+    }
+
+    function paintBar() {
+      var s = score();
+      fill.style.width = (DATA.length ? (s.n / DATA.length) * 100 : 0) + '%';
+      stat.textContent = s.n + ' dijawab dari ' + DATA.length + ' soal';
+    }
+
+    function open(i) {
+      lastFocus = document.activeElement;
+      cur = i;
+      picked = -1;
+      render();
+      layer.classList.add('open');
+      layer.removeAttribute('aria-hidden');
+      document.body.style.overflow = 'hidden';
+      card.scrollTop = 0;
+      var first = card.querySelector('.qopt');
+      if (first) first.focus();
+    }
+
+    function close() {
+      layer.classList.remove('open');
+      layer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function render() {
+      var q = DATA[cur];
+      qnoEl.textContent = 'Soal ' + (cur + 1);
+      qrefEl.textContent = q.ref || '';
+      qtextEl.textContent = q.q;
+      counter.textContent = cur + 1 + ' / ' + DATA.length;
+      optBox.innerHTML = '';
+      for (var i = 0; i < q.o.length; i++) {
+        (function (idx) {
+          var li = document.createElement('li');
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'qopt';
+          b.setAttribute('aria-pressed', 'false');
+          var k = document.createElement('span');
+          k.className = 'key';
+          k.textContent = 'ABCD'.charAt(idx);
+          var s = document.createElement('span');
+          s.textContent = q.o[idx];
+          b.appendChild(k);
+          b.appendChild(s);
+          b.addEventListener('click', function () { choose(idx); });
+          li.appendChild(b);
+          optBox.appendChild(li);
+        })(i);
+      }
+      verdict.className = 'verdict';
+      verdict.innerHTML = '';
+      nextBtn.textContent = 'Soal Berikutnya';
+      nextBtn.disabled = true;
+      nextBtn.style.display = 'none';
+      if (answered[cur] !== undefined) reveal(answered[cur] === true ? q.a : -2);
+    }
+
+    function choose(idx) {
+      if (answered[cur] !== undefined) return;
+      picked = idx;
+      var all = optBox.querySelectorAll('.qopt');
+      for (var i = 0; i < all.length; i++) {
+        all[i].setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+      }
+      nextBtn.textContent = 'Periksa Jawaban';
+      nextBtn.disabled = false;
+      nextBtn.style.display = '';
+    }
+
+    function reveal(correctIdx) {
+      var q = DATA[cur];
+      var all = optBox.querySelectorAll('.qopt');
+      for (var i = 0; i < all.length; i++) {
+        all[i].disabled = true;
+        if (i === q.a) all[i].setAttribute('data-mark', 'benar');
+        else if (i === correctIdx) all[i].setAttribute('data-mark', 'salah');
+      }
+      var good = correctIdx === q.a;
+      verdict.className = 'verdict show ' + (good ? 'ok' : 'no');
+      var html = '<b>' + (good ? 'Benar' : 'Salah') + '</b>';
+      if (!good) {
+        html += '<div class="ansline">Jawaban yang benar: ' + 'ABCD'.charAt(q.a) + '. ' + esc(q.o[q.a]) + '</div>';
+      }
+      html += '<div class="why">' + esc(q.why) + '</div>';
+      verdict.innerHTML = html;
+      nextBtn.textContent = (cur + 1 < DATA.length) ? 'Soal Berikutnya' : 'Lihat Hasil';
+      nextBtn.disabled = false;
+      nextBtn.style.display = '';
+    }
+
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    nextBtn.addEventListener('click', function () {
+      if (answered[cur] === undefined) {
+        if (picked < 0) return;
+        var good = picked === DATA[cur].a;
+        answered[cur] = good;
+        persist();
+        markBtn(cur);
+        paintBar();
+        reveal(picked);
+        return;
+      }
+      if (cur + 1 < DATA.length) open(cur + 1);
+      else summary();
+    });
+
+    closeBtn.addEventListener('click', close);
+    layer.addEventListener('mousedown', function (e) { if (e.target === layer) close(); });
+
+    function summary() {
+      var s = score();
+      var pct = DATA.length ? Math.round((s.ok / DATA.length) * 100) : 0;
+      var note = pct >= 85 ? 'Penguasaan materi sangat baik.'
+        : pct >= 70 ? 'Penguasaan materi sudah baik, tinggal sedikit lagi.'
+        : pct >= 50 ? 'Sebagian besar benar, ulangi bagian yang masih lemah.'
+        : 'Sebagian besar masih perlu diulang.';
+      var weak = [];
+      for (var i = 0; i < DATA.length; i++) if (answered[i] === false) weak.push(i + 1);
+      qnoEl.textContent = 'Hasil';
+      qrefEl.textContent = '';
+      qtextEl.innerHTML = '';
+      optBox.innerHTML = '';
+      counter.textContent = '';
+      verdict.className = 'verdict';
+      verdict.innerHTML = '';
+      var box = document.createElement('div');
+      box.className = 'done';
+      var h = document.createElement('div');
+      h.className = 'score';
+      h.innerHTML = s.ok + '<small> / ' + DATA.length + '</small>';
+      var t = document.createElement('p');
+      t.textContent = 'Skor akhir ' + pct + ' persen. ' + note;
+      box.appendChild(h);
+      box.appendChild(t);
+      if (weak.length) {
+        var w = document.createElement('p');
+        w.innerHTML = 'Nomor yang masih salah: <b>' + weak.join(', ') + '</b>. Buka kembali nomor tersebut untuk membaca penjelasannya.';
+        box.appendChild(w);
+      } else {
+        var w2 = document.createElement('p');
+        w2.textContent = 'Semua soal terjawab benar. Silakan ulangi sekali lagi untuk memperkuat Pemahaman.';
+        box.appendChild(w2);
+      }
+      var row = document.createElement('div');
+      row.className = 'quiz-foot';
+      var again = document.createElement('button');
+      again.type = 'button';
+      again.className = 'btn btn-primary';
+      again.textContent = 'Ulangi dari Awal';
+      again.addEventListener('click', function () {
+        answered = {};
+        persist();
+        paintGrid();
+        paintBar();
+        open(0);
+      });
+      var fin = document.createElement('button');
+      fin.type = 'button';
+      fin.className = 'btn btn-ghost';
+      fin.textContent = 'Tutup';
+      fin.addEventListener('click', close);
+      row.appendChild(again);
+      row.appendChild(fin);
+      box.appendChild(row);
+      qtextEl.appendChild(box);
+      nextBtn.style.display = 'none';
+      card.scrollTop = 0;
+    }
+
+    skipBtn.addEventListener('click', function () {
+      if (answered[cur] !== undefined) {
+        if (cur + 1 < DATA.length) open(cur + 1); else summary();
+      } else {
+        close();
+      }
+    });
+
+    startBtn.addEventListener('click', function () {
+      for (var i = 0; i < DATA.length; i++) {
+        if (answered[i] === undefined) { open(i); return; }
+      }
+      summary();
+    });
+
+    resetBtn.addEventListener('click', function () {
+      answered = {};
+      picked = -1;
+      persist();
+      paintGrid();
+      paintBar();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!layer.classList.contains('open')) return;
+      if (e.key === 'Escape') { close(); return; }
+      if (answered[cur] === undefined && '1234'.indexOf(e.key) > -1) {
+        choose('1234'.indexOf(e.key));
+        e.preventDefault();
+      } else if (e.key === 'Enter' && !nextBtn.disabled) {
+        nextBtn.click();
+      }
+    });
+
+    paintGrid();
+    paintBar();
+  })();
+</script>
+<script>
+/* ===== daftar isi untuk layar kecil ===== */
+  (function () {
+    var btn = document.getElementById('menu');
+    var scrim = document.getElementById('scrim');
+    var toc = document.querySelector('.toc');
+    if (!btn || !scrim || !toc) return;
+
+    function open() {
+      document.body.classList.add('nav-open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function close() {
+      document.body.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', function () {
+      document.body.classList.contains('nav-open') ? close() : open();
+    });
+    scrim.addEventListener('click', close);
+    toc.addEventListener('click', function (e) {
+      if (e.target.closest('a')) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+        close();
+        btn.focus();
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1280) close();
+    });
   })();
 </script>
 </body>

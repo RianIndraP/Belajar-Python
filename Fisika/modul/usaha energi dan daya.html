@@ -327,9 +327,344 @@
     .theme-toggle { transition: none; }
     .theme-toggle:hover { transform: none; }
   }
+/* ===================== navigasi layar kecil ===================== */
+  .bar-start { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+  .menu-btn {
+    display: none;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease;
+  }
+  .menu-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .menu-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .bars, .bars::before, .bars::after {
+    display: block;
+    width: 15px;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+  }
+  .bars { position: relative; }
+  .bars::before, .bars::after { content: ''; position: absolute; left: 0; }
+  .bars::before { top: -5px; }
+  .bars::after { top: 5px; }
+  .scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, .5);
+    z-index: 55;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  body.nav-open { overflow: hidden; }
+  body.nav-open .scrim { opacity: 1; pointer-events: auto; }
+
+  @media (max-width: 1279.98px) {
+    .menu-btn { display: grid; }
+    .toc {
+      display: block;
+      inset: 0 auto 0 0;
+      width: min(86vw, 300px);
+      max-height: none;
+      padding: 1.4rem 1.4rem 3rem;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      transform: translateX(-102%);
+      transition: transform .28s cubic-bezier(.16, 1, .3, 1);
+      z-index: 60;
+      box-shadow: 0 0 48px rgba(15, 23, 42, .2);
+    }
+    body.nav-open .toc { transform: none; }
+    .toc a { padding: .34rem 0; border-bottom: 1px solid var(--border); }
+    .toc a:last-child { border-bottom: 0; }
+  }
+
+  /* ===================== kuis interaktif ===================== */
+  .quiz {
+    margin: 2rem 0 0;
+    padding: 1.4rem 1.4rem 1.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .quiz-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; }
+  .quiz-head .badge {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: .12rem .6rem;
+  }
+  .quiz-head h2 { margin: 0; border: 0; padding: 0; font-size: 1.2rem; }
+  .quiz-lede { font-size: .9rem; margin: .35rem 0 1.1rem; }
+
+  .quiz-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem 1rem;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .76rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .quiz-track {
+    flex: 1 1 140px;
+    height: 6px;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .quiz-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    transition: width .3s ease;
+  }
+  .quiz-reset {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    font: inherit;
+    font-size: .72rem;
+    padding: .2rem .7rem;
+    cursor: pointer;
+  }
+  .quiz-reset:hover { color: var(--accent); border-color: var(--accent); }
+
+  .quiz-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: .5rem;
+  }
+  .quiz-grid button {
+    width: 100%;
+    aspect-ratio: 1;
+    min-height: 46px;
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .82rem;
+    color: var(--text);
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform .16s cubic-bezier(.16, 1, .3, 1), color .16s ease, border-color .16s ease;
+  }
+  .quiz-grid button:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+  .quiz-grid button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .quiz-grid button[data-state='benar'] { background: rgba(22, 163, 74, .14); border-color: var(--success); color: var(--success); }
+  .quiz-grid button[data-state='salah'] { background: rgba(220, 38, 38, .12); border-color: #dc2626; color: #dc2626; }
+  .quiz-grid button[data-state='benar']::after,
+  .quiz-grid button[data-state='salah']::after {
+    content: '';
+    position: absolute;
+    margin: -26px 0 0 22px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .quiz-grid button { position: relative; }
+
+  .quiz-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    margin-top: 1.1rem;
+  }
+  .btn {
+    font: inherit;
+    font-size: .9rem;
+    border-radius: 10px;
+    padding: .6rem 1.1rem;
+    cursor: pointer;
+    border: 1px solid var(--accent);
+    transition: filter .18s ease, transform .16s cubic-bezier(.16, 1, .3, 1);
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:active { transform: scale(.98); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-ghost { background: none; color: var(--muted); border-color: var(--border); }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); filter: none; }
+
+  /* ---- lapisan kuis ---- */
+  .quiz-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, .62);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .22s ease, visibility .22s ease;
+  }
+  .quiz-layer.open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .quiz-card {
+    width: min(620px, 100%);
+    max-height: 88vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, .35);
+    padding: 1.35rem 1.35rem 1.5rem;
+    transform: translateY(12px) scale(.98);
+    transition: transform .22s cubic-bezier(.16, 1, .3, 1);
+  }
+  .quiz-layer.open .quiz-card { transform: none; }
+  .quiz-top {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .9rem;
+  }
+  .quiz-top .qcount {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .72rem;
+    color: var(--faint);
+  }
+  .quiz-head h3 { margin: 0; font-size: 1.2rem; }
+  .quiz-top .qno {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .72rem;
+    letter-spacing: .1em;
+    color: var(--accent);
+  }
+  .quiz-top .qref {
+    font-size: .72rem;
+    color: var(--faint);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .1rem .55rem;
+  }
+  .quiz-top .qclose {
+    margin-left: auto;
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .quiz-top .qclose:hover { color: var(--accent); border-color: var(--accent); }
+  .qtext { color: var(--heading); font-size: 1rem; margin: 0 0 1rem; line-height: 1.65; }
+
+  .qopts { display: grid; gap: .55rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+  .qopt {
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    font-size: .92rem;
+    color: var(--text);
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .65rem .8rem;
+    cursor: pointer;
+    transition: border-color .16s ease, color .16s ease;
+  }
+  .qopt:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  .qopt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .qopt .key {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+  }
+  .qopt[aria-pressed='true'] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .qopt[aria-pressed='true'] .key { border-color: var(--accent); background: var(--accent); color: #fff; }
+  .qopt[data-mark='benar'] { border-color: var(--success); color: var(--success); background: rgba(22, 163, 74, .12); }
+  .qopt[data-mark='benar'] .key { border-color: var(--success); background: var(--success); color: #fff; }
+  .qopt[data-mark='salah'] { border-color: #dc2626; color: #dc2626; background: rgba(220, 38, 38, .1); }
+  .qopt[data-mark='salah'] .key { border-color: #dc2626; background: #dc2626; color: #fff; }
+  .qopt:disabled { cursor: default; }
+
+  .verdict {
+    display: none;
+    border-radius: 10px;
+    padding: .85rem .95rem;
+    margin: 0 0 1rem;
+    font-size: .9rem;
+    border: 1px solid var(--border);
+  }
+  .verdict.show { display: block; }
+  .verdict b { display: block; margin-bottom: .3rem; letter-spacing: .04em; font-size: .78rem; text-transform: uppercase; }
+  .verdict.ok { border-color: var(--success); background: rgba(22, 163, 74, .1); }
+  .verdict.ok b { color: var(--success); }
+  .verdict.no { border-color: #dc2626; background: rgba(220, 38, 38, .08); }
+  .verdict.no b { color: #dc2626; }
+  .verdict .ansline { color: var(--heading); font-weight: 600; margin-bottom: .35rem; }
+  .verdict .why { color: var(--muted); }
+
+  .quiz-foot { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .quiz-foot .spacer { flex: 1 1 auto; }
+
+  .done h3 { margin: 0 0 .5rem; }
+  .done .score {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+  .done .score small { font-size: 1rem; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    .quiz-grid { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
+    .quiz-layer { padding: 0; place-items: stretch; }
+    .quiz-card {
+      width: 100%;
+      max-height: 100vh;
+      height: 100%;
+      border-radius: 0;
+      border: 0;
+      padding: 1.1rem 1rem 1.4rem;
+    }
+    .quiz { padding: 1.1rem 1rem 1.3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .quiz-layer, .quiz-card, .toc, .scrim { transition: none; }
+  }
 </style>
 </head>
-<body>
+<body data-kuis="energi-02">
 <nav class="toc">
   <p class="eyebrow">Daftar Isi</p>
   <a href="#s1">1. Peta materi</a>
@@ -382,11 +717,16 @@
   <a href="#s48">48. Latihan</a>
   <a href="#s49">49. Daftar istilah</a>
   <a href="#s50">50. Daftar pustaka</a>
+  <a href="#sQUIZ">51. Kuis Interaktif</a>
 </nav>
+<div class="scrim" id="scrim"></div>
 
 <div class="wrap">
   <div class="topbar">
-    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <div class="bar-start">
+      <button class="menu-btn" id="menu" type="button" aria-label="Buka daftar isi" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+      <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    </div>
     <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
   </div>
 
@@ -1847,7 +2187,48 @@ Benda dinaikkan
       <li><b>Wikimedia Commons.</b> <em>Force distance diagram, Roller coaster energy conservation, Potential and kinetic energy, Pendulum energy, dan diagram gaya pegas.</em> Sumber seluruh gambar pada modul ini. <a href="https://commons.wikimedia.org/">commons.wikimedia.org</a></li>
     </ul>
   </footer>
-  </main>
+  <h2 id="sQUIZ">51. Kuis Interaktif</h2>
+
+  <div class="quiz" id="quiz" data-kuis="energi-02">
+    <div class="quiz-head">
+      <span class="badge">Kuis</span>
+      <h3>Uji Pemahaman 19 Soal</h3>
+    </div>
+    <p class="quiz-lede">Setiap nomor di bawah ini memuat satu soal pilihan ganda beserta pembahasannya. Tekan nomor untuk membuka soalnya, pilih jawaban, lalu tekan tombol periksa. Jawaban benar disertai penjelasan, sedangkan jawaban salah menampilkan jawaban yang benar beserta alasannya. Kemajuan kuis tersimpan otomatis pada perangkat ini.</p>
+
+    <div class="quiz-bar">
+      <span class="qstat">0 dijawab dari 19 soal</span>
+      <span class="quiz-track"><span class="quiz-fill"></span></span>
+      <button class="quiz-reset" type="button">Ulangi Semua</button>
+    </div>
+
+    <ul class="quiz-grid"></ul>
+
+    <div class="quiz-cta">
+      <button class="btn btn-primary" type="button" data-start>Mulai Kuis</button>
+      <a class="btn btn-ghost" href="#s1">Kembali ke Materi</a>
+    </div>
+
+    <div class="quiz-layer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Soal kuis">
+      <div class="quiz-card">
+        <div class="quiz-top">
+          <span class="qno">Soal 1</span>
+          <span class="qref"></span>
+          <span class="qcount"></span>
+          <button class="qclose" type="button" aria-label="Tutup soal">&#10005;</button>
+        </div>
+        <p class="qtext"></p>
+        <ul class="qopts"></ul>
+        <div class="verdict"></div>
+        <div class="quiz-foot">
+          <button class="btn btn-primary" type="button" data-next disabled style="display:none">Periksa Jawaban</button>
+          <span class="spacer"></span>
+          <button class="btn btn-ghost" type="button" data-skip>Lewati soal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 </div>
 
 <script>
@@ -1871,6 +2252,563 @@ Benda dinaikkan
     });
 
     paint();
+  })();
+</script>
+
+<script>
+/* ===================================================================
+   Mesin kuis interaktif. Data soal diambil dari variabel KUIS_DATA.
+   =================================================================== */
+  var KUIS_DATA = [
+  {
+    "ref": "Bagian 4 dan 6",
+    "q": "Seseorang mendorong lemari secara horizontal sejauh 2 meter dengan gaya 40 newton yang sejajar arah gerak. Berapa usaha yang dilakukan?",
+    "o": [
+      "20 joule",
+      "40 joule",
+      "80 joule",
+      "Nol joule karena gerak mendatar"
+    ],
+    "a": 2,
+    "why": "Usaha adalah hasil kali gaya dengan perpindahan komponen searah gaya. Nilainya adalah 40 dikali 2 sehingga 80 joule. Menariknya, arah gerak mendatar tidak membuat usaha menjadi nol karena gaya tetap sejajar arah perpindahan."
+  },
+  {
+    "ref": "Bagian 5 dan 6",
+    "q": "Sebuah gaya 30 newton bekerja tegak lurus terhadap arah perpindahan benda. Berapa usaha gaya tersebut?",
+    "o": [
+      "Nol joule",
+      "15 joule",
+      "30 joule",
+      "Tidak dapat ditentukan"
+    ],
+    "a": 0,
+    "why": "Usaha bernilai gaya dikali perpindahan dikali kosinus sudut antara keduanya. Karena sudutnya 90 derajat dan kosinus 90 derajat bernilai nol, usaha menjadi nol. Tegak lurus berarti gaya hanya mengubah arah gerak, bukan kelajuannya."
+  },
+  {
+    "ref": "Bagian 6",
+    "q": "Gaya yang bekerja berlawanan arah perpindahan menghasilkan usaha yang:",
+    "o": [
+      "Positif karena gaya besar",
+      "Negatif karena kosinus sudut bernilai negatif",
+      "Selalu nol karena arah berlawanan",
+      "Tidak bergantung pada besar gaya"
+    ],
+    "a": 1,
+    "why": "Ketika gaya berlawanan arah perpindahan, sudut antara keduanya 180 derajat dan kosinusnya bernilai negatif satu. Usaha menjadi negatif, yang berarti kerja gaya tersebut mengurangi energi benda."
+  },
+  {
+    "ref": "Bagian 7",
+    "q": "Mengapa secara psikologis kita merasa lelah setelah bekerja meskipun melakukan kerja yang sangat kecil?",
+    "o": [
+      "Karena otot mengubah energi kimia menjadi energi kinetik-limit",
+      "Karena energi kimia dari makanan hanya dapat diubah menjadi gerak, sedangkan kerja yang sangat kecil tidak cukup untuk membuat kita merasa lelah",
+      "Karena kerja yang dirasakan selalu lebih besar daripada usaha mekanik",
+      "Karena gaya yang bekerja pada tubuh tidak dapat dihitung"
+    ],
+    "a": 1,
+    "why": "Kerja mekanik di tubuh kita sangat kecil bila dibandingkan dengan energi kimia yang dikeluarkan. Tubuh menggunakan sebagian besar energi untuk metabolisme, panas, dan kerja internal organ, bukan untuk menggeser benda luar. Karena itu rasa lelah tidak sebanding dengan kerja mekaniknya."
+  },
+  {
+    "ref": "Bagian 8",
+    "q": "Apa satuan energi dalam Sistem Internasional?",
+    "o": [
+      "Newton",
+      "Watt",
+      "Joule",
+      "Pascal"
+    ],
+    "a": 2,
+    "why": "Satu joule sama dengan satu newton meter. Joule merupakan satuan energi dan daya, sedangkan watt adalah satuan daya per satuan waktu. Satu joule per sekon sama dengan satu watt."
+  },
+  {
+    "ref": "Bagian 13 dan 14",
+    "q": "Berapa energi kinetik benda bermassa 4 kilogram yang bergerak dengan kecepatan 5 meter per sekon?",
+    "o": [
+      "10 joule",
+      "20 joule",
+      "50 joule",
+      "100 joule"
+    ],
+    "a": 2,
+    "why": "Energi kinetik adalah setengah massa dikali kuadrat kecepatan. Nilainya adalah setengah dikali 4 dikali 25 sehingga 50 joule. Perhatikan bahwa energi kinetik bergantung pada kuadrat kecepatan, sehingga menggandakan kecepatan akan mengalikan energi sebesar empat."
+  },
+  {
+    "ref": "Bagian 15 dan 16",
+    "q": "Apakah teorema kerja dan energi merupakan suatu hukum kekekalan?",
+    "o": [
+      "Ya, energi total selalu kekal",
+      "Tidak, karena energi dapat diciptakan oleh kerja gaya",
+      "Ya, karena energi kinetik tidak dapat hilang",
+      "Tidak, karena yang dijamin hanya perubahan energi kinetik akibat kerja netto, bukan energi yang selalu utuh"
+    ],
+    "a": 3,
+    "why": "Teorema kerja dan energi menyatakan bahwa kerja resultan sama dengan perubahan energi kinetik. Itu bukan kekekalan energi, karena energi kinetik boleh berkurang maupun bertambah. Yang terjamin hanya hubungan selisihnya dengan kerja, sedangkan kekekalan energi muncul ketika semua gaya yang bekerja bersifat konservatif."
+  },
+  {
+    "ref": "Bagian 17",
+    "q": "Bagaimana teorema kerja dan energi diperoleh dari Hukum II Newton?",
+    "o": [
+      "Dengan memasukkan rumus kecepatan rata-rata ke dalam persamaan percepatan konstan",
+      "Dengan memasukkan persamaan percepatan menjadi gaya per massa ke dalam rumus usaha",
+      "Dengan menggunakan definisi momentum",
+      "Dengan menghitung resultan gaya menjadi kelajuan"
+    ],
+    "a": 1,
+    "why": "Hukum II Newton ditulis sebagai percepatan sama dengan gaya dibagi massa. Persamaan ini dimasukkan ke dalam rumus usaha yang berbentuk gaya dikali perpindahan, sehingga diperoleh usaha yang sama dengan perubahan energi kinetik. Jadi teorema ini memang merupakan bentuk lain dari Hukum II Newton."
+  },
+  {
+    "ref": "Bagian 18 dan 20",
+    "q": "Berapa perubahan energi potensial ketika benda bermassa 2 kilogram dipindahkan setinggi 3 meter? Ambil g sebesar 10 meter per sekon kuadrat.",
+    "o": [
+      "6 joule",
+      "20 joule",
+      "60 joule",
+      "200 joule"
+    ],
+    "a": 2,
+    "why": "Energi potensial adalah massa dikali percepatan gravitasi dikali tinggi. Nilainya adalah 2 dikali 10 dikali 3 sehingga 60 joule. Energi potensial selalu bersifat relatif karena bergantung pada titik acuan yang dipilih."
+  },
+  {
+    "ref": "Bagian 20 dan 21",
+    "q": "Mengapa energi potensial disebut sebagai energi sistem, bukan energi benda?",
+    "o": [
+      "Karena energi potensial hanya ada pada benda yang bermuatan listrik",
+      "Karena energi potensial bergantung pada posisi benda relatif terhadap benda lain dan pada konfigurasi sistem",
+      "Karena energi potensial tidak dapat dihitung",
+      "Karena energi potensial hanya berlaku pada sistem yang bergerak"
+    ],
+    "a": 1,
+    "why": "Energi potensial gravitasi muncul dari interaksi antara benda dan bumi, atau antara beberapa benda. Nilainya bergantung pada jarak dan konfigurasi seluruh sistem. Karena itu energi potensial tidak dimiliki satu benda saja, melainkan dimiliki oleh sistem."
+  },
+  {
+    "ref": "Bagian 22 dan 24",
+    "q": "Sifat mana yang menjadi ciri utama gaya konservatif?",
+    "o": [
+      "Kerja yang dihasilkan hanya bergantung pada posisi awal dan akhir, bukan pada jalur yang ditempuh",
+      "Kerja yang dihasilkan selalu bernilai negatif",
+      "Gaya yang dihasilkan tidak memiliki arah yang jelas",
+      "Kerja yang dihasilkan selalu bernilai nol"
+    ],
+    "a": 0,
+    "why": "Gaya konservatif memiliki dua ciri. Pertama, kerja hanya bergantung pada posisi awal dan akhir sehingga jalur tidak berpengaruh. Kedua, kerja pada suatu lintasan tertutup bernilai nol. Bernilai negatif bukan ciri karena gravitasi termasuk gaya konservatif."
+  },
+  {
+    "ref": "Bagian 26 dan 27",
+    "q": "Mengapa gaya gesekan disebut gaya non-konservatif?",
+    "o": [
+      "Karena gaya gesek selalu mendorong benda",
+      "Karena energi kinetik yang hilang akibat gesekan berubah menjadi energi panas dan tidak dapat kembali lagi",
+      "Karena gaya gesek tidak memiliki satuan yang jelas",
+      "Karena gaya gesek hanya bekerja pada benda bergerak"
+    ],
+    "a": 1,
+    "why": "Gaya gesek mengubah energi kinetik menjadi energi panas dan bunyi yang tersebar ke lingkungan. Energi panas ini tidak dapat kembali menjadi energi kinetik benda secara spontan, sehingga berbeda dengan gaya konservatif yang energinya tetap tertimpan dalam sistem."
+  },
+  {
+    "ref": "Bagian 29 dan 30",
+    "q": "Jika hanya gaya konservatif yang bekerja pada sebuah benda, apa yang terjadi pada energi mekaniknya?",
+    "o": [
+      "Energi mekanik bertambah terus karena gaya konservatif selalu bekerja",
+      "Energi mekanik berkurang karena gaya konservatif bersifat non-konservatif",
+      "Energi mekanik tetap kekal",
+      "Energi mekanik berubah menjadi energi kinetik seluruhnya"
+    ],
+    "a": 2,
+    "why": "Energi mekanik adalah jumlah energi kinetik dan energi potensial. Ketika hanya gaya konservatif yang bekerja, energi kinetik dan energi potensial dapat saling bertukar tanpa mengubah jumlahnya. Karena itu energi mekanik tetap kekal."
+  },
+  {
+    "ref": "Bagian 34",
+    "q": "Mengapa pada perhitungan gerak tanpa gesekan massa dapat dicoret dari hasil akhir?",
+    "o": [
+      "Karena massa sama dengan nol pada gerak tanpa gesekan",
+      "Karena gaya dan percepatan yang muncul saling memuat massa sehingga massa saling menghilangkan",
+      "Karena energi kinetik tidak bergantung pada massa",
+      "Karena energi potensial tidak bergantung pada massa"
+    ],
+    "a": 1,
+    "why": "Pada gerak tanpa gesekan, gaya yang bekerja berupa gaya berat yang memuat massa, sedangkan percepatan dari gerak juga memuat massa. Saat kedua ruas disamakan, faktor massa muncul di kedua sisi sehingga saling menghilangkan. Energi kinetik maupun energi potensial tetap bergantung pada massa."
+  },
+  {
+    "ref": "Bagian 36",
+    "q": "Sebuah pegas dengan konstanta pegas 200 newton per meter ditekan sejauh 0,5 meter dari posisi setimbangnya. Berapa energi potensial pegas yang tersimpan?",
+    "o": [
+      "25 joule",
+      "50 joule",
+      "100 joule",
+      "200 joule"
+    ],
+    "a": 0,
+    "why": "Energi potensial pegas adalah setengah konstanta pegas dikali kuadrat pertambahan panjang. Nilainya adalah setengah dikali 200 dikali 0,25 sehingga 25 joule. Energi ini maksimum saat pegas tertekan paling dalam dan kembali ke keadaan semula saat pegas kembali ke posisi setimbang."
+  },
+  {
+    "ref": "Bagian 38 dan 39",
+    "q": "Berapa daya yang dibutuhkan untuk mengangkat benda bermassa 10 kilogram setinggi 2 meter selama 5 sekon? Ambil g sebesar 10 meter per sekon kuadrat.",
+    "o": [
+      "20 watt",
+      "40 watt",
+      "200 watt",
+      "1.000 watt"
+    ],
+    "a": 1,
+    "why": "Daya adalah usaha dibagi waktu. Usahanya sebesar gaya dikali tinggi yaitu 10 dikali 10 dikali 2 sehingga 200 joule. Membaginya dengan waktu 5 sekon menghasilkan 40 watt."
+  },
+  {
+    "ref": "Bagian 42",
+    "q": "Apa perbedaan antara daya dan energi?",
+    "o": [
+      "Keduanya identik, hanya satuan yang berbeda",
+      "Daya adalah laju energi dipindahkan, sedangkan energi adalah jumlah totalnya",
+      "Daya adalah besaran vektor, sedangkan energi adalah besaran skalar",
+      "Daya hanya berlaku pada gerak, sedangkan energi hanya berlaku pada diam"
+    ],
+    "a": 1,
+    "why": "Energi menyatakan banyaknya usaha total yang tersimpan atau telah dilakukan, sedangkan daya menyatakan seberapa cepat energi itu dipindahkan per satuan waktu. Keduanya bukan besaran yang bertentangan, melainkan dua sisi dari hal yang sama."
+  },
+  {
+    "ref": "Bagian 43 dan 44",
+    "q": "Kapan metode energi lebih menguntungkan daripada metode gaya?",
+    "o": [
+      "Ketika kita membutuhkan informasi tentang gaya pada setiap benda dalam sistem",
+      "Ketika hanya satu benda yang ditinjau dan kita hanya membutuhkan nilai akhirnya, tanpa perlu mengetahui gaya-gaya perantara",
+      "Selalu, untuk semua jenis soal",
+      "Ketika tidak ada energi yang sama sekali"
+    ],
+    "a": 1,
+    "why": "Metode energi bekerja pada satu benda karena kekekalan energi tidak memerlukan informasi gaya di setiap titik. Metode ini paling efektif untuk gerak satu benda yang berkonservatif. Untuk benda banyak yang saling berinteraksi, metode gaya justru lebih mudah."
+  },
+  {
+    "ref": "Bagian 46",
+    "q": "Kesalahan konseptual apa yang sering terjadi pada topik energi potensial?",
+    "o": [
+      "Menganggap gaya yang mengarahkan benda disebut gaya yang melakukan kerja",
+      "Menganggap energi potensial merupakan energi yang tersimpan pada benda",
+      "Menganggap kerja hanya terjadi pada benda yang bergerak",
+      "Menganggap daya selalu lebih besar daripada usaha"
+    ],
+    "a": 1,
+    "why": "Energi potensial bukan energi yang benar-benar tersimpan pada benda, melainkan energi yang terkait dengan konfigurasi sistem. Konsep ini muncul karena kerja gaya konservatif bergantung pada posisi. Benda bisa diam tetapi tetap memiliki energi potensial."
+  }
+];
+
+  (function () {
+    var DATA = KUIS_DATA;
+    var KEY = 'kuis:' + document.body.getAttribute('data-kuis') || 'kuis';
+    var root = document.documentElement;
+    var wrap = document.getElementById('quiz');
+    if (!wrap || !DATA.length) return;
+
+    var grid = wrap.querySelector('.quiz-grid');
+    var fill = wrap.querySelector('.quiz-fill');
+    var stat = wrap.querySelector('.qstat');
+    var resetBtn = wrap.querySelector('.quiz-reset');
+    var startBtn = wrap.querySelector('[data-start]');
+    var layer = wrap.querySelector('.quiz-layer');
+    var card = layer.querySelector('.quiz-card');
+    var qnoEl = card.querySelector('.qno');
+    var qrefEl = card.querySelector('.qref');
+    var qtextEl = card.querySelector('.qtext');
+    var optBox = card.querySelector('.qopts');
+    var verdict = card.querySelector('.verdict');
+    var nextBtn = card.querySelector('[data-next]');
+    var closeBtn = card.querySelector('.qclose');
+    var counter = card.querySelector('.qcount');
+    var skipBtn = card.querySelector('[data-skip]');
+
+    var cur = 0;
+    var picked = -1;
+    var answered = {};
+    var lastFocus = null;
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+      if (saved && typeof saved === 'object') {
+        for (var k in saved) {
+          if (saved.hasOwnProperty(k) && /^\d+$/.test(k)) answered[k] = saved[k];
+        }
+      }
+    } catch (e) {}
+
+    function persist() {
+      try { localStorage.setItem(KEY, JSON.stringify(answered)); } catch (e) {}
+    }
+
+    function score() {
+      var ok = 0, n = 0;
+      for (var i = 0; i < DATA.length; i++) {
+        if (answered[i] !== undefined) { n++; if (answered[i]) ok++; }
+      }
+      return { ok: ok, n: n };
+    }
+
+    function paintGrid() {
+      grid.innerHTML = '';
+      for (var i = 0; i < DATA.length; i++) {
+        (function (idx) {
+          var li = document.createElement('li');
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.textContent = idx + 1;
+          b.setAttribute('aria-label', 'Buka soal nomor ' + (idx + 1));
+          if (answered[idx] !== undefined) b.setAttribute('data-state', answered[idx] ? 'benar' : 'salah');
+          b.addEventListener('click', function () { open(idx); });
+          li.appendChild(b);
+          grid.appendChild(li);
+        })(i);
+      }
+    }
+
+    function markBtn(idx) {
+      var b = grid.children[idx] && grid.children[idx].children[0];
+      if (b) b.setAttribute('data-state', answered[idx] ? 'benar' : 'salah');
+    }
+
+    function paintBar() {
+      var s = score();
+      fill.style.width = (DATA.length ? (s.n / DATA.length) * 100 : 0) + '%';
+      stat.textContent = s.n + ' dijawab dari ' + DATA.length + ' soal';
+    }
+
+    function open(i) {
+      lastFocus = document.activeElement;
+      cur = i;
+      picked = -1;
+      render();
+      layer.classList.add('open');
+      layer.removeAttribute('aria-hidden');
+      document.body.style.overflow = 'hidden';
+      card.scrollTop = 0;
+      var first = card.querySelector('.qopt');
+      if (first) first.focus();
+    }
+
+    function close() {
+      layer.classList.remove('open');
+      layer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function render() {
+      var q = DATA[cur];
+      qnoEl.textContent = 'Soal ' + (cur + 1);
+      qrefEl.textContent = q.ref || '';
+      qtextEl.textContent = q.q;
+      counter.textContent = cur + 1 + ' / ' + DATA.length;
+      optBox.innerHTML = '';
+      for (var i = 0; i < q.o.length; i++) {
+        (function (idx) {
+          var li = document.createElement('li');
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'qopt';
+          b.setAttribute('aria-pressed', 'false');
+          var k = document.createElement('span');
+          k.className = 'key';
+          k.textContent = 'ABCD'.charAt(idx);
+          var s = document.createElement('span');
+          s.textContent = q.o[idx];
+          b.appendChild(k);
+          b.appendChild(s);
+          b.addEventListener('click', function () { choose(idx); });
+          li.appendChild(b);
+          optBox.appendChild(li);
+        })(i);
+      }
+      verdict.className = 'verdict';
+      verdict.innerHTML = '';
+      nextBtn.textContent = 'Soal Berikutnya';
+      nextBtn.disabled = true;
+      nextBtn.style.display = 'none';
+      if (answered[cur] !== undefined) reveal(answered[cur] === true ? q.a : -2);
+    }
+
+    function choose(idx) {
+      if (answered[cur] !== undefined) return;
+      picked = idx;
+      var all = optBox.querySelectorAll('.qopt');
+      for (var i = 0; i < all.length; i++) {
+        all[i].setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+      }
+      nextBtn.textContent = 'Periksa Jawaban';
+      nextBtn.disabled = false;
+      nextBtn.style.display = '';
+    }
+
+    function reveal(correctIdx) {
+      var q = DATA[cur];
+      var all = optBox.querySelectorAll('.qopt');
+      for (var i = 0; i < all.length; i++) {
+        all[i].disabled = true;
+        if (i === q.a) all[i].setAttribute('data-mark', 'benar');
+        else if (i === correctIdx) all[i].setAttribute('data-mark', 'salah');
+      }
+      var good = correctIdx === q.a;
+      verdict.className = 'verdict show ' + (good ? 'ok' : 'no');
+      var html = '<b>' + (good ? 'Benar' : 'Salah') + '</b>';
+      if (!good) {
+        html += '<div class="ansline">Jawaban yang benar: ' + 'ABCD'.charAt(q.a) + '. ' + esc(q.o[q.a]) + '</div>';
+      }
+      html += '<div class="why">' + esc(q.why) + '</div>';
+      verdict.innerHTML = html;
+      nextBtn.textContent = (cur + 1 < DATA.length) ? 'Soal Berikutnya' : 'Lihat Hasil';
+      nextBtn.disabled = false;
+      nextBtn.style.display = '';
+    }
+
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    nextBtn.addEventListener('click', function () {
+      if (answered[cur] === undefined) {
+        if (picked < 0) return;
+        var good = picked === DATA[cur].a;
+        answered[cur] = good;
+        persist();
+        markBtn(cur);
+        paintBar();
+        reveal(picked);
+        return;
+      }
+      if (cur + 1 < DATA.length) open(cur + 1);
+      else summary();
+    });
+
+    closeBtn.addEventListener('click', close);
+    layer.addEventListener('mousedown', function (e) { if (e.target === layer) close(); });
+
+    function summary() {
+      var s = score();
+      var pct = DATA.length ? Math.round((s.ok / DATA.length) * 100) : 0;
+      var note = pct >= 85 ? 'Penguasaan materi sangat baik.'
+        : pct >= 70 ? 'Penguasaan materi sudah baik, tinggal sedikit lagi.'
+        : pct >= 50 ? 'Sebagian besar benar, ulangi bagian yang masih lemah.'
+        : 'Sebagian besar masih perlu diulang.';
+      var weak = [];
+      for (var i = 0; i < DATA.length; i++) if (answered[i] === false) weak.push(i + 1);
+      qnoEl.textContent = 'Hasil';
+      qrefEl.textContent = '';
+      qtextEl.innerHTML = '';
+      optBox.innerHTML = '';
+      counter.textContent = '';
+      verdict.className = 'verdict';
+      verdict.innerHTML = '';
+      var box = document.createElement('div');
+      box.className = 'done';
+      var h = document.createElement('div');
+      h.className = 'score';
+      h.innerHTML = s.ok + '<small> / ' + DATA.length + '</small>';
+      var t = document.createElement('p');
+      t.textContent = 'Skor akhir ' + pct + ' persen. ' + note;
+      box.appendChild(h);
+      box.appendChild(t);
+      if (weak.length) {
+        var w = document.createElement('p');
+        w.innerHTML = 'Nomor yang masih salah: <b>' + weak.join(', ') + '</b>. Buka kembali nomor tersebut untuk membaca penjelasannya.';
+        box.appendChild(w);
+      } else {
+        var w2 = document.createElement('p');
+        w2.textContent = 'Semua soal terjawab benar. Silakan ulangi sekali lagi untuk memperkuat Pemahaman.';
+        box.appendChild(w2);
+      }
+      var row = document.createElement('div');
+      row.className = 'quiz-foot';
+      var again = document.createElement('button');
+      again.type = 'button';
+      again.className = 'btn btn-primary';
+      again.textContent = 'Ulangi dari Awal';
+      again.addEventListener('click', function () {
+        answered = {};
+        persist();
+        paintGrid();
+        paintBar();
+        open(0);
+      });
+      var fin = document.createElement('button');
+      fin.type = 'button';
+      fin.className = 'btn btn-ghost';
+      fin.textContent = 'Tutup';
+      fin.addEventListener('click', close);
+      row.appendChild(again);
+      row.appendChild(fin);
+      box.appendChild(row);
+      qtextEl.appendChild(box);
+      nextBtn.style.display = 'none';
+      card.scrollTop = 0;
+    }
+
+    skipBtn.addEventListener('click', function () {
+      if (answered[cur] !== undefined) {
+        if (cur + 1 < DATA.length) open(cur + 1); else summary();
+      } else {
+        close();
+      }
+    });
+
+    startBtn.addEventListener('click', function () {
+      for (var i = 0; i < DATA.length; i++) {
+        if (answered[i] === undefined) { open(i); return; }
+      }
+      summary();
+    });
+
+    resetBtn.addEventListener('click', function () {
+      answered = {};
+      picked = -1;
+      persist();
+      paintGrid();
+      paintBar();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!layer.classList.contains('open')) return;
+      if (e.key === 'Escape') { close(); return; }
+      if (answered[cur] === undefined && '1234'.indexOf(e.key) > -1) {
+        choose('1234'.indexOf(e.key));
+        e.preventDefault();
+      } else if (e.key === 'Enter' && !nextBtn.disabled) {
+        nextBtn.click();
+      }
+    });
+
+    paintGrid();
+    paintBar();
+  })();
+</script>
+<script>
+/* ===== daftar isi untuk layar kecil ===== */
+  (function () {
+    var btn = document.getElementById('menu');
+    var scrim = document.getElementById('scrim');
+    var toc = document.querySelector('.toc');
+    if (!btn || !scrim || !toc) return;
+
+    function open() {
+      document.body.classList.add('nav-open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function close() {
+      document.body.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', function () {
+      document.body.classList.contains('nav-open') ? close() : open();
+    });
+    scrim.addEventListener('click', close);
+    toc.addEventListener('click', function (e) {
+      if (e.target.closest('a')) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+        close();
+        btn.focus();
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1280) close();
+    });
   })();
 </script>
 </body>
