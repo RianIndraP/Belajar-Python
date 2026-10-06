@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinamika Rotasi, Kesetimbangan Benda Tegar, Energi Rotasi, dan Momentum Sudut &mdash; Fisika Dasar</title>
+<meta name="description" content="Modul Fisika Dasar: torsi, momen inersia, Hukum II Newton untuk rotasi, kesetimbangan benda tegar, teorema sumbu sejajar, kerja dan energi rotasi, benda menggelinding, momentum sudut, kekekalan momentum sudut, aturan tangan kanan, dan efek giroskopik.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#n1">1. Peta materi</a>
+  <a href="#n2">2. Tujuan pembelajaran</a>
+  <a href="#n3">3. Kedudukan materi terhadap modul sebelumnya</a>
+  <a href="#n4">4. Apa yang dimaksud dengan rotasi</a>
+  <a href="#n5">5. Apa yang dimaksud dengan dinamika rotasi</a>
+  <a href="#n6">6. Translasi dan rotasi sebagai pasangan besaran</a>
+  <a href="#n7">7. Posisi sudut</a>
+  <a href="#n8">8. Kecepatan sudut</a>
+  <a href="#n9">9. Percepatan sudut</a>
+  <a href="#n10">10. Kinematika rotasi</a>
+  <a href="#n11">11. Hubungan besaran linear dan besaran sudut</a>
+  <a href="#n12">12. Contoh roda yang berputar pada poros tetap</a>
+  <a href="#n13">13. Apa itu torsi</a>
+  <a href="#n14">14. Mengapa pintu lebih mudah dibuka dari ujungnya</a>
+  <a href="#n15">15. Rumus torsi yang lebih umum</a>
+  <a href="#n16">16. Kapan torsi maksimum</a>
+  <a href="#n17">17. Arah torsi dan konvensi tanda</a>
+  <a href="#n18">18. Hukum II Newton untuk rotasi</a>
+  <a href="#n19">19. Menentukan percepatan sudut</a>
+  <a href="#n20">20. Apa itu momen inersia</a>
+  <a href="#n21">21. Mengapa jarak dikuadratkan</a>
+  <a href="#n22">22. Komidi putar sebagai contoh</a>
+  <a href="#n23">23. Momen inersia berbagai bentuk benda</a>
+  <a href="#n24">24. Gambar berbagai bentuk dan momen inersianya</a>
+  <a href="#n25">25. Momen inersia bergantung pada sumbu rotasi</a>
+  <a href="#n26">26. Teorema sumbu sejajar</a>
+  <a href="#n27">27. Kesetimbangan benda tegar</a>
+  <a href="#n28">28. Dua gaya yang resultannya nol tetapi benda tetap berputar</a>
+  <a href="#n29">29. Jungkat-jungkit sebagai contoh torsi</a>
+  <a href="#n30">30. Mengapa titik acuan torsi sangat penting</a>
+  <a href="#n31">31. Pusat massa dan pusat gravitasi</a>
+  <a href="#n32">32. Stabilitas benda</a>
+  <a href="#n33">33. Hubungan stabilitas dengan pusat gravitasi</a>
+  <a href="#n34">34. Kerja dalam gerak rotasi</a>
+  <a href="#n35">35. Energi kinetik rotasi</a>
+  <a href="#n36">36. Mengapa energi rotasi bergantung pada momen inersia</a>
+  <a href="#n37">37. Energi kinetik total benda yang menggelinding</a>
+  <a href="#n38">38. Menggelinding tanpa slip</a>
+  <a href="#n39">39. Apa arti tanpa slip</a>
+  <a href="#n40">40. Apakah ada gesekan saat menggelinding</a>
+  <a href="#n41">41. Mengapa bentuk benda menentukan kecepatan</a>
+  <a href="#n42">42. Faktor bentuk dan urutan kecepatan</a>
+  <a href="#n43">43. Rumus kecepatan benda menggelinding</a>
+  <a href="#n44">44. Perbandingan silinder pejal dan cincin tipis</a>
+  <a href="#n45">45. Momentum sudut</a>
+  <a href="#n46">46. Bentuk umum momentum sudut</a>
+  <a href="#n47">47. Hubungan torsi dan momentum sudut</a>
+  <a href="#n48">48. Kekekalan momentum sudut</a>
+  <a href="#n49">49. Contoh orang yang berputar</a>
+  <a href="#n50">50. Mengapa tidak perlu torsi tambahan untuk berputar lebih cepat</a>
+  <a href="#n51">51. Aturan tangan kanan</a>
+  <a href="#n52">52. Giroskop dan efek giroskopik</a>
+  <a href="#n53">53. Presesi</a>
+  <a href="#n54">54. Bumi sebagai giroskop</a>
+  <a href="#n55">55. Daya pada gerak rotasi</a>
+  <a href="#n56">56. Contoh motor listrik</a>
+  <a href="#n57">57. Hubungan torsi, momen inersia, dan percepatan sudut</a>
+  <a href="#n58">58. Contoh kunci pas</a>
+  <a href="#n59">59. Contoh tangga pada dinding</a>
+  <a href="#n60">60. Urutan mengerjakan soal dinamika rotasi</a>
+  <a href="#n61">61. Kapan menggunakan Sum F sama dengan m a</a>
+  <a href="#n62">62. Kapan menggunakan Sum tau sama dengan I alpha</a>
+  <a href="#n63">63. Kapan menggunakan Sum tau sama dengan nol</a>
+  <a href="#n64">64. Kapan menggunakan energi rotasi</a>
+  <a href="#n65">65. Kapan menggunakan kekekalan momentum sudut</a>
+  <a href="#n66">66. Kesalahan yang sering terjadi</a>
+  <a href="#n67">67. Tabel perbandingan lengkap translasi dan rotasi</a>
+  <a href="#n68">68. Ringkasan rumus</a>
+  <a href="#n69">69. Peta konsep seluruh materi</a>
+  <a href="#n70">70. Contoh perhitungan torsi dan percepatan sudut</a>
+  <a href="#n71">71. Contoh perhitungan teorema sumbu sejajar</a>
+  <a href="#n72">72. Contoh perhitungan bola pejal yang menggelinding</a>
+  <a href="#n73">73. Contoh perhitungan momentum sudut</a>
+  <a href="#n74">74. Latihan</a>
+  <a href="#n75">75. Daftar istilah</a>
+  <a href="#n76">76. Daftar pustaka</a>
+  <a href="#n77">77. Daftar sumber gambar</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+<header class="hero">
+  <p class="eyebrow">Modul 04 &middot; Fisika Dasar</p>
+  <div class="rule"></div>
+  <h1>Dinamika Rotasi, Kesetimbangan Benda Tegar, Energi Rotasi, dan Momentum Sudut</h1>
+  <p>Modul ini merupakan kelanjutan alami dari tiga modul sebelumnya. Hukum Newton meninjau perubahan gerak melalui gaya dan percepatan, usaha dan energi melalui kerja serta energi kinetik, sedangkan impuls dan momentum melalui perubahan momentum dalam waktu tertentu. Ketiganya selama ini hanya dibahas gerak translasi, yaitu perpindahan benda dari satu posisi ke posisi lain. Modul ini memperluas pembahasan tersebut menjadi gerak rotasi, yaitu gerak berputar terhadap suatu sumbu. Pembahasan dimulai dari pengertian rotasi dan dinamika rotasi, pasangan besaran translasi dan rotasi, kinematika rotasi berupa posisi sudut, kecepatan sudut, dan percepatan sudut, serta hubungan besaran linear dengan besaran sudut. Bagian berikutnya membahas torsi sebagai ukuran efektivitas gaya, arah dan konvensi tanda torsi, Hukum II Newton untuk rotasi, momen inersia beserta berbagai bentuk benda, ketergantungan momen inersia pada sumbu rotasi, teorema sumbu sejajar, serta kesetimbangan benda tegar melalui syarat resultan gaya nol dan resultan torsi nol. Pembahasan dilanjutkan ke pusat massa, pusat gravitasi, dan stabilitas, kemudian ke kerja rotasi, energi kinetik rotasi, energi kinetik total benda yang menggelinding, syarat menggelinding tanpa slip, serta perbandingan percepatan beberapa bentuk benda. Bagian akhir membahas momentum sudut, bentuk umumnya sebagai hasil kali silang, hubungan torsi dengan laju perubahan momentum sudut, kekekalan momentum sudut, aturan tangan kanan, efek giroskopik dan presesi, daya pada gerak rotasi, pedoman pemilihan persamaan, kesalahan yang sering terjadi, tabel perbandingan lengkap, serta kumpulan contoh perhitungan.</p>
+</header>
+
+<main>
+<h2 id="n1">1. Peta materi</h2>
+
+  <p>Dinamika rotasi bukan cabang yang berdiri sendiri. Ia dibangun di atas tiga modul sebelumnya dengan cara mengganti setiap besaran translasi menjadi pasangan besaran rotasinya.</p>
+
+  <pre class="diagram"><code>MODUL 01 &mdash; HUKUM NEWTON
+  m        -&gt; I          (massa        -&gt; momen inersia)
+  F        -&gt; tau        (gaya         -&gt; torsi)
+  a        -&gt; alpha      (percepatan  -&gt; percepatan sudut)
+
+  Sum F = m a   -&gt;   Sum tau = I alpha
+
+
+MODUL 02 &mdash; USAHA DAN ENERGI
+  W = F s          -&gt;  W = tau theta
+  EK = 1/2 m v^2   -&gt;  EK rot = 1/2 I omega^2
+  P = F v          -&gt;  P = tau omega
+
+
+MODUL 03 &mdash; IMPULS DAN MOMENTUM
+  p = m v          -&gt;  L = I omega
+  I = delta p      -&gt;  Sum tau ext = delta L
+
+
+ALUR UTAMA MODUL INI
+
+  GAYA
+    |
+    | bekerja pada jarak r dari sumbu
+    v
+  TORSI  = r F sin theta
+    |
+    | hasilnya menentukan
+    v
+  PERCEPATAN SUDUT
+    |
+    | dibatasi oleh
+    v
+  MOMEN INERSIA  = jumlah m r kuadrat
+    |
+    v
+  GERAK ROTASI
+
+Cabang energi:
+  torsi -&gt; kerja rotasi -&gt; energi kinetik rotasi
+
+Cabang momentum:
+  torsi -&gt; perubahan momentum sudut
+          -&gt; kekekalan momentum sudut
+
+Cabang kesetimbangan:
+  Sum F = 0 DAN Sum tau = 0</code></pre>
+
+  <p>Bab ini selesai pada tiga tujuan. Pertama, memahami mengapa setiap besaran translasi memiliki pasangan besaran rotasi. Kedua, mampu menghitung torsi, momen inersia, dan percepatan sudut untuk benda yang nyata. Ketiga, mampu memilih persamaan yang tepat untuk setiap jenis soal rotasi.</p>
+
+  <h2 id="n2">2. Tujuan pembelajaran</h2>
+
+  <p>Setelah mengikuti modul ini, kemampuan yang diharapkan adalah sebagai berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 2.1 &middot; Tujuan pembelajaran modul ini</caption>
+    <thead>
+      <tr><th>No</th><th>Tujuan</th><th>Indikator pencapaian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Menjelaskan pengertian rotasi dan dinamika rotasi</td><td>Membedakan gerak translasi dan rotasi serta menyebut contoh keduanya</td></tr>
+      <tr><td>2</td><td>Menggunakan besaran sudut</td><td>Menghitung posisi sudut, kecepatan sudut, dan percepatan sudut</td></tr>
+      <tr><td>3</td><td>Menghubungkan besaran linear dan sudut</td><td>Menerapkan s = r theta, v = r omega, dan a = r alpha</td></tr>
+      <tr><td>4</td><td>Menghitung torsi</td><td>Menentukan torsi dari gaya, lengan gaya, dan sudut antara gaya dengan lengan gaya</td></tr>
+      <tr><td>5</td><td>Menerapkan Hukum II Newton untuk rotasi</td><td>Menentukan percepatan sudut dari resultan torsi dan momen inersia</td></tr>
+      <tr><td>6</td><td>Menentukan momen inersia</td><td>Menggunakan rumus momen inersia bentuk baku dan teorema sumbu sejajar</td></tr>
+      <tr><td>7</td><td>Memeriksa kesetimbangan benda tegar</td><td>Menyusun syarat Sum F = 0 dan Sum tau = 0 secara bersamaan</td></tr>
+      <tr><td>8</td><td>Menghitung energi pada gerak rotasi</td><td>Menghitung kerja rotasi, energi kinetik rotasi, dan energi benda menggelinding</td></tr>
+      <tr><td>9</td><td>Menerapkan kekekalan momentum sudut</td><td>Menghitung perubahan kecepatan sudut akibat perubahan momen inersia</td></tr>
+      <tr><td>10</td><td>Menentukan arah besaran rotasi</td><td>Menerapkan aturan tangan kanan pada omega, L, dan tau serta memahami efek giroskopik</td></tr>
+      <tr><td>11</td><td>Memilih persamaan yang tepat</td><td>Menentukan persamaan yang sesuai untuk setiap jenis soal rotasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n3">3. Kedudukan materi terhadap modul sebelumnya</h2>
+
+  <p>Empat modul Fisika Dasar sekarang dapat dilihat sebagai satu rangkaian yang konsisten. Setiap modul menjawab pertanyaan berbeda tentang perubahan gerak, tetapi menggunakan struktur yang sama.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.1 &middot; Kedudukan empat modul terhadap perubahan gerak</caption>
+    <thead>
+      <tr><th>Modul</th><th>Pertanyaan yang dijawab</th><th>Persamaan utama</th><th>Sisi yang dibahas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hukum Newton</td><td>Bagaimana gaya menghasilkan percepatan?</td><td>Sum F = m a</td><td>Percepatan</td></tr>
+      <tr><td>Usaha dan Energi</td><td>Bagaimana kerja mengubah energi kinetik?</td><td>W = delta EK</td><td>Energi</td></tr>
+      <tr><td>Impuls dan Momentum</td><td>Bagaimana gaya selama waktu mengubah momentum?</td><td>Impuls = delta p</td><td>Momentum</td></tr>
+      <tr><td>Dinamika Rotasi</td><td>Bagaimana torsi menghasilkan percepatan sudut?</td><td>Sum tau = I alpha</td><td>Sudut</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perhatikan bahwa modul ini bukan pengulangan modul sebelumnya dengan lambang yang diganti. Ada satu perbedaan penting: pada translasi, besaran yang menentukan kelambatan adalah massa, sedangkan pada rotasi yang menentukan adalah momen inersia. Momen inersia tidak hanya bergantung pada massa, tetapi juga pada jarak seluruh massa terhadap sumbu putar. Karena itu, dua benda dengan massa sama dapat memiliki perilaku rotasi yang sangat berbeda.</p>
+
+  <h2 id="n4">4. Apa yang dimaksud dengan rotasi</h2>
+
+  <p>Rotasi adalah gerak berputar terhadap suatu sumbu. Sumbu putar dapat berupa garis tetap yang menembus benda, garis yang melekat pada benda, maupun titik yang menjadi pusat putaran.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Contoh gerak rotasi dalam kehidupan sehari-hari</caption>
+    <thead>
+      <tr><th>Objek</th><th>Sumbu putar</th><th>Catatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Roda sepeda</td><td>Garis melalui pusat roda</td><td>Menggelinding di tanah</td></tr>
+      <tr><td>Kipas angin</td><td>Garis melalui poros</td><td>Dipasang pada dinding</td></tr>
+      <tr><td>Pintu pada engsel</td><td>Garis engsel vertikal</td><td>Sumbu berada di tepi</td></tr>
+      <tr><td>Roda gigi</td><td>Garis porosnya</td><td>Bergulir pada roda lain</td></tr>
+      <tr><td>Turbin</td><td>Poros turbin</td><td>Diputar oleh aliran fluida</td></tr>
+      <tr><td>Bumi</td><td>Garis kutub bumi</td><td>Satu putaran sekitar 24 jam</td></tr>
+      <tr><td>Cakram yang diputar</td><td>Sumbu melalui pusat</td><td>Ditahan tangan pada porosnya</td></tr>
+      <tr><td>Kendaraan di tikungan</td><td>Garis vertikal di pusat lintasan</td><td>Menggelinding dengan slip sangat kecil</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perlu dibedakan antara rotasi murni dan gerak gabungan. Roda yang berputar pada poros tetapnya mengalami rotasi saja. Roda yang berjalan di jalan mengalami dua gerakan sekaligus: pusat massanya berpindah dan benda itu juga berputar. Gabungan kedua gerak ini akan dibahas khusus pada bagian energi kinetik benda yang menggelinding.</p>
+
+  <h2 id="n5">5. Apa yang dimaksud dengan dinamika rotasi</h2>
+
+  <p>Dinamika mempelajari penyebab perubahan gerak. Dinamika rotasi dengan demikian mempelajari bagaimana gaya menghasilkan perubahan gerak rotasi suatu benda.</p>
+
+  <pre class="diagram"><code>TRANSLASI
+  resultan gaya  -&gt;  percepatan linear  -&gt;  perubahan kecepatan linear
+
+
+ROTASI
+  resultan torsi -&gt;  percepatan sudut  -&gt;  perubahan kecepatan sudut</code></pre>
+
+  <p>Bentuk paling sederhana dari dinamika translasi adalah Hukum II Newton:</p>
+
+  <pre class="diagram"><code>  Sum F = m a</code></pre>
+
+  <p>Untuk rotasi terhadap sumbu tetap, pasangan langsungnya adalah:</p>
+
+  <pre class="diagram"><code>  Sum tau = I alpha</code></pre>
+
+  <p>Kedua persamaan ini memiliki struktur yang identik. Resultan gaya menentukan percepatan linear melalui massa, sedangkan resultan torsi menentukan percepatan sudut melalui momen inersia. Karena struktur keduanya identik, setiap konsep yang sudah dikuasai pada translasi dapat langsung ditransfer ke rotasi.</p>
+
+  <div class="note">
+    <p>Sumbu tetap berarti sumbu putar yang tidak berubah posisi dan arah selama analisis. Kebanyakan soal rotasi dalam modul ini memakai sumbu tetap, misalnya poros roda yang ditahan oleh bantalan. Kasus sumbu yang ikut bergerak memerlukan analisis yang lebih lanjut dan tidak dibahas di sini.</p>
+  </div>
+
+  <h2 id="n6">6. Translasi dan rotasi sebagai pasangan besaran</h2>
+
+  <p>Hubungan translasi dan rotasi bukan sekadar kemiripan bentuk rumus. Hubungan tersebut merupakan pasangan konsep yang dipakai bersama untuk menganalisis gerak rotasi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.1 &middot; Pasangan besaran translasi dan rotasi</caption>
+    <thead>
+      <tr><th>Besaran translasi</th><th>Pasangan rotasi</th><th>Satuan SI</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Posisi x</td><td>Posisi sudut theta</td><td>meter; radian</td></tr>
+      <tr><td>Kecepatan v</td><td>Kecepatan sudut omega</td><td>meter per sekon; radian per sekon</td></tr>
+      <tr><td>Percepatan a</td><td>Percepatan sudut alpha</td><td>meter per sekon kuadrat; radian per sekon kuadrat</td></tr>
+      <tr><td>Massa m</td><td>Momen inersia I</td><td>kilogram; kilogram meter kuadrat</td></tr>
+      <tr><td>Gaya F</td><td>Torsi tau</td><td>newton; newton meter</td></tr>
+      <tr><td>Momentum p = m v</td><td>Momentum sudut L = I omega</td><td>kilogram meter per sekon; kilogram meter kuadrat per sekon</td></tr>
+      <tr><td>Sum F = m a</td><td>Sum tau = I alpha</td><td>newton; newton meter</td></tr>
+      <tr><td>EK = 1/2 m v^2</td><td>EK rot = 1/2 I omega^2</td><td>joule</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Satuan momen inersia dan satuan torsi berbeda dari pasangan translasinya meskipun bentuk rumusnya sama. Momen inersia bernilai kilogram meter kuadrat, sedangkan massa bernilai kilogram. Torsi bernilai newton meter, sedangkan gaya bernilai newton. Perbedaan satuan ini muncul karena jarak harus ikut diperhitungkan.</p>
+
+  <h2 id="n7">7. Posisi sudut</h2>
+
+  <p>Posisi sudut adalah besaran yang menyatakan sejauh mana benda telah berputar. Dilambangkan dengan theta dan diukur dalam radian.</p>
+
+  <pre class="diagram"><code>  theta  =  posisi sudut  [rad]
+
+  satu putaran penuh        :  2 pi rad = 360 derajat
+  setengah putaran           :  pi rad   = 180 derajat
+  seperempat putaran         :  pi/2 rad =  90 derajat</code></pre>
+
+  <p>Radian merupakan satuan sudut yang membuat rumus gerak rotasi tetap sederhana. Jika sudut dinyatakan dalam derajat, faktor pi harus disisipkan secara manual pada hampir setiap rumus. Karena itu, setiap kali menulis theta dalam rumus rotasi, sudut harus dinyatakan dalam radian.</p>
+
+  <div class="note">
+    <p>Radian adalah sudut yang dibentuk oleh busur lingkaran dengan panjang busur sama dengan jari-jarinya. Pada lingkaran berjari-jari satu satuan, panjang busur sama dengan besar sudut dalam radian. Satuan radian bersifat tanpa dimensi, tetapi secara teknis tetap diberi nama agar mudah ditulis dalam persamaan.</p>
+  </div>
+
+  <h2 id="n8">8. Kecepatan sudut</h2>
+
+  <p>Kecepatan sudut menunjukkan seberapa cepat posisi sudut berubah terhadap waktu.</p>
+
+  <pre class="diagram"><code>  omega = delta theta per delta t        (rata-rata)
+  omega = d theta per d t               (sesaat)</code></pre>
+
+  <p>Semakin besar omega, semakin cepat benda berputar. Satu putaran penuh dalam satu sekon berarti omega sama dengan dua pi radian per sekon, yaitu sekitar 6,28 radian per sekon.</p>
+
+  <h2 id="n9">9. Percepatan sudut</h2>
+
+  <p>Percepatan sudut menunjukkan seberapa cepat kecepatan sudut berubah terhadap waktu.</p>
+
+  <pre class="diagram"><code>  alpha = delta omega per delta t       (rata-rata)
+  alpha = d omega per d t              (sesaat)</code></pre>
+
+  <p>Sebuah kipas yang sedang berputar dengan kecepatan tetap memiliki alpha sama dengan nol. Kipas yang mulai dari keadaan diam lalu berputar semakin cepat memiliki alpha yang tidak nol pada fase percepatan tersebut.</p>
+
+  <pre class="diagram"><code>  omega konstan  -&gt;  alpha = 0
+  omega berubah  -&gt;  alpha tidak nol</code></pre>
+
+  <h2 id="n10">10. Kinematika rotasi</h2>
+
+  <p>Karena posisi sudut, kecepatan sudut, dan percepatan sudut saling berhubungan melalui turunan, maka persamaan kinematika rotasi memiliki bentuk yang sama dengan persamaan kinematika translasi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.1 &middot; Pasangan persamaan kinematika translasi dan rotasi</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Translasi</th><th>Rotasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kecepatan</td><td>v = x per t</td><td>omega = theta per t</td></tr>
+      <tr><td>Percepatan</td><td>a = v per t</td><td>alpha = omega per t</td></tr>
+      <tr><td>Hubungan keduanya</td><td>v^2 = v awal^2 + 2 a s</td><td>omega^2 = omega awal^2 + 2 alpha theta</td></tr>
+      <tr><td>Posisi dari kecepatan</td><td>s = v awal t + 1/2 a t^2</td><td>theta = omega awal t + 1/2 alpha t^2</td></tr>
+      <tr><td>Posisi dari percepatan konstan</td><td>s = v t - 1/2 a t^2</td><td>theta = omega t - 1/2 alpha t^2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n11">11. Hubungan besaran linear dan besaran sudut</h2>
+
+  <p>Untuk titik yang berada pada jarak r dari sumbu rotasi, berlaku hubungan langsung antara besaran linear pada titik tersebut dan besaran sudut benda.</p>
+
+  <pre class="diagram"><code>  posisi linear busur     s = r theta
+  kecepatan linear       v = r omega
+  percepatan tangensial  a t = r alpha</code></pre>
+
+  <p>Sudut theta pada ketiga rumus tersebut harus dinyatakan dalam radian.</p>
+
+  <div class="note">
+    <p>Hubungan s = r theta hanya berlaku pada rotasi terhadap sumbu tetap, dan theta harus dalam radian. Untuk roda yang menggelinding di jalan, hubungan yang berlaku untuk kecepatan pusat massa adalah v = R omega, bukan s = r theta untuk setiap titik pada roda.</p>
+  </div>
+
+  <h2 id="n12">12. Contoh roda yang berputar pada poros tetap</h2>
+
+  <p>Bayangkan sebuah roda berjari-jari 0,30 meter berputar pada poros tetapnya dengan kecepatan sudut 4 radian per sekon.</p>
+
+  <p>Semua titik pada roda memiliki kecepatan sudut yang sama, tetapi titik yang terletak lebih jauh dari poros mempunyai kecepatan linear lebih besar.</p>
+
+  <pre class="diagram"><code>  titik pada jarak  0,10 m : v = 0,10 x 4 = 0,40 m/s
+  titik pada jarak  0,20 m : v = 0,20 x 4 = 0,80 m/s
+  titik pada jarak  0,30 m : v = 0,30 x 4 = 1,20 m/s
+
+  titik tepat pada poros   : v = 0</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 12.1 &middot; Kecepatan linear titik pada satu roda yang sama</caption>
+    <thead>
+      <tr><th>Jarak dari poros</th><th>Perhitungan</th><th>Kecepatan linear</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0,00 meter</td><td>0,00 kali 4</td><td>0 m/s</td></tr>
+      <tr><td>0,10 meter</td><td>0,10 kali 4</td><td>0,40 m/s</td></tr>
+      <tr><td>0,20 meter</td><td>0,20 kali 4</td><td>0,80 m/s</td></tr>
+      <tr><td>0,30 meter</td><td>0,30 kali 4</td><td>1,20 m/s</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Ujung roda yang paling jauh dari poros bergerak paling cepat, sementara titik tepat pada poros tidak bergerak sama sekali. Inilah alasan tepi piring giling lebih cepat aus daripada bagian pusatnya.</p>
+
+  <h2 id="n13">13. Apa itu torsi</h2>
+
+  <p>Torsi adalah ukuran kemampuan gaya untuk menghasilkan atau mengubah rotasi terhadap suatu sumbu. Torsi mengukur efektivitas gaya, bukan besar gaya itu sendiri.</p>
+
+  <pre class="diagram"><code>  tau = F l        (lengan gaya sudah tegak lurus)
+
+  tau           = torsi            [N m]
+  F             = gaya             [N]
+  l             = lengan gaya      [m]</code></pre>
+
+  <p>Satuan torsi adalah newton meter. Karena newton sama dengan kilogram meter per sekon kuadrat, satuan torsi dapat juga ditulis kilogram meter kuadrat per sekon kuadrat.</p>
+
+  <p>Konsep kunci yang harus dipahami sejak awal adalah bahwa torsi bukan gaya. Gaya bekerja pada benda dan menghasilkan percepatan linear, sedangkan torsi bekerja terhadap sumbu dan menghasilkan percepatan sudut. Keduanya dapat muncul dari gaya yang sama, tetapi efeknya berbeda.</p>
+
+  <h2 id="n14">14. Mengapa pintu lebih mudah dibuka dari ujungnya</h2>
+
+  <p>Bayangkan sebuah pintu dengan engsel di sisi kiri. Pintu dapat dibuka dengan dorongan tangan yang sama besar, tetapi hasilnya sangat berbeda bergantung pada tempat dorongan diberikan.</p>
+
+  <pre class="diagram"><code>  dorongan dekat engsel     l sangat kecil  -&gt;  tau sangat kecil
+  dorongan di tengah pintu  l sedang        -&gt;  tau sedang
+  dorongan di ujung pintu   l besar         -&gt;  tau besar</code></pre>
+
+  <p>Jika tangan mendorong tepat pada garis engsel, maka lengan gaya sama dengan nol dan torsinya nol. Pintu tidak berputar sama sekali, berapa pun besarnya gaya yang diberikan. Jika dorongan diberikan di ujung pintu yang berlawanan dengan engsel, lengan gaya menjadi sebesar lebar pintu dan torsinya paling besar.</p>
+
+  <div class="note">
+    <p>Pengertian ini memiliki penerapan langsung. Gagang putar roda mobil dibuat panjang dan jauh dari poros bukan karena gaya yang diperlukan besar, melainkan karena lengan gaya yang panjang menghasilkan torsi besar sehingga roda mudah diputar. Pintu yang letak engselnya jauh dari titik pegangan tangan akan terasa jauh lebih sulit dibuka dengan dorongan yang sama.</p>
+  </div>
+
+  <figure>
+    <img src="gambar/torsi-lengan-gaya.svg" alt="Diagram torsi yang menunjukkan titik Pivot, titik penerapan gaya, garis kerja gaya, dan lengan gaya tegak lurus pada sebuah tuas" width="146" height="132" loading="lazy" decoding="async">
+    <figcaption>Gambar 1. Diagram torsi yang menunjukkan posisi gaya, sumbu rotasi, garis kerja gaya, dan lengan gaya tegak lurus. Sumber: Wikimedia Commons, karya Guy vandegrift, lisensi CC BY-SA 4.0.</figcaption>
+  </figure>
+
+  <p>Perhatikan bahwa yang menentukan besar torsi bukan jarak terjauh, melainkan jarak tegak lurus antara sumbu dan garis kerja gaya. Jarak tegak lurus ini disebut lengan gaya. Bila titik gaya berada tepat pada sumbu, lengan gaya bernilai nol dan torsi bernilai nol meskipun gaya yang diberikan sangat besar.</p><h2 id="n15">15. Rumus torsi yang lebih umum</h2>
+
+  <p>Rumus tau = F l sangat praktis apabila lengan gaya sudah diketahui. Bentuk yang lebih umum adalah:</p>
+
+  <pre class="diagram"><code>  tau = r F sin theta
+
+  tau       = torsi
+  r         = jarak dari sumbu ke titik penerapan gaya
+  F         = besar gaya
+  theta     = sudut antara arah r dan arah F</code></pre>
+
+  <p>Dalam bentuk vektor, torsi ditulis sebagai hasil kali silang antara vektor posisi dan vektor gaya:</p>
+
+  <pre class="diagram"><code>  tau = r x F</code></pre>
+
+  <p>Hasil kali silang menghasilkan vektor yang tegak lurus terhadap kedua vektor pembentuknya. Karena itu, torsi selalu tegak lurus terhadap bidang yang dibentuk oleh lengan gaya dan arah gaya. Arahnya dapat ditentukan dengan aturan tangan kanan, seperti dibahas pada bagian tersendiri.</p>
+
+  <h2 id="n16">16. Kapan torsi maksimum</h2>
+
+  <p>Dari rumus tau = r F sin theta, torsi maksimum terjadi ketika theta sama dengan 90 derajat, karena sinus pada 90 derajat bernilai satu.</p>
+
+  <pre class="diagram"><code>  theta = 90 derajat  -&gt;  sin = 1  -&gt;  tau = r F   (maksimum)
+  theta = 60 derajat  -&gt;  sin = 0,87 -&gt;  tau = 0,87 r F
+  theta = 30 derajat  -&gt;  sin = 0,5  -&gt;  tau = 0,5 r F
+  theta =  0 derajat  -&gt;  sin = 0    -&gt;  tau = 0      (nol)</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Besar torsi relatif terhadap sudut antara gaya dan lengan gaya</caption>
+    <thead>
+      <tr><th>Sudut theta</th><th>Nilai sin theta</th><th>Besar torsi</th><th>Efek rotasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0 derajat</td><td>0</td><td>0</td><td>Tidak ada rotasi</td></tr>
+      <tr><td>30 derajat</td><td>0,5</td><td>Separuh nilai maksimum</td><td>Rotasi lemah</td></tr>
+      <tr><td>60 derajat</td><td>0,87</td><td>87 persen nilai maksimum</td><td>Rotasi kuat</td></tr>
+      <tr><td>90 derajat</td><td>1</td><td>Nilai maksimum</td><td>Rotasi paling efektif</td></tr>
+      <tr><td>180 derajat</td><td>0</td><td>0</td><td>Tidak ada rotasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jadi gaya yang besar belum tentu menghasilkan torsi yang besar. Arah gaya dan jaraknya dari sumbu juga menentukan besar torsi. Inilah sebabnya saat mengukur atau memutar baut, kita selalu mencoba memberikan gaya yang tegak lurus terhadap lengan gaya.</p>
+
+  <h2 id="n17">17. Arah torsi dan konvensi tanda</h2>
+
+  <p>Pada soal dua dimensi, arah torsi dapat dinyatakan melalui arah putaran. Konvensi tanda yang lazim dipakai adalah sebagai berikut.</p>
+
+  <pre class="diagram"><code>  berlawanan arah jarum jam  -&gt;  diberi tanda positif   (CCW)
+  searah jarum jam         -&gt;  diberi tanda negatif   (CW)</code></pre>
+
+  <p>Ketika terdapat beberapa gaya yang masing-masing menghasilkan torsi, torsi netto adalah jumlah bertanda dari seluruh torsi tersebut.</p>
+
+  <pre class="diagram"><code>  Sum tau = tau 1 + tau 2 + tau 3 + ...</code></pre>
+
+  <p>Jika torsi yang berlawanan arah jarum jam bernilai 6 newton meter dan torsi yang searah jarum jam bernilai 4 newton meter, maka torsi netto bernilai 2 newton meter dan arahnya berlawanan arah jarum jam.</p>
+
+  <div class="note">
+    <p>Konvensi tanda yang dipilih tidak mengubah fisika, asalkan diterapkan konsisten. Beberapa buku teks memilih kebalikannya, yaitu searah jarum jam bernilai positif. Yang penting adalah konsisten pada seluruh perhitungan dalam satu soal.</p>
+  </div>
+
+  <h2 id="n18">18. Hukum II Newton untuk rotasi</h2>
+
+  <p>Persamaan utama modul ini adalah:</p>
+
+  <pre class="diagram"><code>  Sum tau = I alpha</code></pre>
+
+  <p>Dibandingkan dengan Hukum II Newton pada translasi:</p>
+
+  <pre class="diagram"><code>  Sum F = m a</code></pre>
+
+  <p>Dari persamaan itu dapat langsung ditarik beberapa kesimpulan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.1 &middot; Konsekuensi Hukum II Newton untuk rotasi</caption>
+    <thead>
+      <tr><th>Kondisi</th><th>Persamaan</th><th>Arti</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Resultan torsi nol</td><td>Sum tau = 0</td><td>Percepatan sudut sama dengan nol</td></tr>
+      <tr><td>Resultan torsi tidak nol</td><td>Sum tau tidak nol</td><td>Benda memiliki percepatan sudut</td></tr>
+      <tr><td>Torsi tetap, I tetap</td><td>alpha sebanding dengan tau</td><td>Torsi lebih besar menghasilkan alpha lebih besar</td></tr>
+      <tr><td>Torsi tetap, I berubah</td><td>alpha berbanding terbalik dengan I</td><td>Momen inersia besar memperlambat percepatan sudut</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Bentuk yang lebih langsung digunakan dalam soal adalah:</p>
+
+  <pre class="diagram"><code>  alpha = Sum tau per I</code></pre>
+
+  <h2 id="n19">19. Menentukan percepatan sudut</h2>
+
+  <p>Diketahui sebuah cakram pejal bermassa 4 kilogram dengan jari-jari 0,20 meter mengalami torsi resultan sebesar 0,60 newton meter. Tentukan percepatan sudutnya.</p>
+
+  <pre class="diagram"><code>  I cakram pejal = 1/2 m R^2
+                = 1/2 x 4 x (0,20)^2
+                = 1/2 x 4 x 0,04
+                = 0,08 kg m^2
+
+
+  alpha = Sum tau per I
+        = 0,60 per 0,08
+        = 7,5 rad/s^2</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 19.1 &middot; Ringkasan data dan hasil perhitungan</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Simbol</th><th>Nilai</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Massa cakram</td><td>m</td><td>4 kg</td></tr>
+      <tr><td>Jari-jari cakram</td><td>R</td><td>0,20 m</td></tr>
+      <tr><td>Resultan torsi</td><td>Sum tau</td><td>0,60 N m</td></tr>
+      <tr><td>Momen inersia</td><td>I</td><td>0,08 kg m^2</td></tr>
+      <tr><td>Percepatan sudut</td><td>alpha</td><td>7,5 rad/s^2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jika torsi diperbesar menjadi tiga kali lipat dengan momen inersia tetap, percepatan sudut juga menjadi tiga kali lipat. Jika momen inersia diperbesar menjadi dua kali lipat dengan torsi tetap, percepatan sudut menjadi setengah.</p>
+
+  <h2 id="n20">20. Apa itu momen inersia</h2>
+
+  <p>Pada gerak translasi, massa merupakan ukuran inersia benda. Pada rotasi, konsep yang setara adalah momen inersia.</p>
+
+  <pre class="diagram"><code>  I  =  momen inersia  [kg m^2]
+
+  Definisi:
+  I = jumlah m r^2   untuk sekumpulan partikel
+  I = integral r^2 dm  untuk benda kontinu</code></pre>
+
+  <div class="note">
+    <p>Momen inersia menunjukkan seberapa sulit keadaan rotasi suatu benda diubah. Benda dengan momen inersia besar membutuhkan torsi yang lebih besar untuk mencapai percepatan sudut yang sama. Karena itu, momen inersia sering disebut ukuran inersia rotasi.</p>
+  </div>
+
+  <p>Perhatikan bahwa definisi tersebut tidak memuat bentuk benda secara langsung. Bentuk masuk melalui nilai jarak r yang berbeda untuk setiap bagian massa.</p>
+
+  <h2 id="n21">21. Mengapa jarak dikuadratkan</h2>
+
+  <p>Persamaan I = jumlah m r kuadrat menunjukkan bahwa massa berpengaruh secara linear, sedangkan jarak terhadap sumbu berpengaruh secara kuadratik.</p>
+
+  <pre class="diagram"><code>  I sebanding dengan m       (linear)
+  I sebanding dengan r^2    (kuadratik)</code></pre>
+
+  <p>Jika jarak suatu massa terhadap sumbu menjadi dua kali lipat, kontribusinya terhadap momen inersia menjadi empat kali lipat.</p>
+
+  <pre class="diagram"><code>  r    -&gt; 2 r
+
+  I awal   = m (r)^2
+  I baru   = m (2r)^2 = 4 m r^2
+
+  I baru = 4 kali I awal</code></pre>
+
+  <p>Inilah alasan massa yang berada jauh dari sumbu sangat berpengaruh terhadap momen inersia. Menggeser sekecil apa pun massa itu menjauh dari sumbu akan meningkatkan momen inersia secara tidak proporsional.</p>
+
+  <h2 id="n22">22. Komidi putar sebagai contoh</h2>
+
+  <p>Bayangkan sebuah komidi putar yang mula-mula kosong lalu ditempati anak-anak yang duduk mengelompok di pusat.</p>
+
+  <pre class="diagram"><code>  anak-anak di pusat
+    r kecil  -&gt;  I kecil  -&gt;  alpha besar  -&gt;  mudah dipercepat</code></pre>
+
+  <p>Ketika anak-anak pindah ke bagian paling luar, jarak mereka terhadap sumbu bertambah besar sehingga momen inersia ikut bertambah besar.</p>
+
+  <pre class="diagram"><code>  anak-anak di pinggiran
+    r besar  -&gt;  I besar  -&gt;  alpha kecil  -&gt;  sulit dipercepat</code></pre>
+
+  <p>Dengan torsi yang sama, kenaikan momen inersia menyebabkan penurunan percepatan sudut. Inilah sebabnya operator komidi putar menempatkan anak-anak di pinggiran setelah mulai berputar supaya perjalanan terasa lebih lambat dan lebih stabil.</p>
+
+  <h2 id="n23">23. Momen inersia berbagai bentuk benda</h2>
+
+  <p>Momen inersia tidak hanya bergantung pada massa, tetapi juga pada bentuk benda dan pilihan sumbu rotasi. Beberapa hasil penting untuk benda homogen adalah sebagai berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 23.1 &middot; Momen inersia beberapa bentuk benda terhadap sumbu melalui pusat massa</caption>
+    <thead>
+      <tr><th>Bentuk benda</th><th>Sumbu putar</th><th>Momen inersia</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cincin tipis atau hoop</td><td>Sumbu melalui pusat, tegak lurus bidang cincin</td><td>I = M R^2</td></tr>
+      <tr><td>Cakram atau silinder pejal</td><td>Sumbu pusat, tegak lurus bidang cakram</td><td>I = 1/2 M R^2</td></tr>
+      <tr><td>Cakram atau silinder pejal</td><td>Sumbu diameter, tegak lurus sumbu panjang</td><td>I = 1/4 M R^2</td></tr>
+      <tr><td>Bola pejal</td><td>Sumbu melalui pusat</td><td>I = 2/5 M R^2</td></tr>
+      <tr><td>Kulit bola tipis</td><td>Sumbu melalui pusat</td><td>I = 2/3 M R^2</td></tr>
+      <tr><td>Batang tipis</td><td>Sumbu tegak lurus batang melalui pusat</td><td>I = 1/12 M L^2</td></tr>
+      <tr><td>Batang tipis</td><td>Sumbu tegak lurus batang melalui ujung</td><td>I = 1/3 M L^2</td></tr>
+      <tr><td>Balok persegi homogen</td><td>Sumbu melalui pusat, tegak lurus panjang balok</td><td>I = 1/12 M (a^2 + b^2)</td></tr>
+      <tr><td>Cincin tipis</td><td>Sumbu diameter yang melalui pusat</td><td>I = 1/2 M R^2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Nilai-nilai tersebut berlaku untuk benda homogen, yaitu benda yang massanya tersebar merata.</p><h2 id="n24">24. Gambar berbagai bentuk dan momen inersianya</h2>
+
+  <figure>
+    <img src="gambar/momen-inersia-bentuk.svg" alt="Tabel lima bentuk dasar beserta rumus momen inersia, meliputi cincin, cakram, batang, pelat, dan bola pejal" width="1649" height="420" loading="lazy" decoding="async">
+    <figcaption>Gambar 2. Beberapa bentuk benda dan rumus momen inersianya, termasuk cincin, cakram, batang, pelat, dan bola pejal. Sumber: Wikimedia Commons, karya Guy vandegrift, lisensi CC BY-SA 4.0.</figcaption>
+  </figure>
+
+  <p>Perhatikan bahwa dua bentuk dengan massa dan ukuran yang sama dapat memiliki momen inersia berbeda. Cincin tipis memiliki momen inersia terbesar di antara bentuk pada gambar tersebut karena seluruh massanya berada pada jarak maksimum dari sumbu. Sebaliknya, bola pejal memiliki momen inersia terkecil di antara kelompok bola karena massanya tersebar mendekati pusat.</p>
+
+  <div class="note">
+    <p>Momen inersia setengah bola pejal terhadap sumbu yang melalui pusat bidang bertutupnya sama dengan 2 per 5 dari M R kuadrat. Nilai ini sering membingungkan karena sama dengan nilai bola pejal utuh, padahal hanya separuh massanya.</p>
+  </div>
+
+  <h2 id="n25">25. Momen inersia bergantung pada sumbu rotasi</h2>
+
+  <p>Satu benda dapat mempunyai beberapa nilai momen inersia. Ambil contoh sebuah batang panjang yang homogen.</p>
+
+  <pre class="diagram"><code>  batang homogen, panjang L, massa M
+
+  sumbu melalui pusat batang   :  I = 1/12 M L^2
+  sumbu melalui salah satu ujung :  I = 1/3  M L^2</code></pre>
+
+  <p>Pernyataan yang sama berlaku untuk bentuk lain. Cincin tipis yang diputar terhadap sumbu tegak lurus bidangnya memiliki momen inersia M R kuadrat, sedangkan terhadap sumbu diameter yang melalui pusat memiliki momen inersia setengah M R kuadrat.</p>
+
+  <div class="note">
+    <p>Ketika mengerjakan soal rotasi, selalu periksa sumbu yang dimaksud. Ketika menentukan momen inersia yang keliru terhadap sumbu adalah kesalahan yang paling sering terjadi, karena hasilnya LOOKUP dapat terlihat masuk akal padahal salah.</p>
+  </div>
+
+  <h2 id="n26">26. Teorema sumbu sejajar</h2>
+
+  <p>Jika momen inersia terhadap sumbu melalui pusat massa sudah diketahui, momen inersia terhadap sumbu lain yang sejajar dapat dihitung tanpa integral.</p>
+
+  <pre class="diagram"><code>  I = I CM  +  M d^2
+
+  I CM  = momen inersia terhadap sumbu melalui pusat massa
+  M     = massa total benda
+  d     = jarak antara kedua sumbu yang sejajar</code></pre>
+
+  <p>Persamaan ini disebut teorema sumbu sejajar. Syaratnya hanya satu: kedua sumbu harus sejajar dan keduanya harus berupa sumbu simetri yang melalui pusat massa untuk satu di antaranya.</p>
+
+  <figure>
+    <img src="gambar/teorema-sumbu-sejajar.svg" alt="Diagram teorema sumbu sejajar yang menunjukkan sumbu melalui pusat massa dan sumbu lain yang sejajar pada jarak d" width="341" height="341" loading="lazy" decoding="async">
+    <figcaption>Gambar 3. Ilustrasi teorema sumbu sejajar yang menunjukkan sumbu melalui pusat massa dan sumbu lain yang sejajar dengan jarak tertentu. Sumber: Wikimedia Commons, karya IngenieroLoco, lisensi CC BY-SA 4.0.</figcaption>
+  </figure>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 26.1 &middot; Momen inersia batang homogen terhadap beberapa sumbu sejajar</caption>
+    <thead>
+      <tr><th>Posisi sumbu</th><th>Jarak d dari pusat massa</th><th>Momen inersia</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Melalui pusat batang</td><td>0</td><td>1/12 M L^2</td></tr>
+      <tr><td>Jarak L per 6 dari pusat</td><td>L/6</td><td>1/12 M L^2 + M L^2 per 36</td></tr>
+      <tr><td>Jarak L per 4 dari pusat</td><td>L/4</td><td>1/12 M L^2 + M L^2 per 16</td></tr>
+      <tr><td>Melalui salah satu ujung</td><td>L/2</td><td>1/3 M L^2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perhatikan bahwa setiap perubahan posisi sumbu selalu menambah momen inersia. Menambah jarak sumbu dari pusat massa tidak pernah menurunkan nilai momen inersia.</p>
+
+  <h2 id="n27">27. Kesetimbangan benda tegar</h2>
+
+  <p>Sebuah benda tegar disebut setimbang apabila tidak mengalami perubahan gerak translasi maupun perubahan gerak rotasi. Karena kedua jenis perubahan itu harus dicek, kesetimbangan benda tegar memiliki dua syarat yang harus dipenuhi sekaligus.</p>
+
+  <pre class="diagram"><code>  SYARAT PERTAMA &mdash; translasi
+    Sum F x = 0
+    Sum F y = 0
+    atau secara ringkas  Sum F = 0
+
+  SYARAT KEDUA &mdash; rotasi
+    Sum tau = 0</code></pre>
+
+  <div class="note">
+    <p>Walaupun syarat pertama saja terpenuhi, benda masih dapat berputar karena pasangan gaya yang garis kerjanya tidak berimpit. Benda tegar karena itu memerlukan kedua syarat, bukan hanya satu.</p>
+  </div>
+
+  <h2 id="n28">28. Dua gaya yang resultannya nol tetapi benda tetap berputar</h2>
+
+  <p>Bayangkan sebuah batang yang diberi dua gaya sama besar dengan arah berlawanan, tetapi keduanya bekerja pada garis yang berbeda.</p>
+
+  <pre class="diagram"><code>  gaya ke atas F    di ujung kiri
+  gaya ke bawah F  di ujung kanan
+
+  translasi  :  F ke atas + F ke bawah = 0  -&gt;  Sum F = 0  -&gt; syarat 1 terpenuhi
+  rotasi     :  kedua gaya menghasilkan torsi searah
+                Sum tau tidak nol         -&gt; syarat 2 tidak terpenuhi
+
+  HASIL: batang bergerak berputar ke arah torsi resultan</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 28.1 &middot; Pemeriksaan kesetimbangan pada dua gaya berlawanan</caption>
+    <thead>
+      <tr><th>Pemeriksaan</th><th>Perhitungan</th><th>Hasil</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Resultan gaya</td><td>F ke atas dikurangi F ke bawah</td><td>Nol</td></tr>
+      <tr><td>Resultan torsi</td><td>F lengan kiri ditambah F lengan kanan searah</td><td>Tidak nol</td></tr>
+      <tr><td>Pusat massa</td><td>Tidak bergerak karena resultan gaya nol</td><td>Tetap</td></tr>
+      <tr><td>Rotasi benda</td><td>Benda berputar karena torsi resultan tidak nol</td><td>Bercenderung berputar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Contoh seperti ini muncul pada beberapa soal yang menyangkut kesetimbangan statis.</p>
+
+  <h2 id="n29">29. Jungkat-jungkit sebagai contoh torsi</h2>
+
+  <p>Jungkat-jungkit merupakan contoh paling sederhana untuk memahami torsi. Misalkan seorang anak yang lebih berat duduk lebih dekat dengan titik tumpu, sedangkan anak yang lebih ringan duduk lebih jauh.</p>
+
+  <pre class="diagram"><code>  kesetimbangan  :  tau kiri = tau kanan
+                   F1 r1   = F2 r2
+
+  gaya berasal dari berat  :  F = m g
+
+  m1 g r1 = m2 g r2
+  karena g sama pada kedua sisi
+
+  m1 r1 = m2 r2</code></pre>
+
+  <figure>
+    <img src="gambar/seesaw-torsi.svg" alt="Diagram jungkat-jungkit yang menunjukkan titik tumpu, dua anak dengan massa dan jarak berbeda, serta kesetimbangan torsi pada kedua sisi" width="640" height="313" loading="lazy" decoding="async">
+    <figcaption>Gambar 4. Jungkat-jungkit dalam keadaan setimbang ketika torsi pada kedua sisi memiliki besar yang sama dan arah berlawanan. Sumber: Wikimedia Commons, karya MikeRun, lisensi CC BY-SA 4.0.</figcaption>
+  </figure>
+
+  <p>Dari persamaan m1 r1 = m2 r2 dapat langsung disimpulkan bahwa anak yang lebih berat harus duduk lebih dekat dengan titik tumpu. Inilah sebabnya titik tumpu untuk jungkat-jungkit tidak pernah tepat di tengah bila kedua penyungganya berbeda berat.</p>
+
+  <p>Sekarang ambil contoh angka. Seorang anak bermassa 45 kilogram duduk pada jarak 1,2 meter dari titik tumpu. Di sisi lain terdapat anak bermassa 30 kilogram. Tentukan jarak yang harus ditempuh agar jungkat-jungkit setimbang.</p>
+
+  <pre class="diagram"><code>  m1 r1 = m2 r2
+
+  45 x 1,2 = 30 x r2
+  54        = 30 r2
+  r2        = 54 per 30
+  r2        = 1,8 m</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 29.1 &middot; Data dan hasil perhitungan jungkat-jungkit</caption>
+    <thead>
+      <tr><th>Posisi</th><th>Massa</th><th>Jarak dari tumpu</th><th>Momen gaya</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sisi kiri</td><td>45 kg</td><td>1,20 m</td><td>54 kg m</td></tr>
+      <tr><td>Sisi kanan</td><td>30 kg</td><td>1,80 m</td><td>54 kg m</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Anak yang lebih ringan harus duduk lebih jauh, justru agar momen gaya dari kedua sisinya sama besar.</p>
+
+  <h2 id="n30">30. Mengapa titik acuan torsi sangat penting</h2>
+
+  <p>Torsi selalu dihitung terhadap suatu titik atau sumbu. Kita bebas memilih titik tersebut, dan pilihan yang tepat dapat sangat menyederhanakan perhitungan.</p>
+
+  <p>Perhatikan bahwa bila suatu gaya bekerja tepat pada titik acuan yang dipilih, maka r bernilai nol dan torsinya bernilai nol. Gaya tersebut otomatis hilang dari persamaan torsi.</p>
+
+  <pre class="diagram"><code>  gaya yang tepat lewat titik acuan  -&gt;  r = 0  -&gt;  tau = 0
+  gaya yang jauh dari titik acuan     -&gt;  tau tidak nol</code></pre>
+
+  <div class="note">
+    <p>Pada soal tangga yang bersandar pada dinding, titik tumpu kaki tangga di tanah lazim dipakai sebagai titik acuan. Dengan pilihan itu, gaya normal dan gaya gesek di titik tumpu memiliki lengan gaya nol sehingga tidak perlu diketahui besarnya untuk persamaan torsi.</p>
+  </div>
+
+  <h2 id="n31">31. Pusat massa dan pusat gravitasi</h2>
+
+  <p>Pusat massa adalah posisi rata-rata massa benda dengan pembobot massa masing-masing bagiannya. Bagi benda homogen yang berbentuk simetris, pusat massa berada di titik geometris pusat benda tersebut.</p>
+
+  <p>Pusat gravitasi adalah titik tempat berat total benda dapat dianggap terkonsentrasi untuk keperluan analisis. Dalam medan gravitasi yang cukup seragam, kedua titik ini berimpit secara praktis.</p>
+
+  <div class="note">
+    <p>Pembedaan kedua titik ini penting pada benda yang sangat besar seperti bumi, di mana medan gravitasi tidak seragam. Bagi benda berukuran everyday seperti roda, batang, atau bola, perbedaan tersebut dapat diabaikan.</p>
+  </div>
+
+  <h2 id="n32">32. Stabilitas benda</h2>
+
+  <p>Selain diam, kesetimbangan dapat dibedakan berdasarkan kestabilannya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 32.1 &middot; Tiga jenis kesetimbangan berdasarkan kestabilan</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Perilaku setelah digeser sedikit</th><th>Contoh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Stabil</td><td>Benda cenderung kembali ke posisi awal</td><td>Bandul yang sedang berayun, kubus dengan alas lebar</td></tr>
+      <tr><td>Tidak stabil</td><td>Gangguan kecil membuat benda semakin menjauh</td><td>Boneka yang tidak dapat berdiri sendiri</td></tr>
+      <tr><td>Netral</td><td>Benda tetap setimbang pada posisi baru</td><td>Bola yang sedang meluncur pada bidang datar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n33">33. Hubungan stabilitas dengan pusat gravitasi</h2>
+
+  <p>Syarat praktis kestabilan benda tegar adalah sebagai berikut: proyeksi vertikal pusat gravitasi harus masih berada di dalam daerah dasar tumpuan.</p>
+
+  <pre class="diagram"><code>  pusat gravitasi di atas dasar tumpuan  -&gt;  stabil
+  pusat gravitasi tepat di tepi tumpuan  -&gt;  batas netral
+  pusat gravitasi di luar tumpuan       -&gt;  tidak stabil</code></pre>
+
+  <p>Contohnya adalah tubuh manusia. Saat berdiri dengan kedua kaki rapat, daerah tumpuan menjadi sangat sempit sehingga mudah kehilangan keseimbangan. Ketika kedua kaki dirapatkan, pusat gravitasi dapat bergeser keluar dari daerah tumpuan, sedangkan ketika langkah dibuat lebih lebar, daerah tumpuan bertambah lebar sehingga lebih mudah mempertahankan keseimbangan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 33.1 &middot; Pengaruh lebar tumpuan terhadap kestabilan berdiri</caption>
+    <thead>
+      <tr><th>Posisi kaki</th><th>Lebar daerah tumpuan</th><th>Tingkat kestabilan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kaki rapat</td><td>Sempit</td><td>Rentah</td></tr>
+      <tr><td>Kaki selebar bahu</td><td>Sedang</td><td>Sedang</td></tr>
+      <tr><td>Kaki melebar</td><td>Luas</td><td>Tinggi</td></tr>
+      <tr><td>Berdiri pada satu kaki</td><td>Sangat sempit</td><td>Sangat rendah</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n34">34. Kerja dalam gerak rotasi</h2>
+
+  <p>Pada gerak translasi, kerja dari gaya konstan adalah W = F s. Padanannya untuk rotasi adalah:</p>
+
+  <pre class="diagram"><code>  torsi konstan        W = tau theta
+  torsi berubah       W = integral tau d theta
+
+  theta harus dinyatakan dalam radian</code></pre>
+
+  <p>Karena satuan theta adalah radian, satuan hasil perkalian tau dengan theta adalah newton meter sama dengan joule, sehingga satuan usaha tetap terjaga.</p>
+
+  <h2 id="n35">35. Energi kinetik rotasi</h2>
+
+  <p>Pada translasi energi kinetik adalah 1/2 m v kuadrat. Pada rotasi:</p>
+
+  <pre class="diagram"><code>  EK rot = 1/2 I omega^2</code></pre>
+
+  <p>Objek yang menyimpan energi kinetik rotasi dalam kehidupan sehari-hari sangat banyak, antara lain roda kendaraan, kipas angin, flywheel pada mesin, turbin, dan rotor motor listrik.</p>
+
+  <h2 id="n36">36. Mengapa energi rotasi bergantung pada momen inersia</h2>
+
+  <p>Pada kecepatan sudut yang sama, benda dengan momen inersia lebih besar menyimpan energi kinetik rotasi lebih besar.</p>
+
+  <pre class="diagram"><code>  omega sama  -&gt;  I naik  -&gt;  EK rot naik</code></pre>
+
+  <p>Inilah salah satu alasan flywheel dipakai untuk menyimpan energi mekanik. Cakram flywheel yang besar memiliki momen inersia yang besar sehingga dapat menyimpan energi rotasi yang besar pada kecepatan sudut yang relatif kecil.</p>
+
+  <div class="note">
+    <p>Flywheel pada kendaraan listrik berfungsi menyediakan energi putar saat percepatan. Ketika pengereman berlangsung, energi rotasi flywheel dikembalikan ke motor sehingga dapat dimanfaatkan untuk cruise control atau penghematan energi.</p>
+  </div>
+
+  <h2 id="n37">37. Energi kinetik total benda yang menggelinding</h2>
+
+  <p>Benda yang menggelinding melakukan dua gerakan sekaligus: pusat massanya bergerak, dan benda itu juga berputar. Karena itu energi kinetiknya merupakan jumlah dari dua komponen.</p>
+
+  <pre class="diagram"><code>  EK total = 1/2 m v^2  +  1/2 I omega^2
+              _______       _______
+              translasi     rotasi</code></pre>
+
+  <p>Bagian pertama adalah energi kinetik translasi pusat massa, sedangkan bagian kedua adalah energi kinetik rotasi. Keduanya harus selalu dihitung bersama untuk benda yang menggelinding.</p>
+
+  <div class="note">
+    <p>Kesalahan yang sering terjadi adalah hanya menghitung 1/2 m v kuadrat. Akibatnya bagian energi rotasi terlewat dan hasil kecepatan menjadi terlalu besar. Untuk benda yang menggelinding, energi potensial yang hilang terbagi antara gerak translasi dan rotasi.</p>
+  </div>
+
+  <h2 id="n38">38. Menggelinding tanpa slip</h2>
+
+  <p>Jika roda menggelinding tanpa tergelincir, berlaku hubungan antara kecepatan pusat massa dan kecepatan sudutnya.</p>
+
+  <pre class="diagram"><code>  v CM = R omega
+  a CM = R alpha</code></pre>
+
+  <p>Kedua hubungan ini menghubungkan gerak pusat massa dengan gerak rotasi dan memungkinkan kedua komponen energi kinetik digabungkan menjadi satu persamaan.</p>
+
+  <h2 id="n39">39. Apa arti tanpa slip</h2>
+
+  <p>Tanpa slip berarti titik kontak sesaat antara roda dan permukaan tidak mengalami gerak relatif sepanjang permukaan. Roda tidak meluncur di atas tanah.</p>
+
+  <pre class="diagram"><code>  v lebih besar dari R omega  -&gt;  roda meluncur  -&gt;  slip
+  v lebih kecil dari R omega  -&gt;  roda menyeret   -&gt;  slip
+  v sama dengan R omega      -&gt;  menggelinding sempurna</code></pre>
+
+  <h2 id="n40">40. Apakah ada gesekan saat menggelinding</h2>
+
+  <p>Pada kondisi menggelinding tanpa slip, gaya gesek statik dalam banyak kasus justru ada dan berperan menyediakan torsi yang diperlukan untuk memutar roda. Tanpa gesekan itu, roda hanya akan tergelincir turun tanpa berputar.</p>
+
+  <figure>
+    <img src="gambar/rolling-racers.gif" alt="Animasi empat benda dengan momen inersia berbeda yang digulingkan tanpa slip pada bidang miring" width="480" height="270" loading="lazy" decoding="async">
+    <figcaption>Gambar 5. Simulasi beberapa benda dengan distribusi massa berbeda yang menggelinding tanpa slip pada bidang miring. Perbedaan momen inersia menyebabkan perbedaan percepatan dan kecepatan. Sumber: Wikimedia Commons, karya Lucas Vieira,domain publik.</figcaption>
+  </figure>
+
+  <p>Meskipun gesekan tersebut ada, gaya gesek statik ideal pada titik kontak yang sesaat diam tidak melakukan kerja mekanik bersih, karena titik kontak itu sendiri tidak mengalami perpindahan relatif terhadap permukaan.</p>
+
+  <div class="note">
+    <p>Karena itu harus dibedakan antara gesekan statis pada rolling ideal dan gesekan yang memang melakukan kerja. Kerusakan ban, hambatan udara, serta gesekan pada poros menyebabkan energi hilang dan tidak termasuk kategori gesekan statis ideal di titik kontak.</p>
+  </div><h2 id="n41">41. Mengapa bentuk benda menentukan kecepatan</h2>
+
+  <p>Beberapa benda dilepaskan dari ketinggian yang sama dan menggelinding tanpa slip pada bidang miring. Energi potensial awal setiap benda sama, tetapi kecepatan akhirnya berbeda.</p>
+
+  <pre class="diagram"><code>  m g h = 1/2 m v^2 + 1/2 I omega^2
+
+  dengan omega = v per R
+
+  m g h = 1/2 m v^2 + 1/2 I v^2 per R^2</code></pre>
+
+  <p>Setelah disusun ulang, diperoleh bentuk yang memperlihatkan faktor bentuk:</p>
+
+  <pre class="diagram"><code>  v^2 = 2 g h per (1 + I per (m R^2))
+
+            ___________
+  rasio I   ___________   menentukan kecepatan
+          per (m R^2)</code></pre>
+
+  <p>Perhatikan bahwa massa m dan jari-jari R saling menghilangkan. Yang tersisa hanyalah cara massa itu tersebar terhadap sumbu. Benda dengan rasio I per m R kuadrat paling kecil berputar paling cepat.</p>
+
+  <h2 id="n42">42. Faktor bentuk dan urutan kecepatan</h2>
+
+  <p>Nilai rasio I per m R kuadrat untuk beberapa bentuk baku adalah sebagai berikut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 42.1 &middot; Rasio momen inersia, percepatan, dan urutan kecepatan benda menggelinding</caption>
+    <thead>
+      <tr><th>Bentuk</th><th>I per m R^2</th><th>Percepatan a</th><th>Urutan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bola pejal</td><td>2/5 = 0,40</td><td>5/7 g sin theta = 0,714 g sin theta</td><td>1</td></tr>
+      <tr><td>Silinder pejal</td><td>1/2 = 0,50</td><td>2/3 g sin theta = 0,667 g sin theta</td><td>2</td></tr>
+      <tr><td>Bola kulit tipis</td><td>2/3 = 0,67</td><td>3/5 g sin theta = 0,600 g sin theta</td><td>3</td></tr>
+      <tr><td>Cincin tipis</td><td>1 = 1,00</td><td>1/2 g sin theta = 0,500 g sin theta</td><td>4</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jadi urutan benda yang mencapai dasar bidang miring terlebih dahulu adalah bola pejal, lalu silinder pejal, lalu bola kulit tipis, dan terakhir cincin tipis.</p>
+
+  <div class="note">
+    <p>Hasil ini berlaku untuk benda homogen yang bergelinding tanpa slip. Untuk benda berongga yang isinya tidak ikut berputar, misalnya kaleng berisi air yang tidak ikut berputar bersama, nilai efektif momen inersia berbeda sehingga urutannya dapat berubah.</p>
+  </div>
+
+  <h2 id="n43">43. Rumus kecepatan benda menggelinding</h2>
+
+  <p>Dari penurunan energi potensial menjadi energi kinetik translasi dan rotasi, diperoleh rumus kecepatan benda yang menggelinding tanpa slip.</p>
+
+  <pre class="diagram"><code>  v = akar dari ( 2 g h per (1 + I per (m R^2)) )</code></pre>
+
+  <p>Dari rumus ini dapat segera dibaca bahwa untuk bentuk dan kemiringan yang sama, semua bola pejal akan mencapai kecepatan yang sama dalam waktu yang sama, berapa pun massa dan radiusnya. Yang menentukan hanyalah sebaran massa terhadap radius.</p>
+
+  <h2 id="n44">44. Perbandingan silinder pejal dan cincin tipis</h2>
+
+  <p>Ambil dua benda dengan massa dan jari-jari sama: silinder pejal dengan I sebesar setengah M R kuadrat, dan cincin tipis dengan I sebesar M R kuadrat.</p>
+
+  <pre class="diagram"><code>  rasio bentuk silinder pejal  = 1/2
+  rasio bentuk cincin tipis   = 1
+
+  karena 1 lebih besar dari 1/2
+  -&gt; cincin lebih banyak energinya untuk rotasi
+  -&gt; cincin lebih sedikit energinya untuk translasi
+  -&gt; percepatan cincin lebih kecil</code></pre>
+
+  <p>Pada bidang miring yang sama, cincin tipis memiliki percepatan lebih kecil dan tiba lebih lama dibandingkan silinder pejal.</p>
+
+  <h2 id="n45">45. Momentum sudut</h2>
+
+  <p>Sekarang kita masuk ke bagian akhir modul ini, yaitu momentum sudut. Pada translasi momentum adalah p = m v. Pada rotasi:</p>
+
+  <pre class="diagram"><code>  L = I omega
+
+  L        = momentum sudut
+  I        = momen inersia
+  omega    = kecepatan sudut
+
+  satuan   : kg m^2/s</code></pre>
+
+  <p>Satuan momentum sudut adalah kilogram meter kuadrat per sekon. Momentum sudut merupakan besaran vektor, sehingga memerlukan arah selain besarannya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 45.1 &middot; Perbandingan satuan dan sifat besaran momentum</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Momentum linear</th><th>Momentum sudut</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Simbol</td><td>p</td><td>L</td></tr>
+      <tr><td>Rumus</td><td>p = m v</td><td>L = I omega</td></tr>
+      <tr><td>Satuan SI</td><td>kg m/s</td><td>kg m^2/s</td></tr>
+      <tr><td>Sifat</td><td>Vektor</td><td>Vektor</td></tr>
+      <tr><td>Perubahan ditentukan oleh</td><td>Gaya</td><td>Torsi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n46">46. Bentuk umum momentum sudut</h2>
+
+  <p>Untuk sebuah partikel, momentum sudut terhadap titik acuan tertentu ditulis:</p>
+
+  <pre class="diagram"><code>  L = r x p
+
+  karena p = m v
+
+  L = r x m v</code></pre>
+
+  <p>Hasil kali silang menghasilkan vektor yang tegak lurus terhadap bidang yang dibentuk oleh r dan p. Untuk benda tegar yang berotasi terhadap sumbu yang sesuai, bentuk tersebut menyederhanakan menjadi L = I omega.</p>
+
+  <div class="note">
+    <p>Bentuk L = r x p adalah bentuk yang paling umum dan berlaku untuk semua gerak, termasuk gerak pada lintasan yang tidak berbentuk lingkaran. Bentuk L = I omega merupakan bentuk yang lebih praktis untuk benda tegar yang berotasi terhadap sumbu simetri tertentu.</p>
+  </div>
+
+  <h2 id="n47">47. Hubungan torsi dan momentum sudut</h2>
+
+  <p>Dalam bentuk umum, torsi netto adalah laju perubahan momentum sudut terhadap waktu.</p>
+
+  <pre class="diagram"><code>  tau net = d L per d t
+
+  pasangan translasinya:
+
+  F net = d p per d t</code></pre>
+
+  <p>Dengan demikian terdapat dua pasangan yang selalu menyertai:</p>
+
+  <pre class="diagram"><code>  gaya  &lt;-&gt; momentum
+  torsi &lt;-&gt; momentum sudut</code></pre>
+
+  <p>Perhatikan bahwa kedua persamaan tersebut berbentuk sama. Justru inilah alasan Hukum II Newton untuk rotasi dapat dituliskan sebagai persamaan differensial momentum sudut.</p>
+
+  <h2 id="n48">48. Kekekalan momentum sudut</h2>
+
+  <p>Jika torsi eksternal netto yang bekerja pada sistem sama dengan nol, maka:</p>
+
+  <pre class="diagram"><code>  Sum tau eksternal = 0
+
+  -&gt;  d L per d t = 0
+
+  -&gt;  L tetap
+
+  -&gt;  L awal = L akhir</code></pre>
+
+  <p>Untuk sistem sederhana, hubungan ini dapat dituliskan sebagai:</p>
+
+  <pre class="diagram"><code>  I awal x omega awal = I akhir x omega akhir</code></pre>
+
+  <p>Syarat kekekalan momentum sudut menyerupai syarat kekekalan momentum linear, tetapi yang harus nol adalah torsi eksternal, bukan gaya eksternal.</p>
+
+  <h2 id="n49">49. Contoh orang yang berputar</h2>
+
+  <p>Bayangkan seorang pemain seluncur yang sedang berputar dengan tangan terbuka. Ketika tangannya ditarik ke arah tubuh, jarak massa terhadap sumbu mengecil sehingga momen inersia juga mengecil.</p>
+
+  <pre class="diagram"><code>  sebelum  :  I besar   -&gt;  omega kecil
+  sesudah :  I kecil   -&gt;  omega besar
+
+  I awal x omega awal = I akhir x omega akhir</code></pre>
+
+  <figure>
+    <img src="gambar/figure-skater.jpg" alt="Foto pemain seluncur yang sedang melakukan gerakan berputar dengan tangan dan kaki dirapatkan ke tubuh" width="307" height="500" loading="lazy" decoding="async">
+    <figcaption>Gambar 6. Pemain seluncur saat melakukan gerakan berputar; perubahan posisi anggota tubuh terhadap sumbu mengubah momen inersia dan memengaruhi kecepatan sudut. Sumber: Wikimedia Commons, karya deerstop, dedikasi domain publik CC0.</figcaption>
+  </figure>
+
+  <p>Karena tidak ada torsi eksternal yang berarti, momentum sudut pemain itu tetap. Ketika tangannya ditarik, momen inersia berkurang sehingga kecepatan sudut otomatis meningkat untuk mengimbangi penurunan tersebut.</p>
+
+  <h2 id="n50">50. Mengapa tidak perlu torsi tambahan untuk berputar lebih cepat</h2>
+
+  <p>Hal ini sering membingungkan. Pada pandangan pertama, untuk berputar lebih cepat seolah-olah diperlukan torsi yang lebih besar. Padahal tidak selalu demikian.</p>
+
+  <pre class="diagram"><code>  jika torsi eksternal hampir nol
+  -&gt;  I dan omega harus berkompensasi
+
+  I akhir lebih kecil dari I awal
+  -&gt;  omega akhir lebih besar dari omega awal</code></pre>
+
+  <p>Energi kinetik rotasi dapat meningkat meskipun tidak ada torsi eksternal. Kenaikan itu berasal dari kerja internal yang dilakukan pemain seluncur ketika menggerakkan tubuhnya.</p>
+
+  <div class="note">
+    <p>Kerja internal mengubah distribusi energi antara gerak translasi dan rotasi tanpa mengubah momentum sudut total. Momentum sudut tetap, tetapi energi kinetik dapat bertambah karena kerja otot. Inilah alasan teknik seluncur yang menarik lengan ke dekat tubuh dapat meningkatkan laju putar tanpa bantuan luar.</p>
+  </div>
+
+  <h2 id="n51">51. Aturan tangan kanan</h2>
+
+  <p>Karena omega, L, dan tau merupakan besaran vektor, arahnya harus ditentukan. Untuk ketiga besaran tersebut dipakai aturan tangan kanan.</p>
+
+  <pre class="diagram"><code>  langkah:
+    1. renggangkan jari-jari tangan kanan
+    2. letakkan ibu jari searah arah putaran
+    3. jari-jari menggenggam sumbu
+
+  ibu jari  -&gt; arah omega
+  jari     -&gt; arah putaran</code></pre>
+
+  <p>Jika arah putaran diketahui, arah omega dan L dapat langsung ditentukan. Untuk torsi, aturan tangan kanan diterapkan pada hasil kali silang antara r dan F, sehingga tangannya harus diarahkan dari r menuju F.</p>
+
+  <figure>
+    <img src="gambar/aturan-tangan-kanan-gyro.png" alt="Diagram aturan tangan kanan untuk putaran, arah momentum sudut, dan arah torsi pada sistem berputar" width="269" height="210" loading="lazy" decoding="async">
+    <figcaption>Gambar 7. Aturan tangan kanan untuk menentukan arah putaran dan momentum sudut serta hubungan arah torsi dalam sistem berputar. Sumber: Wikimedia Commons, karya Jn.mdel, lisensi CC BY-SA 4.0.</figcaption>
+  </figure>
+
+  <h2 id="n52">52. Giroskop dan efek giroskopik</h2>
+
+  <p>Momentum sudut tidak hanya dipakai pada pemain seluncur. Contoh penting lainnya adalah giroskop, yaitu sistem berputar bermomentum sudut besar.</p>
+
+  <p>Ketika torsi diberikan pada sumbu yang tegak lurus terhadap arah putaran, yang berubah bukan besar momentum sudut melainkan arahnya. Akibatnya sumbu tersebut bergerak melingkar yang disebut presesi.</p>
+
+  <p>Contoh penerapannya antara lain sensor orientasi, navigasi, sistem stabilisasi orientasi, dan instrumen pesawat.</p>
+<h2 id="n53">53. Presesi</h2>
+
+  <p>Presesi adalah perubahan arah sumbu putar benda yang berputar ketika diberi torsi yang tegak lurus terhadap arah putaran itu sendiri.</p>
+
+  <pre class="diagram"><code>  piring yang tidak berputar  -&gt;  jatuh ke samping
+  piring yang berputar       -&gt;  berayun/mengitari sumbu vertikal
+
+  bukan besarnya L yang berubah
+  tetapi arahnya
+
+  arah L sebelum  :  ke atas
+  arah L sesudah  :  ke atas dan ke samping
+  perubahan L      :  mendatar dan tegak lurus arah L awal
+
+  perubahan L itu persis searah torsi</code></pre>
+
+  <p>Laju presesinya dapat dihitung dari hubungan turunan momentum sudut:</p>
+
+  <pre class="diagram"><code>  omega P = tau per (I omega sin theta)
+
+  atau bentuk sederhana untuk poros yang massanya terkumpul:
+
+  omega P = r M g per (I omega)</code></pre>
+
+  <div class="note">
+    <p>Penurunan ini mengandaikan laju presesi jauh lebih kecil daripada kecepatan putaran, yaitu omega P jauh lebih kecil daripada omega. Jika kondisi ini dilanggar, ada komponen tambahan momentum sudut pada sumbu vertikal yang memunculkan gerakan naik turun kecil yang disebut nutasi.</p>
+  </div>
+
+  <h2 id="n54">54. Bumi sebagai giroskop</h2>
+
+  <p>Bumi sendiri dapat diperlakukan sebagai giroskop raksasa. Momentum sudutnya sepanjang sumbu bumi dan arahnya menuju kutub langit utara yang berdekatan dengan Bintang Utara.</p>
+
+  <p>Bumi sebenarnya mengalami presesi yang sangat lambat, sekali setiap kurang lebih 26.000 tahun. Penyebabnya adalah torsi dari matahari dan bulan terhadap bentuk bumi yang tidak benar-benar bulat sempurna.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 54.1 &middot; Contoh benda yang rotasinya ditentukan oleh momentum sudut</caption>
+    <thead>
+      <tr><th>Benda</th><th>Peran momentum sudut</th><th>Pengamatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bumi</td><td>Menentukan arah kutub langit</td><td>Presesi sekali sekitar 26.000 tahun</td></tr>
+      <tr><td>Teleskop antariksa</td><td>Menentukan arah orientasi instrumen</td><td>Menggunakan roda reaksi untuk koreksi</td></tr>
+      <tr><td>Jam gyroskopik kapal</td><td>Menjadi acuan arah saat kapal bergerak</td><td>Menjaga arah meskipun kapal berputar</td></tr>
+      <tr><td>Pesawat terbang</td><td>Menstabilkan arah pada tikungan</td><td>Mengarahkan sumbu ke arah yang dikehendaki</td></tr>
+      <tr><td>Rotor turbin</td><td>Menyimpan energi dan menstabilkan gerak</td><td>Menghilangkan gangguan sudut</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Pada teleskop antariksa, roda reaksi bekerja dengan prinsip kebalikannya. Untuk memutar orientasi wahana, roda reaksi justru dipercepat atau dihentikan sehingga menghasilkan torsi reaksi pada badan wahana.</p>
+
+  <h2 id="n55">55. Daya pada gerak rotasi</h2>
+
+  <p>Pada translasi, daya dari gaya konstan adalah P = F v. Pada rotasi:</p>
+
+  <pre class="diagram"><code>  P = tau omega</code></pre>
+
+  <p>Pasangan ini mengikuti pola yang sama seperti pasangan lainnya.</p>
+
+  <pre class="diagram"><code>  F  &lt;-&gt; tau
+  v  &lt;-&gt; omega
+  -&gt;  F v  &lt;-&gt;  tau omega</code></pre>
+
+  <p>Karena satuan tau adalah newton meter dan satuan omega adalah radian per sekon, hasil perkaliannya adalah newton meter per sekon sama dengan watt.</p>
+
+  <h2 id="n56">56. Contoh motor listrik</h2>
+
+  <p>Motor listrik memberikan torsi sebesar 20 newton meter kepada poros yang berputar dengan kecepatan sudut 10 radian per sekon.</p>
+
+  <pre class="diagram"><code>  P = tau omega
+  P = 20 x 10
+  P = 200 watt</code></pre>
+
+  <p>Inilah sebabnya spesifikasi motor sering mencantumkan dua besaran sekaligus, yaitu torsi dan kecepatan putar. Dengan mengetahui kedua besaran tersebut, besaran ketiga yaitu daya dapat langsung dihitung.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 56.1 &middot; Contoh daya motor pada beberapa kondisi putaran</caption>
+    <thead>
+      <tr><th>Torsi</th><th>Kecepatan sudut</th><th>Daya</th><th>Catatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>20 N m</td><td>0 rad/s</td><td>0 W</td><td>Motor berputar tanpa beban</td></tr>
+      <tr><td>20 N m</td><td>5 rad/s</td><td>100 W</td><td>Kelajuan rendah</td></tr>
+      <tr><td>20 N m</td><td>10 rad/s</td><td>200 W</td><td>Kelajuan sedang</td></tr>
+      <tr><td>20 N m</td><td>20 rad/s</td><td>400 W</td><td>Kelajuan tinggi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Pada motor listrik nyata, terdapat nilai torsi maksimum pada kecepatan nol yang disebut torsi macet. Justru pada kondisi itu daya yang dihasilkan nol karena kecepatan sudutnya nol, meskipun torsinya paling besar.</p>
+  </div>
+
+  <h2 id="n57">57. Hubungan torsi, momen inersia, dan percepatan sudut</h2>
+
+  <p>Persamaan alpha = Sum tau per I memberikan tiga hubungan yang dapat ditinjau satu per satu.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 57.1 &middot; Tiga konsekuensi hubungan torsi, momen inersia, dan percepatan sudut</caption>
+    <thead>
+      <tr><th>Kondisi</th><th>Hubungan</th><th>Akibat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Torsi diperbesar</td><td>tau naik</td><td>alpha naik, benda berputar makin cepat</td></tr>
+      <tr><td>Momen inersia diperbesar</td><td>I naik</td><td>alpha turun, benda makin sulit dipercepat</td></tr>
+      <tr><td>Torsi netto nol</td><td>Sum tau = 0</td><td>alpha = 0, benda berputar dengan kecepatan tetap</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Hubungan ini merupakan padanan persis dari a = Sum F per m pada translasi.</p>
+
+  <h2 id="n58">58. Contoh kunci pas</h2>
+
+  <p>Mengencangkan atau mengendurkan baut merupakan contoh nyata penggunaan torsi. Ambil contoh gaya sebesar 100 newton yang diberikan tegak lurus pada lengan kunci sepanjang 0,30 meter.</p>
+
+  <pre class="diagram"><code>  tau = F l
+  tau = 100 x 0,30
+  tau = 30 N m</code></pre>
+
+  <p>Jika panjang kunci diperpanjang menjadi dua kali lipat menjadi 0,60 meter dengan gaya yang sama:</p>
+
+  <pre class="diagram"><code>  tau = 100 x 0,60
+  tau = 60 N m</code></pre>
+
+  <p>Torsinya menjadi dua kali lipat, padahal gaya yang digunakan tetap sama. Inilah sebabnya memperpanjang gagang kunci merupakan cara sederhana untuk membuka baut yang keras.</p>
+
+  <h2 id="n59">59. Contoh tangga pada dinding</h2>
+
+  <p>Salah satu soal klasik adalah tangga yang bersandar pada dinding. Pada tangga terdapat gaya berat tangga, gaya berat orang, gaya normal dari tanah, gaya gesek dari tanah, dan gaya dari dinding.</p>
+
+  <pre class="diagram"><code>  FBD tangga:
+    -&gt; gaya normal lantai   N, ke atas, pada kaki tangga
+    -&gt; gaya gesek lantai     f, sepanjang lantai
+    -&gt; gaya normal dinding  Nd, mendatar, pada bagian atas tangga
+    -&gt; gaya gesek dinding    fd, sepanjang dinding
+    -&gt; berat tangga          Wt, melalui pusat batang
+    -&gt; berat orang           Wo, melalui posisi orang
+
+  persamaan yang harus dipenuhi:
+    Sum F x = 0
+    Sum F y = 0
+    Sum tau = 0</code></pre>
+
+  <div class="note">
+    <p>Pada tiga persamaan ini hanya ada dua persamaan yang saling bebas. Karena itu, tidak semua gaya dapat dihitung tanpa informasi tambahan. Salah satu gaya perlu dianggap sebagai besaran yang tidak diketahui, lalu dipilih titik acuan yang menghilangkan gaya tersebut dari persamaan torsi.</p>
+  </div>
+
+  <p>Untuk penyederhanaan dalam soal tangga, titik tumpu kaki tangga di tanah lazim dijadikan titik acuan torsi. Dengan pilihan itu, gaya normal dan gaya gesek yang bekerja di titik tumpu memiliki lengan gaya nol sehingga tidak perlu diketahui nilainya.</p><h2 id="n60">60. Urutan mengerjakan soal dinamika rotasi</h2>
+
+  <p>Ketika menemukan soal rotasi, jangan langsung mencari rumus. Ikuti urutan berikut agar tidak ada besaran yang terlewat.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 60.1 &middot; Urutan pengerjaan soal dinamika rotasi</caption>
+    <thead>
+      <tr><th>Langkah</th><th>Kegiatan</th><th>Tujuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tentukan benda yang dianalisis</td><td>Mengetahui sistem yang ditinjau</td></tr>
+      <tr><td>2</td><td>Tentukan sumbu rotasi</td><td>Menetapkan titik acuan torsi</td></tr>
+      <tr><td>3</td><td>Buat diagram gaya</td><td>Menghindari gaya yang terlewat</td></tr>
+      <tr><td>4</td><td>Tandai gaya, jarak, dan sudut</td><td>Menyiapkan data untuk setiap torsi</td></tr>
+      <tr><td>5</td><td>Hitung setiap torsi</td><td>Memakai tau = r F sin theta atau tau = F l</td></tr>
+      <tr><td>6</td><td>Tentukan tanda setiap torsi</td><td>Berlawanan arah jarum jam positif, searah jarum jam negatif</td></tr>
+      <tr><td>7</td><td>Pilih persamaan yang sesuai</td><td>Memisahkan kasus dinamika, kesetimbangan, energi, dan momentum</td></tr>
+      <tr><td>8</td><td>Periksa satuan hasil</td><td>Memastikan jawaban berada dalam satuan yang wajar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n61">61. Kapan menggunakan Sum F sama dengan m a</h2>
+
+  <p>Gunakan persamaan translasi apabila yang dicari terutama berkaitan dengan:</p>
+
+  <ul>
+    <li>percepatan linear pusat massa,</li>
+    <li>besar gaya, tegangan, atau gaya normal,</li>
+    <li>gerak pusat massa pada benda yang menggelinding,</li>
+    <li>besar gaya gesek pada kontak roda dan tanah.</li>
+  </ul>
+
+  <p>Untuk benda tegar yang melakukan translasi sekaligus rotasi, kedua kelompok persamaan sering kali harus dipakai bersama-sama. Persamaan translasi menentukan gerak pusat massa, sedangkan persamaan rotasi menentukan gerak sudutnya.</p>
+
+  <h2 id="n62">62. Kapan menggunakan Sum tau sama dengan I alpha</h2>
+
+  <p>Gunakan persamaan rotasi apabila:</p>
+
+  <ul>
+    <li>benda berotasi dan yang dicari percepatan sudut,</li>
+    <li>gaya bekerja pada jarak tertentu dari sumbu,</li>
+    <li>terdapat roda, cakram, katrol, batang, atau benda tegar,</li>
+    <li>benda mengalami perubahan kecepatan sudut.</li>
+  </ul>
+
+  <p>Sebelum memakainya, pastikan momen inersia I telah dihitung terhadap sumbu yang sama dengan sumbu yang dipakai saat menghitung torsi.</p>
+
+  <h2 id="n63">63. Kapan menggunakan Sum tau sama dengan nol</h2>
+
+  <p>Gunakan persamaan ini ketika benda tegar berada dalam kesetimbangan rotasi. Perlu diingat bahwa persamaan torsi saja tidak cukup. Kesetimbangan benda tegar memerlukan:</p>
+
+  <pre class="diagram"><code>  Sum F = 0    DAN    Sum tau = 0</code></pre>
+
+  <div class="note">
+    <p>Pada benda yang hanya satu, persamaan torsi nol menentukan posisi titik tumpu atau titik gantung. Pada benda berupa batang dengan dua gaya saja, persamaan torsi nol menentukan posisi batang terhadap titik tumpu.</p>
+  </div>
+
+  <h2 id="n64">64. Kapan menggunakan energi rotasi</h2>
+
+  <p>Gunakan rumus energi rotasi apabila persoalan berkaitan dengan:</p>
+
+  <ul>
+    <li>kecepatan sudut pada suatu ketinggian,</li>
+    <li>perubahan energi kinetik akibat kerja torsi,</li>
+    <li>benda yang menggelinding turun pada bidang miring,</li>
+    <li>sistem yang bergerak dari satu ketinggian ke ketinggian lain tanpa torsi luar neto.</li>
+  </ul>
+
+  <p>Untuk benda menggelinding tanpa slip, hubungan v = R omega memungkinkan translasi dan rotasi digabung menjadi satu persamaan energi. Metode ini sangat menguntungkan karena tidak perlu mencari gaya gesek secara terpisah.</p>
+
+  <h2 id="n65">65. Kapan menggunakan kekekalan momentum sudut</h2>
+
+  <p>Gunakan hubungan L awal sama dengan L akhir apabila torsi eksternal neto terhadap sistem bernilai nol. Contoh penerapannya antara lain:</p>
+
+  <ul>
+    <li>pemain seluncur yang menarik lengan dan kakinya,</li>
+    <li>orang yang duduk di kursi putar lalu ditutupkan lengannya,</li>
+    <li>roda reaksi yang dikendalikan tanpa torsi luar yang berarti,</li>
+    <li>sistem yang berputar lalu mengubah distribusi massanya.</li>
+  </ul>
+
+  <p>Syarat yang harus dipastikan lebih dahulu adalah benar-benar tidak ada torsi eksternal yang berarti. Hambatan pada poros atau gesekan udara sekecil apa pun dapat membuat syarat ini tidak terpenuhi.</p>
+
+  <h2 id="n66">66. Kesalahan yang sering terjadi</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 66.1 &middot; Kesalahan umum dan perbaikannya</caption>
+    <thead>
+      <tr><th>Kesalahan</th><th>Mengapa keliru</th><th>Perbaikan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menyamakan torsi dengan gaya</td><td>Keduanya berbeda dimensi dan efek</td><td>Gaya bekerja pada benda, torsi bekerja terhadap sumbu</td></tr>
+      <tr><td>Menyamakan momen inersia dengan massa</td><td>Momen inersia bergantung pada jarak massa terhadap sumbu</td><td>Gunakan I = jumlah m r kuadrat atau rumus bentuk baku</td></tr>
+      <tr><td>Menganggap Sum F = 0 berarti setimbang</td><td>Kesetimbangan benda tegar juga menuntut torsi nol</td><td>Periksa kedua syarat sekaligus</td></tr>
+      <tr><td>Menganggap benda berputar pasti bertorsi neto</td><td>Benda dapat berputar dengan kecepatan sudut tetap</td><td>Sum tau = 0 menghasilkan omega tetap</td></tr>
+      <tr><td>Menghitung energi menggelinding hanya dari translasi</td><td>Bagian rotasi terlewat</td><td>Gunakan EK = 1/2 m v^2 + 1/2 I omega^2</td></tr>
+      <tr><td>Menganggap momentum sudut selalu kekal</td><td>Kekekalan hanya berlaku tanpa torsi eksternal</td><td>Periksa syarat torsi eksternal neto nol</td></tr>
+      <tr><td>Menyulis theta dalam derajat pada rumus rotasi</td><td>Hasil rumus menjadi keliru secara faktor pi</td><td>Konversikan derajat ke radian terlebih dahulu</td></tr>
+      <tr><td>Menggunakan momen inersia terhadap sumbu yang keliru</td><td>Hasil tidak sesuai benda yang diamati</td><td>Periksa letak sumbu sebelum menghitung</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n67">67. Tabel perbandingan lengkap translasi dan rotasi</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 67.1 &middot; Ringkasan pasangan besaran translasi dan rotasi</caption>
+    <thead>
+      <tr><th>Translasi</th><th>Rotasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Posisi x</td><td>Posisi sudut theta</td></tr>
+      <tr><td>v = d x per d t</td><td>omega = d theta per d t</td></tr>
+      <tr><td>a = d v per d t</td><td>alpha = d omega per d t</td></tr>
+      <tr><td>Massa m</td><td>Momen inersia I</td></tr>
+      <tr><td>Gaya F</td><td>Torsi tau</td></tr>
+      <tr><td>F = m a</td><td>tau = I alpha</td></tr>
+      <tr><td>Momentum p = m v</td><td>Momentum sudut L = I omega</td></tr>
+      <tr><td>1/2 m v^2</td><td>1/2 I omega^2</td></tr>
+      <tr><td>W = F s</td><td>W = tau theta</td></tr>
+      <tr><td>P = F v</td><td>P = tau omega</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n68">68. Ringkasan rumus</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 68.1 &middot; Kumpulan rumus utama yang perlu dikuasai</caption>
+    <thead>
+      <tr><th>Konsep</th><th>Rumus</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Posisi linear busur</td><td>s = r theta</td></tr>
+      <tr><td>Kecepatan linear</td><td>v = r omega</td></tr>
+      <tr><td>Percepatan tangensial</td><td>a t = r alpha</td></tr>
+      <tr><td>Percepatan sudut</td><td>alpha = delta omega per delta t</td></tr>
+      <tr><td>Torsi sederhana</td><td>tau = F l</td></tr>
+      <tr><td>Torsi umum</td><td>tau = r F sin theta</td></tr>
+      <tr><td>Torsi vektor</td><td>tau = r x F</td></tr>
+      <tr><td>Hukum II Newton rotasi</td><td>Sum tau = I alpha</td></tr>
+      <tr><td>Momen inersia partikel</td><td>I = jumlah m r kuadrat</td></tr>
+      <tr><td>Benda kontinu</td><td>I = integral r^2 dm</td></tr>
+      <tr><td>Teorema sumbu sejajar</td><td>I = I CM + M d^2</td></tr>
+      <tr><td>Kesetimbangan translasi</td><td>Sum F = 0</td></tr>
+      <tr><td>Kesetimbangan rotasi</td><td>Sum tau = 0</td></tr>
+      <tr><td>Kerja rotasi</td><td>W = tau theta</td></tr>
+      <tr><td>Kerja rotasi umum</td><td>W = integral tau d theta</td></tr>
+      <tr><td>Energi kinetik rotasi</td><td>EK rot = 1/2 I omega^2</td></tr>
+      <tr><td>Menggelinding tanpa slip</td><td>v = R omega</td></tr>
+      <tr><td>Energi benda menggelinding</td><td>EK = 1/2 m v^2 + 1/2 I omega^2</td></tr>
+      <tr><td>Kecepatan benda menggelinding</td><td>v = akar dari 2 g h per (1 + I per m R^2)</td></tr>
+      <tr><td>Momentum sudut</td><td>L = I omega</td></tr>
+      <tr><td>Momentum sudut bentuk umum</td><td>L = r x p</td></tr>
+      <tr><td>Hubungan torsi dan momentum sudut</td><td>tau = d L per d t</td></tr>
+      <tr><td>Kekekalan momentum sudut</td><td>L awal = L akhir</td></tr>
+      <tr><td>Laju presesi</td><td>omega P = tau per I omega sin theta</td></tr>
+      <tr><td>Daya rotasi</td><td>P = tau omega</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n69">69. Peta konsep seluruh materi</h2>
+
+  <p>Cara termudah memahami seluruh bab adalah melihat alur hubungan antarkonsepnya.</p>
+
+  <pre class="diagram"><code>  GAYA
+    |
+    | bekerja pada jarak r dari sumbu
+    v
+  TORSI = r F sin theta
+    |
+    | resultedannya menentukan
+    v
+  PERCEPATAN SUDUT   Sum tau = I alpha
+    |
+    | dibatasi oleh
+    v
+  MOMEN INERSIA = jumlah m r kuadrat
+    |
+    v
+  GERAK ROTASI
+
+
+DALAM SUDUT PANDANG ENERGI
+
+  torsi -&gt; kerja rotasi W = tau theta
+        -&gt; energi kinetik rotasi EK = 1/2 I omega^2
+
+  bila benda menggelinding:
+        EK = 1/2 m v^2 + 1/2 I omega^2
+
+
+DALAM SUDUT PANDANG MOMENTUM
+
+  torsi -&gt; perubahan momentum sudut tau = d L per d t
+        -&gt; kekekalan momentum sudut L awal = L akhir</code></pre><h2 id="n70">70. Contoh perhitungan torsi dan percepatan sudut</h2>
+
+  <p>Sebuah cakram pejal bermassa 6 kilogram dengan jari-jari 0,25 meter berputar pada poros tetapnya. Sebuah gaya sebesar 12 newton diberikan melalui tali yang dililitkan pada tepi cakram sehingga arahnya tegak lurus terhadap jari-jari.</p>
+
+  <p><strong>Data</strong></p>
+
+  <pre class="diagram"><code>  m  = 6 kg
+  R  = 0,25 m
+  F  = 12 N
+  gaya tegak lurus terhadap lengan gaya</code></pre>
+
+  <p><strong>Langkah 1. Momen inersia</strong></p>
+
+  <pre class="diagram"><code>  I = 1/2 m R^2
+  I = 1/2 x 6 x (0,25)^2
+  I = 3 x 0,0625
+  I = 0,1875 kg m^2</code></pre>
+
+  <p><strong>Langkah 2. Torsi</strong></p>
+
+  <pre class="diagram"><code>  tau = F R sin 90 derajat
+  tau = F R
+  tau = 12 x 0,25
+  tau = 3 N m</code></pre>
+
+  <p><strong>Langkah 3. Percepatan sudut</strong></p>
+
+  <pre class="diagram"><code>  Sum tau = I alpha
+  alpha  = Sum tau per I
+  alpha  = 3 per 0,1875
+  alpha  = 16 rad/s^2</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 70.1 &middot; Ringkasan hasil contoh perhitungan pertama</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Rumus</th><th>Hasil</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Momen inersia</td><td>1/2 m R^2</td><td>0,1875 kg m^2</td></tr>
+      <tr><td>Torsi</td><td>F R</td><td>3 N m</td></tr>
+      <tr><td>Percepatan sudut</td><td>Sum tau per I</td><td>16 rad/s^2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Periksa satuan hasil. Momen inersia bernilai kilogram meter kuadrat, torsi bernilai newton meter, dan hasil perkalian keduanya menghasilkan kilogram meter kuadrat per sekon kuadrat yang setara dengan radian per sekon kuadrat.</p>
+  </div>
+
+  <h2 id="n71">71. Contoh perhitungan teorema sumbu sejajar</h2>
+
+  <p>Sebuah batang homogen bermassa 8 kilogram dan panjang 1,2 meter. Momen inersia terhadap sumbu yang tegak lurus batang melalui pusat adalah 1 per 12 M L kuadrat. Tentukan momen inersia terhadap sumbu yang tegak lurus batang melalui salah satu ujung.</p>
+
+  <pre class="diagram"><code>  I CM = 1/12 M L^2
+       = 1/12 x 8 x (1,2)^2
+       = 1/12 x 8 x 1,44
+       = 0,96 kg m^2
+
+
+  teorema sumbu sejajar:
+  I = I CM + M d^2
+
+  jarak antara sumbu pusat massa dan sumbu ujung:
+  d = L per 2 = 1,2 per 2 = 0,6 m
+
+  I = 0,96 + 8 x (0,6)^2
+  I = 0,96 + 8 x 0,36
+  I = 0,96 + 2,88
+  I = 3,84 kg m^2</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 71.1 &middot; Pemeriksaan hasil teorema sumbu sejajar</caption>
+    <thead>
+      <tr><th>Pembanding</th><th>Perhitungan</th><th>Hasil</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Teorema sumbu sejajar</td><td>0,96 + 8 kali 0,36</td><td>3,84 kg m^2</td></tr>
+      <tr><td>Rumus batang terhadap ujung</td><td>1 per 3 kali 8 kali 1,44</td><td>3,84 kg m^2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Kedua cara memberikan hasil yang sama. Hasil tersebut juga masuk akal karena momen inersia terhadap ujung harus lebih besar daripada terhadap pusat.</p>
+
+  <h2 id="n72">72. Contoh perhitungan bola pejal yang menggelinding</h2>
+
+  <p>Sebuah bola pejal bermassa 2 kilogram dengan jari-jari 0,15 meter dilepaskan dari keadaan diam pada ketinggian 1,8 meter di atas bidang miring. Bola menggelinding tanpa slip dan bidang miring dianggap licin sehingga hambatan udara diabaikan. Ambil g sebesar 9,8 meter per sekon kuadrat.</p>
+
+  <p><strong>Langkah 1. Momen inersia bola pejal</strong></p>
+
+  <pre class="diagram"><code>  I = 2/5 M R^2
+  I = 2/5 x 2 x (0,15)^2
+  I = 0,8 x 0,0225
+  I = 0,018 kg m^2</code></pre>
+
+  <p><strong>Langkah 2. Rasio bentuk</strong></p>
+
+  <pre class="diagram"><code>  I per (M R^2) = 2/5 = 0,4</code></pre>
+
+  <p><strong>Langkah 3. Kecepatan di dasar bidang miring</strong></p>
+
+  <pre class="diagram"><code>  v^2 = 2 g h per (1 + I per (M R^2))
+  v^2 = 2 x 9,8 x 1,8 per (1 + 0,4)
+  v^2 = 35,28 per 1,4
+  v^2 = 25,2 m^2/s^2
+  v  = 5,02 m/s</code></pre>
+
+  <p><strong>Langkah 4. Pemeriksaan energi</strong></p>
+
+  <pre class="diagram"><code>  energi potensial awal   : E p = M g h = 2 x 9,8 x 1,8 = 35,3 J
+  kecepatan sudut          : omega = v per R = 5,02 per 0,15 = 33,5 rad/s
+
+  energi kinetik translasi: 1/2 M v^2     = 0,5 x 2 x 25,2    = 25,2 J
+  energi kinetik rotasi   : 1/2 I omega^2 = 0,5 x 0,018 x 1120 = 10,1 J
+                                             total            = 35,3 J</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 72.1 &middot; Pembagian energi kinetik bola pejal yang menggelinding</caption>
+    <thead>
+      <tr><th>Komponen</th><th>Perhitungan</th><th>Jumlah</th><th>Porsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Energi kinetik translasi</td><td>1/2 dikali 2 dikali 25,2</td><td>25,2 J</td><td>71 persen</td></tr>
+      <tr><td>Energi kinetik rotasi</td><td>1/2 dikali 0,018 dikali 1120</td><td>10,1 J</td><td>29 persen</td></tr>
+      <tr><td>Total energi kinetik</td><td>25,2 ditambah 10,1</td><td>35,3 J</td><td>100 persen</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Perhatikan bahwa bagian terbesar energi potensial berakhir menjadi energi kinetik translasi. Untuk bola pejal, porsi energi rotasi terhadap energi translasi selalu sebanding dengan rasio bentuk, yaitu 0,4 bagian rotasi untuk setiap 1 bagian translasi.</p>
+  </div>
+
+  <h2 id="n73">73. Contoh perhitungan momentum sudut</h2>
+
+  <p>Sebuah platform putar merupakan cakram pejal yang sedang berputar dengan kecepatan sudut awal 4 radian per sekon. Seorang pemain seluncur yang sedang berputar menarik tangannya sehingga jari-jari efektifnya berubah dari 0,60 meter menjadi 0,30 meter. Dengan model sederhana massa orang dianggap terkumpul pada satu titik di ujung lengan.</p>
+
+  <p><strong>Sebelum</strong></p>
+
+  <pre class="diagram"><code>  I awal = M r awal^2 = M (0,60)^2 = 0,36 M</code></pre>
+
+  <p><strong>Sesudah</strong></p>
+
+  <pre class="diagram"><code>  I akhir = M r akhir^2 = M (0,30)^2 = 0,09 M</code></pre>
+
+  <p><strong>Kekekalan momentum sudut</strong></p>
+
+  <pre class="diagram"><code>  I awal omega awal = I akhir omega akhir
+
+  0,36 M x 4 = 0,09 M x omega akhir
+  1,44 M          = 0,09 M omega akhir
+  omega akhir     = 1,44 per 0,09
+  omega akhir     = 16 rad/s</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 73.1 &middot; Ringkasan perubahan momentum sudut</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Sebelum</th><th>Sesudah</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Jari-jari efektif</td><td>0,60 m</td><td>0,30 m</td></tr>
+      <tr><td>Momen inersia</td><td>0,36 M</td><td>0,09 M</td></tr>
+      <tr><td>Kecepatan sudut</td><td>4 rad/s</td><td>16 rad/s</td></tr>
+      <tr><td>Momentum sudut</td><td>1,44 M</td><td>1,44 M</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Kecepatan sudut menjadi empat kali lipat, sementara momentum sudut tetap. Jari-jari efektif dikecilkan menjadi setengah, sehingga momen inersia menjadi seperempat dan kecepatan sudut menjadi empat kali lipat.</p>
+
+  <div class="note">
+    <p>Momentum sudut dalam satuan kg m^2 per sekon pada contoh ini belum dapat dihitung karena nilai massa belum ditentukan. Yang dapat dipastikan adalah rasio perubahan, yaitu empat kali lipat. Pada perhitungan lengkap, nilai massa cukup dimasukkan pada kedua sisi sehingga saling menghilangkan.</p>
+  </div>
+
+  <h2 id="n74">74. Latihan</h2>
+
+  <p>Kerjakan latihan berikut untuk memeriksa pemahaman terhadap materi modul ini.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 74.1 &middot; Latihan dan jawaban ringkas</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan</th><th>Jawaban ringkas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tuliskan persamaan Hukum II Newton untuk rotasi.</td><td>Resultan torsi sama dengan momen inersia dikali percepatan sudut</td></tr>
+      <tr><td>2</td><td>Apa satuan posisi sudut?</td><td>Radian</td></tr>
+      <tr><td>3</td><td>Berapa nilai satu putaran penuh dalam radian?</td><td>Dua pi radian</td></tr>
+      <tr><td>4</td><td>Kenapa theta harus dinyatakan dalam radian pada rumus rotasi?</td><td>Agar rumus tetap sederhana tanpa faktor pi tambahan</td></tr>
+      <tr><td>5</td><td>Tuliskan rumus kecepatan linear dari kecepatan sudut.</td><td>Kecepatan linear sama dengan jarak dari poros dikali kecepatan sudut</td></tr>
+      <tr><td>6</td><td>Tuliskan rumus torsi umum.</td><td>Perkalian jarak, gaya, dan sinus sudut antara keduanya</td></tr>
+      <tr><td>7</td><td>Kapan torsi maksimum terjadi?</td><td>Ketika gaya tegak lurus terhadap lengan gaya</td></tr>
+      <tr><td>8</td><td>Mengapa dorongan dekat engsel tidak membuat pintu berputar?</td><td>Lengan gaya mendekati nol sehingga torsi mendekati nol</td></tr>
+      <tr><td>9</td><td>Apakah torsi sama dengan gaya?</td><td>Tidak, torsi adalah ukuran efek rotasi gaya</td></tr>
+      <tr><td>10</td><td>Tuliskan definisi momen inersia.</td><td>Jumlah massa dikali kuadrat jarak massa terhadap sumbu</td></tr>
+      <tr><td>11</td><td>Mengapa jarak masuk dengan kuadrat?</td><td>Karena kontribusi massa terhadap inersia rotasi naik kuadratik terhadap jarak</td></tr>
+      <tr><td>12</td><td>Tuliskan momen inersia cakram pejal terhadap sumbu pusat.</td><td>Setengah massa dikali kuadrat jari-jari</td></tr>
+      <tr><td>13</td><td>Tuliskan momen inersia bola pejal terhadap sumbu pusat.</td><td>Dua per lima massa dikali kuadrat jari-jari</td></tr>
+      <tr><td>14</td><td>Tuliskan momen inersia cincin tipis terhadap sumbu pusat.</td><td>Massa dikali kuadrat jari-jari</td></tr>
+      <tr><td>15</td><td>Tuliskan teorema sumbu sejajar.</td><td>Momen inersia sama dengan momen inersia pusat massa ditambah ditambah massa kali kuadrat jarak</td></tr>
+      <tr><td>16</td><td>Syarat apa saja untuk kesetimbangan benda tegar?</td><td>Resultan gaya nol dan resultan torsi nol</td></tr>
+      <tr><td>17</td><td>Mengapa resultan gaya nol belum menjamin kesetimbangan?</td><td>Pasangan gaya dapat menghasilkan torsi yang tidak nol</td></tr>
+      <tr><td>18</td><td>Bagaimana memilih titik acuan torsi yang menguntungkan?</td><td>Pilih titik yang menghilangkan sebanyak mungkin gaya tak diketahui</td></tr>
+      <tr><td>19</td><td>Syarat kestabilan benda tegar apa?</td><td>Proyeksi pusat gravitasi berada di dalam daerah dasar tumpuan</td></tr>
+      <tr><td>20</td><td>Tuliskan rumus kerja rotasi dengan torsi konstan.</td><td>Kerja sama dengan torsi dikali sudut putar</td></tr>
+      <tr><td>21</td><td>Tuliskan rumus energi kinetik rotasi.</td><td>Setengah momen inersia dikali kuadrat kecepatan sudut</td></tr>
+      <tr><td>22</td><td>Apa syarat benda menggelinding tanpa slip?</td><td>Kecepatan pusat massa sama dengan jari-jari dikali kecepatan sudut</td></tr>
+      <tr><td>23</td><td>Berapa rasio bentuk bola pejal?</td><td>Dua per lima</td></tr>
+      <tr><td>24</td><td>Benda berbentuk apa yang menggelinding paling lambat?</td><td>Cincin tipis</td></tr>
+      <tr><td>25</td><td>Tuliskan rumus kecepatan benda menggelinding.</td><td>Akar dari dua kali percepatan gravitasi kali tinggi dibagi satu ditambah rasio bentuk</td></tr>
+      <tr><td>26</td><td>Tuliskan rumus momentum sudut.</td><td>Momen inersia dikali kecepatan sudut</td></tr>
+      <tr><td>27</td><td>Apa satuan momentum sudut?</td><td>Kilogram meter kuadrat per sekon</td></tr>
+      <tr><td>28</td><td>Kapan momentum sudut kekal?</td><td>Ketika torsi eksternal netto bernilai nol</td></tr>
+      <tr><td>29</td><td>Mengapa pemain seluncur berputar lebih cepat saat menarik tangan?</td><td>Momen inersia berkurang sementara momentum sudut tetap</td></tr>
+      <tr><td>30</td><td>Bagaimana menentukan arah vektor kecepatan sudut?</td><td>Dengan aturan tangan kanan</td></tr>
+      <tr><td>31</td><td>Apakah momentum sudut kekal saat lengan ditarik?</td><td>Ya, selama torsi eksternal dapat diabaikan</td></tr>
+      <tr><td>32</td><td>Apa itu presesi?</td><td>Perubahan arah sumbu putar akibat torsi tegak lurus arah putaran</td></tr>
+      <tr><td>33</td><td>Tuliskan rumus daya rotasi.</td><td>Perkalian torsi dengan kecepatan sudut</td></tr>
+      <tr><td>34</td><td>Mengapa motor listrik tanpa beban memiliki daya nol?</td><td>Karena kecepatan sudutnya nol sehingga hasil perkaliannya nol</td></tr>
+      <tr><td>35</td><td>Apa akibat memperpanjang lengan kunci pas?</td><td>Torsi menjadi lebih besar dengan gaya yang sama</td></tr>
+      <tr><td>36</td><td>Kapan persamaan translasi dan rotasi dipakai bersama?</td><td>Pada benda tegar yang menggelinding, persamaan translasi menentukan gerak pusat massa dan persamaan rotasi menentukan gerak sudut</td></tr>
+    </tbody>
+  </table>
+  </div><h2 id="n75">75. Daftar istilah</h2>
+
+  <dl>
+    <dt>Rotasi</dt>
+    <dd>Gerak berputar terhadap suatu sumbu.</dd>
+
+    <dt>Dinamika rotasi</dt>
+    <dd>Cabang mekanika yang mempelajari bagaimana gaya menghasilkan perubahan gerak rotasi suatu benda.</dd>
+
+    <dt>Sumbu tetap</dt>
+    <dd>Sumbu putar yang tidak berubah posisi dan arah selama analisis.</dd>
+
+    <dt>Posisi sudut</dt>
+    <dd>Besaran yang menyatakan sejauh mana benda telah berputar, diukur dalam radian.</dd>
+
+    <dt>Kecepatan sudut</dt>
+    <dd>Laju perubahan posisi sudut terhadap waktu.</dd>
+
+    <dt>Percepatan sudut</dt>
+    <dd>Laju perubahan kecepatan sudut terhadap waktu.</dd>
+
+    <dt>Hubungan linear dan sudut</dt>
+    <dd>Pasangan besaran yang menghubungkan gerak titik pada radius r dengan gerak sudut benda, seperti v = r omega.</dd>
+
+    <dt>Torsi</dt>
+    <dd>Ukuran kemampuan gaya untuk menghasilkan atau mengubah rotasi terhadap suatu sumbu.</dd>
+
+    <dt>Lengan gaya</dt>
+    <dd>Jarak tegak lurus antara sumbu putar dan garis kerja gaya.</dd>
+
+    <dt>Hasil kali silang</dt>
+    <dd>Operasi vektor yang menghasilkan vektor tegak lurus terhadap kedua vektor pembentuknya.</dd>
+
+    <dt>Momen inersia</dt>
+    <dd>Ukuran inersia rotasi benda, bernilai jumlah massa dikali kuadrat jarak massa terhadap sumbu.</dd>
+
+    <dt>Teorema sumbu sejajar</dt>
+    <dd>Hubungan untuk mencari momen inersia terhadap sumbu sejajar yang lain dari momen inersia melalui pusat massa.</dd>
+
+    <dt>Benda tegar</dt>
+    <dd>Benda yang tidak mengalami perubahan bentuk saat dikenai gaya.</dd>
+
+    <dt>Kesetimbangan statis</dt>
+    <dd>Kondisi ketika resultan gaya nol dan resultan torsi nol sehingga benda diam atau bergerak dengan kecepatan tetap.</dd>
+
+    <dt>Pivot</dt>
+    <dd>Titik yang dipakai sebagai titik acuan perhitungan torsi.</dd>
+
+    <dt>Pusat massa</dt>
+    <dd>Posisi rata-rata massa benda dengan pembobot massa masing-masing bagiannya.</dd>
+
+    <dt>Pusat gravitasi</dt>
+    <dd>Titik tempat berat total benda dapat dianggap terkonsentrasi untuk keperluan analisis.</dd>
+
+    <dt>Kesetimbangan stabil</dt>
+    <dd>Keadaan setimbang yang cenderung kembali ke posisi awal setelah digeser sedikit.</dd>
+
+    <dt>Kesetimbangan tidak stabil</dt>
+    <dd>Keadaan setimbang yang justru menjauh dari posisi awal setelah digeser sedikit.</dd>
+
+    <dt>Kesetimbangan netral</dt>
+    <dd>Keadaan setimbang yang tetap bertahan pada posisi baru setelah digeser.</dd>
+
+    <dt>Daerah dasar tumpuan</dt>
+    <dd>Daerah yang dibentuk oleh titik-titik tumpuan, syarat kestabilan benda tegar.</dd>
+
+    <dt>Kerja rotasi</dt>
+    <dd>Hasil perkalian torsi dengan sudut putar, dihitung dalam radian.</dd>
+
+    <dt>Energi kinetik rotasi</dt>
+    <dd>Energi akibat gerak rotasi benda, bernilai setengah momen inersia dikali kuadrat kecepatan sudut.</dd>
+
+    <dt>Flywheel</dt>
+    <dd>Roda geser yang sengaja dibuat bermomen inersia besar untuk menyimpan energi kinetik rotasi.</dd>
+
+    <dt>Menggelinding tanpa slip</dt>
+    <dd>Kondisi saat titik kontak sesaat antara benda menggelinding dan permukaan tidak mengalami gerak relatif.</dd>
+
+    <dt>Rasio bentuk</dt>
+    <dd>Nilai I per M R^2 yang menentukan percepatan benda yang menggelinding pada bidang miring.</dd>
+
+    <dt>Momentum sudut</dt>
+    <dd>Besaran vektor yang menyatakan ukuran gerak rotasi, bernilai momen inersia dikali kecepatan sudut.</dd>
+
+    <dt>Kekekalan momentum sudut</dt>
+    <dd>Prinsip bahwa momentum sudut sistem tetap apabila torsi eksternal nettonya nol.</dd>
+
+    <dt>Aturan tangan kanan</dt>
+    <dd>Aturan untuk menentukan arah vektor hasil kali silang, seperti arah kecepatan sudut dan momentum sudut.</dd>
+
+    <dt>Giroskop</dt>
+    <dd>Sistem berputar bermomentum sudut besar yang arah sumbunya relatif stabil.</dd>
+
+    <dt>Presesi</dt>
+    <dd>Perubahan arah sumbu putar benda yang berputar akibat torsi tegak lurus terhadap arah putaran.</dd>
+
+    <dt>Nutas</dt>
+    <dd>Gerakan naik turun kecil pada sumbu benda yang mengalami presesi.</dd>
+
+    <dt>Roda reaksi</dt>
+    <dd>Roda pada wahana yang dipercepat atau dihentikan untuk menghasilkan torsi pada badan wahana.</dd>
+
+    <dt>Konvensi tanda</dt>
+    <dd>Aturan penentuan tanda besaran, misalnya berlawanan arah jarum jam bernilai positif pada perhitungan torsi.</dd>
+  </dl>
+
+  <h2 id="n76">76. Daftar pustaka</h2>
+
+  <p>Daftar pustaka disusun dari materi utama kuliah, buku teks, dan sumber gambar yang dipakai pada modul ini.</p>
+
+  <footer>
+    <ul class="refs">
+      <li><b>Materi utama.</b> <em>Dinamika Rotasi, Kesetimbangan Benda Tegar, Energi Rotasi, dan Momentum Sudut.</em> Sumber utama yang mencakup struktur, istilah, dan topik yang dibahas dalam modul ini.</li>
+      <li><b>Moebs, W., Ling, S. J., dan Sanny, J.</b> <em>OpenStax, College Physics 2e.</em> Bab 10: Introduction to Rotational Motion and Angular Momentum. Rujukan utama untuk analogi translasi dan rotasi, dinamika rotasional, dan momen inersia. <a href="https://openstax.org/books/college-physics-2e/pages/10-introduction-to-rotational-motion-and-angular-momentum">openstax.org</a></li>
+      <li><b>Moebs, W., Ling, S. J., dan Sanny, J.</b> <em>OpenStax, College Physics 2e.</em> Bagian 10.2: Kinematics of Rotational Motion. Kinematika rotasi berupa posisi sudut, kecepatan sudut, dan percepatan sudut. <a href="https://openstax.org/books/college-physics-2e/pages/10-2-kinematics-of-rotational-motion">openstax.org</a></li>
+      <li><b>Moebs, W., Ling, S. J., dan Sanny, J.</b> <em>OpenStax, College Physics 2e.</em> Bagian 10.3: Dynamics of Rotational Motion, Rotational Inertia. Torsi, momen inersia, dan persamaan resultan torsi sama dengan momen inersia dikali percepatan sudut. <a href="https://openstax.org/books/college-physics-2e/pages/10-3-dynamics-of-rotational-motion-rotational-inertia">openstax.org</a></li>
+      <li><b>Moebs, W., Ling, S. J., dan Sanny, J.</b> <em>OpenStax, College Physics 2e.</em> Bagian 10.4: Rotational Kinetic Energy, Work and Energy Revisited. Energi kinetik rotasi dan benda yang menggelinding. <a href="https://openstax.org/books/college-physics-2e/pages/10-4-rotational-kinetic-energy-work-and-energy-revisited">openstax.org</a></li>
+      <li><b>Moebs, W., Ling, S. J., dan Sanny, J.</b> <em>OpenStax, College Physics 2e.</em> Bagian 10.5: Angular Momentum and Its Conservation. Momentum sudut dan kekekalannya. <a href="https://openstax.org/books/college-physics-2e/pages/10-5-angular-momentum-and-its-conservation">openstax.org</a></li>
+      <li><b>Moebs, W., Ling, S. J., dan Sanny, J.</b> <em>OpenStax, College Physics 2e.</em> Bagian 10.7: Gyroscopic Effects, Vector Aspects of Angular Momentum. Aturan tangan kanan, efek giroskopik, dan presesi. <a href="https://openstax.org/books/college-physics-2e/pages/10-7-gyroscopic-effects-vector-aspects-of-angular-momentum">openstax.org</a></li>
+      <li><b>Moebs, W., Ling, S. J., dan Sanny, J.</b> <em>OpenStax, College Physics 2e.</em> Bagian 9.1 dan 9.2: The First and Second Conditions for Equilibrium. Dua syarat kesetimbangan benda tegar, torsi, dan pemilihan titik acuan. <a href="https://openstax.org/books/college-physics-2e/pages/9-1-the-first-condition-for-equilibrium">openstax.org</a></li>
+      <li><b>Moebs, W., Ling, S. J., dan Sanny, J.</b> <em>OpenStax, College Physics 2e.</em> Bagian 9.3: Stability. Kesetimbangan stabil, tidak stabil, netral, dan hubungannya dengan pusat gravitasi. <a href="https://openstax.org/books/college-physics-2e/pages/9-3-stability">openstax.org</a></li>
+      <li><b>Sanny, J., dan Moebs, W.</b> <em>OpenStax, University Physics Volume 1.</em> Bab 10: Fixed-Axis Rotation. Pembahasan mendalam mengenai besaran rotasi, torsi, teorema sumbu sejajar, dan daya rotasi. <a href="https://openstax.org/books/university-physics-volume-1/pages/10-introduction">openstax.org</a></li>
+      <li><b>Sanny, J.</b> <em>OpenStax, University Physics Volume 1.</em> Ringkasan persamaan kunci bab 10. Kumpulan persamaan rotasi, momen inersia, torsi, kerja, energi, dan daya. <a href="https://openstax.org/books/university-physics-volume-1/pages/10-key-equations">openstax.org</a></li>
+      <li><b>Sanny, J.</b> <em>OpenStax, University Physics Volume 1.</em> Bagian 11.4: Precession of a Gyroscope. Turunan laju presesi dan konsep nutasi. <a href="https://openstax.org/books/university-physics-volume-1/pages/11-4-precession-of-a-gyroscope">openstax.org</a></li>
+      <li><b>Idema, M.</b> <em>Physics LibreTexts, Delft University of Technology.</em> Mekanika dan Relativitas, bagian 5.6: Angular Momentum. Bentuk umum momentum sudut sebagai hasil kali silang. <a href="https://phys.libretexts.org/Bookshelves/University_Physics/Mechanics_and_Relativity_(Idema)/05%3A_Rotational_Motion_Torque_and_Angular_Momentum/5.06%3A_Angular_Momentum">phys.libretexts.org</a></li>
+      <li><b>Encyclopaedia Britannica.</b> <em>Angular Momentum.</em> Definisi momentum sudut sebagai besaran vektor, satuan, dan aturan arah. <a href="https://www.britannica.com/science/angular-momentum">britannica.com</a></li>
+      <li><b>Encyclopaedia Britannica.</b> <em>Conservation of Angular Momentum.</em> Kekekalan momentum sudut dan penerapannya pada pemain seluncur serta gyrokompas. <a href="https://www.britannica.com/science/conservation-of-angular-momentum">britannica.com</a></li>
+      <li><b>Wikimedia Commons.</b> <em>Torque lever arm, Five basic moments of inertia, Parallel axis theorem, Seesaw torque equilibrium, Rolling Racers, figure skater, dan Right-hand rule gyroscope.</em> Sumber seluruh gambar pada modul ini. <a href="https://commons.wikimedia.org/">commons.wikimedia.org</a></li>
+    </ul>
+  </footer>
+
+  <h2 id="n77">77. Daftar sumber gambar</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 77.1 &middot; Sumber dan lisensi setiap gambar</caption>
+    <thead>
+      <tr><th>Gambar</th><th>Berkas</th><th>Pembuat</th><th>Lisensi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Gambar 1. Diagram torsi dan lengan gaya</td><td>Torque lever arm with point of application and line of action</td><td>Guy vandegrift</td><td>CC BY-SA 4.0</td></tr>
+      <tr><td>Gambar 2. Bentuk dasar momen inersia</td><td>Five basic moments of inertia</td><td>Guy vandegrift</td><td>CC BY-SA 4.0</td></tr>
+      <tr><td>Gambar 3. Teorema sumbu sejajar</td><td>Parallel axis theorem</td><td>IngenieroLoco</td><td>CC BY-SA 4.0</td></tr>
+      <tr><td>Gambar 4. Kesetimbangan jungkat-jungkit</td><td>Seesaw torque equilibrium</td><td>MikeRun</td><td>CC BY-SA 4.0</td></tr>
+      <tr><td>Gambar 5. Benda bergelinding dengan momen inersia berbeda</td><td>Rolling Racers, Moment of inertia</td><td>Lucas Vieira</td><td>Domain publik</td></tr>
+      <tr><td>Gambar 6. Konservasi momentum sudut</td><td>Cup of Russia 2010, Yuko Kawaguti</td><td>deerstop</td><td>CC0, dedikasi domain publik</td></tr>
+      <tr><td>Gambar 7. Aturan tangan kanan pada giroskop</td><td>Right-hand rule for gyroscope</td><td>Jn.mdel</td><td>CC BY-SA 4.0</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Untuk gambar yang berlisensi CC BY-SA, nama pembuat dan lisensinya perlu dicantumkan ketika gambar dipakai kembali. Untuk gambar berstatus domain publik atau CC0, atribusi tetap baik dicantumkan sebagai rujukan akademis meskipun persyaratan lisensinya lebih longgar.</p>
+  </div>
+
+  <p>Modul ini menutup rangkaian empat modul Fisika Dasar. Translasi yang dipelajari pada modul pertama sampai ketiga sekarang memiliki pasangan rotasi yang lengkap, mulai dari posisi sudut sampai kekekalan momentum sudut.</p>
+</main>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>
