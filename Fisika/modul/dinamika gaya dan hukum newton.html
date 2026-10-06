@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinamika: Gaya dan Hukum Newton &mdash; Fisika Dasar</title>
+<meta name="description" content="Modul Fisika Dasar: gaya sebagai besaran vektor, resultan gaya, Hukum Newton I sampai III, diagram gaya bebas, gaya normal, bidang miring, gesekan, tegangan tali, katrol, gravitasi universal, gerak melingkar, gaya sentripetal, dan tekanan.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-hover: #F1F5F9;
+    --heading: #0F172A;
+    --text: #334155;
+    --muted: #64748B;
+    --faint: #94A3B8;
+    --accent: #4F46E5;
+    --gold: #D99A16;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --code-bg: #0F172A;
+    --code-text: #E2E8F0;
+    --glow-1: rgba(79, 70, 229, .10);
+    --glow-2: rgba(217, 154, 22, .07);
+    --note-bg: #FFFBEB;
+    --note-border: #D99A16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0B0F19;
+      --surface: #111827;
+      --surface-hover: #182235;
+      --heading: #F8FAFC;
+      --text: #CBD5E1;
+      --muted: #94A3B8;
+      --faint: #64748B;
+      --accent: #818CF8;
+      --gold: #F5C451;
+      --border: #263244;
+      --success: #4ADE80;
+      --code-bg: #0A0F1C;
+      --code-text: #CBD5E1;
+      --glow-1: rgba(79, 70, 229, .16);
+      --glow-2: rgba(245, 196, 81, .06);
+      --note-bg: #1A1608;
+      --note-border: #F5C451;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0B0F19;
+    --surface: #111827;
+    --surface-hover: #182235;
+    --heading: #F8FAFC;
+    --text: #CBD5E1;
+    --muted: #94A3B8;
+    --faint: #64748B;
+    --accent: #818CF8;
+    --gold: #F5C451;
+    --border: #263244;
+    --success: #4ADE80;
+    --code-bg: #0A0F1C;
+    --code-text: #CBD5E1;
+    --glow-1: rgba(79, 70, 229, .16);
+    --glow-2: rgba(245, 196, 81, .06);
+    --note-bg: #1A1608;
+    --note-border: #F5C451;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+      var(--bg);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .crumb {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .crumb:hover { color: var(--accent); }
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .theme-toggle {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 3.25rem;
+    letter-spacing: -.01em;
+    scroll-margin-top: 1.5rem;
+    color: var(--heading);
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+  p { color: var(--muted); margin: 1rem 0; }
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--faint); }
+  a { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding-bottom: .5rem;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+  code {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .85em;
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: 6px;
+    color: var(--heading);
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.15rem 1.3rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .84rem;
+    line-height: 1.55;
+    margin: 1.5rem 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+  pre.diagram { line-height: 1.45; }
+
+  .eq {
+    margin: 1.5rem 0;
+    padding: 1rem 1.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    color: var(--heading);
+    font-size: 1.05rem;
+    overflow-x: auto;
+  }
+  var, .sym {
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--heading);
+  }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+  .frac > span:last-child { padding: .05em .4em 0; }
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+  figure { margin: 1.75rem 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem;
+  }
+  figcaption {
+    max-width: 30rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  figcaption b { color: var(--muted); font-weight: 600; }
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+  figcaption a:hover { color: var(--accent); }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--note-border);
+    background: var(--note-bg);
+    padding: .9rem 1.15rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+  .note p:last-child { margin-bottom: 0; }
+  .note .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .qa { margin: 1.5rem 0; }
+  .qa dt {
+    font-weight: 600;
+    color: var(--heading);
+    margin-top: 1.25rem;
+    font-size: .98rem;
+  }
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+  .toc {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 230px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-size: .8rem;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+  .toc::-webkit-scrollbar { width: 5px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+  .toc a:hover { color: var(--accent); }
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+  .ex {
+    margin: 1.5rem 0;
+    padding: .95rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: .92rem;
+  }
+  .ex .label {
+    display: block;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .45rem;
+  }
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+  .scroll { overflow-x: auto; }
+  .scroll table { min-width: 34rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  footer .eyebrow { margin-bottom: .75rem; }
+  .refs { list-style: none; padding: 0; margin: 0; }
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+  .refs b { color: var(--heading); font-weight: 600; }
+  .refs a { word-break: break-word; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .theme-toggle { transition: none; }
+    .theme-toggle:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#s1">1. Peta materi</a>
+  <a href="#s2">2. Tujuan pembelajaran</a>
+  <a href="#s3">3. Kinematika dan dinamika</a>
+  <a href="#s4">4. Pengertian gaya</a>
+  <a href="#s5">5. Gaya sebagai besaran vektor</a>
+  <a href="#s6">6. Gaya kontak dan gaya jarak jauh</a>
+  <a href="#s7">7. Resultan gaya</a>
+  <a href="#s8">8. Kesetimbangan dan resultan gaya nol</a>
+  <a href="#s9">9. Massa dan inersia</a>
+  <a href="#s10">10. Massa dan berat</a>
+  <a href="#s11">11. Hukum I Newton</a>
+  <a href="#s12">12. Kerangka acuan inersial</a>
+  <a href="#s13">13. Hukum II Newton</a>
+  <a href="#s14">14. Resultan gaya dalam perhitungan</a>
+  <a href="#s15">15. Bentuk umum dan momentum</a>
+  <a href="#s16">16. Diagram gaya bebas</a>
+  <a href="#s17">17. Gaya berat</a>
+  <a href="#s18">18. Gaya normal</a>
+  <a href="#s19">19. Gaya dengan sudut</a>
+  <a href="#s20">20. Bidang miring</a>
+  <a href="#s21">21. Gaya gesek</a>
+  <a href="#s22">22. Gesekan statis dan kinetis</a>
+  <a href="#s23">23. Gaya gesek pada bidang miring</a>
+  <a href="#s24">24. Tegangan tali</a>
+  <a href="#s25">25. Sistem dua benda dan katrol</a>
+  <a href="#s26">26. Pesawat Atwood</a>
+  <a href="#s27">27. Hukum III Newton</a>
+  <a href="#s28">28. Aksi dan reaksi</a>
+  <a href="#s29">29. Gaya pada kuda dan dokar</a>
+  <a href="#s30">30. Gravitasi universal</a>
+  <a href="#s31">31. Hubungan gravitasi dan berat</a>
+  <a href="#s32">32. Jatuh bebas dan massa</a>
+  <a href="#s33">33. Hambatan udara</a>
+  <a href="#s34">34. Bentuk benda dan aerodinamika</a>
+  <a href="#s35">35. Gaya pada pesawat terbang</a>
+  <a href="#s36">36. Gaya sentripetal</a>
+  <a href="#s37">37. Arah gaya sentripetal</a>
+  <a href="#s38">38. Mobil saat menikung</a>
+  <a href="#s39">39. Tikungan miring</a>
+  <a href="#s40">40. Gerak melingkar vertikal</a>
+  <a href="#s41">41. Tekanan</a>
+  <a href="#s42">42. Tekanan pada benda</a>
+  <a href="#s43">43. Tekanan pada struktur dan kendaraan</a>
+  <a href="#s44">44. Tekanan hidrostatik</a>
+  <a href="#s45">45. Prinsip Pascal</a>
+  <a href="#s46">46. Strategi mengerjakan soal</a>
+  <a href="#s47">47. Kesalahan yang sering terjadi</a>
+  <a href="#s48">48. Ringkasan rumus</a>
+  <a href="#s49">49. Latihan</a>
+  <a href="#s50">50. Daftar istilah</a>
+  <a href="#s51">51. Daftar pustaka</a>
+</nav>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Modul 01 &middot; Fisika Dasar</p>
+    <div class="rule"></div>
+    <h1>Dinamika: Gaya dan Hukum Newton</h1>
+    <p>Materi ini membahas hubungan antara gaya dan gerak. Pembahasan dimulai dari pembagian kinematika dan dinamika, pengertian gaya, sifat gaya sebagai besaran vektor, gaya kontak dan gaya jarak jauh, resultan gaya, kesetimbangan, massa dan inersia, serta perbedaan massa dan berat. Bagian berikutnya membahas kerangka acuan inersial, Hukum Newton I sampai III, diagram gaya bebas, gaya berat, gaya normal, uraian gaya pada sumbu, bidang miring, gaya gesek statis dan kinetis, tegangan tali, sistem katrol, dan pesawat Atwood. Materi diperluas ke gravitasi universal, jatuh bebas, hambatan udara, aerodinamika, gaya pada pesawat, gerak melingkar, gaya sentripetal, tikungan datar dan miring, gerak melingkar vertikal, serta tekanan pada benda, struktur, fluida, dan prinsip Pascal. Bagian akhir membahas strategi mengerjakan soal, kesalahan yang sering terjadi, dan ringkasan rumus.</p>
+  </header>
+
+  <main>
+<h2 id="s1">1. Peta materi</h2>
+
+  <p>Dinamika adalah bagian dari mekanika yang mempelajari hubungan antara gaya dan gerak. Materi ini disusun dari konsep paling dasar menuju penerapan yang semakin kompleks.</p>
+
+  <pre class="diagram"><code>KINEMATIKA
+  posisi, perpindahan, kecepatan, percepatan
+  -&gt; tanpa membahas penyebab gerak
+   |
+ Pertanyaan: mengapa benda dipercepat?
+   |
+ DINAMIKA
+   |
+ GAYA sebagai besaran vektor
+   |
+ RESULTAN GAYA
+   |
+ PERCEPATAN
+   |
+ Hukum Newton pada berbagai konfigurasi
+   |
+ bidang datar -&gt; bidang miring -&gt; gesekan
+   |
+ tegangan tali -&gt; katrol -&gt; Atwood
+   |
+ gravitasi -&gt; hambatan udara -&gt; gaya angkat
+   |
+ gerak melingkar -&gt; gaya sentripetal
+   |
+ TEKANAN sebagai P = F/A</code></pre>
+
+  <p>Hubungan terpenting yang menjadi titik awal seluruh materi ini adalah Hukum II Newton, yaitu resultan gaya sama dengan massa dikali percepatan.</p>
+
+  <pre class="diagram"><code>sum F = m a
+
+Maknanya:
+
+  resultan gaya      -&gt;  perubahan gerak
+  massa              -&gt;  besar inersia
+  percepatan         -&gt;  perubahan kecepatan</code></pre>
+
+  <p>Kalau gaya-gaya yang bekerja pada sebuah benda diketahui, kita dapat menentukan bagaimana geraknya berubah. Sebaliknya, kalau perubahan gerak diketahui, kita dapat menebak resultan gaya yang menyebabkan perubahan tersebut.</p>
+
+  <h2 id="s2">2. Tujuan pembelajaran</h2>
+
+  <p>Setelah mengikuti sesi ini, mahasiswa mampu menjelaskan hubungan antara gaya dan gerak, mengidentifikasi jenis-jenis gaya, menyusun diagram gaya bebas, menerapkan Hukum Newton pada bidang datar dan bidang miring, menghitung resultan gaya dan tegangan tali, serta menganalisis gerak melingkar dan tekanan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 2.1 &middot; Tujuan sesi dan indikator pemahaman</caption>
+    <thead>
+      <tr><th>Tujuan</th><th>Indikator pemahaman</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menjelaskan pengertian gaya</td><td>Menyebutkan satuan SI gaya dan sifatnya sebagai besaran vektor</td></tr>
+      <tr><td>Membedakan jenis gaya</td><td>Mengelompokkan gaya kontak dan gaya jarak jauh beserta contohnya</td></tr>
+      <tr><td>Menghitung resultan gaya</td><td>Menjumlahkan gaya secara vektor dan menentukan arahnya</td></tr>
+      <tr><td>Memahami inersia dan massa</td><td>Menjelaskan hubungan massa dengan kecenderungan mempertahankan keadaan gerak</td></tr>
+      <tr><td>Menerapkan Hukum Newton</td><td>Menyusun persamaan resultan gaya untuk setiap sumbu</td></tr>
+      <tr><td>Menyusun diagram gaya bebas</td><td>Menggambar hanya gaya eksternal pada benda yang dianalisis</td></tr>
+      <tr><td>Menganalisis bidang miring</td><td>Menghitung percepatan pada bidang licin dan bidang dengan gesekan</td></tr>
+      <tr><td>Menganalisis tegangan tali</td><td>Menyelesaikan sistem dua benda, katrol, dan pesawat Atwood</td></tr>
+      <tr><td>Memahami hukum gravitasi</td><td>Menghubungkan gaya gravitasi, berat, dan percepatan jatuh bebas</td></tr>
+      <tr><td>Menganalisis gerak melingkar</td><td>Menghitung percepatan dan gaya sentripetal beserta batas traksi</td></tr>
+      <tr><td>Memahami tekanan</td><td>Menghubungkan gaya, luas, dan tekanan pada benda maupun fluida</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s3">3. Kinematika dan dinamika</h2>
+
+  <p>Mekanika terbagi menjadi dua bagian utama. Kinematika mempelajari gerak tanpa membahas penyebab gerak. Dinamika mempelajari penyebab perubahan gerak.</p>
+
+  <p>Ketika kita mengamati sebuah mobil bergerak, ada dua pertanyaan yang berbeda. Kinematika menanyakan posisi, kecepatan, dan percepatan mobil. Dinamika menanyakan apa yang menyebabkan mobil mengalami percepatan, apa yang membuat mobil berhenti, dan mengapa mobil dapat berbelok.</p>
+
+  <div class="eq">
+    <var>v</var><sub>rata-rata</sub> = &Delta;<var>x</var> / &Delta;<var>t</var>
+    <span class="eq-note">Besaran kinematika yang paling sering dipakai pada materi ini</span>
+  </div>
+
+  <div class="eq">
+    <var>a</var><sub>rata-rata</sub> = &Delta;<var>v</var> / &Delta;<var>t</var>
+    <span class="eq-note">Percepatan rata-rata merupakan perubahan kecepatan per satuan waktu</span>
+  </div>
+
+  <p>Kinematika dapat memberi tahu bahwa sebuah mobil mengalami percepatan tiga meter per detik kuadrat, tetapi belum menjelaskan mengapa percepatan tersebut terjadi. Persoalan itu menjadi tugas dinamika.</p>
+
+  <h2 id="s4">4. Pengertian gaya</h2>
+
+  <p>Gaya adalah interaksi yang dapat menyebabkan perubahan keadaan gerak suatu benda atau menyebabkan perubahan bentuk benda. Dalam bahasa sehari-hari, gaya dapat dipahami sebagai tarikan atau dorongan.</p>
+
+  <p>Contoh interaksi yang menghasilkan gaya:</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 4.1 &middot; Contoh gaya dalam kehidupan sehari-hari</caption>
+    <thead>
+      <tr><th>Interaksi</th><th>Gaya yang muncul</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mendorong meja</td><td>Gaya dorong dari tangan pada meja</td></tr>
+      <tr><td>Menarik pintu</td><td>Gaya tarik dari tangan pada pintu</td></tr>
+      <tr><td>Berjalan di tanah</td><td>Gaya gravitasi Bumi pada tubuh manusia</td></tr>
+      <tr><td>Berjalan di lantai</td><td>Gaya normal lantai ke atas pada kaki</td></tr>
+      <tr><td>Menarik benda dengan tali</td><td>Gaya tarik tali pada benda</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Satuan SI gaya adalah newton, ditulis dengan huruf N. Satu newton adalah gaya yang diperlukan untuk memberikan percepatan satu meter per detik kuadrat kepada massa satu kilogram.</p>
+
+  <div class="eq">
+    1 N = 1 kg &middot; m/s<sup>2</sup>
+    <span class="eq-note">Definisi ini sekaligus menjelaskan satuan gaya dapat diturunkan dari satuan massa dan percepatan</span>
+  </div>
+
+  <h2 id="s5">5. Gaya sebagai besaran vektor</h2>
+
+  <p>Gaya bukan hanya memiliki nilai, tetapi juga memiliki arah. Menulis gaya lima puluh newton tanpa keterangan arah belum memberikan informasi lengkap.</p>
+
+  <pre class="diagram"><code>Gaya 50 N arah kanan      -&gt;  -&gt; -&gt; -&gt; -&gt;
+Gaya 50 N arah kiri      -&lt;-  &lt;-  &lt;-  &lt;-  &lt;-
+
+Keduanya punya besar sama,
+tetapi hasil penjumlahannya berbeda.</code></pre>
+
+  <p>Karena memiliki besar dan arah, gaya merupakan besaran vektor. Hal ini penting karena dua gaya yang memiliki besar sama belum tentu menghasilkan resultan yang sama.</p>
+
+  <pre class="diagram"><code>Contoh A
+  10 N -&gt;   +   5 N -&gt;
+  resultan = 15 N -&gt;
+
+Contoh B
+  10 N -&gt;   +   5 N &lt;-
+  resultan = 5 N -&gt;</code></pre>
+
+  <h2 id="s6">6. Gaya kontak dan gaya jarak jauh</h2>
+
+  <p>Salah satu cara mengelompokkan gaya adalah berdasarkan apakah benda harus bersentuhan untuk berinteraksi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.1 &middot; Perbandingan gaya kontak dan gaya jarak jauh</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Gaya kontak</th><th>Gaya jarak jauh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Syarat</td><td>Harus ada sentuhan</td><td>Tidak perlu sentuhan</td></tr>
+      <tr><td>Contoh</td><td>Gaya normal, gaya gesek, gaya tegangan, gaya dorong</td><td>Gaya gravitasi</td></tr>
+      <tr><td>Bergantung pada keadaan</td><td>Pada kondisi permukaan kontak</td><td>Pada posisi relatif kedua benda</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Gaya normal adalah gaya dari permukaan yang tegak lurus permukaan. Gaya gesek muncul akibat interaksi permukaan. Gaya tegangan adalah gaya dari tali. Gaya dorong atau tarik diberikan langsung oleh manusia atau benda lain.</p>
+
+  <p>Gaya gravitasi bekerja pada jarak tertentu dan selalu bersifat tarik-menarik. Bumi dapat menarik sebuah benda meskipun benda tersebut tidak menyentuh Bumi.</p>
+
+  <h2 id="s7">7. Resultan gaya</h2>
+
+  <p>Sebuah benda jarang hanya mendapatkan satu gaya. Misalnya sebuah kotak didorong ke kanan, sementara gesekan bekerja ke kiri.</p>
+
+  <pre class="diagram"><code>  F dorong  -&gt;
+        [KOTAK]
+  f gesek &lt;-
+
+Yang menentukan percepatan bukan salah satu
+gaya secara terpisah, melainkan jumlah vektor
+seluruh gaya.</code></pre>
+
+  <div class="eq">
+    <var>F</var><sub>net</sub> = &Sigma;<var>F</var>
+    <span class="eq-note">Gaya netto adalah jumlah vektor seluruh gaya eksternal yang bekerja pada sistem</span>
+  </div>
+
+  <p>Jika gaya dorong sebesar dua puluh newton bekerja ke kanan dan gaya gesek sebesar delapan newton bekerja ke kiri, maka:</p>
+
+  <div class="eq">
+    <var>F</var><sub>net</sub> = 20 &minus; 8 = 12 N ke kanan
+  </div>
+
+  <h2 id="s8">8. Kesetimbangan dan resultan gaya nol</h2>
+
+  <p>Jika resultan gaya sama dengan nol, maka percepatan juga sama dengan nol.</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var> = 0 &nbsp;&rArr;&nbsp; <var>a</var> = 0
+  </div>
+
+  <p>Namun percepatan nol tidak selalu berarti benda diam. Ada dua kemungkinan. Pertama, benda dalam keadaan diam dengan kecepatan nol, sehingga benda akan tetap diam. Kedua, benda sedang bergerak dengan kecepatan konstan, sehingga benda akan terus bergerak lurus dengan kecepatan konstan.</p>
+
+  <div class="note">
+    <p>Kaidah penting dari bagian ini adalah bahwa tidak adanya percepatan tidak berarti tidak ada gaya. Yang berarti adalah resultan gaya sama dengan nol. Buku yang diletakkan di atas meja mengalami gaya berat ke bawah dan gaya normal ke atas. Kedua gaya ada, tetapi nilainya sama sehingga saling meniadakan.</p>
+  </div>
+
+  <pre class="diagram"><code>Buku di atas meja
+
+      N  (gaya normal, ke atas)
+      |
+     [BUKU]
+      |
+      v
+      W  (gaya berat, ke bawah)
+
+  Sumbu y ke atas:
+  Sum F_y = N &minus; W = 0
+  Jika tidak ada gaya vertikal lain, maka N = W</code></pre>
+
+  <h2 id="s9">9. Massa dan inersia</h2>
+
+  <p>Inersia atau kelembaman adalah kecenderungan benda untuk mempertahankan keadaan geraknya. Benda yang diam cenderung tetap diam, dan benda yang bergerak cenderung mempertahankan geraknya.</p>
+
+  <p>Contohnya ketika bus bergerak lalu berhenti mendadak, tubuh penumpang terasa terdorong ke depan. Tubuh itu sebelumnya bergerak bersama bus dan cenderung mempertahankan keadaan geraknya.</p>
+
+  <p>Semakin besar massa, semakin besar inersianya. Mendorong bola sepak relatif mudah, sedangkan mendorong mobil jauh lebih sulit. Bukan karena mobil tidak mau bergerak, melainkan karena perubahan keadaan gerak memerlukan resultan gaya yang lebih besar untuk menghasilkan percepatan yang sama.</p>
+
+  <div class="note">
+    <p>Inersia berkaitan langsung dengan massa. Massa merupakan ukuran kuantitatif yang menyatakan kecenderungan benda mempertahankan keadaan geraknya.</p>
+  </div>
+
+  <h2 id="s10">10. Massa dan berat</h2>
+
+  <p>Massa dan berat adalah dua besaran yang berbeda, meskipun keduanya sering dianggap sama dalam percakapan sehari-hari.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 10.1 &middot; Perbedaan massa dan berat</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Massa</th><th>Berat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Definisi</td><td>Jumlah materi penyusun benda</td><td>Gaya gravitasi yang bekerja pada benda</td></tr>
+      <tr><td>Lambang</td><td>m</td><td>W</td></tr>
+      <tr><td>Satuan</td><td>Kilogram atau kg</td><td>Newton atau N</td></tr>
+      <tr><td>Hubungan</td><td>Menentukan inersia</td><td>Dihitung dengan W = mg</td></tr>
+      <tr><td>Menjadi nol</td><td>Tidak pernah menjadi nol</td><td>Dapat mendekati nol di luar pengaruh medan gravitasi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jika seseorang memiliki massa enam puluh kilogram dan nilai g sebesar 9,8 meter per detik kuadrat, maka beratnya:</p>
+
+  <div class="eq">
+    <var>W</var> = <var>mg</var> = 60 &times; 9,8 = 588 N
+  </div>
+
+  <p>Jadi pernyataan berat saya enam puluh kilogram tidak tepat secara fisis. Enam puluh kilogram adalah massa, sedangkan berat di dekat permukaan Bumi sekitar 588 newton.</p>
+
+  <h2 id="s11">11. Hukum I Newton</h2>
+
+  <p>Hukum I Newton atau hukum kelembaman menyatakan bahwa benda yang diam akan tetap diam, sedangkan benda yang bergerak akan terus bergerak dengan kecepatan konstan dalam garis lurus apabila tidak terdapat resultan gaya eksternal.</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var> = 0 &nbsp;&rArr;&nbsp; <var>a</var> = 0
+  </div>
+
+  <p>Hukum ini berbeda dengan anggapan yang sering muncul dalam kehidupan sehari-hari. Benda yang didorong akhirnya berhenti karena ada gesekan dan hambatan udara, bukan karena benda secara alami memerlukan gaya agar terus bergerak. Tanpa resultan gaya, benda tidak perlu terus didorong untuk mempertahankan kecepatan konstan.</p>
+
+  <figure>
+    <img src="gambar/newton.jpg" alt="Potret Sir Isaac Newton pada tahun 1689 karya Godfrey Kneller" width="2218" height="2671" loading="lazy" decoding="async">
+    <figcaption>Potret Sir Isaac Newton pada tahun 1689. Sumber: Wikimedia Commons, domain publik.</figcaption>
+  </figure>
+
+  <h2 id="s12">12. Kerangka acuan inersial</h2>
+
+  <p>Untuk menerapkan Hukum Newton, kita biasanya menggunakan kerangka acuan inersial. Kerangka acuan dapat dianggap sebagai sistem sudut pandang dan koordinat yang digunakan untuk mengukur posisi, kecepatan, dan percepatan.</p>
+
+  <p>Kerangka acuan inersial adalah kerangka yang tidak mengalami percepatan translasi, sehingga Hukum Newton dapat digunakan dalam bentuk biasanya. Pendekatan sederhana yang sering dipakai adalah menganggap permukaan Bumi sebagai kerangka inersial untuk banyak persoalan sehari-hari.</p>
+
+  <p>Sebaliknya, mobil yang sedang mempercepat atau pengereman merupakan contoh kerangka non-inersial. Pada kerangka non-inersial, pembahasan memerlukan tambahan konsep gaya semu.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 12.1 &middot; Contoh kerangka acuan</caption>
+    <thead>
+      <tr><th>Kerangka</th><th>Sifat</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Permukaan Bumi untuk persoalan sehari-hari</td><td>Pendekatan inersial</td><td>Percepatan translasi terkabaikan untuk persoalan sehari-hari</td></tr>
+      <tr><td>Kereta yang melaju tetap</td><td>Inersial</td><td>Tidak mengalami percepatan</td></tr>
+      <tr><td>Mobil yang dipercepat</td><td>Non-inersial</td><td>Memerlukan gaya semu dalam analisis</td></tr>
+      <tr><td>Pesawat mendarat</td><td>Non-inersial</td><td>Percepatan besar selama pendaratan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s13">13. Hukum II Newton</h2>
+
+  <p>Hukum II Newton adalah hukum yang paling banyak dipakai dalam perhitungan dinamika.</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var> = <var>m</var><var>a</var>
+    <span class="eq-note">Resultan gaya sama dengan massa dikali percepatan</span>
+  </div>
+
+  <p>Dari persamaan tersebut dapat diturunkan tiga hubungan penting.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 13.1 &middot; Hubungan gaya, massa, dan percepatan</caption>
+    <thead>
+      <tr><th>Kondisi</th><th>Hubungan</th><th>Penjelasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Massa tetap</td><td>Gaya naik, percepatan naik</td><td>Semakin besar gaya, semakin besar percepatan</td></tr>
+      <tr><td>Gaya tetap</td><td>Massa naik, percepatan turun</td><td>Semakin berat benda, semakin sulit dipercepat</td></tr>
+      <tr><td>Arah percepatan</td><td>Percepatan searah resultan gaya</td><td>Arah percepatan ditentukan oleh arah resultan gaya</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Contoh perhitungan sederhana. Jika massa benda dua kilogram dan resultan gaya sepuluh newton, maka:</p>
+
+  <div class="eq">
+    <var>a</var> = 10 / 2 = 5 m/s<sup>2</sup>
+  </div>
+
+  <h2 id="s14">14. Resultan gaya dalam perhitungan</h2>
+
+  <p>Misalkan benda menerima gaya dua puluh newton ke kanan dan gaya delapan newton ke kiri. Menggunakan nilai dua puluh newton secara langsung akan menghasilkan jawaban yang salah.</p>
+
+  <pre class="diagram"><code>Langkah yang benar
+
+  1. identifikasi seluruh gaya
+  2. tentukan arah setiap gaya
+  3. hitung resultan gaya
+  4. terapkan Sum F = m a</code></pre>
+
+  <p>Pada contoh tersebut resultan gaya adalah dua puluh dikurangi delapan, yaitu dua belas newton ke kanan. Percepatan kemudian dihitung dari resultan gaya tersebut.</p>
+
+  <h2 id="s15">15. Bentuk umum dan momentum</h2>
+
+  <p>Bentuk yang lebih umum dari Hukum II Newton dinyatakan menggunakan momentum.</p>
+
+  <div class="eq">
+    <var>F</var><sub>net</sub> = d<var>p</var>/d<var>t</var>
+    <span class="eq-note">Momentum didefinisikan sebagai p = m v</span>
+  </div>
+
+  <p>Jika massa konstan, maka turunan momentum terhadap waktu sama dengan massa dikali turunan kecepatan terhadap waktu. Karena turunan kecepatan terhadap waktu adalah percepatan, diperoleh:</p>
+
+  <div class="eq">
+    <var>F</var> = <var>m</var><var>a</var>
+    <span class="eq-note">Bentuk ini berlaku untuk massa konstan</span>
+  </div>
+
+  <div class="note">
+    <p>Perbedaan kedua bentuk ini penting pada soal tumbukan, ketika massa dapat berubah selama peristiwa. Pada konteks materi ini, massa umumnya dianggap konstan sehingga bentuk F = m a sudah memadai.</p>
+  </div>
+
+  <h2 id="s16">16. Diagram gaya bebas</h2>
+
+  <p>Diagram gaya bebas atau free body diagram adalah gambar yang hanya menunjukkan gaya-gaya eksternal yang bekerja pada benda yang sedang dianalisis. Kemampuan membuat diagram gaya bebas merupakan keterampilan paling penting dalam soal dinamika.</p>
+
+  <pre class="diagram"><code>Kotak di lantai, ditarik ke kanan
+
+         -&gt; F (gaya tarik)
+     .----------------.
+     |                |
+      \              /
+       |   [KOTAK]   |
+      /              \
+     '----------------'
+         ^             |
+         N             |
+                        f
+
+         |
+         W
+
+Gaya yang masuk: N, W, F, f
+Gaya yang tidak boleh masuk: v, a, F_net</code></pre>
+
+  <figure>
+    <img src="gambar/fbd-bidang-miring.svg" alt="Diagram gaya bebas benda pada bidang miring yang menunjukkan gaya berat, gaya normal, gaya gesek, dan komponen gaya berat" width="900" height="600" loading="lazy" decoding="async">
+    <figcaption>Diagram gaya bebas benda pada bidang miring. Sumber: Wikimedia Commons, CC BY-SA 4.0.</figcaption>
+  </figure>
+
+  <p>Setelah diagram selesai, Hukum II Newton ditulis terpisah untuk setiap sumbu.</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var><sub>x</sub> = <var>m</var><var>a</var><sub>x</sub>
+  </div>
+
+  <div class="eq">
+    &Sigma;<var>F</var><sub>y</sub> = <var>m</var><var>a</var><sub>y</sub>
+  </div>
+
+  <div class="note">
+    <p>Diagram gaya bebas tidak menggambar kecepatan sebagai gaya, percepatan sebagai gaya, resultan gaya sebagai tambahan gaya, serta gaya yang diberikan benda kepada lingkungan. Diagram gaya bebas hanya berisi gaya yang bekerja pada benda yang dipilih.</p>
+  </div>
+<h2 id="s17">17. Gaya berat</h2>
+
+  <p>Gaya berat berasal dari gravitasi. Dekat permukaan Bumi, gaya berat memiliki hubungan:</p>
+
+  <div class="eq">
+    <var>W</var> = <var>mg</var>
+    <span class="eq-note">Arah berat selalu menuju pusat Bumi</span>
+  </div>
+
+  <p>Jika sumbu y dipilih positif ke atas, maka komponen gaya berat adalah negatif mg. Jika sumbu positif ke bawah, komponennya positif mg. Tanda tidak melekat pada gaya secara mutlak, melainkan bergantung pada sistem koordinat yang dipilih.</p>
+
+  <div class="note">
+    <p>Konsekuensi praktisnya, kita bebas memilih arah sumbu untuk memudahkan perhitungan. Yang dijaga hanya konsistensi tanda pada seluruh persamaan yang ditulis.</p>
+  </div>
+
+  <h2 id="s18">18. Gaya normal</h2>
+
+  <p>Gaya normal adalah gaya kontak dari permukaan kepada benda yang arahnya tegak lurus terhadap permukaan.</p>
+
+  <p>Pada lantai datar, gaya normal berarah ke atas dan gaya berat berarah ke bawah. Jika benda diam dan tidak ada gaya vertikal lain, maka:</p>
+
+  <div class="eq">
+    <var>N</var> &minus; <var>W</var> = 0 &nbsp;&rArr;&nbsp; <var>N</var> = <var>mg</var>
+  </div>
+
+  <p>Namun gaya normal tidak selalu sama dengan gaya berat. Contohnya ketika benda ditarik dengan tali yang membentuk sudut ke atas, komponen vertikal gaya tali membantu menopang benda.</p>
+
+  <div class="eq">
+    <var>N</var> + <var>F</var> sin&theta; &minus; <var>mg</var> = 0
+  </div>
+
+  <div class="eq">
+    <var>N</var> = <var>mg</var> &minus; <var>F</var> sin&theta;
+    <span class="eq-note">Gaya normal menjadi lebih kecil daripada mg</span>
+  </div>
+
+  <p>Jadi besarnya gaya normal ditentukan oleh keadaan sistem, bukan hanya oleh berat benda.</p>
+
+  <h2 id="s19">19. Gaya dengan sudut</h2>
+
+  <p>Gaya tidak selalu horizontal atau vertikal. Jika gaya membentuk sudut theta terhadap sumbu horizontal, gaya tersebut dapat diuraikan menjadi dua komponen.</p>
+
+  <div class="eq">
+    <var>F</var><sub>x</sub> = <var>F</var> cos&theta;
+  </div>
+
+  <div class="eq">
+    <var>F</var><sub>y</sub> = <var>F</var> sin&theta;
+  </div>
+
+  <p>Hukum II Newton kemudian dikerjakan secara terpisah untuk setiap sumbu.</p>
+
+  <div class="eq">
+    &Sigma;<var>F</var><sub>x</sub> = <var>m</var><var>a</var><sub>x</sub>
+  </div>
+
+  <div class="eq">
+    &Sigma;<var>F</var><sub>y</sub> = <var>m</var><var>a</var><sub>y</sub>
+  </div>
+
+  <p>Pemilihan sumbu yang tepat sangat membantu menyederhanakan perhitungan. Karena itu, langkah menentukan sumbu sebaiknya dilakukan sebelum memasukkan angka.</p>
+
+  <h2 id="s20">20. Bidang miring</h2>
+
+  <p>Bidang miring menjadi lebih mudah dianalisis jika sistem koordinat diubah. Alih-alih menggunakan sumbu horizontal dan vertikal, sumbu dipilih sejajar dan tegak lurus bidang.</p>
+
+  <pre class="diagram"><code>Sistem koordinat pada bidang miring
+
+            Normal (tegak lurus bidang)
+                 ^
+                 |
+    W_perp  <---[ ]---&gt; sejajar bidang
+                 |
+                 v
+             W_paralel
+
+  Sumbu x : sejajar bidang
+  Sumbu y : tegak lurus bidang
+
+ Manfaat: gaya normal dan arah gerak
+  menjadi jauh lebih mudah ditulis.</code></pre>
+
+  <p>Gaya berat diuraikan menjadi dua komponen. Komponen sejajar bidang besarnya mg sin theta, dan komponen tegak lurus bidang besarnya mg cos theta.</p>
+
+  <div class="eq">
+    <var>W</var><sub>paralel</sub> = <var>mg</var> sin&theta;
+  </div>
+
+  <div class="eq">
+    <var>W</var><sub>tegak lurus</sub> = <var>mg</var> cos&theta;
+  </div>
+
+  <p>Untuk bidang miring licin dan tanpa percepatan tegak lurus bidang, gaya normal sama dengan komponen tegak lurus berat. Pada arah sejajar bidang, hukum II Newton memberikan:</p>
+
+  <div class="eq">
+    <var>mg</var> sin&theta; = <var>ma</var>
+  </div>
+
+  <div class="eq">
+    <var>a</var> = <var>g</var> sin&theta;
+    <span class="eq-note">Massa hilang dari hasil akhir pada bidang licin ideal</span>
+  </div>
+
+  <div class="note">
+    <p>Hasil ini memberikan kesimpulan penting. Pada bidang miring licin ideal, percepatan akibat gravitasi tidak bergantung pada massa benda. Benda ringan dan benda berat meluncur dengan percepatan yang sama.</p>
+  </div>
+
+  <h2 id="s21">21. Gaya gesek</h2>
+
+  <p>Gesekan merupakan gaya kontak yang bekerja sejajar dengan permukaan dan berlawanan dengan gerak relatif atau kecenderungan gerak relatif antara dua permukaan.</p>
+
+  <p>Gesekan memiliki fungsi penting. Tanpa gesekan, kita sulit berjalan, kendaraan sulit memperoleh traksi, dan ban mudah tergelincir. Karena itu, struktur ban dan jalan dirancang untuk menyediakan gesekan yang cukup.</p>
+
+  <pre class="diagram"><code>Arah gaya gesek
+
+  Benda bergerak ke kanan
+        -&gt;  v
+     [BENDA]
+        &lt;- f_k   gaya gesek melawan gerak
+
+  Benda diam, tetapi cenderung bergeser
+     [BENDA]
+     &lt;- f_s   gaya gesek mencegah gerak
+
+  Tidak ada gerak relatif:
+     [BENDA]
+     f_s menyesuaikan kebutuhan,
+     bukan selalu sebesar koefisiennya</code></pre>
+
+  <div class="note">
+    <p>Besarnya gaya gesek statis bergantung pada kebutuhan untuk mencegah gerak relatif, bukan pada tegangan permukaan seperti yang sering diasosiasikan dengan gaya normal. Karena itu, gaya gesek statis tidak selalu sama dengan hasil kali koefisien gesek dan gaya normal.</p>
+  </div>
+
+  <h2 id="s22">22. Gesekan statis dan kinetis</h2>
+
+  <p>Ada dua model dasar gesekan yang sering dipakai dalam soal.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 22.1 &middot; Perbandingan gesekan statis dan kinetis</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Gesekan statis</th><th>Gesekan kinetis</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kondisi</td><td>Permukaan belum saling bergeser</td><td>Benda sudah bergerak relatif terhadap permukaan</td></tr>
+      <tr><td>Hubungan</td><td>f s lebih kecil atau sama dengan koefisien kali N</td><td>f k sama dengan koefisien kali N</td></tr>
+      <tr><td>Nilai</td><td>Menyesuaikan kebutuhan sampai batas maksimum</td><td>Tetap selama benda bergerak</td></tr>
+      <tr><td>Besar koefisien</td><td>Lebih besar umumnya</td><td>Lebih kecil umumnya</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="eq">
+    <var>f</var><sub>s</sub> &le; &mu;<sub>s</sub><var>N</var>
+    <span class="eq-note">Gesekan statis menyesuaikan kebutuhan sampai batas maksimum ini</span>
+  </div>
+
+  <div class="eq">
+    <var>f</var><sub>k</sub> = &mu;<sub>k</sub><var>N</var>
+  </div>
+
+  <div class="note">
+    <p>Perhatikan tanda pada hubungan gesekan statis. Tanda yang dipakai adalah lebih kecil atau sama dengan, bukan sama dengan. Gaya gesek statis dapat berapa pun selama belum melebihi batas maksimum. Contohnya kita mendorong lemari dengan dua puluh newton dan lemari belum bergerak, sehingga gaya gesek statis sama dengan dua puluh newton meskipun batas maksimum gesek statis sebesar seratus newton.</p>
+  </div>
+
+  <h2 id="s23">23. Gaya gesek pada bidang miring</h2>
+
+  <figure>
+    <img src="gambar/bidang-miring-gesekan.svg" alt="Ilustrasi benda pada bidang miring dengan gaya normal, gaya gesek, dan gaya berat beserta komponennya" width="800" height="600" loading="lazy" decoding="async">
+    <figcaption>Gaya-gaya pada benda di bidang miring dengan gesekan. Sumber: Wikimedia Commons, CC0.</figcaption>
+  </figure>
+
+  <p>Misalkan benda meluncur turun bidang miring. Komponen gravitasi yang menarik benda ke bawah bidang besarnya mg sin theta, sedangkan gaya gesek melawan gerakan dengan besarnya mu k N.</p>
+
+  <div class="eq">
+    <var>f</var><sub>k</sub> = &mu;<sub>k</sub><var>mg</var> cos&theta;
+  </div>
+
+  <p>Resultan gaya sepanjang bidang kemudian:</p>
+
+  <div class="eq">
+    <var>mg</var> sin&theta; &minus; &mu;<sub>k</sub><var>mg</var> cos&theta; = <var>ma</var>
+  </div>
+
+  <div class="eq">
+    <var>a</var> = <var>g</var>(sin&theta; &minus; &mu;<sub>k</sub> cos&theta;)
+  </div>
+
+  <div class="note">
+    <p>Hasil ini menjelaskan mengapa benda tetap dapat meluncur walaupun ada gesekan. Gravitasi menyediakan gaya pendorong sepanjang bidang, sementara gesekan memberikan gaya penghambat. Selama komponen gravitasi masih lebih besar daripada gaya gesek, benda akan terus meluncur dengan percepatan positif.</p>
+  </div>
+
+  <div class="eq">
+    Syarat benda tetap meluncur:
+    sin&theta; &gt; &mu;<sub>k</sub> cos&theta;
+  </div>
+
+  <h2 id="s24">24. Tegangan tali</h2>
+
+  <p>Tegangan adalah gaya tarik yang diteruskan sepanjang tali. Pada soal dasar, tali umumnya diasumsikan massanya diabaikan, tidak mulur, dan katrol dianggap ideal.</p>
+
+  <p>Jika sebuah benda tergantung dan hanya menerima tegangan ke atas serta berat ke bawah, maka:</p>
+
+  <div class="eq">
+    <var>T</var> &minus; <var>W</var> = <var>ma</var>
+  </div>
+
+  <div class="note">
+    <p>Tegangan adalah sebuah gaya, bukan jenis energi dan bukan massa tali. Pada tali ideal yang sama melalui katrol ideal tanpa massa, besar tegangan dapat sama sepanjang tali. Namun pada sistem dengan beberapa tali, katrol bermassa, atau konfigurasi berbeda, tegangan antarsambungan dapat berbeda. Karena itu, diagram gaya bebas harus dibuat untuk setiap benda agar hubungan gaya yang digunakan benar.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 24.1 &middot; Asumsi tali yang umum dipakai</caption>
+    <thead>
+      <tr><th>Asumsi</th><th>Alasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Massa tali diabaikan</td><td>Massa tali jauh lebih kecil dari massa benda</td></tr>
+      <tr><td>Tali tidak bergosong</td><td>Pemanjangan tali dianggap nol sehingga panjang tali tetap</td></tr>
+      <tr><td>Katrol tanpa gesekan dan tanpa massa</td><td>Menghilangkan gaya tambahan akibat perubahan arah tali</td></tr>
+      <tr><td>Tali tidak bergosong</td><td>Tali hanya menahan gaya tarik</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s25">25. Sistem dua benda dan katrol</h2>
+
+  <p>Misalkan terdapat dua benda yang dihubungkan tali. Benda pertama bermassa m1 dan benda kedua bermassa m2. Keduanya memiliki percepatan yang saling berkaitan karena panjang tali ideal tetap.</p>
+
+  <figure>
+    <img src="gambar/atwood.svg" alt="Skema pesawat Atwood dengan dua massa yang dihubungkan tali melalui katrol" width="500" height="400" loading="lazy" decoding="async">
+    <figcaption>Skema pesawat Atwood. Sumber: Wikimedia Commons, CC BY-SA 4.0.</figcaption>
+  </figure>
+
+  <p>Jika m2 lebih besar dari m1, maka m2 cenderung bergerak turun dan m1 bergerak naik. Diagram gaya bebas kedua benda harus digambar terpisah.</p>
+
+  <pre class="diagram"><code>Benda m1 (naik)          Benda m2 (turun)
+
+      T  ^                       m2g  |
+         |                              v
+       [ m1 ]                       [ m2 ]
+         |
+         v
+       m1 g
+
+Sumbu ke atas untuk m1:
+  T - m1 g = m1 a
+
+Sumbu ke bawah untuk m2:
+  m2 g - T = m2 a
+
+Kedua persamaan diselesaikan bersama.</code></pre>
+
+  <p>Prosedurnya sama seperti pada satu benda. Yang berubah hanya jumlah persamaan yang harus disusun, karena setiap benda memiliki diagram gaya bebas sendiri.</p>
+
+  <h2 id="s26">26. Pesawat Atwood</h2>
+
+  <p>Pesawat Atwood merupakan contoh sistem dua massa yang dihubungkan tali melewati katrol. Rumus percepatannya diperoleh dengan menjumlahkan kedua persamaan.</p>
+
+  <pre class="diagram"><code>Untuk m1:   T - m1 g = m1 a
+Untuk m2:   m2 g - T = m2 a
+
+Dijumlahkan:
+
+  m2 g - m1 g = (m1 + m2) a
+
+Maka:
+
+  a = (m2 - m1) g / (m1 + m2)</code></pre>
+
+  <div class="eq">
+    <var>a</var> = (m<sub>2</sub> &minus; m<sub>1</sub>)<var>g</var> / (m<sub>1</sub> + m<sub>2</sub>)
+    <span class="eq-note">Berlaku untuk konfigurasi Atwood ideal</span>
+  </div>
+
+  <p>Tegangan tali kemudian dapat dihitung dengan memasukkan nilai percepatan ke salah satu persamaan benda.</p>
+
+  <div class="eq">
+    <var>T</var> = m<sub>1</sub>(<var>a</var> + <var>g</var>)
+  </div>
+
+  <div class="note">
+    <p>Jika kedua massa dibuat sama besar, maka selisih pada pembilang menjadi nol dan percepatan sistem juga nol. Tegangan tali pada keadaan tersebut menjadi sama dengan berat masing-masing massa.</p>
+  </div>
+<h2 id="s27">27. Hukum III Newton</h2>
+
+  <p>Hukum III Newton menjelaskan hubungan gaya antara dua benda. Hubungan tersebut dituliskan secara vektor.</p>
+
+  <div class="eq">
+    <var>F</var><sub>AB</sub> = &minus;<var>F</var><sub>BA</sub>
+    <span class="eq-note">Gaya dari A pada B sama besar dan berlawanan arah dengan gaya dari B pada A</span>
+  </div>
+
+  <p>Contohnya ketika tangan mendorong dinding, tangan memberikan gaya pada dinding, dan dinding memberikan gaya dengan besar sama serta arah berlawanan pada tangan.</p>
+
+  <figure>
+    <img src="gambar/aksi-reaksi.png" alt="Dua orang yang saling mendorong sebagai ilustrasi pasangan gaya aksi dan reaksi menurut Hukum III Newton" width="474" height="392" loading="lazy" decoding="async">
+    <figcaption>Ilustrasi pasangan gaya aksi dan reaksi. Sumber: Wikimedia Commons, domain publik.</figcaption>
+  </figure>
+
+  <h2 id="s28">28. Aksi dan reaksi</h2>
+
+  <p>Gaya aksi dan reaksi tidak saling menghapus. Inilah salah satu kesalahan konsep yang paling sering muncul.</p>
+
+  <pre class="diagram"><code>Gaya dari tangan ke dinding
+  bekerja pada DINDING
+
+Gaya dari dinding ke tangan
+  bekerja pada TANGAN
+
+       TANGAN  &lt;--- F_dinding -&gt;  DINDING
+        |                          ^
+        v                          |
+     F_tangan -------------------
+
+Kedua gaya bekerja pada BENDA BERBEDA,
+jadi tidak dijumlahkan dalam satu
+diagram gaya bebas.</code></pre>
+
+  <div class="note">
+    <p>Pasangan aksi dan reaksi selalu bekerja pada dua benda yang berbeda. Karena itu, keduanya tidak pernah muncul bersama pada satu diagram gaya bebas. Inilah alasan gaya-gaya tersebut tidak saling menghilangkan.</p>
+  </div>
+
+  <h2 id="s29">29. Gaya pada kuda dan dokar</h2>
+
+  <p>Pertanyaan klasik pada materi ini adalah sebagai berikut. Jika kuda menarik dokar dan dokar memberikan gaya yang sama besar berlawanan arah kepada kuda, mengapa dokar tetap dapat bergerak?</p>
+
+  <p>Jawaban terletak pada pemisahan benda yang dianalisis. Kuda memberikan gaya ke dokar, dan dokar memberikan gaya kepada kuda. Itu memang pasangan Hukum III Newton. Namun yang menentukan apakah dokar bergerak adalah resultan gaya pada dokar.</p>
+
+  <pre class="diagram"><code>Kuda menarik dokar
+
+  F_kuda -&gt; dokar    (pada DOKAR)
+  F_dokar -&gt; kuda   (pada KUDA)
+
+Agar kuda dapat maju:
+  kuda mendorong tanah ke belakang
+  tanah mendorong kuda ke depan
+
+Jadi ada dua interaksi yang berbeda:
+  interaksi kuda dengan dokar
+  interaksi kuda dengan tanah</code></pre>
+
+  <p>Tidak ada pertentangan dengan Hukum III Newton karena kedua pasangan gaya tersebut bekerja pada benda yang berbeda.</p>
+
+  <h2 id="s30">30. Gravitasi universal</h2>
+
+  <p>Newton tidak hanya menjelaskan benda yang jatuh ke Bumi, tetapi juga interaksi gravitasi antara benda-benda di alam semesta.</p>
+
+  <div class="eq">
+    <var>F</var> = <var>G</var> (m<sub>1</sub>m<sub>2</sub> / r<sup>2</sup>)
+    <span class="eq-note">Gaya gravitasi antara dua massa yang terpisah sejauh r</span>
+  </div>
+
+  <p>Rumus tersebut menunjukkan dua hubungan proporsional yang penting. Gaya gravitasi sebanding dengan hasil kali kedua massa, dan gaya gravitasi berbanding terbalik dengan kuadrat jarak.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 30.1 &middot; Pengaruh perubahan massa dan jarak terhadap gaya gravitasi</caption>
+    <thead>
+      <tr><th>Perubahan</th><th>Pengaruh pada gaya gravitasi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Massa menjadi dua kali lipat</td><td>Gaya menjadi dua kali lebih besar</td></tr>
+      <tr><td>Jarak menjadi dua kali lipat</td><td>Gaya menjadi seperempat</td></tr>
+      <tr><td>Jarak menjadi tiga kali lipat</td><td>Gaya menjadi satu per sembilan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Gravitasi selalu bersifat tarik-menarik dan bekerja sepanjang garis yang menghubungkan kedua pusat massa.</p>
+
+  <div class="eq">
+    <var>G</var> = 6,67430 &times; 10<sup>&minus;11</sup> N m<sup>2</sup>/kg<sup>2</sup>
+    <span class="eq-note">Nilai yang direkomendasikan CODATA dan dicantumkan oleh NASA JPL</span>
+  </div>
+
+  <div class="note">
+    <p>Nilai yang digunakan dalam perhitungan sebaiknya mengacu pada rekomendasi CODATA terbaru. Nilai yang lebih lama masih sering muncul pada bahan ajar lama, sehingga perbedaan angka kecil perlu dikenali tetapi tidak mengubah kesimpulan konsep.</p>
+  </div>
+
+  <h2 id="s31">31. Hubungan gravitasi dan berat</h2>
+
+  <p>Hukum gravitasi universal untuk benda dekat permukaan Bumi dapat ditulis sebagai mg. Hubungan ini bukan rumus yang berdiri sendiri tanpa alasan.</p>
+
+  <div class="eq">
+    <var>F</var> = <var>G</var>(Mm / r<sup>2</sup>) = <var>m</var>(GM / r<sup>2</sup>) = <var>mg</var>
+  </div>
+
+  <div class="eq">
+    <var>g</var> = <var>GM</var> / r<sup>2</sup>
+    <span class="eq-note">Nilai g bergantung pada massa dan jari-jari benda langit</span>
+  </div>
+
+  <div class="note">
+    <p>Rumus ini menjelaskan mengapa nilai g berbeda antar planet. Jupiter memiliki massa sangat besar sehingga nilai g-nya jauh lebih besar daripada nilai g di Bumi. Astronaut di Bulan mengalami berat yang jauh lebih kecil karena nilai g di Bulan sekitar seperenam nilai g di Bumi.</p>
+  </div>
+
+  <h2 id="s32">32. Jatuh bebas dan massa</h2>
+
+  <p>Pertanyaan yang sering muncul adalah sebagai berikut. Gaya gravitasi pada gajah lebih besar daripada pada bulu. Mengapa keduanya dapat jatuh dengan percepatan yang sama?</p>
+
+  <pre class="diagram"><code>Untuk benda jatuh bebas:
+
+  F = m a
+  F = m g
+
+Maka:
+
+  m a = m g
+  m a = m g
+
+Massa muncul di kedua sisi, sehingga
+dapat dicoret:
+
+  a = g
+
+Artinya percepatan jatuh bebas tidak
+bergantung pada massa benda.</code></pre>
+
+  <div class="note">
+    <p>Di dunia nyata bulu justru jatuh lebih lambat. Penyebabnya adalah hambatan udara. Bulu memiliki luas dan bentuk yang besar relatif terhadap massanya, sehingga gaya hambat yang diabaikan dalam perhitungan jatuh bebas menjadi lebih besar dan akhirnya mendominasi gerak.</p>
+  </div>
+
+  <h2 id="s33">33. Hambatan udara</h2>
+
+  <p>Ketika sebuah benda bergerak melalui udara atau fluida, fluida memberikan gaya yang melawan gerakan benda. Gaya tersebut disebut gaya hambat atau gaya hambatan.</p>
+
+  <div class="eq">
+    <var>F</var><sub>D</sub> = &frac12; <var>C</var><sub>D</sub>&rho;<var>A</var><var>v</var><sup>2</sup>
+    <span class="eq-note">Model untuk benda berukuran besar yang bergerak dalam udara</span>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 33.1 &middot; Arti setiap besaran pada rumus gaya hambat</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Arti</th><th>Pengaruh pada gaya hambat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>C D</td><td>Koefisien hambatan</td><td>Bergantung pada bentuk benda</td></tr>
+      <tr><td>rho</td><td>Massa jenis fluida</td><td>Semakin besar massa jenis, semakin besar gaya hambat</td></tr>
+      <tr><td>A</td><td>Luas penampang terhadap arah gerak</td><td>Semakin luas, semakin besar gaya hambat</td></tr>
+      <tr><td>v</td><td>Kecepatan relatif terhadap fluida</td><td>Sebanding dengan kuadrat kecepatan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Hubungan gaya hambat terhadap kecepatan tidak selalu berbentuk kuadrat kecepatan. Pada kecepatan rendah, model yang berlaku berbeda. Karena itu, bentuk rumus harus disesuaikan dengan kondisi yang ditinjau.</p>
+  </div>
+
+  <p>Rumus tersebut menjelaskan beberapa penerapan yang lazim ditemui.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 33.2 &middot; Penerapan konsep gaya hambat</caption>
+    <thead>
+      <tr><th>Objek</th><th>Upaya yang dilakukan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mobil</td><td>Bentuk dibuat aerodinamis untuk mengurangi gaya hambat</td></tr>
+      <tr><td>Pesawat</td><td>Bentuk khusus dan susunan sayap yang dirancang untuk efisiensi</td></tr>
+      <tr><td>Pakaian renang</td><td>Permukaan licin untuk mengurangi gaya hambat di air</td></tr>
+      <tr><td>Parasut</td><td>Dirancang untuk menghasilkan gaya hambat yang besar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s34">34. Bentuk benda dan aerodinamika</h2>
+
+  <p>Ketika mobil bergerak, udara harus mengalir mengelilingi kendaraan. Jika desain kendaraan buruk, aliran udara dapat menghasilkan gaya hambat yang besar.</p>
+
+  <p>Dengan bentuk yang lebih aerodinamis, gaya hambat dapat dikurangi sehingga energi yang dibutuhkan untuk mempertahankan kecepatan menjadi lebih kecil. Pada kendaraan berkecepatan tinggi, desain juga berkaitan dengan kestabilan dan gaya aerodinamis vertikal.</p>
+
+  <div class="note">
+    <p>Bentuk kendaraan bukan semata-mata persoalan estetika. Bentuk menentukan besar kecilnya gaya hambat, yang pada akhirnya menentukan konsumsi bahan bakar dan kecepatan maksimum yang dapat dicapai.</p>
+  </div>
+
+  <h2 id="s35">35. Gaya pada pesawat terbang</h2>
+
+  <p>Pesawat mengalami empat gaya utama.</p>
+
+  <pre class="diagram"><code>Gaya pada pesawat
+
+              LIFT (ke atas)
+                  ^
+                  |
+                  |
+   DRAG &lt;-      [PESAWAT]      -&gt; THRUST
+  (menentang        |
+   gerakan)         |
+                  WEIGHT (ke bawah)</code></pre>
+
+  <p>Gaya angkat mengarah ke atas, gaya berat mengarah ke bawah, gaya dorong berhubungan dengan dorongan ke depan, dan gaya hambat berlawanan dengan gerakan melalui udara.</p>
+
+  <div class="eq">
+    <var>L</var> = <var>C</var><sub>L</sub>&rho;<var>V</var><sup>2</sup>/2 &middot; <var>A</var>
+    <span class="eq-note">Persamaan gaya angkat</span>
+  </div>
+
+  <div class="note">
+    <p>Penjelasan populer bahwa udara di atas sayap harus menempuh jarak lebih panjang lalu bertemu udara di bawah pada saat yang sama merupakan penyederhanaan yang menyesatkan. NASA secara khusus memperingatkan hal tersebut. Pembentukan gaya angkat berkaitan dengan beda tekanan, perubahan momentum aliran udara, bentuk sayap, dan sudut sayap terhadap aliran udara.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 35.1 &middot; Faktor yang memengaruhi gaya angkat</caption>
+    <thead>
+      <tr><th>Faktor</th><th>Pengaruh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Massa jenis udara</td><td>Semakin besar, semakin besar gaya angkat pada kondisi lain sama</td></tr>
+      <tr><td>Kecepatan</td><td>Sebanding dengan kuadrat kecepatan</td></tr>
+      <tr><td>Luas permukaan</td><td>Sebanding dengan luas</td></tr>
+      <tr><td>Bentuk sayap</td><td>Menentukan koefisien gaya angkat</td></tr>
+      <tr><td>Sudut terhadap aliran</td><td>Menentukan besarnya gaya angkat</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s36">36. Gaya sentripetal</h2>
+
+  <p>Sebuah benda yang bergerak melingkar dapat memiliki kelajuan konstan tetapi tetap mengalami percepatan. Percepatan pada gerak melingkar sangat menarik karena kelajuannya tetap, tetapi arahnya berubah setiap saat.</p>
+
+  <div class="eq">
+    <var>a</var><sub>c</sub> = <var>v</var><sup>2</sup>/<var>r</var>
+  </div>
+
+  <div class="eq">
+    <var>F</var><sub>c</sub> = <var>mv</var><sup>2</sup>/<var>r</var>
+    <span class="eq-note">Hasil dari Hukum II Newton dengan a sama dengan a c</span>
+  </div>
+
+  <figure>
+    <img src="gambar/sentripetal.svg" alt="Diagram gerak melingkar yang menunjukkan arah gaya sentripetal menuju pusat lingkaran dan arah kecepatan menyinggung lintasan" width="800" height="600" loading="lazy" decoding="async">
+    <figcaption>Arah gaya sentripetal dan kecepatan pada gerak melingkar. Sumber: Wikimedia Commons, CC BY-SA 3.0.</figcaption>
+  </figure>
+
+  <div class="note">
+    <p>Gaya sentripetal bukan jenis gaya baru seperti gravitasi atau gesekan. Istilah tersebut menjelaskan resultan gaya yang mengarah ke pusat lintasan. Gaya-gaya yang berbeda dapat berperan sebagai gaya sentripetal pada situasi yang berbeda.</p>
+  </div>
+
+  <h2 id="s37">37. Arah gaya sentripetal</h2>
+
+  <p>Gaya sentripetal pada dasarnya adalah resultant gaya yang mengarah ke pusat lintasan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 37.1 &middot; Gaya yang berperan sebagai gaya sentripetal</caption>
+    <thead>
+      <tr><th>Situasi</th><th>Gaya yang mengarah ke pusat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mobil berbelok di jalan datar</td><td>Gaya gesek statis antara ban dan jalan</td></tr>
+      <tr><td>Satelit mengorbit Bumi</td><td>Gaya gravitasi</td></tr>
+      <tr><td>Benda berputar dengan tali</td><td>Tegangan tali</td></tr>
+      <tr><td>Mobil berjalan di jalan miring</td><td>Komponen horizontal gaya normal</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Karena itu, menggambar gaya sentripetal sebagai gaya tambahan pada diagram gaya bebas keliru apabila gaya tersebut sebenarnya sudah merupakan resultan dari gaya-gaya lain.</p>
+
+  <h2 id="s38">38. Mobil saat menikung</h2>
+
+  <p>Ketika mobil berbelok di jalan datar, mobil memerlukan gaya menuju pusat tikungan sebesar mv kuadrat per r. Pada model sederhana, gaya tersebut disediakan oleh gesekan statis antara ban dan jalan.</p>
+
+  <div class="eq">
+    <var>f</var><sub>s, maks</sub> = &mu;<sub>s</sub><var>mg</var>
+    <span class="eq-note">Pada jalan datar, gaya normal sama dengan mg</span>
+  </div>
+
+  <p>Supaya mobil tidak tergelincir, percepatan sentripetal tidak boleh melebihi kemampuan traksi ban.</p>
+
+  <div class="eq">
+    <var>v</var><sup>2</sup>/<var>r</var> &le; &mu;<sub>s</sub><var>g</var>
+  </div>
+
+  <div class="eq">
+    <var>v</var><sub>maks</sub> = &radic;(&mu;<sub>s</sub><var>rg</var>)
+  </div>
+
+  <div class="note">
+    <p>Semakin besar koefisien gesekan statis, gaya lateral maksimum yang dapat disediakan jalan semakin besar. Sebaliknya, permukaan licin membuat kendaraan lebih mudah kehilangan traksi. Kelengkungan tikungan juga berperan, karena tikungan yang lebih rapat memerlukan gaya sentripetal lebih besar pada kecepatan yang sama.</p>
+  </div>
+
+  <h2 id="s39">39. Tikungan miring</h2>
+
+  <p>Untuk meningkatkan kemampuan kendaraan berbelok, jalan dapat dibuat miring. Pada tikungan miring, gaya normal memiliki komponen horizontal yang mengarah menuju pusat tikungan.</p>
+
+  <div class="eq">
+    tan&theta; = <var>v</var><sup>2</sup> / (<var>rg</var>)
+    <span class="eq-note">Kondisi ideal tanpa memerlukan gesekan</span>
+  </div>
+
+  <div class="eq">
+    <var>v</var> = &radic;(<var>rg</var> tan&theta;)
+  </div>
+
+  <div class="note">
+    <p>Desain kemiringan jalan dapat dibuat sesuai dengan kecepatan rencana tertentu. Pada jalan yang datar, kemampuan itu dibatasi oleh gesekan. Pada jalan miring, sebagian gaya menuju pusat disediakan oleh gaya normal sehingga kebutuhan gesekan berkurang.</p>
+  </div>
+
+  <h2 id="s40">40. Gerak melingkar vertikal</h2>
+
+  <p>Pada gerak melingkar vertikal, yang berubah adalah arah gaya gravitasi relatif terhadap pusat lingkaran.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 40.1 &middot; Perbandingan bagian bawah dan bagian atas lingkaran</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Bagian bawah</th><th>Bagian atas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Arah pusat lingkaran</td><td>Ke atas</td><td>Ke bawah</td></tr>
+      <tr><td>Gaya normal</td><td>Ke atas, menjauh dari pusat</td><td>Ke bawah, menuju pusat</td></tr>
+      <tr><td>Gaya berat</td><td>Ke bawah, menuju pusat</td><td>Ke bawah, menuju pusat</td></tr>
+      <tr><td>Persamaan</td><td>N dikurangi mg sama dengan mv kuadrat per r</td><td>N ditambah mg sama dengan mv kuadrat per r</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <pre class="diagram"><code>Bagian bawah          Bagian atas
+
+   pusat ^               v
+          |              [ ]
+     N ^  |             [ ]
+        [ B ]            | N
+          | m g          v
+   v                      m g
+
+Perbedaan tanda terjadi bukan karena
+hukum Newton berubah, melainkan karena
+arah gaya terhadap pusat berubah.</code></pre>
+
+  <div class="note">
+    <p>Pada bagian atas, gaya normal harus mencukupi gaya gravitasi ditambah gaya sentripetal. Jika kecepatan terlalu kecil, gaya normal yang diperlukan menjadi nol atau negatif sehingga benda kehilangan kontak dengan lintasan. Inilah sebabnya benda yang berputar terlalu lambat pada bagian atas dapat terlepas dari lintasannya.</p>
+  </div>
+<h2 id="s41">41. Tekanan</h2>
+
+  <p>Tekanan didefinisikan sebagai gaya normal per satuan luas.</p>
+
+  <div class="eq">
+    <var>P</var> = <var>F</var>/<var>A</var>
+    <span class="eq-note">F adalah gaya tegak lurus permukaan dan A adalah luas bidang sentuhnya</span>
+  </div>
+
+  <div class="eq">
+    1 Pa = 1 N/m<sup>2</sup>
+  </div>
+
+  <figure>
+    <img src="gambar/tekanan.svg" alt="Diagram hubungan gaya, luas permukaan, dan tekanan" width="800" height="500" loading="lazy" decoding="async">
+    <figcaption>Hubungan antara gaya, luas permukaan, dan tekanan. Sumber: Wikimedia Commons, domain publik.</figcaption>
+  </figure>
+
+  <p>Dari rumus tersebut dapat dibaca dua hubungan langsung. Tekanan sebanding dengan gaya, dan tekanan berbanding terbalik dengan luas bidang kontak.</p>
+
+  <pre class="diagram"><code>Gaya naik      -&gt; tekanan naik
+Luas naik      -&gt; tekanan turun
+
+Tekanan besar dapat diperoleh dengan:
+  gaya besar ATAU luas sentuh kecil</code></pre>
+
+  <h2 id="s42">42. Tekanan pada benda</h2>
+
+  <p>Konsep tekanan menjelaskan mengapa pisau yang tajam lebih mudah memotong daripada pisau tumpul, dan mengapa ujung paku dibuat runcing.</p>
+
+  <pre class="diagram"><code>Gaya yang sama, F = 100 N
+
+Pisau tumpul:
+  A = 0,01 m2
+  P = 100 / 0,01 = 10.000 Pa
+
+Pisau tajam:
+  A = 0,001 m2
+  P = 100 / 0,001 = 100.000 Pa
+
+Tekanan menjadi sepuluh kali lebih besar
+karena luas sentuh menjadi sepuluh kali
+lebih kecil.</code></pre>
+
+  <div class="note">
+    <p>Konsep yang sama menjelaskan bentuk ujung paku. Paku runcing menghasilkan luas sentuh yang sangat kecil sehingga tekanan pada ujung paku menjadi besar dan mudah menembus permukaan yang relatif keras.</p>
+  </div>
+
+  <h2 id="s43">43. Tekanan pada struktur dan kendaraan</h2>
+
+  <h3 id="s43-1">43.1 Pondasi dan bangunan</h3>
+
+  <p>Berat bangunan menghasilkan gaya pada tanah. Jika gaya tersebut terkonsentrasi pada area kecil, tekanan menjadi besar. Dengan memperbesar luas bidang kontak, tekanan rata-rata turun. Inilah prinsip umum mengapa pondasi dibuat sedemikian rupa agar beban dapat didistribusikan pada area yang sesuai.</p>
+
+  <h3 id="s43-2">43.2 Ban kendaraan lintas alam</h3>
+
+  <p>Ban yang lebih lebar dapat meningkatkan luas area kontak sehingga tekanan rata-rata ke permukaan turun. Hal tersebut membantu mengurangi kecenderungan kendaraan tenggelam pada permukaan lunak.</p>
+
+  <div class="note">
+    <p>Kemampuan kendaraan melewati lumpur tidak hanya ditentukan oleh tekanan. Pola tapak ban, deformasi ban, kondisi tanah, dan kemampuan menghasilkan gaya traksi juga berpengaruh. Rumus P = F/A menjelaskan satu bagian dari persoalan, bukan keseluruhan dinamika kendaraan.</p>
+  </div>
+
+  <h3 id="s43-3">43.3 Kasur dan lantai</h3>
+
+  <p>Kasur dapat meningkatkan luas tubuh yang bersentuhan dan mendistribusikan beban secara lebih merata, sehingga tekanan lokal berkurang. Kenyamanan tidak hanya bergantung pada kasur yang lebih lunak, tetapi juga pada bagaimana gaya didistribusikan pada tubuh.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 43.1 &middot; Upaya redistribusi tekanan pada beberapa benda</caption>
+    <thead>
+      <tr><th>Benda</th><th>Upaya yang dilakukan</th><th>Pengaruh pada tekanan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pisau tajam</td><td>Memakai permukaan yang sangat kecil</td><td>Tekanan pemotong menjadi besar</td></tr>
+      <tr><td>Paku runcing</td><td>Memakai ujung yang kecil</td><td>Tekanan pada ujung menjadi besar</td></tr>
+      <tr><td>Pondasi lebar</td><td>Menambah luas bidang kontak tanah</td><td>Tekanan tanah turun</td></tr>
+      <tr><td>Ban lebar</td><td>Menambah luas area kontak</td><td>Tekanan permukaan turun</td></tr>
+      <tr><td>Kasur</td><td>Memperbesar luas kontak tubuh</td><td>Tekanan lokal berkurang</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="s44">44. Tekanan hidrostatik</h2>
+
+  <p>Tekanan juga berlaku untuk fluida. Untuk fluida diam dengan massa jenis konstan, tekanan akibat kedalaman dapat ditulis sebagai berikut.</p>
+
+  <div class="eq">
+    <var>P</var> = &rho;<var>gh</var>
+  </div>
+
+  <p>Jika tekanan atmosfer juga diperhitungkan, maka:</p>
+
+  <div class="eq">
+    <var>P</var> = <var>P</var><sub>0</sub> + &rho;<var>gh</var>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 44.1 &middot; Arti besaran pada tekanan hidrostatik</caption>
+    <thead>
+      <tr><th>Besaran</th><th>Arti</th><th>Satuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>rho</td><td>Massa jenis fluida</td><td>kg/m3</td></tr>
+      <tr><td>g</td><td>Percepatan gravitasi</td><td>m/s2</td></tr>
+      <tr><td>h</td><td>Kedalaman di bawah permukaan</td><td>m</td></tr>
+      <tr><td>P0</td><td>Tekanan di permukaan</td><td>Pa</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Hubungan ini diturunkan dari berat fluida yang berada di atas titik yang ditinjau. Semakin dalam kita berada di dalam air, semakin besar tekanannya.</p>
+
+  <div class="note">
+    <p>Persamaan ini menjelaskan mengapa penyelam merasakan tekanan yang semakin besar ketika turun lebih dalam. Tekanan tidak bergantung pada bentuk wadah, melainkan pada kedalaman dan massa jenis fluida.</p>
+  </div>
+
+  <h2 id="s45">45. Prinsip Pascal</h2>
+
+  <p>Tekanan juga mendasari sistem hidrolik. Prinsip Pascal menyatakan bahwa perubahan tekanan yang diberikan pada fluida tertutup diteruskan ke seluruh bagian fluida.</p>
+
+  <pre class="diagram"><code>Sistem hidrolik dua piston
+
+      F1          F2
+      v           v
+      |           |
+     [P1]        [P2]
+   piston kecil  piston besar
+       |-------------|
+       |   fluida    |
+       |   tertutup  |
+       |-------------|
+
+  Tekanan sama pada kedua piston:
+  F1 / A1 = F2 / A2
+
+  Maka:
+  F2 = F1 x (A2 / A1)
+
+  Bila A2 lebih besar dari A1,
+  gaya keluaran lebih besar dari gaya
+  masukan.</code></pre>
+
+  <div class="eq">
+    <var>F</var><sub>2</sub> = <var>F</var><sub>1</sub>(A<sub>2</sub>/A<sub>1</sub>)
+  </div>
+
+  <p>Inilah prinsip dasar dongkrak hidrolik dan rem hidrolik.</p>
+
+  <div class="note">
+    <p>Syaratnya adalah fluida tertutup dan tidak dapat dikompresi. Jika fluida dapat berkembang ruang, prinsip ini tidak berlaku karena fluida tersebut tidak dapat ditekan secara seragam.</p>
+  </div>
+
+  <h2 id="s46">46. Strategi mengerjakan soal</h2>
+
+  <p>Strategi berikut mengurangi kesalahan yang paling sering terjadi pada soal dinamika.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 46.1 &middot; Delapan langkah mengerjakan soal dinamika</caption>
+    <thead>
+      <tr><th>Langkah</th><th>Kegiatan</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tentukan benda atau sistem</td><td>Keputusan ini menentukan gaya eksternal yang harus dimasukkan</td></tr>
+      <tr><td>2</td><td>Gambarkan situasi</td><td>Buat sketsa sederhana posisi benda dan lingkungan</td></tr>
+      <tr><td>3</td><td>Buat diagram gaya bebas</td><td>Masukkan hanya gaya eksternal pada benda yang dipilih</td></tr>
+      <tr><td>4</td><td>Tentukan sumbu</td><td>Sumbu yang sesuai menyederhanakan uraian gaya</td></tr>
+      <tr><td>5</td><td>Uraikan gaya yang miring</td><td>Pisahkan menjadi komponen sejajar dan tegak lurus sumbu</td></tr>
+      <tr><td>6</td><td>Tulis Hukum II Newton</td><td>Buat persamaan untuk setiap sumbu</td></tr>
+      <tr><td>7</td><td>Masukkan angka</td><td>Angka baru dimasukkan setelah persamaan selesai</td></tr>
+      <tr><td>8</td><td>Periksa jawaban</td><td>Periksa satuan, arah, dan kelayakan nilai</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Langkah ketujuh sering diabaikan, padahal urutan ini penting. Memasukkan angka sebelum persamaan selesai mendorong kecenderungan untuk memakai rumus yang tersedia, bukan rumus yang benar untuk situasi tersebut.</p>
+  </div>
+
+  <h2 id="s47">47. Kesalahan yang sering terjadi</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 47.1 &middot; Kesalahan umum dan bentuk yang benar</caption>
+    <thead>
+      <tr><th>Kesalahan</th><th>Bentuk yang benar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Menganggap benda diam berarti tidak ada gaya</td><td>Yang benar adalah resultan gaya sama dengan nol, dan itu dapat terjadi walaupun banyak gaya bekerja</td></tr>
+      <tr><td>Menganggap gaya selalu menghasilkan gerakan</td><td>Yang menentukan perubahan gerak adalah resultan gaya</td></tr>
+      <tr><td>Menganggap gaya gesek statis selalu sama dengan hasil kali koefisien dan gaya normal</td><td>Yang benar adalah gaya gesek statis lebih kecil atau sama, dengan batas maksimum sebesar hasil kali</td></tr>
+      <tr><td>Menganggap gaya aksi dan reaksi berada pada benda yang sama</td><td>Pasangan aksi dan reaksi bekerja pada dua benda berbeda</td></tr>
+      <tr><td>Menambahkan gaya sentripetal sebagai gaya tambahan</td><td>Gaya sentripetal adalah nama untuk resultan gaya menuju pusat</td></tr>
+      <tr><td>Menganggap massa sama dengan berat</td><td>Massa bersatuan kilogram, berat bersatuan newton</td></tr>
+      <tr><td>Langsung memakai rumus tanpa diagram gaya bebas</td><td>Diagram gaya bebas mencegah gaya yang lupa dimasukkan atau arah yang keliru</td></tr>
+      <tr><td>Menganggap gaya normal selalu sama dengan berat</td><td>Gaya normal bergantung pada keadaan sistem, termasuk gaya vertikal lain</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Delapan kesalahan tersebut memiliki satu akar yang sama, yaitu mengabaikan bahwa resultan gaya menentukan perubahan gerak, bukan gaya individual. Menyelesaikan diagram gaya bebas dengan teliti menghilangkan sebagian besar kesalahan ini.</p>
+  </div>
+
+  <h2 id="s48">48. Ringkasan rumus</h2>
+
+  <p>Daftar berikut merangkum rumus yang perlu dikuasai beserta kondisi penggunaannya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 48.1 &middot; Kumpulan rumus utama</caption>
+    <thead>
+      <tr><th>Konsep</th><th>Rumus</th><th>Syarat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Resultan gaya</td><td>Sum F</td><td>Jumlah vektor seluruh gaya eksternal</td></tr>
+      <tr><td>Hukum I Newton</td><td>Sum F = 0</td><td>Benda diam atau bergerak lurus beraturan</td></tr>
+      <tr><td>Hukum II Newton</td><td>Sum F = m a</td><td>Massa konstan</td></tr>
+      <tr><td>Hukum III Newton</td><td>F AB = minus F BA</td><td>Berlaku untuk semua gaya</td></tr>
+      <tr><td>Berat</td><td>W = m g</td><td>Dekat permukaan Bumi</td></tr>
+      <tr><td>Gravitasi universal</td><td>F = G m1 m2 / r2</td><td>Benda berupa massa titik atau simetris</td></tr>
+      <tr><td>Gesekan statis</td><td>f s lebih kecil atau sama dengan mu s N</td><td>Belum terjadi gerak relatif</td></tr>
+      <tr><td>Gesekan statis maksimum</td><td>f s maks = mu s N</td><td>Tepat sebelum mulai bergerak</td></tr>
+      <tr><td>Gesekan kinetis</td><td>f k = mu k N</td><td>Sudah bergerak relatif</td></tr>
+      <tr><td>Komponen horizontal</td><td>F x = F cos theta</td><td>Sudut diukur dari sumbu horizontal</td></tr>
+      <tr><td>Komponen vertikal</td><td>F y = F sin theta</td><td>Sudut diukur dari sumbu horizontal</td></tr>
+      <tr><td>Komponen sejajar bidang</td><td>W sejajar = m g sin theta</td><td>Sudut diukur dari bidang datar</td></tr>
+      <tr><td>Komponen tegak lurus bidang</td><td>W tegak lurus = m g cos theta</td><td>Sudut diukur dari bidang datar</td></tr>
+      <tr><td>Gaya normal pada bidang licin</td><td>N = m g cos theta</td><td>Tanpa percepatan tegak lurus bidang</td></tr>
+      <tr><td>Percepatan bidang licin</td><td>a = g sin theta</td><td>Tanpa gesekan</td></tr>
+      <tr><td>Percepatan bidang dengan gesekan</td><td>a = g(sin theta minus mu k cos theta)</td><td>Benda meluncur</td></tr>
+      <tr><td>Percepatan Atwood</td><td>a = (m2 minus m1) g / (m1 + m2)</td><td>Katrol dan tali ideal</td></tr>
+      <tr><td>Percepatan sentripetal</td><td>a c = v2 / r</td><td>Gerak melingkar</td></tr>
+      <tr><td>Gaya sentripetal</td><td>F c = m v2 / r</td><td>Gerak melingkar</td></tr>
+      <tr><td>Kecepatan maksimum tikungan datar</td><td>v maks = akar dari mu s r g</td><td>Tepat sebelum tergelincir</td></tr>
+      <tr><td>Tikungan ideal</td><td>tan theta = v2 / (r g)</td><td>Tanpa gesekan</td></tr>
+      <tr><td>Gaya hambat</td><td>F D = C D rho A v2 / 2</td><td>Benda besar pada kecepatan tinggi</td></tr>
+      <tr><td>Gaya angkat</td><td>L = C L rho V2 A / 2</td><td>Aliran udara pada kondisi tertentu</td></tr>
+      <tr><td>Tekanan</td><td>P = F / A</td><td>Gaya tegak lurus permukaan</td></tr>
+      <tr><td>Tekanan hidrostatik</td><td>P = rho g h</td><td>Fluida diam</td></tr>
+      <tr><td>Tekanan absolut fluida</td><td>P = P0 + rho g h</td><td>Termasuk tekanan permukaan</td></tr>
+      <tr><td>Prinsip Pascal</td><td>F2 = F1 (A2 / A1)</td><td>Fluida tertutup dan tidak termampatkan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Membaca kolom syarat sama pentingnya dengan mengingat rumusnya. Sebagian besar kesalahan pada soal dinamika muncul karena rumus digunakan pada kondisi yang tidak memenuhi syaratnya.</p>
+  </div>
+<h2 id="s49">49. Latihan</h2>
+
+  <p>Kerjakan latihan berikut untuk memeriksa pemahaman terhadap materi bab ini.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 49.1 &middot; Latihan dan jawaban ringkas</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan</th><th>Jawaban ringkas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Bedakan kinematika dan dinamika.</td><td>Kinematika mempelajari gerak tanpa penyebab, dinamika mempelajari penyebabnya</td></tr>
+      <tr><td>2</td><td>Apakah gaya merupakan besaran vektor?</td><td>Ya, karena memiliki besar dan arah</td></tr>
+      <tr><td>3</td><td>Sebutkan satuan SI gaya.</td><td>Newton, yang sama dengan kilogram kali meter per detik kuadrat</td></tr>
+      <tr><td>4</td><td>Bedakan gaya kontak dan gaya jarak jauh.</td><td>Gaya kontak memerlukan sentuhan, gaya jarak jauh tidak</td></tr>
+      <tr><td>5</td><td>Apa yang dimaksud resultan gaya?</td><td>Jumlah vektor seluruh gaya yang bekerja pada benda</td></tr>
+      <tr><td>6</td><td>Apakah resultan gaya nol berarti tidak ada gaya?</td><td>Tidak, gaya dapat banyak tetapi saling meniadakan</td></tr>
+      <tr><td>7</td><td>Apa hubungan massa dengan inersia?</td><td>Makin besar massa, makin besar kecenderungan mempertahankan keadaan gerak</td></tr>
+      <tr><td>8</td><td>Bedakan massa dan berat.</td><td>Massa bersatuan kilogram, berat bersatuan newton dan bernilai mg</td></tr>
+      <tr><td>9</td><td>Apakah kelajuan konstan dapat berarti ada percepatan?</td><td>Dapat, karena arah kecepatan berubah pada gerak melingkar</td></tr>
+      <tr><td>10</td><td>Apa yang dimaksud diagram gaya bebas?</td><td>Gambar hanya gaya eksternal yang bekerja pada benda yang dianalisis</td></tr>
+      <tr><td>11</td><td>Apakah gaya normal selalu sama dengan berat?</td><td>Tidak, gaya normal bergantung pada keadaan sistem</td></tr>
+      <tr><td>12</td><td>Kenapa sumbu dipilih sejajar bidang pada bidang miring?</td><td>Untuk menyederhanakan gaya normal dan arah gerak</td></tr>
+      <tr><td>13</td><td>Kenapa massa hilang dari percepatan bidang miring licin?</td><td>Karena massa dapat dicoret dari kedua ruas persamaan</td></tr>
+      <tr><td>14</td><td>Bedakan gesekan statis dan kinetis.</td><td>Statis mencegah gerak relatif, kinetis bekerja saat benda bergerak</td></tr>
+      <tr><td>15</td><td>Mengapa tanda gesekan statis bukan tanda sama dengan?</td><td>Karena gaya gesek statis menyesuaikan kebutuhan sampai batas maksimum</td></tr>
+      <tr><td>16</td><td>Apakah tegangan tali termasuk besaran gaya?</td><td>Ya, tegangan merupakan gaya tarik sepanjang tali</td></tr>
+      <tr><td>17</td><td>Berapa percepatan pesawat Atwood ideal?</td><td>Selisih massa dikali g dibagi jumlah massa</td></tr>
+      <tr><td>18</td><td>Apakah gaya aksi dan reaksi dapat dijumlahkan?</td><td>Tidak, karena keduanya bekerja pada benda berbeda</td></tr>
+      <tr><td>19</td><td>Kenapa gajah dan bulu jatuh dengan percepatan sama?</td><td>Karena massa dapat dicoret dari persamaan F sama dengan m a</td></tr>
+      <tr><td>20</td><td>Bagaimana pengaruh jarak terhadap gaya gravitasi?</td><td>Berbanding terbalik dengan kuadrat jarak</td></tr>
+      <tr><td>21</td><td>Apakah gaya sentripetal merupakan gaya baru?</td><td>Tidak, itu nama untuk resultan gaya menuju pusat</td></tr>
+      <tr><td>22</td><td>Gaya apa yang menjadi gaya sentripetal pada satelit?</td><td>Gaya gravitasi</td></tr>
+      <tr><td>23</td><td>Kenapa mobil tergelincir saat menindung?</td><td>Karena gaya sentripetal yang diperlukan melebihi gaya gesek maksimum</td></tr>
+      <tr><td>24</td><td>Apa yang membuat tikungan miring membantu?</td><td>Komponen horizontal gaya normal mengarah ke pusat tikungan</td></tr>
+      <tr><td>25</td><td>Apa definisi tekanan?</td><td>Gaya tegak lurus permukaan per satuan luas</td></tr>
+      <tr><td>26</td><td>Kenapa pisau tajam lebih mudah memotong?</td><td>Luas sentuhnya lebih kecil sehingga tekanan lebih besar</td></tr>
+      <tr><td>27</td><td>Bagaimana tekanan berubah pada kedalaman?</td><td>Tekanan bertambah sebanding dengan kedalaman</td></tr>
+      <tr><td>28</td><td>Apa isi prinsip Pascal?</td><td>Perubahan tekanan pada fluida tertutup diteruskan ke seluruh fluida</td></tr>
+      <tr><td>29</td><td>Apa langkah pertama sebelum menulis rumus?</td><td>Menentukan benda atau sistem yang dianalisis</td></tr>
+      <tr><td>30</td><td>Mengapa hasil akhir diperiksa satuan dan arahnya?</td><td>Untuk memastikan jawaban sesuai keadaan fisis</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Soal nomor 9 hingga 17 dapat dikerjakan tanpa menghitung apa pun. Pertanyaan konseptual seperti ini sering menentukan kebenaran pemahaman, karena kesalahan konseptual akan tetap terlihat meskipun perhitungan terlihat rapi.</p>
+  </div>
+
+  <h2 id="s50">50. Daftar istilah</h2>
+
+  <dl class="qa">
+    <dt>Akselerasi</dt>
+    <dd>Perubahan kecepatan per satuan waktu, termasuk perubahan besar maupun arahnya.</dd>
+
+    <dt>Aksi dan reaksi</dt>
+    <dd>Pasangan gaya yang besarnya sama dan arahnya berlawanan, bekerja pada dua benda berbeda.</dd>
+
+    <dt>Atwood</dt>
+    <dd>Sistem dua massa yang dihubungkan tali melalui katrol ideal.</dd>
+
+    <dt>Berat</dt>
+    <dd>Gaya gravitasi yang bekerja pada benda, bernilai mg.</dd>
+
+    <dt>Diagram gaya bebas</dt>
+    <dd>Gambar yang hanya menunjukkan gaya eksternal pada benda yang dianalisis.</dd>
+
+    <dt>Dinamika</dt>
+    <dd>Bagian mekanika yang mempelajari hubungan antara gaya dan gerak.</dd>
+
+    <dt>Gaya</dt>
+    <dd>Interaksi yang dapat mengubah keadaan gerak atau bentuk benda.</dd>
+
+    <dt>Gaya angkat</dt>
+    <dd>Gaya yang mengarah tegak lurus arah gerak dan mendukung benda agar tetap melayang.</dd>
+
+    <dt>Gaya gesek</dt>
+    <dd>Gaya kontak yang melawan gerak relatif atau kecenderungan gerak relatif.</dd>
+
+    <dt>Gaya hambat</dt>
+    <dd>Gaya dari fluida yang melawan gerak benda di dalam fluida.</dd>
+
+    <dt>Gaya normal</dt>
+    <dd>Gaya kontak dari permukaan yang tegak lurus permukaan.</dd>
+
+    <dt>Gaya sentripetal</dt>
+    <dd>Nama untuk resultan gaya yang mengarah ke pusat lintasan gerak melingkar.</dd>
+
+    <dt>Gaya tegak lurus bidang</dt>
+    <dd>Komponen gaya berat sebesar mg cos theta.</dd>
+
+    <dt>Gaya sejajar bidang</dt>
+    <dd>Komponen gaya berat sebesar mg sin theta.</dd>
+
+    <dt>Gravitasi universal</dt>
+    <dd>Gaya tarik antara dua massa yang sebanding dengan hasil kalinya dan berbanding terbalik dengan kuadrat jarak.</dd>
+
+    <dt>Hukum I Newton</dt>
+    <dd>Benda mempertahankan keadaan diam atau gerak lurus beraturan tanpa resultan gaya.</dd>
+
+    <dt>Hukum II Newton</dt>
+    <dd>Resultan gaya sama dengan massa dikali percepatan.</dd>
+
+    <dt>Hukum III Newton</dt>
+    <dd>Gaya dari satu benda pada benda lain sama besar dan berlawanan arah.</dd>
+
+    <dt>Inersia</dt>
+    <dd>Kecenderungan benda mempertahankan keadaan geraknya.</dd>
+
+    <dt>Katrol ideal</dt>
+    <dd>Katrol yang tidak bermassa dan tidak menambah gaya gesekan pada tali.</dd>
+
+    <dt>Kerangka acuan inersial</dt>
+    <dd>Kerangka yang tidak mengalami percepatan translasi.</dd>
+
+    <dt>Kerangka non-inersial</dt>
+    <dd>Kerangka yang mengalami percepatan sehingga memerlukan konsep gaya semu.</dd>
+
+    <dt>Kinematika</dt>
+    <dd>Bagian mekanika yang mempelajari gerak tanpa membahas penyebab gerak.</dd>
+
+    <dt>Koefisien gesek</dt>
+    <dd>Faktor tanpa satuan yang menyatakan sifat permukaan terhadap gesekan.</dd>
+
+    <dt>Newton</dt>
+    <dd>Satuan SI gaya, setara dengan satu kilogram kali satu meter per detik kuadrat.</dd>
+
+    <dt>Isaac Newton</dt>
+    <dd>Tokoh yang merumuskan tiga hukum gerak dan hukum gravitasi universal.</dd>
+
+    <dt>Percepatan</dt>
+    <dd>Besaran vektor yang menyatakan perubahan kecepatan per satuan waktu.</dd>
+
+    <dt>Percepatan sentripetal</dt>
+    <dd>Percepatan pada gerak melingkar yang besarnya v kuadrat per r.</dd>
+
+    <dt>Prinsip Pascal</dt>
+    <dd>Perubahan tekanan pada fluida tertutup diteruskan ke seluruh bagian fluida.</dd>
+
+    <dt>Resultan gaya</dt>
+    <dd>Jumlah vektor seluruh gaya yang bekerja pada benda atau sistem.</dd>
+
+    <dt>Tali ideal</dt>
+    <dd>Tali yang massanya diabaikan dan tidak meregang.</dd>
+
+    <dt>Tegangan tali</dt>
+    <dd>Gaya tarik yang diteruskan sepanjang tali.</dd>
+
+    <dt>Tekanan</dt>
+    <dd>Gaya tegak lurus permukaan per satuan luas bidang kontak.</dd>
+
+    <dt>Tekanan hidrostatik</dt>
+    <dd>Tekanan pada fluida diam akibat kolom fluida di atasnya.</dd>
+
+    <dt>Tikungan miring</dt>
+    <dd>Jalan yang dibuat miring agar gaya normal menyediakan komponen menuju pusat tikungan.</dd>
+  </dl>
+
+  <h2 id="s51">51. Daftar pustaka</h2>
+
+  <p>Daftar pustaka disusun dari sumber utama materi kuliah, buku teks, lembaga riset, dan sumber gambar yang dipakai pada modul ini.</p>
+
+  <footer>
+    <ul class="refs">
+      <li><b>Materi kuliah.</b> <em>Dinamika: Gaya dan Hukum Newton.</em> Sumber utama yang mencakup gaya, Hukum Newton I sampai III, gaya normal, gesekan, bidang miring, tegangan tali, katrol, gravitasi, gaya sentripetal, dan tekanan.</li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 4.1 Newton&rsquo;s First Law of Motion.</em> Hukum kelembaman dan inersia. <a href="https://openstax.org/books/college-physics-2e/pages/4-1-newtons-first-law-of-motion-inertia">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 4.2 Newton&rsquo;s Second Law of Motion.</em> Resultan gaya, massa, dan percepatan. <a href="https://openstax.org/books/college-physics-2e/pages/4-2-newtons-second-law-of-motion-concept-of-a-system">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 4.3 Newton&rsquo;s Third Law of Motion.</em> Simetri gaya dan pasangan aksi reaksi. <a href="https://openstax.org/books/college-physics-2e/pages/4-3-newtons-third-law-of-motion-symmetry-in-forces">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 4.4 Normal, Tension, and Other Examples of Forces.</em> Gaya normal, tegangan tali, dan penerapan gaya dengan sudut. <a href="https://openstax.org/books/college-physics-2e/pages/4-4-normal-tension-and-other-examples-of-forces">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 4.5 Problem-Solving Strategies.</em> Strategi menyelesaikan soal dinamika secara bertahap. <a href="https://openstax.org/books/college-physics-2e/pages/4-5-problem-solving-strategies">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 5.1 Friction.</em> Gesekan statis dan kinetis beserta koefisiennya. <a href="https://openstax.org/books/college-physics-2e/pages/5-1-friction">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>University Physics Volume 1: 5.7 Drawing Free-Body Diagrams.</em> Kaidah dan kesalahan umum dalam menyusun diagram gaya bebas. <a href="https://openstax.org/books/university-physics-volume-1/pages/5-7-drawing-free-body-diagrams">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 6.2 Uniform Circular Motion.</em> Percepatan sentripetal pada gerak melingkar beraturan. <a href="https://openstax.org/books/college-physics-2e/pages/6-2-uniform-circular-motion">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 6.4 Centripetal Force.</em> Gaya sentripetal dan hubungannya dengan gaya lain. <a href="https://openstax.org/books/college-physics-2e/pages/6-4-centripetal-force">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 6.5 Newton&rsquo;s Universal Law of Gravitation.</em> Rumus gravitasi universal dan konstanta gravitasi. <a href="https://openstax.org/books/college-physics-2e/pages/6-5-newtons-universal-law-of-gravitation">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 11.2 Density and Specific Gravity.</em> Massa jenis sebagai besaran dasar pada tekanan fluida. <a href="https://openstax.org/books/college-physics-2e/pages/11-2-density">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 11.3 Pressure.</em> Definisi tekanan dan hubungan gaya dengan luas. <a href="https://openstax.org/books/college-physics-2e/pages/11-3-pressure">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 11.4 Pressure in Fluids.</em> Tekanan pada fluida dan pengaruh kedalaman. <a href="https://openstax.org/books/college-physics-2e/pages/11-4-pressure-in-fluids">openstax.org</a></li>
+      <li><b>OpenStax.</b> <em>College Physics 2e: 11.5 Pascal&rsquo;s Principle.</em> Prinsip Pascal dan sistem hidrolik. <a href="https://openstax.org/books/college-physics-2e/pages/11-5-pascals-principle">openstax.org</a></li>
+      <li><b>NASA Glenn Research Center.</b> <em>Beginner&rsquo;s Guide to Aeronautics: Lift.</em> Faktor yang memengaruhi gaya angkat dan bentuk persamaannya. <a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/lift/">nasa.gov</a></li>
+      <li><b>NASA Glenn Research Center.</b> <em>Beginner&rsquo;s Guide to Aeronautics: Bernoulli and Newton.</em> Penjelasan mengenai asal gaya angkat dan koreksi atas penyederhanaan yang menyesatkan. <a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/bernoulli-and-newton/">nasa.gov</a></li>
+      <li><b>NASA Glenn Research Center.</b> <em>Beginner&rsquo;s Guide to Aeronautics: Drag Equation.</em> Persamaan gaya hambat dan variabel yang memengaruhinya. <a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/drag-equation/">nasa.gov</a></li>
+      <li><b>NASA Jet Propulsion Laboratory.</b> <em>Astrodynamic Parameters.</em> Nilai konstanta gravitasi universal menurut rekomendasi CODATA. <a href="https://ssd.jpl.nasa.gov/astro_par.html">jpl.nasa.gov</a></li>
+      <li><b>Codata.</b> <em>Recommended Values of the Fundamental Physical Constants.</em> Sumber resmi penentuan nilai konstanta fisika. <a href="https://physics.nist.gov/cuu/Constants/">nist.gov</a></li>
+      <li><b>Wikimedia Commons.</b> <em>Potret Sir Isaac Newton 1689, Free body diagram bidang miring, bidang miring dengan gesekan, aksi dan reaksi, Pesawat Atwood, gaya sentripetal, serta hubungan gaya dan luas.</em> Sumber seluruh gambar pada modul ini. <a href="https://commons.wikimedia.org/">commons.wikimedia.org</a></li>
+    </ul>
+  </footer>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme');
+    var glyph = btn.querySelector('span');
+
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function paint() { glyph.textContent = isDark() ? '\u263E' : '\u2600'; }
+
+    btn.addEventListener('click', function () {
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      try { localStorage.setItem('theme', root.getAttribute('data-theme')); } catch (e) {}
+      paint();
+    });
+
+    paint();
+  })();
+</script>
+</body>
+</html>
