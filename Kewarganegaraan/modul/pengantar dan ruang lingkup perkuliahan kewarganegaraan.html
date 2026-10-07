@@ -1,0 +1,3512 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengantar dan Ruang Lingkup Perkuliahan Kewarganegaraan &mdash; Kewarganegaraan</title>
+<meta name="description" content="Modul Kewarganegaraan: kesadaran manusia terhadap pengetahuan, hakikat dan tujuan pendidikan kewarganegaraan, hak dan kewajiban warga negara menurut UUD NRI 1945, BELA negara, ruang lingkup sembilan pokok bahasan, model pembelajaran, Cooperative Learning, sistem penilaian, dan tiga unsur kompetensi kewarganegaraan.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>
+
+  :root {
+
+    color-scheme: light;
+
+    --bg: #F8FAFC;
+
+    --surface: #FFFFFF;
+
+    --surface-hover: #F1F5F9;
+
+    --heading: #0F172A;
+
+    --text: #334155;
+
+    --muted: #64748B;
+
+    --faint: #94A3B8;
+
+    --accent: #4F46E5;
+
+    --gold: #D99A16;
+
+    --border: #E2E8F0;
+
+    --success: #16A34A;
+
+    --code-bg: #0F172A;
+
+    --code-text: #E2E8F0;
+
+    --glow-1: rgba(79, 70, 229, .10);
+
+    --glow-2: rgba(217, 154, 22, .07);
+
+    --note-bg: #FFFBEB;
+
+    --bar-bg: rgba(248, 250, 252, .88);
+
+    --note-border: #D99A16;
+
+  }
+
+  @media (prefers-color-scheme: dark) {
+
+    :root:not([data-theme="light"]) {
+
+      color-scheme: dark;
+
+      --bg: #0B0F19;
+
+      --surface: #111827;
+
+      --surface-hover: #182235;
+
+      --heading: #F8FAFC;
+
+      --text: #CBD5E1;
+
+      --muted: #94A3B8;
+
+      --faint: #64748B;
+
+      --accent: #818CF8;
+
+      --gold: #F5C451;
+
+      --border: #263244;
+
+      --success: #4ADE80;
+
+      --code-bg: #0A0F1C;
+
+      --code-text: #CBD5E1;
+
+      --glow-1: rgba(79, 70, 229, .16);
+
+      --glow-2: rgba(245, 196, 81, .06);
+
+      --note-bg: #1A1608;
+
+      --bar-bg: rgba(11, 15, 25, .84);
+
+      --note-border: #F5C451;
+
+    }
+
+  }
+
+  :root[data-theme="dark"] {
+
+    color-scheme: dark;
+
+    --bg: #0B0F19;
+
+    --surface: #111827;
+
+    --surface-hover: #182235;
+
+    --heading: #F8FAFC;
+
+    --text: #CBD5E1;
+
+    --muted: #94A3B8;
+
+    --faint: #64748B;
+
+    --accent: #818CF8;
+
+    --gold: #F5C451;
+
+    --border: #263244;
+
+    --success: #4ADE80;
+
+    --code-bg: #0A0F1C;
+
+    --code-text: #CBD5E1;
+
+    --glow-1: rgba(79, 70, 229, .16);
+
+    --glow-2: rgba(245, 196, 81, .06);
+
+    --note-bg: #1A1608;
+
+    --bar-bg: rgba(11, 15, 25, .84);
+
+    --note-border: #F5C451;
+
+  }
+
+
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+
+    margin: 0;
+
+    background:
+
+      radial-gradient(circle at 10% 0%, var(--glow-1), transparent 38%),
+
+      radial-gradient(circle at 92% 8%, var(--glow-2), transparent 30%),
+
+      var(--bg);
+
+    background-repeat: no-repeat;
+
+    color: var(--text);
+
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+
+    line-height: 1.75;
+
+    -webkit-font-smoothing: antialiased;
+
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+
+
+  .topbar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1.5rem;
+
+    margin-bottom: 2.5rem;
+
+  }
+
+  .crumb {
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .74rem;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    color: var(--muted);
+
+  }
+
+  .crumb:hover { color: var(--accent); }
+
+  .crumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .theme-toggle {
+
+    flex: none;
+
+    width: 2.5rem;
+
+    height: 2.5rem;
+
+    display: grid;
+
+    place-items: center;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    color: var(--muted);
+
+    font-size: 1rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1);
+
+  }
+
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+
+  .theme-toggle:active { transform: translateY(0) scale(.96); }
+
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+
+
+  header.hero { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+
+  .eyebrow {
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .75rem;
+
+    letter-spacing: .2em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    margin: 0 0 .9rem;
+
+  }
+
+  .rule { width: 2.5rem; height: 2px; background: var(--gold); margin: 0 0 1.1rem; }
+
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.25rem); line-height: 1.2; margin: 0 0 .75rem; letter-spacing: -.02em; color: var(--heading); }
+
+  h2 {
+
+    font-size: 1.35rem;
+
+    margin-top: 3.25rem;
+
+    letter-spacing: -.01em;
+
+    scroll-margin-top: 1.5rem;
+
+    color: var(--heading);
+
+    padding-bottom: .5rem;
+
+    border-bottom: 1px solid var(--border);
+
+  }
+
+  h3 { font-size: 1.05rem; margin-top: 2rem; letter-spacing: -.01em; color: var(--heading); }
+
+  p { color: var(--muted); margin: 1rem 0; }
+
+  p strong, li strong { color: var(--heading); font-weight: 600; }
+
+  ul, ol { color: var(--muted); padding-left: 1.25rem; }
+
+  li { margin-bottom: .35rem; }
+
+  li::marker { color: var(--faint); }
+
+  a { color: var(--accent); }
+
+
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .92rem; }
+
+  caption {
+
+    caption-side: top;
+
+    text-align: left;
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .7rem;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    color: var(--faint);
+
+    padding-bottom: .5rem;
+
+  }
+
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+
+  th { color: var(--heading); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+
+  td.mono, th.mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .84em; white-space: nowrap; }
+
+
+
+  code {
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .85em;
+
+    background: var(--surface-hover);
+
+    border: 1px solid var(--border);
+
+    padding: .12em .38em;
+
+    border-radius: 6px;
+
+    color: var(--heading);
+
+  }
+
+  pre {
+
+    background: var(--code-bg);
+
+    color: var(--code-text);
+
+    padding: 1.15rem 1.3rem;
+
+    border-radius: 10px;
+
+    overflow-x: auto;
+
+    font-size: .84rem;
+
+    line-height: 1.55;
+
+    margin: 1.5rem 0;
+
+  }
+
+  pre code { background: none; border: none; padding: 0; color: inherit; font-size: 1em; }
+
+  pre.diagram { line-height: 1.45; }
+
+
+
+  .eq {
+
+    margin: 1.5rem 0;
+
+    padding: 1rem 1.35rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-left: 3px solid var(--gold);
+
+    border-radius: 0 10px 10px 0;
+
+    text-align: center;
+
+    color: var(--heading);
+
+    font-size: 1.05rem;
+
+    overflow-x: auto;
+
+  }
+
+  var, .sym {
+
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+
+    font-style: italic;
+
+    color: var(--heading);
+
+  }
+
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .2em; font-size: .95em; }
+
+  .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .4em .05em; }
+
+  .frac > span:last-child { padding: .05em .4em 0; }
+
+  .eq-note { display: block; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--faint); margin-top: .5rem; }
+
+
+
+  figure { margin: 1.75rem 0; }
+
+  figure img {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 30rem;
+
+    height: auto;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: .6rem;
+
+  }
+
+  figcaption {
+
+    max-width: 30rem;
+
+    margin-top: .7rem;
+
+    font-size: .82rem;
+
+    line-height: 1.6;
+
+    color: var(--faint);
+
+  }
+
+  figcaption b { color: var(--muted); font-weight: 600; }
+
+  figcaption a { color: var(--muted); text-decoration-color: var(--border); }
+
+  figcaption a:hover { color: var(--accent); }
+
+
+
+  .note {
+
+    border: 1px solid var(--border);
+
+    border-left: 3px solid var(--note-border);
+
+    background: var(--note-bg);
+
+    padding: .9rem 1.15rem;
+
+    border-radius: 0 10px 10px 0;
+
+    margin: 1.5rem 0;
+
+    font-size: .93rem;
+
+  }
+
+  .note p { margin: 0 0 .5rem; color: var(--text); }
+
+  .note p:last-child { margin-bottom: 0; }
+
+  .note .label {
+
+    display: block;
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .68rem;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+
+    color: var(--gold);
+
+    margin-bottom: .4rem;
+
+  }
+
+
+
+  .qa { margin: 1.5rem 0; }
+
+  .qa dt {
+
+    font-weight: 600;
+
+    color: var(--heading);
+
+    margin-top: 1.25rem;
+
+    font-size: .98rem;
+
+  }
+
+  .qa dd { margin: .5rem 0 0; color: var(--muted); }
+
+
+
+  .toc {
+
+    position: fixed;
+
+    top: 1.5rem;
+
+    left: 1.5rem;
+
+    width: 230px;
+
+    max-height: calc(100vh - 3rem);
+
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+
+    font-size: .8rem;
+
+    display: none;
+
+    scrollbar-width: thin;
+
+    scrollbar-color: var(--muted) transparent;
+
+  }
+
+  .toc::-webkit-scrollbar { width: 5px; }
+
+  .toc::-webkit-scrollbar-track { background: transparent; }
+
+  .toc::-webkit-scrollbar-thumb { background: var(--muted); opacity: .35; border-radius: 3px; }
+
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: .18rem 0; }
+
+  .toc a:hover { color: var(--accent); }
+
+  @media (min-width: 1280px) { .toc { display: block; } }
+
+
+
+
+
+  .ex {
+
+    margin: 1.5rem 0;
+
+    padding: .95rem 1.2rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-left: 3px solid var(--accent);
+
+    border-radius: 0 10px 10px 0;
+
+    font-size: .92rem;
+
+  }
+
+  .ex .label {
+
+    display: block;
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .68rem;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    margin-bottom: .45rem;
+
+  }
+
+  .ex p { margin: 0 0 .55rem; color: var(--text); }
+
+  .ex p:last-child { margin-bottom: 0; }
+
+  .ex pre { margin: .75rem 0 .25rem; font-size: .8rem; }
+
+  .ex ol, .ex ul { margin: .25rem 0 0; padding-left: 1.3rem; }
+
+
+
+  .specs { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; color: var(--faint); }
+
+  table.tight td, table.tight th { padding: .45rem .55rem; font-size: .88rem; }
+
+  .scroll { overflow-x: auto; }
+
+  .scroll table { min-width: 34rem; }
+
+
+
+  footer {
+
+    margin-top: 4rem;
+
+    padding-top: 2rem;
+
+    border-top: 1px solid var(--border);
+
+    font-size: .9rem;
+
+  }
+
+  footer .eyebrow { margin-bottom: .75rem; }
+
+  .refs { list-style: none; padding: 0; margin: 0; }
+
+  .refs li { margin-bottom: .8rem; padding-left: 1rem; border-left: 2px solid var(--border); font-size: .86rem; line-height: 1.65; }
+
+  .refs b { color: var(--heading); font-weight: 600; }
+
+  .refs a { word-break: break-word; }
+
+
+
+  @media (prefers-reduced-motion: reduce) {
+
+    html { scroll-behavior: auto; }
+
+    .theme-toggle { transition: none; }
+
+    .theme-toggle:hover { transform: none; }
+
+  }
+
+/* ===================== navigasi layar kecil ===================== */
+
+  .bar-start { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+
+  .menu-btn {
+
+    display: none;
+
+    place-items: center;
+
+    width: 2.5rem;
+
+    height: 2.5rem;
+
+    flex: none;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    transition: color .18s ease, border-color .18s ease;
+
+  }
+
+  .menu-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+  .menu-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .bars, .bars::before, .bars::after {
+
+    display: block;
+
+    width: 15px;
+
+    height: 1.5px;
+
+    background: currentColor;
+
+    border-radius: 2px;
+
+  }
+
+  .bars { position: relative; }
+
+  .bars::before, .bars::after { content: ''; position: absolute; left: 0; }
+
+  .bars::before { top: -5px; }
+
+  .bars::after { top: 5px; }
+
+  .scrim {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, .5);
+
+    z-index: 55;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity .25s ease;
+
+  }
+
+  body.nav-open { overflow: hidden; }
+
+  body.nav-open .scrim { opacity: 1; pointer-events: auto; }
+
+
+
+  @media (max-width: 1279.98px) {
+
+    .menu-btn { display: grid; }
+
+    .toc {
+
+      display: flex;
+
+      flex-direction: column;
+
+      inset: 0 auto 0 0;
+
+      width: min(86vw, 300px);
+
+      max-height: none;
+
+      padding: 1.4rem 1.4rem 3rem;
+
+      background: var(--surface);
+
+      border-right: 1px solid var(--border);
+
+      transform: translateX(-102%);
+
+      transition: transform .28s cubic-bezier(.16, 1, .3, 1);
+
+      z-index: 60;
+
+      box-shadow: 0 0 48px rgba(15, 23, 42, .2);
+
+    }
+
+    body.nav-open .toc { transform: none; }
+
+    .toc a { padding: .34rem 0; border-bottom: 1px solid var(--border); }
+
+    .toc a:last-child { border-bottom: 0; }
+
+  }
+
+
+
+  /* ===================== kuis interaktif ===================== */
+
+  .quiz {
+
+    margin: 2rem 0 0;
+
+    padding: 1.4rem 1.4rem 1.6rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+  }
+
+  .quiz-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; }
+
+  .quiz-head .badge {
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .7rem;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    border: 1px solid var(--accent);
+
+    border-radius: 999px;
+
+    padding: .12rem .6rem;
+
+  }
+
+  .quiz-head h2 { margin: 0; border: 0; padding: 0; font-size: 1.2rem; }
+
+  .quiz-lede { font-size: .9rem; margin: .35rem 0 1.1rem; }
+
+
+
+  .quiz-bar {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: .6rem 1rem;
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .76rem;
+
+    color: var(--muted);
+
+    margin-bottom: 1rem;
+
+  }
+
+  .quiz-track {
+
+    flex: 1 1 140px;
+
+    height: 6px;
+
+    background: var(--surface-hover);
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+  }
+
+  .quiz-fill {
+
+    height: 100%;
+
+    width: 0;
+
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+
+    transition: width .3s ease;
+
+  }
+
+  .quiz-reset {
+
+    background: none;
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    color: var(--muted);
+
+    font: inherit;
+
+    font-size: .72rem;
+
+    padding: .2rem .7rem;
+
+    cursor: pointer;
+
+  }
+
+  .quiz-reset:hover { color: var(--accent); border-color: var(--accent); }
+
+
+
+  .quiz-grid {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+
+    gap: .5rem;
+
+  }
+
+  .quiz-grid button {
+
+    width: 100%;
+
+    aspect-ratio: 1;
+
+    min-height: 46px;
+
+    display: grid;
+
+    place-items: center;
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .82rem;
+
+    color: var(--text);
+
+    background: var(--surface-hover);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: transform .16s cubic-bezier(.16, 1, .3, 1), color .16s ease, border-color .16s ease;
+
+  }
+
+  .quiz-grid button:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+
+  .quiz-grid button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .quiz-grid button[data-state='benar'] { background: rgba(22, 163, 74, .14); border-color: var(--success); color: var(--success); }
+
+  .quiz-grid button[data-state='salah'] { background: rgba(220, 38, 38, .12); border-color: #dc2626; color: #dc2626; }
+
+  .quiz-grid button[data-state='benar']::after,
+
+  .quiz-grid button[data-state='salah']::after {
+
+    content: '';
+
+    position: absolute;
+
+    margin: -26px 0 0 22px;
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+
+  }
+
+  .quiz-grid button { position: relative; }
+
+
+
+  .quiz-cta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .7rem;
+
+    margin-top: 1.1rem;
+
+  }
+
+  .btn {
+
+    font: inherit;
+
+    font-size: .9rem;
+
+    border-radius: 10px;
+
+    padding: .6rem 1.1rem;
+
+    cursor: pointer;
+
+    border: 1px solid var(--accent);
+
+    transition: filter .18s ease, transform .16s cubic-bezier(.16, 1, .3, 1);
+
+  }
+
+  .btn:hover { filter: brightness(1.08); }
+
+  .btn:active { transform: scale(.98); }
+
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .btn-primary { background: var(--accent); color: #fff; }
+
+  .btn-ghost { background: none; color: var(--muted); border-color: var(--border); }
+
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); filter: none; }
+
+
+
+  /* ---- lapisan kuis ---- */
+
+  .quiz-layer {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 80;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 1rem;
+
+    background: rgba(15, 23, 42, .62);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition: opacity .22s ease, visibility .22s ease;
+
+  }
+
+  .quiz-layer.open { opacity: 1; visibility: visible; pointer-events: auto; }
+
+  .quiz-card {
+
+    width: min(620px, 100%);
+
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    box-shadow: 0 24px 60px rgba(15, 23, 42, .35);
+
+    padding: 1.35rem 1.35rem 1.5rem;
+
+    transform: translateY(12px) scale(.98);
+
+    transition: transform .22s cubic-bezier(.16, 1, .3, 1);
+
+  }
+
+  .quiz-layer.open .quiz-card { transform: none; }
+
+  .quiz-top {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .75rem;
+
+    margin-bottom: .9rem;
+
+  }
+
+  .quiz-top .qcount {
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .72rem;
+
+    color: var(--faint);
+
+  }
+
+  .quiz-head h3 { margin: 0; font-size: 1.2rem; }
+
+  .quiz-top .qno {
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .72rem;
+
+    letter-spacing: .1em;
+
+    color: var(--accent);
+
+  }
+
+  .quiz-top .qref {
+
+    font-size: .72rem;
+
+    color: var(--faint);
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    padding: .1rem .55rem;
+
+  }
+
+  .quiz-top .qclose {
+
+    margin-left: auto;
+
+    flex: none;
+
+    width: 2rem;
+
+    height: 2rem;
+
+    display: grid;
+
+    place-items: center;
+
+    background: none;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    color: var(--muted);
+
+    font-size: 1rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+  }
+
+  .quiz-top .qclose:hover { color: var(--accent); border-color: var(--accent); }
+
+  .qtext { color: var(--heading); font-size: 1rem; margin: 0 0 1rem; line-height: 1.65; }
+
+
+
+  .qopts { display: grid; gap: .55rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+
+  .qopt {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: .7rem;
+
+    width: 100%;
+
+    text-align: left;
+
+    font: inherit;
+
+    font-size: .92rem;
+
+    color: var(--text);
+
+    background: var(--surface-hover);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: .65rem .8rem;
+
+    cursor: pointer;
+
+    transition: border-color .16s ease, color .16s ease;
+
+  }
+
+  .qopt:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+
+  .qopt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .qopt .key {
+
+    flex: none;
+
+    width: 1.5rem;
+
+    height: 1.5rem;
+
+    display: grid;
+
+    place-items: center;
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: .74rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: 6px;
+
+    background: var(--surface);
+
+  }
+
+  .qopt[aria-pressed='true'] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+  .qopt[aria-pressed='true'] .key { border-color: var(--accent); background: var(--accent); color: #fff; }
+
+  .qopt[data-mark='benar'] { border-color: var(--success); color: var(--success); background: rgba(22, 163, 74, .12); }
+
+  .qopt[data-mark='benar'] .key { border-color: var(--success); background: var(--success); color: #fff; }
+
+  .qopt[data-mark='salah'] { border-color: #dc2626; color: #dc2626; background: rgba(220, 38, 38, .1); }
+
+  .qopt[data-mark='salah'] .key { border-color: #dc2626; background: #dc2626; color: #fff; }
+
+  .qopt:disabled { cursor: default; }
+
+
+
+  .verdict {
+
+    display: none;
+
+    border-radius: 10px;
+
+    padding: .85rem .95rem;
+
+    margin: 0 0 1rem;
+
+    font-size: .9rem;
+
+    border: 1px solid var(--border);
+
+  }
+
+  .verdict.show { display: block; }
+
+  .verdict b { display: block; margin-bottom: .3rem; letter-spacing: .04em; font-size: .78rem; text-transform: uppercase; }
+
+  .verdict.ok { border-color: var(--success); background: rgba(22, 163, 74, .1); }
+
+  .verdict.ok b { color: var(--success); }
+
+  .verdict.no { border-color: #dc2626; background: rgba(220, 38, 38, .08); }
+
+  .verdict.no b { color: #dc2626; }
+
+  .verdict .ansline { color: var(--heading); font-weight: 600; margin-bottom: .35rem; }
+
+  .verdict .why { color: var(--muted); }
+
+
+
+  .quiz-foot { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+  .quiz-foot .spacer { flex: 1 1 auto; }
+
+
+
+  .done h3 { margin: 0 0 .5rem; }
+
+  .done .score {
+
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+
+    font-size: 2rem;
+
+    color: var(--accent);
+
+    line-height: 1.1;
+
+  }
+
+  .done .score small { font-size: 1rem; color: var(--muted); }
+
+
+
+  @media (max-width: 560px) {
+
+    .quiz-grid { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
+
+    .quiz-layer { padding: 0; place-items: stretch; }
+
+    .quiz-card {
+
+      width: 100%;
+
+      max-height: 100vh;
+
+      height: 100%;
+
+      border-radius: 0;
+
+      border: 0;
+
+      padding: 1.1rem 1rem 1.4rem;
+
+    }
+
+    .quiz { padding: 1.1rem 1rem 1.3rem; }
+
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .quiz-layer, .quiz-card, .toc, .scrim { transition: none; }
+
+  }
+
+/* ===================== topbar lengket ===================== */
+
+  .topbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 40;
+
+    margin: -1.1rem -0.6rem 2.4rem;
+
+    padding: 0.55rem 0.6rem;
+
+    border-radius: 12px;
+
+    background: var(--bar-bg);
+
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+
+    backdrop-filter: blur(12px) saturate(140%);
+
+    transition: box-shadow .2s ease, border-color .2s ease;
+
+    border: 1px solid transparent;
+
+  }
+
+  .topbar.is-stuck {
+
+    border-color: var(--border);
+
+    box-shadow: 0 6px 22px -12px rgba(15, 23, 42, .45);
+
+  }
+
+  .topbar::after {
+
+    content: '';
+
+    position: absolute;
+
+    inset: auto 0 0;
+
+    height: 1px;
+
+    background: var(--border);
+
+    opacity: 0;
+
+    transition: opacity .2s ease;
+
+  }
+
+  .topbar.is-stuck::after { opacity: 1; }
+
+
+
+  /* tombol tutup di dalam drawer daftar isi */
+
+  .toc-close {
+
+    display: none;
+
+    place-items: center;
+
+    width: 2rem;
+
+    height: 2rem;
+
+    flex: none;
+
+    margin: -0.4rem 0 0.4rem auto;
+
+    background: none;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    color: var(--muted);
+
+    font-size: .85rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+  }
+
+  .toc-close:hover { color: var(--accent); border-color: var(--accent); }
+
+  .toc-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+
+
+
+
+  /* judul tidak tertutup topbar lengket saat lompat tautan */
+
+  h2, h3 { scroll-margin-top: 5.75rem; }
+
+
+
+  @media (max-width: 1279.98px) {
+
+    .toc { position: fixed; display: flex; flex-direction: column; }
+
+    .toc-close { display: grid; }
+
+    .toc .eyebrow { flex: none; }
+
+  }
+
+  @media (max-width: 560px) {
+
+    .topbar { margin: -0.9rem -0.35rem 2rem; padding: 0.45rem 0.35rem; }
+
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .topbar, .topbar::after { transition: none; }
+
+  }
+
+
+</style>
+</head>
+
+<body data-kuis="kewarganegaraan-01">
+<nav class="toc">
+  <p class="eyebrow">Daftar Isi</p>
+  <a href="#n1">1. Peta materi</a>
+  <a href="#n2">2. Tujuan pembelajaran</a>
+  <a href="#n3">3. Kedudukan modul terhadap mata kuliah lain</a>
+  <a href="#n4">4. Mengapa pengantar perlu dibahas lebih dahulu</a>
+  <a href="#n5">5. Kesadaran manusia terhadap pengetahuan</a>
+  <a href="#n6">6. Matriks dua kali dua pengetahuan</a>
+  <a href="#n7">7. Empat jenis manusia</a>
+  <a href="#n8">8. Terjemahan kerangka menjadi kebiasaan kelas</a>
+  <a href="#n9">9. Analisis kritis terhadap kerangka ini</a>
+  <a href="#n10">10. Hakikat pendidikan Kewarganegaraan</a>
+  <a href="#n11">11. Kedudukan pendidikan kewarganegaraan dalam undang-undang</a>
+  <a href="#n12">12. Empat tujuan pembelajaran menurut materi</a>
+  <a href="#n13">13. Tujuan yang lebih luas dari lima tujuan di atas</a>
+  <a href="#n14">14. Hak dan kewajiban sebagai warga negara</a>
+  <a href="#n15">15. Hak dan kewajiban dalam UUD NRI 1945</a>
+  <a href="#n16">16. Hak dan kewajiban dalam undang-undang</a>
+  <a href="#n17">17. Pendidikan pendahuluan bela negara</a>
+  <a href="#n18">18. Hakikat bela negara menurut undang-undang</a>
+  <a href="#n19">19. Empat jalur keikutsertaan bela negara</a>
+  <a href="#n20">20. PengAACuan berdasarkan undang-undang terbaru</a>
+  <a href="#n21">21. Kerelaan berkorban yang proporsional</a>
+  <a href="#n22">22. Asas-asas kewarganegaraan</a>
+  <a href="#n23">23. Ruang lingkup mata kuliah</a>
+  <a href="#n24">24. Landasan pasal untuk setiap pokok bahasan</a>
+  <a href="#n25">25. Pembedaan warga negara dan penduduk</a>
+  <a href="#n26">26. Model dan metode perkuliahan</a>
+  <a href="#n27">27. Empat model pembelajaran berbasis penemuan</a>
+  <a href="#n28">28. Pendekatan Cooperative Learning</a>
+  <a href="#n29">29. Lima tahap pembelajaran</a>
+  <a href="#n30">30. Diskusi dan presentasi</a>
+  <a href="#n31">31. Sistem penilaian</a>
+  <a href="#n32">32. PAP dan PAN serta keterbatasan informasinya</a>
+  <a href="#n33">33. Kriteria penilaian dalam standar pendidikan tinggi</a>
+  <a href="#n34">34. Lima pertanyaan kunci dalam perkuliahan</a>
+  <a href="#n35">35. Pendekatan 5W + 1H</a>
+  <a href="#n36">36. What, apa?</a>
+  <a href="#n37">37. Where, di mana?</a>
+  <a href="#n38">38. When, kapan?</a>
+  <a href="#n39">39. Who, siapa?</a>
+  <a href="#n40">40. Why, mengapa?</a>
+  <a href="#n41">41. How, bagaimana?</a>
+  <a href="#n42">42. Civic Knowledge</a>
+  <a href="#n43">43. Civic Disposition</a>
+  <a href="#n44">44. Civic Skills</a>
+  <a href="#n45">45. Asal-usul tiga unsur kompetensi kewarganegaraan</a>
+  <a href="#n46">46. Apakah Civic Knowledge sudah cukup</a>
+  <a href="#n47">47. Analisis kritis terhadap materi</a>
+  <a href="#n48">48. Pertanyaan kritis dan jawabannya</a>
+  <a href="#n49">49. Pertanyaan kritis untuk diskusi kelas</a>
+  <a href="#n50">50. Ringkasan dalam satu tabel</a>
+  <a href="#n51">51. Ringkasan pasal yang relevan</a>
+  <a href="#n52">52. Latihan</a>
+  <a href="#n53">53. Daftar istilah</a>
+  <a href="#n54">54. Daftar pustaka</a>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="bar-start">
+      <button class="menu-btn" id="menu" type="button" aria-label="Buka daftar isi" aria-expanded="false"><span class="bars" aria-hidden="true"></span></button>
+      <a class="crumb" href="../index.html">&#8592; Daftar modul</a>
+      <button class="toc-close" id="toc-close" type="button" aria-label="Tutup daftar isi">&#10005;</button>
+    </div>
+    <button class="theme-toggle" id="theme" type="button" aria-label="Ganti tema terang atau gelap"><span aria-hidden="true">&#9788;</span></button>
+  </div>
+
+<header class="hero">
+  <p class="eyebrow">Modul 01 &middot; Kewarganegaraan</p>
+  <div class="rule"></div>
+  <h1>Pengantar dan Ruang Lingkup Perkuliahan Kewarganegaraan</h1>
+  <p>Modul ini menjadi pintu masuk mata kuliah Kewarganegaraan. Sebelum membicarakan negara, konstitusi, demokrasi, atau ketahanan nasional, yang perlu dibicarakan lebih dahulu adalah cara manusia mengenali pengetahuan yang dimilikinya sendiri. Bagian pertama membahas empat jenis manusia menurut tingkat kesadaran terhadap pengetahuan, beserta catatan kritis mengenai asal-usul kerangka tersebut. Bagian kedua menguraikan hakikat dan tujuan pendidikan Kewarganegaraan, hak dan kewajiban warga negara menurut Undang-Undang Dasar Negara Republik Indonesia Tahun 1945, serta hubungannya dengan upaya bela negara berdasarkan Undang-Undang Nomor 3 Tahun 2002 dan Undang-Undang Nomor 23 Tahun 2019. Bagian kedua juga menambahkan pembedaan antara warga negara dan penduduk yang sering terlewat dalam pembahasan awam. Bagian ketiga memetakan ruang lingkup sembilan pokok bahasan mata kuliah beserta landasan pasal yang relevan. Bagian keempat membahas model dan metode perkuliahan, pendekatan Cooperative Learning, lima tahap pembelajaran, serta sistem penilaian dan keterbatasannya. Bagian kelima membahas pendekatan 5W + 1H dan tiga unsur Civic Knowledge, Civic Disposition, serta Civic Skills. Modul ditutup dengan analisis kritis, latihan, glosarium, dan kuis interaktif.</p>
+</header>
+
+<main>
+<h2 id="n1">1. Peta materi</h2>
+
+  <p>Pengantar perkuliahan bukan bagian pembuka yang sekadar formalitas. Bagian ini menetapkan cara berpikir yang akan dipakai sepanjang mata kuliah, sehingga pembahasannya perlu diperlakukan serius.</p>
+
+  <pre class="diagram"><code>ALUR MODUL INI
+
+  BAGIAN A - SADAR TERHADAP PENGETAHUAN
+    matriks dua kali dua pengetahuan
+      |
+      v
+    empat jenis manusia
+      |
+      v
+    terjemahan menjadi kebiasaan kelas
+
+
+  BAGIAN B - HAKIKAT DAN TUJUAN
+    hakikat pendidikan kewarganegaraan
+      |
+      +-- landasan konstitusional : UUD NRI 1945
+      +-- landasan undang-undang : UU 20/2003, UU 12/2012
+      |
+      v
+    hak dan kewajiban warga negara
+      |
+      v
+    upaya bela negara : UU 3/2002 jo. UU 23/2019
+
+
+  BAGIAN C - RUANG LINGKUP
+    sembilan pokok bahasan mata kuliah
+      |
+      v
+    landasan pasal untuk tiap pokok
+
+
+  BAGIAN D - SISTEM PERKULIAHAN
+    model dan metode pembelajaran
+      |
+      v
+    pendekatan Cooperative Learning
+      |
+      v
+    lima tahap pembelajaran
+      |
+      v
+    sistem penilaian dan keterbatasannya
+
+
+  BAGIAN E - KERANGKA PEMAHAMAN
+    pendekatan 5W + 1H
+      |
+      v
+    Civic Knowledge, Civic Disposition, Civic Skills</code></pre>
+
+  <h2 id="n2">2. Tujuan pembelajaran</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 2.1 &middot; Tujuan pembelajaran modul ini</caption>
+    <thead>
+      <tr><th>No</th><th>Tujuan</th><th>Indikator pencapaian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Menempatkan keempat jenis manusia dalam matriks pengetahuan</td><td>Membedakan orang yang tahu, yang tidak tahu, dan yang tidak sadar atas ketidaktahuannya</td></tr>
+      <tr><td>2</td><td>Menjelaskan hakikat pendidikan Kewarganegaraan</td><td>Mengutip ketentuan yang mengatur tentang pendidikan kewarganegaraan beserta pasal dan isinya</td></tr>
+      <tr><td>3</td><td>Menyebutkan tujuan pembelajaran Kewarganegaraan</td><td>Menyebutkan lima tujuan pembelajaran dan tujuan yang lebih luas</td></tr>
+      <tr><td>4</td><td>Membedakan hak, kewajiban, warga negara, dan penduduk</td><td>Merujuk pada pasal yang tepat untuk masing-masing konsep</td></tr>
+      <tr><td>5</td><td>Menjelaskan hubungan Kewarganegaraan dengan bela negara</td><td>Menyebutkan pasal yang mengaitkan pendidikan kewarganegaraan dengan keikutsertaan bela negara</td></tr>
+      <tr><td>6</td><td>Memetakan ruang lingkup mata kuliah</td><td>Menyebutkan sembilan pokok bahasan dan landasan pasal untuk setiap pokok</td></tr>
+      <tr><td>7</td><td>Menguraikan model dan metode perkuliahan</td><td>Membedakan empat model pembelajaran berbasis penemuan dan berbasis masalah</td></tr>
+      <tr><td>8</td><td>Menerapkan pendekatan Cooperative Learning</td><td>Mengidentifikasi unsur kerja sama dan tanggung jawab bersama dalam kelompok</td></tr>
+      <tr><td>9</td><td>Menjelaskan tahap pembelajaran</td><td>Mengurutkan lima tahap pembelajaran secara tepat</td></tr>
+      <tr><td>10</td><td>Memahami sistem penilaian dan keterbatasannya</td><td>Menyebutkan kriteria penilaian serta mengidentifikasi informasi yang belum tersedia</td></tr>
+      <tr><td>11</td><td>Menerapkan pendekatan 5W + 1H</td><td>Menjawab enam pertanyaan kunci tentang Kewarganegaraan secara terstruktur</td></tr>
+      <tr><td>12</td><td>Menjelaskan tiga unsur kompetensi kewarganegaraan</td><td>Membedakan pengetahuan, sikap, dan keterampilan kewarganegaraan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n3">3. Kedudukan modul terhadap mata kuliah lain</h2>
+
+  <p>Pengantar perkuliahan berdiri sendiri secara akademik, tetapi posisinya di dalam rangkaian mata kuliah sebaiknya dipahami sebagai kerangka bagi delapan pokok bahasan berikutnya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 3.1 &middot; Posisi pengantar terhadap delapan pokok bahasan lain</caption>
+    <thead>
+      <tr><th>Pokok bahasan</th><th>Yang diberi oleh modul pengantar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Identitas Nasional</td><td>Kerangka pengenal dan cara bertanya tentang jati diri bangsa</td></tr>
+      <tr><td>Negara dan Konstitusi</td><td>Pengertian negara menurut konstitusi dan kedudukan konstitusi</td></tr>
+      <tr><td>Hubungan Negara dan Warga Negara</td><td>Hak dan kewajiban warga negara sebagai pasangan yang tidak dapat dipisahkan</td></tr>
+      <tr><td>Demokrasi Indonesia</td><td>Musyawarah dan ketidaksetujuan sebagai bagian dari proses demokratis</td></tr>
+      <tr><td>Negara Hukum dan Hak Asasi Manusia</td><td>Negara hukum menurut Pasal 1 ayat (3) dan hak asasi menurut Pasal 28A sampai 28J</td></tr>
+      <tr><td>Wawasan Nusantara</td><td>Corak kepulauan dan wilayah menurut Pasal 25A</td></tr>
+      <tr><td>Ketahanan Nasional</td><td>Bela negara sebagai bentuk paling langsung dari ketahanan</td></tr>
+      <tr><td>Strategi Nasional</td><td>Posisi warga negara sebagai pelaku sekaligus pengawas kebijakan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p>Pengantar perkuliahan juga berbeda sifatnya dari delapan pokok bahasan lain. Delapan pokok itu membahas isi dan doktrin, sedangkan pengantar membahas cara belajar dan cara menguji diri sendiri. Karena itu modul ini tidak dapat menggantikan salah satu pokok manapun, tetapi dapat menjadi alat ukur untuk menilai diri sendiri di dalam kelas.</p>
+  </div>
+
+  <h2 id="n4">4. Mengapa pengantar perlu dibahas lebih dahulu</h2>
+
+  <p>Ada tiga alasan teknis mengapa pembahasan pengantar diletakkan paling depan.</p>
+
+  <ol>
+    <li><strong>Menetapkan standar bukti.</strong> Modul ini membahas sumber yang sahih. Pembahasan berikutnya akan banyak merujuk pasal, dan kemampuan memeriksa pasal merupakan keterampilan yang harus dilatih sejak awal.</li>
+    <li><strong>Menetapkan cara bertanya.</strong> Analisis kritis pada bagian akhir modul ini bekerja dengan cara mengubah pertanyaan menjadi sesuatu yang dapat diperiksa. Cara itu harus diperkenalkan sebelum substansi dibahas.</li>
+    <li><strong>Menetapkan batas kemampuan dalam kelas.</strong>Mahasiswa yang baik dimulai dari pengakuan atas apa yang belum diketahui, bukan dari kesan bahwa semua sudah dimengerti.</li>
+  </ol>
+
+  <h2 id="n5">5. Kesadaran manusia terhadap pengetahuan</h2>
+
+  <p>Materi modul ini mengelompokkan manusia berdasarkan hubungan seseorang dengan pengetahuan yang dimilikinya. Ada dua hal yang digabungkan dalam pengelompokan ini: ada atau tidaknya pengetahuan itu, dan sejauh mana seseorang menyadari keadaan tersebut.</p>
+
+  <pre class="diagram"><code>ada pengetahuan?          -&gt;  ya / tidak
+sadar akan pengetahuan itu?  -&gt;  ya / tidak
+
+dikombinasikan  -&gt;  empat kemungkinan</code></pre>
+
+  <p>Karena itu pengelompokan ini bukan sekadar membagi manusia menjadi yang bodoh dan yang pintar. Pengelompokan ini membagi manusia menurut kedudukan kewaspadaan terhadap pengetahuan yang dimilikinya sendiri.</p><h2 id="n6">6. Matriks dua kali dua pengetahuan</h2>
+
+  <p>Kerangka yang dipakai modul ini bukan cipta modul ini. Kerangka tersebut sudah lama dikenal dalam psikologi komunikasi, kemudian dipopulerkan sebagai matriks empat kuadran ketika sebuah peristiwa besar dibicarakan di ruang pers Amerika Serikat pada tahun 2002.</p>
+
+  <p>Matriks itu terbentuk dari dua penilangan yang saling berpotongan.</p>
+
+  <pre class="diagram"><code>  penilangan 1 : apakah ada pengetahuan itu?
+  penilangan 2 : apakah orang itu menyadarinya?
+
+  SILANG  |  ada pengetahuan   |  tidak ada pengetahuan
+  --------+------------------+------------------------
+  SADAR    |  diketahui yang   |  tidak diketahui yang
+           |  diketahui       |  diketahui
+  --------+------------------+------------------------
+  TIDAK    |  diketahui yang   |  tidak diketahui yang
+  SADAR    |  tidak diketahui |  tidak diketahui
+  --------+------------------+------------------------</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 6.1 &middot; Empat kuadran matriks pengetahuan beserta artinya</caption>
+    <thead>
+      <tr><th>Kuadran</th><th>Istilah teknis</th><th>Contoh dalam perkuliahan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Disadari dan ada pengetahuan</td><td>Diketahui yang diketahui</td><td>Mahasiswa sudah bisa menjelaskan apa itu hak asasi manusia</td></tr>
+      <tr><td>Tidak disadari dan ada pengetahuan</td><td>Diketahui yang tidak diketahui</td><td>Mahasiswa sudah pernah berdiskusi tetapi tidak sadar bahwa ia punya kemampuan bernegosiasi</td></tr>
+      <tr><td>Disadari dan tidak ada pengetahuan</td><td>Tidak diketahui yang diketahui</td><td>Mahasiswa tahu bahwa ia belum memahami perbedaan undang-undang dan peraturan pemerintah</td></tr>
+      <tr><td>Tidak disadari dan tidak ada pengetahuan</td><td>Tidak diketahui yang tidak diketahui</td><td>Mahasiswa tidak tahu bahwa argumentasinya dalam kelompok selalu kalah</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Catatan istilah.</strong> Matriks aslinya memakai dua kata berbeda dalam dua cara. Bahasa Inggris membedakan <em>known</em> yang berarti diketahui dan <em>unknown</em> yang berarti tidak diketahui, serta <em>knows</em> yang berarti menyadari dan <em>doesn't know</em> yang berarti tidak menyadari. Bahan perkuliahan yang sering menyederhanakannya menjadi satu kata sehingga penamaannya menjadi membingungkan. Menyebutkan bentuk aslinya sangat membantu menghindari kekeliruan.</p>
+  </div>
+
+  <div class="note">
+    <p><strong>Catatan pilihan kata.</strong> Istilah yang lebih netral adalah memakai "yang disadari" dan "yang tidak disadari", karena lebih netral dan tidak menyiratkan penilaian moral terhadap seseorang.</p>
+  </div>
+
+  <h2 id="n7">7. Empat jenis manusia</h2>
+
+  <p>Berikut pemetaan keempat jenis manusia yang dipakai dalam materi modul ini ke dalam matriks dua kali dua di atas.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 7.1 &middot; Pemetaan empat jenis manusia ke matriks pengetahuan</caption>
+    <thead>
+      <tr><th>Istilah dalam materi</th><th>Istilah teknis</th><th>Inti makna</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Manusia yang tahu di tahunnya</td><td>Diketahui yang diketahui</td><td>Tahu, dan tahu bahwa ia tahu</td></tr>
+      <tr><td>Manusia yang tidak tahu di tahunnya</td><td>Diketahui yang tidak diketahui</td><td>Sebenarnya tahu, tetapi tidak menyadari bahwa ia tahu</td></tr>
+      <tr><td>Manusia yang tahu di tidak DEAUDIAHKANNYA</td><td>Tidak diketahui yang diketahui</td><td>Tidak tahu, tetapi tahu bahwa ia tidak tahu</td></tr>
+      <tr><td>Manusia yang tidak tahu di tidak DEAUDIAHKANNYA</td><td>Tidak diketahui yang tidak diketahui</td><td>Tidak tahu, dan juga tidak tahu bahwa ia tidak tahu</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><strong>Catatan penting mengenai nomor dua.</strong> Banyak orang secara keliru menganggap bahwa tidak tahu di tahunya sama dengan tidak tahu apa-apa. Padahal orang tersebut tetap memiliki pengetahuan, hanya saja pengetahuan itu belum disadari.</p>
+
+  <p>Pengetahuan yang belum disadari tersebut sering muncul sebagai kemampuan yang tidak pernah disadari. Contohnya seorang mahasiswa yang selalu bisa mereda argumentasi temannya tetapi menganggap dirinya kurang pandai berdebat, dan seorang yang selalu tepat waktu tetapi merasa itu bukan kelebihan.</p>
+
+  <h2 id="n8">8. Terjemahan kerangka menjadi kebiasaan kelas</h2>
+
+  <p>Kerangka empat jenis manusia baru bermanfaat apabila diterjemahkan menjadi empat kebiasaan nyata di dalam kelas.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 8.1 &middot; Terjemahan empat jenis manusia menjadi kebiasaan kelas</caption>
+    <thead>
+      <tr><th>Kuadran</th><th>Biasaan yang tepat</th><th>Kesalahan yang sering muncul</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Diketahui yang diketahui</td><td>Menyatakan apa yang sudah dikuasai, lalu melanjutkan</td><td>Menyebut semua yang pernah ditemui sebagai yang sudah dikuasai</td></tr>
+      <tr><td>Diketahui yang tidak diketahui</td><td>Menyusun peta kemampuan yang sudah ada tapi belum pernah dipakai</td><td>Menyimpan kemampuan yang sudah ada tanpa pernah memakainya</td></tr>
+      <tr><td>Tidak diketahui yang diketahui</td><td>Mengajukan pertanyaan pada tempat yang memang belum dipahami</td><td>Meragu-ragu bertanya karena takut dinilai</td></tr>
+      <tr><td>Tidak diketahui yang tidak diketahui</td><td>Menghadapi pendapat yang dianggap pasti denganeriksa ulang</td><td>Menyatakan kepastian pada hal yang belum pernah diperiksa</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n9">9. Analisis kritis terhadap kerangka ini</h2>
+
+  <p>Kerangka ini berguna, tetapi tidak sempurna. Ada tiga kritik yang layak diperhatikan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 9.1 &middot; Kritik terhadap kerangka empat jenis manusia</caption>
+    <thead>
+      <tr><th>No</th><th>Kritik</th><th>Dasar pemikiran</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Kategori kedua paling berbahaya, karena yang tidak diketahui mengenai pengetahuan yang dimiliki adalah pengetahuan yang sulit diucapkan dan pengetahuan yang sengaja ditolak untuk diakui</td><td>Salah seorang filsuf dari Slovenia menambahkan bahwa conozca yang kita sengaja tolak untuk diakui merupakan bahaya terbesar, bukan ketidaktahuan yang murni</td></tr>
+      <tr><td>2</td><td>Kategori keempat paling sulit ditangani karena secara definisi orang tidak dapat meminta bantuan untuk hal yang disadari tidak ada dalam daftar yang disadari.</td><td>Cara yang lazim adalah tampil bersama orang yang batas pengetahuannya berbeda, sehingga mereka dapat menunjukkan titik buta yang tidak terlihat</td></tr>
+      <tr><td>3</td><td>Kategori pertama dapat memuat keyakinan yang keliru namun dianggap pasti</td><td>Bukti paling sederhana adalah kemampuan menjelaskan kembali hal yang dianggap dikuasai kepada orang lain</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Implikasi bagi perkuliahan.</strong> Karena kuadran pertama dan kedua sama-sama keliru tetapi berbeda cara, tugas kelompok dan presentasi berfungsi sebagai alat diagnosis. Presentasi memaksa mahasiswa mengubah pengetahuan diam-diam menjadi pengetahuan yang dapat diucapkan. Itulah cara paling langsung memindahkan isi kuadran kedua ke kuadran pertama.</p>
+  </div><h2 id="n10">10. Hakikat pendidikan Kewarganegaraan</h2>
+
+  <p>Istilah kunci untuk memahami modul ini adalah <strong>kewarganegaraan</strong>, dan definisi resminya sudah ada dalam undang-undang.</p>
+
+  <div class="note">
+    <p><strong>Pasal 1 ayat (2) Undang-Undang Nomor 12 Tahun 2006</strong> tentang Penetapan Perliquid quid Kewarganegaraan Republik Indonesia berbunyi: <em>"Kewarganegaraan adalah segala hal ihwal yang berhubungan dengan warga negara."</em></p>
+  </div>
+
+  <p>Dari definisi itu dapat ditarik bahwa kewarganegaraan bukan sekadar ilmu politik. Kewarganegaraan mencakup segala hal ihwal yang berhubungan dengan warga negara, termasuk hak, kewajiban, hubungan dengan negara, kebangsaan, dan>false.</p>
+
+  <h2 id="n11">11. Kedudukan pendidikan kewarganegaraan dalam undang-undang</h2>
+
+  <p>Pendidikan kewarganegaraan memiliki dasar hukum yang bertingkat, dari undang-undang organik hingga peraturan pemerintah.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 11.1 &middot; Dasar hukum pendidikan kewarganegaraan di Indonesia</caption>
+    <thead>
+      <tr><th>Dasar hukum</th><th>Pasal</th><th>Isi ketentuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UU No. 20 Tahun 2003 tentang Sistem Pendidikan Nasional</td><td>Pasal 37 ayat (1)</td><td>Kurikulum pendidikan dasar dan menengah wajib memuat pendidikan agama, pendidikan kewarganegaraan, bahasa, dan mata pelajaran lain</td></tr>
+      <tr><td>UU No. 20 Tahun 2003 tentang Sistem Pendidikan Nasional</td><td>Pasal 37 ayat (2)</td><td>Kurikulum pendidikan tinggi wajib memuat pendidikan agama, pendidikan kewarganegaraan, dan bahasa</td></tr>
+      <tr><td>Penjelasan Pasal 37 UU No. 20 Tahun 2003</td><td>Penjelasan</td><td>Pendidikan kewarganegaraan dimaksudkan untuk membentuk peserta didik menjadi manusia yang memiliki rasa kebangsaan dan cinta tanah air</td></tr>
+      <tr><td>UU No. 12 Tahun 2012 tentang Pendidikan Tinggi</td><td>Pasal 35 ayat (3)</td><td>Setiap perguruan tinggi wajib menyelenggarakan mata kuliah agama, Pancasila, kewarganegaraan, dan bahasa Indonesia</td></tr>
+      <tr><td>UU No. 3 Tahun 2002 tentang Pertahanan Negara</td><td>Pasal 9 ayat (2) huruf a</td><td>Keikutsertaan warga negara dalam upaya bela negara diselenggarakan melalui pendidikan kewarganegaraan</td></tr>
+      <tr><td>UU No. 23 Tahun 2019 tentang Pengelolaan Sumber Daya Nasional untuk Pertahanan Negara</td><td>Pasal 6 ayat (1)</td><td>Setiap warga negara berhak dan wajib ikut serta dalam usaha bela negara yang diwujudkan dalam penyelenggaraan pertahanan negara</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Catatan penting.</strong> Dari tabel ini terlihat bahwa pendidikan kewarganegaraan tidak berdiri hanya sebagai mata kuliah pilihan. Ia masuk kategori mata kuliah wajib di perguruan tinggi melalui Pasal 35 ayat (3) UU No. 12 Tahun 2012, dan sekaligus menjadi salah satu bentuk keikutsertaan bela negara melalui Pasal 9 ayat (2) huruf a UU No. 3 Tahun 2002.essels</p>
+  </div>
+
+  <h2 id="n12">12. Empat tujuan pembelajaran menurut materi</h2>
+
+  <p>Materi modul ini menetapkan lima tujuan pembelajaran utama.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 12.1 &middot; Lima tujuan pembelajaran yang dinyatakan materi</caption>
+    <thead>
+      <tr><th>No</th><th>Tujuan</th><th>Contoh pencapaian yang diharapkan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Menjelaskan hakikat Kewarganegaraan</td><td>Mahasiswa dapat mendefinisikan kewarganegaraan berdasarkan definisi dalam undang-undang</td></tr>
+      <tr><td>2</td><td>Menjelaskan tujuan mempelajari Kewarganegaraan</td><td>Mahasiswa dapat menyebutkan tujuan pendidikan kewarganegaraan</td></tr>
+      <tr><td>3</td><td>Menjelaskan materi kajian Kewarganegaraan</td><td>Mahasiswa dapat memetakan sembilan pokok bahasan</td></tr>
+      <tr><td>4</td><td>Menjelaskan sistem perkuliahan secara umum</td><td>Mahasiswa dapat mengikuti proses pembelajaran dan penilaian</td></tr>
+      <tr><td>5</td><td>Menjelaskan kriteria dan standar penilaian perkuliahan</td><td>Mahasiswa mengetahui cara penilaiannya</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n13">13. Tujuan yang lebih luas dari lima tujuan di atas</h2>
+
+  <p>Kelima tujuan tersebut bersifat pengantar dan administratif. Tujuan yang lebih luas adalah agar mahasiswa mampu melaksanakan hak dan kewajibannya sesuai dengan norma dan aturan yang berlaku.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 13.1 &middot; Dua sisi pendidikan Kewarganegaraan</caption>
+    <thead>
+      <tr><th>Sisi</th><th>Isi</th><th>Contoh perilaku</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sisi pengetahuan</td><td>Memberi bekal konsep mengenai kehidupan bernegara</td><td>Mahasiswa dapat menjelaskan apa itu hak asasi manusia</td></tr>
+      <tr><td>Sisi kesadaran dan kemampuan</td><td>Membentuk cara berpikir, bersikap, dan bertindak</td><td>Mahasiswa memilih sikap dalam menghadapi persoalan dan dapat dipertanggungjawabkan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Cara menguji sisi kedua memang lebih sulit daripada cara menguji sisi pertama. Sisi pertama dapat diuji dengan ujian tertulis, sedangkan sisi kedua baru terlihat dari kebiasaan. Inilah alasan modul ini juga membahas sistem penilaian dan keterbatasannya.</p>
+
+  <h2 id="n14">14. Hak dan kewajiban sebagai warga negara</h2>
+
+  <p>Hak dapat dipahami sebagai sesuatu yang semestinya diterima atau dimiliki oleh seseorang. Kewajiban merupakan sesuatu yang harus dilakukan atau dipenuhi. Keduanya tidak dapat dipisahkan.</p>
+
+  <p>Hubungan timbal balik ini ditegaskan secara tegas dalam pembukaan Undang-Undang Nomor 12 Tahun 2006, yang menyatakan bahwa status kewarganegaraan menimbulkan hubungan timbal balik antara warga negara dan negaranya. Setiap warga negara mempunyai hak dan kewajiban terhadap negaranya. Sebaliknya, negara mempunyai kewajiban memberikan perlindungan terhadap warga negaranya.</p>
+
+  <div class="note">
+    <p><strong>Pola yang sering terlewat.</strong> Beberapa kali dalam undang-undang, hak dan kewajiban ditulis dalam satu kalimat yang sama, misalnya <em>"berhak dan wajib"</em>. Pola ini menunjukkan bahwa hak dan kewajiban bukan dua daftar terpisah, melainkan dua sisi dari satu kedudukan yang sama.</p>
+  </div>
+
+  <h2 id="n15">15. Hak dan kewajiban dalam UUD NRI 1945</h2>
+
+  <p>Undang-Undang Dasar memuat sejumlah pasal yang mengatur hak dan kewajiban warga negara. Berikut pasal-pasal yang paling sering ditanyakan dalam perkuliahan Kewarganegaraan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 15.1 &middot; Hak dan kewajiban warga negara menurut UUD NRI 1945</caption>
+    <thead>
+      <tr><th>Pasal</th><th>Isi ketentuan</th><th>Macam</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pasal 26 ayat (1)</td><td>"Yang menjadi warga negara ialah orang-orang bangsa Indonesia asli dan orang-orang bangsa lain yang disahkan dengan undang-undang sebagai warga negara."</td><td>Penentuan siapa yang berkedudukan warga negara</td></tr>
+      <tr><td>Pasal 26 ayat (2)</td><td>"Penduduk ialah warga negara Indonesia dan orang asing yang tinggal di Indonesia."</td><td>Pembedaan warga negara dan penduduk</td></tr>
+      <tr><td>Pasal 27 ayat (1)</td><td>"Segala warga negara bersamaan kedudukannya di dalam hukum dan pemerintahan dan wajib menjunjung hukum dan pemerintahan itu dengan tidak ada kecualinya."</td><td>Kesetaraan dan kewajiban menjunjung hukum</td></tr>
+      <tr><td>Pasal 27 ayat (2)</td><td>"Tiap-tiap warga negara berhak atas pekerjaan dan penghidupan yang layak bagi kemanusiaan."</td><td>Hak atas pekerjaan</td></tr>
+      <tr><td>Pasal 28</td><td>"Kemerdekaan berserikat dan berkumpul, mengeluarkan pikiran dengan lisan dan tulisan dan sebagainya ditetapkan dengan undang-undang."</td><td>Hak kebebasan berpendapat</td></tr>
+      <tr><td>Pasal 28A ayat (1)</td><td>"Setiap orang berhak untuk hidup serta berhak mempertahankan hidup dan kehidupannya."</td><td>Hak atas hidup</td></tr>
+      <tr><td>Pasal 28D ayat (1)</td><td>"Setiap orang berhak atas pengakuan, jaminan, perlindungan, dan kepastian hukum yang adil serta perlakuan yang sama di hadapan hukum."</td><td>Hak atas perlakuan yang sama</td></tr>
+      <tr><td>Pasal 28D ayat (3)</td><td>"Setiap warga negara berhak memperoleh kesempatan yang sama dalam pemerintahan."</td><td>Hak atas kesempatan yang sama dalam pemerintahan</td></tr>
+      <tr><td>Pasal 28D ayat (4)</td><td>"Setiap orang berhak atas status kewarganegaraan."</td><td>Hak atas status kewarganegaraan</td></tr>
+      <tr><td>Pasal 30 ayat (1)</td><td>"Tiap-tiap warga negara berhak dan wajib ikut serta dalam usaha pembelaan negara."</td><td>Hak dan kewajiban sekaligus</td></tr>
+      <tr><td>Pasal 31 ayat (1)</td><td>"Setiap warga negara berhak mendapat pendidikan."</td><td>Hak atas pendidikan</td></tr>
+      <tr><td>Pasal 31 ayat (2)</td><td>"Setiap warga negara wajib mengikuti pendidikan dasar dan pemerintah wajib membiayainya."</td><td>Kewajiban mengikuti pendidikan dasar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Pasal 31 ayat (2) perlu catatan tersendiri.</strong> Ayat tersebut memuat tiga pihak sekaligus dalam satu kalimat: warga negara wajib mengikuti pendidikan dasar, dan pemerintah wajib membiayainya. Ayat ini menjadi dasar konstitusional kewajiban negara menyediakan pendidikan dasar tanpa memungut biaya, sebagaimana ditegaskan dalam penjelasan UU No. 20 Tahun 2003 tentang Sisdiknas.</p>
+  </div><h2 id="n16">16. Hak dan kewajiban dalam undang-undang</h2>
+
+  <p>Beberapa undang-undang menulis hak dan kewajiban dalam satu kalimat yang sama. Pola ini penting dipahami karena menunjukkan bahwa keduanya tidak dapat dipisahkan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 16.1 &middot; Pasal yang memuat hak dan kewajiban sekaligus</caption>
+    <thead>
+      <tr><th>Dasar hukum</th><th>Pasal</th><th>Isi ketentuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UUD NRI 1945</td><td>Pasal 30 ayat (1)</td><td>"Tiap-tiap warga negara berhak dan wajib ikut serta dalam usaha pembelaan negara. Syarat-syarat tentang pembelaan diatur dengan undang-undang."</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 31 ayat (2)</td><td>"Setiap warga negara wajib mengikuti pendidikan dasar dan pemerintah wajib membiayainya."</td></tr>
+      <tr><td>UU No. 3 Tahun 2002 tentang Pertahanan Negara</td><td>Pasal 9 ayat (1)</td><td>"Setiap warga negara berhak dan wajib ikut serta dalam upaya bela negara yang diwujudkan dalam penyelenggaraan pertahanan negara."</td></tr>
+      <tr><td>UU No. 23 Tahun 2019 tentang Pengelolaan Sumber Daya Nasional untuk Pertahanan Negara</td><td>Pasal 6 ayat (1)</td><td>"Setiap warga negara berhak dan wajib ikut serta dalam usaha bela negara yang diwujudkan dalam penyelenggaraan pertahanan negara."</td></tr>
+      <tr><td>UU No. 24 Tahun 2009 tentang Bendera, Bahasa, Lambang Negara, serta Lagu Kebangsaan</td><td>Pasal 65</td><td>"Warga Negara Indonesia berhak dan wajib memelihara, menjaga, dan menggunakan Bendera Negara, Bahasa Indonesia, dan Lambang Negara, serta Lagu Kebangsaan untuk kehormatan dan kedaulatan bangsa dan negara sesuai dengan Undang-Undang ini."</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Pasal 65 UU No. 24 Tahun 2009 layak dibaca dengan saksama.</strong> Ayat tersebut menunjukkan bahwa memakai bendera, bahasa, lambang, dan lagu kebangsaan bukan hak yang murni enjoyment enjoyment, tetapi juga kewajiban. Privilege memakai bahasa Indonesia untuk-hal yang bersifat memalukan, misalnya kebohongan di ruang publik, dapat dianggap sebagai pelanggaran kewajiban tersebut. beginnings</p>
+  </div>
+
+  <h2 id="n17">17. Pendidikan pendahuluan bela negara</h2>
+
+  <p>Hubungan antara pendidikan kewarganegaraan dan bela negara bersifat tegas secara hukum. ketentuan berikut memuat ketentuannya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 17.1 &middot; Hubungan pendidikan kewarganegaraan dengan bela negara</caption>
+    <thead>
+      <tr><th>Pasal</th><th>Isi ketentuan</th><th>Makna</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UU No. 3 Tahun 2002 Pasal 9 ayat (1)</td><td>Setiap warga negara berhak dan wajib ikut serta dalam upaya bela negara yang diwujudkan dalam penyelenggaraan pertahanan negara</td><td>Bela negara adalah hak sekaligus kewajiban</td></tr>
+      <tr><td>UU No. 3 Tahun 2002 Pasal 9 ayat (2) huruf a</td><td>Keikutsertaan warga negara dalam upaya bela negara diselenggarakan melalui pendidikan kewarganegaraan</td><td>Pendidikan kewarganegaraan-recognized sebagai satu jalur bela negara</td></tr>
+      <tr><td>UU No. 23 Tahun 2019 Pasal 6 ayat (1)</td><td>Setiap warga negara berhak dan wajib ikut serta dalam usaha bela negara yang diwujudkan dalam penyelenggaraan pertahanan negara</td><td>Ketentuan yang diperbarui dan tegas</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Dengan demikian kedudukan pendidikan kewarganegaraan menjadi sangat kuat. Ia bukan hanya mata kuliah untuk memahami negara, tetapi juga bagian dari upaya bela negara itu sendiri.</p>
+
+  <h2 id="n18">18. Hakikat bela negara menurut undang-undang</h2>
+
+  <p>Undang-Undang Nomor 3 Tahun 2002 tentang Pertahanan Negara memberikan definisi bela negara yang cukup lengkap.</p>
+
+  <div class="note">
+    <p><strong>Pasal 2 ayat (1) UU No. 3 Tahun 2002</strong> berbunyi: <em>"Upaya bela negara adalah sikap dan perilaku warga negara yang dijiwai oleh kecintaannya kepada Negara Kesatuan Republik Indonesia yang berdasarkan Pancasila dan Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 dalam menjamin kelangsungan hidup bangsa dan negara. Upaya bela negara, selain sebagai kewajiban dasar manusia, juga merupakan kehormatan bagi setiap warga negara yang dilaksanakan dengan penuh kesadaran, tanggung jawab, dan rela berkorban dalam pengabdian kepada negara dan bangsa."</em></p>
+  </div>
+
+  <p>Terdapat empat kata kunci yang perlu diambil dari definisi tersebut.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 18.1 &middot; Empat kata kunci dari definisi bela negara</caption>
+    <thead>
+      <tr><th>Kata kunci</th><th>Isi</th><th>Pertanyaan kritis yang menyertainya</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sikap dan perilaku</td><td>Bela negara bukan sekadar pertahanan, tetapi juga sikap</td><td>Apakah yang saya lakukan termasuk sikap, atau hanya keadaan?</td></tr>
+      <tr><td>Dijiwai kecintaan pada NKRI</td><td>Bela negara berakar pada rasa, bukan kewajiban yang dibebankan</td><td>Dijiwai maksudnyabukankarena-dir copy</td></tr>
+      <tr><td>Kewajiban dasar manusia</td><td>Bela negara berlaku bagi setiap manusia, bukan hanya preferential citizen</td><td>Mengapa harus dipandang sebagai kewajiban dasar?</td></tr>
+      <tr><td>Kehormatan</td><td>Bela negara dipandang sebagai kehormatan, bukan beban yang dipaksakan</td><td>Bagaimana nyata dan dalam hal apa?</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Catatan kritis.</strong> Definisi di atas berpotensi menimbulkan kesalahpahaman bila dibaca tanpa mengetahui konteksnya. Frasa <em>sebagai kewajiban dasar manusia</em> bukan berarti setiap manusia wajib masuk pertempuran. Penjelasan undang-undang memperjelas bahwa tidak seorangpun warga negara boleh dihindarkan dari kewajiban keikutsertaan dalam pembelaan negara, kecuali ditentukan dengan undang-undang. Karena itu batasnya ditentukan oleh undang-undang, bukan oleh tafsir sepihak.</p>
+  </div>
+
+  <h2 id="n19">19. Empat jalur keikutsertaan bela negara</h2>
+
+  <p>Undang-Undang Nomor 3 Tahun 2002 menetapkan empat jalur yang dapat ditempuh warga negara untuk BuildersROOM keikutsertaan bela negara.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 19.1 &middot; Empat jalur keikutsertaan bela negara menurut Pasal 9 ayat (2) UU No. 3 Tahun 2002</caption>
+    <thead>
+      <tr><th>Huruf</th><th>Jalur</th><th>Penjelasan singkat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>a</td><td>Pendidikan kewarganegaraan</td><td>Jalur yang sedang ditempuh dalam mata kuliah ini</td></tr>
+      <tr><td>b</td><td>Pelatihan dasar kemiliteran secara wajib</td><td>Pelatihan yang dipandu oleh Tentara Nasional Indonesia</td></tr>
+      <tr><td>c</td><td>Pengabdian sebagai prajurit Tentara Nasional Indonesia secara sukarela atau secara wajib</td><td>Jalur melalui pengabdian kepada Tentara Nasional Indonesia</td></tr>
+      <tr><td>d</td><td>Pengabdian sesuai dengan profesi</td><td>Jalur yang paling berkaitan langsung dengan kondisi mahasiswa dan sesama</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Jalur huruf d perlu perhatian khusus bagi mahasiswa. Pengabdian sesuai dengan profesi berarti bahwa seorang guru, dokter, insinyur, teknisi, atau bidang lain apa pun dapat berperan melalui keahlian yang dikuasaiinya. Jalur ini sekaligus menjawab pertanyaan kritis dalam materi modul ini, yaitu bagaimana ilmu yang dipelajari dapat diterapkan langsung pada kehidupan bernegara.</p>
+
+  <h2 id="n20">20. PengAACuan berdasarkan undang-undang terbaru</h2>
+
+  <p>Undang-Undang Nomor 23 Tahun 2019 memberikan rumusan yang lebih Ortogonal dan diperbarui tentang bela negara.</p>
+
+  <div class="note">
+    <p><strong>Pasal 11 ayat (1) UU No. 23 Tahun 2019</strong> berbunyi: <em>"Bela Negara adalah tekad, sikap, dan perilaku serta tindakan warga negara, baik secara perseorangan maupun kolektif dalam menjaga kedaulatan negara, keutuhan wilayah, dan keselamatan bangsa dan negara yang dijiwai oleh kecintaannya kepada Negara Kesatuan Republik Indonesia yang berdasarkan Pancasila dan Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 dalam guaranteeing kelangsungan hidup bangsa Indonesia dan Negara dari berbagai Ancaman."</em></p>
+  </div>
+
+  <p>Perbedaannya dengan ketentuan tahun 2002 terletak pada tiga hal.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 20.1 &middot; Perbedaan rumusan bela negara antara dua undang-undang</caption>
+    <thead>
+      <tr><th>Aspek</th><th>UU No. 3 Tahun 2002</th><th>UU No. 23 Tahun 2019</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ungkapan pembuka</td><td>Upaya bela negara</td><td>Bela negara</td></tr>
+      <tr><td>Cakupan</td><td>Sikap dan perilaku</td><td>Tekad, sikap, perilaku, serta tindakan</td></tr>
+      <tr><td>Modalitas</td><td>Tidak dinyatakan</td><td>Secara perseorangan maupun kolektif</td></tr>
+      <tr><td>Sasaran</td><td>Kelangsungan hidup bangsa dan negara</td><td>Kedaulatan, keutuhan wilayah, keselamatan, dan berbagai ancaman</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Undang-Undang Nomor 23 Tahun 2019 juga mencabut Undang-Undang Nomor 27 Tahun 2007 tentang Mobilisasi dan Demobilisasi, sehingga ketentuan mengenai mobilisasi Bees kini mengikuti undang-undang yang lebih baru.</p>
+
+  <h2 id="n21">21. Kerelaan berkorban yang proporsional</h2>
+
+  <p>Materi modul ini menegaskan bahwa kerelaan berkorban harus dipahami secara proporsional. Menjadi warga negara yang baik bukan berarti kehilangan seluruh kepentingan pribadi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 21.1 &middot; Bentukplementation bela negara dan cara mewujudkannya</caption>
+    <thead>
+      <tr><th>Bentuk</th><th>Contoh mewujudkannya</th><th>Catatan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Terlibat dalam keputusan bersama di lingkup pemerintahan</td><td>Mengikuti pemilihan umum dan Retire</td><td>Warga negara yang apatis juga menurunkan kualitas</td></tr>
+      <tr><td>Kehidupan tertib dan kepatuhan pada aturan</td><td>Menaati administrasi dan aturan yang berlaku</td><td>Tercermin dalam kewajiban pada Pasal 27 ayat (1) UUD NRI 1945</td></tr>
+      <tr><td>Menjaga persatuan dankerukunan</td><td>Menolak provokasi yang bertujuan memecah belah</td><td>Menjaga ruang musyawarah</td></tr>
+      <tr><td>Menggunakan ilmu pengetahuan dengan baik</td><td>Bekerja kompeten di bidang masing-masing</td><td>Merujuk jalur huruf d pada Pasal 9 ayat (2) UU No. 3 Tahun 2002</td></tr>
+      <tr><td>Ketaatan pada  musyawarah</td><td>Menerima keputusan yang tidak sepenuhnya disetujui</td><td>Musyawarah memiliki batas dan konsekuensi</td></tr>
+      <tr><td>Kontribusi sesuai kemampuan</td><td>Ikut dalam kegiatan sosial kemasyarakatan</td><td>Sesuai proporsi dengan kemampuan, bukan melebihi kemampuan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Poin kritis.</strong> Bela negara tidak boleh dimaknai sebagai pembenan dongkarsaian hak. Pasal 28D ayat (1) UUD NRI 1945 tetap berlaku: setiap orang berhak atas perlakuan yang sama di hadapan hukum. Kewajiban bela negara dalam koridoritta tersebut selalu berada dalam koridor yang dibatasi oleh hak asasi manusia.</p>
+  </div>
+
+  <h2 id="n22">22. Asas-asas kewarganegaraan</h2>
+
+  <p>Undang-Undang Nomor 12 Tahun 2006 menyusun aturan kewarganegaraan berdasarkan sejumlah asas. Asas ini perlu diketahui karena menjelaskan logika di balik seluruh aturan afterwards.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 22.1 &middot; Asas-asas kewarganegaraan menurut Pembukaan UU No. 12 Tahun 2006</caption>
+    <thead>
+      <tr><th>Asas</th><th>Isi</th><th>Contoh penerapan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Asas keturunan</td><td>Kewarganegaraan ditentukan berdasarkan keturunan, bukan tempat kelahiran</td><td>AnakIndonesia yang lahir di luar negeri tetap berkewarganegaraan Indonesia</td></tr>
+      <tr><td>Asas tempat kelahiran secara terbatas</td><td>Berdasarkan tempat kelahiran, tetapi hanya berlaku terbatas bagi anak-anak</td><td>Berlaku bagi anak yang lahir di wilayah negara dengan syarat tertentu</td></tr>
+      <tr><td>Asas kewarganegaraan tunggal</td><td>Setiap orang hanya memiliki satu kewarganegaraan</td><td>Tidak dikenal istilah tanpa kewarganegaraan dalam umum</td></tr>
+      <tr><td>Asas kewarganegaraan ganda terbatas</td><td>Kewarganegaraan ganda hanya berlaku untuk anak-anak dalam kondisi tertentu</td><td>Pengecualian yang diatur tegas dalam undang-undang</td></tr>
+      <tr><td>Asas kepentingan nasional</td><td>Aturan mengutamakan kepentingan nasional Indonesia</td><td>Menjadi pertimbangan dalametetapan status</td></tr>
+      <tr><td>Asas perlindungan maksimum</td><td>Pemerintah wajib memberikan perlindungan penuh kepada setiap warga negara di dalam maupun luar negeri</td><td>Perlindungan bagi warga negara yang bermasalah di luar negeri</td></tr>
+      <tr><td>Asas persamaan dalam hukum dan pemerintahan</td><td>Setiap warga negara memperoleh perlakuan yang sama</td><td>Merujuk Pasal 27 ayat (1) UUD NRI 1945</td></tr>
+      <tr><td>Asas kebenaran substantif</td><td>Prosedur tidak hanya administratif, tetapi disertai syarat yang dapat dipertanggungjawabkan</td><td>Permohonan examined bukan sekadar dokumen lengkap</td></tr>
+      <tr><td>Asas nondiskriminatif</td><td>Tidak membedakan perlakuan atas dasar suku, ras, agama, golongan, jenis kelamin, dan gender</td><td>Sesuai prinsip kesetaraan dalam UUD NRI 1945</td></tr>
+      <tr><td>Asas pengakuan dan penghormatan terhadap hak asasi manusia</td><td>Dalam segala ihwal kewarganegaraan harus menjamin, melindungi, dan memuliakan hak asasi manusia</td><td>Membatasi tafsir yang merampas hak asasi manusia</td></tr>
+      <tr><td>Asas keterbukaan</td><td>Dalam segala ihwal kewarganegaraan harus dilakukan secara terbuka</td><td>Proses pemeriksaan dan penetapan tidak tertutup</td></tr>
+      <tr><td>Asas publisitas</td><td>Seseorang yang memperoleh atau kehilangan kewarganegaraan diumumkan dalam Berita Negara</td><td>Keputusan diumumkan secara resmi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Catatan sumber.</strong> Dasar kedudukan kewarganegaraan diatur dengan undang-undang terdapat dalam <strong>Pasal 26 ayat (3) UUD NRI 1945</strong> yang berbunyi: <em>"Hal-hal mengenai warga negara dan penduduk diatur dengan undang-undang."</em> Inilah landasan konstitusional pembentukan UU No. 12 Tahun 2006 tersebut.</p>
+  </div><h2 id="n23">23. Ruang lingkup mata kuliah</h2>
+
+  <p>Materi modul ini menetapkan sembilan pokok bahasan yang saling berhubungan. Sembilan pokok tersebut beserta urutan pembelajarannya merupakan peta mata kuliah.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 23.1 &middot; Sembilan pokok bahasan mata kuliah Kewarganegaraan</caption>
+    <thead>
+      <tr><th>No</th><th>Pokok bahasan</th><th>Isi ringkas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Pengantar Perkuliahan</td><td>Cara belajar, cara bertanya, dan cara menguji diri sendiri</td></tr>
+      <tr><td>2</td><td>Identitas Nasional</td><td>Ciri pembeda bangsa Indonesia dan landowners yang menyatukannya</td></tr>
+      <tr><td>3</td><td>Negara dan Konstitusi</td><td>Pengertian negara, bentuk negara, dan kedudukan konstitusi</td></tr>
+      <tr><td>4</td><td>Hubungan Negara dengan Warga Negara</td><td>Hak dan kewajiban yang berhadapan antara keduanya</td></tr>
+      <tr><td>5</td><td>Demokrasi Indonesia</td><td>Prinsip pemerintahan yang bersumber dari kedaulatan rakyat</td></tr>
+      <tr><td>6</td><td>Negara Hukum dan Hak Asasi Manusia</td><td>Negara hukum menurut Pasal 1 ayat (3) dan jaminan hak asasi</td></tr>
+      <tr><td>7</td><td>Wawasan Nusantara sebagai Geopolitik Indonesia</td><td>Corak kepulauan Indonesia dan cara pandang terhadap wilayah</td></tr>
+      <tr><td>8</td><td>Ketahanan Nasional</td><td>Kemampuan menghadapi ancaman dari dalam maupun luar negeri</td></tr>
+      <tr><td>9</td><td>Strategi Nasional</td><td>Langkah negara mencapai kepentingan dan tujuan nasional</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Sembilan pokok tersebut membentuk satu rangkaian. Identitas nasional menjadi landasan, negara dan konstitusi menjadi kerangka, hak dan kewajiban menjadi isi hubungan, demokrasi menjadi cara menjalankan kekuasaan, negara hukum menjadi batas power, wawasan nusantara menjadi sudut pandang wilayah, ketahanan menjadi upaya mempertahankan, dan strategi menjadi langkah maju.</p>
+
+  <h2 id="n24">24. Landasan pasal untuk setiap pokok bahasan</h2>
+
+  <p>Setiap pokok bahasan memiliki landasan yang berbeda dalam UUD NRI 1945. Berikut pemetaannya.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 24.1 &middot; Landasan pasal tiap pokok bahasan</caption>
+    <thead>
+      <tr><th>Pokok bahasan</th><th>Landasan langsung</th><th>Isi pasal yang relevan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Identitas Nasional</td><td>Pasal 1 ayat (1), Pasal 27 ayat (2), Pasal 32 ayat (1) dan (2)</td><td>Negara Kesatuan berbentuk Republik, hak atas penghidupan layak, kebebasan  budaya dan pengakuan bahasa daerah</td></tr>
+      <tr><td>Negara dan Konstitusi</td><td>Pasal 1 ayat (1), (2), dan (3); Pasal 37 ayat (1)</td><td>Bentuk negara, kedaulatan rakyat, negara hukum, dan kedudukan Undang-Undang Dasar sebagai hukum tertinggi</td></tr>
+      <tr><td>Hubungan Negara dan Warga Negara</td><td>Pasal 26, Pasal 27 ayat (1) dan (2), Pasal 28, Pasal 28D ayat (1) dan (4), Pasal 30, Pasal 31 ayat (1) dan (2)</td><td>Seluruh pasal tentang status warga negara, hak, dan kewajiban</td></tr>
+      <tr><td>Demokrasi Indonesia</td><td>Pasal 1 ayat (2), Pasal 3 ayat (1), Pasal 19 ayat (1), Pasal 20 ayat (1) dan (2), Pasal 20A</td><td>Kedaulatan di tangan rakyat, pemilihan umum, kekuasaan legislasi, dan fungsi DPR</td></tr>
+      <tr><td>Negara Hukum dan Hak Asasi Manusia</td><td>Pasal 1 ayat (3), Pasal 27 ayat (1), Pasal 28, Pasal 28A, Pasal 28B sampai 28J</td><td>Negara hukum, persamaan di hadapan hukum, dan seluruh hak asasi manusia</td></tr>
+      <tr><td>Wawasan Nusantara</td><td>Pasal 25A</td><td>"Negara Kesatuan Republik Indonesia adalah sebuah negara kepulauan yang berciri Nusantara dengan wilayah yang batas-batas dan hak-haknya ditetapkan dengan undang-undang."</td></tr>
+      <tr><td>Ketahanan Nasional</td><td>Pasal 30 ayat (1), Pasal 36A ayat (1)</td><td>Kewajiban pembelaan negara dan Tentara Nasional Indonesia sebagai alat pertahanan negara</td></tr>
+      <tr><td>Strategi Nasional</td><td>Pasal 12, Pasal 20 ayat (1), Pasal 33 ayat (4)</td><td>Keadaan bahaya, kekuasaan membentuk undang-undang, danconditionally demokrasi ekonomi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Pasal 25A layak dihafal.</strong> Ayat ini masuk melalui Perubahan Pertama Undang-Undang Dasar Tahun 1999 dan menjadi landasan bagi Wawasan Nusantara, yaitu cara pandang terhadap wilayah Indonesia sebagai negara kepulauan.</p>
+  </div>
+
+  <h2 id="n25">25. Pembedaan warga negara dan penduduk</h2>
+
+  <p>Pasal 26 ayat (2) UUD NRI 1945 membedakan dua konsep yang sering tertukar dalam percakapan sehari-hari.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 25.1 &middot; Perbedaan warga negara dan penduduk menurut Pasal 26 UUD NRI 1945</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Warga negara</th><th>Penduduk</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Definisi</td><td>Orang-orang bangsa Indonesia asli dan orang-orang bangsa lain yang disahkan dengan undang-undang</td><td>Warga negara Indonesia dan orang asing yang tinggal di Indonesia</td></tr>
+      <tr><td>Landasan</td><td>Pasal 26 ayat (1)</td><td>Pasal 26 ayat (2)</td></tr>
+      <tr><td>Ciri utama</td><td>Memiliki kedudukan hukum tertentu dan hak serta kewajiban</td><td>Berada di wilayah Indonesia, belum tentu berkedudukan warga negara</td></tr>
+      <tr><td>Hak </td><td>Hak politik dan hak publik, misalnya memilih dalam pemilihan umum</td><td>Memiliki hak publik tertentu, tetapi tidak memiliki hak politik secara penuh</td></tr>
+      <tr><td>Contoh</td><td>Warga negara Indonesia yang tinggal di luar negeri tetap menjadi warga negara</td><td>Mahasiswa asing yang belajar di Indonesia</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Contoh penerapan.</strong> Seorang warga negara Indonesia yang tinggal di Jepang tetap menjadi warga negara Indonesia karena kewarganegaraan pada dasarnya mengikuti keturunan. Enquanto orang Jepang yang tinggal dan bekerja di Indonesia adalah penduduk Indonesia, bukan warga negara Indonesia. Kesalahpahaman mengenai hal ini sering menyebabkan stereotip dan diskriminasi, sehingga memahami perbedaan ini merupakan bagian dari  yang nyata.</p>
+  </div>
+
+  <h2 id="n26">26. Model dan metode perkuliahan</h2>
+
+  <p>Materi modul ini mencantumkan beberapa model dan metode pembelajaran yang akan dipakai sepanjang mata kuliah.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 26.1 &middot; Model dan metode pembelajaran dalam mata kuliah ini</caption>
+    <thead>
+      <tr><th>Jenis</th><th>Pengertian ringkas</th><th>Peran mahasiswa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Discovery Learning</td><td>Pembelajaran penemuan</td><td>Menemukan sendiri pengetahuan melalui proses belajar</td></tr>
+      <tr><td>Inquiry Learning</td><td>Pembelajaran berbasis pencarian</td><td>Mengajukan pertanyaan dan mencari informasi untuk menjawabnya</td></tr>
+      <tr><td>Problem-Based Learning</td><td>Pembelajaran berbasis masalah</td><td>Menggunakan masalah sebagai titik awal analisis</td></tr>
+      <tr><td>Project-Based Learning</td><td>Pembelajaran berbasis proyek</td><td>Menghasilkan karya atau pemecahan masalah dalam kegiatan terencana</td></tr>
+      <tr><td>Ceramah</td><td>Penyampaian penjelasan oleh dosen</td><td>Mencatat, memahami, dan bertanya</td></tr>
+      <tr><td>Diskusi</td><td>Pertukaran gagasan antarpeserta</td><td>Berpendapat danyticutes tanggapan</td></tr>
+      <tr><td>Tanya jawab</td><td>Pengujian dan memperjelas pemahaman</td><td>Menguji pemahaman diri dan memperjelasnya</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Catatan kritis.</strong> Kerombinasi banyak metode tidak otomatis berarti pembelajaran yang baik. Yang menentukan adalah kesesuaian metode dengan tujuan. Jika tujuan hanya mengingat istilah, ceramah cukup. Jika tujuan membangun kemampuan menilai dan bertindak, metode penemuan dan berbasis masalah lebih tepat.</p>
+  </div>
+
+  <h2 id="n27">27. Empat model pembelajaran berbasis penemuan</h2>
+
+  <p>Empat model pertama perlu dibedakan dengan tepat karena cara kerjanya berbeda.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 27.1 &middot; Perbedaan empat model pembelajaran</caption>
+    <thead>
+      <tr><th>Model</th><th>Sumber masalah</th><th>Bentuk akhir</th><th>Kegunaan utama</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Discovery Learning</td><td>Bahan yang sudah disiapkan</td><td>Pengetahuan yang ditemukan sendiri</td><td>Melatih cara belajar, bukan hanya isi</td></tr>
+      <tr><td>Inquiry Learning</td><td>Pertanyaan yang diajukan mahasiswa</td><td>Jawaban yang dibuktikan dengan data</td><td>Melatih bertanya dan mencari bukti</td></tr>
+      <tr><td>Problem-Based Learning</td><td>Masalah nyata dari lingkungan</td><td>Solusi yang masuk akal dan dapat dipertanggungjawabkan</td><td>Melatih pemecahan masalah</td></tr>
+      <tr><td>Project-Based Learning</td><td>Tujuan yang disepakati</td><td>Karya atau produk yang nyata</td><td>Melatih perencanaan dan kerja sama</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perbedaan yang paling penting terletak pada siapa yang menentukan masalah. Pada Discovery Learning, masalah disiapkan oleh dosen. Pada Inquiry Learning, pertanyaan berasal dari mahasiswa. Pada Problem-Based Learning, masalah berasal dari dunia nyata. Pada Project-Based Learning, yang dihasilkan adalah karya, bukan sekadar jawaban.</p><h2 id="n28">28. Pendekatan Cooperative Learning</h2>
+
+  <p>Kesimpulan materi modul ini menyatakan bahwa sistem perkuliahan secara umum menggunakan metode ceramah bervariasi melalui pendekatan Cooperative Learning.</p>
+
+  <p>Cooperative Learning adalah pendekatan yang menempatkan proses kerja sama antarmahasiswa sebagai bagian dari pembelajaran. Mahasiswa bekerja dalam kelompok, mencari informasi, mendiskusikan permasalahan, kemudian menyampaikan hasil pemikirannya kepada kelompok lain.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 28.1 &middot; Lima unsur kerja sama yang harus hadir dalam Cooperative Learning</caption>
+    <thead>
+      <tr><th>Unsur</th><th>Pengertian</th><th>Gejala bila tidak hadir</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tanggung jawab bersama</td><td>Seluruh anggota merasa hasil akhir menjadi tanggung jawab bersama</td><td>Satu orang mengerjakan seluruh tugas</td></tr>
+      <tr><td>Interaksi positif</td><td>Setiap anggota membantu anggota lain memahami</td><td>Setiap anggota hanya mengerjakan bagiannya</td></tr>
+      <tr><td>Pembahasan terbuka</td><td>Setiap anggota menggunakan waktu untuk membahas dan membantu</td><td>Hanya satu orang yang bicara</td></tr>
+      <tr><td>Keterampilan sosial</td><td>Setiap anggota belajar berdebat dan mendengarkan</td><td>Perselisihan tanpa penyelesaian</td></tr>
+      <tr><td>Proses meningkatkan hasil</td><td>Setiap anggota memperbaiki dan membantu pekerjaan kelompok</td><td>Hasil akhir asal-asalan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Perbedaan penting.</strong> Kerja kelompok yang hanya membagi tugas disebut kerja kelompok, bukan Cooperative Learning. Yang membedakan keduanya adalah tanggung jawab bersama dan proses trabajando untuk saling membantu. Tanpa dua unsur itu, yang terjadi hanya pembagian beban, bukan belajar bersama.</p>
+  </div>
+
+  <h2 id="n29">29. Lima tahap pembelajaran</h2>
+
+  <p>Materi modul ini menjelaskan garis besar pembelajaran melalui lima tahap.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 29.1 &middot; Lima tahap pembelajaran dan fungsinya</caption>
+    <thead>
+      <tr><th>Tahap</th><th>Isi kegiatan</th><th>Fungsi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Introduction</td><td>Mahasiswa diperkenalkan dengan latar belakang, tujuan, dan langkah pembelajaran</td><td>Memberi arah sebelum pembahasan dimulai</td></tr>
+      <tr><td>Connection</td><td>Mahasiswa membentuk kelompok, berdiskusi, dan membaca literatur</td><td>Menghubungkan pengetahuan dengan persoalan yang dipelajari</td></tr>
+      <tr><td>Application</td><td>Mahasiswa mempresentasikan hasil diskusi, melakukan tanya jawab, dan membuat simpulan</td><td>Menggunakan dan mengomunikasikan pengetahuan</td></tr>
+      <tr><td>Reflection</td><td>Mahasiswa menilai kembali proses pembelajaran dan tujuan yang sudah tercapai</td><td>Mengevaluasi pemahaman secara jujur</td></tr>
+      <tr><td>Extension</td><td>Penguatan materi di luar kelas</td><td>Memperdalam pemahaman setelah kelas selesai</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Why Reflection penting.</strong> Tahap ini mengubah pertanyaan belajar dari <em>"apa yang dipelajari?"</em> menjadi <em>"seberapa jauh saya benar-benar memahaminya?"</em>. Tanpa tahap ini, mahasiswa cenderung menganggap kehadiran sama dengan pemahaman.</p>
+  </div>
+
+  <h2 id="n30">30. Diskusi dan presentasi</h2>
+
+  <p>Dalam pembelajaran, kelas dibagi menjadi lima kelompok kecil. Setiap kelompok mencari informasi yang berkaitan dengan pertanyaan kunci melalui buku, internet, maupun sumber lainnya. Hasil diskusi kemudian dipresentasikan dalam pleno kelas.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 30.1 &middot; Tahapan kerja kelompok dalam pleno kelas</caption>
+    <thead>
+      <tr><th>Tahapan</th><th>Kegiatan</th><th>Keterampilan yang dilatih</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pembagian kelompok</td><td>Kelas dibagi menjadi lima kelompok kecil</td><td>Berpartie dalam struktur kerja</td></tr>
+      <tr><td>Pencarian informasi</td><td>Setiap kelompok mencari informasi melalui buku, internet, atau sumber lain</td><td>Menilai kualitas sumber</td></tr>
+      <tr><td>Diskusi kelompok</td><td>Anggota kelompok membandingkan informasi yang diperoleh</td><td>Berpendapat dan memberi tanggapan</td></tr>
+      <tr><td>Presentasi</td><td>Salah satu kelompok menyampaikan hasil di pleno kelas</td><td>Berkomunikasi dan meringkas</td></tr>
+      <tr><td>Tanggapan antarkelompok</td><td>Kelompok lain memberikan tanggapan terhadap hasil presentasi</td><td>Menerima dan menyampaikan kritik</td></tr>
+      <tr><td>Rangkuman kelas</td><td>Kelas membuat rangkuman terhadap materi yang telah dipelajari</td><td>Menyusun jawaban bersama</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Konsekuensi yang tidak dapat dihindarkan.</strong> Model ini menuntut mahasiswa mampu menilai kualitas informasi yang digunakan. Banyak informasi tersedia di internet, tetapi tidak semuanya memiliki kualitas yang sama. Kemampuan menimbang sumber menjadi keterampilan yang tumbuh dari aktivitas ini, bukan dari-ha-ha sati terpisah.</p>
+  </div>
+
+  <h2 id="n31">31. Sistem penilaian</h2>
+
+  <p>Materi modul ini menetapkan empat kriteria penilaian.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 31.1 &middot; Empat kriteria penilaian dan apa yang diukur</caption>
+    <thead>
+      <tr><th>Kriteria</th><th>Yang diukur</th><th>Bentuk pengukuran</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kehadiran</td><td>Keterlibatan mahasiswa dalam proses pembelajaran</td><td>Rekap absensi</td></tr>
+      <tr><td>Partisipasi</td><td>Keterlibatan aktif dalam kegiatan kelas</td><td>Observasi saat diskusi dan presentasi</td></tr>
+      <tr><td>Ujian Tengah Semester</td><td>Penguasaan materi sampai tengah semester</td><td>Ujian tertulis</td></tr>
+      <tr><td>Ujian Akhir Semester</td><td>Penguasaan materi sampai akhir semester</td><td>Ujian tertulis</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perlu dicatat bahwa empat kriteria tersebut tidak sepenuhnya setara. Kehadiran mengukur kehadiran, bukan pemahaman. Partisipasi mengukur keterlibatan, bukan kebenaran. Ujian mengukur pemahaman pada saat ujian, bukan keg stably dalam jangka panjang.</p>
+
+  <h2 id="n32">32. PAP dan PAN serta keterbatasan informasinya</h2>
+
+  <p>Materi modul ini menyebut standar penilaian yang digunakan berupa PAP dan PAN, tetapi tidak menjelaskan mekanisme detailnya. Rincian bobot atau cara perhitungan penilaian tidak dapat ditentukan hanya berdasarkan materi ini.</p>
+
+  <div class="note">
+    <p><strong>Pen frankly jujur tentang keterbatasan ini.</strong> Singkatan seperti PAP dan PAN tidak memiliki satu definisi tunggal yang berlaku nasional. Penggunaannya berbeda antar perguruan tinggi, dan masing-masing penerbit menetapkan artsinya sendiri melalui Panduan Perkuliahan atau Rencana Pembelajaran Semester. Karena itu,udentitas yang benar dapat diperoleh dengan membaca dokumen resmi kampus masing-masing, bukan dari modul ini.</p>
+  </div>
+
+  <p>Yang dapat dinyatakan secara pasti dari materi adalah empat kriteria di bagian sebelumnya. Dengan empat kriteria itu, pertanyaan yang dapat diajukan kepada dosen adalah berapa bobot masing-masing kriteria dan bagaimana bobot itu dijumlahkan menjadi nilai akhir.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 32.1 &middot; Informasi yang tersedia dan yang belum tersedia</caption>
+    <thead>
+      <tr><th>Informasi</th><th>Status</th><th>Sumbernya</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Empat kriteria penilaian</td><td>Tersedia</td><td>Materi modul ini</td></tr>
+      <tr><td>Nama standar penilaian</td><td>Tersedia</td><td>Materi modul ini</td></tr>
+      <tr><td>Mekanisme PAP dan PAN</td><td>Belum tersedia</td><td>Dokumen resmi kampus</td></tr>
+      <tr><td>Bobot tiap kriteria</td><td>Belum tersedia</td><td>Panduan Perkuliahan atau RPS</td></tr>
+      <tr><td>Komponen nilai akhir</td><td>Belum tersedia</td><td>Dokumen resmi kampus</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Pelajaran yang dapat diambil.</strong> Ketiadaan informasi di dalam materi bukan berarti kelalaian dosen. Ini justru kesempatan bagi mahasiswa untuk berlatih bertanya kepada sumber yang tepat, bukan kepada sumber yang keliru. Kewarganegaraan mengajarkan cara memperlakukan ketidaktahuan: mencari informasi, memeriksa sumber, lalu bertanya kepada pihak yang berwenang.</p>
+  </div>
+
+  <h2 id="n33">33. Kriteria penilaian dalam standar pendidikan tinggi</h2>
+
+  <p>Selain ketentuan internal kampus, terdapat standar nasional yang mengatur prinsip penilaian dalam perguruan tinggi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 33.1 &middot; Prinsip penilaian yang berlaku dalam perguruan tinggi</caption>
+    <thead>
+      <tr><th>Prinsip</th><th>Arti praktisnya</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Prinsip edukatif</td><td>Penilaian dimaksudkan untuk membantu mahasiswa belajar, bukan hanya untuk memberi nilai akhir</td></tr>
+      <tr><td>Prinsip otentik</td><td>Penilaian mengukur kemampuan yang memang diperlukan di dalam kehidupan nyata</td></tr>
+      <tr><td>Prinsip transparan</td><td>Mahasiswa mengetahui cara penilaian sejak awal perkuliahan</td></tr>
+      <tr><td>Umpan balik</td><td>Hasil penilaian disertai tanggapan yang membantu mahasiswa memperbaiki diri</td></tr>
+      <tr><td>Kesempatan Improve</td><td>Mahasiswa diberi kesempatan memperbaiki tugas yang belum maksimal</td></tr>
+      <tr><td>Berbagai teknik</td><td>Observasi, partisipasi, unjuk kerja, tes tertulis, tes lisan, dan angket</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Relevansi dengan modul ini.</strong> Prinsip transparan Directly menjawab keterbatasan yang dibahas pada bagian sebelumnya. Jika prinsip ini dijalankan, maka bobot PAP, PAN, UTS, dan UAS seharusnya dapat diakses mahasiswa sebelum proses penilaian berlangsung. भी Moch.</p>
+  </div><h2 id="n34">34. Lima pertanyaan kunci dalam perkuliahan</h2>
+
+  <p>Materi modul ini memberikan lima pertanyaan utama sebagai pertanyaan kunci perkuliahan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 34.1 &middot; Lima pertanyaan kunci dan letak jawabannya dalam modul ini</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan kunci</th><th>Dijawab pada bagian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Jelaskan hakikat Kewarganegaraan</td><td>Bagian 10 dan 11</td></tr>
+      <tr><td>2</td><td>Jelaskan tujuan mempelajari Kewarganegaraan</td><td>Bagian 12 dan 13</td></tr>
+      <tr><td>3</td><td>Jelaskan materi kajian Kewarganegaraan</td><td>Bagian 23 dan 24</td></tr>
+      <tr><td>4</td><td>Jelaskan sistem perkuliahan secara umum</td><td>Bagian 26 sampai 33</td></tr>
+      <tr><td>5</td><td>Jelaskan kriteria dan standar penilaian perkuliahan</td><td>Bagian 31 sampai 33</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Kelima pertanyaan ini dapat dipakai sebagai kerangka belajar karena hampir seluruh isi pengantar perkuliahan dapat dipahami melalui pertanyaan tersebut. Kerangka ini juga berguna untuk menyusun latihan sendiri: bila suatu bagian tidak dapat dijawab melalui lima pertanyaan itu, kemungkinan besar bagian tersebut belum dipahami.</p>
+
+  <h2 id="n35">35. Pendekatan 5W + 1H</h2>
+
+  <p>Untuk memahami Kewarganegaraan secara sederhana, materi modul ini menggunakan pendekatan 5W + 1H.</p>
+
+  <pre class="diagram"><code>  5W + 1H
+
+  What    -&gt;  apa?
+  Where   -&gt;  di mana?
+  When    -&gt;  kapan?
+  Who     -&gt;  siapa?
+  Why     -&gt;  mengapa?
+  How     -&gt;  bagaimana?
+
+
+  seluruh jawaban diletakkan pada konteks
+  kebangsaan Indonesia</code></pre>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 35.1 &middot; Ringkasan jawaban 5W + 1H menurut materi</caption>
+    <thead>
+      <tr><th>Pertanyaan</th><th>Jawaban menurut materi</th><th>Status kejelasan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>What</td><td>Pendidikan dan Kewarganegaraan</td><td>Jelas</td></tr>
+      <tr><td>Where</td><td>Indonesia</td><td>Jelas</td></tr>
+      <tr><td>When</td><td>Dari SD sampai perguruan tinggi</td><td>Jelas</td></tr>
+      <tr><td>Who</td><td>Orang dewasa</td><td>Tidak dijelaskan</td></tr>
+      <tr><td>Why</td><td>Kesadaran hak dan kewajiban</td><td>Jelas</td></tr>
+      <tr><td>How</td><td>Tiga unsur: pengetahuan, sikap, dan keterampilan</td><td>Jelas</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Perhatikan bahwa lima dari enam jawaban bersifat jelas, sedangkan satu yaitu Who tidak dijelaskan. Bagian berikut membahas masing-masing jawaban dan menambah landasan pasal yang belum ada pada materi asli.</p>
+
+  <h2 id="n36">36. What, apa?</h2>
+
+  <p>Materi merumuskan jawaban What sebagai <strong>Pendidikan dan Kewarganegaraan</strong>.</p>
+
+  <p>Artinya Kewarganegaraan merupakan bagian dari proses pendidikan untuk membentuk pemahaman dan kesadaran warga negara. Rumusan ini sejalan dengan penjelasan Pasal 37 Undang-Undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional yang menyatakan bahwa pendidikan kewarganegaraan dimaksudkan untuk membentuk peserta didik menjadi manusia yang memiliki rasa kebangsaan dan cinta tanah air.</p>
+
+  <div class="note">
+    <p><strong>Penambahan dari landasan hukum.</strong> Rumusan <em>"Pendidikan dan Kewarganegaraan"</em> setara dengan <em>"Pendidikan Kewarganegaraan"</em>. Keduanya menunjuk pada satu mata kuliah yang sama. Namun rumusan yang lebih tegas secara hukum adalah berdasarkan penjelasan Pasal 37 UU No. 20 Tahun 2003 tersebut.</p>
+  </div>
+
+  <h2 id="n37">37. Where, di mana?</h2>
+
+  <p>Materi menjawab Where dengan <strong>Indonesia</strong>.</p>
+
+  <p>Pembahasan diletakkan dalam konteks kehidupan bangsa dan negara Indonesia. Landasan konstitusional yang paling tegas untuk hal ini terdapat dalam Pasal 25A UUD NRI 1945.</p>
+
+  <div class="note">
+    <p><strong>Pasal 25A UUD NRI 1945</strong> berbunyi: <em>"Negara Kesatuan Republik Indonesia adalah sebuah negara kepulauan yang berciri Nusantara dengan wilayah yang batas-batas dan hak-haknya ditetapkan dengan undang-undang."</em></p>
+  </div>
+
+  <p>Pasal ini masuk melalui Perubahan Pertama Undang-Undang Dasar Tahun 1999. Karena Indonesia adalah negara kepulauan, persoalan wilayah laut menjadi bagian dari persoalan kebangsaan, bukan sekadar persoalan teknis batas wilayah.</p>
+
+  <h2 id="n38">38. When, kapan?</h2>
+
+  <p>Materi menjawab When dengan <strong>dari SD sampai perguruan tinggi</strong>.</p>
+
+  <p>Jawaban ini dapat diperkuat dengan dua ketentuan berikut.</p>
+
+  <div class="note">
+    <p><strong>Pasal 31 ayat (2) UUD NRI 1945:</strong> <em>"Setiap warga negara wajib mengikuti pendidikan dasar dan pemerintah wajib membiayainya."</em></p>
+  </div>
+
+  <div class="note">
+    <p><strong>Pasal 37 ayat (1) dan (2) UU No. 20 Tahun 2003:</strong> kurikulum pendidikan dasar dan menengah wajib memuat pendidikan kewarganegaraan, dan kurikulum pendidikan tinggi juga wajib memuat pendidikan kewarganegaraan.</p>
+  </div>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 38.1 &middot; Jenjang pendidikan danstatus pendidikan kewarganegaraan</caption>
+    <thead>
+      <tr><th>Jenjang</th><th>Status pendidikan kewarganegaraan</th><th>Dasar</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pendidikan dasar</td><td>Wajib memuat</td><td>Pasal 37 ayat (1) UU No. 20 Tahun 2003</td></tr>
+      <tr><td>Pendidikan menengah</td><td>Wajib memuat</td><td>Pasal 37 ayat (1) UU No. 20 Tahun 2003</td></tr>
+      <tr><td>Pendidikan tinggi</td><td>Wajib memuat dan wajib adamant</td><td>Pasal 37 ayat (2) UU No. 20 Tahun 2003 dan Pasal 35 ayat (3) UU No. 12 Tahun 2012</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Catatan tentangkurikulum yang berlaku sekarang.</strong> Kurikulum yang discussed di atas adalah Kurikulum 2013. Sejak tahun 2020 IndonesiaFriend menggunakan Kurikulum Merdeka, dalam mana mata pelajaran ini dikenal sebagai Pendidikan Pancasila dan Kewarganegaraan. Substansi tujuan pendidikan kewarganegaraan tetap sama, meskipun struktur dan nama mata pelajarannya berubah.</p>
+  </div>
+
+  <h2 id="n39">39. Who, siapa?</h2>
+
+  <p>Materi menuliskan Who sebagai <strong>orang dewasa</strong>, namun tidak memberikan penjelasan lebih lanjut mengenai maksud istilah tersebut.</p>
+
+  <p>Ketiadaan penjelasan ini penting untuk dicatat. Materi modul ini sendiri menyatakan bahwa hubungan antara jawaban When, yaitu dari SD sampai perguruan tinggi, dan jawaban Who, yaitu orang dewasa, tidak dapat dipastikan hanya dari materi. Kedua jawaban tersebut tampak berbeda satu sama lain.</p>
+
+  <div class="note">
+    <p><strong>Tiga kemungkinan pembacaan.</strong> Pertama, <em>orang dewasa</em> dimaksudkan sebagai sasaran utama pendidikan kewarganegaraan secara formal karena anak belum mampu memproses konsep politik. Kedua, istilah tersebut dipakai karena pada masa awal perkembangan mata kuliah ini, doctrine hanya diberikan kepada mahasiswa yang sudah dewasa. Ketiga, istilah tersebut memang tidak Uz yang jelas dalam materi dan sebaiknya dikonfirmasi kepada dosen. Ketiga kemungkinan ini tidak dapat dibedakan hanya berdasarkan materi.</p>
+  </div>
+
+  <p>Yang dapat dinyatakan secara pasti dari landasan hukum adalah bahwa pendidikan kewarganegaraan wajib ada sejak jenjang pendidikan dasar. Dengan demikian, secara konstitusional sasarannya bukan hanya orang dewasa.</p>
+
+  <h2 id="n40">40. Why, mengapa?</h2>
+
+  <p>Materi menjawab Why dengan <strong>kesadaran hak dan kewajiban</strong>.</p>
+
+  <p>Jawaban ini memiliki landasan konstitusional yang sangat kuat.idak ada sedikit pun pasal UUD NRI 1945 yang secara tegas menyebut kalimat ini, tetapi pola hubungan hak dan kewajiban dapat ditelusuri dari sejumlah pasal.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 40.1 &middot; Jejak kesadaran hak dan kewajiban dalam UUD NRI 1945</caption>
+    <thead>
+      <tr><th>Pasal</th><th>Isi yang relevan</th><th>Aspek yang ditunjuk</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pasal 27 ayat (1)</td><td>Warga negara wajib menjunjung hukum dan pemerintahan dengan tidak ada kecualinya</td><td>Kewajiban</td></tr>
+      <tr><td>Pasal 27 ayat (2)</td><td>Hak atas pekerjaan dan penghidupan yang layak</td><td>Hak</td></tr>
+      <tr><td>Pasal 28</td><td>Hak kebebasan berpendapat dan berkumpul</td><td>Hak</td></tr>
+      <tr><td>Pasal 28D ayat (1)</td><td>Hak atas perlakuan yang sama di hadapan hukum</td><td>Hak</td></tr>
+      <tr><td>Pasal 28D ayat (4)</td><td>Hak atas status kewarganegaraan</td><td>Hak</td></tr>
+      <tr><td>Pasal 30 ayat (1)</td><td>Hak dan wajib ikut serta dalam usaha pembelaan negara</td><td>Hak sekaligus kewajiban</td></tr>
+      <tr><td>Pasal 31 ayat (1) dan (2)</td><td>Hak mendapat pendidikan dan kewajiban mengikutinya</td><td>Hak sekaligus kewajiban</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Polanya jelas. Beberapa kali dalam konstitusi, hak dan kewajiban ditulis secara berpasangan. Kesadaran atas hak dan kewajiban tidak muncul sebagai dua hal yang terpisah, melainkan sebagai satu kemampuan membaca dua sisi dari satu kedudukan.</p>
+
+  <h2 id="n41">41. How, bagaimana?</h2>
+
+  <p>Materi menjawab How dengan tiga unsur, yaitu Civic Knowledge, Civic Disposition, dan Civic Skills. Ketiganya dibahas lengkap pada bagian 42 sampai 44.</p>
+
+  <div class="note">
+    <p><strong>Landasan hukum dari ketiga unsur.</strong> Ketiga unsur tersebut bukan cipta modul ini, melainkan komponen kompetensi kewargaan yang dipakai dalam standar pendidikan Indonesia. Landasan hukumnya dapat dilacak ke Pasal 1 ayat (1) UU No. 20 Tahun 2003 tentang Sistem Pendidikan Nasional, yang menyatakan bahwa pendidikan bertujuan untuk mengembangkan potensi peserta didik agar menjadi manusia yang beriman dan bertaqwa kepada Tuhan Yang Maha Esa, berakhlak mulia, berilmu, cakap, kreatif, mandiri, dan menjadi warga negara yang demokratis serta bertanggung jawab.</p>
+  </div><h2 id="n42">42. Civic Knowledge</h2>
+
+  <p><strong>Civic Knowledge</strong> adalah pengetahuan kewarganegaraan. Seseorang perlu mengetahui konsep yang berkaitan dengan kehidupan bernegara, seperti negara, hukum, demokrasi, hak, kewajiban, dan berbagai persoalan kewarganegaraan.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 42.1 &middot; Aspek Civic Knowledge yang perlu dikuasai</caption>
+    <thead>
+      <tr><th>Aspek</th><th>Isi</th><th>Contoh dalam mata kuliah ini</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pengetahuan konstitusi</td><td>Struktur dan ketentuan UUD NRI 1945</td><td>Pasal 1, 25A, 26, 27, 30, dan 31</td></tr>
+      <tr><td>Pengetahuan hak dan kewajiban</td><td>Isi hak serta kewajiban warga negara</td><td>Pasal 27, 28, 28D, 30, dan 31</td></tr>
+      <tr><td>Pengetahuan hukum</td><td>Jenjang peraturan perundang-undangan</td><td>Kedudukan undang-undang terhadap UUD NRI 1945</td></tr>
+      <tr><td>Pengetahuan sistem politik</td><td>Cara kekuasaan dijalankan</td><td>Pemilihan umum dan fungsi Dewan Perwakilan Rakyat</td></tr>
+      <tr><td>Pengetahuan wilayah</td><td>Corak kepulauan dan batas wilayah</td><td>Pasal 25A</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n43">43. Civic Disposition</h2>
+
+  <p><strong>Civic Disposition</strong> berhubungan dengan sikap, nilai, dan karakter yang diperlukan untuk menjadi warga negara. Pengetahuan yang benar perlu disertai sikap yang tepat.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 43.1 &middot; Sikap yang membentuk Civic Disposition</caption>
+    <thead>
+      <tr><th>Sikap</th><th>Pengertian</th><th>Bentuk nyata dalam kehidupan bernegara</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kesopanan</td><td>Menghormati orang lain dan berdiskusi dengan santun</td><td>Menyampaikan pendapat tanpa menghina</td></tr>
+      <tr><td>Tanggung jawab individual</td><td>Menaati kewajiban tanpa menunggu diawasi</td><td>Menaati administrasi dan aturan</td></tr>
+      <tr><td>Disiplin diri</td><td>Menepati kesepakatan yang dibuat sendiri</td><td>Menepati jadwal yang telah disepakati</td></tr>
+      <tr><td>Kepedulian pada masyarakat</td><td>Memperhatikan kepentingan bersama</td><td>Ikut dalam kegiatan sosial kemasyarakatan</td></tr>
+      <tr><td>Keterbukaan pikiran</td><td>Mau mengubah pendapat ketika memperoleh argumen baru</td><td>Mengakui bahwa pendapat sendiri dapat keliru</td></tr>
+      <tr><td>Toleransi terhadap keragaman</td><td>Menghormati perbedaan yang tetap dalam batas yang diperbolehkan</td><td>Menjaga keutuhan bangsa di tengah perbedaan</td></tr>
+      <tr><td>Kesabaran dan keajekan</td><td>Tidak mudah kehilangan kesabaran</td><td>Menyelesaikan perbedaan melalui musyawarah</td></tr>
+      <tr><td>Kesetiaan kepada bangsa</td><td>Menempatkan kepentingan bangsa dalam pandangan</td><td>Taat pada keputusan bersama</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Perbedaan penting antara pengetahuan dan sikap.</strong> Seseorang dapat mengetahui bahwa menyontek itu salah, tetapi tetap menyontek ketika tidak diawasi. Orang lain dapat mengetahui bahwa hidup bersih itu baik, tetapi memilih hidup yang santai. Pengetahuan tanpa sikap hanya menghasilkan nilai, bukan perilaku.</p>
+  </div>
+
+  <h2 id="n44">44. Civic Skills</h2>
+
+  <p><strong>Civic Skills</strong> merupakan keterampilan yang dibutuhkan dalam kehidupan kewarganegaraan, misalnya kemampuan berkomunikasi, berdiskusi, berpikir kritis, bekerja sama, dan berpartisipasi.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 44.1 &middot; Keterampilan kewarganegaraan dan bentuk latihan yang sesuai</caption>
+    <thead>
+      <tr><th>Jenis keterampilan</th><th>Contoh keterampilan</th><th>Bentuk latihan dalam kelas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Keterampilan intelektual</td><td>Mengidentifikasi dan mendeskripsikan</td><td>Merumuskan persoalan secara tertulis</td></tr>
+      <tr><td>Keterampilan intelektual</td><td>Menjelaskan dan menganalisis</td><td>Memisahkan sebab dan akibat</td></tr>
+      <tr><td>Keterampilan intelektual</td><td>Mengevaluasi dan mempertahankan posisi</td><td>Menulis argumen tentang isu publik</td></tr>
+      <tr><td>Keterampilan partisipasi</td><td>Berkomunikasi</td><td>Presentasi kelompok</td></tr>
+      <tr><td>Keterampilan partisipasi</td><td>Bekerja sama</td><td>Tugas kelompok dengan tanggung jawab bersama</td></tr>
+      <tr><td>Keterampilan partisipasi</td><td>Berunding</td><td>Berperan dalam deliberasi kelas</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n45">45. Asal-usul tiga unsur kompetensi kewarganegaraan</h2>
+
+  <p>Ketiga unsur tersebut bukan cipta materi modul ini. Kerangka ini sudah lama dipakai dalam pendidikan kewarganegaraan di berbagai negara.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 45.1 &middot; Sumber dan sumbangan terhadap kerangka kompetensi kewargaan</caption>
+    <thead>
+      <tr><th>Sumber</th><th>Sumbangan terhadap kerangka</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Center for Civic Education, 1994</td><td>Merumuskan tiga komponen, yaitu pengetahuan, keterampilan, dan watak kewargaan</td></tr>
+      <tr><td>Patrick dan Vontz, 1999 serta 2001</td><td>Mengelompokkan komponen menjadi empat dengan memecah keterampilan menjadi keterampilan kognitif dan keterampilan partisipasi</td></tr>
+      <tr><td>Quigley dan rekan, 1991</td><td>Memberi pengertian Civic Disposition sebagai sikap dan kebiasaan berpikir warga negara yang menopang fungsi sosial yang sehat</td></tr>
+      <tr><td>Branson, 1998</td><td>Menghubungkan keterampilan kewargaan dengan kategori mengidentifikasi, menjelaskan dan menganalisis, serta mengevaluasi isu publik</td></tr>
+      <tr><td>Torney-Purta dan rekan, 2001</td><td>Melaporkan hasil penelitian lintas negara yang menunjukkan komponen yang berlaku umum adalah pengetahuan, keterlibatan, dan sikap</td></tr>
+      <tr><td>Permendikbud No. 64 Tahun 2013</td><td>Menetapkan ruang lingkup kajian pendidikan kewarganegaraan untuk tiap jenjang sejak SD sampai SMA</td></tr>
+      <tr><td>UU No. 20 Tahun 2003 Pasal 1 ayat (1)</td><td>Merumuskan tujuan pendidikan secara umum yang memuat pengetahuan, sikap, dan keterampilan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <p><strong>Hubungan sederhana ketiga unsur.</strong> Civic Knowledge berarti mengetahui. Civic Disposition berarti memiliki sikap. Civic Skills berarti mampu melakukan. Ketiganya tidak dapat saling menggantikan. Seseorang yang mengetahui hak tetapi tidak memiliki sikap akan menjadi orang yang tahu tetapi tidak jujur, sedangkan seseorang yang memiliki sikap tetapi tidak memiliki keterampilan akan menjadi orang yang tidak dapat memperbaiki keadaan.</p>
+  </div>
+
+  <h2 id="n46">46. Apakah Civic Knowledge sudah cukup</h2>
+
+  <p>Pertanyaan ini layak diperhatikan karena merupakan salah satu persoalan klasik dalam pendidikan kewarganegaraan.</p>
+
+  <div class="note">
+    <p><strong>Tidak cukup.</strong> Seseorang dapat mengetahui bahwa suatu tindakan salah, tetapi tetap melakukannya. Penelitian mengenai pendidikan kebangsaan menunjukkan bahwa karakter warga negara tidak cukup ditandai oleh sikap loyal dan kepatuhan kepada pemerintah. Sikap loyal tanpa kemampuan bernalar dapat menghasilkan warga yang menyalin tanpa berpikir.</p>
+  </div>
+
+  <p>Karena itu ketiga unsur sebaiknya dipandang sebagai satu kesatuan, bukan berurutan. Seseorang bisa mulai dari pengetahuan, bisa mulai dari sikap yang terbentuk dari pengalaman, atau bisa mulai dari keterampilan yang terbentuk melalui latihan. Pengetahuan yang sudah ada dapat dipertahankan, dan unsur yang belum ada dapat dibangun melalui pengalaman.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 46.1 &middot; Empat kombinasi tiga unsur dan cirinya</caption>
+    <thead>
+      <tr><th>Pengetahuan</th><th>Sikap</th><th>Keterampilan</th><th>Ciri warga negara</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ada</td><td>Ada</td><td>Ada</td><td>Warga negara yang utuh</td></tr>
+      <tr><td>Ada</td><td>Ada</td><td>Tidak ada</td><td>Memiliki niat baik tetapi tidak dapat bertindak</td></tr>
+      <tr><td>Ada</td><td>Tidak ada</td><td>Ada</td><td>Dapat bertindak tetapi tidak ada arah tujuan</td></tr>
+      <tr><td>Tidak ada</td><td>Ada</td><td>Ada</td><td>Bertindak dari naluri tanpa dasar pengetahuan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n47">47. Analisis kritis terhadap materi</h2>
+
+  <p>Pendidikan Kewarganegaraan memiliki tujuan yang luas, sehingga terdapat beberapa persoalan yang perlu dipikirkan secara kritis.</p>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 47.1 &middot; Lima persoalan kritis dan jawabannya</caption>
+    <thead>
+      <tr><th>No</th><th>Persoalan</th><th>Jawaban</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Apakah mengetahui hak dan kewajiban otomatis membuat seseorang menjadi warga negara yang baik?</td><td>Tidak selalu. Seseorang dapat mengetahui bahwa suatu tindakan salah, tetapi tetap melakukannya.</td></tr>
+      <tr><td>2</td><td>Apakah warga negara yang baik harus selalu setuju dengan pemerintah?</td><td>Tidak.Wrong Sikap kritis tetap merupakan bagian dari tanggung jawab kewarganegaraan.</td></tr>
+      <tr><td>3</td><td>Apakah pendidikan Kewarganegaraan cukup dilakukan melalui hafalan?</td><td>Tidak cukup. Materi berkaitan dengan kehidupan nyata, sehingga mahasiswa perlu dilatih berdiskusi dan menganalisis.</td></tr>
+      <tr><td>4</td><td>Apakah internet selalu dapat dijadikan sumber yang benar?</td><td>Tidak. Internet hanyalah media memperoleh informasi. Sumber tetap harus diperiksa dan dibandingkan.</td></tr>
+      <tr><td>5</td><td>Bagaimana mengukur keberhasilan pendidikan Kewarganegaraan?</td><td>Teori lebih mudah diukur daripada karakter. Karena itu diskusi, presentasi, dan partisipasi punya peran penting selain ujian.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n48">48. Pertanyaan kritis dan jawabannya</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 48.1 &middot; Delapan pertanyaan kritis beserta jawabannya</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan</th><th>Jawaban</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Mengapa seseorang perlu mempelajari Kewarganegaraan jika sejak kecil sudah menjadi warga negara?</td><td>Memahami kewarganegaraan adalah dua hal berbeda dari sekadar memiliki status warga negara.</td></tr>
+      <tr><td>2</td><td>Apakah orang yang hafal Pancasila otomatis menjadi warga negara yang baik?</td><td>Tidak. Hafalan hanya menunjukkan pengetahuan, sedangkan warga negara juga membutuhkan sikap dan keterampilan.</td></tr>
+      <tr><td>3</td><td>Apakah orang yang kritis terhadap pemerintah berarti tidak cinta negara?</td><td>Tidak. Kritik yang berdasarkan alasan dan bertanggung jawab merupakan bagian dari kehidupan kewarganegaraan yang sehat.</td></tr>
+      <tr><td>4</td><td>Mengapa Civic Knowledge saja tidak cukup?</td><td>Karena pengetahuan belum tentu menghasilkan perilaku. Seseorang dapat mengetahui aturan tetapi tetap melanggarnya.</td></tr>
+      <tr><td>5</td><td>Apakah diskusi kelompok selalu efektif?</td><td>Belum tentu. Diskusi menjadi tidak efektif apabila anggota tidak berpartisipasi, informasi salah, atau hanya satu orang yang bekerja.</td></tr>
+      <tr><td>6</td><td>Apakah bela negara berarti harus selalu mengutamakan negara di atas segala hal?</td><td>Tidak sesederhana itu. Bela negara adalah tanggung jawab yang proporsional, dan hak warga negara tetap berlaku.</td></tr>
+      <tr><td>7</td><td>Jika mahasiswa tahu bahwa dirinya tidak tahu, apakah itu kelemahan?</td><td>Tidak. Kesadaran akan kekurangan justru menjadi awal pembelajaran dan mendorong untuk mencari informasi.</td></tr>
+      <tr><td>8</td><td>Mengapa pendidikan Kewarganegaraan perlu dikaitkan dengan profesi?</td><td>Karena setiap profesi berdampak pada masyarakat dan negara. Pengetahuan diterapkan sesuai bidang ilmu masing-masing, sebagaimana jalur huruf d pada Pasal 9 ayat (2) UU No. 3 Tahun 2002.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n49">49. Pertanyaan kritis untuk diskusi kelas</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 49.1 &middot; Empat pertanyaan untuk diskusi kelas beserta jawaban rujukan</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan</th><th>Jawaban rujukan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Apakah pendidikan Kewarganegaraan seharusnya lebih menekankan kepatuhan terhadap negara atau kemampuan kritis warga negara?</td><td>Keduanya harus seimbang. Kepatuhan tanpa kemampuan kritis menghasilkan warga pasif, sedangkan kritik tanpa tanggung jawab mengganggu kehidupan demokratis.</td></tr>
+      <tr><td>2</td><td>Jika seseorang memiliki Civic Knowledge tinggi tetapi Civic Disposition dan Civic Skills rendah, apakah dia warga negara yang baik?</td><td>Belum tentu. Pengetahuan perlu diwujudkan dalam sikap dan keterampilan agar dapat diterapkan.</td></tr>
+      <tr><td>3</td><td>Bagaimana cara mengukur keberhasilan mata kuliah ini jika karakter tidak dapat diukur hanya melalui UTS dan UAS?</td><td>Penilaian sebaiknya tidak berhenti pada ujian tertulis. Partisipasi, diskusi, presentasi, dan kemampuan berpikir kritis juga dapat menjadi indikator.</td></tr>
+      <tr><td>4</td><td>Jika pendidikan Kewarganegaraan diberikan sejak SD, mengapa pada bagian Who ditulis orang dewasa?</td><td>Materi tidak memberikan penjelasan. Hubungan kedua jawaban tersebut tidak dapat dipastikan, dan bagian ini justru dapat dijadikan pertanyaan kepada dosen.</td></tr>
+    </tbody>
+  </table>
+  </div><h2 id="n50">50. Ringkasan dalam satu tabel</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 50.1 &middot; Ringkasan seluruh bagian A sampai E</caption>
+    <thead>
+      <tr><th>Bagian</th><th>Isi utama</th><th>Landasan atau sumber</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A. Kesadaran pengetahuan</td><td>Empat jenis manusia menurut matriks dua kali dua</td><td>Model jendela Johari dan matriks empat kuadran yang dipopulerkan tahun 2002</td></tr>
+      <tr><td>B. Hakikat dan tujuan</td><td>Pendidikan kewarganegaraan sebagai mata kuliah wajib</td><td>UU No. 20 Tahun 2003 Pasal 37 dan UU No. 12 Tahun 2012 Pasal 35 ayat (3)</td></tr>
+      <tr><td>B. Hak dan kewajiban</td><td>Hak dan kewajiban dalam satu kedudukan</td><td>UUD NRI 1945 Pasal 27, 28, 28D, 30, dan 31</td></tr>
+      <tr><td>B. Bela negara</td><td>Bela negara sebagai hak sekaligus kewajiban</td><td>UU No. 3 Tahun 2002 Pasal 2 dan Pasal 9; UU No. 23 Tahun 2019 Pasal 6 dan Pasal 11</td></tr>
+      <tr><td>C. Ruang lingkup</td><td>Sembilan pokok bahasan dan landasan pasal</td><td>Pasal 1, 19, 20, 25A, 26, 27, 28, 30, 31, 33, 36A, dan 37</td></tr>
+      <tr><td>D. Sistem perkuliahan</td><td>Tujuh metode, pendekatan Cooperative Learning, lima tahap</td><td>Prinsip pembelajaran berbasis penemuan dan kerja sama</td></tr>
+      <tr><td>D. Penilaian</td><td>Kehadiran, partisipasi, UTS, UAS, serta PAP dan PAN</td><td>Materi modul dan dokumen resmi kampus</td></tr>
+      <tr><td>E. Kerangka pemahaman</td><td>5W + 1H dan tiga unsur kompetensi</td><td>Center for Civic Education, Quigley, Patrick dan Vontz, Branson</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n51">51. Ringkasan pasal yang relevan</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 51.1 &middot; Daftar pasal yang disebut dalam modul ini</caption>
+    <thead>
+      <tr><th>Dasar hukum</th><th>Pasal</th><th>Inti provisions yang dikutip</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UUD NRI 1945</td><td>Pasal 1 ayat (1), (2), (3)</td><td>Negara Kesatuan berbentuk Republik; kedaulatan di tangan rakyat; negara Indonesia adalah negara hukum</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 25A</td><td>Indonesia adalah negara kepulauan yang berciri Nusantara</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 26 ayat (1), (2), (3)</td><td>Siapa yang menjadi warga negara; pengertian penduduk; diatur dengan undang-undang</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 27 ayat (1), (2)</td><td>Kesetaraan dalam hukum; hak atas pekerjaan dan penghidupan layak</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 28</td><td>Hak kebebasan berpendapat dan berkumpul</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 28A ayat (1)</td><td>Hak untuk hidup dan mempertahankan hidup</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 28D ayat (1), (3), (4)</td><td>Hak atas perlakuan yang sama; hak atas kesempatan yang sama dalam pemerintahan; hak atas status kewarganegaraan</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 30 ayat (1)</td><td>Hak dan wajib ikut serta dalam usaha pembelaan negara</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 31 ayat (1), (2), (4)</td><td>Hak atas pendidikan; kewajiban mengikuti pendidikan dasar; prioritas anggaran pendidikan</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 36A ayat (1)</td><td>Tentara Nasional Indonesia sebagai alat pertahanan negara</td></tr>
+      <tr><td>UUD NRI 1945</td><td>Pasal 37 ayat (1)</td><td>Undang-Undang Dasar adalah hukum tertinggi negara</td></tr>
+      <tr><td>UU No. 20 Tahun 2003</td><td>Pasal 1 ayat (1), Pasal 37 ayat (1), (2)</td><td>Tujuan pendidikan; kurikulum wajib memuat pendidikan kewarganegaraan pada semua jenjang</td></tr>
+      <tr><td>UU No. 12 Tahun 2012</td><td>Pasal 35 ayat (3)</td><td>Mata kuliah agama, Pancasila, kewarganegaraan, dan bahasa Indonesia bersifat wajib</td></tr>
+      <tr><td>UU No. 12 Tahun 2006</td><td>Pasal 1 ayat (2)</td><td>Kewarganegaraan adalah segala hal ihwal yang berhubungan dengan warga negara</td></tr>
+      <tr><td>UU No. 3 Tahun 2002</td><td>Pasal 2 ayat (1), Pasal 9 ayat (1), (2)</td><td>Definisi upaya bela negara; hak dan wajib bela negara; empat jalur keikutsertaan</td></tr>
+      <tr><td>UU No. 23 Tahun 2019</td><td>Pasal 6 ayat (1), Pasal 11 ayat (1)</td><td>Definisi bela negara terbaru dan kewajiban keikutsertaan</td></tr>
+      <tr><td>UU No. 24 Tahun 2009</td><td>Pasal 2, Pasal 3, Pasal 65</td><td>Asas, tujuan, dan hak serta kewajiban mengenai bendera, bahasa, lambang, dan lagu kebangsaan</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n52">52. Latihan</h2>
+
+  <div class="scroll">
+  <table class="tight">
+    <caption>Tabel 52.1 &middot; Latihan dan jawaban ringkas</caption>
+    <thead>
+      <tr><th>No</th><th>Pertanyaan</th><th>Jawaban ringkas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Jelaskan arti unbeknown knowns dalam matriks pengetahuan</td><td>Seseorang sebenarnya memiliki pengetahuan tetapi tidak menyadari bahwa ia memiliki pengetahuan itu</td></tr>
+      <tr><td>2</td><td>Mengapa kuadran unknown unknown paling sulit ditangani</td><td>Karena secara definisi orang tidak dapat meminta bantuan atas hal yang disadari tidak ada dalam daftarnya</td></tr>
+      <tr><td>3</td><td>Sebutkan definisi kewarganegaraan dalam undang-undang</td><td>Segala hal ihwal yang berhubungan dengan warga negara, menurut Pasal 1 ayat (2) UU No. 12 Tahun 2006</td></tr>
+      <tr><td>4</td><td>Pasal berapa yang mewajibkan pendidikan kewarganegaraan dalam kurikulum?</td><td>Pasal 37 ayat (1) dan ayat (2) UU No. 20 Tahun 2003</td></tr>
+      <tr><td>5</td><td>Pasal berapa yang menjadikan pendidikan kewarganegaraan sebagai mata kuliah wajib perguruan tinggi?</td><td>Pasal 35 ayat (3) UU No. 12 Tahun 2012</td></tr>
+      <tr><td>6</td><td>Apa isi Pasal 25A UUD NRI 1945</td><td>Indonesia adalah negara kepulauan yang berciri Nusantara dengan batas-batas dan hak-haknya ditetapkan undang-undang</td></tr>
+      <tr><td>7</td><td>Bagaimana perbedaan warga negara dan penduduk menurut Pasal 26</td><td>Warga negara ditentukan berdasarkan ketentuan undang-undang, sedangkan penduduk mencakup warga negara Indonesia dan orang asing yang tinggal di Indonesia</td></tr>
+      <tr><td>8</td><td>Sebutkan empat jalur keikutsertaan bela negara</td><td>Pendidikan kewarganegaraan; pelatihan dasar kemiliteran wajib; pengabdian sebagai prajurit TNI; pengabdian sesuai profesi</td></tr>
+      <tr><td>9</td><td>Apa isi Pasal 30 ayat (1) UUD NRI 1945</td><td>Tiap-tiap warga negara berhak dan wajib ikut serta dalam usaha pembelaan negara</td></tr>
+      <tr><td>10</td><td>Sebutkan lima asas yang bersifat khusus dalam UU No. 12 Tahun 2006</td><td>Kepentingan nasional; perlindungan maksimum; persamaan dalam hukum; kebenaran substantif; nondiskriminatif</td></tr>
+      <tr><td>11</td><td>Apa perbedaan Discovery Learning dan Inquiry Learning</td><td>Pada Discovery Learning masalah disiapkan dosen, sedangkan pada Inquiry Learning pertanyaan berasal dari mahasiswa</td></tr>
+      <tr><td>12</td><td>Sebutkan lima tahap pembelajaran</td><td>Introduction, Connection, Application, Reflection, Extension</td></tr>
+      <tr><td>13</td><td>Apa lima ciri Cooperative Learning</td><td>Tanggung jawab bersama; interaksi positif; diskusi terbuka; keterampilan sosial; proses meningkatkan hasil</td></tr>
+      <tr><td>14</td><td>Sebutkan empat kriteria penilaian</td><td>Kehadiran; partisipasi; ujian tengah semester; ujian akhir semester</td></tr>
+      <tr><td>15</td><td>Mengapa mekanisme PAP dan PAN tidak dapat dijelaskan dari materi</td><td>Karena tidak ada satu definisi tunggal yang berlaku nasional; bobotnya ditetapkan tiap kampus</td></tr>
+      <tr><td>16</td><td>Jawab pertanyaan When dalam pendekatan 5W + 1H</td><td>Dari SD sampai perguruan tinggi, didukung Pasal 31 ayat (2) UUD NRI 1945 dan Pasal 37 UU No. 20 Tahun 2003</td></tr>
+      <tr><td>17</td><td>Mengapa jawaban Who tidak dapat dipastikan dari materi</td><td>Karena istilah orang dewasa tidak dijelaskan dan tampak berbeda dengan jawaban When</td></tr>
+      <tr><td>18</td><td>Apa isi Pasal 65 UU No. 24 Tahun 2009</td><td>Warga negara berhak dan wajib memelihara, menjaga, dan menggunakan bendera, bahasa, lambang, dan lagu kebangsaan</td></tr>
+      <tr><td>19</td><td>Sebutkan tiga unsur kompetensi kewarganegaraan</td><td>Civic Knowledge, Civic Disposition, Civic Skills</td></tr>
+      <tr><td>20</td><td>Mengapa Civic Knowledge saja tidak cukup</td><td>Karena pengetahuan belum tentu menghasilkan perilaku tanpa dukungan sikap dan keterampilan</td></tr>
+      <tr><td>21</td><td>Mengapa mengetahui hak dan kewajiban harus disertai kemampuan berpikir kritis</td><td>Karena pengetahuan dapat berupa keyakinan keliru yang dianggap pasti, dan karena warga negara tetap perlu mengawasi negara</td></tr>
+      <tr><td>22</td><td>Bagaimana hubungan bela negara dengan hak asasi manusia</td><td>Kewajiban bela negara selalu berada dalam koridor yang dibatasi oleh hak asasi manusia</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="n53">53. Daftar istilah</h2>
+
+  <dl>
+    <dt>Kewarganegaraan</dt>
+    <dd>Segala hal ihwal yang berhubungan dengan warga negara, menurut Pasal 1 ayat (2) UU No. 12 Tahun 2006.</dd>
+
+    <dt>Pendidikan Kewarganegaraan</dt>
+    <dd>Pendidikan yang dibentuk untuk menjadikan peserta didik menjadi manusia yang memiliki rasa kebangsaan dan cinta tanah air, menurut penjelasan Pasal 37 UU No. 20 Tahun 2003.</dd>
+
+    <dt>Matriks pengetahuan</dt>
+    <dd>Kerangka dua kali dua yang memisahkan pengetahuan menjadi yang disadari dan yang tidak disadari.</dd>
+
+    <dt>Diketahui yang diketahui</dt>
+    <dd>Orang yang tahu, dan tahu bahwa ia tahu.</dd>
+
+    <dt>Diketahui yang tidak diketahui</dt>
+    <dd>Orang yang sebenarnya memiliki pengetahuan, tetapi tidak menyadari bahwa ia memilikinya.</dd>
+
+    <dt>Tidak diketahui yang diketahui</dt>
+    <dd>Orang yang tidak tahu, tetapi tahu bahwa ia tidak tahu.</dd>
+
+    <dt>Tidak diketahui yang tidak diketahui</dt>
+    <dd>Orang yang tidak tahu, dan juga tidak tahu bahwa ia tidak tahu.</dd>
+
+    <dt>Warga negara</dt>
+    <dd>Orang-orang bangsa Indonesia asli dan orang-orang bangsa lain yang disahkan dengan undang-undang, menurut Pasal 26 ayat (1) UUD NRI 1945.</dd>
+
+    <dt>Penduduk</dt>
+    <dd>Warga negara Indonesia dan orang asing yang tinggal di Indonesia, menurut Pasal 26 ayat (2) UUD NRI 1945.</dd>
+
+    <dt>Bela negara</dt>
+    <dd>Tekad, sikap, perilaku, serta tindakan warga negara untuk menjaga kedaulatan, keutuhan wilayah, dan keselamatan bangsa, menurut Pasal 11 ayat (1) UU No. 23 Tahun 2019.</dd>
+
+    <dt>Upaya bela negara</dt>
+    <dd>Sikap dan perilaku warga negara yang dijiwai kecintaan pada NKRI untuk menjamin kelangsungan hidup bangsa dan negara, menurut Pasal 2 ayat (1) UU No. 3 Tahun 2002.</dd>
+
+    <dt>Asas kewarganegaraan</dt>
+    <dd>Prinsip dasar yang melandasi peraturan kewarganegaraan, antara lain asas keturunan, asas tempat kelahiran, dan asas perlindungan maksimum.</dd>
+
+    <dt>Civic Knowledge</dt>
+    <dd>Pengetahuan kewarganegaraan.</dd>
+
+    <dt>Civic Disposition</dt>
+    <dd>Sikap, nilai, dan karakter yang diperlukan untuk menjadi warga negara.</dd>
+
+    <dt>Civic Skills</dt>
+    <dd>Keterampilan yang dibutuhkan dalam kehidupan kewarganegaraan.</dd>
+
+    <dt>Cooperative Learning</dt>
+    <dd>Pendekatan pembelajaran yang menempatkan proses kerja sama antarmahasiswa sebagai bagian dari pembelajaran.</dd>
+
+    <dt>Discovery Learning</dt>
+    <dd>Pembelajaran penemuan, yaitu mahasiswa menemukan sendiri pengetahuan melalui proses belajar.</dd>
+
+    <dt>Inquiry Learning</dt>
+    <dd>Pembelajaran berbasis pencarian, yaitu mahasiswa mengajukan pertanyaan dan mencari informasi untuk menjawabnya.</dd>
+
+    <dt>Problem-Based Learning</dt>
+    <dd>Pembelajaran yang menggunakan masalah nyata sebagai titik awal analisis.</dd>
+
+    <dt>Project-Based Learning</dt>
+    <dd>Pembelajaran yang menghasilkan karya nyata dalam kegiatan terencana.</dd>
+
+    <dt>Refleksi</dt>
+    <dd>Tahap dalam pembelajaran untuk menilai kembali proses belajar dan tujuan yang sudah tercapai.</dd>
+
+    <dt>Wawasan Nusantara</dt>
+    <dd>Cara pandang terhadap wilayah Indonesia sebagai negara kepulauan yang berciri Nusantara, menurut Pasal 25A UUD NRI 1945.</dd>
+  </dl>
+
+  <h2 id="n54">54. Daftar pustaka</h2>
+
+  <p>Daftar pustaka disusun dari peraturan perundang-undangan, dokumen resmi, dan tulisan ilmiah yang dipakai pada modul ini.</p>
+
+  <footer>
+    <ul class="refs">
+      <li><b>Materi utama.</b> <em>Pengantar dan Ruang Lingkup Perkuliahan Kewarganegaraan.</em> Sumber utama yang mencakup struktur, istilah, dan topik yang dibahas dalam modul ini.</li>
+      <li><b>Undang-Undang Dasar Negara Republik Indonesia Tahun 1945.</b> Naskah=UUD mengenai bentuk dan kedaulatan negara, hak dan kewajiban warga negara, hak asasi manusia, pertahanan negara, pendidikan, dan kedudukan undang-undang dasar. <a href="https://bphn.go.id/data/documents/uud_1945.pdf">bphn.go.id</a></li>
+      <li><b>Undang-Undang Nomor 12 Tahun 2006.</b> <em>Penetapan Per_Status Kewarganegaraan Republik Indonesia.</em> Definisi kewarganegaraan pada Pasal 1 ayat (2) dan asas-asas kewarganegaraan dalam Pembukaan. <a href="https://peraturan.bpk.go.id/Details/39870/uu-no-12-tahun-2006">peraturan.bpk.go.id</a></li>
+      <li><b>Undang-Undang Nomor 3 Tahun 2002.</b> <em>tentang Pertahanan Negara.</em> Definisi upaya bela negara pada Pasal 2 ayat (1) dan empat jalur keikutsertaan pada Pasal 9 ayat (2). <a href="https://peraturan.bpk.go.id/Details/44421/uu-no-3-tahun-2002">peraturan.bpk.go.id</a></li>
+      <li><b>Undang-Undang Nomor 23 Tahun 2019.</b> <em>tentang Pengelolaan Sumber Daya Nasional untuk Pertahanan Negara.</em> Definisi bela negara pada Pasal 11 ayat (1) dan kewajiban keikutsertaan pada Pasal 6 ayat (1). <a href="https://peraturan.bpk.go.id/Details/161744/uu-no-23-tahun-2019">peraturan.bpk.go.id</a></li>
+      <li><b>Undang-Undang Nomor 24 Tahun 2009.</b> <em>tentang Bendera, Bahasa, dan Lambang Negara, serta Lagu Kebangsaan.</em> Asas pada Pasal 2, tujuan pada Pasal 3, dan hak serta kewajiban warga negara pada Pasal 65. <a href="https://peraturan.bpk.go.id/Details/38661/uu-no-24-tahun-2009">peraturan.bpk.go.id</a></li>
+      <li><b>Undang-Undang Nomor 20 Tahun 2003.</b> <em>tentang Sistem Pendidikan Nasional.</em> Tujuan pendidikan pada Pasal 1 ayat (1) dan kewajiban kurikulum memuat pendidikan kewarganegaraan pada Pasal 37. <a href="https://peraturan.bpk.go.id/Details/43920/uu-no-20-tahun-2003">peraturan.bpk.go.id</a></li>
+      <li><b>Undang-Undang Nomor 12 Tahun 2012.</b> <em>tentang Pendidikan Tinggi.</em> Pasal 35 ayat (3) tentang mata kuliah wajib di perguruan tinggi. <a href="https://peraturan.bpk.go.id/Details/52429/uu-no-12-tahun-2012">peraturan.bpk.go.id</a></li>
+      <li><b>Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi.</b> <em>Modul Pembelajaran Mata Kuliah Wajib Pendidikan Kewarganegaraan.</em> Sumber resmi tentang dasar hukum dan kedudukan mata kuliah Kewarganegaraan dalam perguruan tinggi. <a href="https://kemdiktisaintek.go.id/api/file/humas-production/2024/05/Buku-Modul-MKWK-Pendidikan-Kewarganegaraan.pdf">kemdiktisaintek.go.id</a></li>
+      <li><b>Center for Civic Education.</b> <em>National Standards for Civic and Government Education.</em> Framework tiga komponen kompetensi kewargaan. Washington, 1994.</li>
+      <li><b>Patrick, J. dan Vontz, R.</b> <em>Civic Education Materials.</em> Pengelompokan komponen kompetensi kewargaan menjadi empat kategori. Washington, 1999 dan 2001.</li>
+      <li><b>Quigley, K. E. dan rekan.</b> <em>Civic Education: Challenges and Prospects.</em> Pengertian Civic Disposition dan ciri kepribadian yang membentuknya. 1991.</li>
+      <li><b>Branson, M.</b> <em>Civic Education Curriculum.</em> Kategori keterampilan intelektual dan keterampilan partisipasi. 1998.</li>
+      <li><b>Torney-Purta, C. dan rekan.</b> <em>Civic Education and the Content of the National Curriculum in Indonesia.</em> Penelitian kerangka kompetensi kewargaan di banyak negara. 2001.</li>
+      <li><b>Permendikbud No. 64 Tahun 2013.</b> <em>tentang Standar Isi Kurikulum 2013.</em> Ruang lingkup kajian pendidikan kewarganegaraan tiap jenjang.</li>
+      <li><b>The Uncertainty Project.</b> <em>Rumsfeld Matrix.</em> Kerangka empat kuadran pengetahuan yang menjadi latar belakang pembagian empat jenis manusia pada modul ini.</li>
+    </ul>
+  </footer>
+
+<h2 id="nQUIZ">55. Kuis Interaktif</h2>
+
+  <div class="quiz" id="quiz" data-kuis="kewarganegaraan-01">
+    <div class="quiz-head">
+      <span class="badge">Kuis</span>
+      <h3>Uji Pemahaman 24 Soal</h3>
+    </div>
+    <p class="quiz-lede">Setiap nomor di bawah ini memuat satu soal pilihan ganda beserta pembahasannya. Tekan nomor untuk membuka soalnya, pilih jawaban, lalu tekan tombol periksa. Jawaban benar disertai penjelasan, sedangkan jawaban salah menampilkan jawaban yang benar beserta alasannya. Kemajuan kuis tersimpan otomatis pada perangkat ini.</p>
+
+    <div class="quiz-bar">
+      <span class="qstat">0 dijawab dari 24 soal</span>
+      <span class="quiz-track"><span class="quiz-fill"></span></span>
+      <button class="quiz-reset" type="button">Ulangi Semua</button>
+    </div>
+
+    <ul class="quiz-grid"></ul>
+
+    <div class="quiz-cta">
+      <button class="btn btn-primary" type="button" data-start>Mulai Kuis</button>
+      <a class="btn btn-ghost" href="#n1">Kembali ke Materi</a>
+    </div>
+
+    <div class="quiz-layer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Soal kuis">
+      <div class="quiz-card">
+        <div class="quiz-top">
+          <span class="qno">Soal 1</span>
+          <span class="qref"></span>
+          <span class="qcount"></span>
+          <button class="qclose" type="button" aria-label="Tutup soal">&#10005;</button>
+        </div>
+        <p class="qtext"></p>
+        <ul class="qopts"></ul>
+        <div class="verdict"></div>
+        <div class="quiz-foot">
+          <button class="btn btn-primary" type="button" data-next disabled style="display:none">Periksa Jawaban</button>
+          <span class="spacer"></span>
+          <button class="btn btn-ghost" type="button" data-skip>Lewati soal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<script>
+/* ===================================================================
+   Mesin kuis interaktif. Data soal diambil dari variabel KUIS_DATA.
+   =================================================================== */
+  var KUIS_DATA = [
+  {
+    "ref": "Bagian 6 dan 7",
+    "q": "Dalam matriks pengetahuan, orang yang tahu bahwa ia belum memahami suatu hal berada pada kuadran:",
+    "o": [
+      "Diketahui yang diketahui",
+      "Diketahui yang tidak diketahui",
+      "Tidak diketahui yang diketahui",
+      "Tidak diketahui yang tidak diketahui"
+    ],
+    "a": 2,
+    "why": "Kuadran tidak diketahui yang diketahui memuat orang yang tidak memiliki pengetahuan, tetapi sadar akan ketidaktahuannya. Kesadaran inilah yang mendorong seseorang untuk mencari informasi. Pada kuadran diketahui yang diketahui, orang tahu sekaligus tahu bahwa ia tahu."
+  },
+  {
+    "ref": "Bagian 7",
+    "q": "Mengapa kuadran diketahui yang tidak diketahui sering disalahartikan sebagai tidak tahu sama sekali?",
+    "o": [
+      "Karena istilah teknisnya memang sulit dipahami",
+      "Karena orang tersebut sebenarnya memiliki pengetahuan yang belum disadari",
+      "Karena kuadran ini tidak termasuk dalam matriks",
+      "Karena pengetahuan yang tidak disadari sudah hilang"
+    ],
+    "a": 1,
+    "why": "Orang pada kuadran ini tetap memiliki pengetahuan, misalnya kemampuan bernegosiasi atau ketepatan waktu, tetapi tidak menyadari bahwa ia memilikinya. Kesalahartikan muncul karena kata tidak yang disederhanakan, sehingga dua hal berbeda dianggap sama."
+  },
+  {
+    "ref": "Bagian 9",
+    "q": "Menurut salah seorang filsuf dari Slovenia, bahaya terbesar justru berada pada kategori:",
+    "o": [
+      "Diketahui yang diketahui",
+      "Diketahui yang tidak diketahui",
+      "Tidak diketahui yang diketahui",
+      "Tidak diketahui yang tidak diketahui"
+    ],
+    "a": 1,
+    "why": "Filsuf tersebut menunjukkan bahwa pengetahuan kita sengaja tolak untuk diakui merupakan bahaya terbesar. Pengetahuan yang disadari ada tetapi sengaja diingkari sulit dijangkau karena tidak muncul sebagai permintaan bantuan."
+  },
+  {
+    "ref": "Bagian 10",
+    "q": "Menurut Pasal 1 ayat (2) Undang-Undang Nomor 12 Tahun 2006, kewarganegaraan adalah:",
+    "o": [
+      "Ilmu yang mempelajari hak dan kewajiban warga negara",
+      "Segala hal ihwal yang berhubungan dengan warga negara",
+      "Program pendidikan yang membentuk rasa kebangsaan",
+      "Status yang diberikan oleh negara kepada seseorang"
+    ],
+    "a": 1,
+    "why": "Pasal 1 ayat (2) UU No. 12 Tahun 2006 mendefinisikan kewarganegaraan sebagai segala hal ihwal yang berhubungan dengan warga negara. Definisi ini jauh lebih luas daripada sekadar ilmu politik atau mata kuliah."
+  },
+  {
+    "ref": "Bagian 11",
+    "q": "Pasal berapa yang menjadikan pendidikan kewarganegaraan sebagai mata kuliah wajib di perguruan tinggi?",
+    "o": [
+      "Pasal 37 ayat (1) UU No. 20 Tahun 2003",
+      "Pasal 35 ayat (3) UU No. 12 Tahun 2012",
+      "Pasal 30 UU NRI 1945",
+      "Pasal 9 ayat (2) UU No. 3 Tahun 2002"
+    ],
+    "a": 1,
+    "why": "Pasal 35 ayat (3) UU No. 12 Tahun 2012 tentang Pendidikan Tinggi menyatakan bahwa setiap perguruan tinggi wajib menyelenggarakan mata kuliah agama, Pancasila, kewarganegaraan, dan bahasa Indonesia. Pasal 37 UU No. 20 Tahun 2003 juga mewajibkan kurikulum memuat pendidikan kewarganegaraan, tetapi tidak menyebut nama mata kuliah secara eksplisit."
+  },
+  {
+    "ref": "Bagian 11 dan 17",
+    "q": "Menurut Pasal 9 ayat (2) huruf a UU No. 3 Tahun 2002, pendidikan kewarganegaraan merupakan salah satu bentuk:",
+    "o": [
+      "Kewajiban pajak warga negara",
+      "Keikutsertaan warga negara dalam upaya bela negara",
+      "Syarat untuk menjadi anggota Tentara Nasional Indonesia",
+      "Bagian dari pelatihan dasar kemiliteran"
+    ],
+    "a": 1,
+    "why": "Pasal 9 ayat (2) UU No. 3 Tahun 2002 menetapkan empat jalur keikutsertaan bela negara, dan pendidikan kewarganegaraan disebut pada huruf a. Karena itu kedudukan mata kuliah ini bukan hanya pendidikan umum, tetapi bagian dari upaya bela negara."
+  },
+  {
+    "ref": "Bagian 15",
+    "q": "Menurut Pasal 26 ayat (2) UUD NRI 1945, penduduk adalah:",
+    "o": [
+      "Warga negara Indonesia dan orang asing yang tinggal di Indonesia",
+      "Orang asing yang berlaku CHIP di wilayah Indonesia",
+      "Semua orang yang tinggal di wilayah Indonesia tanpa terkecuali",
+      "Orang-orang bangsa yang menetap di luar negeri"
+    ],
+    "a": 0,
+    "why": "Pasal 26 ayat (2) menyatakan bahwa penduduk ialah warga negara Indonesia dan orang asing yang inplace tinggal di Indonesia. Konsep penduduk lebih luas daripada warga negara karena mencakup orang asing yang belum tentu berkedudukan warga negara Indonesia."
+  },
+  {
+    "ref": "Bagian 16",
+    "q": "Menurut Pasal 30 ayat (1) UUD NRI 1945, setiap warga negara:",
+    "o": [
+      "Berhak saja ikut serta dalam usaha pembelaan negara",
+      "Wajib saja ikut serta dalam usaha pembelaan negara",
+      "Berhak dan wajib ikut serta dalam usaha pembelaan negara",
+      "Tidak memiliki kewajiban apa pun dalam pembelaan negara"
+    ],
+    "a": 2,
+    "why": "Pasal 30 ayat (1) menuliskan hak dan wajib dalam satu kalimat, sehingga keduanya menjadi satu kedudukan. Pola yang sama terdapat pada Pasal 31 ayat (2) dan pada Pasal 9 ayat (1) UU No. 3 Tahun 2002."
+  },
+  {
+    "ref": "Bagian 16",
+    "q": "Menurut Pasal 65 UU No. 24 Tahun 2009, warga negara Indonesia berhak dan wajib:",
+    "o": [
+      "Menyampaikan pendapat dalam rapatoty DPD",
+      "Memelihara, menjaga, dan menggunakan bendera, bahasa, lambang, serta lagu kebangsaan",
+      "Mengikuti pemilihan umum sesuai ketentuan",
+      "Membayar pajak sesuai besaran yang ditetapkan"
+    ],
+    "a": 1,
+    "why": "Pasal 65 UU No. 24 Tahun 2009 tentang Bendera, Bahasa, dan Lambang Negara serta Lagu Kebangsaan menyatakan bahwa warga negara berhak dan wajib memelihara, menjaga, dan menggunakan keempat unsur tersebut. Pemakaian yangopat memalukan dapat dianggap sebagai pelanggaran kewajiban."
+  },
+  {
+    "ref": "Bagian 18",
+    "q": "Menurut penjelasan Pasal 2 ayat (1) UU No. 3 Tahun 2002, tidak seorangpun warga negara boleh dihindarkan dari kewajiban keikutsertaan dalam pembelaan negara:",
+    "o": [
+      "Kecuali ditentukan dengan undang-undang",
+      "Kecuali jika tidak mampu secara fisik",
+      "Kecuali jika tinggal di luar negeri",
+      "Tidak ada pengecualian dalam keadaan apa pun"
+    ],
+    "a": 0,
+    "why": "Penjelasan pasal tersebut menyatakan bahwa tidak seorangpun warga negara boleh dihindarkan dari kewajiban keikutsertaan dalam pembelaan negara, kecuali ditentukan dengan undang-undang. Artinya batasnya ditentukan oleh undang-undang, bukan oleh tafsir sepihak."
+  },
+  {
+    "ref": "Bagian 19",
+    "q": "Jalur huruf d pada Pasal 9 ayat (2) UU No. 3 Tahun 2002 adalah pengabdian:",
+    "o": [
+      "Sebagai prajurit Tentara Nasional Indonesia",
+      "Sesuai dengan profesi",
+      "Melalui pelatihan dasar kemiliteran",
+      "Melalui pendidikan kewarganegaraan"
+    ],
+    "a": 1,
+    "why": "Jalur huruf d adalah pengabdian sesuai dengan profesi. Jalur ini menjawab pertanyaan bagaimana ilmu yang dipelajari dapat diterapkan langsung pada kehidupan bernegara, tanpa harus menjadi prajurit."
+  },
+  {
+    "ref": "Bagian 20",
+    "q": "Menurut Pasal 11 ayat (1) UU No. 23 Tahun 2019, Bela Negara mencakup tekad, sikap, perilaku, serta tindakan dalam skala:",
+    "o": [
+      "Secara perseorangan saja",
+      "Secara kolektif saja",
+      "Secara perseorangan maupun kolektif",
+      "Hanya dalam keadaan darurat"
+    ],
+    "a": 2,
+    "why": "Pasal 11 ayat (1) UU No. 23 Tahun 2019 menyatakan bahwa Bela Negara mencakup tekad, sikap, perilaku, serta tindakan warga negara, baik secara perseorangan maupun kolektif. Rumusan ini lebih luas daripada ketentuan tahun 2002 yang hanya menyebut sikap dan perilaku."
+  },
+  {
+    "ref": "Bagian 22",
+    "q": "Asas kewarganegaraan yang menyatakan bahwa pemerintah wajib memberikan perlindungan penuh kepada setiap warga negara di dalam maupun luar negeri disebut:",
+    "o": [
+      "Asas kepentingan nasional",
+      "Asas perlindungan maksimum",
+      "Asas nondiskriminatif",
+      "Asas keterbukaan"
+    ],
+    "a": 1,
+    "why": "Asas perlindungan maksimum menyatakan bahwa pemerintah wajib memberikan perlindungan penuh kepada setiap warga negara Indonesia dalam keadaan apa pun, baik di dalam maupun di luar negeri. Asas ini merupakan perluasan dari kewajiban negara dalam pembukaan UU No. 12 Tahun 2006."
+  },
+  {
+    "ref": "Bagian 22",
+    "q": "Asas yang menyatakan bahwa prosedur kewarganegaraan tidak hanya bersifat administratif, tetapi disertai syarat yang dapat dipertanggungjawabkan kebenarannya, disebut:",
+    "o": [
+      "Asas kebenaran substantif",
+      "Asas publisitas",
+      "Asas persamaan dalam hukum dan pemerintahan",
+      "Asas chemoTracksAsas emphatically"
+    ],
+    "a": 0,
+    "why": "Asas kebenaran substantif memastikan bahwa proses pewarganegaraan tidak berhenti pada PROCEDURES administratif, tetapi juga disertai substansi dan syarat yang dapat dipertanggungjawabkan. Asas publisitaselmuat pengumuman dalam Berita Negara."
+  },
+  {
+    "ref": "Bagian 24 dan 37",
+    "q": "Isi Pasal 25A UUD NRI 1945 adalah:",
+    "o": [
+      "Negara Indonesia adalah negara federasi dengan Flexible",
+      "Negara Kesatuan Republik Indonesia adalah sebuah negara kepulauan yang berciri Nusantara",
+      "Negara Kesatuan Republik Indonesia menjadikan bahasa Indonesia sebagai satu-satunya bahasa resmi",
+      "Wilayah Indonesia dibatasi oleh wilayah negara tetangga"
+    ],
+    "a": 1,
+    "why": "Pasal 25A menyatakan bahwa Negara Kesatuan Republik Indonesia adalah sebuah negara kepulauan yang berciri Nusantara dengan wilayah yang batas-batas dan hak-haknya ditetapkan dengan undang-undang. Pasal ini masuk melalui Perubahan Pertama UUD NRI 1945 tahun 1999 dan menjadi landasan Wawasan Nusantara."
+  },
+  {
+    "ref": "Bagian 39",
+    "q": "Mengapa jawaban Who berupa orang dewasa dalam materi tidak dapat dipastikan benar?",
+    "o": [
+      "Karena orang dewasa tidak memiliki hak politik",
+      "Karena istilah tersebut tidak dijelaskan dan tampak berbeda dengan jawaban When yang menyebut dari SD sampai perguruan tinggi",
+      "Karena pendidikan kewarganegaraan memang hanya diberikan kepada orang dewasa",
+      "Karena anak sekolah dasar tidak mampu memahami pancasila"
+    ],
+    "a": 1,
+    "why": "Materi sendiri menyatakan bahwa hubungan antara jawaban When dan Who tidak dapat dipastikan. Landasan hukum justru menunjukkan pendidikan kewarganegaraan wajib ada sejak jenjang pendidikan dasar berdasarkan Pasal 37 UU No. 20 Tahun 2003, sehingga sasarannya bukan hanya orang dewasa."
+  },
+  {
+    "ref": "Bagian 32",
+    "q": "Mengapa mekanisme PAP dan PAN tidak dapat dijelaskan hanya berdasarkan materi perkuliahan?",
+    "o": [
+      "Karena keduanya bukan bagian dari sistem penilaian",
+      "Karena tidak ada satu definisi tunggal yang berlaku nasional dan bobotnya ditetapkan tiap kampus",
+      "Karena INFORMASI mengenai keduanya tidak dipublikasikan",
+      "Karena keduanya hanya berlaku pada perguruan tinggi negeri"
+    ],
+    "a": 1,
+    "why": "Singkatan seperti PAP dan PAN tidak memiliki satu definisi yang berlaku nasional. Penggunaannya berbeda antar perguruan tinggi, dan artsinya ditetapkan melalui dokumen resmi masing-masing. Karena itu bobotnya harus dicari dari Panduan Perkuliahan atau Rencana Pembelajaran Semester kampus masing-masing."
+  },
+  {
+    "ref": "Bagian 28",
+    "q": "Apa yang membedakan Cooperative Learning dari kerja kelompok biasa?",
+    "o": [
+      "Cooperative Learning selalu menggunakan presentasi di pleno kelas",
+      "Cooperative Learning menuntut tanggung jawab bersama dan proses saling membantu, bukan sekadar membagi tugas",
+      "Kerja kelompok biasa selalu lebih cepat selesai",
+      "Cooperative Learning tidak memerlukancoefficients integrasi antar anggota"
+    ],
+    "a": 1,
+    "why": "Kerja kelompok yang hanya membagi tugas hanya merupakan pembagian beban. Cooperative Learning menuntut tanggung jawab bersama atas hasil akhir, interaksi positif, serta proses saling membantu. Tanpa unsur tersebut, yang terjadi bukan belajar bersama."
+  },
+  {
+    "ref": "Bagian 27",
+    "q": "Apa perbedaan utama antara Discovery Learning dan Inquiry Learning?",
+    "o": [
+      "Discovery Learning menggunakan Tanya jawab, sedangkan Inquiry Learning menggunakan ceramah",
+      "Pada Discovery Learning masalah disiapkan oleh dosen, sedangkan pada Inquiry Learning pertanyaan berasal dari mahasiswa",
+      "Keduanya sama sekali tidak berbeda",
+      "Discovery Learning menghasilkan karya nyata, sedangkan Inquiry Learning menghasilkan jawaban"
+    ],
+    "a": 1,
+    "why": "Perbedaan terletak pada siapa yang menentukan masalah. Pada Discovery Learning masalah disiapkan dosen, sedangkan pada Inquiry Learning pertanyaan berasal dari mahasiswa. Pada Project-Based Learning yang dihasilkan adalah karya nyata, bukan sekadar jawaban."
+  },
+  {
+    "ref": "Bagian 45",
+    "q": "Siapa yang merumuskan tiga komponen kompetensi kewargaan berupa pengetahuan, keterampilan, dan watak kewargaan?",
+    "o": [
+      "Center for Civic Education, 1994",
+      "Center for Civic Education, 2013",
+      "Permendikbud No. 32 Tahun 2013",
+      "UU No. 12 Tahun 2012"
+    ],
+    "a": 0,
+    "why": "Kerangka tiga komponen dirumuskan oleh Center for Civic Education pada tahun 1994. Patrick dan Vontz kemudian mengembangkannya menjadi empat kategori dengan memecah keterampilan menjadi keterampilan kognitif dan keterampilan partisipasi. Quigley dan rekan memberi pengertian Civic Disposition, sedangkan Branson merumuskan kategori keterampilan."
+  },
+  {
+    "ref": "Bagian 44",
+    "q": "Menurut Branson, keterampilan intelektual kewargaan meliputi tiga kategori, yaitu:",
+    "o": [
+      "Mengingat, memahami, dan mengulang",
+      "Mengidentifikasi dan mendeskripsikan; menjelaskan dan menganalisis; mengevaluasi dan mempertahankan posisi pada isu publik",
+      "Berkomunikasi, berdiskusi, dan bernegosiasi",
+      "Menyusun laporan, membuat presentasi, dan menulis makalah"
+    ],
+    "a": 1,
+    "why": "Branson merumuskan tiga kategori keterampilan intelektual, yaitu mengidentifikasi dan mendeskripsikan, menjelaskan dan menganalisis, serta mengevaluasi dan mempertahankan posisi pada isu-isu publik. Ketiga-tiganya merupakan tingkatan kemampuan kognitif yang meningkat."
+  },
+  {
+    "ref": "Bagian 45 dan 46",
+    "q": "Mengapa Civic Knowledge saja tidak cukup untuk membentuk warga negara yang baik?",
+    "o": [
+      "Karena pengetahuan kewarganegaraan tidak diperlukan dalam kehidupan nyata",
+      "Karena pengetahuan belum tentu menghasilkan perilaku tanpa dukungan Civic Disposition dan Civic Skills",
+      "Karena Civic Knowledge sudah diganti oleh Civic Disposition",
+      "Karena Civic Skills selalu bertentangan dengan Civic Knowledge"
+    ],
+    "a": 1,
+    "why": "Seseorang dapat mengetahui bahwa suatu tindakan salah, tetapi tetap melakukannya. Karena itu pengetahuan perlu disertai sikap dan keterampilan agar dapat diwujudkan dalam perilaku. Ketiga unsur sebaiknya dipandang sebagai satu kesatuan, bukan berurutan."
+  },
+  {
+    "ref": "Bagian 21",
+    "q": "Bagaimana hubungannya kewajiban bela negara dengan hak asasi manusia?",
+    "o": [
+      "Kewajiban bela negara berada di luar koridor hak asasi manusia",
+      "Kewajiban bela negara selalu berada dalam koridor yang dibatasi oleh hak asasi manusia",
+      "Hak asasi manusia tidak berlaku ketika terjadi keadaan darurat",
+      "Kewajiban bela negara menggantikan seluruh hak asasi manusia"
+    ],
+    "a": 1,
+    "why": "Kewajiban bela negara tetap berada dalam koridor yang dibatasi oleh hak asasi manusia. Pasal 28D ayat (1) UUD NRI 1945 tetap berlaku, yaitu setiap orang berhak atas perlakuan yang sama di hadapan hukum. Bela negara tidak boleh dimaknai sebagai pembenan pengabaian hak."
+  },
+  {
+    "ref": "Bagian 6 dan 30",
+    "q": "Apa hubungan antara matriks pengetahuan dan kegiatan diskusi kelompok dalam perkuliahan?",
+    "o": [
+      "Keduanya tidak berhubungan sama sekali",
+      "Presentasi dalam diskusi memaksa pengetahuan yang tidak disadari diubah menjadi pengetahuan yang dapat diucapkan",
+      "Diskusi kelompok hanya melatih kuadran diketahui yang diketahui",
+      "Matriks pengetahuan hanya digunakan oleh dosen, bukan mahasiswa"
+    ],
+    "a": 1,
+    "why": "Presentasi memaksa mahasiswa mengubah pengetahuan diam-diam menjadi pengetahuan yang dapat diucapkan. Itulah cara paling langsung memindahkan isi kuadran diketahui yang tidak diketahui ke kuadran diketahui yang diketahui. Karena itu tugas kelompok berfungsi juga sebagai alat diagnosis."
+  }
+];
+
+  (function () {
+    var DATA = KUIS_DATA;
+    var KEY = 'kuis:' + document.body.getAttribute('data-kuis') || 'kuis';
+    var root = document.documentElement;
+    var wrap = document.getElementById('quiz');
+    if (!wrap || !DATA.length) return;
+
+    var grid = wrap.querySelector('.quiz-grid');
+    var fill = wrap.querySelector('.quiz-fill');
+    var stat = wrap.querySelector('.qstat');
+    var resetBtn = wrap.querySelector('.quiz-reset');
+    var startBtn = wrap.querySelector('[data-start]');
+    var layer = wrap.querySelector('.quiz-layer');
+    var card = layer.querySelector('.quiz-card');
+    var qnoEl = card.querySelector('.qno');
+    var qrefEl = card.querySelector('.qref');
+    var qtextEl = card.querySelector('.qtext');
+    var optBox = card.querySelector('.qopts');
+    var verdict = card.querySelector('.verdict');
+    var nextBtn = card.querySelector('[data-next]');
+    var closeBtn = card.querySelector('.qclose');
+    var counter = card.querySelector('.qcount');
+    var skipBtn = card.querySelector('[data-skip]');
+
+    var cur = 0;
+    var picked = -1;
+    var answered = {};
+    var lastFocus = null;
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+      if (saved && typeof saved === 'object') {
+        for (var k in saved) {
+          if (saved.hasOwnProperty(k) && /^\d+$/.test(k)) answered[k] = saved[k];
+        }
+      }
+    } catch (e) {}
+
+    function persist() {
+      try { localStorage.setItem(KEY, JSON.stringify(answered)); } catch (e) {}
+    }
+
+    function score() {
+      var ok = 0, n = 0;
+      for (var i = 0; i < DATA.length; i++) {
+        if (answered[i] !== undefined) { n++; if (answered[i]) ok++; }
+      }
+      return { ok: ok, n: n };
+    }
+
+    function paintGrid() {
+      grid.innerHTML = '';
+      for (var i = 0; i < DATA.length; i++) {
+        (function (idx) {
+          var li = document.createElement('li');
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.textContent = idx + 1;
+          b.setAttribute('aria-label', 'Buka soal nomor ' + (idx + 1));
+          if (answered[idx] !== undefined) b.setAttribute('data-state', answered[idx] ? 'benar' : 'salah');
+          b.addEventListener('click', function () { open(idx); });
+          li.appendChild(b);
+          grid.appendChild(li);
+        })(i);
+      }
+    }
+
+    function markBtn(idx) {
+      var b = grid.children[idx] && grid.children[idx].children[0];
+      if (b) b.setAttribute('data-state', answered[idx] ? 'benar' : 'salah');
+    }
+
+    function paintBar() {
+      var s = score();
+      fill.style.width = (DATA.length ? (s.n / DATA.length) * 100 : 0) + '%';
+      stat.textContent = s.n + ' dijawab dari ' + DATA.length + ' soal';
+    }
+
+    function open(i) {
+      lastFocus = document.activeElement;
+      cur = i;
+      picked = -1;
+      render();
+      layer.classList.add('open');
+      layer.removeAttribute('aria-hidden');
+      document.body.style.overflow = 'hidden';
+      card.scrollTop = 0;
+      var first = card.querySelector('.qopt');
+      if (first) first.focus();
+    }
+
+    function close() {
+      layer.classList.remove('open');
+      layer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function render() {
+      var q = DATA[cur];
+      qnoEl.textContent = 'Soal ' + (cur + 1);
+      qrefEl.textContent = q.ref || '';
+      qtextEl.textContent = q.q;
+      counter.textContent = cur + 1 + ' / ' + DATA.length;
+      optBox.innerHTML = '';
+      for (var i = 0; i < q.o.length; i++) {
+        (function (idx) {
+          var li = document.createElement('li');
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'qopt';
+          b.setAttribute('aria-pressed', 'false');
+          var k = document.createElement('span');
+          k.className = 'key';
+          k.textContent = 'ABCD'.charAt(idx);
+          var s = document.createElement('span');
+          s.textContent = q.o[idx];
+          b.appendChild(k);
+          b.appendChild(s);
+          b.addEventListener('click', function () { choose(idx); });
+          li.appendChild(b);
+          optBox.appendChild(li);
+        })(i);
+      }
+      verdict.className = 'verdict';
+      verdict.innerHTML = '';
+      nextBtn.textContent = 'Soal Berikutnya';
+      nextBtn.disabled = true;
+      nextBtn.style.display = 'none';
+      if (answered[cur] !== undefined) reveal(answered[cur] === true ? q.a : -2);
+    }
+
+    function choose(idx) {
+      if (answered[cur] !== undefined) return;
+      picked = idx;
+      var all = optBox.querySelectorAll('.qopt');
+      for (var i = 0; i < all.length; i++) {
+        all[i].setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+      }
+      nextBtn.textContent = 'Periksa Jawaban';
+      nextBtn.disabled = false;
+      nextBtn.style.display = '';
+    }
+
+    function reveal(correctIdx) {
+      var q = DATA[cur];
+      var all = optBox.querySelectorAll('.qopt');
+      for (var i = 0; i < all.length; i++) {
+        all[i].disabled = true;
+        if (i === q.a) all[i].setAttribute('data-mark', 'benar');
+        else if (i === correctIdx) all[i].setAttribute('data-mark', 'salah');
+      }
+      var good = correctIdx === q.a;
+      verdict.className = 'verdict show ' + (good ? 'ok' : 'no');
+      var html = '<b>' + (good ? 'Benar' : 'Salah') + '</b>';
+      if (!good) {
+        html += '<div class="ansline">Jawaban yang benar: ' + 'ABCD'.charAt(q.a) + '. ' + esc(q.o[q.a]) + '</div>';
+      }
+      html += '<div class="why">' + esc(q.why) + '</div>';
+      verdict.innerHTML = html;
+      nextBtn.textContent = (cur + 1 < DATA.length) ? 'Soal Berikutnya' : 'Lihat Hasil';
+      nextBtn.disabled = false;
+      nextBtn.style.display = '';
+    }
+
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    nextBtn.addEventListener('click', function () {
+      if (answered[cur] === undefined) {
+        if (picked < 0) return;
+        var good = picked === DATA[cur].a;
+        answered[cur] = good;
+        persist();
+        markBtn(cur);
+        paintBar();
+        reveal(picked);
+        return;
+      }
+      if (cur + 1 < DATA.length) open(cur + 1);
+      else summary();
+    });
+
+    closeBtn.addEventListener('click', close);
+    layer.addEventListener('mousedown', function (e) { if (e.target === layer) close(); });
+
+    function summary() {
+      var s = score();
+      var pct = DATA.length ? Math.round((s.ok / DATA.length) * 100) : 0;
+      var note = pct >= 85 ? 'Penguasaan materi sangat baik.'
+        : pct >= 70 ? 'Penguasaan materi sudah baik, tinggal sedikit lagi.'
+        : pct >= 50 ? 'Sebagian besar benar, ulangi bagian yang masih lemah.'
+        : 'Sebagian besar masih perlu diulang.';
+      var weak = [];
+      for (var i = 0; i < DATA.length; i++) if (answered[i] === false) weak.push(i + 1);
+      qnoEl.textContent = 'Hasil';
+      qrefEl.textContent = '';
+      qtextEl.innerHTML = '';
+      optBox.innerHTML = '';
+      counter.textContent = '';
+      verdict.className = 'verdict';
+      verdict.innerHTML = '';
+      var box = document.createElement('div');
+      box.className = 'done';
+      var h = document.createElement('div');
+      h.className = 'score';
+      h.innerHTML = s.ok + '<small> / ' + DATA.length + '</small>';
+      var t = document.createElement('p');
+      t.textContent = 'Skor akhir ' + pct + ' persen. ' + note;
+      box.appendChild(h);
+      box.appendChild(t);
+      if (weak.length) {
+        var w = document.createElement('p');
+        w.innerHTML = 'Nomor yang masih salah: <b>' + weak.join(', ') + '</b>. Buka kembali nomor tersebut untuk membaca penjelasannya.';
+        box.appendChild(w);
+      } else {
+        var w2 = document.createElement('p');
+        w2.textContent = 'Semua soal terjawab benar. Silakan ulangi sekali lagi untuk memperkuat Pemahaman.';
+        box.appendChild(w2);
+      }
+      var row = document.createElement('div');
+      row.className = 'quiz-foot';
+      var again = document.createElement('button');
+      again.type = 'button';
+      again.className = 'btn btn-primary';
+      again.textContent = 'Ulangi dari Awal';
+      again.addEventListener('click', function () {
+        answered = {};
+        persist();
+        paintGrid();
+        paintBar();
+        open(0);
+      });
+      var fin = document.createElement('button');
+      fin.type = 'button';
+      fin.className = 'btn btn-ghost';
+      fin.textContent = 'Tutup';
+      fin.addEventListener('click', close);
+      row.appendChild(again);
+      row.appendChild(fin);
+      box.appendChild(row);
+      qtextEl.appendChild(box);
+      nextBtn.style.display = 'none';
+      card.scrollTop = 0;
+    }
+
+    skipBtn.addEventListener('click', function () {
+      if (answered[cur] !== undefined) {
+        if (cur + 1 < DATA.length) open(cur + 1); else summary();
+      } else {
+        close();
+      }
+    });
+
+    startBtn.addEventListener('click', function () {
+      for (var i = 0; i < DATA.length; i++) {
+        if (answered[i] === undefined) { open(i); return; }
+      }
+      summary();
+    });
+
+    resetBtn.addEventListener('click', function () {
+      answered = {};
+      picked = -1;
+      persist();
+      paintGrid();
+      paintBar();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!layer.classList.contains('open')) return;
+      if (e.key === 'Escape') { close(); return; }
+      if (answered[cur] === undefined && '1234'.indexOf(e.key) > -1) {
+        choose('1234'.indexOf(e.key));
+        e.preventDefault();
+      } else if (e.key === 'Enter' && !nextBtn.disabled) {
+        nextBtn.click();
+      }
+    });
+
+    paintGrid();
+    paintBar();
+  })();
+</script>
+<script>
+/* ===== daftar isi untuk layar kecil + topbar lengket ===== */
+  (function () {
+    var btn = document.getElementById('menu');
+    var scrim = document.getElementById('scrim');
+    var toc = document.querySelector('.toc');
+    var bar = document.querySelector('.topbar');
+    var closer = document.getElementById('toc-close');
+
+    function open() {
+      document.body.classList.add('nav-open');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+    function close() {
+      document.body.classList.remove('nav-open');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+
+    if (btn && scrim && toc) {
+      btn.addEventListener('click', function () {
+        document.body.classList.contains('nav-open') ? close() : open();
+      });
+      scrim.addEventListener('click', close);
+      toc.addEventListener('click', function (e) {
+        if (e.target.closest('a')) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+          close();
+          if (btn) btn.focus();
+        }
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1280) close();
+      });
+    }
+    if (closer) closer.addEventListener('click', close);
+
+    if (bar) {
+      var sync = function () {
+        bar.classList.toggle('is-stuck', window.scrollY > 6);
+      };
+      window.addEventListener('scroll', sync, { passive: true });
+      sync();
+    }
+  })();
+</script>
+</body>
+</html>
